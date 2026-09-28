@@ -96,13 +96,15 @@ class Backtester:
             else:
                 rejected.append(self._reject(sig, "sin_vela_para_entrar"))
 
-        timeline = sorted(set().union(*[set(df.index) for df in bars.values()]))
+        # Diccionarios {hora: vela} para leer cada vela rápido (itertuples es mucho más veloz que .loc).
+        rows = {sym: {r.Index: r for r in df.itertuples()} for sym, df in bars.items()}
+        timeline = sorted(set().union(*[set(r) for r in rows.values()]))
         last_close = {}
         for ts in timeline:
-            for sym, df in bars.items():
-                if ts not in df.index:
+            for sym, sym_rows in rows.items():
+                bar = sym_rows.get(ts)
+                if bar is None:
                     continue
-                bar = df.loc[ts]
                 inst = self.instruments[sym]
 
                 last_close[sym] = bar
@@ -114,7 +116,8 @@ class Backtester:
                         st.pending.remove((t, sig))
                         rejected.append(self._reject(sig, "despues_de_hora_limite"))
                 else:
-                    for t, sig in [(t, s) for t, s in st.pending if t == ts and s.instrument == sym]:
+                    due = [(t, s) for t, s in st.pending if t == ts and s.instrument == sym] if st.pending else []
+                    for t, sig in due:
                         st.pending.remove((t, sig))
                         reason = self._try_enter(st, sig, ts, bar, inst)
                         if reason:
@@ -132,7 +135,7 @@ class Backtester:
             bar = last_close[pos.signal.instrument]
             inst = self.instruments[pos.signal.instrument]
             exit_px = bar.close - pos.signal.direction * inst.slippage
-            trades.append(self._close(st, pos, bar.name, exit_px, "cierre_forzado"))
+            trades.append(self._close(st, pos, bar.Index, exit_px, "cierre_forzado"))
             st.min_equity = min(st.min_equity, st.realized)
 
         summary = {"date": pd.Timestamp(date), "pnl": st.realized,
