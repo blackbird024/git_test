@@ -1,0 +1,46 @@
+# Reglas de la evaluación EOD (End-of-Day) de Apex Trader Funding.
+# Fuente: texto de reglas facilitado por el usuario (sept. 2026).
+# Los campos marcados con "VERIFICAR" no aparecen en ese texto: confírmalos con Apex.
+
+firma: Apex Trader Funding
+modelo_drawdown: eod          # el umbral se calcula una vez al día, al cierre
+automatizacion_permitida: false   # por eso el sistema es SEMIAUTOMÁTICO (tú pones las órdenes)
+hedging_permitido: false          # nunca largo y corto a la vez en instrumentos correlacionados
+
+cierre_mercado_et: "16:59"        # hora de Nueva York (ET)
+dias_acceso: 30                   # días naturales para pasar la evaluación
+
+cuentas:
+  25K:
+    saldo_inicial: 25000
+    objetivo_beneficio: 1500
+    drawdown_max_eod: 1000
+    limite_perdida_diaria: 500
+    contratos_max: 4
+  50K:
+    saldo_inicial: 50000
+    objetivo_beneficio: 3000
+    drawdown_max_eod: 2000
+    limite_perdida_diaria: 1000
+    contratos_max: 6
+  100K:
+    saldo_inicial: 100000
+    objetivo_beneficio: 6000
+    drawdown_max_eod: 3000
+    limite_perdida_diaria: 1500
+    contratos_max: 8
+  150K:
+    saldo_inicial: 150000
+    objetivo_beneficio: 9000
+    drawdown_max_eod: 4000
+    limite_perdida_diaria: 2000
+    contratos_max: 12
+
+# --- Supuestos pendientes de confirmar ---
+supuestos:
+  # VERIFICAR: ¿"contratos_max" son contratos mini? En Apex, históricamente, 1 mini = 10 micros.
+  micros_por_mini: 10
+  # VERIFICAR: ¿el umbral EOD deja de subir en algún punto (p. ej., saldo inicial + 100 $)?
+  umbral_deja_de_subir_en: null
+  # VERIFICAR: al tocar el límite de pérdida diaria, ¿se pierde la cuenta o solo se para el día?
+  limite_diario_suspende_solo_el_dia: true

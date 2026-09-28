@@ -1,0 +1,19 @@
+# Especificaciones de los contratos micro de CME.
+# Usamos datos históricos del contrato grande (NQ / GC) porque cotizan al mismo precio
+# y tienen más historia; el P&L se calcula con el valor del micro.
+
+MNQ:
+  nombre: Micro E-mini Nasdaq-100
+  datos_de: NQ
+  tick: 0.25            # movimiento mínimo de precio
+  valor_punto_usd: 2.0  # 1 punto = 2 $ -> 1 tick = 0,50 $
+  comision_ida_vuelta_usd: 1.50   # SUPUESTO conservador; ajustar a tu tarifa real
+  slippage_ticks_por_lado: 1      # entradas y stops; 0 en el objetivo (orden límite)
+
+MGC:
+  nombre: Micro Gold
+  datos_de: GC
+  tick: 0.10
+  valor_punto_usd: 10.0 # 1 dólar de oro = 10 $ -> 1 tick = 1 $
+  comision_ida_vuelta_usd: 1.50
+  slippage_ticks_por_lado: 1
