@@ -51,17 +51,28 @@ def main() -> None:
         return
 
     RAW.mkdir(parents=True, exist_ok=True)
+    # Año a año: si una descarga larga se corta, solo se repite ese año.
+    first, last = pd.Timestamp(args.desde).year, pd.Timestamp(args.hasta).year
     for root, sym in SYMBOLS.items():
-        print(f"Descargando {root}...")
-        data = client.timeseries.get_range(dataset=DATASET, symbols=[sym], schema="ohlcv-1m",
-                                           stype_in="continuous", start=args.desde, end=args.hasta)
-        df = data.to_df()  # índice ts_event en UTC = inicio de la vela
-        df = df[["open", "high", "low", "close", "volume", "instrument_id"]]
-        for year, part in df.groupby(df.index.year):
+        for year in range(first, last + 1):
             out = RAW / f"{root}_1m_{year}.parquet"
-            part.to_parquet(out)
-            print(f"  {out.name}: {len(part):,} velas")
-
+            if out.exists():
+                print(f"  {out.name}: ya existe, se omite")
+                continue
+            start = max(pd.Timestamp(args.desde), pd.Timestamp(f"{year}-01-01"))
+            end = min(pd.Timestamp(args.hasta), pd.Timestamp(f"{year + 1}-01-01"))
+            for attempt in range(1, 4):
+                try:
+                    data = client.timeseries.get_range(dataset=DATASET, symbols=[sym], schema="ohlcv-1m",
+                                                       stype_in="continuous", start=start, end=end)
+                    break
+                except db.BentoError as exc:
+                    print(f"  {root} {year}: intento {attempt} fallido ({exc})")
+                    if attempt == 3:
+                        raise
+            df = data.to_df()  # índice ts_event en UTC = inicio de la vela
+            df[["open", "high", "low", "close", "volume", "instrument_id"]].to_parquet(out)
+            print(f"  {out.name}: {len(df):,} velas", flush=True)
 
 if __name__ == "__main__":
     main()

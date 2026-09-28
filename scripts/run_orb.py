@@ -18,7 +18,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import load_instruments, load_system  # noqa: E402
-from src.data.loader import load_minutes  # noqa: E402
+from src.data.loader import drop_short_sessions, load_minutes  # noqa: E402
 from src.engine.backtest import Backtester  # noqa: E402
 from src.risk.apex_eod import simulate_all_starts, summarize  # noqa: E402
 from src.strategies.orb import ORB  # noqa: E402
@@ -40,7 +40,7 @@ def main() -> None:
 
     # Cargamos un mes extra antes del inicio para que el ATR esté disponible desde el primer día.
     warmup = (pd.Timestamp(start) - pd.Timedelta(days=40)).strftime("%Y-%m-%d")
-    nq = load_minutes("NQ", warmup, end)
+    nq = drop_short_sessions(load_minutes("NQ", warmup, end))
     data = {"MNQ": nq}
 
     rows, dailies = [], {}

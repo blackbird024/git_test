@@ -24,3 +24,15 @@ def load_minutes(root: str, start: str | None = None, end: str | None = None) ->
     if end:
         df = df[df.index < pd.Timestamp(end, tz=TZ)]
     return df
+
+
+def drop_short_sessions(df: pd.DataFrame, min_bars: int = 300) -> pd.DataFrame:
+    """Quita los días cuya sesión regular (9:30-16:00) tiene menos de `min_bars` velas.
+
+    Son festivos de la bolsa de acciones (los futuros abren unas horas) o medias jornadas.
+    Se conocen de antemano por el calendario, así que filtrarlos no mira el futuro.
+    """
+    rth = df.between_time("09:30", "16:00", inclusive="left")
+    counts = rth.groupby(rth.index.date).size()
+    keep = set(counts[counts >= min_bars].index)
+    return df[[d in keep for d in df.index.date]]
