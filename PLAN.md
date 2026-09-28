@@ -34,9 +34,9 @@ Simularemos miles de "evaluaciones de 30 días" empezando en fechas distintas y 
 
 ## Fases
 
-0. **Entorno y configuración** ← *hecho (configs)*
-1. **Datos**: descarga, paso a hora de NY, unión de contratos, control de calidad
-2. **Motor + simulador Apex EOD**, con tests hechos a mano
+0. **Entorno y configuración** ← *hecho*
+1. **Datos**: descarga, paso a hora de NY, unión de contratos, control de calidad ← *descargador listo; faltan la clave y el acceso de red*
+2. **Motor + simulador Apex EOD**, con tests hechos a mano ← *hecho (21 pruebas)*
 3. **ORB (MNQ)**: variantes 5/15/30 min × stop en el rango o por ATR, promediadas
 4. **Validación**: in-sample / out-of-sample, walk-forward, Monte Carlo
 5. **VWAP (MNQ + MGC)**

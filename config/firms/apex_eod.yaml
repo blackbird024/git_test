@@ -40,7 +40,8 @@ cuentas:
 supuestos:
   # VERIFICAR: ¿"contratos_max" son contratos mini? En Apex, históricamente, 1 mini = 10 micros.
   micros_por_mini: 10
-  # VERIFICAR: ¿el umbral EOD deja de subir en algún punto (p. ej., saldo inicial + 100 $)?
+  # VERIFICAR: ¿el umbral EOD deja de subir en algún punto? Se indica como
+  # dólares SOBRE el saldo inicial (p. ej., 100 -> 50.100 $ en 50K). null = nunca deja de subir.
   umbral_deja_de_subir_en: null
   # VERIFICAR: al tocar el límite de pérdida diaria, ¿se pierde la cuenta o solo se para el día?
   limite_diario_suspende_solo_el_dia: true

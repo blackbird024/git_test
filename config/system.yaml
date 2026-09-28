@@ -8,10 +8,12 @@ modo: semiautomatico   # el sistema avisa; tú colocas la orden bracket (stop + 
 
 riesgo:
   riesgo_por_operacion_usd: 150       # pérdida máxima si salta el stop (~7,5 % del drawdown de 50K)
-  limite_diario_sistema_pct: 0.50     # paramos al perder el 50 % del límite diario de Apex (500 $ en 50K)
-  margen_sobre_umbral_eod_usd: 300    # nunca abrir una operación que, si falla, nos deje a menos de esto del umbral
+  # Presupuesto de pérdida diario: 50 % del límite diario de Apex (500 $ en 50K).
+  # Antes de abrir una operación se comprueba que "pérdida del día + riesgo abierto + riesgo nuevo"
+  # no supere este presupuesto. Así, aunque salten todos los stops, no se pasa del límite.
+  limite_diario_sistema_pct: 0.50
   max_operaciones_por_dia: 3          # tiene que ser manejable a mano
-  ratio_min_objetivo_stop: 1.0        # Apex prohíbe objetivos pequeños con stops enormes
+  ratio_min_objetivo_stop: 0.5        # objetivo >= mitad del stop. Apex prohíbe objetivos pequeños con stops enormes
 
 horario_et:
   inicio_sesion: "09:30"

@@ -9,6 +9,7 @@ MNQ:
   valor_punto_usd: 2.0  # 1 punto = 2 $ -> 1 tick = 0,50 $
   comision_ida_vuelta_usd: 1.50   # SUPUESTO conservador; ajustar a tu tarifa real
   slippage_ticks_por_lado: 1      # entradas y stops; 0 en el objetivo (orden límite)
+  grupo_correlacion: indices_usa  # nunca largo y corto a la vez dentro del mismo grupo
 
 MGC:
   nombre: Micro Gold
@@ -17,3 +18,4 @@ MGC:
   valor_punto_usd: 10.0 # 1 dólar de oro = 10 $ -> 1 tick = 1 $
   comision_ida_vuelta_usd: 1.50
   slippage_ticks_por_lado: 1
+  grupo_correlacion: metales
