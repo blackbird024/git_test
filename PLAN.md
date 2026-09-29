@@ -57,6 +57,7 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | Momentum de cierre 15:30-15:58 | config/close_momentum.yaml | **DESCARTADA**: sin costes PF 1,01 (t=0,25); con costes PF 0,80 |
 | Reversión a la media al VWAP (MNQ) | config/mean_reversion.yaml | **DESCARTADA**: 0 de 6 variantes; PF 0,41-0,87, pierde incluso antes de costes |
 | Tendencia VWAP en MGC con stops anchos (0,4 y 0,8 ATR) | config/vwap_mgc.yaml | **DESCARTADA**: 0 de 6 variantes; la ventaja bruta solo existe con stops de 0,1-0,2 ATR y es menor que el coste de ejecución |
+| Power of Three / Judas swing (MNQ y MGC) | config/po3_mnq.yaml, config/po3_mgc.yaml | **DESCARTADA**: 0 de 16 variantes; tras una barrida de un lado, la dirección posterior acierta el 49-52 % (azar) |
 
 ## Estructura
 

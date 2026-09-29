@@ -25,10 +25,12 @@ from src.risk.apex_trailing import TrailingAccount, monte_carlo, path_summary, r
 from src.strategies import close_momentum_5m as cm  # noqa: E402
 from src.strategies import intraday_vwap as iv  # noqa: E402
 from src.strategies import orb_5m as orb  # noqa: E402
+from src.strategies import po3  # noqa: E402
 from src.validation.metrics import trade_list_stats  # noqa: E402
 
 STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum.yaml",
-           "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml"}
+           "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml",
+           "po3_mnq": "config/po3_mnq.yaml", "po3_mgc": "config/po3_mgc.yaml"}
 
 
 def t_stat(trades: pd.DataFrame) -> float:
@@ -55,6 +57,14 @@ def build(study: str, raw: dict):
                     for m in val["variantes_rango"] for t in val["variantes_target"]
                     for r in val["variantes_riesgo_usd"] for n in val["variantes_noticias"]]
         return variants, (lambda cfg: orb.backtest(bars, atr, cfg, news)), bars
+    if study.startswith("po3"):
+        base = po3.PO3Config.from_yaml(STUDIES[study])
+        variants = []
+        for e in val["variantes_entrada"]:
+            for t in val["variantes_target"]:
+                variants.append(base.variant(entry_mode=e, target_r=t))
+                variants.append(base.variant(entry_mode=e, target_r=t, fixed_contracts=val["diagnostico_contratos_fijos"]))
+        return variants, (lambda cfg: po3.backtest(minutes[keep], atr, cfg)), minutes[keep]
     if study == "cm":
         base = cm.CMConfig.from_yaml(STUDIES[study])
         variants = [base.variant(risk_usd=r) for r in val["variantes_riesgo_usd"]]
