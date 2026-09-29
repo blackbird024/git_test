@@ -59,6 +59,7 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | Tendencia VWAP en MGC con stops anchos (0,4 y 0,8 ATR) | config/vwap_mgc.yaml | **DESCARTADA**: 0 de 6 variantes; la ventaja bruta solo existe con stops de 0,1-0,2 ATR y es menor que el coste de ejecución |
 | Power of Three / Judas swing (MNQ y MGC) | config/po3_mnq.yaml, config/po3_mgc.yaml | **DESCARTADA**: 0 de 16 variantes; tras una barrida de un lado, la dirección posterior acierta el 49-52 % (azar) |
 | Cruce de medias EMA con filtro ADX (MNQ y MGC) | config/ma_mnq.yaml, config/ma_mgc.yaml | **DESCARTADA**: 0 de 24 variantes; el filtro ADX mejora algo la 20/50 pero sin costes el mejor t es 1,58 |
+| Setup ICT de oro, horario de Italia (MGC) — SIN SMT | config/gold_ict.yaml | Versión parcial: 0 de 4 variantes; PF 0,47-0,70, pierde antes de costes. **Pendiente: versión con SMT (requiere datos de plata)** |
 
 ## Estructura
 

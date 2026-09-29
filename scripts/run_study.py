@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT))
 from src.data.loader import load_clean  # noqa: E402
 from src.risk.apex_trailing import TrailingAccount, monte_carlo, path_summary, run_sequence  # noqa: E402
 from src.strategies import close_momentum_5m as cm  # noqa: E402
+from src.strategies import gold_ict  # noqa: E402
 from src.strategies import intraday_vwap as iv  # noqa: E402
 from src.strategies import ma_cross as ma  # noqa: E402
 from src.strategies import orb_5m as orb  # noqa: E402
@@ -32,7 +33,8 @@ from src.validation.metrics import trade_list_stats  # noqa: E402
 STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum.yaml",
            "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml",
            "po3_mnq": "config/po3_mnq.yaml", "po3_mgc": "config/po3_mgc.yaml",
-           "ma_mnq": "config/ma_mnq.yaml", "ma_mgc": "config/ma_mgc.yaml"}
+           "ma_mnq": "config/ma_mnq.yaml", "ma_mgc": "config/ma_mgc.yaml",
+           "gold_ict": "config/gold_ict.yaml"}
 
 
 def t_stat(trades: pd.DataFrame) -> float:
@@ -59,6 +61,25 @@ def build(study: str, raw: dict):
                     for m in val["variantes_rango"] for t in val["variantes_target"]
                     for r in val["variantes_riesgo_usd"] for n in val["variantes_noticias"]]
         return variants, (lambda cfg: orb.backtest(bars, atr, cfg, news)), bars
+    if study == "gold_ict":
+        base = gold_ict.GoldICTConfig.from_yaml(STUDIES[study])
+        silver = None
+        if True in val["variantes_smt"]:
+            silver = load_clean(raw["instrumento"]["datos_smt"], warmup, val["fecha_fin"])
+        variants = []
+        for bm in val["variantes_velas"]:
+            for smt in val["variantes_smt"]:
+                variants.append(base.variant(bar_minutes=bm, smt=smt))
+                variants.append(base.variant(bar_minutes=bm, smt=smt, fixed_contracts=val["diagnostico_contratos_fijos"]))
+        # El contexto (día anterior, EMA diaria y de 4H) necesita historia previa: se pasan todos los datos
+        # y se descartan después las operaciones anteriores a fecha_inicio.
+        def run_gold(cfg):
+            t, dd, pp = gold_ict.backtest(minutes, atr, cfg, silver)
+            if t.empty:
+                return t, dd, pp
+            keep_t = (t.date >= start).to_numpy()
+            return t[keep_t].reset_index(drop=True), dd[dd.date >= start], [p for p, k in zip(pp, keep_t) if k]
+        return variants, run_gold, minutes[keep]
     if study.startswith("ma_"):
         base = ma.MAConfig.from_yaml(STUDIES[study])
         variants = []

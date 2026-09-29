@@ -1,0 +1,65 @@
+# Setup ICT de oro en horario de Italia (Europe/Rome), traducido a reglas mecánicas.
+# Criterios fijados ANTES de ver resultados. Ejecutar: python scripts/run_study.py --estudio gold_ict
+# Partes discrecionales NO incluidas: POI de 1H y calendario de noticias europeas.
+
+instrumento:
+  simbolo: MGC
+  datos: GC
+  datos_smt: SI                # plata para la divergencia SMT (requiere descargarla)
+  valor_punto_usd: 10.0
+  tick: 0.10
+
+zona_horaria: Europe/Rome
+horario:
+  asia_inicio: "06:00"
+  asia_fin: "08:50"            # el setup dice 9:00, pero la ventana 1 empieza a las 8:50 (ver informe)
+  ventanas: [["08:50", "09:10"], ["10:03", "10:30"]]
+  cierre: "11:00"
+
+sesgo:
+  ema_diaria: 20
+  ema_4h: 20
+
+entrada:
+  velas_minutos: 1             # 1 o 5
+  fvg_ventana_minutos: 60      # FVG formado en los 60 min previos al extremo del barrido
+  smt: false                   # true = exigir divergencia con la plata
+
+gestion:
+  margen_stop_usd: 1.5         # dólares de precio detrás de la mecha del barrido
+  objetivo_r: 2.0              # o el extremo opuesto de Asia si queda antes
+  max_operaciones_dia: 2
+
+riesgo:
+  riesgo_por_operacion_usd: 250   # 0,5 % de 50.000 $
+  contratos_max: 20
+  contratos_fijos: null
+
+costes:
+  comision_por_contrato_y_lado_usd: 1.00
+  slippage_ticks_entrada: 1
+  slippage_ticks_stop: 1
+  slippage_ticks_salida_tiempo: 1
+  slippage_ticks_take_profit: 0
+
+apex:
+  saldo_inicial: 50000
+  drawdown_trailing_usd: 2000
+  trailing_se_detiene_en: null
+
+atr_dias: 14                   # no se usa en las reglas; compatibilidad con el script de estudios
+
+validacion:
+  fecha_inicio: "2015-01-01"
+  fecha_fin: null
+  fraccion_desarrollo: 0.70
+  variantes_velas: [1, 5]
+  variantes_smt: [false]       # añadir true cuando haya datos de plata
+  diagnostico_contratos_fijos: 1
+  montecarlo_simulaciones: 10000
+  semilla: 42
+
+criterios:
+  profit_factor_min: 1.15
+  t_min: 2.0
+  positivo_en_desarrollo_y_oos: true
