@@ -78,8 +78,13 @@ Las **dos únicas estrategias del proyecto que han superado la validación**, am
 Guía detallada: `papel/LEEME.md`.
 
 ## 3. Lo que haré a continuación (mientras dura la fase 1)
-1. **Indicador de TradingView** para la zona de ruido: dibuja las bandas y el VWAP, y marca la señal en cada media
-   hora. Así no tendrás que copiar números.
+1. **Indicador de TradingView** para la zona de ruido (**hecho:** `pine/zona_ruido_mnq.pine`). Dibuja las bandas y el
+   VWAP de la sesión regular, marca COMPRAR / VENDER / CERRAR en cada media hora y avisa con alertas. Se usa en un
+   gráfico de 1 minuto de MNQ1! con al menos 15 días cargados.
+   - **No lo he podido probar dentro de TradingView.**
+   - Los primeros días hay que comparar sus bandas con las de `scripts/plan_del_dia.py`.
+   - Diferencias posibles: los datos de TradingView no son los de Databento, y el indicador no excluye los días
+     festivos ilíquidos.
 2. **Siguiente investigación, con el mismo protocolo:** una tercera estrategia **no relacionada con el Nasdaq**, para
    que la cartera tenga más meses positivos. La primera candidata es **pares oro/plata**: reversión del ratio, con
    datos diarios que ya tenemos, sin coste. Se registra antes de mirar y, si falla, se descarta.

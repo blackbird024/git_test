@@ -1,0 +1,121 @@
+//@version=6
+// ZONA_RUIDO_MNQ_v1.0 (Zarattini, Aziz y Barbon 2024): MODO PAPEL. Solo dibuja y avisa; NO envía órdenes.
+// Reglas: edges/zona_ruido_mnq.md. Réplica del backtest de src/strategies/zona_ruido.py.
+//
+// USO: gráfico de 1 MINUTO de MNQ1! (o NQ1!), con horario EXTENDIDO (ETH) visible. La sesión regular se detecta con la
+// hora de Nueva York, así que el cambio de hora se gestiona solo.
+//   - Bandas: max/min(apertura 09:30, cierre de ayer 16:00) × (1 ± sigma), donde sigma es el alejamiento medio de la
+//     apertura EN ESE MINUTO en los 14 días anteriores.
+//   - Decisión con el cierre de las velas de 09:59, 10:29 … 15:29 NY (16:00-21:30 en Italia casi todo el año);
+//     ejecución en la apertura del minuto siguiente.
+//   - Todo se cierra a las 16:00 NY (22:00 en Italia).
+// VALIDACIÓN: durante los primeros días, compara las bandas con `python scripts/plan_del_dia.py --apertura X`.
+//   Deben coincidir (salvo diferencias de datos de TradingView frente a Databento).
+indicator("Zona de ruido MNQ — papel", overlay = true, max_labels_count = 500)
+
+dias = input.int(14, "Días para el ruido normal (sigma)", minval = 10)
+mult = input.float(1.0, "Multiplicador de la banda")
+minDias = 10
+
+const string NY = "America/New_York"
+m = (hour(time, NY) - 9) * 60 + minute(time, NY) - 30          // minuto de la sesión regular (0 = 09:30)
+enRTH = m >= 0 and m < 390
+
+// ---------------------------------------------------------------- estado diario
+var float aperturaDia = na
+var float cierreAnterior = na
+var float ultimoCierreRTH = na
+var matrix<float> mov = matrix.new<float>(dias, 390, na)        // |cierre / apertura - 1| por día (filas) y minuto
+var int fila = -1
+var int diasVistos = 0
+var float pv = 0.0
+var float vol = 0.0
+var int pos = 0                                                 // posición simulada: 1, -1 o 0
+
+nuevoDia = enRTH and (not enRTH[1] or m < m[1])
+if nuevoDia
+    cierreAnterior := ultimoCierreRTH
+    aperturaDia := open
+    fila := (fila + 1) % dias
+    for c = 0 to 389
+        mov.set(fila, c, na)                                    // la fila de hoy empieza vacía
+    diasVistos += 1
+    pv := 0.0
+    vol := 0.0
+    pos := 0
+
+// sigma del minuto m: media de los días ANTERIORES (se excluye la fila de hoy); mínimo 10 días con dato
+sigmaDe(int col) =>
+    float s = 0.0
+    int n = 0
+    for r = 0 to dias - 1
+        if r != fila
+            v = mov.get(r, col)
+            if not na(v)
+                s += v
+                n += 1
+    n >= minDias ? s / n : na
+
+float sig = na
+float sup = na
+float inf = na
+float vwap = na
+if enRTH and not na(aperturaDia)
+    sig := sigmaDe(m)
+    anclaSup = na(cierreAnterior) ? aperturaDia : math.max(aperturaDia, cierreAnterior)
+    anclaInf = na(cierreAnterior) ? aperturaDia : math.min(aperturaDia, cierreAnterior)
+    sup := anclaSup * (1 + mult * sig)
+    inf := anclaInf * (1 - mult * sig)
+    pv += hlc3 * volume
+    vol += volume
+    vwap := vol > 0 ? pv / vol : na
+    mov.set(fila, m, math.abs(close / aperturaDia - 1))        // se guarda DESPUÉS de usar sigma (solo días previos)
+    ultimoCierreRTH := close
+
+// ---------------------------------------------------------------- decisión en los chequeos (cierre de la vela anterior)
+esChequeo = enRTH and (m + 1) % 30 == 0 and m + 1 >= 30 and m + 1 <= 360
+bool compra = false
+bool venta = false
+bool cierra = false
+if esChequeo and barstate.isconfirmed and not na(sig)
+    if pos == 1
+        trail = math.max(sup, vwap)
+        if close < trail
+            cierra := true
+            pos := 0
+    else if pos == -1
+        trail = math.min(inf, vwap)
+        if close > trail
+            cierra := true
+            pos := 0
+    if pos == 0
+        if close > sup
+            pos := 1
+            compra := true
+        else if close < inf
+            pos := -1
+            venta := true
+finDia = enRTH and m == 389 and barstate.isconfirmed and pos != 0
+if finDia
+    pos := 0
+
+// ---------------------------------------------------------------- dibujo y alertas
+plot(enRTH ? sup : na, "Banda superior", color = color.new(#2a78d6, 0), linewidth = 2, style = plot.style_linebr)
+plot(enRTH ? inf : na, "Banda inferior", color = color.new(#d9822b, 0), linewidth = 2, style = plot.style_linebr)
+plot(enRTH ? vwap : na, "VWAP (sesión regular)", color = color.new(#8a8f98, 0), linewidth = 1, style = plot.style_linebr)
+plotshape(compra, "COMPRAR", shape.triangleup, location.belowbar, color.new(#008300, 0), size = size.small, text = "L")
+plotshape(venta, "VENDER", shape.triangledown, location.abovebar, color.new(#c62828, 0), size = size.small, text = "S")
+plotshape(cierra and not compra and not venta, "CERRAR", shape.xcross, location.abovebar, color.new(#555555, 0), size = size.tiny)
+
+if compra
+    alert("ZONA DE RUIDO: COMPRAR 1 MNQ ahora (apertura del minuto). Banda sup=" + str.tostring(sup, "#.00") + " VWAP=" + str.tostring(vwap, "#.00"), alert.freq_once_per_bar_close)
+if venta
+    alert("ZONA DE RUIDO: VENDER 1 MNQ ahora. Banda inf=" + str.tostring(inf, "#.00") + " VWAP=" + str.tostring(vwap, "#.00"), alert.freq_once_per_bar_close)
+if cierra and not compra and not venta
+    alert("ZONA DE RUIDO: CERRAR la posición ahora (perdió banda y VWAP).", alert.freq_once_per_bar_close)
+if finDia
+    alert("ZONA DE RUIDO: CERRAR todo (fin de sesión 16:00 NY).", alert.freq_once_per_bar_close)
+
+// Aviso si aún no hay 10 días de historia en el gráfico
+if barstate.islast and diasVistos < minDias + 1
+    label.new(bar_index, high, "Faltan días de historia: carga al menos 15 días de gráfico de 1 minuto", color = color.new(#c62828, 0), textcolor = color.white)
