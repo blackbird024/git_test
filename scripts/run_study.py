@@ -23,10 +23,12 @@ sys.path.insert(0, str(ROOT))
 from src.data.loader import load_clean  # noqa: E402
 from src.risk.apex_trailing import TrailingAccount, monte_carlo, path_summary, run_sequence  # noqa: E402
 from src.strategies import close_momentum_5m as cm  # noqa: E402
+from src.strategies import intraday_vwap as iv  # noqa: E402
 from src.strategies import orb_5m as orb  # noqa: E402
 from src.validation.metrics import trade_list_stats  # noqa: E402
 
-STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum.yaml"}
+STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum.yaml",
+           "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml"}
 
 
 def t_stat(trades: pd.DataFrame) -> float:
@@ -53,9 +55,19 @@ def build(study: str, raw: dict):
                     for m in val["variantes_rango"] for t in val["variantes_target"]
                     for r in val["variantes_riesgo_usd"] for n in val["variantes_noticias"]]
         return variants, (lambda cfg: orb.backtest(bars, atr, cfg, news)), bars
-    base = cm.CMConfig.from_yaml(STUDIES[study])
-    variants = [base.variant(risk_usd=r) for r in val["variantes_riesgo_usd"]]
-    return variants, (lambda cfg: cm.backtest(minutes[keep], atr, cfg)), minutes[keep]
+    if study == "cm":
+        base = cm.CMConfig.from_yaml(STUDIES[study])
+        variants = [base.variant(risk_usd=r) for r in val["variantes_riesgo_usd"]]
+        return variants, (lambda cfg: cm.backtest(minutes[keep], atr, cfg)), minutes[keep]
+    # Estudios VWAP: variantes del parámetro principal x riesgo, más el diagnóstico con contratos fijos.
+    base, key, field = (iv.MRConfig.from_yaml(STUDIES[study]), "variantes_desviacion_atr", "deviation_atr") \
+        if study == "mr" else (iv.VTConfig.from_yaml(STUDIES[study]), "variantes_stop_atr", "stop_atr")
+    variants = []
+    for k in val[key]:
+        variants += [base.variant(**{field: k}, risk_usd=r) for r in val["variantes_riesgo_usd"]]
+        if val.get("diagnostico_contratos_fijos"):
+            variants.append(base.variant(**{field: k}, fixed_contracts=val["diagnostico_contratos_fijos"]))
+    return variants, (lambda cfg: iv.backtest(minutes[keep], atr, cfg)), minutes[keep]
 
 
 def main() -> None:

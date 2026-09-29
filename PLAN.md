@@ -55,6 +55,8 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | ORB 5 min (especificación original, filtro de ATR) | config/orb_5m.yaml | Descartada: pierde en desarrollo; fuera de muestra no significativa (t=0,73) |
 | ORB 5 min, última prueba (sin filtro, stop 10 % ATR) | config/orb_5m_final.yaml | **DESCARTADA**: 0 de 12 variantes cumplen (mejor t = 1,28) |
 | Momentum de cierre 15:30-15:58 | config/close_momentum.yaml | **DESCARTADA**: sin costes PF 1,01 (t=0,25); con costes PF 0,80 |
+| Reversión a la media al VWAP (MNQ) | config/mean_reversion.yaml | **DESCARTADA**: 0 de 6 variantes; PF 0,41-0,87, pierde incluso antes de costes |
+| Tendencia VWAP en MGC con stops anchos (0,4 y 0,8 ATR) | config/vwap_mgc.yaml | **DESCARTADA**: 0 de 6 variantes; la ventaja bruta solo existe con stops de 0,1-0,2 ATR y es menor que el coste de ejecución |
 
 ## Estructura
 
