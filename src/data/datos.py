@@ -44,6 +44,12 @@ def sesiones(m1: pd.DataFrame) -> pd.DataFrame:
     })
     d.index = pd.to_datetime(d.index)
     d.index.name = "sesion"
+    return ajustar(d)
+
+
+def ajustar(d: pd.DataFrame) -> pd.DataFrame:
+    """Añade rendimientos y precios ajustados por cambios de contrato (necesita open, close, primer_id, ultimo_id)."""
+    d = d.copy()
     mismo = d.primer_id == d.ultimo_id.shift()
     r = np.where(mismo, d.close / d.close.shift() - 1, d.close / d.open - 1)
     r[0] = 0.0
@@ -51,3 +57,17 @@ def sesiones(m1: pd.DataFrame) -> pd.DataFrame:
     d["close_aj"] = d.close.iloc[0] * np.cumprod(1 + d.ret)      # solo usa el pasado
     d["open_aj"] = d.close_aj * d.open / d.close
     return d
+
+
+def sesiones_diarias_databento(raiz: str) -> pd.DataFrame:
+    """Velas diarias de Databento (día natural en UTC) con el mismo formato que `sesiones`."""
+    df = pd.read_parquet(RAIZ / "data" / "raw" / "daily" / f"{raiz}.parquet")
+    df.index = pd.to_datetime(df.index).tz_convert("UTC")
+    df = df[~df.index.duplicated(keep="last")].sort_index()
+    d = pd.DataFrame({"open": df.open, "high": df.high, "low": df.low, "close": df.close,
+                      "primer_id": df.instrument_id, "ultimo_id": df.instrument_id,
+                      "t_primera": df.index, "t_ultima": df.index + pd.Timedelta(hours=23, minutes=59),
+                      "open_ultima": df.close})
+    d.index = df.index.tz_localize(None).normalize()
+    d.index.name = "sesion"
+    return ajustar(d)

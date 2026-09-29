@@ -87,9 +87,23 @@ def paso1() -> None:
     print(ejecutar())
 
 
+def paso2y3() -> None:
+    """Paso 2 (mejoras, desarrollo) y paso 3 (validación, fuera de muestra) de las ventajas supervivientes."""
+    from src.report.paso2 import ejecutar as mejoras
+    from src.report.paso3 import informes_rechazadas, validar_rsi2
+    final, texto = mejoras()
+    print(texto)
+    r = validar_rsi2(final)
+    print(r["criterios"].to_string(index=False))
+    print(f"\nVeredicto RSI(2): {'APROBADA' if r['aprobada'] else 'RECHAZADA'} -> reports/nq_rsi2.html")
+    informes_rechazadas()
+
+
 if __name__ == "__main__":
-    etapas = sys.argv[1:] or ["0", "1"]
+    etapas = sys.argv[1:] or ["0", "1", "2"]
     if "0" in etapas:
         paso0()
     if "1" in etapas:
         paso1()
+    if "2" in etapas or "3" in etapas:
+        paso2y3()

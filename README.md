@@ -39,5 +39,15 @@ python -m pytest         # tests: look-ahead, horas, stop/objetivo en la misma v
 ## Estado
 
 - [x] Paso 0: datos, calidad, marcos temporales, tests base
-- [x] Paso 1: versión mínima de cada ventaja (sobrevive solo RSI(2) en NQ; ver reports/paso1_ventajas.md)
-- [ ] Paso 2: mejoras (solo RSI(2))
+- [x] Paso 1: versión mínima de cada ventaja (sobrevive solo RSI(2) en NQ; ver `reports/paso1_ventajas.md`)
+- [x] Paso 2: ninguna mejora se queda (`reports/paso2_mejoras.md`)
+- [x] Paso 3: **RSI(2) en NQ APROBADA** (`reports/nq_rsi2.html`); barrido de Londres y viernes→lunes RECHAZADAS
+- [ ] Paso 4: Apex no aplica al RSI(2) (mantiene posiciones de noche). Incubación en papel: al menos 2 meses
+
+## Modo papel (cada día, después de las 23:00 de Italia)
+
+```bash
+python scripts/senal_hoy.py      # actualiza NQ desde Databento (céntimos) y dice: COMPRAR / MANTENER / VENDER / NADA
+```
+
+Alternativa en TradingView: `pine/nq_rsi2.pine` (gráfico diario de NQ1!/MNQ1!, con alertas al cierre).

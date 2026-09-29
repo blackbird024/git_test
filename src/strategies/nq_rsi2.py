@@ -45,7 +45,11 @@ def rsi(close: pd.Series, n: int) -> pd.Series:
 
 
 def preparar(m1: pd.DataFrame, cfg: Config) -> pd.DataFrame:
-    s = sesiones(m1)
+    return preparar_sesiones(sesiones(m1), cfg)
+
+
+def preparar_sesiones(s: pd.DataFrame, cfg: Config) -> pd.DataFrame:
+    s = s.copy()
     s["rsi"] = rsi(s.close_aj, cfg.rsi_n)
     s["sma"] = s.close_aj.rolling(cfg.sma).mean()
     s["vol20"] = s.ret.rolling(20, min_periods=10).std()
@@ -61,7 +65,11 @@ def preparar(m1: pd.DataFrame, cfg: Config) -> pd.DataFrame:
 
 
 def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = frozenset()) -> pd.DataFrame:
-    s = preparar(m1, cfg)
+    return backtest_sesiones(preparar(m1, cfg), cfg, excluir)
+
+
+def backtest_sesiones(s: pd.DataFrame, cfg: Config, excluir: frozenset = frozenset()) -> pd.DataFrame:
+    """Backtest sobre una tabla de sesiones ya preparada (sirve para NQ desde 1M o para otros mercados diarios)."""
     n, ops, i = len(s), [], 0
     c, pv = cfg.costes, cfg.valor_punto * cfg.contratos
     while i < n - 1:
