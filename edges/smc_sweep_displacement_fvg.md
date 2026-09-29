@@ -39,7 +39,8 @@ cierra de vuelta dentro (cierre < PDH, o cierre > PDL). Si no ocurre, el barrido
 
 **3. Desplazamiento.** Desde la vuelta dentro, en las N = 6 velas siguientes aparece una vela de 5M en el sentido
 contrario al barrido (bajista si se barrió el máximo) cuyo **cuerpo |cierre − apertura| ≥ k × ATR(14)** de 5M, con
-**k = 1,5**. ATR calculado con velas de 5M ya cerradas.
+**k = 1,5**. ATR = media del rango verdadero de las 14 velas de 5M **anteriores** a la de desplazamiento
+(precisión añadida antes de ver ningún resultado: así la vela grande no infla su propia referencia).
 
 **4. FVG.** La vela de desplazamiento es la vela central de un patrón de 3 velas con hueco:
 - Bajista: máximo de la vela 3 < mínimo de la vela 1. Zona = [máximo vela 3, mínimo vela 1].

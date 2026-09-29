@@ -60,9 +60,52 @@ def ejecutar(velas: pd.DataFrame, i_senal: int, direccion: int, stop: float, obj
     entrada = O[i] + d * costes.ticks(t[i]) * tick
     if (entrada - stop) * d <= 0 or (objetivo is not None and (objetivo - entrada) * d <= 0):
         return None
-    pv = valor_punto * contratos
     op = Operacion(d, contratos, t[i_senal], t[i], entrada, stop, objetivo,
-                   riesgo_usd=abs(entrada - stop) * pv + costes.comision(contratos))
+                   riesgo_usd=abs(entrada - stop) * valor_punto * contratos + costes.comision(contratos))
+    return _gestionar(op, velas, i, t_limite, tick, valor_punto, costes)
+
+
+def ejecutar_limite(velas: pd.DataFrame, i_desde: int, direccion: int, limite: float, stop: float,
+                    objetivo: float | None, contratos: int, t_expira: pd.Timestamp, t_limite: pd.Timestamp,
+                    tick: float, valor_punto: float, costes: Costes, t_senal: pd.Timestamp | None = None
+                    ) -> Operacion | None:
+    """Orden LÍMITE colocada a partir de la vela `i_desde` (la primera vela posterior a la señal).
+
+    - Se llena si el precio cruza el límite en al menos 1 tick (tocarlo justo no basta), al precio del límite
+      y sin deslizamiento. Si la vela ABRE ya más allá del límite, se llena a la apertura (mejor precio).
+    - Se cancela al llegar a `t_expira`, o si antes de llenarse el precio toca el stop o el objetivo.
+    - En la vela del llenado solo puede saltar el stop (no se sabe si el objetivo llegó antes o después).
+    Devuelve None si la orden no se llena."""
+    O, H, L = velas.open.to_numpy(), velas.high.to_numpy(), velas.low.to_numpy()
+    t = velas.index
+    d = direccion
+    for k in range(i_desde, len(velas)):
+        if t[k] >= t_expira or t[k] >= t_limite:
+            return None
+        # El stop está más allá del límite: para llegar al stop el precio tiene que cruzar antes el límite
+        # (la orden se llena y la gestión se encarga). Si llega antes al objetivo sin llenarse, se cancela.
+        llena = H[k] >= limite + tick if d == -1 else L[k] <= limite - tick
+        llega_objetivo = objetivo is not None and (L[k] <= objetivo if d == -1 else H[k] >= objetivo)
+        if llega_objetivo and not llena:
+            return None
+        if not llena:
+            continue
+        entrada = max(limite, O[k]) if d == -1 else min(limite, O[k])
+        if (entrada - stop) * d <= 0:
+            return None
+        op = Operacion(d, contratos, t_senal if t_senal is not None else t[i_desde - 1], t[k], entrada, stop, objetivo,
+                       riesgo_usd=abs(entrada - stop) * valor_punto * contratos + costes.comision(contratos))
+        return _gestionar(op, velas, k, t_limite, tick, valor_punto, costes, vela_llenado=True)
+    return None
+
+
+def _gestionar(op: Operacion, velas: pd.DataFrame, i: int, t_limite, tick, valor_punto, costes: Costes,
+               vela_llenado: bool = False) -> Operacion:
+    """Gestiona una posición abierta desde la vela `i`: stop, objetivo y salida por tiempo."""
+    O, H, L = velas.open.to_numpy(), velas.high.to_numpy(), velas.low.to_numpy()
+    t = velas.index
+    d, entrada, stop, objetivo, contratos = op.direccion, op.entrada, op.stop, op.objetivo, op.contratos
+    pv = valor_punto * contratos
     c_lado = costes.comision(contratos) / 2
     pnl = lambda px: (px - entrada) * d * pv - c_lado  # noqa: E731  (abierto, ya pagada la entrada)
     op.recorrido.append(-c_lado)
@@ -81,6 +124,8 @@ def ejecutar(velas: pd.DataFrame, i_senal: int, direccion: int, stop: float, obj
         mejor, peor = (H[k], L[k]) if d == 1 else (L[k], H[k])
         toca_stop = peor <= stop if d == 1 else peor >= stop
         toca_obj = objetivo is not None and (mejor >= objetivo if d == 1 else mejor <= objetivo)
+        if vela_llenado and k == i:
+            toca_obj = False                                 # en la vela del llenado solo cuenta el stop
         if toca_stop:                                    # también si toca el objetivo: cuenta como pérdida
             base = min(stop, O[k]) if d == 1 else max(stop, O[k])
             # Para el drawdown: primero lo favorable de la vela (sin pasar del objetivo), después el stop.
