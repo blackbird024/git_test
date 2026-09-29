@@ -107,3 +107,19 @@ fuera de muestra no peor que el 50 % del desarrollo; sensibilidad ±20 % rentabl
    No se cambiará después según el resultado.
 7. **Tamaño fijo de 1 contrato:** en dólares, los años con precio del oro más alto pesan más. Por eso se reportan
    también las métricas en R.
+
+## Resultado del paso 1 (desarrollo, 2-ene-2015 → 21-mar-2023) — añadido tras ejecutar
+| | Antes de costes | Después de costes |
+|---|---|---|
+| Operaciones | 2.053 | 2.053 |
+| Acierto | 38,6 % | 37,5 % |
+| Profit factor | 1,00 | 0,88 |
+| R medio (t) | +0,017 (t = 0,60) | −0,084 (t = −3,01) |
+| Neto (1 MGC) | +148 $ | −6.988 $ |
+
+- Sin ventaja ni antes de costes. De las operaciones que terminan en stop u objetivo, solo el 30,2 % llega al
+  objetivo de 2R. En un mercado sin memoria (paseo aleatorio) se esperaría alrededor de un 33 %, así que la
+  ruptura no continúa más de lo que haría el azar.
+- Largos y cortos igual de negativos (PF 0,88 y 0,87). Positivo solo en 3 de 9 años (2019, 2022 y el trozo de 2023).
+- **Veredicto: RECHAZADA en el paso 1.** No se prueban filtros ni otros parámetros para salvarla. El fuera de
+  muestra no se ha tocado.

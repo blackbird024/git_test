@@ -23,3 +23,12 @@ def test_rsi2_no_lookahead():
     m1 = velas_1m("NQ")
     tramo = m1[(m1.index >= "2018-01-01") & (m1.index < "2019-06-01")]
     assert comprobar(nq_rsi2.senales, tramo, SABADOS) == []
+
+
+@hay_datos
+def test_london_range_breakout_no_lookahead():
+    from src.strategies import london_range_breakout
+    m1 = velas_1m("GC")
+    tramo = m1[(m1.index >= "2019-02-01") & (m1.index < "2019-05-01")]
+    assert len(london_range_breakout.senales(tramo)) > 10          # la prueba no pasa "en vacío"
+    assert comprobar(london_range_breakout.senales, tramo, SABADOS) == []
