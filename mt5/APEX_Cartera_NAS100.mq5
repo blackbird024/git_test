@@ -161,7 +161,8 @@ bool Abrir(long magic, int dir, string estrategia, string motivo)
 // Velas de 1M de la sesión regular (09:30-16:00 NY) de un día NY, indexadas por minuto (0..389). Devuelve cuántas hay.
 int VelasSesion(datetime inicioDiaNY, int hastaMin, MqlRates &por_min[], bool &hay[])
 {
-   ArrayResize(por_min, MIN_SESION); ArrayResize(hay, MIN_SESION); ArrayInitialize(hay, false);
+   ArrayResize(por_min, MIN_SESION); ArrayResize(hay, MIN_SESION);
+   for(int m = 0; m < MIN_SESION; m++) hay[m] = false;
    datetime desde = NYaServidor(inicioDiaNY + 9 * 3600 + 30 * 60);
    datetime hasta = desde + (hastaMin + 1) * 60 - 1;
    MqlRates r[];
