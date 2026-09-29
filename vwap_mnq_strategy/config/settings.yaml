@@ -1,0 +1,92 @@
+# Configuración de la investigación VWAP direccional en MNQ (15 min).
+# Todas las horas en America/New_York. Todas las rutas relativas a la carpeta vwap_mnq_strategy/.
+
+data:
+  # CSV (una o varias rutas con comodines) o parquet. Columnas: timestamp + open, high, low, close, volume
+  # (+ instrument_id opcional para detectar cambios de contrato).
+  path: "../data/raw/NQ_1m_2*.parquet"
+  timezone_if_naive: "UTC"        # zona de los timestamps del CSV si no la llevan
+  source_bar_minutes: 1           # 1 = datos de 1 min (permite resolver stop/target dentro de la vela de 15 min)
+  min_sessions: 250               # por debajo, el backtest se detiene
+  max_invalid_fraction: 0.001     # si más de este % de filas es inválido, se detiene
+
+session:
+  tz: "America/New_York"
+  rth_start: "09:30"
+  rth_end: "16:00"
+  vwap_session: "rth"             # rth | extended (18:00 NY del día anterior). Resultados siempre por separado
+  extended_start: "18:00"
+  min_bar_completeness: 0.8       # fracción mínima de velas de 1 min dentro de cada vela de 15 min
+  exclude_incomplete_sessions: true   # excluye días de cierre anticipado y sesiones con huecos
+
+bars:
+  minutes: 15
+
+instrument:
+  symbol: "MNQ"
+  point_value: 2.0                # USD por punto (contrato MNQ)
+  tick_size: 0.25                 # = 0.50 USD por tick
+  min_contracts: 1
+
+costs:
+  commission_per_side: 0.85       # USD por contrato y lado (broker + CME + NFA, aprox.)
+  slippage_ticks: 1               # por ejecución a mercado o stop (escenario normal)
+  slippage_ticks_adverse: 2       # escenario adverso
+  target_requires_through: true   # el target (límite) solo se llena si el precio lo supera en 1 tick
+
+strategy:
+  entry_mode: "cross"             # cross (A, baseline) | confirm (B)
+  last_entry_time: "15:15"        # hora máxima de la vela de ENTRADA
+  eod_exit_time: "15:45"          # cierre forzado en la apertura de esta vela; sin overnight
+  atr_period: 14
+  exits:
+    opposite_signal: true         # cerrar con la señal contraria
+    reverse_on_opposite: true     # y abrir en sentido contrario (si filtros y riesgo lo permiten)
+    sl_atr_mult: 2.0              # stop = entrada ± k x ATR(14) de la vela de señal; null = sin stop
+    risk_atr_mult_if_no_stop: 2.0 # distancia nocional para tamaño y R cuando no hay stop
+    tp_r: null                    # objetivo en múltiplos de R; null = sin objetivo
+    trailing_atr_mult: null       # trailing con cierres de vela: mejor cierre - k x ATR; null = off
+    time_stop_bars: null          # cerrar tras N velas; null = off
+  vwap_bands:
+    enabled: false                # solo se calculan e informan; no intervienen en reglas
+    k: [1.0, 2.0]
+  filters:                        # todos desactivados en el baseline
+    vwap_slope: {enabled: false, bars: 4}
+    ema: {enabled: false, period: 200}
+    atr_regime: {enabled: false, lookback_bars: 520, low_pct: 10, high_pct: 90}
+    rsi: {enabled: false, period: 14, level: 50}
+    initial_range: {enabled: false, minutes: 30, lookback_sessions: 20}
+    time_window: {enabled: false, start: "09:30", end: "11:30"}
+    vwap_distance: {enabled: false, min_atr: 0.25, max_atr: 1.5}
+
+risk:
+  initial_capital: 50000
+  sizing: "risk_pct"              # risk_pct | fixed
+  risk_pct: 0.5                   # % del capital actual arriesgado por operación (escenarios: 0.25 / 0.5 / 1)
+  fixed_contracts: 1
+  max_contracts: 20
+  daily_loss_limit_pct: 2.0       # no abrir más ese día si la pérdida del día supera este %
+  max_trades_per_session: 6
+  pause_after_losses: 3           # pérdidas seguidas que detienen las entradas el resto del día
+
+splits:                           # cronológicos; el test no se usa hasta el final
+  train: ["2015-01-01", "2020-12-31"]
+  validation: ["2021-01-01", "2023-03-21"]
+  test: ["2023-03-22", "2100-01-01"]
+
+walk_forward:
+  train_years: 3
+  test_years: 1
+  first_test_year: 2018
+  last_test_year: 2022            # solo dentro de train+validation
+
+optimization:                     # rejilla pequeña de salidas, elegida antes de ver resultados
+  sl_atr_mult: [1.0, 1.5, 2.0, 2.5]
+  tp_r: [1.0, 1.5, 2.0, 3.0, null]
+  min_trades: 200
+
+montecarlo:
+  n: 2000
+  seed: 42
+
+reports_dir: "reports"
