@@ -1,0 +1,11 @@
+# Registro de uso del TEST
+- 2026-09-29 21:03 UTC `MNQ:final:e95d696e41`
+- 2026-09-29 21:03 UTC `MNQ:modelo A (baseline):d98e34c279`
+- 2026-09-29 21:03 UTC `MNQ:modelo B (baseline):1c3e5d6d73`
+- 2026-09-29 21:03 UTC `MNQ:modelo C (baseline):35dce3a871`
+- 2026-09-29 21:03 UTC `MNQ:modelo D (baseline):9843c6e041`
+- 2026-09-29 21:04 UTC `MGC:final:ebbc19a26d`
+- 2026-09-29 21:04 UTC `MGC:modelo A (baseline):d98e34c279`
+- 2026-09-29 21:04 UTC `MGC:modelo B (baseline):1c3e5d6d73`
+- 2026-09-29 21:04 UTC `MGC:modelo C (baseline):35dce3a871`
+- 2026-09-29 21:04 UTC `MGC:modelo D (baseline):9843c6e041`
