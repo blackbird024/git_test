@@ -3,6 +3,7 @@
 Muestra: rentabilidad, volatilidad, Sharpe, t, drawdown, profit factor mensual, resultados por año,
 por periodo (desarrollo / fuera de muestra), por mercado, y la correlación con el S&P 500 (ES).
 """
+import argparse
 import sys
 from pathlib import Path
 
@@ -16,9 +17,13 @@ from src.strategies.tsmom import load_returns, portfolio, stats, weights  # noqa
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--mercados", nargs="+", help="subconjunto de mercados (por defecto, los de la configuración)")
+    args = ap.parse_args()
     c = yaml.safe_load(open(ROOT / "config" / "tsmom.yaml", encoding="utf-8"))
-    rets, rolls = load_returns(c["mercados"])
-    print(f"Mercados con datos: {len(rets.columns)} de {len(c['mercados'])}: {', '.join(rets.columns)}")
+    markets = args.mercados or c["mercados"]
+    rets, rolls = load_returns(markets)
+    print(f"Mercados con datos: {len(rets.columns)} de {len(markets)}: {', '.join(rets.columns)}")
     w = weights(rets, tuple(c["senal_lookbacks_dias"]), c["vol_dias"], c["vol_objetivo_por_mercado"])
     pf = portfolio(rets, rolls, w, c["coste_bps"])
     pf = pf[pf.index >= c["fecha_inicio"]]
@@ -37,7 +42,7 @@ def main() -> None:
         (not crit["positivo_en_desarrollo_y_oos"] or (dev["rend_anual_%"] > 0 and oos["rend_anual_%"] > 0))
     corr = pf.neto.corr(es) if es is not None else None
 
-    out = ROOT / "reports" / "estudio_tsmom.md"
+    out = ROOT / "reports" / f"estudio_tsmom_{'_'.join(rets.columns)}.md"
     with open(out, "w", encoding="utf-8") as f:
         f.write(f"# Seguimiento de tendencia en {len(rets.columns)} futuros ({pf.index[0].date()} → {pf.index[-1].date()})\n\n")
         f.write(table.to_markdown() + "\n\n")
