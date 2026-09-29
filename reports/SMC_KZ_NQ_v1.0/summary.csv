@@ -1,0 +1,4 @@
+variante,operaciones,acierto_%,profit_factor,R_medio,t,neto_$,drawdown_max_$,racha_perdedora,PF_antes_costes,R_medio_antes_costes,veredicto
+A_original_0930_1530,17,41.2,0.82,0.085,0.28,-120.0,-230.0,2,0.87,0.136,RECHAZADA
+B_london_kz_0200_0500,10,30.0,1.13,-0.526,-1.77,13.0,-102.0,7,1.38,-0.383,RECHAZADA
+C_ny_kz_0700_1000,8,25.0,0.35,-0.47,-0.96,-184.0,-224.0,4,0.38,-0.347,RECHAZADA

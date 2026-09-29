@@ -40,3 +40,14 @@ Se decide **por variante, por separado**. Pasa al paso 2 solo si, después de co
 2. **Conocimiento previo:** London en NQ ya falló con otras reglas; la ventana B no se ha ajustado a aquel resultado
    (son las horas estándar de la kill zone).
 3. Resto de sesgos: los de la ficha original (llenado de límites, velas de 1M, contrato continuo).
+
+## Resultado del desarrollo (sesiones < 22-mar-2023): añadido tras ejecutar
+| Variante | Operaciones | PF con costes | R medio | t | Neto (1 MNQ) |
+|---|---|---|---|---|---|
+| A. 09:30–15:30 NY | 17 | 0,82 | 0,085 | 0,28 | −120 $ |
+| B. London KZ | 10 | 1,13 | −0,526 | −1,77 | +13 $ |
+| C. NY KZ | 8 | 0,35 | −0,470 | −0,96 | −184 $ |
+
+**Veredicto: las tres RECHAZADAS** (ninguna llega a t ≥ 2; B y C tienen R medio negativo). Además el patrón casi
+nunca aparece: 8-17 operaciones en ~2.090 sesiones (≈ 1-2 al año), así que ni aunque pasara serviría para operar a
+diario. Fuera de muestra sin tocar. Informe: `reports/SMC_KZ_NQ_v1.0/`.
