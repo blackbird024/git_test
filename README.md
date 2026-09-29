@@ -13,6 +13,9 @@ pip install -r requirements.txt
 python -m pytest -q                              # comprobar que el motor funciona
 python scripts/download_databento.py             # ver cuánto costaría descargar los datos
 python scripts/download_databento.py --confirmar # descargarlos (necesita DATABENTO_API_KEY)
+python scripts/check_data.py                     # control de calidad de los datos
+python scripts/run_strategy.py --estrategia orb --periodo is   # backtest de una estrategia
+python scripts/apex_viability.py                 # ¿qué ventaja hace falta para aprobar Apex?
 ```
 
 ## Dónde está cada cosa

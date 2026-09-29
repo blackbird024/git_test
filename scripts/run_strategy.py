@@ -1,12 +1,13 @@
-"""Fase 3: backtest de las 6 variantes de ORB en MNQ (datos de NQ).
+"""Backtest de todas las variantes de una estrategia.
 
 Uso:
-    python scripts/run_orb.py --periodo is     # in-sample 2015-2022 (donde miramos y aprendemos)
-    python scripts/run_orb.py --periodo oos    # out-of-sample 2023-hoy (solo se mira al final)
+    python scripts/run_strategy.py --estrategia orb --periodo is    # in-sample 2015-2022
+    python scripts/run_strategy.py --estrategia cm  --periodo oos   # out-of-sample 2023-hoy
 
+Estrategias: orb (Opening Range Breakout), cm (momentum de cierre).
 Para cada variante calcula métricas con y sin costes, y simula evaluaciones Apex EOD.
 Además calcula el "promedio de variantes": el resultado de repartir el riesgo a partes iguales
-entre las 6 (en vez de elegir la mejor), que es lo que recomiendan Carver y compañía.
+entre todas (en vez de elegir la mejor), que es lo que recomiendan Carver y compañía.
 """
 import argparse
 import sys
@@ -21,17 +22,26 @@ from src.config import load_instruments, load_system  # noqa: E402
 from src.data.loader import drop_short_sessions, load_minutes  # noqa: E402
 from src.engine.backtest import Backtester  # noqa: E402
 from src.risk.apex_eod import simulate_all_starts, summarize  # noqa: E402
+from src.strategies.close_momentum import CloseMomentum  # noqa: E402
 from src.strategies.orb import ORB  # noqa: E402
 from src.validation.metrics import trade_metrics  # noqa: E402
 
 PERIODS = {"is": ("2015-01-01", "2023-01-01"), "oos": ("2023-01-01", None)}
 REPORTS = Path(__file__).resolve().parent.parent / "reports"
 
+# Variantes de cada estrategia, fijadas de antemano (no se eligen mirando resultados).
+VARIANTS = {
+    "orb": ("ORB en MNQ", lambda nq: [ORB.build(nq, m, s) for m in (5, 15, 30) for s in ("range", "atr")]),
+    "cm": ("Momentum de cierre en MNQ", lambda nq: [CloseMomentum.build(nq, k) for k in (0.1, 0.2)]),
+}
+
 
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--estrategia", choices=VARIANTS, required=True)
     ap.add_argument("--periodo", choices=PERIODS, default="is")
     args = ap.parse_args()
+    title, make_variants = VARIANTS[args.estrategia]
     start, end = PERIODS[args.periodo]
 
     rules, account = load_system()
@@ -44,26 +54,24 @@ def main() -> None:
     data = {"MNQ": nq}
 
     rows, dailies = [], {}
-    for minutes in (5, 15, 30):
-        for stop in ("range", "atr"):
-            strat = ORB.build(nq, minutes, stop)
-            for label, insts in (("con_costes", instruments), ("sin_costes", free)):
-                res = Backtester(insts, rules, account.max_micros).run(data, [strat])
-                daily = res.daily[res.daily.index >= pd.Timestamp(start)]
-                trades = res.trades[pd.to_datetime(res.trades.entry_time).dt.tz_localize(None) >= pd.Timestamp(start)] \
-                    if not res.trades.empty else res.trades
-                m = trade_metrics(trades, daily)
-                rej = res.rejected.reason.value_counts().to_dict() if not res.rejected.empty else {}
-                row = {"variante": strat.name, "costes": label, **m,
-                       "rechazadas_sin_presupuesto": rej.get("sin_presupuesto_de_riesgo", 0)}
-                if label == "con_costes":
-                    row.update(summarize(simulate_all_starts(daily, account)))
-                    dailies[strat.name] = daily
-                rows.append(row)
-                print(f"{strat.name:14s} {label:10s} neto={m.get('beneficio_neto')} "
-                      f"PF={m.get('profit_factor')} ops={m.get('operaciones')}", flush=True)
+    for strat in make_variants(nq):
+        for label, insts in (("con_costes", instruments), ("sin_costes", free)):
+            res = Backtester(insts, rules, account.max_micros).run(data, [strat])
+            daily = res.daily[res.daily.index >= pd.Timestamp(start)]
+            trades = res.trades[pd.to_datetime(res.trades.entry_time).dt.tz_localize(None) >= pd.Timestamp(start)] \
+                if not res.trades.empty else res.trades
+            m = trade_metrics(trades, daily)
+            rej = res.rejected.reason.value_counts().to_dict() if not res.rejected.empty else {}
+            row = {"variante": strat.name, "costes": label, **m,
+                   "rechazadas_sin_presupuesto": rej.get("sin_presupuesto_de_riesgo", 0)}
+            if label == "con_costes":
+                row.update(summarize(simulate_all_starts(daily, account)))
+                dailies[strat.name] = daily
+            rows.append(row)
+            print(f"{strat.name:14s} {label:10s} neto={m.get('beneficio_neto')} "
+                  f"PF={m.get('profit_factor')} ops={m.get('operaciones')}", flush=True)
 
-    # Promedio de variantes: 1/6 del resultado de cada una.
+    # Promedio de variantes: 1/N del resultado de cada una.
     avg = pd.concat({k: v[["pnl", "min_intraday_pnl"]] for k, v in dailies.items()}, axis=1)
     ens = pd.DataFrame({
         "pnl": avg.xs("pnl", axis=1, level=1).mean(axis=1),
@@ -73,11 +81,11 @@ def main() -> None:
 
     table = pd.DataFrame(rows)
     REPORTS.mkdir(exist_ok=True)
-    out = REPORTS / f"orb_{args.periodo}.md"
+    out = REPORTS / f"{args.estrategia}_{args.periodo}.md"
     with open(out, "w", encoding="utf-8") as f:
-        f.write(f"# ORB en MNQ — periodo {args.periodo.upper()} ({start} → {end or 'hoy'})\n\n")
+        f.write(f"# {title} — periodo {args.periodo.upper()} ({start} → {end or 'hoy'})\n\n")
         f.write("## Variantes\n\n" + table.to_markdown(index=False) + "\n\n")
-        f.write("## Promedio de las 6 variantes (riesgo repartido)\n\n")
+        f.write(f"## Promedio de las {len(dailies)} variantes (riesgo repartido)\n\n")
         f.write(f"- Beneficio neto: {ens.pnl.sum():.0f} $\n")
         eq = ens.pnl.cumsum()
         f.write(f"- Drawdown máximo: {(eq - eq.cummax()).min():.0f} $\n")
