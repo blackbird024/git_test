@@ -84,3 +84,21 @@ def test_gold_london_false_break_no_lookahead():
     assert len(gold_london_false_break.senales(tramo)) > 20
     cortes = [pd.Timestamp(x, tz="UTC") for x in ("2018-03-10", "2018-05-12", "2018-07-14", "2018-09-08")]
     assert comprobar(gold_london_false_break.senales, tramo, cortes) == []
+
+
+@hay_datos
+def test_zona_ruido_no_lookahead_and_daily_levels_match_backtest():
+    import datetime as dt
+    from src.strategies import zona_ruido
+    m1 = velas_1m("NQ")
+    tramo = m1[(m1.index >= "2019-01-01") & (m1.index < "2019-07-01")]
+    assert len(zona_ruido.senales(tramo)) > 50
+    assert comprobar(zona_ruido.senales, tramo, SABADOS) == []
+    # La herramienta diaria, con datos HASTA la víspera, da la misma sigma que usa el backtest ese día
+    dia = dt.date(2019, 5, 15)
+    _, _, sigma = zona_ruido.preparar(tramo, zona_ruido.Config())
+    hasta = tramo[tramo.index < pd.Timestamp("2019-05-15 04:00", tz="UTC")]
+    n = zona_ruido.niveles(hasta)
+    esperado = [sigma.loc[dia, m - 1] * 100 for m in zona_ruido.Config().chequeos]
+    assert n["ultima_sesion"] == dt.date(2019, 5, 14)
+    assert n["tabla"]["sigma_%"].round(10).tolist() == pd.Series(esperado).round(10).tolist()

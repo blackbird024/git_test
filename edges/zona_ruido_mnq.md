@@ -49,6 +49,13 @@ octubre/noviembre) son NY + 5 h. La herramienta diaria da siempre la hora de Ita
   1. Disciplina: 0 señales saltadas o inventadas.
   2. Deslizamiento real medio ≤ 1 tick por lado (es lo que asume el backtest).
   3. Resultado dentro del rango esperado: el P&L de 3 meses en papel no está por debajo del **percentil 5** de los
-     P&L de 3 meses del backtest (se calcula en `reports/ZONA_RUIDO_MNQ_v1.0/`).
+     P&L de 3 meses del backtest.
 - **Se abandona antes** si la caída desde el máximo en papel supera el **percentil 95** del drawdown de 3 meses del
   backtest.
+- **Cifras concretas** (añadidas antes de empezar el papel): se toman del periodo 2023-2026, porque el precio del
+  Nasdaq es parecido al actual y los importes en $ dependen del nivel de precio. Con 1 MNQ:
+  - P&L de 3 meses: p5 = **−1.334 $**, mediana +586 $, p95 +3.340 $;
+  - peor caída dentro de 3 meses: mediana −968 $ y p95 = **−2.888 $**;
+  - el 27 % de los trimestres son negativos aunque la estrategia funcione.
+  - **Criterio:** P&L de 3 meses en papel > −1.334 $.
+  - **Se abandona** si la caída desde el máximo supera 2.888 $.

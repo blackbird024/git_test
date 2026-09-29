@@ -136,9 +136,10 @@ def niveles(m1: pd.DataFrame, apertura: float | None = None, cfg: Config = Confi
     rth, daily, _ = preparar(m1, cfg)
     completos = [f for f, g in rth.groupby("date") if g.minute.max() >= 389]
     ultimo = completos[-1]
-    ult = rth[rth.date.isin(completos[-cfg.dias_ruido:])]
-    grid = ult.pivot_table(index="date", columns="minute", values="move")
-    sig = grid.mean()                                            # media de los 14 días anteriores a la próxima sesión
+    rth = rth[rth.date <= ultimo]                                # una sesión en curso no cuenta
+    grid = rth.pivot_table(index="date", columns="minute", values="move")
+    # Misma cuenta que el backtest (media móvil de 14 días); la última fila es la sigma de la PRÓXIMA sesión
+    sig = grid.rolling(cfg.dias_ruido, min_periods=10).mean().iloc[-1]
     cierre_ant = daily.loc[ultimo, "close"]
     filas = []
     for m in cfg.chequeos:

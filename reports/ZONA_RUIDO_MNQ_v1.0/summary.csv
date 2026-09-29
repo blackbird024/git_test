@@ -1,0 +1,4 @@
+,operaciones,por_año,acierto_%,profit_factor,media_$,ganancia_media_$,perdida_media_$,t,neto_$,drawdown_max_$,racha_perdedora,racha_ganadora
+desarrollo (2015 → 21-mar-2023),1924.0,236.0,35.9,1.194,5.73,98.6,-46.5,2.26,11034.0,-1483.0,14.0,6.0
+fuera de muestra (22-mar-2023 → 2026),800.0,228.0,41.6,1.215,13.09,177.4,-104.8,1.57,10472.0,-3754.0,8.0,5.0
+total,2724.0,233.0,37.6,1.204,7.89,124.3,-62.5,2.6,21506.0,-3754.0,14.0,6.0
