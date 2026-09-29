@@ -45,3 +45,15 @@ alternativa elegible).
 1. Familia ya probada (OR + VWAP): la probabilidad de que un cambio pequeño "salve" la idea por azar no es nula.
 2. Idea sacada de redes sociales: suelen mostrarse los días buenos; el backtest los pondrá en su sitio.
 3. Velas de 1M: si stop y objetivo caen en la misma vela, pérdida.
+
+## Resultado del desarrollo (sesiones < 22-mar-2023): añadido tras ejecutar
+| Variante | Operaciones | PF | R medio | t | Neto (1 MNQ) |
+|---|---|---|---|---|---|
+| **OFICIAL (con Londres, con costes)** | 1.844 | 1,09 | 0,000 | 0,01 | +7.650 $ |
+| Sin costes | 1.844 | 1,16 | 0,038 | 1,90 | +13.086 $ |
+| Control sin filtro de Londres | 2.031 | 1,00 | −0,024 | −1,16 | +492 $ |
+
+**Veredicto: RECHAZADA.** Con costes el R medio es 0 (t 0,01): no hay ventaja. El PF de 1,09 en dólares sale de
+2021-2022, años de rangos grandes en puntos (en R, 2015-2017 pierden y 2018-2019 quedan en 0). El filtro de Londres
+mejora algo respecto al control, pero ni sin costes llega a t ≥ 2. Auditoría de look-ahead: OK. Fuera de muestra sin
+tocar. Informe: `reports/OR_LONDON_VWAP_v1.0/`.

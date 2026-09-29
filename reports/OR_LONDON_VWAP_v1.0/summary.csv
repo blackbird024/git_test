@@ -1,0 +1,4 @@
+variante,operaciones,acierto_%,profit_factor,R_medio,t,neto_$,drawdown_max_$,racha_perdedora,cumple_criterio
+OFICIAL_con_londres,1844,47.2,1.09,0.0,0.01,7650.0,-3050.0,11,False
+sin_costes,1844,48.8,1.16,0.038,1.9,13086.0,-2860.0,9,False
+control_sin_filtro_londres,2031,45.3,1.0,-0.024,-1.16,492.0,-8124.0,13,False
