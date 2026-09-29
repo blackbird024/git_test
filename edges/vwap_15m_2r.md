@@ -35,3 +35,14 @@ Pasa si, **después de costes**: profit factor > 1 **y** R medio > 0 con **t ≥
    rechazaron. Los cruces del VWAP en rango lateral generan muchas señales falsas.
 2. Stop en la vela de señal: si la vela es muy pequeña, el stop queda muy cerca y los costes pesan más en R.
 3. Velas de 1M: si stop y objetivo caen en la misma vela, pérdida.
+
+## Resultado del desarrollo (sesiones < 22-mar-2023): añadido tras ejecutar
+| Variante | Operaciones | Acierto | PF | R medio | t | Neto (1 MNQ) |
+|---|---|---|---|---|---|---|
+| **OFICIAL (con costes)** | 3.254 | 36,9 % | 1,02 | **−0,087** | **−3,75** | +2.314 $ |
+| Sin costes | 3.266 | 38,5 % | 1,12 | +0,035 | 1,52 | +12.390 $ |
+
+**Veredicto: RECHAZADA.** Con costes pierde de forma significativa en R (t −3,75): con un objetivo de 2R hace falta
+acertar más del 33 % y lo justo que acierta (37 %) no cubre los costes, que pesan mucho porque el stop (la vela de
+15 min) suele ser pequeño. El +2.314 $ en dólares sale de 2020 (+6.756 $); 2015-2019 pierden todos. ~1,6 operaciones
+al día. Look-ahead: OK. Fuera de muestra sin tocar. Informe: `reports/VWAP_15M_2R_v1.0/`.
