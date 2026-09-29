@@ -44,3 +44,12 @@ def test_smc_no_lookahead():
         f = lambda v, c=cfg: smc_sweep.senales(v, c)  # noqa: E731
         assert len(f(tramo)) > 0          # el patrón es poco frecuente; basta con que haya señales
         assert comprobar(f, tramo, SABADOS_LARGO) == []
+
+
+@hay_datos
+def test_mnq_or_vwap_no_lookahead():
+    from src.strategies import mnq_or_vwap
+    m1 = velas_1m("NQ")
+    tramo = m1[(m1.index >= "2019-02-01") & (m1.index < "2019-05-01")]
+    assert len(mnq_or_vwap.senales(tramo)) > 10
+    assert comprobar(mnq_or_vwap.senales, tramo, SABADOS) == []
