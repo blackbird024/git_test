@@ -168,13 +168,13 @@ def auditoria(m1: pd.DataFrame, cfg: g.Config, prep: dict, ops: pd.DataFrame) ->
 COLORES = {"A": "#8a8f98", "B": "#2a78d6", "C": "#d9822b"}
 
 
-def graficos(curvas: dict, salida: Path, saldo0: float):
+def graficos(curvas: dict, salida: Path, saldo0: float, version: str = g.VERSION):
     fig, ax = plt.subplots(figsize=(9, 4))
     for esc, ops in curvas.items():
         if len(ops):
             ax.plot(ops.t_salida, saldo0 + ops.neto_usd.cumsum(), lw=2, color=COLORES[esc], label=f"Escenario {esc}", drawstyle="steps-post")
     ax.axhline(saldo0, color="#bbb", lw=1)
-    ax.set_title("GOLD_SWING_SIMPLE_v1.0: saldo (desarrollo)", loc="left")
+    ax.set_title(f"{version}: saldo (desarrollo)", loc="left")
     ax.legend(frameon=False)
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)

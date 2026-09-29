@@ -119,3 +119,21 @@ de GOLD_SWING_SIMPLE_v1.0.
 3. Velas de 1H: la ambigüedad dentro de la vela se resuelve siempre en contra (misma vela = pérdida).
 4. Stops cortos (el retroceso de una sola vela): los costes pesarán mucho en R. Por eso se informa también sin costes.
 5. Las interpretaciones de los puntos 3 y 4 son mías, fijadas aquí antes de ver datos.
+
+## Resultado del desarrollo (2-ene-2015 → 21-mar-2023): añadido tras ejecutar
+Informe: `reports/GOLD_SWING_MINIMAL_v1.0/`. Auditoría de look-ahead: OK en las 2.337 operaciones.
+
+| v1.0 (EMA 50, 2R) | A (sin costes) | B (realistas) | C (+ deslizamiento) |
+|---|---|---|---|
+| Operaciones (al año) | 2.337 (284,5) | 2.337 (284,5) | 2.407 (293,1) |
+| Acierto | 33,2 % | 33,2 % | 33,1 % |
+| Profit factor | 0,98 | 0,82 | 0,71 |
+| R medio (t) | −0,007 (−0,24) | −0,121 (−4,09) | −0,215 (−7,00) |
+
+- **Frecuencia:** ×57 respecto a GOLD_SWING_SIMPLE_v1.0 (41 → 2.337). La muestra ya no es el problema.
+- **Sin ventaja ni antes de costes:** el acierto del 33,2 % es exactamente el punto de equilibrio de 2R, lo que daría el
+  azar. Con costes pierde de forma significativa, porque el stop mediano es de 4 $/oz y los costes cuestan ~0,11 R por
+  operación.
+- **Sensibilidad (diagnóstico):** las 9 combinaciones de EMA y TP dan R sin costes entre −0,007 y +0,026 (|t| < 1),
+  y todas pierden con costes (t ≤ −2,4).
+- **Veredicto: RECHAZADA en el desarrollo.** El fuera de muestra no se ejecuta y las reglas no se tocan.
