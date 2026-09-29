@@ -7,7 +7,7 @@ Uso:
      python scripts/zona_ruido_hoy.py --apertura 21450.25
      → tabla con la banda superior e inferior de cada media hora, en hora de Italia.
 Opciones: --sin-descarga (no actualiza datos de Databento), --confirmar (permite una descarga de más de 0,50 $).
-Reglas completas: edges/zona_ruido_mnq.md. Registro de la prueba: papel/zona_ruido_registro.csv.
+Reglas completas: edges/zona_ruido_mnq.md. Registro de la prueba: papel/registro.csv.
 """
 import argparse
 import sys
@@ -69,7 +69,7 @@ QUÉ HACER EN CADA HORA DE LA TABLA (mira el cierre de la vela de 1 minuto anter
   - Vendido: simétrico, con min(banda inferior, VWAP).
   - A las 22:00 de Italia (16:00 NY): cerrar todo.
 VWAP: el de la sesión que empieza a las 09:30 NY (en TradingView, 'VWAP' con anclaje de sesión y solo horario
-regular). Anota cada operación en papel/zona_ruido_registro.csv. Este script NUNCA envía órdenes.""")
+regular). Anota cada operación en papel/registro.csv. Este script NUNCA envía órdenes.""")
 
 
 if __name__ == "__main__":

@@ -43,7 +43,7 @@ octubre/noviembre) son NY + 5 h. La herramienta diaria da siempre la hora de Ita
 
 ## Prueba hacia delante en papel (criterios fijados ANTES de empezar)
 - **Duración:** 3 meses naturales desde el primer día operado.
-- **Registro:** cada operación en `papel/zona_ruido_registro.csv` (señal, precio de la herramienta, precio real,
+- **Registro:** cada operación en `papel/registro.csv` (señal, precio de la herramienta, precio real,
   diferencia en ticks y resultado).
 - **Qué se evalúa (no si "gana"):**
   1. Disciplina: 0 señales saltadas o inventadas.

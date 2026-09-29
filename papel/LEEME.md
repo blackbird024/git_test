@@ -1,4 +1,7 @@
-# Prueba en papel: ZONA_RUIDO_MNQ_v1.0 (3 meses)
+# Prueba en papel: cartera NQ (zona de ruido + RSI(2)), 3 meses
+
+Plan completo: `PLAN_OPERATIVO.md`. Script único para las dos: `python scripts/plan_del_dia.py`.
+El registro de las dos estrategias está en `papel/registro.csv` (columna `estrategia`).
 
 Reglas completas: `edges/zona_ruido_mnq.md`. Nada de esto envía órdenes: operas tú, en demo.
 
@@ -16,7 +19,7 @@ Reglas completas: `edges/zona_ruido_mnq.md`. Nada de esto envía órdenes: opera
      la banda inferior → vender.
    - Vendido: al revés.
 4. **22:00:** cerrar lo que haya abierto.
-5. **Anota cada operación** en `papel/zona_ruido_registro.csv`.
+5. **Anota cada operación** en `papel/registro.csv`.
 
 (En las semanas del cambio de hora de marzo y de octubre/noviembre, las horas se adelantan 1 h: la herramienta ya
 lo tiene en cuenta.)
