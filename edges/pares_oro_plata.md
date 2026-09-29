@@ -39,3 +39,13 @@ en el fuera de muestra profit factor > 1. Si no: rechazada, sin ajustes.
    perder mucho; se informa de la peor.
 3. Velas diarias por día UTC (no la sesión de CME): la apertura "del día siguiente" es la de las 00:00 UTC.
 4. En MT5 se operaría XAUUSD + XAGUSD (CFD): swap en las dos patas cada noche.
+
+## Resultado (añadido tras ejecutar). Informe: `reports/PARES_ORO_PLATA_v1.0/`
+| Tramo | Operaciones | PF | Media | t | Neto | Peor operación |
+|---|---|---|---|---|---|---|
+| Desarrollo (2010 – nov 2021) | 56 | **0,60** | −316 $ | **−1,24** | −17.676 $ | −5.165 $ |
+| Fuera de muestra (nov 2021 – 2026) | 28 | 2,27 | +1.124 $ | 1,04 | +31.466 $ | −11.197 $ |
+
+**Veredicto: RECHAZADA** (pierde en desarrollo). 63 de 84 operaciones salen por tiempo: el ratio casi nunca vuelve a
+su media en 20 sesiones. El fuera de muestra positivo sale casi entero de 4 operaciones de 2026 (+40.178 $, año de
+movimientos extremos de la plata) y convive con −20.500 $ en 2025: no es una ventaja estable. No se opera.

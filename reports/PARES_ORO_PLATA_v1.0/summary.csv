@@ -1,0 +1,5 @@
+tramo,operaciones,acierto_%,profit_factor,media_$,t,neto_$,peor_$,drawdown_max_$,racha_perdedora,sesiones_media
+desarrollo,56,48.2,0.6,-315.6,-1.24,-17676.0,-5165.0,-18941.0,5,18.7
+fuera_de_muestra,28,75.0,2.27,1123.8,1.04,31466.0,-11197.0,-20500.0,2,16.9
+completo,84,57.1,1.2,164.2,0.41,13790.0,-11197.0,-26388.0,5,18.1
+completo_sin_costes,84,57.1,1.22,180.2,0.45,15134.0,-11181.0,-25108.0,5,18.1
