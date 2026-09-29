@@ -1,0 +1,11 @@
+paso,B,A,C
+"0. Barridos 1H detectados (los dos lados, sin filtro)",2944,2944,2944
+1. Barridos a favor de la dirección 4H,901,901,901
+   ...descartados por operación abierta,18,18,18
+   ...evaluables,883,883,883
+2. Con confirmación 1H,194,194,194
+3. Con FVG,81,81,81
+4. FVG con retest del precio de entrada (24 velas 1H),57,57,57
+5. Entradas ejecutadas,41,41,41
+6. Ganadoras,14,14,14
+7. Perdedoras,27,27,27

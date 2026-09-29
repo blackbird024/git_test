@@ -53,3 +53,14 @@ def test_mnq_or_vwap_no_lookahead():
     tramo = m1[(m1.index >= "2019-02-01") & (m1.index < "2019-05-01")]
     assert len(mnq_or_vwap.senales(tramo)) > 10
     assert comprobar(mnq_or_vwap.senales, tramo, SABADOS) == []
+
+
+@hay_datos
+def test_gold_swing_simple_no_lookahead():
+    from src.strategies import gold_swing_simple
+    m1 = velas_1m("GC")
+    tramo = m1[(m1.index >= "2018-01-01") & (m1.index < "2019-07-01")]
+    s = gold_swing_simple.senales(tramo)
+    assert len(s) > 3
+    cortes = [pd.Timestamp(x, tz="UTC") for x in ("2018-04-14", "2018-08-11", "2018-11-10", "2019-03-09")]
+    assert comprobar(gold_swing_simple.senales, tramo, cortes) == []

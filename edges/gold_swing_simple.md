@@ -171,3 +171,22 @@ Se reportan todas las variantes. Ninguna sustituye a la v1.0.
    llenado. Por eso el escenario C penaliza la entrada.
 4. Velas de 15m: la ambigüedad dentro de la vela se resuelve siempre en contra.
 5. Las interpretaciones de los puntos 3, 5 y 7 son decisiones mías, fijadas aquí antes de ver datos.
+
+## Resultado del desarrollo (2-ene-2015 → 21-mar-2023): añadido tras ejecutar
+Informe: `reports/GOLD_SWING_SIMPLE_v1.0/`. Auditoría de look-ahead: OK.
+
+| v1.0 | A (sin costes) | B (realistas) | C (+ deslizamiento) |
+|---|---|---|---|
+| Operaciones | 41 | 41 | 41 |
+| Acierto | 34,1 % | 34,1 % | 34,1 % |
+| Profit factor | 1,03 | 0,91 | 0,84 |
+| R medio (t) | +0,024 (0,11) | −0,058 (−0,26) | −0,122 (−0,53) |
+
+- **`INSUFFICIENT_SAMPLE`:** 41 operaciones en 8 años (el mínimo registrado era 100). No cumple los criterios. El fuera
+  de muestra NO se ejecuta.
+- Sin costes, el acierto (34 %) coincide con el punto de equilibrio de un objetivo 2R (33 %): no hay indicio de ventaja.
+- Embudo: el 69 % de los barridos no están alineados con la dirección 4H, y el 78 % de los alineados no confirman en la
+  vela siguiente.
+- Sensibilidad (diagnóstico): ninguna variante se acerca a t = 2; todas con muestra insuficiente.
+- **Veredicto: v1.0 NO VALIDADA** (muestra insuficiente y sin indicio de ventaja). Las reglas no se tocan; cualquier
+  cambio sería la v1.1 con ficha propia.
