@@ -58,6 +58,7 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | Reversión a la media al VWAP (MNQ) | config/mean_reversion.yaml | **DESCARTADA**: 0 de 6 variantes; PF 0,41-0,87, pierde incluso antes de costes |
 | Tendencia VWAP en MGC con stops anchos (0,4 y 0,8 ATR) | config/vwap_mgc.yaml | **DESCARTADA**: 0 de 6 variantes; la ventaja bruta solo existe con stops de 0,1-0,2 ATR y es menor que el coste de ejecución |
 | Power of Three / Judas swing (MNQ y MGC) | config/po3_mnq.yaml, config/po3_mgc.yaml | **DESCARTADA**: 0 de 16 variantes; tras una barrida de un lado, la dirección posterior acierta el 49-52 % (azar) |
+| Cruce de medias EMA con filtro ADX (MNQ y MGC) | config/ma_mnq.yaml, config/ma_mgc.yaml | **DESCARTADA**: 0 de 24 variantes; el filtro ADX mejora algo la 20/50 pero sin costes el mejor t es 1,58 |
 
 ## Estructura
 

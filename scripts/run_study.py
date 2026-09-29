@@ -24,13 +24,15 @@ from src.data.loader import load_clean  # noqa: E402
 from src.risk.apex_trailing import TrailingAccount, monte_carlo, path_summary, run_sequence  # noqa: E402
 from src.strategies import close_momentum_5m as cm  # noqa: E402
 from src.strategies import intraday_vwap as iv  # noqa: E402
+from src.strategies import ma_cross as ma  # noqa: E402
 from src.strategies import orb_5m as orb  # noqa: E402
 from src.strategies import po3  # noqa: E402
 from src.validation.metrics import trade_list_stats  # noqa: E402
 
 STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum.yaml",
            "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml",
-           "po3_mnq": "config/po3_mnq.yaml", "po3_mgc": "config/po3_mgc.yaml"}
+           "po3_mnq": "config/po3_mnq.yaml", "po3_mgc": "config/po3_mgc.yaml",
+           "ma_mnq": "config/ma_mnq.yaml", "ma_mgc": "config/ma_mgc.yaml"}
 
 
 def t_stat(trades: pd.DataFrame) -> float:
@@ -57,6 +59,14 @@ def build(study: str, raw: dict):
                     for m in val["variantes_rango"] for t in val["variantes_target"]
                     for r in val["variantes_riesgo_usd"] for n in val["variantes_noticias"]]
         return variants, (lambda cfg: orb.backtest(bars, atr, cfg, news)), bars
+    if study.startswith("ma_"):
+        base = ma.MAConfig.from_yaml(STUDIES[study])
+        variants = []
+        for fast, slow in val["variantes_medias"]:
+            for a in val["variantes_adx"]:
+                variants.append(base.variant(fast=fast, slow=slow, adx_min=a))
+                variants.append(base.variant(fast=fast, slow=slow, adx_min=a, fixed_contracts=val["diagnostico_contratos_fijos"]))
+        return variants, (lambda cfg: ma.backtest(minutes[keep], atr, cfg)), minutes[keep]
     if study.startswith("po3"):
         base = po3.PO3Config.from_yaml(STUDIES[study])
         variants = []
