@@ -98,9 +98,10 @@ def operar_dia(dia: pd.DataFrame, fecha, saldo: float, cfg: Config):
 
 
 def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = frozenset(),
-             desde=None, hasta=None):
+             desde=None, hasta=None, registro: list | None = None):
     """Backtest día a día con saldo que se actualiza tras cada operación (el tamaño depende del saldo).
-    Devuelve (operaciones, recuento de estados por día)."""
+    Devuelve (operaciones, recuento de estados por día). Si se pasa `registro` (lista), se añade una fila por día
+    con el estado y los datos de la señal (solo para informes; no cambia ninguna regla)."""
     ny = m1.index.tz_convert(NUEVA_YORK)
     rth = m1[(ny.hour * 60 + ny.minute >= 9 * 60 + 30) & (ny.hour < 16)]
     por_dia = dict(tuple(rth.groupby(rth.index.tz_convert(NUEVA_YORK).date)))
@@ -114,10 +115,14 @@ def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = froz
         if f in excluir or pd.Timestamp(f).weekday() >= 5:
             continue
         dia = por_dia[f]
-        estado, op, _ = operar_dia(dia, f, saldo, cfg)
+        estado, op, s = operar_dia(dia, f, saldo, cfg)
         estados[estado] = estados.get(estado, 0) + 1
+        if registro is not None:
+            registro.append({"fecha": f, "estado": estado, "saldo": saldo,
+                             **{k: s.get(k) for k in ("direccion", "t_senal", "or_high", "or_low", "vwap", "cierre")}})
         if op is not None:
             op.saldo_antes = saldo
+            op.or_high, op.or_low, op.vwap_senal = s["or_high"], s["or_low"], s["vwap"]
             ops.append(op)
             saldo += op.neto
     tabla = a_tabla(ops)

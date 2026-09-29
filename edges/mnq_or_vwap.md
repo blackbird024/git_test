@@ -116,3 +116,23 @@ más restrictivo, contando la pérdida abierta).
 - 29-sep-2026: ficha registrada (commit 33eee70) y código con pruebas (0009bc5) antes de ejecutar.
 - 29-sep-2026: tope oficial 0,45 %; controles 40 pts y sin tope; escenarios de costes 0/1/2; umbral
   `INSUFFICIENT_SAMPLE`; etiqueta del OOS. Todo antes del primer backtest.
+
+## Resultado del desarrollo (2015-01-01 → 2023-03-21) — añadido tras ejecutar
+Informe completo: `reports/OR_VWAP_v1.0/`. Auditoría de look-ahead: OK.
+
+| Variante oficial REL_0.45PCT | Esc. 0 (sin costes) | Esc. 1 (1 tick + 1 $) | Esc. 2 (2 ticks + 1 $) |
+|---|---|---|---|
+| Operaciones | 1.008 | 999 | 980 |
+| Profit factor | 1,078 | 0,905 | 0,830 |
+| R medio (t) | +0,040 (1,05) | −0,037 (−0,97) | −0,076 (−1,97) |
+| Neto (50.000 $, 0,5 %) | +9.170 $ | −9.404 $ | −15.425 $ |
+| Drawdown máximo | −15,5 % | −33,8 % | −39,7 % |
+
+- **No cumple el criterio registrado** (PF > 1 y t ≥ 2 con costes del escenario 1). Tampoco hay ventaja significativa
+  antes de costes (t = 1,05). Los controles (40 puntos, sin tope) dan lo mismo: sin ventaja tras costes.
+- El tope del 0,45 % tampoco es estacionario: rechaza el 94 % de los días de 2022 (15 operaciones) y el 75 % de los de
+  2020, porque depende de la volatilidad.
+- Largos +0,056 R (t 1,06) y cortos −0,140 R (t −2,52): observación POSTERIOR a los datos; no se usa para cambiar la
+  versión (sería minería de datos).
+- **Veredicto: v1.0 no supera el desarrollo.** El fuera de muestra sigue sin tocarse. Cualquier cambio sería una
+  v1.1 con ficha propia, y el usuario decide si se hace.
