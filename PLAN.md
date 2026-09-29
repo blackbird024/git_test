@@ -46,6 +46,16 @@ Simularemos miles de "evaluaciones de 30 días" empezando en fechas distintas y 
 
 En cada fase se reporta: beneficio neto, drawdown máximo, profit factor, % de días ganadores, correlación entre estrategias y % de evaluaciones aprobadas / quemadas.
 
+## Registro de estudios con criterios fijados de antemano
+
+Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en desarrollo y fuera de muestra.
+
+| Estudio | Configuración | Resultado |
+|---|---|---|
+| ORB 5 min (especificación original, filtro de ATR) | config/orb_5m.yaml | Descartada: pierde en desarrollo; fuera de muestra no significativa (t=0,73) |
+| ORB 5 min, última prueba (sin filtro, stop 10 % ATR) | config/orb_5m_final.yaml | **DESCARTADA**: 0 de 12 variantes cumplen (mejor t = 1,28) |
+| Momentum de cierre 15:30-15:58 | config/close_momentum.yaml | **DESCARTADA**: sin costes PF 1,01 (t=0,25); con costes PF 0,80 |
+
 ## Estructura
 
 ```

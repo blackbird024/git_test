@@ -32,8 +32,11 @@ class ORB5Config:
     time_exit: str = "15:45"
     or_minutes: int = 15
     atr_days: int = 14
+    range_filter: bool = True       # False = sin filtro de ancho del rango
     max_range_atr: float = 0.25
     min_range_atr: float = 0.05
+    stop_mode: str = "range"        # "range" = lado opuesto del rango; "atr" = % fijo del ATR
+    stop_atr_pct: float = 0.10
     target_r: float | None = 2.0
     news_filter: bool = False
     news_events: tuple = ("FOMC", "CPI", "NFP")
@@ -48,6 +51,7 @@ class ORB5Config:
 
     @classmethod
     def from_yaml(cls, path: str | Path = ROOT / "config" / "orb_5m.yaml") -> "ORB5Config":
+        path = ROOT / path if not Path(path).is_absolute() else path
         with open(path, encoding="utf-8") as f:
             c = yaml.safe_load(f)
         return cls(
@@ -59,8 +63,11 @@ class ORB5Config:
             time_exit=c["horario_et"]["salida_tiempo"],
             or_minutes=c["rango_apertura_minutos"],
             atr_days=c["filtro_rango_atr"]["atr_dias"],
+            range_filter=c["filtro_rango_atr"].get("activo", True),
             max_range_atr=c["filtro_rango_atr"]["max_pct"],
             min_range_atr=c["filtro_rango_atr"]["min_pct"],
+            stop_mode=c.get("stop", {}).get("tipo", "range"),
+            stop_atr_pct=c.get("stop", {}).get("pct_atr", 0.10),
             target_r=c["take_profit_r"],
             news_filter=c["noticias"]["filtrar"],
             news_events=tuple(c["noticias"]["eventos"]),
@@ -80,7 +87,8 @@ class ORB5Config:
     @property
     def label(self) -> str:
         tgt = "tiempo" if self.target_r is None else f"{self.target_r:g}R"
-        return f"OR{self.or_minutes}_{tgt}" + ("_sinNoticias" if self.news_filter else "")
+        stop = "" if self.stop_mode == "range" else f"_stop{self.stop_atr_pct:g}ATR"
+        return f"OR{self.or_minutes}_{tgt}{stop}_{self.risk_usd:g}$" + ("_sinNoticias" if self.news_filter else "")
 
 
 # ------------------------------------------------------------------------------ datos
@@ -158,9 +166,9 @@ def _run_day(date, day: pd.DataFrame, atr, cfg: ORB5Config, news: set) -> DayRes
         return DayResult(date, "rango_incompleto")
     hi, lo = opening.high.max(), opening.low.min()
     width = hi - lo
-    if width > cfg.max_range_atr * atr:
+    if cfg.range_filter and width > cfg.max_range_atr * atr:
         return DayResult(date, "rango_demasiado_ancho")
-    if width < cfg.min_range_atr * atr:
+    if cfg.range_filter and width < cfg.min_range_atr * atr:
         return DayResult(date, "rango_demasiado_estrecho")
 
     after = day[day.index >= t_or_end]
@@ -177,7 +185,10 @@ def _run_day(date, day: pd.DataFrame, atr, cfg: ORB5Config, news: set) -> DayRes
 
     d = 1 if after.close.iloc[i] > hi else -1
     entry = entry_bar.open + d * cfg.slip_entry * cfg.tick
-    stop = lo if d == 1 else hi
+    if cfg.stop_mode == "range":
+        stop = lo if d == 1 else hi
+    else:  # stop fijo a un % del ATR diario, medido desde el precio de entrada
+        stop = entry - d * cfg.stop_atr_pct * atr
     dist = (entry - stop) * d
     if dist <= 0:
         return DayResult(date, "entrada_mas_alla_del_stop")

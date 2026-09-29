@@ -17,6 +17,7 @@ python scripts/check_data.py                     # control de calidad de los dat
 python scripts/run_strategy.py --estrategia orb --periodo is   # backtest de una estrategia
 python scripts/apex_viability.py                 # ¿qué ventaja hace falta para aprobar Apex?
 python scripts/run_orb_5m.py --periodo desarrollo # ORB 5 min (parámetros en config/orb_5m.yaml)
+python scripts/run_study.py --estudio orb_final  # estudio con criterios de aprobación (también: cm)
 ```
 
 ## Dónde está cada cosa
