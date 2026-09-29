@@ -65,6 +65,7 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | **Zona de ruido (Zarattini, Aziz y Barbon 2024) en MNQ** | config/noise_area.yaml | **CUMPLE** la versión fiel con 1 contrato (PF 1,19, t 2,15; 2015-2026). La versión con stop duro no cumple (t 1,2). Ventaja real pero pequeña: NO sirve para aprobar Apex en 30 días (se quema más que se aprueba) |
 | Seguimiento de tendencia (AQR) solo en GC, NQ y ES | config/tsmom.yaml (--mercados GC NQ ES) | **NO CUMPLE**: Sharpe 0,18, t 0,79; fuera de muestra -0,3 % anual. Con 3 mercados (NQ y ES correlación 0,93) no hay diversificación |
 | Seguimiento de tendencia en 9 mercados (4 índices, 4 bonos, oro) | config/tsmom.yaml | **NO CUMPLE**: Sharpe 0,10 neto / 0,21 bruto; fuera de muestra -3 % anual. Nota: 2 pb planos sobreestiman el coste de los bonos cortos (ZT apalancado x5), pero sin costes tampoco cumple. Pendiente: 24 mercados |
+| MACD (12,26,9) en MNQ y MGC, velas de 5 y 15 min | config/macd_mnq.yaml, config/macd_mgc.yaml | **DESCARTADA**: 0 de 16 variantes; la mejor (MNQ 15 min, cruce del cero) PF 1,07, t 0,86 y pierde fuera de muestra |
 
 ## Estructura
 

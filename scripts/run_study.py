@@ -35,7 +35,8 @@ STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum
            "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml",
            "po3_mnq": "config/po3_mnq.yaml", "po3_mgc": "config/po3_mgc.yaml",
            "ma_mnq": "config/ma_mnq.yaml", "ma_mgc": "config/ma_mgc.yaml",
-           "gold_ict": "config/gold_ict.yaml", "noise_area": "config/noise_area.yaml"}
+           "gold_ict": "config/gold_ict.yaml", "noise_area": "config/noise_area.yaml",
+           "macd_mnq": "config/macd_mnq.yaml", "macd_mgc": "config/macd_mgc.yaml"}
 
 
 def t_stat(trades: pd.DataFrame) -> float:
@@ -95,6 +96,14 @@ def build(study: str, raw: dict):
             keep_t = (t.date >= start).to_numpy()
             return t[keep_t].reset_index(drop=True), dd[dd.date >= start], [p for p, k in zip(pp, keep_t) if k]
         return variants, run_gold, minutes[keep]
+    if study.startswith("macd_"):
+        base = ma.MAConfig.from_yaml(STUDIES[study])
+        variants = []
+        for bm in val["variantes_velas"]:
+            for mode in val["variantes_senal"]:
+                variants.append(base.variant(bar_minutes=bm, signal_mode=mode))
+                variants.append(base.variant(bar_minutes=bm, signal_mode=mode, fixed_contracts=val["diagnostico_contratos_fijos"]))
+        return variants, (lambda cfg: ma.backtest(minutes[keep], atr, cfg)), minutes[keep]
     if study.startswith("ma_"):
         base = ma.MAConfig.from_yaml(STUDIES[study])
         variants = []

@@ -1,4 +1,9 @@
-"""Cruce de medias móviles exponenciales con filtro de rango (ADX), velas de 5 minutos.
+"""Cruce de medias móviles exponenciales (o MACD) con filtro de rango (ADX) opcional.
+
+Tipos de señal (`signal_mode`):
+  "ema":         la EMA rápida cruza la lenta.
+  "macd_signal": la línea MACD (EMA rápida - EMA lenta) cruza su línea de señal (EMA de `macd_signal` periodos).
+  "macd_zero":   la línea MACD cruza el cero (equivale al cruce de las EMA rápida y lenta).
 
 Reglas (config/ma_mnq.yaml, config/ma_mgc.yaml):
   - EMA rápida y lenta sobre los cierres de 5 min de la sesión regular (continuas entre días).
@@ -36,6 +41,8 @@ class MAConfig:
     time_exit: str = "15:45"
     fast: int = 9
     slow: int = 21
+    signal_mode: str = "ema"
+    macd_signal: int = 9
     adx_period: int = 14
     adx_min: float | None = 20
     stop_atr: float = 0.25
@@ -57,6 +64,7 @@ class MAConfig:
             tick=c["instrumento"]["tick"], bar_minutes=c["velas_minutos"],
             first_signal=c["horario_et"]["primera_senal"], last_signal=c["horario_et"]["ultima_senal"],
             time_exit=c["horario_et"]["salida_tiempo"], fast=c["ema_rapida"], slow=c["ema_lenta"],
+            signal_mode=c.get("tipo_senal", "ema"), macd_signal=c.get("senal_macd", 9),
             adx_period=c["adx_periodo"], adx_min=c["adx_minimo"], stop_atr=c["stop_atr"],
             max_trades_day=c["max_operaciones_dia"], risk_usd=c["riesgo"]["riesgo_por_operacion_usd"],
             max_contracts=c["riesgo"]["contratos_max"], fixed_contracts=c["riesgo"]["contratos_fijos"],
@@ -73,7 +81,10 @@ class MAConfig:
     def label(self) -> str:
         filt = "sinFiltro" if self.adx_min is None else f"ADX{self.adx_min:g}"
         size = f"{self.fixed_contracts}contrato_fijo" if self.fixed_contracts else f"{self.risk_usd:g}$"
-        return f"MA_{self.symbol}_{self.fast}-{self.slow}_{filt}_{size}"
+        if self.signal_mode == "ema":
+            return f"MA_{self.symbol}_{self.fast}-{self.slow}_{filt}_{size}"
+        kind = "senal" if self.signal_mode == "macd_signal" else "cero"
+        return f"MACD_{self.symbol}_{self.bar_minutes}m_{kind}_{filt}_{size}"
 
 
 # ------------------------------------------------------------------------------ indicadores
@@ -97,7 +108,11 @@ def add_signals(bars: pd.DataFrame, cfg: MAConfig) -> pd.DataFrame:
     out = bars.copy()
     fast = out.close.ewm(span=cfg.fast, adjust=False).mean()
     slow = out.close.ewm(span=cfg.slow, adjust=False).mean()
-    above = np.sign(fast - slow)
+    macd = fast - slow
+    if cfg.signal_mode == "macd_signal":
+        above = np.sign(macd - macd.ewm(span=cfg.macd_signal, adjust=False).mean())
+    else:  # "ema" y "macd_zero" son el mismo cruce
+        above = np.sign(macd)
     out["cross"] = np.where((above > 0) & (above.shift() <= 0), 1, np.where((above < 0) & (above.shift() >= 0), -1, 0))
     out["adx"] = adx(out, cfg.adx_period)
     out["ok_filter"] = True if cfg.adx_min is None else (out.adx >= cfg.adx_min)

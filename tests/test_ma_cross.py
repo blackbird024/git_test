@@ -66,3 +66,15 @@ def test_short_day_without_1545_bar_closes_at_last_bar():
     df = day({6: 1}).iloc[:40]                                               # el día acaba a las 12:50
     res = _run_day(DATE, df, 40.0, CFG)
     assert len(res) == 2 and res[1][0]["exit_reason"] == "tiempo"
+
+
+def test_macd_signal_line_cross_detected():
+    from src.strategies.ma_cross import add_signals
+    idx = pd.date_range(f"{D} 09:30", periods=200, freq="5min", tz=TZ)
+    # Baja y luego sube: el MACD cruza su señal al alza antes de cruzar el cero.
+    close = np.r_[np.linspace(120, 100, 100), np.linspace(100, 130, 100)]
+    df = pd.DataFrame({"open": close, "high": close + 0.1, "low": close - 0.1, "close": close}, index=idx)
+    sig = add_signals(df, CFG.variant(fast=12, slow=26, signal_mode="macd_signal", adx_min=None))
+    zero = add_signals(df, CFG.variant(fast=12, slow=26, signal_mode="macd_zero", adx_min=None))
+    first_up = lambda d: d.index[d.cross == 1][0]  # noqa: E731
+    assert first_up(sig) < first_up(zero)
