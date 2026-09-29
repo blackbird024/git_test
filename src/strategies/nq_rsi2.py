@@ -17,10 +17,12 @@ from src.engine.costes import Costes
 
 @dataclass(frozen=True)
 class Config:
-    # --- parámetros libres (3) ---
+    # --- parámetros libres (máximo 3; la entrada = 20 la fija la especificación) ---
     entrada: float = 20.0
     salida: float = 70.0
     max_dias: int = 5
+    filtro_vol: float | None = None    # paso 2: no entrar si ATR(5) / ATR(50) > este valor
+    stop_atr: float | None = None      # paso 2: stop de catástrofe a k x ATR(14) desde la entrada
     # --- fijos ---
     sma: int = 200
     rsi_n: int = 2
@@ -47,7 +49,14 @@ def preparar(m1: pd.DataFrame, cfg: Config) -> pd.DataFrame:
     s["rsi"] = rsi(s.close_aj, cfg.rsi_n)
     s["sma"] = s.close_aj.rolling(cfg.sma).mean()
     s["vol20"] = s.ret.rolling(20, min_periods=10).std()
+    # Rango verdadero en la serie ajustada (sin saltos de roll), en % del precio.
+    h_aj, l_aj = s.high * s.close_aj / s.close, s.low * s.close_aj / s.close
+    tr = pd.concat([h_aj - l_aj, (h_aj - s.close_aj.shift()).abs(), (l_aj - s.close_aj.shift()).abs()], axis=1).max(axis=1)
+    s["atr14_pct"] = (tr / s.close_aj).rolling(14).mean()
+    s["ratio_vol"] = tr.rolling(5).mean() / tr.rolling(50).mean()
     s["senal"] = (s.close_aj > s.sma) & (s.rsi < cfg.entrada)
+    if cfg.filtro_vol is not None:
+        s["senal"] &= s.ratio_vol <= cfg.filtro_vol
     return s
 
 
@@ -60,22 +69,36 @@ def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = froz
             i += 1
             continue
         e = i + 1                                              # entrada en la apertura de la sesión siguiente
-        k = e
-        while k < n - 1:
-            dias = k - e + 1
-            if s.rsi.iloc[k] > cfg.salida or dias >= cfg.max_dias:
+        precio_e = s.open.iloc[e]
+        # Stop de catástrofe (en la serie ajustada, para que un cambio de contrato no lo mueva).
+        stop_aj = None
+        if cfg.stop_atr is not None:
+            stop_aj = s.open_aj.iloc[e] * (1 - cfg.stop_atr * s.atr14_pct.iloc[i])
+        k, motivo, ret_bruto = e, None, None
+        while k < n:
+            low_aj = s.low.iloc[k] * s.close_aj.iloc[k] / s.close.iloc[k]
+            if stop_aj is not None and low_aj <= stop_aj:      # salta el stop durante la sesión k
+                ab_aj = s.open_aj.iloc[k] if k > e else s.open_aj.iloc[e]
+                ret_bruto = min(stop_aj, ab_aj) / s.open_aj.iloc[e] - 1
+                motivo, x, t_x = "stop", k, s.t_primera.iloc[k]
+                break
+            if k == n - 1:
+                break
+            if s.rsi.iloc[k] > cfg.salida or k - e + 1 >= cfg.max_dias:
+                motivo = "rsi" if s.rsi.iloc[k] > cfg.salida else "tiempo"
                 break
             k += 1
-        x = k + 1 if k + 1 < n else k                          # salida en la apertura siguiente
-        precio_e = s.open.iloc[e]
-        ret_bruto = s.open_aj.iloc[x] / s.open_aj.iloc[e] - 1
-        desl = (c.ticks(s.t_primera.iloc[e]) + c.ticks(s.t_primera.iloc[x])) * cfg.tick
+        if motivo != "stop":
+            x = k + 1 if k + 1 < n else k                      # salida en la apertura siguiente
+            ret_bruto = s.open_aj.iloc[x] / s.open_aj.iloc[e] - 1
+            t_x = s.t_primera.iloc[x]
+            motivo = motivo or "fin_de_datos"
+        desl = (c.ticks(s.t_primera.iloc[e]) + c.ticks(t_x)) * cfg.tick
         neto = (precio_e * ret_bruto - desl) * pv - c.comision(cfg.contratos)
         ret_neto = neto / (precio_e * pv)
-        ops.append({"t_senal": s.t_ultima.iloc[i], "t_entrada": s.t_primera.iloc[e], "t_salida": s.t_primera.iloc[x],
-                    "sesiones": x - e, "ret_%": ret_neto * 100, "neto": neto,
-                    "r": ret_neto / s.vol20.iloc[i] if s.vol20.iloc[i] > 0 else np.nan,
-                    "motivo": "rsi" if s.rsi.iloc[k] > cfg.salida else "tiempo"})
+        ops.append({"t_senal": s.t_ultima.iloc[i], "t_entrada": s.t_primera.iloc[e], "t_salida": t_x,
+                    "sesiones": max(x - e, 1), "ret_%": ret_neto * 100, "neto": neto,
+                    "r": ret_neto / s.vol20.iloc[i] if s.vol20.iloc[i] > 0 else np.nan, "motivo": motivo})
         i = x                                                  # nueva señal posible desde el cierre de la sesión de salida
     return pd.DataFrame(ops)
 
