@@ -23,7 +23,7 @@ def load_config(ruta: str | Path = RAIZ / "config" / "settings.yaml", overrides:
     return cfg
 
 
-def set_path(cfg: dict, clave: str, valor) -> None:
+def set_path(cfg: dict, clave: str, valor, interpretar: bool = True) -> None:
     """set_path(cfg, 'strategy.exits.tp_r', '2.0'); el valor se interpreta como YAML (null, true, 1.5...)."""
     partes = clave.split(".")
     d = cfg
@@ -31,14 +31,16 @@ def set_path(cfg: dict, clave: str, valor) -> None:
         d = d[p]
     if partes[-1] not in d:
         raise KeyError(f"Clave desconocida en la configuración: {clave}")
-    d[partes[-1]] = yaml.safe_load(valor) if isinstance(valor, str) else valor
+    if interpretar and isinstance(valor, str) and not (len(valor) == 5 and valor[2] == ":"):   # "11:30" es una hora
+        valor = yaml.safe_load(valor)
+    d[partes[-1]] = valor
 
 
 def variante(cfg: dict, **cambios) -> dict:
     """Copia de la configuración con cambios {'strategy.exits.tp_r': 2.0, ...} (claves con '__' o '.')."""
     c = copy.deepcopy(cfg)
     for k, v in cambios.items():
-        set_path(c, k.replace("__", "."), v)
+        set_path(c, k.replace("__", "."), v, interpretar=False)
     return c
 
 

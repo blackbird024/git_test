@@ -90,6 +90,7 @@ def bootstrap(trades: pd.DataFrame, n: int, seed: int, capital: float) -> dict:
         eq = capital + np.cumsum(s)
         pico = np.maximum.accumulate(np.r_[capital, eq])[1:]
         netos[i], dds[i] = s.sum(), (eq - pico).min()
-    return {"neto_p5": round(np.percentile(netos, 5), 0), "neto_p50": round(np.percentile(netos, 50), 0),
-            "neto_p95": round(np.percentile(netos, 95), 0), "prob_neto_negativo_%": round((netos < 0).mean() * 100, 1),
-            "max_dd_p50": round(np.percentile(dds, 50), 0), "max_dd_p5": round(np.percentile(dds, 5), 0)}
+    f = lambda v: float(round(v, 1))  # noqa: E731
+    return {"neto_p5": f(np.percentile(netos, 5)), "neto_p50": f(np.percentile(netos, 50)),
+            "neto_p95": f(np.percentile(netos, 95)), "prob_neto_negativo_%": f((netos < 0).mean() * 100),
+            "max_dd_p50": f(np.percentile(dds, 50)), "max_dd_p5": f(np.percentile(dds, 5))}
