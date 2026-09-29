@@ -64,6 +64,7 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | Setup ICT de oro, horario de Italia (MGC) — SIN SMT | config/gold_ict.yaml | Versión parcial: 0 de 4 variantes; PF 0,47-0,70, pierde antes de costes. **Pendiente: versión con SMT (requiere datos de plata)** |
 | **Zona de ruido (Zarattini, Aziz y Barbon 2024) en MNQ** | config/noise_area.yaml | **CUMPLE** la versión fiel con 1 contrato (PF 1,19, t 2,15; 2015-2026). La versión con stop duro no cumple (t 1,2). Ventaja real pero pequeña: NO sirve para aprobar Apex en 30 días (se quema más que se aprueba) |
 | Seguimiento de tendencia (AQR) solo en GC, NQ y ES | config/tsmom.yaml (--mercados GC NQ ES) | **NO CUMPLE**: Sharpe 0,18, t 0,79; fuera de muestra -0,3 % anual. Con 3 mercados (NQ y ES correlación 0,93) no hay diversificación |
+| Seguimiento de tendencia en 9 mercados (4 índices, 4 bonos, oro) | config/tsmom.yaml | **NO CUMPLE**: Sharpe 0,10 neto / 0,21 bruto; fuera de muestra -3 % anual. Nota: 2 pb planos sobreestiman el coste de los bonos cortos (ZT apalancado x5), pero sin costes tampoco cumple. Pendiente: 24 mercados |
 
 ## Estructura
 
