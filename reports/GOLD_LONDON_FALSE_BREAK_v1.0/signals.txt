@@ -1,0 +1,7439 @@
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-05 09:15
+Entry (GC): 1193.90
+SL: 1192.73
+TP: 1196.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-07 10:45
+Entry (GC): 1215.10
+SL: 1213.35
+TP: 1218.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-08 09:30
+Entry (GC): 1208.40
+SL: 1209.13
+TP: 1206.94
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-09 11:15
+Entry (GC): 1211.40
+SL: 1212.51
+TP: 1209.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-13 09:15
+Entry (GC): 1238.90
+SL: 1238.07
+TP: 1240.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-14 10:00
+Entry (GC): 1228.00
+SL: 1225.17
+TP: 1233.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-16 09:15
+Entry (GC): 1258.60
+SL: 1259.48
+TP: 1256.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-19 09:15
+Entry (GC): 1276.30
+SL: 1274.44
+TP: 1280.02
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-23 10:15
+Entry (GC): 1294.40
+SL: 1292.92
+TP: 1297.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-26 09:15
+Entry (GC): 1281.70
+SL: 1279.79
+TP: 1285.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-27 09:15
+Entry (GC): 1281.20
+SL: 1282.28
+TP: 1279.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-28 10:00
+Entry (GC): 1287.50
+SL: 1286.66
+TP: 1289.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-29 09:15
+Entry (GC): 1276.50
+SL: 1275.80
+TP: 1277.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-03 09:30
+Entry (GC): 1283.50
+SL: 1285.98
+TP: 1278.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-04 09:15
+Entry (GC): 1264.40
+SL: 1267.28
+TP: 1258.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-05 09:15
+Entry (GC): 1266.20
+SL: 1264.63
+TP: 1269.34
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-09 10:15
+Entry (GC): 1242.30
+SL: 1243.14
+TP: 1240.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-10 09:15
+Entry (GC): 1241.00
+SL: 1239.78
+TP: 1243.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-11 09:15
+Entry (GC): 1237.30
+SL: 1238.21
+TP: 1235.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-13 09:15
+Entry (GC): 1226.80
+SL: 1225.48
+TP: 1229.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-16 10:45
+Entry (GC): 1233.10
+SL: 1232.68
+TP: 1233.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-17 09:30
+Entry (GC): 1221.10
+SL: 1220.05
+TP: 1223.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-24 11:30
+Entry (GC): 1199.40
+SL: 1199.84
+TP: 1198.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-25 09:15
+Entry (GC): 1208.60
+SL: 1207.57
+TP: 1210.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-27 10:30
+Entry (GC): 1204.70
+SL: 1203.97
+TP: 1206.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-03 09:45
+Entry (GC): 1209.30
+SL: 1210.15
+TP: 1207.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-04 09:30
+Entry (GC): 1203.50
+SL: 1205.41
+TP: 1199.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-09 10:45
+Entry (GC): 1173.30
+SL: 1171.69
+TP: 1176.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-12 09:15
+Entry (GC): 1157.40
+SL: 1156.90
+TP: 1158.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-17 11:30
+Entry (GC): 1152.50
+SL: 1152.10
+TP: 1153.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-18 09:30
+Entry (GC): 1145.70
+SL: 1144.88
+TP: 1147.34
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-19 09:15
+Entry (GC): 1166.30
+SL: 1167.01
+TP: 1164.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-20 10:15
+Entry (GC): 1171.00
+SL: 1168.26
+TP: 1176.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-23 11:45
+Entry (GC): 1182.10
+SL: 1183.54
+TP: 1179.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-26 10:45
+Entry (GC): 1207.80
+SL: 1206.25
+TP: 1210.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-30 11:15
+Entry (GC): 1186.50
+SL: 1185.05
+TP: 1189.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-01 09:15
+Entry (GC): 1185.50
+SL: 1186.30
+TP: 1183.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-02 09:15
+Entry (GC): 1203.70
+SL: 1202.87
+TP: 1205.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-06 11:00
+Entry (GC): 1218.20
+SL: 1217.27
+TP: 1220.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-07 09:15
+Entry (GC): 1212.50
+SL: 1211.90
+TP: 1213.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-10 09:15
+Entry (GC): 1196.40
+SL: 1196.82
+TP: 1195.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-13 09:15
+Entry (GC): 1202.40
+SL: 1200.88
+TP: 1205.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-22 11:15
+Entry (GC): 1202.10
+SL: 1203.65
+TP: 1199.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-24 09:45
+Entry (GC): 1192.60
+SL: 1192.28
+TP: 1193.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-27 11:30
+Entry (GC): 1181.90
+SL: 1182.60
+TP: 1180.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-01 09:15
+Entry (GC): 1182.10
+SL: 1182.70
+TP: 1180.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-04 11:15
+Entry (GC): 1182.70
+SL: 1183.59
+TP: 1180.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-05 09:15
+Entry (GC): 1188.90
+SL: 1189.81
+TP: 1187.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-06 09:15
+Entry (GC): 1190.50
+SL: 1188.47
+TP: 1194.56
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-07 10:15
+Entry (GC): 1181.20
+SL: 1179.67
+TP: 1184.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-13 09:30
+Entry (GC): 1193.70
+SL: 1195.71
+TP: 1189.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-14 09:15
+Entry (GC): 1214.40
+SL: 1213.57
+TP: 1216.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-20 09:15
+Entry (GC): 1207.00
+SL: 1208.44
+TP: 1204.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-22 11:30
+Entry (GC): 1213.80
+SL: 1214.72
+TP: 1211.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-26 09:45
+Entry (GC): 1195.60
+SL: 1194.26
+TP: 1198.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-28 11:00
+Entry (GC): 1187.10
+SL: 1185.57
+TP: 1190.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-29 11:00
+Entry (GC): 1190.00
+SL: 1190.37
+TP: 1189.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-01 11:45
+Entry (GC): 1185.60
+SL: 1183.88
+TP: 1189.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-02 10:00
+Entry (GC): 1186.90
+SL: 1185.66
+TP: 1189.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-05 10:00
+Entry (GC): 1174.90
+SL: 1174.01
+TP: 1176.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-10 10:45
+Entry (GC): 1184.90
+SL: 1186.04
+TP: 1182.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-15 09:15
+Entry (GC): 1177.20
+SL: 1175.96
+TP: 1179.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-17 10:00
+Entry (GC): 1178.80
+SL: 1178.00
+TP: 1180.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-22 09:15
+Entry (GC): 1194.50
+SL: 1194.20
+TP: 1195.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-23 09:15
+Entry (GC): 1184.00
+SL: 1182.48
+TP: 1187.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-29 10:45
+Entry (GC): 1176.80
+SL: 1175.23
+TP: 1179.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-30 09:30
+Entry (GC): 1176.10
+SL: 1177.01
+TP: 1174.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-01 09:15
+Entry (GC): 1173.10
+SL: 1174.09
+TP: 1171.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-02 09:30
+Entry (GC): 1164.30
+SL: 1166.02
+TP: 1160.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-06 10:30
+Entry (GC): 1162.90
+SL: 1161.77
+TP: 1165.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-07 09:30
+Entry (GC): 1166.00
+SL: 1165.31
+TP: 1167.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-08 09:15
+Entry (GC): 1152.50
+SL: 1154.19
+TP: 1149.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-09 10:45
+Entry (GC): 1161.90
+SL: 1160.56
+TP: 1164.59
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-10 10:45
+Entry (GC): 1161.80
+SL: 1163.11
+TP: 1159.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-13 09:15
+Entry (GC): 1153.60
+SL: 1152.23
+TP: 1156.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-15 09:15
+Entry (GC): 1154.10
+SL: 1154.58
+TP: 1153.15
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-16 10:00
+Entry (GC): 1144.20
+SL: 1143.30
+TP: 1146.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-20 09:30
+Entry (GC): 1114.40
+SL: 1112.07
+TP: 1119.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-21 09:15
+Entry (GC): 1106.50
+SL: 1108.37
+TP: 1102.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-29 10:00
+Entry (GC): 1096.20
+SL: 1097.81
+TP: 1092.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-31 10:00
+Entry (GC): 1081.10
+SL: 1079.68
+TP: 1083.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-06 09:15
+Entry (GC): 1084.10
+SL: 1082.91
+TP: 1086.48
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-07 09:15
+Entry (GC): 1092.40
+SL: 1091.87
+TP: 1093.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-14 09:15
+Entry (GC): 1115.70
+SL: 1115.09
+TP: 1116.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-25 09:15
+Entry (GC): 1149.70
+SL: 1150.31
+TP: 1148.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-27 10:00
+Entry (GC): 1124.60
+SL: 1124.08
+TP: 1125.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-31 09:15
+Entry (GC): 1133.20
+SL: 1134.51
+TP: 1130.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-02 10:00
+Entry (GC): 1140.30
+SL: 1139.69
+TP: 1141.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-03 09:45
+Entry (GC): 1132.10
+SL: 1131.51
+TP: 1133.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-04 09:30
+Entry (GC): 1124.60
+SL: 1125.48
+TP: 1122.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-07 09:15
+Entry (GC): 1121.70
+SL: 1122.91
+TP: 1119.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-10 09:30
+Entry (GC): 1106.70
+SL: 1107.61
+TP: 1104.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-11 09:15
+Entry (GC): 1107.20
+SL: 1106.10
+TP: 1109.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-14 09:30
+Entry (GC): 1106.30
+SL: 1105.91
+TP: 1107.08
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-28 09:30
+Entry (GC): 1136.80
+SL: 1135.55
+TP: 1139.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-30 09:15
+Entry (GC): 1124.80
+SL: 1125.81
+TP: 1122.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-01 10:45
+Entry (GC): 1112.70
+SL: 1113.89
+TP: 1110.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-02 09:15
+Entry (GC): 1108.10
+SL: 1106.40
+TP: 1111.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-05 10:30
+Entry (GC): 1134.40
+SL: 1133.61
+TP: 1135.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-09 11:00
+Entry (GC): 1154.00
+SL: 1154.88
+TP: 1152.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-12 09:15
+Entry (GC): 1164.00
+SL: 1163.06
+TP: 1165.88
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-15 09:15
+Entry (GC): 1184.70
+SL: 1186.04
+TP: 1182.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-16 09:45
+Entry (GC): 1176.20
+SL: 1174.98
+TP: 1178.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-19 09:15
+Entry (GC): 1172.70
+SL: 1173.34
+TP: 1171.41
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-21 09:15
+Entry (GC): 1175.70
+SL: 1176.73
+TP: 1173.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-23 09:30
+Entry (GC): 1172.80
+SL: 1172.08
+TP: 1174.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-26 09:15
+Entry (GC): 1164.90
+SL: 1166.42
+TP: 1161.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-28 09:15
+Entry (GC): 1172.50
+SL: 1173.21
+TP: 1171.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-29 11:45
+Entry (GC): 1157.20
+SL: 1155.96
+TP: 1159.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-30 09:45
+Entry (GC): 1148.30
+SL: 1147.49
+TP: 1149.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-05 09:15
+Entry (GC): 1108.90
+SL: 1109.91
+TP: 1106.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-09 09:45
+Entry (GC): 1093.00
+SL: 1094.09
+TP: 1090.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-12 09:30
+Entry (GC): 1087.00
+SL: 1087.68
+TP: 1085.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-13 09:15
+Entry (GC): 1083.10
+SL: 1083.80
+TP: 1081.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-16 09:30
+Entry (GC): 1091.00
+SL: 1090.16
+TP: 1092.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-27 09:15
+Entry (GC): 1066.60
+SL: 1065.50
+TP: 1068.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-01 10:15
+Entry (GC): 1069.10
+SL: 1068.26
+TP: 1070.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-02 09:45
+Entry (GC): 1066.90
+SL: 1066.22
+TP: 1068.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-07 10:00
+Entry (GC): 1082.60
+SL: 1081.50
+TP: 1084.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-08 09:30
+Entry (GC): 1072.80
+SL: 1072.19
+TP: 1074.02
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-11 10:00
+Entry (GC): 1067.50
+SL: 1066.58
+TP: 1069.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-15 10:00
+Entry (GC): 1061.70
+SL: 1062.94
+TP: 1059.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-18 10:45
+Entry (GC): 1055.30
+SL: 1056.41
+TP: 1053.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-22 09:45
+Entry (GC): 1078.40
+SL: 1079.10
+TP: 1077.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-23 09:15
+Entry (GC): 1071.10
+SL: 1068.90
+TP: 1075.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-24 10:30
+Entry (GC): 1072.60
+SL: 1072.24
+TP: 1073.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-28 10:15
+Entry (GC): 1071.20
+SL: 1070.92
+TP: 1071.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-29 09:15
+Entry (GC): 1071.90
+SL: 1071.33
+TP: 1073.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-31 09:30
+Entry (GC): 1061.20
+SL: 1060.84
+TP: 1061.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-06 11:00
+Entry (GC): 1084.90
+SL: 1085.83
+TP: 1083.04
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-12 10:00
+Entry (GC): 1094.50
+SL: 1093.78
+TP: 1095.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-13 09:15
+Entry (GC): 1081.90
+SL: 1082.94
+TP: 1079.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-19 09:45
+Entry (GC): 1090.40
+SL: 1089.05
+TP: 1093.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-20 09:30
+Entry (GC): 1094.40
+SL: 1097.14
+TP: 1088.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-27 09:30
+Entry (GC): 1117.50
+SL: 1116.50
+TP: 1119.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-28 09:30
+Entry (GC): 1118.40
+SL: 1120.01
+TP: 1115.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-29 09:15
+Entry (GC): 1112.30
+SL: 1111.47
+TP: 1113.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-02 09:15
+Entry (GC): 1126.30
+SL: 1126.90
+TP: 1125.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-12 11:30
+Entry (GC): 1243.30
+SL: 1244.05
+TP: 1241.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-19 09:30
+Entry (GC): 1223.70
+SL: 1222.90
+TP: 1225.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-23 09:15
+Entry (GC): 1217.40
+SL: 1216.07
+TP: 1220.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-24 09:30
+Entry (GC): 1228.20
+SL: 1229.92
+TP: 1224.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-26 09:15
+Entry (GC): 1231.20
+SL: 1229.02
+TP: 1235.56
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-03 09:15
+Entry (GC): 1243.50
+SL: 1245.55
+TP: 1239.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-08 09:15
+Entry (GC): 1275.60
+SL: 1277.49
+TP: 1271.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-09 10:30
+Entry (GC): 1259.30
+SL: 1261.34
+TP: 1255.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-10 09:30
+Entry (GC): 1250.20
+SL: 1251.76
+TP: 1247.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-11 09:15
+Entry (GC): 1264.40
+SL: 1263.34
+TP: 1266.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-14 09:30
+Entry (GC): 1256.50
+SL: 1258.25
+TP: 1252.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-28 09:45
+Entry (GC): 1214.80
+SL: 1214.05
+TP: 1216.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-04 09:45
+Entry (GC): 1218.20
+SL: 1217.36
+TP: 1219.88
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-06 09:30
+Entry (GC): 1226.50
+SL: 1225.66
+TP: 1228.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-12 11:30
+Entry (GC): 1259.10
+SL: 1257.54
+TP: 1262.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-15 11:00
+Entry (GC): 1230.20
+SL: 1229.05
+TP: 1232.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-20 09:15
+Entry (GC): 1249.00
+SL: 1246.92
+TP: 1253.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-21 11:00
+Entry (GC): 1261.40
+SL: 1263.70
+TP: 1256.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-25 09:30
+Entry (GC): 1236.40
+SL: 1237.75
+TP: 1233.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-05 09:30
+Entry (GC): 1277.70
+SL: 1276.12
+TP: 1280.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-09 09:15
+Entry (GC): 1281.50
+SL: 1279.94
+TP: 1284.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-10 09:15
+Entry (GC): 1267.80
+SL: 1267.06
+TP: 1269.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-11 09:45
+Entry (GC): 1273.30
+SL: 1271.87
+TP: 1276.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-16 09:15
+Entry (GC): 1282.80
+SL: 1281.35
+TP: 1285.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-20 09:30
+Entry (GC): 1255.30
+SL: 1256.92
+TP: 1252.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-23 09:15
+Entry (GC): 1251.70
+SL: 1250.87
+TP: 1253.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-24 09:15
+Entry (GC): 1243.20
+SL: 1241.96
+TP: 1245.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-25 10:00
+Entry (GC): 1223.40
+SL: 1222.76
+TP: 1224.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-26 09:15
+Entry (GC): 1227.60
+SL: 1226.67
+TP: 1229.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-27 09:45
+Entry (GC): 1221.80
+SL: 1223.35
+TP: 1218.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-31 09:15
+Entry (GC): 1212.80
+SL: 1211.77
+TP: 1214.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-03 09:30
+Entry (GC): 1214.00
+SL: 1213.60
+TP: 1214.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-06 11:00
+Entry (GC): 1242.70
+SL: 1242.00
+TP: 1244.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-07 09:30
+Entry (GC): 1244.80
+SL: 1244.18
+TP: 1246.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-09 09:30
+Entry (GC): 1262.00
+SL: 1260.36
+TP: 1265.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-14 10:00
+Entry (GC): 1282.90
+SL: 1283.84
+TP: 1281.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-15 09:15
+Entry (GC): 1285.30
+SL: 1283.77
+TP: 1288.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-16 09:45
+Entry (GC): 1311.80
+SL: 1310.61
+TP: 1314.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-17 10:15
+Entry (GC): 1287.70
+SL: 1288.77
+TP: 1285.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-22 10:45
+Entry (GC): 1267.80
+SL: 1266.54
+TP: 1270.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-23 09:45
+Entry (GC): 1272.20
+SL: 1273.92
+TP: 1268.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-24 11:45
+Entry (GC): 1329.00
+SL: 1333.33
+TP: 1320.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-28 09:30
+Entry (GC): 1315.60
+SL: 1314.00
+TP: 1318.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-29 09:15
+Entry (GC): 1323.90
+SL: 1323.44
+TP: 1324.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-04 11:15
+Entry (GC): 1353.80
+SL: 1355.86
+TP: 1349.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-05 09:45
+Entry (GC): 1347.20
+SL: 1345.11
+TP: 1351.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-06 09:15
+Entry (GC): 1370.40
+SL: 1371.23
+TP: 1368.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-07 10:00
+Entry (GC): 1369.00
+SL: 1367.25
+TP: 1372.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-08 10:30
+Entry (GC): 1357.70
+SL: 1358.53
+TP: 1356.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-11 10:15
+Entry (GC): 1360.90
+SL: 1357.79
+TP: 1367.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-18 09:30
+Entry (GC): 1329.00
+SL: 1330.19
+TP: 1326.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-21 09:15
+Entry (GC): 1318.90
+SL: 1320.24
+TP: 1316.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-22 11:30
+Entry (GC): 1322.10
+SL: 1321.31
+TP: 1323.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-26 09:15
+Entry (GC): 1321.30
+SL: 1323.69
+TP: 1316.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-27 10:15
+Entry (GC): 1319.40
+SL: 1320.31
+TP: 1317.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-28 09:15
+Entry (GC): 1342.30
+SL: 1342.63
+TP: 1341.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-03 09:15
+Entry (GC): 1372.00
+SL: 1372.62
+TP: 1370.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-08 09:15
+Entry (GC): 1337.60
+SL: 1336.05
+TP: 1340.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-10 09:15
+Entry (GC): 1358.20
+SL: 1356.77
+TP: 1361.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-17 09:15
+Entry (GC): 1349.90
+SL: 1351.64
+TP: 1346.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-18 09:15
+Entry (GC): 1355.90
+SL: 1354.97
+TP: 1357.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-19 10:30
+Entry (GC): 1351.30
+SL: 1349.47
+TP: 1354.97
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-23 11:30
+Entry (GC): 1342.80
+SL: 1342.18
+TP: 1344.04
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-24 09:15
+Entry (GC): 1341.80
+SL: 1340.10
+TP: 1345.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-25 09:45
+Entry (GC): 1329.50
+SL: 1330.09
+TP: 1328.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-26 09:45
+Entry (GC): 1328.30
+SL: 1328.67
+TP: 1327.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-29 11:00
+Entry (GC): 1321.40
+SL: 1319.59
+TP: 1325.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-30 09:30
+Entry (GC): 1323.80
+SL: 1324.60
+TP: 1322.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-01 09:15
+Entry (GC): 1308.10
+SL: 1307.09
+TP: 1310.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-02 11:00
+Entry (GC): 1315.20
+SL: 1315.99
+TP: 1313.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-12 09:15
+Entry (GC): 1331.30
+SL: 1330.19
+TP: 1333.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-13 11:15
+Entry (GC): 1332.70
+SL: 1330.69
+TP: 1336.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-16 09:15
+Entry (GC): 1317.70
+SL: 1318.39
+TP: 1316.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-19 10:00
+Entry (GC): 1319.40
+SL: 1318.99
+TP: 1320.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-20 09:30
+Entry (GC): 1319.20
+SL: 1318.93
+TP: 1319.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-21 09:15
+Entry (GC): 1323.20
+SL: 1321.81
+TP: 1325.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-22 09:45
+Entry (GC): 1336.50
+SL: 1335.90
+TP: 1337.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-29 09:30
+Entry (GC): 1325.10
+SL: 1325.90
+TP: 1323.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-03 10:30
+Entry (GC): 1318.50
+SL: 1317.61
+TP: 1320.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-06 09:15
+Entry (GC): 1266.20
+SL: 1265.00
+TP: 1268.59
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-18 09:15
+Entry (GC): 1262.60
+SL: 1263.31
+TP: 1261.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-20 11:00
+Entry (GC): 1270.80
+SL: 1271.39
+TP: 1269.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-24 09:30
+Entry (GC): 1265.90
+SL: 1265.31
+TP: 1267.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-25 09:15
+Entry (GC): 1268.40
+SL: 1269.79
+TP: 1265.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-01 09:15
+Entry (GC): 1280.70
+SL: 1281.19
+TP: 1279.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-02 10:00
+Entry (GC): 1298.00
+SL: 1298.72
+TP: 1296.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-03 10:30
+Entry (GC): 1293.60
+SL: 1290.81
+TP: 1299.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-07 09:15
+Entry (GC): 1286.00
+SL: 1283.94
+TP: 1290.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-08 11:45
+Entry (GC): 1284.60
+SL: 1286.48
+TP: 1280.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-16 09:15
+Entry (GC): 1227.40
+SL: 1228.57
+TP: 1225.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-17 09:15
+Entry (GC): 1228.20
+SL: 1229.53
+TP: 1225.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-18 09:45
+Entry (GC): 1204.20
+SL: 1202.89
+TP: 1206.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-21 09:15
+Entry (GC): 1216.00
+SL: 1216.94
+TP: 1214.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-23 09:15
+Entry (GC): 1211.00
+SL: 1209.46
+TP: 1214.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-01 10:00
+Entry (GC): 1169.80
+SL: 1168.79
+TP: 1171.83
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-02 09:15
+Entry (GC): 1177.30
+SL: 1178.63
+TP: 1174.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-08 11:45
+Entry (GC): 1178.80
+SL: 1179.22
+TP: 1177.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-12 09:30
+Entry (GC): 1157.00
+SL: 1157.96
+TP: 1155.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-13 10:00
+Entry (GC): 1160.20
+SL: 1159.68
+TP: 1161.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-14 11:00
+Entry (GC): 1164.30
+SL: 1165.10
+TP: 1162.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-16 09:45
+Entry (GC): 1135.90
+SL: 1136.54
+TP: 1134.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-19 09:15
+Entry (GC): 1141.40
+SL: 1140.50
+TP: 1143.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-22 09:15
+Entry (GC): 1132.70
+SL: 1133.80
+TP: 1130.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-23 09:30
+Entry (GC): 1132.90
+SL: 1133.66
+TP: 1131.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-28 10:00
+Entry (GC): 1141.60
+SL: 1140.82
+TP: 1143.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-29 09:15
+Entry (GC): 1148.70
+SL: 1147.29
+TP: 1151.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-30 09:15
+Entry (GC): 1159.20
+SL: 1158.88
+TP: 1159.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-06 09:15
+Entry (GC): 1177.20
+SL: 1177.64
+TP: 1176.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-09 09:15
+Entry (GC): 1177.80
+SL: 1178.82
+TP: 1175.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-10 09:15
+Entry (GC): 1184.00
+SL: 1185.54
+TP: 1180.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-11 10:45
+Entry (GC): 1187.20
+SL: 1186.67
+TP: 1188.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-13 09:15
+Entry (GC): 1195.30
+SL: 1193.97
+TP: 1197.97
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-16 09:15
+Entry (GC): 1202.20
+SL: 1200.85
+TP: 1204.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-19 09:15
+Entry (GC): 1202.40
+SL: 1203.95
+TP: 1199.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-24 09:15
+Entry (GC): 1213.30
+SL: 1214.01
+TP: 1211.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-26 09:30
+Entry (GC): 1196.70
+SL: 1198.01
+TP: 1194.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-30 09:15
+Entry (GC): 1188.30
+SL: 1187.72
+TP: 1189.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-31 09:45
+Entry (GC): 1196.60
+SL: 1195.31
+TP: 1199.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-01 09:15
+Entry (GC): 1213.00
+SL: 1214.32
+TP: 1210.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-06 10:15
+Entry (GC): 1224.10
+SL: 1223.80
+TP: 1224.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-07 10:00
+Entry (GC): 1230.60
+SL: 1229.97
+TP: 1231.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-09 09:30
+Entry (GC): 1244.80
+SL: 1245.31
+TP: 1243.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-10 09:15
+Entry (GC): 1226.00
+SL: 1227.22
+TP: 1223.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-16 09:15
+Entry (GC): 1239.00
+SL: 1239.82
+TP: 1237.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-17 09:15
+Entry (GC): 1240.00
+SL: 1240.49
+TP: 1239.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-22 09:15
+Entry (GC): 1237.50
+SL: 1238.09
+TP: 1236.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-23 11:15
+Entry (GC): 1238.90
+SL: 1239.68
+TP: 1237.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-02 09:45
+Entry (GC): 1244.50
+SL: 1243.30
+TP: 1246.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-16 09:15
+Entry (GC): 1224.50
+SL: 1222.97
+TP: 1227.56
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-20 09:30
+Entry (GC): 1232.70
+SL: 1232.12
+TP: 1233.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-23 10:30
+Entry (GC): 1248.20
+SL: 1248.81
+TP: 1246.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-27 11:45
+Entry (GC): 1257.40
+SL: 1256.42
+TP: 1259.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-28 09:30
+Entry (GC): 1253.40
+SL: 1254.28
+TP: 1251.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-29 09:15
+Entry (GC): 1249.60
+SL: 1250.89
+TP: 1247.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-30 09:45
+Entry (GC): 1250.00
+SL: 1249.13
+TP: 1251.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-03 10:30
+Entry (GC): 1248.90
+SL: 1249.38
+TP: 1247.94
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-05 09:45
+Entry (GC): 1257.90
+SL: 1257.33
+TP: 1259.04
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-06 11:15
+Entry (GC): 1255.20
+SL: 1254.41
+TP: 1256.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-07 09:15
+Entry (GC): 1266.00
+SL: 1267.16
+TP: 1263.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-12 10:30
+Entry (GC): 1275.10
+SL: 1274.50
+TP: 1276.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-20 09:15
+Entry (GC): 1279.60
+SL: 1279.28
+TP: 1280.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-28 09:45
+Entry (GC): 1267.30
+SL: 1268.27
+TP: 1265.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-03 09:15
+Entry (GC): 1254.00
+SL: 1252.92
+TP: 1256.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-08 10:30
+Entry (GC): 1229.90
+SL: 1229.10
+TP: 1231.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-09 09:30
+Entry (GC): 1225.70
+SL: 1225.08
+TP: 1226.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-11 10:30
+Entry (GC): 1220.90
+SL: 1220.53
+TP: 1221.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-12 09:15
+Entry (GC): 1228.60
+SL: 1229.18
+TP: 1227.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-15 11:00
+Entry (GC): 1232.20
+SL: 1233.20
+TP: 1230.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-19 09:15
+Entry (GC): 1251.00
+SL: 1251.61
+TP: 1249.79
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-22 10:45
+Entry (GC): 1255.80
+SL: 1256.10
+TP: 1255.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-25 10:45
+Entry (GC): 1257.20
+SL: 1256.01
+TP: 1259.59
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-26 09:30
+Entry (GC): 1262.60
+SL: 1264.62
+TP: 1258.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-29 11:00
+Entry (GC): 1267.10
+SL: 1267.46
+TP: 1266.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-02 09:30
+Entry (GC): 1264.60
+SL: 1265.08
+TP: 1263.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-05 11:45
+Entry (GC): 1282.50
+SL: 1281.82
+TP: 1283.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-06 09:30
+Entry (GC): 1291.90
+SL: 1292.59
+TP: 1290.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-08 09:15
+Entry (GC): 1288.50
+SL: 1287.58
+TP: 1290.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-09 09:15
+Entry (GC): 1276.20
+SL: 1277.53
+TP: 1273.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-14 09:15
+Entry (GC): 1269.30
+SL: 1268.32
+TP: 1271.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-15 10:30
+Entry (GC): 1262.80
+SL: 1261.59
+TP: 1265.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-29 09:15
+Entry (GC): 1245.60
+SL: 1243.87
+TP: 1249.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-03 11:00
+Entry (GC): 1234.30
+SL: 1233.51
+TP: 1235.88
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-04 10:30
+Entry (GC): 1223.80
+SL: 1223.20
+TP: 1225.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-05 09:15
+Entry (GC): 1222.40
+SL: 1221.40
+TP: 1224.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-06 11:30
+Entry (GC): 1223.70
+SL: 1225.10
+TP: 1220.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-10 09:30
+Entry (GC): 1207.20
+SL: 1208.02
+TP: 1205.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-11 09:45
+Entry (GC): 1209.80
+SL: 1210.90
+TP: 1207.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-14 09:45
+Entry (GC): 1217.60
+SL: 1218.18
+TP: 1216.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-17 09:30
+Entry (GC): 1229.10
+SL: 1228.92
+TP: 1229.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-21 11:45
+Entry (GC): 1247.40
+SL: 1248.38
+TP: 1245.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-27 09:15
+Entry (GC): 1261.20
+SL: 1260.90
+TP: 1261.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-31 11:15
+Entry (GC): 1273.70
+SL: 1274.29
+TP: 1272.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-01 09:15
+Entry (GC): 1276.00
+SL: 1276.69
+TP: 1274.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-09 09:15
+Entry (GC): 1274.20
+SL: 1275.11
+TP: 1272.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-10 09:45
+Entry (GC): 1284.30
+SL: 1283.40
+TP: 1286.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-11 09:45
+Entry (GC): 1293.90
+SL: 1295.01
+TP: 1291.67
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-14 09:30
+Entry (GC): 1287.60
+SL: 1287.38
+TP: 1288.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-16 09:30
+Entry (GC): 1275.90
+SL: 1276.39
+TP: 1274.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-17 09:15
+Entry (GC): 1293.50
+SL: 1292.59
+TP: 1295.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-22 10:30
+Entry (GC): 1290.70
+SL: 1291.30
+TP: 1289.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-28 09:15
+Entry (GC): 1302.20
+SL: 1301.20
+TP: 1304.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-29 11:00
+Entry (GC): 1325.80
+SL: 1324.33
+TP: 1328.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-01 09:15
+Entry (GC): 1324.40
+SL: 1324.78
+TP: 1323.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-05 09:30
+Entry (GC): 1335.80
+SL: 1334.37
+TP: 1338.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-13 09:30
+Entry (GC): 1337.10
+SL: 1338.00
+TP: 1335.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-25 09:45
+Entry (GC): 1295.40
+SL: 1296.01
+TP: 1294.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-26 09:15
+Entry (GC): 1309.90
+SL: 1307.96
+TP: 1313.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-27 09:30
+Entry (GC): 1293.90
+SL: 1293.29
+TP: 1295.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-02 10:00
+Entry (GC): 1277.00
+SL: 1277.52
+TP: 1275.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-04 09:15
+Entry (GC): 1278.50
+SL: 1279.59
+TP: 1276.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-06 09:45
+Entry (GC): 1270.70
+SL: 1271.78
+TP: 1268.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-11 09:15
+Entry (GC): 1291.60
+SL: 1292.39
+TP: 1290.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-19 09:15
+Entry (GC): 1285.50
+SL: 1288.15
+TP: 1280.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-20 09:15
+Entry (GC): 1281.70
+SL: 1280.67
+TP: 1283.76
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-23 11:00
+Entry (GC): 1276.10
+SL: 1278.00
+TP: 1272.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-27 09:15
+Entry (GC): 1267.80
+SL: 1269.11
+TP: 1265.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-01 09:15
+Entry (GC): 1276.80
+SL: 1277.50
+TP: 1275.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-03 09:30
+Entry (GC): 1275.80
+SL: 1275.23
+TP: 1276.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-06 09:15
+Entry (GC): 1271.40
+SL: 1272.60
+TP: 1268.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-13 09:15
+Entry (GC): 1277.30
+SL: 1277.97
+TP: 1275.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-16 09:45
+Entry (GC): 1277.70
+SL: 1279.31
+TP: 1274.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-21 09:15
+Entry (GC): 1280.00
+SL: 1279.32
+TP: 1281.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-22 10:00
+Entry (GC): 1282.80
+SL: 1281.69
+TP: 1285.02
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-23 09:30
+Entry (GC): 1289.10
+SL: 1288.72
+TP: 1289.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-24 09:15
+Entry (GC): 1290.20
+SL: 1289.82
+TP: 1290.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-28 11:30
+Entry (GC): 1293.30
+SL: 1293.58
+TP: 1292.74
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-30 10:15
+Entry (GC): 1281.10
+SL: 1281.98
+TP: 1279.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-04 10:45
+Entry (GC): 1275.90
+SL: 1278.41
+TP: 1270.89
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-05 09:15
+Entry (GC): 1277.70
+SL: 1277.03
+TP: 1279.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-06 10:45
+Entry (GC): 1270.70
+SL: 1271.88
+TP: 1268.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-08 09:30
+Entry (GC): 1248.50
+SL: 1248.02
+TP: 1249.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-12 09:45
+Entry (GC): 1246.20
+SL: 1246.47
+TP: 1245.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-13 09:15
+Entry (GC): 1244.30
+SL: 1244.46
+TP: 1243.97
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-15 09:15
+Entry (GC): 1259.10
+SL: 1258.63
+TP: 1260.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-22 11:30
+Entry (GC): 1272.10
+SL: 1272.76
+TP: 1270.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-02 09:30
+Entry (GC): 1312.20
+SL: 1312.69
+TP: 1311.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-05 10:15
+Entry (GC): 1318.20
+SL: 1317.21
+TP: 1320.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-08 09:30
+Entry (GC): 1317.30
+SL: 1318.09
+TP: 1315.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-11 09:15
+Entry (GC): 1318.30
+SL: 1318.51
+TP: 1317.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-15 09:15
+Entry (GC): 1342.00
+SL: 1340.87
+TP: 1344.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-18 09:15
+Entry (GC): 1328.50
+SL: 1327.17
+TP: 1331.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-29 10:15
+Entry (GC): 1346.20
+SL: 1347.03
+TP: 1344.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-05 09:15
+Entry (GC): 1337.80
+SL: 1338.52
+TP: 1336.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-07 09:30
+Entry (GC): 1331.90
+SL: 1331.28
+TP: 1333.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-15 09:30
+Entry (GC): 1357.00
+SL: 1355.85
+TP: 1359.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-16 11:45
+Entry (GC): 1360.50
+SL: 1360.08
+TP: 1361.34
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-19 09:15
+Entry (GC): 1349.80
+SL: 1348.88
+TP: 1351.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-20 11:45
+Entry (GC): 1341.10
+SL: 1341.82
+TP: 1339.67
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-21 09:15
+Entry (GC): 1331.00
+SL: 1331.73
+TP: 1329.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-26 09:15
+Entry (GC): 1340.70
+SL: 1339.28
+TP: 1343.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-01 09:15
+Entry (GC): 1312.10
+SL: 1311.09
+TP: 1314.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-02 10:45
+Entry (GC): 1318.70
+SL: 1319.11
+TP: 1317.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-12 09:15
+Entry (GC): 1320.50
+SL: 1320.11
+TP: 1321.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-13 09:30
+Entry (GC): 1318.00
+SL: 1317.11
+TP: 1319.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-14 11:30
+Entry (GC): 1325.90
+SL: 1326.60
+TP: 1324.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-15 09:15
+Entry (GC): 1323.40
+SL: 1322.51
+TP: 1325.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-28 09:15
+Entry (GC): 1341.20
+SL: 1341.80
+TP: 1339.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-06 09:15
+Entry (GC): 1327.70
+SL: 1328.75
+TP: 1325.59
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-13 09:15
+Entry (GC): 1343.20
+SL: 1343.71
+TP: 1342.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-16 09:15
+Entry (GC): 1347.40
+SL: 1348.43
+TP: 1345.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-17 09:45
+Entry (GC): 1345.60
+SL: 1343.25
+TP: 1350.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-18 09:15
+Entry (GC): 1348.80
+SL: 1349.81
+TP: 1346.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-23 09:15
+Entry (GC): 1333.20
+SL: 1332.48
+TP: 1334.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-25 09:30
+Entry (GC): 1326.00
+SL: 1324.39
+TP: 1329.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-26 09:15
+Entry (GC): 1324.50
+SL: 1323.60
+TP: 1326.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-30 10:00
+Entry (GC): 1318.00
+SL: 1317.00
+TP: 1320.01
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-02 09:30
+Entry (GC): 1309.90
+SL: 1309.18
+TP: 1311.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-07 09:30
+Entry (GC): 1313.00
+SL: 1312.20
+TP: 1314.61
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-10 09:30
+Entry (GC): 1312.80
+SL: 1313.42
+TP: 1311.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-11 09:15
+Entry (GC): 1322.30
+SL: 1323.10
+TP: 1320.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-14 09:15
+Entry (GC): 1320.70
+SL: 1321.99
+TP: 1318.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-17 09:15
+Entry (GC): 1288.00
+SL: 1290.02
+TP: 1283.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-23 09:15
+Entry (GC): 1292.20
+SL: 1293.42
+TP: 1289.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-24 09:15
+Entry (GC): 1296.10
+SL: 1294.90
+TP: 1298.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-25 09:15
+Entry (GC): 1303.50
+SL: 1303.97
+TP: 1302.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-01 09:15
+Entry (GC): 1303.70
+SL: 1304.39
+TP: 1302.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-05 11:45
+Entry (GC): 1295.10
+SL: 1294.51
+TP: 1296.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-07 11:15
+Entry (GC): 1303.00
+SL: 1303.78
+TP: 1301.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-08 11:45
+Entry (GC): 1303.70
+SL: 1304.82
+TP: 1301.46
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-12 09:15
+Entry (GC): 1301.50
+SL: 1302.59
+TP: 1299.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-13 09:15
+Entry (GC): 1297.30
+SL: 1296.74
+TP: 1298.43
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-14 09:30
+Entry (GC): 1306.00
+SL: 1305.51
+TP: 1306.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-19 10:00
+Entry (GC): 1282.70
+SL: 1282.00
+TP: 1284.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-22 09:30
+Entry (GC): 1270.10
+SL: 1269.39
+TP: 1271.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-28 09:45
+Entry (GC): 1251.30
+SL: 1249.49
+TP: 1254.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-29 10:15
+Entry (GC): 1252.70
+SL: 1253.40
+TP: 1251.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-03 09:15
+Entry (GC): 1246.10
+SL: 1247.02
+TP: 1244.25
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-05 09:15
+Entry (GC): 1254.70
+SL: 1253.70
+TP: 1256.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-06 10:15
+Entry (GC): 1256.10
+SL: 1255.31
+TP: 1257.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-16 10:00
+Entry (GC): 1244.00
+SL: 1244.70
+TP: 1242.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-17 11:30
+Entry (GC): 1242.80
+SL: 1242.52
+TP: 1243.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-19 09:45
+Entry (GC): 1218.60
+SL: 1216.97
+TP: 1221.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-20 09:15
+Entry (GC): 1224.40
+SL: 1224.74
+TP: 1223.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-25 09:15
+Entry (GC): 1227.10
+SL: 1225.40
+TP: 1230.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-30 10:45
+Entry (GC): 1221.30
+SL: 1221.69
+TP: 1220.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-01 09:15
+Entry (GC): 1230.70
+SL: 1230.99
+TP: 1230.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-03 09:15
+Entry (GC): 1214.20
+SL: 1212.39
+TP: 1217.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-07 09:15
+Entry (GC): 1219.00
+SL: 1218.10
+TP: 1220.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-10 09:15
+Entry (GC): 1216.30
+SL: 1217.12
+TP: 1214.67
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-13 09:15
+Entry (GC): 1212.00
+SL: 1210.67
+TP: 1214.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-14 09:15
+Entry (GC): 1201.80
+SL: 1202.70
+TP: 1199.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-15 09:15
+Entry (GC): 1194.60
+SL: 1193.69
+TP: 1196.43
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-20 09:15
+Entry (GC): 1195.00
+SL: 1196.61
+TP: 1191.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-21 09:15
+Entry (GC): 1200.70
+SL: 1199.70
+TP: 1202.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-27 09:45
+Entry (GC): 1210.80
+SL: 1210.00
+TP: 1212.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-29 09:15
+Entry (GC): 1208.30
+SL: 1207.47
+TP: 1209.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-30 09:15
+Entry (GC): 1208.70
+SL: 1207.69
+TP: 1210.72
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-31 09:15
+Entry (GC): 1214.00
+SL: 1215.03
+TP: 1211.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-04 09:30
+Entry (GC): 1200.20
+SL: 1198.97
+TP: 1202.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-11 09:30
+Entry (GC): 1201.00
+SL: 1200.42
+TP: 1202.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-13 09:45
+Entry (GC): 1211.90
+SL: 1212.80
+TP: 1210.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-17 10:15
+Entry (GC): 1201.70
+SL: 1202.10
+TP: 1200.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-18 10:00
+Entry (GC): 1203.60
+SL: 1204.22
+TP: 1202.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-19 10:15
+Entry (GC): 1207.60
+SL: 1206.60
+TP: 1209.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-20 09:30
+Entry (GC): 1207.10
+SL: 1206.60
+TP: 1208.09
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-25 11:45
+Entry (GC): 1204.90
+SL: 1205.38
+TP: 1203.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-01 10:00
+Entry (GC): 1189.40
+SL: 1188.70
+TP: 1190.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-02 09:45
+Entry (GC): 1198.00
+SL: 1198.51
+TP: 1196.98
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-03 09:15
+Entry (GC): 1206.90
+SL: 1206.20
+TP: 1208.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-04 09:15
+Entry (GC): 1203.50
+SL: 1205.00
+TP: 1200.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-08 09:45
+Entry (GC): 1197.80
+SL: 1196.30
+TP: 1200.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-11 09:15
+Entry (GC): 1201.50
+SL: 1202.02
+TP: 1200.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-16 09:15
+Entry (GC): 1233.10
+SL: 1233.61
+TP: 1232.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-18 09:45
+Entry (GC): 1226.00
+SL: 1226.82
+TP: 1224.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-26 09:15
+Entry (GC): 1239.10
+SL: 1239.62
+TP: 1238.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-29 10:30
+Entry (GC): 1232.50
+SL: 1233.73
+TP: 1230.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-30 09:15
+Entry (GC): 1225.80
+SL: 1226.21
+TP: 1224.97
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-01 09:15
+Entry (GC): 1226.20
+SL: 1228.63
+TP: 1221.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-02 09:15
+Entry (GC): 1235.80
+SL: 1234.47
+TP: 1238.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-05 09:15
+Entry (GC): 1234.70
+SL: 1233.59
+TP: 1236.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-12 09:30
+Entry (GC): 1207.60
+SL: 1208.32
+TP: 1206.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-15 09:30
+Entry (GC): 1215.50
+SL: 1217.13
+TP: 1212.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-22 09:15
+Entry (GC): 1228.20
+SL: 1228.88
+TP: 1226.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-27 09:15
+Entry (GC): 1221.30
+SL: 1221.90
+TP: 1220.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-29 10:30
+Entry (GC): 1225.60
+SL: 1226.78
+TP: 1223.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-04 09:15
+Entry (GC): 1244.30
+SL: 1245.40
+TP: 1242.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-07 09:15
+Entry (GC): 1244.90
+SL: 1244.61
+TP: 1245.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-10 10:00
+Entry (GC): 1252.20
+SL: 1251.31
+TP: 1253.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-18 09:30
+Entry (GC): 1252.30
+SL: 1251.32
+TP: 1254.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-21 09:15
+Entry (GC): 1262.60
+SL: 1261.19
+TP: 1265.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-24 10:00
+Entry (GC): 1265.20
+SL: 1264.49
+TP: 1266.61
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-27 09:15
+Entry (GC): 1274.90
+SL: 1275.52
+TP: 1273.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-31 09:15
+Entry (GC): 1284.10
+SL: 1282.81
+TP: 1286.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-02 09:30
+Entry (GC): 1290.00
+SL: 1291.12
+TP: 1287.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-03 09:15
+Entry (GC): 1290.10
+SL: 1289.67
+TP: 1290.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-08 09:30
+Entry (GC): 1284.70
+SL: 1285.29
+TP: 1283.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-11 10:00
+Entry (GC): 1292.80
+SL: 1292.39
+TP: 1293.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-14 09:15
+Entry (GC): 1294.00
+SL: 1295.00
+TP: 1292.00
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-15 11:30
+Entry (GC): 1289.30
+SL: 1290.09
+TP: 1287.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-16 09:45
+Entry (GC): 1289.70
+SL: 1289.21
+TP: 1290.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-17 11:45
+Entry (GC): 1294.00
+SL: 1294.87
+TP: 1292.25
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-21 09:45
+Entry (GC): 1278.20
+SL: 1276.81
+TP: 1280.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-22 09:30
+Entry (GC): 1283.60
+SL: 1284.30
+TP: 1282.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-23 09:15
+Entry (GC): 1284.80
+SL: 1286.08
+TP: 1282.25
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-25 09:15
+Entry (GC): 1282.70
+SL: 1282.22
+TP: 1283.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-29 09:15
+Entry (GC): 1306.70
+SL: 1305.70
+TP: 1308.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-30 09:45
+Entry (GC): 1312.00
+SL: 1311.41
+TP: 1313.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-05 10:45
+Entry (GC): 1317.70
+SL: 1318.69
+TP: 1315.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-11 09:15
+Entry (GC): 1312.60
+SL: 1311.72
+TP: 1314.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-20 09:15
+Entry (GC): 1345.30
+SL: 1344.40
+TP: 1347.09
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-22 09:15
+Entry (GC): 1328.90
+SL: 1328.12
+TP: 1330.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-25 09:15
+Entry (GC): 1330.50
+SL: 1329.91
+TP: 1331.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-26 09:30
+Entry (GC): 1326.90
+SL: 1327.88
+TP: 1324.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-07 11:15
+Entry (GC): 1287.50
+SL: 1288.19
+TP: 1286.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-08 11:15
+Entry (GC): 1293.10
+SL: 1292.40
+TP: 1294.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-11 09:45
+Entry (GC): 1297.40
+SL: 1297.89
+TP: 1296.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-21 09:45
+Entry (GC): 1317.80
+SL: 1317.21
+TP: 1318.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-25 09:45
+Entry (GC): 1317.20
+SL: 1317.69
+TP: 1316.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-27 09:15
+Entry (GC): 1315.70
+SL: 1316.10
+TP: 1314.89
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-28 10:00
+Entry (GC): 1306.10
+SL: 1305.30
+TP: 1307.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-03 10:15
+Entry (GC): 1297.00
+SL: 1297.28
+TP: 1296.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-08 09:30
+Entry (GC): 1301.10
+SL: 1300.42
+TP: 1302.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-12 10:00
+Entry (GC): 1296.90
+SL: 1297.19
+TP: 1296.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-01 09:15
+Entry (GC): 1282.50
+SL: 1283.09
+TP: 1281.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-02 09:15
+Entry (GC): 1272.40
+SL: 1271.71
+TP: 1273.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-07 09:15
+Entry (GC): 1282.50
+SL: 1282.00
+TP: 1283.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-08 10:30
+Entry (GC): 1289.00
+SL: 1289.48
+TP: 1288.04
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-13 09:15
+Entry (GC): 1284.20
+SL: 1284.58
+TP: 1283.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-14 09:15
+Entry (GC): 1299.10
+SL: 1299.59
+TP: 1298.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-15 09:15
+Entry (GC): 1297.50
+SL: 1297.89
+TP: 1296.73
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-23 09:30
+Entry (GC): 1274.70
+SL: 1275.98
+TP: 1272.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-29 09:15
+Entry (GC): 1284.20
+SL: 1284.99
+TP: 1282.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-03 09:15
+Entry (GC): 1320.10
+SL: 1320.82
+TP: 1318.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-07 09:15
+Entry (GC): 1339.50
+SL: 1339.99
+TP: 1338.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-12 09:30
+Entry (GC): 1341.40
+SL: 1342.42
+TP: 1339.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-13 09:45
+Entry (GC): 1340.90
+SL: 1342.81
+TP: 1337.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-17 09:30
+Entry (GC): 1338.60
+SL: 1336.75
+TP: 1342.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-18 09:15
+Entry (GC): 1349.40
+SL: 1347.58
+TP: 1353.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-19 09:15
+Entry (GC): 1346.60
+SL: 1346.17
+TP: 1347.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-25 09:15
+Entry (GC): 1437.40
+SL: 1439.55
+TP: 1433.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-26 10:30
+Entry (GC): 1410.80
+SL: 1408.22
+TP: 1415.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-27 10:30
+Entry (GC): 1405.60
+SL: 1404.23
+TP: 1408.34
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-28 09:15
+Entry (GC): 1417.70
+SL: 1419.53
+TP: 1414.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-03 09:15
+Entry (GC): 1427.20
+SL: 1425.23
+TP: 1431.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-05 09:15
+Entry (GC): 1416.50
+SL: 1414.93
+TP: 1419.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-08 09:45
+Entry (GC): 1407.80
+SL: 1405.92
+TP: 1411.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-09 09:15
+Entry (GC): 1394.90
+SL: 1393.75
+TP: 1397.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-10 09:30
+Entry (GC): 1395.80
+SL: 1396.84
+TP: 1393.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-11 09:30
+Entry (GC): 1424.60
+SL: 1425.26
+TP: 1423.28
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-18 09:45
+Entry (GC): 1422.50
+SL: 1420.63
+TP: 1426.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-26 09:45
+Entry (GC): 1418.10
+SL: 1417.09
+TP: 1420.13
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-29 11:15
+Entry (GC): 1419.30
+SL: 1419.59
+TP: 1418.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-01 11:45
+Entry (GC): 1419.90
+SL: 1420.14
+TP: 1419.41
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-05 09:30
+Entry (GC): 1470.10
+SL: 1471.23
+TP: 1467.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-07 09:15
+Entry (GC): 1498.90
+SL: 1496.74
+TP: 1503.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-08 10:00
+Entry (GC): 1508.40
+SL: 1507.18
+TP: 1510.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-09 09:15
+Entry (GC): 1513.00
+SL: 1512.61
+TP: 1513.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-13 10:30
+Entry (GC): 1538.20
+SL: 1539.70
+TP: 1535.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-15 09:45
+Entry (GC): 1524.20
+SL: 1526.27
+TP: 1520.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-22 10:15
+Entry (GC): 1508.00
+SL: 1506.87
+TP: 1510.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-23 11:15
+Entry (GC): 1506.50
+SL: 1507.71
+TP: 1504.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-26 09:45
+Entry (GC): 1535.70
+SL: 1534.43
+TP: 1538.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-28 11:00
+Entry (GC): 1551.90
+SL: 1553.50
+TP: 1548.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-30 09:15
+Entry (GC): 1533.20
+SL: 1530.39
+TP: 1538.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-03 09:15
+Entry (GC): 1539.30
+SL: 1542.39
+TP: 1533.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-04 10:45
+Entry (GC): 1547.90
+SL: 1548.58
+TP: 1546.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-05 11:00
+Entry (GC): 1549.40
+SL: 1548.90
+TP: 1550.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-06 10:15
+Entry (GC): 1515.00
+SL: 1513.96
+TP: 1517.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-09 09:15
+Entry (GC): 1514.90
+SL: 1512.23
+TP: 1520.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-11 09:15
+Entry (GC): 1497.80
+SL: 1497.14
+TP: 1499.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-16 11:30
+Entry (GC): 1511.80
+SL: 1513.11
+TP: 1509.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-24 10:30
+Entry (GC): 1527.90
+SL: 1527.07
+TP: 1529.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-25 10:00
+Entry (GC): 1539.30
+SL: 1540.45
+TP: 1537.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-26 11:45
+Entry (GC): 1515.60
+SL: 1517.45
+TP: 1511.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-02 10:45
+Entry (GC): 1490.40
+SL: 1491.39
+TP: 1488.41
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-08 09:30
+Entry (GC): 1502.80
+SL: 1503.87
+TP: 1500.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-11 09:15
+Entry (GC): 1507.30
+SL: 1508.15
+TP: 1505.60
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-14 09:15
+Entry (GC): 1494.20
+SL: 1495.16
+TP: 1492.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-15 09:15
+Entry (GC): 1496.20
+SL: 1497.94
+TP: 1492.73
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-16 10:15
+Entry (GC): 1487.20
+SL: 1489.77
+TP: 1482.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-17 09:45
+Entry (GC): 1492.50
+SL: 1490.65
+TP: 1496.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-23 11:45
+Entry (GC): 1494.30
+SL: 1492.87
+TP: 1497.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-25 10:00
+Entry (GC): 1508.80
+SL: 1506.48
+TP: 1513.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-01 09:45
+Entry (GC): 1514.60
+SL: 1513.99
+TP: 1515.83
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-05 09:15
+Entry (GC): 1506.80
+SL: 1505.26
+TP: 1509.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-06 09:15
+Entry (GC): 1488.00
+SL: 1489.12
+TP: 1485.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-11 09:45
+Entry (GC): 1466.00
+SL: 1467.02
+TP: 1463.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-15 09:15
+Entry (GC): 1464.20
+SL: 1463.58
+TP: 1465.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-19 09:15
+Entry (GC): 1468.20
+SL: 1467.27
+TP: 1470.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-21 10:00
+Entry (GC): 1470.80
+SL: 1470.16
+TP: 1472.08
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-27 09:15
+Entry (GC): 1458.40
+SL: 1459.59
+TP: 1456.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-29 10:00
+Entry (GC): 1462.30
+SL: 1461.81
+TP: 1463.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-05 10:00
+Entry (GC): 1479.40
+SL: 1478.48
+TP: 1481.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-06 09:15
+Entry (GC): 1478.90
+SL: 1480.50
+TP: 1475.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-09 09:15
+Entry (GC): 1467.20
+SL: 1467.68
+TP: 1466.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-11 09:15
+Entry (GC): 1470.80
+SL: 1471.41
+TP: 1469.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-13 09:15
+Entry (GC): 1476.70
+SL: 1477.74
+TP: 1474.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-16 10:30
+Entry (GC): 1482.10
+SL: 1482.61
+TP: 1481.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-18 11:45
+Entry (GC): 1481.70
+SL: 1479.01
+TP: 1487.09
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-23 10:00
+Entry (GC): 1488.70
+SL: 1489.09
+TP: 1487.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-24 09:15
+Entry (GC): 1495.60
+SL: 1495.99
+TP: 1494.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-26 11:00
+Entry (GC): 1508.90
+SL: 1509.59
+TP: 1507.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-30 10:00
+Entry (GC): 1515.80
+SL: 1515.22
+TP: 1516.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-31 09:15
+Entry (GC): 1527.10
+SL: 1527.89
+TP: 1525.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-07 09:45
+Entry (GC): 1566.50
+SL: 1564.68
+TP: 1570.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-08 09:15
+Entry (GC): 1582.00
+SL: 1580.16
+TP: 1585.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-15 09:30
+Entry (GC): 1553.20
+SL: 1551.87
+TP: 1555.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-21 11:15
+Entry (GC): 1554.20
+SL: 1551.61
+TP: 1559.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-28 09:15
+Entry (GC): 1579.00
+SL: 1581.64
+TP: 1573.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-07 09:15
+Entry (GC): 1568.80
+SL: 1567.85
+TP: 1570.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-14 09:45
+Entry (GC): 1579.10
+SL: 1579.90
+TP: 1577.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-18 11:00
+Entry (GC): 1590.30
+SL: 1589.38
+TP: 1592.13
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-20 09:30
+Entry (GC): 1613.30
+SL: 1613.86
+TP: 1612.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-21 09:15
+Entry (GC): 1636.20
+SL: 1634.00
+TP: 1640.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-26 09:15
+Entry (GC): 1655.00
+SL: 1657.40
+TP: 1650.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-02 09:30
+Entry (GC): 1606.60
+SL: 1610.00
+TP: 1599.81
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-04 10:00
+Entry (GC): 1640.60
+SL: 1641.83
+TP: 1638.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-11 10:30
+Entry (GC): 1663.30
+SL: 1664.39
+TP: 1661.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-18 10:00
+Entry (GC): 1494.50
+SL: 1487.13
+TP: 1509.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-20 11:45
+Entry (GC): 1506.00
+SL: 1504.01
+TP: 1509.97
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-25 09:30
+Entry (GC): 1653.60
+SL: 1656.63
+TP: 1647.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-07 09:15
+Entry (GC): 1695.20
+SL: 1688.33
+TP: 1708.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-09 10:00
+Entry (GC): 1702.50
+SL: 1704.24
+TP: 1699.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-17 10:45
+Entry (GC): 1706.80
+SL: 1702.53
+TP: 1715.35
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-20 09:15
+Entry (GC): 1687.90
+SL: 1684.83
+TP: 1694.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-21 09:15
+Entry (GC): 1712.80
+SL: 1710.74
+TP: 1716.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-22 10:15
+Entry (GC): 1724.20
+SL: 1726.45
+TP: 1719.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-24 10:15
+Entry (GC): 1755.00
+SL: 1758.36
+TP: 1748.27
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-27 09:30
+Entry (GC): 1738.90
+SL: 1740.65
+TP: 1735.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-29 09:15
+Entry (GC): 1715.60
+SL: 1712.21
+TP: 1722.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-01 11:30
+Entry (GC): 1685.40
+SL: 1686.25
+TP: 1683.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-04 09:15
+Entry (GC): 1714.20
+SL: 1713.01
+TP: 1716.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-06 09:15
+Entry (GC): 1713.70
+SL: 1714.71
+TP: 1711.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-13 11:30
+Entry (GC): 1707.00
+SL: 1708.49
+TP: 1704.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-15 09:45
+Entry (GC): 1743.40
+SL: 1741.87
+TP: 1746.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-20 11:45
+Entry (GC): 1754.90
+SL: 1757.84
+TP: 1749.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-22 09:15
+Entry (GC): 1738.90
+SL: 1740.95
+TP: 1734.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-27 11:30
+Entry (GC): 1698.70
+SL: 1700.65
+TP: 1694.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-28 09:30
+Entry (GC): 1719.20
+SL: 1721.10
+TP: 1715.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-05 09:15
+Entry (GC): 1711.80
+SL: 1708.88
+TP: 1717.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-08 09:15
+Entry (GC): 1699.60
+SL: 1701.74
+TP: 1695.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-10 11:45
+Entry (GC): 1724.70
+SL: 1722.52
+TP: 1729.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-11 09:30
+Entry (GC): 1742.30
+SL: 1740.86
+TP: 1745.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-17 09:30
+Entry (GC): 1729.70
+SL: 1727.37
+TP: 1734.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-23 09:15
+Entry (GC): 1769.90
+SL: 1771.29
+TP: 1767.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-24 09:15
+Entry (GC): 1788.60
+SL: 1789.33
+TP: 1787.15
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-26 09:15
+Entry (GC): 1775.70
+SL: 1777.59
+TP: 1771.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-29 09:15
+Entry (GC): 1781.30
+SL: 1777.78
+TP: 1788.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-03 09:15
+Entry (GC): 1785.30
+SL: 1784.84
+TP: 1786.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-06 09:45
+Entry (GC): 1787.20
+SL: 1788.16
+TP: 1785.28
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-09 09:15
+Entry (GC): 1822.90
+SL: 1823.99
+TP: 1820.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-13 09:15
+Entry (GC): 1808.70
+SL: 1806.85
+TP: 1812.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-14 11:15
+Entry (GC): 1799.40
+SL: 1797.89
+TP: 1802.43
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-16 09:15
+Entry (GC): 1807.60
+SL: 1805.64
+TP: 1811.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-24 09:15
+Entry (GC): 1890.70
+SL: 1897.04
+TP: 1878.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-29 09:30
+Entry (GC): 1954.30
+SL: 1952.34
+TP: 1958.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-30 09:15
+Entry (GC): 1948.00
+SL: 1952.21
+TP: 1939.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-03 09:15
+Entry (GC): 1989.80
+SL: 1992.57
+TP: 1984.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-05 11:00
+Entry (GC): 2055.10
+SL: 2056.80
+TP: 2051.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-06 09:15
+Entry (GC): 2057.60
+SL: 2052.32
+TP: 2068.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-10 11:00
+Entry (GC): 2039.10
+SL: 2036.68
+TP: 2043.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-24 10:00
+Entry (GC): 1954.40
+SL: 1958.88
+TP: 1945.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-31 10:30
+Entry (GC): 1972.40
+SL: 1973.34
+TP: 1970.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-01 10:30
+Entry (GC): 1996.70
+SL: 1993.78
+TP: 2002.54
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-02 10:00
+Entry (GC): 1972.10
+SL: 1974.84
+TP: 1966.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-04 09:45
+Entry (GC): 1943.00
+SL: 1938.80
+TP: 1951.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-07 10:45
+Entry (GC): 1934.80
+SL: 1932.65
+TP: 1939.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-09 09:15
+Entry (GC): 1938.90
+SL: 1941.97
+TP: 1932.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-14 09:15
+Entry (GC): 1953.90
+SL: 1952.49
+TP: 1956.72
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-15 10:15
+Entry (GC): 1975.10
+SL: 1975.62
+TP: 1974.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-18 09:30
+Entry (GC): 1961.80
+SL: 1963.19
+TP: 1959.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-23 09:15
+Entry (GC): 1879.80
+SL: 1875.63
+TP: 1888.13
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-24 09:15
+Entry (GC): 1859.80
+SL: 1865.14
+TP: 1849.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-28 11:30
+Entry (GC): 1863.70
+SL: 1865.45
+TP: 1860.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-05 09:30
+Entry (GC): 1897.90
+SL: 1898.75
+TP: 1896.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-12 09:45
+Entry (GC): 1929.00
+SL: 1927.75
+TP: 1931.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-13 09:15
+Entry (GC): 1925.00
+SL: 1926.16
+TP: 1922.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-14 09:30
+Entry (GC): 1901.30
+SL: 1901.62
+TP: 1900.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-16 09:15
+Entry (GC): 1913.60
+SL: 1914.81
+TP: 1911.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-19 09:30
+Entry (GC): 1914.40
+SL: 1911.67
+TP: 1919.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-28 09:15
+Entry (GC): 1903.70
+SL: 1902.50
+TP: 1906.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-29 10:15
+Entry (GC): 1877.00
+SL: 1875.75
+TP: 1879.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-30 09:30
+Entry (GC): 1873.40
+SL: 1875.18
+TP: 1869.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-06 10:45
+Entry (GC): 1951.80
+SL: 1953.22
+TP: 1948.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-10 09:15
+Entry (GC): 1885.00
+SL: 1882.97
+TP: 1889.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-11 09:45
+Entry (GC): 1876.60
+SL: 1878.48
+TP: 1872.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-13 10:15
+Entry (GC): 1878.80
+SL: 1880.42
+TP: 1875.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-16 10:45
+Entry (GC): 1889.80
+SL: 1887.58
+TP: 1894.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-19 09:15
+Entry (GC): 1860.10
+SL: 1852.70
+TP: 1874.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-20 09:15
+Entry (GC): 1864.70
+SL: 1862.82
+TP: 1868.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-23 09:15
+Entry (GC): 1868.10
+SL: 1865.80
+TP: 1872.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-24 10:15
+Entry (GC): 1821.10
+SL: 1817.92
+TP: 1827.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-27 10:00
+Entry (GC): 1806.40
+SL: 1805.55
+TP: 1808.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-01 09:45
+Entry (GC): 1797.00
+SL: 1798.24
+TP: 1794.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-02 10:00
+Entry (GC): 1827.90
+SL: 1830.57
+TP: 1822.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-04 10:00
+Entry (GC): 1845.80
+SL: 1847.51
+TP: 1842.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-08 11:15
+Entry (GC): 1865.90
+SL: 1863.66
+TP: 1870.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-09 09:15
+Entry (GC): 1867.30
+SL: 1870.68
+TP: 1860.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-10 11:00
+Entry (GC): 1839.60
+SL: 1842.70
+TP: 1833.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-11 09:30
+Entry (GC): 1839.40
+SL: 1840.74
+TP: 1836.73
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-16 09:30
+Entry (GC): 1866.20
+SL: 1868.55
+TP: 1861.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-17 10:15
+Entry (GC): 1879.20
+SL: 1877.73
+TP: 1882.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-18 09:15
+Entry (GC): 1886.10
+SL: 1887.12
+TP: 1884.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-23 11:00
+Entry (GC): 1870.20
+SL: 1868.27
+TP: 1874.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-28 09:30
+Entry (GC): 1886.30
+SL: 1884.83
+TP: 1889.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-29 09:15
+Entry (GC): 1883.10
+SL: 1880.16
+TP: 1888.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-30 11:15
+Entry (GC): 1883.20
+SL: 1885.28
+TP: 1879.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-31 09:15
+Entry (GC): 1897.80
+SL: 1900.25
+TP: 1892.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-04 11:15
+Entry (GC): 1938.90
+SL: 1941.28
+TP: 1934.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-05 09:15
+Entry (GC): 1946.60
+SL: 1948.67
+TP: 1942.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-14 09:30
+Entry (GC): 1839.20
+SL: 1838.04
+TP: 1841.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-19 10:45
+Entry (GC): 1844.10
+SL: 1845.22
+TP: 1841.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-25 09:15
+Entry (GC): 1850.80
+SL: 1849.00
+TP: 1854.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-26 10:45
+Entry (GC): 1850.10
+SL: 1848.68
+TP: 1852.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-28 09:15
+Entry (GC): 1838.40
+SL: 1839.92
+TP: 1835.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-01 10:00
+Entry (GC): 1864.50
+SL: 1861.66
+TP: 1870.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-02 09:15
+Entry (GC): 1851.80
+SL: 1853.82
+TP: 1847.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-03 09:15
+Entry (GC): 1837.10
+SL: 1834.39
+TP: 1842.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-12 09:15
+Entry (GC): 1816.60
+SL: 1818.42
+TP: 1812.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-16 09:45
+Entry (GC): 1823.30
+SL: 1824.79
+TP: 1820.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-19 10:00
+Entry (GC): 1769.60
+SL: 1768.02
+TP: 1772.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-24 09:15
+Entry (GC): 1805.40
+SL: 1803.18
+TP: 1809.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-25 09:30
+Entry (GC): 1788.50
+SL: 1785.36
+TP: 1794.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-26 09:15
+Entry (GC): 1766.00
+SL: 1768.89
+TP: 1760.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-01 09:15
+Entry (GC): 1748.00
+SL: 1746.23
+TP: 1751.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-05 10:45
+Entry (GC): 1693.00
+SL: 1695.06
+TP: 1688.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-08 09:15
+Entry (GC): 1689.30
+SL: 1687.49
+TP: 1692.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-09 09:15
+Entry (GC): 1700.50
+SL: 1701.58
+TP: 1698.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-10 11:15
+Entry (GC): 1709.10
+SL: 1706.69
+TP: 1713.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-16 09:45
+Entry (GC): 1730.70
+SL: 1731.79
+TP: 1728.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-19 09:15
+Entry (GC): 1741.80
+SL: 1743.65
+TP: 1738.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-23 09:15
+Entry (GC): 1738.10
+SL: 1739.67
+TP: 1734.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-25 10:45
+Entry (GC): 1729.90
+SL: 1728.44
+TP: 1732.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-26 11:00
+Entry (GC): 1723.70
+SL: 1722.91
+TP: 1725.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-29 09:30
+Entry (GC): 1723.70
+SL: 1721.52
+TP: 1728.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-05 10:15
+Entry (GC): 1725.50
+SL: 1724.63
+TP: 1727.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-06 09:15
+Entry (GC): 1733.50
+SL: 1734.80
+TP: 1730.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-08 09:45
+Entry (GC): 1744.10
+SL: 1742.80
+TP: 1746.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-09 11:15
+Entry (GC): 1744.60
+SL: 1743.22
+TP: 1747.35
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-12 09:15
+Entry (GC): 1738.30
+SL: 1737.41
+TP: 1740.08
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-23 11:00
+Entry (GC): 1786.50
+SL: 1787.48
+TP: 1784.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-28 09:15
+Entry (GC): 1768.40
+SL: 1770.17
+TP: 1764.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-30 09:15
+Entry (GC): 1770.20
+SL: 1767.11
+TP: 1776.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-05 09:15
+Entry (GC): 1775.00
+SL: 1774.03
+TP: 1776.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-06 10:00
+Entry (GC): 1795.20
+SL: 1796.08
+TP: 1793.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-13 10:00
+Entry (GC): 1814.90
+SL: 1812.16
+TP: 1820.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-14 09:30
+Entry (GC): 1834.50
+SL: 1835.51
+TP: 1832.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-17 10:30
+Entry (GC): 1851.90
+SL: 1850.93
+TP: 1853.83
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-18 09:15
+Entry (GC): 1869.50
+SL: 1867.60
+TP: 1873.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-28 09:15
+Entry (GC): 1893.60
+SL: 1895.18
+TP: 1890.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-31 11:15
+Entry (GC): 1907.00
+SL: 1906.04
+TP: 1908.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-02 09:45
+Entry (GC): 1899.60
+SL: 1897.78
+TP: 1903.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-03 11:30
+Entry (GC): 1898.90
+SL: 1900.71
+TP: 1895.28
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-07 09:15
+Entry (GC): 1886.10
+SL: 1887.59
+TP: 1883.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-09 09:15
+Entry (GC): 1894.00
+SL: 1896.17
+TP: 1889.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-18 09:15
+Entry (GC): 1791.30
+SL: 1795.67
+TP: 1782.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-22 09:15
+Entry (GC): 1777.20
+SL: 1775.55
+TP: 1780.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-23 09:15
+Entry (GC): 1782.90
+SL: 1784.01
+TP: 1780.67
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-25 09:15
+Entry (GC): 1782.60
+SL: 1783.97
+TP: 1779.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-06 09:15
+Entry (GC): 1807.00
+SL: 1804.51
+TP: 1811.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-08 09:30
+Entry (GC): 1811.30
+SL: 1812.87
+TP: 1808.15
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-14 09:30
+Entry (GC): 1814.50
+SL: 1815.07
+TP: 1813.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-15 09:15
+Entry (GC): 1832.60
+SL: 1830.31
+TP: 1837.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-19 09:30
+Entry (GC): 1803.40
+SL: 1802.40
+TP: 1805.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-20 11:00
+Entry (GC): 1816.70
+SL: 1818.78
+TP: 1812.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-23 09:30
+Entry (GC): 1805.80
+SL: 1804.91
+TP: 1807.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-29 09:15
+Entry (GC): 1817.00
+SL: 1814.53
+TP: 1821.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-02 10:00
+Entry (GC): 1810.00
+SL: 1808.52
+TP: 1812.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-03 09:15
+Entry (GC): 1812.70
+SL: 1811.36
+TP: 1815.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-11 10:00
+Entry (GC): 1734.00
+SL: 1734.88
+TP: 1732.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-12 11:30
+Entry (GC): 1753.30
+SL: 1752.13
+TP: 1755.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-13 11:30
+Entry (GC): 1761.30
+SL: 1762.56
+TP: 1758.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-24 11:30
+Entry (GC): 1806.20
+SL: 1807.34
+TP: 1803.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-25 09:30
+Entry (GC): 1795.10
+SL: 1797.99
+TP: 1789.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-26 09:30
+Entry (GC): 1785.90
+SL: 1785.35
+TP: 1787.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-31 09:15
+Entry (GC): 1818.50
+SL: 1817.06
+TP: 1821.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-02 09:15
+Entry (GC): 1816.90
+SL: 1817.83
+TP: 1815.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-06 09:15
+Entry (GC): 1828.00
+SL: 1826.37
+TP: 1831.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-10 09:15
+Entry (GC): 1803.80
+SL: 1801.41
+TP: 1808.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-13 09:15
+Entry (GC): 1790.60
+SL: 1792.08
+TP: 1787.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-15 09:45
+Entry (GC): 1801.60
+SL: 1800.04
+TP: 1804.72
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-23 09:15
+Entry (GC): 1766.70
+SL: 1767.63
+TP: 1764.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-01 09:15
+Entry (GC): 1752.40
+SL: 1751.08
+TP: 1755.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-04 09:30
+Entry (GC): 1752.80
+SL: 1751.61
+TP: 1755.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-05 11:45
+Entry (GC): 1756.40
+SL: 1754.82
+TP: 1759.56
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-06 09:15
+Entry (GC): 1748.50
+SL: 1745.75
+TP: 1753.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-08 11:00
+Entry (GC): 1759.80
+SL: 1760.37
+TP: 1758.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-12 09:30
+Entry (GC): 1758.10
+SL: 1756.42
+TP: 1761.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-14 09:15
+Entry (GC): 1795.70
+SL: 1797.17
+TP: 1792.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-19 09:45
+Entry (GC): 1783.00
+SL: 1784.07
+TP: 1780.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-20 09:15
+Entry (GC): 1777.40
+SL: 1778.36
+TP: 1775.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-22 09:15
+Entry (GC): 1793.70
+SL: 1795.87
+TP: 1789.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-26 09:15
+Entry (GC): 1803.00
+SL: 1800.93
+TP: 1807.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-27 09:45
+Entry (GC): 1786.60
+SL: 1784.11
+TP: 1791.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-01 09:15
+Entry (GC): 1785.50
+SL: 1786.08
+TP: 1784.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-02 11:30
+Entry (GC): 1793.40
+SL: 1791.43
+TP: 1797.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-03 10:15
+Entry (GC): 1781.60
+SL: 1781.03
+TP: 1782.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-04 10:45
+Entry (GC): 1778.80
+SL: 1779.50
+TP: 1777.41
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-08 10:15
+Entry (GC): 1819.00
+SL: 1820.30
+TP: 1816.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-09 09:45
+Entry (GC): 1827.20
+SL: 1827.89
+TP: 1825.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-10 11:30
+Entry (GC): 1825.50
+SL: 1823.95
+TP: 1828.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-15 09:15
+Entry (GC): 1863.30
+SL: 1860.29
+TP: 1869.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-16 09:15
+Entry (GC): 1875.60
+SL: 1877.73
+TP: 1871.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-18 09:45
+Entry (GC): 1866.90
+SL: 1865.20
+TP: 1870.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-29 10:00
+Entry (GC): 1798.90
+SL: 1799.11
+TP: 1798.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-01 10:45
+Entry (GC): 1786.40
+SL: 1787.98
+TP: 1783.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-06 09:15
+Entry (GC): 1781.70
+SL: 1778.90
+TP: 1787.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-08 09:45
+Entry (GC): 1790.00
+SL: 1791.37
+TP: 1787.27
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-09 09:15
+Entry (GC): 1784.10
+SL: 1782.73
+TP: 1786.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-10 09:30
+Entry (GC): 1771.10
+SL: 1770.24
+TP: 1772.83
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-14 09:15
+Entry (GC): 1784.60
+SL: 1786.15
+TP: 1781.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-16 09:15
+Entry (GC): 1785.40
+SL: 1787.86
+TP: 1780.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-17 09:45
+Entry (GC): 1808.80
+SL: 1807.63
+TP: 1811.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-20 09:15
+Entry (GC): 1801.80
+SL: 1803.16
+TP: 1799.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-23 09:45
+Entry (GC): 1808.40
+SL: 1809.02
+TP: 1807.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-28 09:15
+Entry (GC): 1816.20
+SL: 1817.02
+TP: 1814.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-30 09:15
+Entry (GC): 1801.70
+SL: 1802.63
+TP: 1799.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-04 09:15
+Entry (GC): 1804.20
+SL: 1801.43
+TP: 1809.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-07 09:30
+Entry (GC): 1789.90
+SL: 1790.75
+TP: 1788.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-11 09:15
+Entry (GC): 1808.50
+SL: 1807.56
+TP: 1810.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-12 11:30
+Entry (GC): 1818.00
+SL: 1818.44
+TP: 1817.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-19 09:30
+Entry (GC): 1815.30
+SL: 1816.56
+TP: 1812.79
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-24 10:45
+Entry (GC): 1838.10
+SL: 1837.31
+TP: 1839.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-27 09:15
+Entry (GC): 1813.50
+SL: 1814.73
+TP: 1811.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-31 09:15
+Entry (GC): 1792.00
+SL: 1793.28
+TP: 1789.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-02 09:30
+Entry (GC): 1800.30
+SL: 1801.45
+TP: 1798.00
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-03 09:15
+Entry (GC): 1804.70
+SL: 1806.22
+TP: 1801.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-08 10:45
+Entry (GC): 1820.10
+SL: 1822.56
+TP: 1815.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-09 09:15
+Entry (GC): 1827.90
+SL: 1826.98
+TP: 1829.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-11 10:45
+Entry (GC): 1828.20
+SL: 1829.05
+TP: 1826.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-21 09:15
+Entry (GC): 1899.60
+SL: 1900.85
+TP: 1897.10
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-22 10:30
+Entry (GC): 1898.70
+SL: 1896.17
+TP: 1903.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-23 09:30
+Entry (GC): 1894.00
+SL: 1892.78
+TP: 1896.43
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-24 09:30
+Entry (GC): 1946.60
+SL: 1950.18
+TP: 1939.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-25 09:45
+Entry (GC): 1911.70
+SL: 1909.75
+TP: 1915.61
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-02 09:45
+Entry (GC): 1939.40
+SL: 1933.68
+TP: 1950.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-03 09:15
+Entry (GC): 1932.10
+SL: 1929.79
+TP: 1936.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-07 10:00
+Entry (GC): 2002.90
+SL: 2007.44
+TP: 1993.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-15 10:00
+Entry (GC): 1933.70
+SL: 1927.66
+TP: 1945.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-17 10:00
+Entry (GC): 1942.30
+SL: 1944.72
+TP: 1937.46
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-18 09:15
+Entry (GC): 1933.70
+SL: 1932.42
+TP: 1936.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-21 09:15
+Entry (GC): 1925.90
+SL: 1928.11
+TP: 1921.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-24 10:30
+Entry (GC): 1946.10
+SL: 1947.45
+TP: 1943.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-25 09:15
+Entry (GC): 1955.80
+SL: 1954.37
+TP: 1958.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-29 09:15
+Entry (GC): 1919.10
+SL: 1917.28
+TP: 1922.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-31 09:30
+Entry (GC): 1930.30
+SL: 1928.60
+TP: 1933.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-04 09:15
+Entry (GC): 1934.50
+SL: 1937.45
+TP: 1928.59
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-05 09:15
+Entry (GC): 1931.00
+SL: 1928.91
+TP: 1935.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-07 09:45
+Entry (GC): 1930.00
+SL: 1931.91
+TP: 1926.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-08 09:15
+Entry (GC): 1935.50
+SL: 1936.79
+TP: 1932.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-12 09:30
+Entry (GC): 1957.80
+SL: 1954.77
+TP: 1963.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-13 09:15
+Entry (GC): 1976.40
+SL: 1976.95
+TP: 1975.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-19 09:30
+Entry (GC): 1983.60
+SL: 1984.62
+TP: 1981.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-20 09:45
+Entry (GC): 1947.20
+SL: 1948.08
+TP: 1945.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-25 09:15
+Entry (GC): 1917.20
+SL: 1914.88
+TP: 1921.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-26 11:00
+Entry (GC): 1905.20
+SL: 1905.76
+TP: 1904.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-28 09:30
+Entry (GC): 1881.90
+SL: 1880.28
+TP: 1885.13
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-03 09:30
+Entry (GC): 1853.20
+SL: 1851.29
+TP: 1857.01
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-04 09:15
+Entry (GC): 1870.50
+SL: 1872.21
+TP: 1867.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-05 09:15
+Entry (GC): 1892.60
+SL: 1890.92
+TP: 1895.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-10 09:15
+Entry (GC): 1858.80
+SL: 1857.76
+TP: 1860.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-13 09:30
+Entry (GC): 1820.70
+SL: 1819.95
+TP: 1822.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-17 11:30
+Entry (GC): 1827.80
+SL: 1829.34
+TP: 1824.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-23 09:15
+Entry (GC): 1855.00
+SL: 1857.53
+TP: 1849.94
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-24 09:15
+Entry (GC): 1858.80
+SL: 1859.60
+TP: 1857.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-31 09:15
+Entry (GC): 1858.50
+SL: 1859.07
+TP: 1857.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-01 09:30
+Entry (GC): 1835.70
+SL: 1839.55
+TP: 1828.00
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-06 09:15
+Entry (GC): 1855.10
+SL: 1853.13
+TP: 1859.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-13 09:30
+Entry (GC): 1858.90
+SL: 1856.81
+TP: 1863.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-15 09:30
+Entry (GC): 1820.10
+SL: 1818.34
+TP: 1823.62
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-16 09:15
+Entry (GC): 1832.10
+SL: 1832.96
+TP: 1830.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-22 09:15
+Entry (GC): 1825.70
+SL: 1824.23
+TP: 1828.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-23 10:00
+Entry (GC): 1834.70
+SL: 1833.28
+TP: 1837.54
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-27 09:15
+Entry (GC): 1837.00
+SL: 1836.00
+TP: 1838.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-28 10:45
+Entry (GC): 1827.20
+SL: 1826.44
+TP: 1828.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-29 09:15
+Entry (GC): 1817.30
+SL: 1816.33
+TP: 1819.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-30 11:00
+Entry (GC): 1813.60
+SL: 1811.40
+TP: 1817.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-01 11:15
+Entry (GC): 1791.90
+SL: 1789.84
+TP: 1796.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-07 09:45
+Entry (GC): 1739.90
+SL: 1739.00
+TP: 1741.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-08 09:15
+Entry (GC): 1740.50
+SL: 1741.76
+TP: 1737.98
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-12 09:15
+Entry (GC): 1731.90
+SL: 1730.24
+TP: 1735.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-14 09:45
+Entry (GC): 1714.20
+SL: 1712.52
+TP: 1717.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-19 09:15
+Entry (GC): 1709.30
+SL: 1710.07
+TP: 1707.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-20 10:00
+Entry (GC): 1705.70
+SL: 1707.56
+TP: 1701.98
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-22 10:15
+Entry (GC): 1717.80
+SL: 1719.81
+TP: 1713.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-26 09:15
+Entry (GC): 1722.40
+SL: 1721.74
+TP: 1723.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-28 11:45
+Entry (GC): 1737.10
+SL: 1736.77
+TP: 1737.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-01 09:15
+Entry (GC): 1781.10
+SL: 1778.30
+TP: 1786.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-02 11:00
+Entry (GC): 1791.00
+SL: 1791.60
+TP: 1789.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-03 09:45
+Entry (GC): 1780.90
+SL: 1779.77
+TP: 1783.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-04 09:30
+Entry (GC): 1789.80
+SL: 1791.77
+TP: 1785.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-08 11:45
+Entry (GC): 1795.10
+SL: 1795.97
+TP: 1793.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-15 09:30
+Entry (GC): 1801.60
+SL: 1800.94
+TP: 1802.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-22 09:15
+Entry (GC): 1750.00
+SL: 1748.74
+TP: 1752.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-23 11:30
+Entry (GC): 1748.50
+SL: 1746.67
+TP: 1752.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-24 09:15
+Entry (GC): 1760.40
+SL: 1762.76
+TP: 1755.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-26 09:15
+Entry (GC): 1764.40
+SL: 1763.13
+TP: 1766.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-29 09:15
+Entry (GC): 1731.80
+SL: 1731.20
+TP: 1733.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-01 10:45
+Entry (GC): 1718.20
+SL: 1719.92
+TP: 1714.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-02 09:30
+Entry (GC): 1715.10
+SL: 1715.65
+TP: 1714.00
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-07 09:15
+Entry (GC): 1714.10
+SL: 1716.53
+TP: 1709.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-08 09:15
+Entry (GC): 1728.80
+SL: 1727.03
+TP: 1732.35
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-12 10:15
+Entry (GC): 1737.20
+SL: 1738.01
+TP: 1735.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-15 09:15
+Entry (GC): 1698.50
+SL: 1699.39
+TP: 1696.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-16 09:30
+Entry (GC): 1664.00
+SL: 1661.69
+TP: 1668.62
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-19 09:45
+Entry (GC): 1673.70
+SL: 1674.92
+TP: 1671.27
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-21 09:15
+Entry (GC): 1679.00
+SL: 1677.38
+TP: 1682.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-26 11:15
+Entry (GC): 1644.30
+SL: 1643.34
+TP: 1646.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-28 09:30
+Entry (GC): 1628.10
+SL: 1632.17
+TP: 1619.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-29 09:15
+Entry (GC): 1655.20
+SL: 1656.16
+TP: 1653.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-03 09:15
+Entry (GC): 1670.50
+SL: 1668.87
+TP: 1673.76
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-07 09:30
+Entry (GC): 1720.40
+SL: 1721.91
+TP: 1717.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-12 09:30
+Entry (GC): 1679.50
+SL: 1680.28
+TP: 1677.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-13 09:15
+Entry (GC): 1677.20
+SL: 1679.06
+TP: 1673.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-17 10:45
+Entry (GC): 1662.90
+SL: 1663.72
+TP: 1661.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-18 09:15
+Entry (GC): 1661.80
+SL: 1663.32
+TP: 1658.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-20 10:45
+Entry (GC): 1638.50
+SL: 1639.24
+TP: 1637.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-26 09:15
+Entry (GC): 1674.90
+SL: 1678.24
+TP: 1668.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-02 09:15
+Entry (GC): 1656.90
+SL: 1654.93
+TP: 1660.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-04 10:00
+Entry (GC): 1648.40
+SL: 1646.15
+TP: 1652.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-08 09:15
+Entry (GC): 1668.90
+SL: 1666.91
+TP: 1672.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-10 09:30
+Entry (GC): 1709.50
+SL: 1707.38
+TP: 1713.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-11 10:15
+Entry (GC): 1769.10
+SL: 1770.22
+TP: 1766.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-15 10:00
+Entry (GC): 1779.50
+SL: 1775.94
+TP: 1786.62
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-17 09:15
+Entry (GC): 1770.00
+SL: 1768.70
+TP: 1772.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-18 09:15
+Entry (GC): 1764.00
+SL: 1762.42
+TP: 1767.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-29 10:00
+Entry (GC): 1753.40
+SL: 1750.80
+TP: 1758.59
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-02 11:15
+Entry (GC): 1813.70
+SL: 1812.12
+TP: 1816.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-05 09:15
+Entry (GC): 1810.80
+SL: 1808.29
+TP: 1815.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-06 10:30
+Entry (GC): 1785.60
+SL: 1786.11
+TP: 1784.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-08 09:45
+Entry (GC): 1794.20
+SL: 1793.14
+TP: 1796.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-09 09:15
+Entry (GC): 1803.80
+SL: 1801.63
+TP: 1808.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-12 09:30
+Entry (GC): 1801.60
+SL: 1803.37
+TP: 1798.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-16 09:30
+Entry (GC): 1786.80
+SL: 1789.13
+TP: 1782.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-23 09:30
+Entry (GC): 1804.70
+SL: 1806.36
+TP: 1801.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-29 09:15
+Entry (GC): 1817.10
+SL: 1819.46
+TP: 1812.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-03 10:45
+Entry (GC): 1842.20
+SL: 1840.09
+TP: 1846.42
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-05 09:45
+Entry (GC): 1854.60
+SL: 1856.16
+TP: 1851.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-10 09:15
+Entry (GC): 1879.50
+SL: 1881.70
+TP: 1875.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-11 09:30
+Entry (GC): 1890.00
+SL: 1890.81
+TP: 1888.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-12 09:15
+Entry (GC): 1885.60
+SL: 1884.25
+TP: 1888.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-18 10:00
+Entry (GC): 1917.00
+SL: 1918.25
+TP: 1914.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-19 09:15
+Entry (GC): 1912.60
+SL: 1911.57
+TP: 1914.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-20 09:15
+Entry (GC): 1929.60
+SL: 1927.54
+TP: 1933.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-30 09:45
+Entry (GC): 1924.00
+SL: 1925.09
+TP: 1921.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-01 11:00
+Entry (GC): 1941.90
+SL: 1942.97
+TP: 1939.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-03 09:15
+Entry (GC): 1927.30
+SL: 1923.76
+TP: 1934.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-07 09:15
+Entry (GC): 1887.80
+SL: 1882.55
+TP: 1898.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-08 11:00
+Entry (GC): 1893.50
+SL: 1891.04
+TP: 1898.42
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-09 09:15
+Entry (GC): 1896.10
+SL: 1897.40
+TP: 1893.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-15 09:15
+Entry (GC): 1845.70
+SL: 1848.01
+TP: 1841.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-22 09:45
+Entry (GC): 1842.60
+SL: 1841.32
+TP: 1845.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-23 09:15
+Entry (GC): 1834.20
+SL: 1833.32
+TP: 1835.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-27 09:15
+Entry (GC): 1817.40
+SL: 1815.71
+TP: 1820.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-28 09:15
+Entry (GC): 1818.90
+SL: 1819.83
+TP: 1817.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-01 09:15
+Entry (GC): 1840.20
+SL: 1845.21
+TP: 1830.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-02 09:15
+Entry (GC): 1840.20
+SL: 1841.58
+TP: 1837.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-08 09:15
+Entry (GC): 1818.60
+SL: 1817.05
+TP: 1821.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-09 11:15
+Entry (GC): 1822.90
+SL: 1823.55
+TP: 1821.60
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-13 09:15
+Entry (GC): 1889.20
+SL: 1891.64
+TP: 1884.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-17 09:15
+Entry (GC): 1934.60
+SL: 1935.75
+TP: 1932.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — GOLD_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-20 09:15
+Entry (GC): 2003.00
+SL: 1997.43
+TP: 2014.13
+RR: 2.0
+Reason: London range false break of the LOW

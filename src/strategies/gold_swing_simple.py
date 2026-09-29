@@ -216,7 +216,7 @@ def backtest(m1: pd.DataFrame, cfg: Config = Config(), prep: dict | None = None)
     v15, v1, v4, atr, dir4, ev = P["v15"], P["v1"], P["v4"], P["atr"], P["dir4"], P["ev"]
     o15, h15, l15, c15 = (v15[x].to_numpy() for x in ("open", "high", "low", "close"))
     ini15, fin15 = v15.index, pd.DatetimeIndex(v15.fin)
-    ini15_ns = ini15.asi8
+    ini15_ns = ini15.as_unit("ns").asi8
     aj15 = v15.ajuste.to_numpy() if "ajuste" in v15 else np.zeros(len(v15))
     h1, l1, c1 = v1.high.to_numpy(), v1.low.to_numpy(), v1.close.to_numpy()
     ini1, fin1 = v1.index, pd.DatetimeIndex(v1.fin)

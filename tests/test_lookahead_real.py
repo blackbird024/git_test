@@ -74,3 +74,13 @@ def test_gold_swing_minimal_no_lookahead():
     assert len(gold_swing_minimal.senales(tramo)) > 50
     cortes = [pd.Timestamp(x, tz="UTC") for x in ("2018-03-10", "2018-05-12", "2018-07-14", "2018-09-08")]
     assert comprobar(gold_swing_minimal.senales, tramo, cortes) == []
+
+
+@hay_datos
+def test_gold_london_false_break_no_lookahead():
+    from src.strategies import gold_london_false_break
+    m1 = velas_1m("GC")
+    tramo = m1[(m1.index >= "2018-01-01") & (m1.index < "2018-10-01")]
+    assert len(gold_london_false_break.senales(tramo)) > 20
+    cortes = [pd.Timestamp(x, tz="UTC") for x in ("2018-03-10", "2018-05-12", "2018-07-14", "2018-09-08")]
+    assert comprobar(gold_london_false_break.senales, tramo, cortes) == []

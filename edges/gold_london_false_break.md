@@ -122,3 +122,21 @@ Ninguna de estas cifras cambia la v1.0.
 4. Stops cortos (una sola vela de 15m): los costes pesarán en R. Por eso se informa también sin costes.
 5. Las interpretaciones del punto 3 ("primer break", ruptura real que gasta el extremo, vela que ataca los dos lados)
    son mías, fijadas aquí antes de ver datos.
+
+## Resultado del desarrollo (2-ene-2015 → 21-mar-2023): añadido tras ejecutar
+Informe: `reports/GOLD_LONDON_FALSE_BREAK_v1.0/`. Auditoría de look-ahead: OK en las 930 operaciones.
+
+| v1.0 | A (sin costes) | B (realistas) | C (+ deslizamiento) |
+|---|---|---|---|
+| Operaciones (al año) | 930 (113) | 930 (113) | 930 (113) |
+| Acierto | 37,6 % | 35,4 % | 32,0 % |
+| Profit factor | 1,00 | 0,53 | 0,35 |
+| R medio (t) | +0,003 (0,06) | −0,393 (−9,19) | −0,731 (−14,98) |
+
+- **Sin ventaja ni antes de costes.** Con costes, la pérdida es grande: el stop mediano es de 1,13 $/oz y los costes de
+  B cuestan ~0,40 R por operación.
+- **Diagnóstico:**
+  - HIGH→SHORT +0,07 R y LOW→LONG −0,06 R sin costes, ambos con |t| ≈ 1,1 (ruido);
+  - sin relación entre rango, profundidad y resultado sin costes (Spearman 0,03 y 0,002);
+  - la sensibilidad (TP 1,5 / 2,5 y buffer 0) da lo mismo.
+- **Veredicto: RECHAZADA en el desarrollo.** El fuera de muestra sigue bloqueado y las reglas no se tocan.
