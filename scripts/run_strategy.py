@@ -19,21 +19,27 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import load_instruments, load_system  # noqa: E402
-from src.data.loader import drop_short_sessions, load_minutes  # noqa: E402
+from src.data.loader import load_clean  # noqa: E402
 from src.engine.backtest import Backtester  # noqa: E402
 from src.risk.apex_eod import simulate_all_starts, summarize  # noqa: E402
 from src.strategies.close_momentum import CloseMomentum  # noqa: E402
 from src.strategies.orb import ORB  # noqa: E402
+from src.strategies.vwap_trend import VWAPTrend  # noqa: E402
 from src.validation.metrics import trade_metrics  # noqa: E402
 
 PERIODS = {"is": ("2015-01-01", "2023-01-01"), "oos": ("2023-01-01", None)}
 REPORTS = Path(__file__).resolve().parent.parent / "reports"
 
 # Variantes de cada estrategia, fijadas de antemano (no se eligen mirando resultados).
+# Cada función recibe {"MNQ": velas de NQ, "MGC": velas de GC}.
 VARIANTS = {
-    "orb": ("ORB en MNQ", lambda nq: [ORB.build(nq, m, s) for m in (5, 15, 30) for s in ("range", "atr")]),
-    "cm": ("Momentum de cierre en MNQ", lambda nq: [CloseMomentum.build(nq, k) for k in (0.1, 0.2)]),
+    "orb": ("ORB en MNQ", lambda d: [ORB.build(d["MNQ"], m, s)
+                                     for m in (5, 15, 30) for s in ("range", "atr")]),
+    "cm": ("Momentum de cierre en MNQ", lambda d: [CloseMomentum.build(d["MNQ"], k) for k in (0.1, 0.2)]),
+    "vwap": ("Tendencia VWAP en MNQ y MGC", lambda d: [VWAPTrend.build(d[i], i, k)
+                                                      for i in ("MNQ", "MGC") for k in (0.1, 0.2)]),
 }
+SOURCES = {"MNQ": "NQ", "MGC": "GC"}
 
 
 def main() -> None:
@@ -50,13 +56,13 @@ def main() -> None:
 
     # Cargamos un mes extra antes del inicio para que el ATR esté disponible desde el primer día.
     warmup = (pd.Timestamp(start) - pd.Timedelta(days=40)).strftime("%Y-%m-%d")
-    nq = drop_short_sessions(load_minutes("NQ", warmup, end))
-    data = {"MNQ": nq}
+    data = {inst: load_clean(root, warmup, end) for inst, root in SOURCES.items()}
 
     rows, dailies = [], {}
-    for strat in make_variants(nq):
+    for strat in make_variants(data):
         for label, insts in (("con_costes", instruments), ("sin_costes", free)):
-            res = Backtester(insts, rules, account.max_micros).run(data, [strat])
+            only = {strat.instrument: data[strat.instrument]}  # solo el instrumento que opera
+            res = Backtester(insts, rules, account.max_micros).run(only, [strat])
             daily = res.daily[res.daily.index >= pd.Timestamp(start)]
             trades = res.trades[pd.to_datetime(res.trades.entry_time).dt.tz_localize(None) >= pd.Timestamp(start)] \
                 if not res.trades.empty else res.trades
@@ -72,7 +78,7 @@ def main() -> None:
                   f"PF={m.get('profit_factor')} ops={m.get('operaciones')}", flush=True)
 
     # Promedio de variantes: 1/N del resultado de cada una.
-    avg = pd.concat({k: v[["pnl", "min_intraday_pnl"]] for k, v in dailies.items()}, axis=1)
+    avg = pd.concat({k: v[["pnl", "min_intraday_pnl"]] for k, v in dailies.items()}, axis=1, sort=True).fillna(0)
     ens = pd.DataFrame({
         "pnl": avg.xs("pnl", axis=1, level=1).mean(axis=1),
         "min_intraday_pnl": avg.xs("min_intraday_pnl", axis=1, level=1).mean(axis=1),

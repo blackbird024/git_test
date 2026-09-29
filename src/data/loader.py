@@ -36,3 +36,22 @@ def drop_short_sessions(df: pd.DataFrame, min_bars: int = 300) -> pd.DataFrame:
     counts = rth.groupby(rth.index.date).size()
     keep = set(counts[counts >= min_bars].index)
     return df[[d in keep for d in df.index.date]]
+
+
+def drop_illiquid_sessions(df: pd.DataFrame, min_ratio: float = 0.25, window: int = 20) -> pd.DataFrame:
+    """Quita los días cuyo volumen en sesión regular es menor que `min_ratio` x la mediana de los
+    `window` días ANTERIORES.
+
+    Motivo: unas 12 veces al año (a final de mes), el contrato continuo de GC apunta ese día a un
+    vencimiento casi sin actividad (≈3 % del volumen normal). Esos precios no son el mercado real.
+    """
+    rth = df.between_time("09:30", "16:00", inclusive="left")
+    vol = rth.groupby(rth.index.date).volume.sum()
+    ref = vol.rolling(window, min_periods=5).median().shift(1)
+    keep = set(vol[(ref.isna()) | (vol >= min_ratio * ref)].index)
+    return df[[d in keep for d in df.index.date]]
+
+
+def load_clean(root: str, start: str | None = None, end: str | None = None) -> pd.DataFrame:
+    """Carga + filtros de días cortos e ilíquidos. Es lo que deben usar los backtests."""
+    return drop_illiquid_sessions(drop_short_sessions(load_minutes(root, start, end)))

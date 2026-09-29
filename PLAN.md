@@ -35,12 +35,12 @@ Simularemos miles de "evaluaciones de 30 días" empezando en fechas distintas y 
 ## Fases
 
 0. **Entorno y configuración** ← *hecho*
-1. **Datos**: descarga, paso a hora de NY, unión de contratos, control de calidad ← *descargador listo; faltan la clave y el acceso de red*
-2. **Motor + simulador Apex EOD**, con tests hechos a mano ← *hecho (21 pruebas)*
-3. **ORB (MNQ)**: variantes 5/15/30 min × stop en el rango o por ATR, promediadas
-4. **Validación**: in-sample / out-of-sample, walk-forward, Monte Carlo
-5. **VWAP (MNQ + MGC)**
-6. **Momentum de cierre (MNQ)**: ventana 15:20–15:50 ET por el margen de seguridad
+1. **Datos**: descarga, paso a hora de NY, unión de contratos, control de calidad ← *hecho: NQ y GC 2015–2026; filtros de días cortos e ilíquidos*
+2. **Motor + simulador Apex EOD**, con tests hechos a mano ← *hecho*
+3. **ORB (MNQ)**: variantes 5/15/30 min × stop en el rango o por ATR, promediadas ← *in-sample: las 6 variantes pierden tras costes (reports/orb_is.md)*
+4. **Validación**: in-sample / out-of-sample, walk-forward, Monte Carlo ← *Monte Carlo y viabilidad Apex hechos (reports/apex_viabilidad.md)*
+5. **VWAP (MNQ + MGC)** ← *in-sample: pierde tras costes; MGC tiene ventaja bruta estable (reports/vwap_is.md)*
+6. **Momentum de cierre (MNQ)**: ventana 15:20–15:50 ET por el margen de seguridad ← *in-sample: pierde tras costes (reports/cm_is.md)*
 7. **Portafolio**: riesgo igual por estrategia y correlaciones
 8. **Pine Script v6**: alertas para ejecución manual
 
@@ -57,7 +57,7 @@ src/indicators/    ATR, VWAP, rango de apertura
 src/strategies/    orb.py, vwap_trend.py, close_momentum.py
 src/engine/        motor de backtest
 src/risk/          tamaño de posición, límites, simulador Apex EOD
-src/validation/    métricas, IS/OOS, walk-forward, Monte Carlo
+src/validation/    métricas, IS/OOS, walk-forward, Monte Carlo ← *Monte Carlo y viabilidad Apex hechos (reports/apex_viabilidad.md)*
 scripts/           lo que se ejecuta
 reports/           resultados de cada fase
 tests/             comprobaciones automáticas
