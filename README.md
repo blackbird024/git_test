@@ -1,32 +1,42 @@
-# Sistema multiestrategia intradía (semiautomático) — Apex EOD
+# Sistema multiestrategia para futuros (oro y Nasdaq) — metodología de 4 pasos
 
-Investigación y backtest en Python de 3 estrategias intradía en MNQ y MGC,
-con simulación de las reglas de la evaluación EOD de Apex Trader Funding.
-El sistema **genera señales**; las órdenes las coloca una persona a mano (Apex no permite automatización).
+1. **Ventaja**: hipótesis con causa explicable (`edges/`).
+2. **Mejora**: filtros de régimen, gestión y salidas, uno a uno.
+3. **Validación**: fuera de muestra, sensibilidad ±20 %, otros mercados, costes x2, Monte Carlo.
+4. **Implementación**: simulación Apex (drawdown EOD), incubación y forward test (sin enviar órdenes).
 
-Plan completo y decisiones: [PLAN.md](PLAN.md).
-
-## Puesta en marcha
+## Ejecutar todo
 
 ```bash
 pip install -r requirements.txt
-python -m pytest -q                              # comprobar que el motor funciona
-python scripts/download_databento.py             # ver cuánto costaría descargar los datos
-python scripts/download_databento.py --confirmar # descargarlos (necesita DATABENTO_API_KEY)
-python scripts/check_data.py                     # control de calidad de los datos
-python scripts/run_strategy.py --estrategia orb --periodo is   # backtest de una estrategia
-python scripts/apex_viability.py                 # ¿qué ventaja hace falta para aprobar Apex?
-python scripts/run_orb_5m.py --periodo desarrollo # ORB 5 min (parámetros en config/orb_5m.yaml)
-python scripts/run_study.py --estudio orb_final  # estudio con criterios de aprobación (también: cm)
+python run_all.py        # datos -> calidad -> (pasos aprobados) -> informes en reports/
+python -m pytest         # tests: look-ahead, horas, stop/objetivo en la misma vela, datos
 ```
 
-## Dónde está cada cosa
+## Estructura
 
 | Carpeta | Contenido |
 |---|---|
-| `config/` | Reglas de Apex, del sistema y de los instrumentos (se editan aquí, no en el código) |
-| `src/engine/` | Motor de backtest vela a vela |
-| `src/risk/` | Tamaño de posición y simulador de evaluación Apex EOD |
-| `src/validation/` | Métricas |
-| `src/data/` | Carga de datos |
-| `tests/` | Pruebas automáticas con casos calculados a mano |
+| `data/raw/` | Futuros de CME (Databento, 1 minuto y diario). No se suben a GitHub (licencia) |
+| `data/mt5/` | CSV exportados de MT5 (opcional) |
+| `data/processed/` | Velas limpias en UTC y marcos 5M, 1H, 4H, 1D |
+| `config/particion.json` | Corte desarrollo (70 %) / fuera de muestra (30 %), fijado una sola vez |
+| `src/data/` | Cargadores (Databento y MT5), control de calidad, marcos temporales |
+| `src/engine/` | Costes, ejecución (entrada en la vela siguiente; SL y TP en la misma vela = pérdida), look-ahead |
+| `src/strategies/`, `src/metrics/`, `src/apex/`, `src/report/` | Estrategias, métricas, simulador Apex, informes HTML |
+| `edges/` | Una ficha por ventaja: hipótesis, causa, reglas y qué la refutaría |
+| `reports/` | Informes (`calidad_datos.md`, y un HTML por estrategia) |
+| `archive/` | Experimentos anteriores a esta metodología (solo referencia) |
+
+## Reglas del proyecto
+
+- Todo en UTC; las reglas de sesión se escriben en hora de Italia o de Nueva York y se convierten
+  (los cambios de horario de verano de EE. UU. y de Europa no coinciden).
+- Señales solo con velas cerradas; ejecución en la apertura de la vela siguiente.
+- Máximo 3 parámetros libres por estrategia; criterios de aprobado fijados antes de ver resultados.
+- Costes: comisión + 1 tick por lado (2 en aperturas de Londres, Nueva York y Globex).
+
+## Estado
+
+- [x] Paso 0: datos, calidad, marcos temporales, tests base
+- [ ] Paso 1: versión mínima de cada ventaja

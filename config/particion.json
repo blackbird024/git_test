@@ -1,0 +1,102 @@
+{
+  "NQ": {
+    "primera_sesion": "2015-01-02",
+    "ultima_sesion": "2026-09-28",
+    "inicio_fuera_de_muestra": "2023-03-22"
+  },
+  "GC": {
+    "primera_sesion": "2015-01-02",
+    "ultima_sesion": "2026-09-28",
+    "inicio_fuera_de_muestra": "2023-03-22"
+  },
+  "diario_6A": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-12"
+  },
+  "diario_6B": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-12"
+  },
+  "diario_6E": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-12"
+  },
+  "diario_6J": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-12"
+  },
+  "diario_CL": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-08"
+  },
+  "diario_ES": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-12"
+  },
+  "diario_GC": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-09"
+  },
+  "diario_HG": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-09"
+  },
+  "diario_HO": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-08"
+  },
+  "diario_NG": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-09"
+  },
+  "diario_NQ": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-12"
+  },
+  "diario_RTY": {
+    "primera_sesion": "2017-07-09",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2023-12-22"
+  },
+  "diario_SI": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-09"
+  },
+  "diario_YM": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-10"
+  },
+  "diario_ZB": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-10"
+  },
+  "diario_ZF": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-10"
+  },
+  "diario_ZN": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-10"
+  },
+  "diario_ZT": {
+    "primera_sesion": "2010-06-07",
+    "ultima_sesion": "2026-09-27",
+    "inicio_fuera_de_muestra": "2021-11-10"
+  }
+}
