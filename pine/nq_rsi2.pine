@@ -10,6 +10,11 @@ strategy("RSI(2) Connors NQ — papel", overlay = true, default_qty_type = strat
 umbralEntrada = input.float(20, "RSI(2) de entrada: menor que")
 umbralSalida  = input.float(70, "RSI(2) de salida: mayor que")
 maxSesiones   = input.int(5, "Máximo de sesiones en la operación")
+chatId        = input.string("", "Telegram: chat_id (vacío = alertas normales de TradingView)")
+
+// Con chat_id, el mensaje sale en JSON para el webhook https://api.telegram.org/bot<TU_TOKEN>/sendMessage
+aviso(string texto) =>
+    chatId == "" ? texto : "{\"chat_id\": \"" + chatId + "\", \"text\": \"" + texto + "\"}"
 
 rsi2   = ta.rsi(close, 2)
 sma200 = ta.sma(close, 200)
@@ -18,12 +23,12 @@ senal  = close > sma200 and rsi2 < umbralEntrada
 if barstate.isconfirmed
     if strategy.position_size == 0 and senal
         strategy.entry("Largo", strategy.long)
-        alert("RSI(2) NQ: COMPRAR 1 MNQ en la reapertura. RSI(2)=" + str.tostring(rsi2, "#.0"), alert.freq_once_per_bar_close)
+        alert(aviso("🟢 RSI(2) NQ: COMPRAR 1 MNQ en la reapertura (00:00 Italia). RSI(2)=" + str.tostring(rsi2, "#.0")), alert.freq_once_per_bar_close)
     else if strategy.position_size > 0
         sesiones = bar_index - strategy.opentrades.entry_bar_index(0) + 1
         if rsi2 > umbralSalida or sesiones >= maxSesiones
             strategy.close("Largo")
-            alert("RSI(2) NQ: VENDER en la reapertura. RSI(2)=" + str.tostring(rsi2, "#.0") + ", sesiones=" + str.tostring(sesiones), alert.freq_once_per_bar_close)
+            alert(aviso("🔴 RSI(2) NQ: VENDER (cerrar) en la reapertura. RSI(2)=" + str.tostring(rsi2, "#.0") + ", sesiones=" + str.tostring(sesiones)), alert.freq_once_per_bar_close)
 
 plot(sma200, "SMA 200", color = color.new(#2a78d6, 0), linewidth = 2)
 plotshape(senal and strategy.position_size == 0, "Señal", shape.triangleup, location.belowbar, color.new(#008300, 0), size = size.small)

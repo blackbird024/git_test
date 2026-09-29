@@ -14,6 +14,7 @@
 indicator("Zona de ruido MNQ — papel", overlay = true, max_labels_count = 500)
 
 dias = input.int(14, "Días para el ruido normal (sigma)", minval = 10)
+chatId = input.string("", "Telegram: chat_id (vacío = alertas normales de TradingView)")
 mult = input.float(1.0, "Multiplicador de la banda")
 minDias = 10
 
@@ -107,14 +108,20 @@ plotshape(compra, "COMPRAR", shape.triangleup, location.belowbar, color.new(#008
 plotshape(venta, "VENDER", shape.triangledown, location.abovebar, color.new(#c62828, 0), size = size.small, text = "S")
 plotshape(cierra and not compra and not venta, "CERRAR", shape.xcross, location.abovebar, color.new(#555555, 0), size = size.tiny)
 
+// Con chat_id, el mensaje sale en JSON para el webhook de Telegram:
+//   URL del webhook en la alerta: https://api.telegram.org/bot<TU_TOKEN>/sendMessage   (el token SOLO ahí, nunca aquí)
+aviso(string texto) =>
+    string msg = texto + " | " + syminfo.ticker + " " + str.format_time(time_close, "dd-MM HH:mm", "Europe/Rome") + " (Italia)"
+    chatId == "" ? msg : "{\"chat_id\": \"" + chatId + "\", \"text\": \"" + msg + "\"}"
+
 if compra
-    alert("ZONA DE RUIDO: COMPRAR 1 MNQ ahora (apertura del minuto). Banda sup=" + str.tostring(sup, "#.00") + " VWAP=" + str.tostring(vwap, "#.00"), alert.freq_once_per_bar_close)
+    alert(aviso("🟢 ZONA DE RUIDO: COMPRAR 1 MNQ ahora. Precio " + str.tostring(close, "#.00") + ", banda sup " + str.tostring(sup, "#.00") + ", VWAP " + str.tostring(vwap, "#.00")), alert.freq_once_per_bar_close)
 if venta
-    alert("ZONA DE RUIDO: VENDER 1 MNQ ahora. Banda inf=" + str.tostring(inf, "#.00") + " VWAP=" + str.tostring(vwap, "#.00"), alert.freq_once_per_bar_close)
+    alert(aviso("🔴 ZONA DE RUIDO: VENDER 1 MNQ ahora. Precio " + str.tostring(close, "#.00") + ", banda inf " + str.tostring(inf, "#.00") + ", VWAP " + str.tostring(vwap, "#.00")), alert.freq_once_per_bar_close)
 if cierra and not compra and not venta
-    alert("ZONA DE RUIDO: CERRAR la posición ahora (perdió banda y VWAP).", alert.freq_once_per_bar_close)
+    alert(aviso("⚪ ZONA DE RUIDO: CERRAR la posición ahora (perdió banda y VWAP). Precio " + str.tostring(close, "#.00")), alert.freq_once_per_bar_close)
 if finDia
-    alert("ZONA DE RUIDO: CERRAR todo (fin de sesión 16:00 NY).", alert.freq_once_per_bar_close)
+    alert(aviso("⚪ ZONA DE RUIDO: CERRAR todo (fin de sesión, 22:00 Italia)."), alert.freq_once_per_bar_close)
 
 // Aviso si aún no hay 10 días de historia en el gráfico
 if barstate.islast and diasVistos < minDias + 1
