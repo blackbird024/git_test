@@ -1,0 +1,327 @@
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2015-01-08 18:45
+Entry (GC): 1207.35
+SL: 1203.89
+TP: 1214.26
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2015-11-09 21:45
+Entry (GC): 1091.65
+SL: 1095.15
+TP: 1084.66
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-01-27 15:00
+Entry (GC): 1115.50
+SL: 1109.43
+TP: 1127.64
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-02-03 00:00
+Entry (GC): 1127.05
+SL: 1122.35
+TP: 1136.46
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-02-05 13:30
+Entry (GC): 1157.40
+SL: 1153.33
+TP: 1165.53
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-04-12 13:30
+Entry (GC): 1257.50
+SL: 1254.69
+TP: 1263.11
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-05-05 11:45
+Entry (GC): 1282.35
+SL: 1285.56
+TP: 1275.93
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-11-15 05:00
+Entry (GC): 1226.30
+SL: 1231.71
+TP: 1215.48
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2016-12-02 13:15
+Entry (GC): 1175.15
+SL: 1178.92
+TP: 1167.61
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2017-01-20 15:00
+Entry (GC): 1204.40
+SL: 1209.18
+TP: 1194.84
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2017-01-23 17:30
+Entry (GC): 1214.85
+SL: 1208.66
+TP: 1227.23
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2017-06-14 23:30
+Entry (GC): 1265.70
+SL: 1284.57
+TP: 1227.97
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2018-01-31 06:30
+Entry (GC): 1343.10
+SL: 1348.11
+TP: 1333.08
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2018-02-01 04:00
+Entry (GC): 1348.00
+SL: 1350.66
+TP: 1342.68
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2018-02-21 23:15
+Entry (GC): 1327.45
+SL: 1338.86
+TP: 1304.64
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2018-08-09 09:00
+Entry (GC): 1220.90
+SL: 1225.80
+TP: 1211.09
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-02-15 17:00
+Entry (GC): 1319.35
+SL: 1323.32
+TP: 1311.40
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-02-27 13:00
+Entry (GC): 1330.70
+SL: 1332.19
+TP: 1327.72
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-04-04 00:00
+Entry (GC): 1296.55
+SL: 1299.17
+TP: 1291.31
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-04-29 06:15
+Entry (GC): 1286.45
+SL: 1275.77
+TP: 1307.80
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-06-13 05:15
+Entry (GC): 1339.15
+SL: 1341.72
+TP: 1334.01
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-08-01 11:00
+Entry (GC): 1417.95
+SL: 1414.15
+TP: 1425.55
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-10-25 20:00
+Entry (GC): 1506.85
+SL: 1502.75
+TP: 1515.05
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2019-11-19 05:30
+Entry (GC): 1471.45
+SL: 1476.08
+TP: 1462.18
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2020-03-17 04:00
+Entry (GC): 1502.35
+SL: 1521.44
+TP: 1464.17
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2020-06-09 05:30
+Entry (GC): 1703.20
+SL: 1710.28
+TP: 1689.04
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2020-07-24 10:30
+Entry (GC): 1885.45
+SL: 1879.86
+TP: 1896.62
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2020-09-22 17:45
+Entry (GC): 1910.65
+SL: 1924.07
+TP: 1883.82
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2020-12-24 05:00
+Entry (GC): 1880.60
+SL: 1884.97
+TP: 1871.87
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-02-19 13:45
+Entry (GC): 1779.50
+SL: 1789.35
+TP: 1759.80
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-07-02 12:30
+Entry (GC): 1780.35
+SL: 1774.06
+TP: 1792.93
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-09-08 15:00
+Entry (GC): 1795.65
+SL: 1804.74
+TP: 1777.47
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-09-23 12:30
+Entry (GC): 1767.85
+SL: 1759.67
+TP: 1784.20
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-09-24 14:00
+Entry (GC): 1747.35
+SL: 1758.43
+TP: 1725.18
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-10-08 04:30
+Entry (GC): 1757.45
+SL: 1753.23
+TP: 1765.88
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2021-10-21 10:45
+Entry (GC): 1784.80
+SL: 1780.72
+TP: 1792.96
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2022-01-21 05:30
+Entry (GC): 1840.25
+SL: 1836.26
+TP: 1848.23
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2022-03-24 08:00
+Entry (GC): 1945.05
+SL: 1949.81
+TP: 1935.54
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+SHORT SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2022-11-22 07:45
+Entry (GC): 1744.20
+SL: 1746.96
+TP: 1738.67
+RR: 2.0
+Reason: 4H bearish → 1H buy-side sweep → 1H bearish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2023-01-05 02:15
+Entry (GC): 1859.20
+SL: 1852.40
+TP: 1872.80
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest
+
+LONG SIGNAL — GOLD_SWING_SIMPLE_v1.0
+Time (UTC): 2023-02-23 08:45
+Entry (GC): 1834.10
+SL: 1830.76
+TP: 1840.78
+RR: 2.0
+Reason: 4H bullish → 1H sell-side sweep → 1H bullish confirmation → FVG retest

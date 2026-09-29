@@ -1,0 +1,52 @@
+# Reversión a la media al VWAP en MNQ (criterios fijados ANTES de ver resultados).
+# Ejecutar: python scripts/run_study.py --estudio mr
+# Si una vela de 5 min cierra a más de k x ATR del VWAP (entre 10:30 y 15:00), se entra EN CONTRA:
+# objetivo = VWAP en ese momento; stop a la misma distancia al otro lado (1:1). Salida 15:45.
+
+instrumento:
+  simbolo: MNQ
+  datos: NQ
+  valor_punto_usd: 2.0
+  tick: 0.25
+
+velas_minutos: 5
+horario_et:
+  primera_senal: "10:30"      # inicio de la vela de señal (incluida)
+  ultima_senal: "15:00"       # inicio de la vela de señal (excluida)
+  salida_tiempo: "15:45"
+
+atr_dias: 14
+desviacion_atr: 0.5           # distancia mínima al VWAP, en múltiplos del ATR diario
+relacion_stop_objetivo: 1.0   # stop = 1,0 x la distancia de la entrada al objetivo
+
+riesgo:
+  riesgo_por_operacion_usd: 150
+  contratos_max: 10
+  contratos_fijos: null       # un número = tamaño fijo, sin límite de riesgo (variante de diagnóstico)
+
+costes:
+  comision_por_contrato_y_lado_usd: 1.00
+  slippage_ticks_entrada: 1
+  slippage_ticks_stop: 1
+  slippage_ticks_salida_tiempo: 0
+  slippage_ticks_take_profit: 0
+
+apex:
+  saldo_inicial: 50000
+  drawdown_trailing_usd: 2000
+  trailing_se_detiene_en: null
+
+validacion:
+  fecha_inicio: "2015-01-01"
+  fecha_fin: null
+  fraccion_desarrollo: 0.70
+  variantes_desviacion_atr: [0.5, 0.75]
+  variantes_riesgo_usd: [150, 250]
+  diagnostico_contratos_fijos: 1   # añade una variante con 1 contrato fijo por cada desviación
+  montecarlo_simulaciones: 10000
+  semilla: 42
+
+criterios:
+  profit_factor_min: 1.15
+  t_min: 2.0
+  positivo_en_desarrollo_y_oos: true

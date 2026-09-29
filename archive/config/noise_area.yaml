@@ -1,0 +1,60 @@
+# Momentum intradía con "zona de ruido" (Zarattini, Aziz y Barbon, 2024), replicado en NQ con costes de MNQ.
+# Reglas del estudio original SIN cambios; criterios fijados ANTES de ver resultados.
+# Ejecutar: python scripts/run_study.py --estudio noise_area
+
+instrumento:
+  simbolo: MNQ
+  datos: NQ
+  valor_punto_usd: 2.0
+  tick: 0.25
+
+horario_et:
+  apertura: "09:30"
+  primer_chequeo: "10:00"
+  ultimo_chequeo: "15:30"
+  intervalo_minutos: 30       # solo se decide a las HH:00 y HH:30
+  cierre: "16:00"             # se cierra al cierre de la vela de 15:59
+
+zona_ruido:
+  dias: 14                    # sigma(t) = media de |cierre(t)/apertura - 1| en ese minuto, 14 días previos
+  multiplicador: 1.0          # banda = max/min(apertura, cierre anterior) x (1 +/- mult x sigma)
+
+tamano:                       # objetivo de volatilidad diaria como en el estudio
+  capital_usd: 50000
+  vol_objetivo_diaria: 0.02
+  apalancamiento_max: 4
+  vol_dias: 14
+  contratos_max: 10
+  contratos_fijos: null
+
+stop_duro: false              # false = como el estudio (salida solo en los chequeos de media hora)
+                              # true  = orden stop real en el nivel del trailing, actualizada cada 30 min
+                              #         (exigido por Apex: stop obligatorio)
+
+costes:
+  comision_por_contrato_y_lado_usd: 1.00
+  slippage_ticks_entrada: 1
+  slippage_ticks_stop: 1
+  slippage_ticks_salida_tiempo: 1
+  slippage_ticks_take_profit: 0
+
+apex:
+  saldo_inicial: 50000
+  drawdown_trailing_usd: 2000
+  trailing_se_detiene_en: null
+
+atr_dias: 14                  # no se usa; compatibilidad con el script de estudios
+
+validacion:
+  fecha_inicio: "2015-01-01"
+  fecha_fin: null
+  fraccion_desarrollo: 0.70
+  variantes_stop_duro: [false, true]
+  diagnostico_contratos_fijos: 1
+  montecarlo_simulaciones: 10000
+  semilla: 42
+
+criterios:
+  profit_factor_min: 1.15
+  t_min: 2.0
+  positivo_en_desarrollo_y_oos: true

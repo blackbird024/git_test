@@ -1,0 +1,49 @@
+# Momentum de cierre en MNQ: TODOS los parámetros. Ejecutar: python scripts/run_study.py --estudio cm
+# Si el retorno de 9:30 a 10:00 ET es positivo -> largo a las 15:30; negativo -> corto. Salida 15:58.
+
+instrumento:
+  simbolo: MNQ
+  datos: NQ
+  valor_punto_usd: 2.0
+  tick: 0.25
+
+horario_et:
+  inicio_senal: "09:30"       # retorno = cierre de la vela de 9:59 - apertura de la de 9:30 (velas de 1 min)
+  fin_senal: "10:00"
+  entrada: "15:30"            # apertura de la vela de 1 minuto de las 15:30
+  salida_tiempo: "15:58"      # apertura de la vela de 1 minuto de las 15:58
+
+atr_dias: 14
+stop:
+  pct_atr: 0.10               # stop de emergencia al 10 % del ATR diario, desde el precio de entrada
+take_profit_r: null           # sin objetivo: la salida normal es por tiempo
+max_operaciones_dia: 1
+
+riesgo:
+  riesgo_por_operacion_usd: 150
+  contratos_max: 10
+
+costes:
+  comision_por_contrato_y_lado_usd: 1.00
+  slippage_ticks_entrada: 1
+  slippage_ticks_stop: 1
+  slippage_ticks_salida_tiempo: 0   # igual que en la ORB; el informe muestra también el caso con 1 tick
+  slippage_ticks_take_profit: 0
+
+apex:
+  saldo_inicial: 50000
+  drawdown_trailing_usd: 2000
+  trailing_se_detiene_en: null
+
+validacion:
+  fecha_inicio: "2015-01-01"
+  fecha_fin: null
+  fraccion_desarrollo: 0.70
+  variantes_riesgo_usd: [150, 250]
+  montecarlo_simulaciones: 10000
+  semilla: 42
+
+criterios:
+  profit_factor_min: 1.15
+  t_min: 2.0
+  positivo_en_desarrollo_y_oos: true

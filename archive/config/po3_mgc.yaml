@@ -1,0 +1,58 @@
+# Power of Three (PO3) / "Judas swing" en MGC (criterios fijados ANTES de ver resultados).
+# Ejecutar: python scripts/run_study.py --estudio po3_mgc
+# 1) Acumulación: rango asiático 00:00-03:00 ET.
+# 2) Manipulación 03:00-05:00 ET: barrida de UN solo lado del rango asiático -> sesgo contrario.
+# 3) Distribución 08:00-11:00 ET: entrada en la dirección del sesgo ("sesgo" a las 8:00, o
+#    "confirmacion": primera vela de 5 min que cierra de nuevo dentro del rango y a favor del sesgo).
+# Stop detrás del extremo de la barrida (+1 tick). Objetivo 2R o solo tiempo. Salida 15:45.
+
+instrumento:
+  simbolo: MGC
+  datos: GC
+  valor_punto_usd: 10.0
+  tick: 0.1
+
+velas_minutos: 5
+horario_et:
+  acumulacion_inicio: "00:00"
+  acumulacion_fin: "03:00"
+  manipulacion_fin: "05:00"
+  distribucion_inicio: "08:00"
+  distribucion_fin: "11:00"   # última vela de entrada (excluida)
+  salida_tiempo: "15:45"
+
+entrada: sesgo                # "sesgo" o "confirmacion"
+take_profit_r: 2.0            # null = solo salida por tiempo
+atr_dias: 14                  # no se usa en las reglas; se mantiene por compatibilidad del estudio
+
+riesgo:
+  riesgo_por_operacion_usd: 250
+  contratos_max: 10
+  contratos_fijos: null
+
+costes:
+  comision_por_contrato_y_lado_usd: 1.00
+  slippage_ticks_entrada: 1
+  slippage_ticks_stop: 1
+  slippage_ticks_salida_tiempo: 0
+  slippage_ticks_take_profit: 0
+
+apex:
+  saldo_inicial: 50000
+  drawdown_trailing_usd: 2000
+  trailing_se_detiene_en: null
+
+validacion:
+  fecha_inicio: "2015-01-01"
+  fecha_fin: null
+  fraccion_desarrollo: 0.70
+  variantes_entrada: [sesgo, confirmacion]
+  variantes_target: [2.0, null]
+  diagnostico_contratos_fijos: 1
+  montecarlo_simulaciones: 10000
+  semilla: 42
+
+criterios:
+  profit_factor_min: 1.15
+  t_min: 2.0
+  positivo_en_desarrollo_y_oos: true
