@@ -1,0 +1,55 @@
+# ORB de 5 minutos en MNQ: TODOS los parámetros de la estrategia, el backtest y la validación.
+# Cambia aquí cualquier valor y vuelve a ejecutar: python scripts/run_orb_5m.py
+
+instrumento:
+  simbolo: MNQ
+  datos: NQ                 # usamos datos de NQ (mismo precio) con el valor del micro
+  valor_punto_usd: 2.0
+  tick: 0.25
+
+velas_minutos: 5
+
+horario_et:
+  apertura: "09:30"
+  ultima_entrada: "11:30"   # la entrada (apertura de la vela siguiente a la señal) no puede ser posterior
+  salida_tiempo: "15:45"    # cierre de cualquier posición abierta
+
+rango_apertura_minutos: 15  # 9:30 a 9:45
+
+filtro_rango_atr:
+  atr_dias: 14
+  max_pct: 0.25             # no operar si el rango > 25 % del ATR diario (día demasiado volátil)
+  min_pct: 0.05             # no operar si el rango < 5 % del ATR (rango sin información)
+
+take_profit_r: 2.0          # null = sin objetivo, solo salida por tiempo
+max_operaciones_dia: 1
+
+noticias:
+  filtrar: false            # true = no operar los días con alguno de estos eventos
+  eventos: [FOMC, CPI, NFP]
+  archivo: config/eventos_macro.csv
+
+riesgo:
+  riesgo_por_operacion_usd: 150
+  contratos_max: 10
+
+costes:
+  comision_por_contrato_y_lado_usd: 1.00
+  slippage_ticks_entrada: 1
+  slippage_ticks_stop: 1
+  slippage_ticks_salida_tiempo: 0   # la especificación no lo incluye; súbelo a 1 para ser más conservador
+  slippage_ticks_take_profit: 0     # orden límite
+
+apex:
+  saldo_inicial: 50000
+  drawdown_trailing_usd: 2000       # sigue el saldo máximo, incluidas ganancias no realizadas
+  trailing_se_detiene_en: null      # p. ej. 100 -> deja de subir en saldo_inicial + 100 (null = nunca)
+
+validacion:
+  fecha_inicio: "2015-01-01"
+  fecha_fin: null                   # null = hasta el último dato
+  fraccion_desarrollo: 0.70         # primeros 70 % de los días = desarrollo; 30 % final = fuera de muestra
+  variantes_rango: [5, 15, 30]
+  variantes_target: [1.5, 2.0, 3.0, null]
+  montecarlo_simulaciones: 10000
+  semilla: 42

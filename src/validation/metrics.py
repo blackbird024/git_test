@@ -37,3 +37,33 @@ def daily_pnl_by_strategy(trades: pd.DataFrame) -> pd.DataFrame:
     """Tabla fecha x estrategia con el P&L diario, para calcular correlaciones entre estrategias."""
     t = trades.assign(date=pd.to_datetime(trades.exit_time).dt.tz_localize(None).dt.normalize())
     return t.pivot_table(index="date", columns="strategy", values="pnl_net", aggfunc="sum").fillna(0)
+
+
+def longest_streak(mask) -> int:
+    """Racha más larga de valores True seguidos (p. ej., operaciones perdedoras seguidas)."""
+    best = cur = 0
+    for v in mask:
+        cur = cur + 1 if v else 0
+        best = max(best, cur)
+    return best
+
+
+def trade_list_stats(trades: pd.DataFrame) -> dict:
+    """Métricas de una lista de operaciones con columnas pnl, gross, commission y risk_usd."""
+    if trades.empty:
+        return {"operaciones": 0}
+    pnl = trades.pnl
+    wins, losses = pnl[pnl > 0].sum(), -pnl[pnl < 0].sum()
+    equity = pnl.cumsum()
+    return {
+        "operaciones": len(trades),
+        "beneficio_neto": round(pnl.sum(), 0),
+        "beneficio_bruto": round(trades.gross.sum(), 0),
+        "comisiones": round(trades.commission.sum(), 0),
+        "profit_factor": round(wins / losses, 2) if losses > 0 else float("inf"),
+        "pct_acierto": round((pnl > 0).mean() * 100, 1),
+        "media_por_op": round(pnl.mean(), 1),
+        "expectativa_R": round((pnl / trades.risk_usd).mean(), 3),
+        "drawdown_max": round((equity - equity.cummax()).min(), 0),
+        "racha_perdedora_max": longest_streak(pnl <= 0),
+    }
