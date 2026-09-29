@@ -131,3 +131,20 @@ con cautela.
 con muy pocas operaciones).
 
 Cada hipótesis se clasifica por separado. Si las tres son FAILED, la investigación se detiene.
+
+## Resultado (añadido tras ejecutar)
+Informe: `reports/GOLD_MA_TREND_v1.0/README.md`. Auditorías de datos y de look-ahead: OK en las 3 hipótesis.
+
+| Escenario 1 | A 50/200 L+S | B 50/200 solo largos | C 20/100 L+S | Comprar y mantener |
+|---|---|---|---|---|
+| Operaciones (al año) | 23 (1,5) | 11 (0,7) | 50 (3,2) | — |
+| Sharpe desarrollo | 0,09 | 0,08 | −0,06 | 0,14 |
+| Sharpe fuera de muestra | 0,55 | 0,75 | 0,76 | 0,78 |
+| Sharpe periodo completo (t diario) | 0,26 (1,03) | 0,36 (1,44) | 0,23 (0,94) | 0,37 (1,48) |
+| Drawdown máximo | −35,7 % | −28,2 % | −49,8 % | −45,6 % |
+
+**FINAL STATUS:** A **INCONCLUSIVE**, B **INCONCLUSIVE**, C **INCONCLUSIVE**.
+- Ninguna tiene t ≥ 2 y ninguna supera el Sharpe de comprar y mantener.
+- A y B dependen de una sola operación (el largo de 2024-2026); C pierde en el desarrollo.
+- El beneficio viene del lado largo en los tramos alcistas; los cortos no aportan.
+- No hay evidencia de que la regla añada valor frente a tener oro. No se prueban más combinaciones.
