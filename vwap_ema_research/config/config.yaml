@@ -1,0 +1,141 @@
+# Investigación VWAP + EMAs, 15 minutos, por instrumento (nunca se mezclan mercados).
+# Horas en la zona `tz` de cada instrumento. Rutas relativas a vwap_ema_research/.
+
+general:
+  timeframe_minutes: 15
+  intrabar: "15m"            # 15m = todo con velas de 15 min (VWAP y stops/targets); "1m" = resolver con minutos
+  initial_capital: 50000
+  split: {train: 0.60, validation: 0.20, test: 0.20}     # por número de sesiones válidas, cronológico
+  min_sessions: 250
+  max_invalid_fraction: 0.001
+  min_bar_completeness: 0.8          # fracción mínima de minutos presentes en cada vela de 15 min
+  seed: 42
+
+# Configuración baseline (paso 3 del protocolo). Todo lo demás se compara contra esto.
+baseline:
+  model: "A"                 # A VWAP | B +EMA200 | C +EMA50/200 | D +EMA20/50/200
+  entry_type: "state"        # state | breakout | pullback
+  trend_filters: []          # ema200_slope | vwap_slope (los filtros EMA200 y EMA50/200 son los modelos B y C)
+  stop_type: "atr"           # atr | structure
+  atr_period: 14
+  atr_multiplier: 1.5
+  structure_bars: 5          # mínimo/máximo de las últimas N velas cerradas
+  take_profit_R: null        # null = sin TP fijo
+  exit_type: "vwap"          # vwap | ema20 | atr_trailing | fixed | partial_trailing | time
+  time_exit_minutes: 60
+  trailing_atr_multiplier: 2.0
+  partial_fraction: 0.5      # EXIT E: fracción que se cierra en 1R
+  partial_at_R: 1.0
+  ema_fast: 20
+  ema_medium: 50
+  ema_slow: 200
+  slope_bars: 4              # pendiente del VWAP y de la EMA200 (velas)
+  window: null               # null = toda la sesión de trading; o [inicio, fin]
+  risk_per_trade: 0.5        # % del capital actual
+  sizing: "risk"             # risk | fixed
+  fixed_contracts: 1
+  max_contracts: 50
+  daily_loss_limit: 2.0      # % del capital al inicio del día
+  max_consecutive_losses: 3  # pérdidas seguidas -> sin nuevas entradas ese día
+  max_trades_per_day: 6
+
+instruments:
+  MNQ:
+    data: "../data/raw/NQ_1m_2*.parquet"
+    price_source: "NQ (Databento GLBX.MDP3, contrato continuo NQ.v.0; mismo precio que MNQ)"
+    volume_source: "volumen negociado del futuro NQ en CME (1 min)"
+    tz: "America/New_York"
+    session: ["09:30", "16:00"]        # VWAP se reinicia al inicio de esta sesión
+    last_entry: "15:15"
+    eod_exit: "15:45"
+    hour_buckets: {"09:30-11:30": ["09:30", "11:30"], "11:30-13:30": ["11:30", "13:30"], "13:30-16:00": ["13:30", "16:00"]}
+    tick_size: 0.25
+    point_value: 2.0
+    commission_per_side: 0.85
+    spread_ticks: 0                    # futuros: el spread va implícito en el deslizamiento
+    slippage_ticks: 1
+    primary: true
+  NQ:
+    data: "../data/raw/NQ_1m_2*.parquet"
+    price_source: "NQ (Databento GLBX.MDP3, NQ.v.0)"
+    volume_source: "volumen negociado del futuro NQ en CME (1 min)"
+    tz: "America/New_York"
+    session: ["09:30", "16:00"]
+    last_entry: "15:15"
+    eod_exit: "15:45"
+    hour_buckets: {"09:30-11:30": ["09:30", "11:30"], "11:30-13:30": ["11:30", "13:30"], "13:30-16:00": ["13:30", "16:00"]}
+    tick_size: 0.25
+    point_value: 20.0
+    commission_per_side: 2.50
+    spread_ticks: 0
+    slippage_ticks: 1
+    primary: false                     # referencia: 1 contrato fijo (con 50.000 $ y 0,5 % casi nunca cabe 1 NQ)
+    sizing_override: "fixed"
+    capital_override: 500000           # 1 contrato completo necesita más capital; los resultados en R son comparables
+  MGC:
+    data: "../data/raw/GC_1m_2*.parquet"
+    price_source: "GC (Databento GLBX.MDP3, contrato continuo GC.v.0; mismo precio que MGC)"
+    volume_source: "volumen negociado del futuro GC en CME (1 min)"
+    tz: "America/New_York"
+    session: ["03:00", "13:30"]        # apertura de Londres (08:00 Londres casi todo el año) -> cierre del pit COMEX
+    last_entry: "12:45"
+    eod_exit: "13:15"
+    hour_buckets: {"europea 03:00-08:20": ["03:00", "08:20"], "apertura NY 08:20-09:30": ["08:20", "09:30"],
+                   "solapamiento 09:30-11:30": ["09:30", "11:30"], "resto NY 11:30-13:30": ["11:30", "13:30"]}
+    tick_size: 0.10
+    point_value: 10.0
+    commission_per_side: 0.85
+    spread_ticks: 0
+    slippage_ticks: 1
+    primary: true
+  GC:
+    data: "../data/raw/GC_1m_2*.parquet"
+    price_source: "GC (Databento GLBX.MDP3, GC.v.0)"
+    volume_source: "volumen negociado del futuro GC en CME (1 min)"
+    tz: "America/New_York"
+    session: ["03:00", "13:30"]
+    last_entry: "12:45"
+    eod_exit: "13:15"
+    hour_buckets: {"europea 03:00-08:20": ["03:00", "08:20"], "apertura NY 08:20-09:30": ["08:20", "09:30"],
+                   "solapamiento 09:30-11:30": ["09:30", "11:30"], "resto NY 11:30-13:30": ["11:30", "13:30"]}
+    tick_size: 0.10
+    point_value: 100.0
+    commission_per_side: 2.50
+    spread_ticks: 0
+    slippage_ticks: 1
+    primary: false
+    sizing_override: "fixed"
+    capital_override: 500000
+  XAUUSD:
+    data: "../data/mt5/XAUUSD*.csv"    # NO HAY DATOS: el programa lo informa y sigue con el resto
+    price_source: "CFD (broker)"
+    volume_source: "volumen de ticks del broker (no es volumen negociado: el VWAP no significa lo mismo)"
+    tz: "America/New_York"
+    session: ["03:00", "13:30"]
+    last_entry: "12:45"
+    eod_exit: "13:15"
+    hour_buckets: {"europea 03:00-08:20": ["03:00", "08:20"], "apertura NY 08:20-09:30": ["08:20", "09:30"],
+                   "solapamiento 09:30-11:30": ["09:30", "11:30"], "resto NY 11:30-13:30": ["11:30", "13:30"]}
+    tick_size: 0.01
+    point_value: 100.0                 # 1 lote = 100 onzas
+    commission_per_side: 3.50
+    spread_ticks: 20
+    slippage_ticks: 5
+    primary: true
+    data_timezone_if_naive: "Etc/GMT-2"
+
+# Pasos de optimización secuencial (cada uno con pocos valores, fijados antes de ver resultados)
+search:
+  models: ["A", "B", "C", "D"]
+  entry_types: ["state", "breakout", "pullback"]
+  trend_filters: ["ema200_slope", "vwap_slope"]
+  stops: [["atr", 1.0], ["atr", 1.5], ["atr", 2.0], ["structure", null]]
+  take_profits: [1.0, 1.5, 2.0, 2.5, 3.0, null]
+  exits: [["vwap", null], ["ema20", null], ["atr_trailing", null], ["fixed", null], ["partial_trailing", null],
+          ["time", 30], ["time", 60], ["time", 90], ["time", 120], ["time", 180]]
+  risk_levels: [0.25, 0.50, 0.75, 1.00]
+  sensitivity: {ema_slow: [180, 200, 220], ema_medium: [40, 50, 60], atr_multiplier: [1.0, 1.5, 2.0], atr_period: [10, 14, 20]}
+  walk_forward: {train_years: 3, test_years: 1}
+  min_trades_train: 150
+
+monte_carlo: {n: 2000, dd_thresholds_pct: [5, 10, 20, 30]}
