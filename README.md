@@ -39,4 +39,5 @@ python -m pytest         # tests: look-ahead, horas, stop/objetivo en la misma v
 ## Estado
 
 - [x] Paso 0: datos, calidad, marcos temporales, tests base
-- [ ] Paso 1: versión mínima de cada ventaja
+- [x] Paso 1: versión mínima de cada ventaja (sobrevive solo RSI(2) en NQ; ver reports/paso1_ventajas.md)
+- [ ] Paso 2: mejoras (solo RSI(2))

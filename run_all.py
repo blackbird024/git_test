@@ -1,4 +1,4 @@
-"""Un solo comando para todo el proyecto:  python run_all.py
+"""Un solo comando para todo el proyecto:  python run_all.py   (o solo algunos pasos: python run_all.py 1)
 
 Paso 0 (datos): carga, control de calidad, marcos temporales y corte desarrollo / fuera de muestra.
 Los pasos 1-4 se irán añadiendo aquí a medida que se aprueben.
@@ -82,5 +82,14 @@ def paso0() -> None:
     print(f"\nInforme: {INFORMES / 'calidad_datos.md'}")
 
 
+def paso1() -> None:
+    from src.report.paso1 import ejecutar
+    print(ejecutar())
+
+
 if __name__ == "__main__":
-    paso0()
+    etapas = sys.argv[1:] or ["0", "1"]
+    if "0" in etapas:
+        paso0()
+    if "1" in etapas:
+        paso1()

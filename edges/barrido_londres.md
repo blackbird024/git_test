@@ -26,7 +26,7 @@ Todas las horas en Italia (Europe/Rome); internamente en UTC.
 | Mercado | MGC (datos de GC), 10 $ por dólar de precio, tick 0,10 |
 | Niveles | Máximo y mínimo de Asia (01:00–08:50) y máximo y mínimo de la sesión anterior de CME |
 | Ventanas | 08:50–09:10 y 10:03–10:30 |
-| Barrido | Una vela de 1M dentro de la ventana supera un nivel (máximo por encima de un nivel superior, o mínimo por debajo de un nivel inferior). Nivel barrido = el más exterior superado |
+| Barrido | Una vela de 1M dentro de la ventana supera un nivel (máximo por encima de un nivel superior, o mínimo por debajo de un nivel inferior). Nivel barrido = el más exterior superado. Tiene que ser el PRIMER cruce: un nivel ya superado antes (desde las 08:50) ya está barrido y no cuenta (aclaración añadida antes de ejecutar) |
 | Confirmación | Una vela de 1M dentro de la ventana cierra de vuelta dentro (por debajo del nivel barrido si fue arriba) |
 | Entrada IFVG | FVG a favor del barrido (3 velas: hueco entre la vela 1 y la 3) formado en los 30 minutos previos al extremo del barrido. Cuando una vela cierra al otro lado del FVG (a partir de la confirmación), se entra en la apertura de la vela siguiente |
 | Entrada breaker | Si no hay FVG en ese tramo: cierre al otro lado de la vela que hizo el extremo del barrido |
