@@ -100,3 +100,14 @@ def test_time_exit_at_last_bar_before_1200():
     ops, _ = correr(filas)
     op = ops.iloc[0]
     assert op.resultado == "TIME" and op.salida == 99.5 and op.t_salida == pd.Timestamp("2024-01-16 12:00", tz="UTC")
+
+
+def test_mnq_costs_in_points_and_point_value():
+    # B: 1 tick de entrada + 1 tick de salida a mercado + 1 punto de comisión (2 $ ida y vuelta a 2 $/punto)
+    assert g.coste_onza(g.ESCENARIOS_MNQ["B"], "SL") == pytest.approx(1.5)
+    assert g.coste_onza(g.ESCENARIOS_MNQ["B"], "TP") == pytest.approx(1.25)
+    assert g.coste_onza(g.ESCENARIOS_MNQ["C"], "TIME") == pytest.approx(2.0)
+    filas = RANGO + [(100, 103, 100, 101.5), (101, 101.2, 100, 100.5), (100.5, 100.6, 94, 95)] + [(95, 95, 95, 95)] * 9
+    ops, _ = correr(filas, valor_punto=2.0, costes=g.ESCENARIOS_MNQ["A"])
+    op = ops.iloc[0]
+    assert op.onzas == 62 and op.neto_usd == pytest.approx(4 * 62 * 2)    # floor(250 / (2 pt x 2 $)) contratos

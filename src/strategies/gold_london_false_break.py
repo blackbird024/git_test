@@ -13,6 +13,15 @@ from src.risk.position_sizing import contratos
 from src.strategies.gold_swing_simple import ESCENARIOS, CostesOro, ajustar_rolls, atr_wilder, velas_reloj
 
 VERSION = "GOLD_LONDON_FALSE_BREAK_v1.0"
+VERSION_NQ = "NQ_LONDON_FALSE_BREAK_v1.0"
+
+# MNQ: costes estándar del proyecto, en PUNTOS por contrato (1 $/lado = 1 punto por operación completa a 2 $/punto;
+# 1 tick = 0,25 puntos). Mismo formato que CostesOro: comisión + deslizamiento de entrada + de salida a mercado.
+ESCENARIOS_MNQ = {
+    "A": CostesOro(0.0, 0.0, 0.0, 0.0),
+    "B": CostesOro(0.0, 1.0, 0.25, 0.25),
+    "C": CostesOro(0.0, 1.0, 0.50, 0.50),
+}
 
 
 @dataclass(frozen=True)
@@ -26,6 +35,7 @@ class Config:
     atr_n: int = 14
     riesgo_pct: float = 0.005
     saldo_inicial: float = 50_000.0
+    valor_punto: float = 1.0             # $ por punto y unidad: oro 1 (onzas); MNQ 2 (contratos)
     costes: CostesOro = ESCENARIOS["B"]
 
     def con(self, **cambios) -> "Config":
@@ -96,6 +106,7 @@ def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = froz
     ns = ini.as_unit("ns").asi8
     fechas = pd.Index(ini.tz_convert(LONDRES).date).unique()
     saldo, ops, dias = cfg.saldo_inicial, [], []
+    vp = cfg.valor_punto
     for f in fechas:
         if pd.Timestamp(f).weekday() >= 5 or f in excluir:
             continue
@@ -131,7 +142,7 @@ def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = froz
         if R <= 0:
             dia["estado"] = "ENTRY_BEYOND_STOP"
             continue
-        oz = contratos(saldo, cfg.riesgo_pct, R, 1.0)
+        oz = contratos(saldo, cfg.riesgo_pct, R, cfg.valor_punto)
         if oz < 1:
             dia["estado"] = "POSITION_SIZE_BELOW_MINIMUM"
             continue
@@ -141,8 +152,8 @@ def backtest(m1: pd.DataFrame, cfg: Config = Config(), excluir: frozenset = froz
         neto = bruto - coste_onza(cfg.costes, mot)
         op = {"fecha": f, "t_senal": fin[j], "t_entrada": ini[e], "t_salida": fin[m], "direccion": d,
               "lado": dia["side"], "entrada": E, "sl": SL, "tp": TP, "salida": X, "resultado": mot, "onzas": oz,
-              "riesgo_pts": R, "riesgo_usd": R * oz, "bruto_usd": bruto * oz, "costes_usd": (bruto - neto) * oz,
-              "neto_usd": neto * oz, "r": neto / R, "r_bruto": bruto / R, "mae_r": mae / R, "mfe_r": mfe / R,
+              "riesgo_pts": R, "riesgo_usd": R * oz * vp, "bruto_usd": bruto * oz * vp,
+              "costes_usd": (bruto - neto) * oz * vp, "neto_usd": neto * oz * vp, "r": neto / R, "r_bruto": bruto / R, "mae_r": mae / R, "mfe_r": mfe / R,
               "duracion_h": (fin[m] - ini[e]).total_seconds() / 3600, "saldo_antes": saldo,
               "range_high": RH - a0, "range_low": RL - a0, "range_usd": RH - RL, "range_pct": dia["range_pct"],
               "stop_distance_usd": R, "break_depth": prof, "break_depth_ratio": prof / (RH - RL),
@@ -163,9 +174,9 @@ def senales(m1: pd.DataFrame, cfg: Config = Config()) -> pd.DataFrame:
                          "rango": ops.range_usd.round(6), "prof": ops.break_depth.round(6)}).reset_index(drop=True)
 
 
-def alerta(op) -> str:
+def alerta(op, version: str = VERSION, activo: str = "GC") -> str:
     E, SL, TP = op["entrada_real"], op["sl_real"], op["tp_real"]
-    return (f"{'LONG' if op['direccion'] == 1 else 'SHORT'} — {VERSION}\n"
+    return (f"{'LONG' if op['direccion'] == 1 else 'SHORT'} — {version}\n"
             f"Time (London): {pd.Timestamp(op['t_entrada']).tz_convert(LONDRES):%Y-%m-%d %H:%M}\n"
-            f"Entry (GC): {E:.2f}\nSL: {SL:.2f}\nTP: {TP:.2f}\nRR: {abs(TP - E) / abs(E - SL):.1f}\n"
+            f"Entry ({activo}): {E:.2f}\nSL: {SL:.2f}\nTP: {TP:.2f}\nRR: {abs(TP - E) / abs(E - SL):.1f}\n"
             f"Reason: London range false break of the {'HIGH' if op['direccion'] == -1 else 'LOW'}")

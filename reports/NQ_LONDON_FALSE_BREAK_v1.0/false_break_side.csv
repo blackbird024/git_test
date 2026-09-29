@@ -1,0 +1,7 @@
+false_break,trades,win_rate_%,profit_factor,expectancy_R,t_stat_R,net_$,sample_flag,scenario
+HIGH→SHORT,463,32.0,0.833,-0.1059,-1.79,-11280.0,OK,A
+LOW→LONG,450,37.6,0.997,-0.0061,-0.1,-186.0,OK,A
+HIGH→SHORT,439,28.9,0.415,-0.4881,-7.46,-24397.0,OK,B
+LOW→LONG,422,36.0,0.545,-0.326,-4.98,-16304.0,OK,B
+HIGH→SHORT,412,28.4,0.331,-0.632,-8.9,-25279.0,OK,C
+LOW→LONG,396,35.4,0.436,-0.4431,-6.32,-18325.0,OK,C

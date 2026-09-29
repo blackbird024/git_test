@@ -1,0 +1,6887 @@
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-02 09:15
+Entry (NQ): 4253.00
+SL: 4247.13
+TP: 4264.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-06 09:15
+Entry (NQ): 4152.50
+SL: 4149.06
+TP: 4159.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-12 09:30
+Entry (NQ): 4210.75
+SL: 4205.09
+TP: 4222.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-13 09:30
+Entry (NQ): 4175.00
+SL: 4177.20
+TP: 4170.59
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-15 09:15
+Entry (NQ): 4173.00
+SL: 4168.58
+TP: 4181.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-19 10:15
+Entry (NQ): 4118.50
+SL: 4114.67
+TP: 4126.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-01-29 11:00
+Entry (NQ): 4130.75
+SL: 4137.30
+TP: 4117.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-02 11:30
+Entry (NQ): 4153.75
+SL: 4156.37
+TP: 4148.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-03 11:45
+Entry (NQ): 4198.50
+SL: 4203.84
+TP: 4187.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-04 09:15
+Entry (NQ): 4208.50
+SL: 4214.85
+TP: 4195.79
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-10 10:45
+Entry (NQ): 4221.50
+SL: 4225.65
+TP: 4213.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-16 11:30
+Entry (NQ): 4378.25
+SL: 4378.94
+TP: 4376.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-18 09:30
+Entry (NQ): 4387.50
+SL: 4389.71
+TP: 4383.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-19 09:15
+Entry (NQ): 4383.75
+SL: 4385.99
+TP: 4379.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-02-23 09:15
+Entry (NQ): 4436.00
+SL: 4434.08
+TP: 4439.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-03 09:45
+Entry (NQ): 4473.50
+SL: 4472.61
+TP: 4475.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-05 11:30
+Entry (NQ): 4450.50
+SL: 4451.98
+TP: 4447.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-06 09:15
+Entry (NQ): 4450.00
+SL: 4448.07
+TP: 4453.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-09 09:15
+Entry (NQ): 4401.50
+SL: 4402.51
+TP: 4399.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-11 09:15
+Entry (NQ): 4344.00
+SL: 4345.29
+TP: 4341.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-18 09:30
+Entry (NQ): 4371.25
+SL: 4370.51
+TP: 4372.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-03-19 09:15
+Entry (NQ): 4415.50
+SL: 4412.59
+TP: 4421.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-02 09:15
+Entry (NQ): 4295.75
+SL: 4292.64
+TP: 4301.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-07 10:30
+Entry (NQ): 4344.25
+SL: 4342.22
+TP: 4348.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-09 09:15
+Entry (NQ): 4359.50
+SL: 4356.72
+TP: 4365.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-16 09:15
+Entry (NQ): 4420.75
+SL: 4418.78
+TP: 4424.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-17 10:30
+Entry (NQ): 4404.25
+SL: 4403.22
+TP: 4406.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-23 09:30
+Entry (NQ): 4428.00
+SL: 4424.89
+TP: 4434.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-04-28 09:15
+Entry (NQ): 4518.75
+SL: 4515.94
+TP: 4524.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-06 09:15
+Entry (NQ): 4412.25
+SL: 4415.99
+TP: 4404.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-07 09:15
+Entry (NQ): 4364.75
+SL: 4371.71
+TP: 4350.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-08 09:45
+Entry (NQ): 4413.50
+SL: 4409.09
+TP: 4422.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-21 11:15
+Entry (NQ): 4489.75
+SL: 4487.75
+TP: 4493.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-25 10:30
+Entry (NQ): 4524.00
+SL: 4521.32
+TP: 4529.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-05-28 10:30
+Entry (NQ): 4533.75
+SL: 4530.96
+TP: 4539.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-03 09:15
+Entry (NQ): 4510.50
+SL: 4517.19
+TP: 4497.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-04 09:15
+Entry (NQ): 4492.25
+SL: 4487.51
+TP: 4501.72
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-08 09:30
+Entry (NQ): 4474.75
+SL: 4470.82
+TP: 4482.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-10 11:00
+Entry (NQ): 4447.75
+SL: 4451.38
+TP: 4440.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-12 09:15
+Entry (NQ): 4478.75
+SL: 4475.93
+TP: 4484.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-15 09:15
+Entry (NQ): 4429.75
+SL: 4426.37
+TP: 4436.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-17 09:45
+Entry (NQ): 4463.50
+SL: 4465.15
+TP: 4460.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-18 09:30
+Entry (NQ): 4455.25
+SL: 4446.03
+TP: 4473.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-19 09:45
+Entry (NQ): 4534.25
+SL: 4538.79
+TP: 4525.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-23 10:15
+Entry (NQ): 4540.50
+SL: 4538.49
+TP: 4544.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-24 10:00
+Entry (NQ): 4538.50
+SL: 4536.25
+TP: 4542.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-06-29 11:45
+Entry (NQ): 4422.25
+SL: 4416.38
+TP: 4433.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-02 09:15
+Entry (NQ): 4433.00
+SL: 4434.84
+TP: 4429.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-03 09:15
+Entry (NQ): 4428.00
+SL: 4424.42
+TP: 4435.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-06 11:00
+Entry (NQ): 4399.25
+SL: 4402.12
+TP: 4393.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-07 10:45
+Entry (NQ): 4438.50
+SL: 4435.63
+TP: 4444.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-08 09:15
+Entry (NQ): 4376.50
+SL: 4388.37
+TP: 4352.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-13 09:30
+Entry (NQ): 4433.50
+SL: 4438.33
+TP: 4423.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-14 09:15
+Entry (NQ): 4489.50
+SL: 4487.77
+TP: 4492.97
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-15 10:30
+Entry (NQ): 4526.25
+SL: 4527.76
+TP: 4523.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-17 09:45
+Entry (NQ): 4608.75
+SL: 4607.01
+TP: 4612.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-22 09:15
+Entry (NQ): 4612.75
+SL: 4614.33
+TP: 4609.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-28 09:30
+Entry (NQ): 4533.25
+SL: 4531.52
+TP: 4536.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-29 10:30
+Entry (NQ): 4567.75
+SL: 4570.16
+TP: 4562.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-30 09:15
+Entry (NQ): 4562.25
+SL: 4556.92
+TP: 4572.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-07-31 11:15
+Entry (NQ): 4589.00
+SL: 4586.63
+TP: 4593.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-10 09:15
+Entry (NQ): 4520.50
+SL: 4518.38
+TP: 4524.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-12 09:45
+Entry (NQ): 4464.75
+SL: 4460.74
+TP: 4472.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-17 09:30
+Entry (NQ): 4527.25
+SL: 4523.31
+TP: 4535.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-19 09:15
+Entry (NQ): 4527.25
+SL: 4518.99
+TP: 4543.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-21 10:15
+Entry (NQ): 4361.25
+SL: 4364.99
+TP: 4353.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-24 10:30
+Entry (NQ): 4067.75
+SL: 4073.51
+TP: 4056.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-25 09:15
+Entry (NQ): 4126.00
+SL: 4139.98
+TP: 4098.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-27 09:45
+Entry (NQ): 4264.50
+SL: 4271.17
+TP: 4251.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-08-28 09:15
+Entry (NQ): 4304.50
+SL: 4297.82
+TP: 4317.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-01 09:30
+Entry (NQ): 4175.00
+SL: 4161.10
+TP: 4202.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-02 09:15
+Entry (NQ): 4195.75
+SL: 4182.84
+TP: 4221.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-04 09:30
+Entry (NQ): 4192.75
+SL: 4184.03
+TP: 4210.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-08 10:00
+Entry (NQ): 4269.00
+SL: 4270.73
+TP: 4265.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-09 09:45
+Entry (NQ): 4353.75
+SL: 4350.36
+TP: 4360.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-10 09:30
+Entry (NQ): 4263.25
+SL: 4254.00
+TP: 4281.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-11 09:30
+Entry (NQ): 4275.00
+SL: 4267.61
+TP: 4289.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-18 09:15
+Entry (NQ): 4375.25
+SL: 4379.13
+TP: 4367.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-22 09:15
+Entry (NQ): 4296.50
+SL: 4291.05
+TP: 4307.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-29 09:15
+Entry (NQ): 4107.00
+SL: 4111.21
+TP: 4098.59
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-09-30 09:15
+Entry (NQ): 4110.50
+SL: 4102.33
+TP: 4126.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-02 11:30
+Entry (NQ): 4210.50
+SL: 4214.33
+TP: 4202.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-05 10:30
+Entry (NQ): 4277.25
+SL: 4282.21
+TP: 4267.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-06 09:15
+Entry (NQ): 4293.75
+SL: 4281.44
+TP: 4318.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-07 09:15
+Entry (NQ): 4328.00
+SL: 4332.76
+TP: 4318.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-09 09:30
+Entry (NQ): 4327.25
+SL: 4323.90
+TP: 4333.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-21 09:15
+Entry (NQ): 4428.25
+SL: 4421.72
+TP: 4441.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-22 09:30
+Entry (NQ): 4412.25
+SL: 4409.59
+TP: 4417.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-23 09:30
+Entry (NQ): 4572.25
+SL: 4573.87
+TP: 4569.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-10-26 09:15
+Entry (NQ): 4599.50
+SL: 4603.14
+TP: 4592.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-03 10:15
+Entry (NQ): 4685.25
+SL: 4682.94
+TP: 4689.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-09 10:45
+Entry (NQ): 4692.25
+SL: 4688.37
+TP: 4700.01
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-12 09:30
+Entry (NQ): 4635.00
+SL: 4631.47
+TP: 4642.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-20 09:15
+Entry (NQ): 4661.25
+SL: 4657.10
+TP: 4669.56
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-23 09:15
+Entry (NQ): 4689.25
+SL: 4691.11
+TP: 4685.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-24 09:15
+Entry (NQ): 4656.00
+SL: 4633.54
+TP: 4700.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-11-27 09:15
+Entry (NQ): 4673.50
+SL: 4670.56
+TP: 4679.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-02 10:15
+Entry (NQ): 4726.00
+SL: 4729.09
+TP: 4719.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-04 10:30
+Entry (NQ): 4623.75
+SL: 4620.45
+TP: 4630.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-21 09:15
+Entry (NQ): 4552.00
+SL: 4554.04
+TP: 4547.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2015-12-22 09:15
+Entry (NQ): 4563.75
+SL: 4556.22
+TP: 4578.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-07 09:15
+Entry (NQ): 4318.00
+SL: 4309.29
+TP: 4335.43
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-08 11:00
+Entry (NQ): 4335.00
+SL: 4327.28
+TP: 4350.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-15 09:15
+Entry (NQ): 4188.25
+SL: 4184.00
+TP: 4196.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-20 09:15
+Entry (NQ): 4044.00
+SL: 4036.54
+TP: 4058.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-21 09:15
+Entry (NQ): 4099.75
+SL: 4085.13
+TP: 4128.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-25 09:15
+Entry (NQ): 4231.00
+SL: 4217.70
+TP: 4257.59
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-26 09:15
+Entry (NQ): 4155.00
+SL: 4157.87
+TP: 4149.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-27 10:00
+Entry (NQ): 4183.25
+SL: 4176.57
+TP: 4196.61
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-01-29 09:45
+Entry (NQ): 4195.00
+SL: 4198.88
+TP: 4187.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-01 09:15
+Entry (NQ): 4243.75
+SL: 4239.94
+TP: 4251.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-03 09:15
+Entry (NQ): 4205.75
+SL: 4209.58
+TP: 4198.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-04 09:15
+Entry (NQ): 4177.50
+SL: 4174.41
+TP: 4183.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-12 09:30
+Entry (NQ): 3995.25
+SL: 4002.33
+TP: 3981.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-23 09:15
+Entry (NQ): 4205.50
+SL: 4208.09
+TP: 4200.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-02-26 09:15
+Entry (NQ): 4279.50
+SL: 4283.08
+TP: 4272.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-01 10:45
+Entry (NQ): 4236.50
+SL: 4243.28
+TP: 4222.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-02 10:15
+Entry (NQ): 4332.25
+SL: 4330.44
+TP: 4335.88
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-03 09:45
+Entry (NQ): 4333.75
+SL: 4337.52
+TP: 4326.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-04 09:15
+Entry (NQ): 4317.00
+SL: 4314.34
+TP: 4322.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-08 10:15
+Entry (NQ): 4258.75
+SL: 4253.59
+TP: 4269.08
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-15 11:00
+Entry (NQ): 4340.75
+SL: 4343.69
+TP: 4334.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-16 09:45
+Entry (NQ): 4364.25
+SL: 4367.89
+TP: 4356.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-29 09:15
+Entry (NQ): 4393.75
+SL: 4390.29
+TP: 4400.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-30 09:15
+Entry (NQ): 4483.75
+SL: 4486.90
+TP: 4477.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-03-31 09:15
+Entry (NQ): 4470.00
+SL: 4461.80
+TP: 4486.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-04 09:30
+Entry (NQ): 4535.75
+SL: 4538.05
+TP: 4531.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-05 11:00
+Entry (NQ): 4468.75
+SL: 4464.69
+TP: 4476.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-07 10:15
+Entry (NQ): 4522.25
+SL: 4519.79
+TP: 4527.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-08 09:15
+Entry (NQ): 4498.50
+SL: 4505.33
+TP: 4484.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-11 09:30
+Entry (NQ): 4487.50
+SL: 4498.90
+TP: 4464.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-12 10:45
+Entry (NQ): 4467.25
+SL: 4469.60
+TP: 4462.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-13 09:15
+Entry (NQ): 4516.50
+SL: 4520.23
+TP: 4509.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-14 09:30
+Entry (NQ): 4539.50
+SL: 4541.94
+TP: 4534.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-18 09:15
+Entry (NQ): 4520.25
+SL: 4525.26
+TP: 4510.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-19 09:15
+Entry (NQ): 4574.00
+SL: 4578.44
+TP: 4565.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-20 09:15
+Entry (NQ): 4519.00
+SL: 4523.69
+TP: 4509.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-21 11:30
+Entry (NQ): 4532.50
+SL: 4527.76
+TP: 4541.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-22 11:45
+Entry (NQ): 4494.50
+SL: 4499.76
+TP: 4483.98
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-27 09:30
+Entry (NQ): 4406.75
+SL: 4401.74
+TP: 4416.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-04-28 09:15
+Entry (NQ): 4399.50
+SL: 4396.30
+TP: 4405.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-03 09:15
+Entry (NQ): 4348.25
+SL: 4340.32
+TP: 4364.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-05 09:15
+Entry (NQ): 4326.00
+SL: 4320.57
+TP: 4336.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-06 09:45
+Entry (NQ): 4299.00
+SL: 4300.71
+TP: 4295.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-16 10:15
+Entry (NQ): 4325.00
+SL: 4329.43
+TP: 4316.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-18 09:30
+Entry (NQ): 4317.25
+SL: 4323.29
+TP: 4305.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-19 09:15
+Entry (NQ): 4324.25
+SL: 4331.98
+TP: 4308.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-24 09:15
+Entry (NQ): 4361.25
+SL: 4365.16
+TP: 4353.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-05-26 10:00
+Entry (NQ): 4474.25
+SL: 4473.09
+TP: 4476.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-01 09:15
+Entry (NQ): 4527.25
+SL: 4530.43
+TP: 4520.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-02 10:00
+Entry (NQ): 4517.25
+SL: 4518.61
+TP: 4514.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-07 09:45
+Entry (NQ): 4542.00
+SL: 4544.52
+TP: 4536.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-09 09:15
+Entry (NQ): 4506.25
+SL: 4502.71
+TP: 4513.34
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-20 09:15
+Entry (NQ): 4408.50
+SL: 4405.06
+TP: 4415.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-22 11:00
+Entry (NQ): 4407.50
+SL: 4408.82
+TP: 4404.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-23 09:45
+Entry (NQ): 4421.00
+SL: 4423.20
+TP: 4416.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-06-24 09:30
+Entry (NQ): 4323.25
+SL: 4329.68
+TP: 4310.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-05 09:15
+Entry (NQ): 4407.00
+SL: 4404.32
+TP: 4412.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-07 09:45
+Entry (NQ): 4450.25
+SL: 4453.99
+TP: 4442.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-08 10:30
+Entry (NQ): 4450.25
+SL: 4442.48
+TP: 4465.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-15 09:15
+Entry (NQ): 4590.25
+SL: 4593.22
+TP: 4584.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-18 09:30
+Entry (NQ): 4589.50
+SL: 4583.82
+TP: 4600.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-19 09:15
+Entry (NQ): 4596.50
+SL: 4592.15
+TP: 4605.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-22 09:30
+Entry (NQ): 4640.75
+SL: 4647.09
+TP: 4628.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-27 09:30
+Entry (NQ): 4696.75
+SL: 4697.80
+TP: 4694.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-07-29 09:15
+Entry (NQ): 4719.25
+SL: 4721.82
+TP: 4714.10
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-05 10:00
+Entry (NQ): 4752.00
+SL: 4749.73
+TP: 4756.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-08 09:15
+Entry (NQ): 4796.25
+SL: 4798.96
+TP: 4790.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-10 10:00
+Entry (NQ): 4796.25
+SL: 4797.76
+TP: 4793.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-11 10:30
+Entry (NQ): 4793.00
+SL: 4794.79
+TP: 4789.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-18 09:15
+Entry (NQ): 4803.75
+SL: 4800.99
+TP: 4809.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-19 09:15
+Entry (NQ): 4794.50
+SL: 4791.98
+TP: 4799.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-25 09:15
+Entry (NQ): 4778.75
+SL: 4774.42
+TP: 4787.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-29 10:00
+Entry (NQ): 4782.75
+SL: 4786.55
+TP: 4775.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-08-30 09:30
+Entry (NQ): 4792.75
+SL: 4790.03
+TP: 4798.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-01 10:30
+Entry (NQ): 4787.50
+SL: 4786.22
+TP: 4790.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-06 10:15
+Entry (NQ): 4801.25
+SL: 4802.23
+TP: 4799.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-08 09:15
+Entry (NQ): 4835.75
+SL: 4837.21
+TP: 4832.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-12 09:45
+Entry (NQ): 4629.75
+SL: 4625.85
+TP: 4637.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-28 09:15
+Entry (NQ): 4870.75
+SL: 4873.57
+TP: 4865.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-29 11:30
+Entry (NQ): 4868.00
+SL: 4866.49
+TP: 4871.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-09-30 09:15
+Entry (NQ): 4823.75
+SL: 4829.04
+TP: 4813.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-04 09:30
+Entry (NQ): 4877.25
+SL: 4880.52
+TP: 4870.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-07 09:30
+Entry (NQ): 4862.25
+SL: 4865.36
+TP: 4856.04
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-10 10:30
+Entry (NQ): 4872.75
+SL: 4874.33
+TP: 4869.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-11 11:00
+Entry (NQ): 4885.50
+SL: 4887.29
+TP: 4881.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-18 09:15
+Entry (NQ): 4828.00
+SL: 4830.04
+TP: 4823.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-24 09:15
+Entry (NQ): 4872.50
+SL: 4875.31
+TP: 4866.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-27 10:15
+Entry (NQ): 4847.75
+SL: 4844.03
+TP: 4855.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-10-28 09:45
+Entry (NQ): 4793.50
+SL: 4788.04
+TP: 4804.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-01 09:15
+Entry (NQ): 4803.50
+SL: 4800.43
+TP: 4809.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-03 09:30
+Entry (NQ): 4703.00
+SL: 4705.43
+TP: 4698.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-04 09:15
+Entry (NQ): 4670.00
+SL: 4669.41
+TP: 4671.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-09 09:15
+Entry (NQ): 4696.75
+SL: 4716.97
+TP: 4656.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-15 09:15
+Entry (NQ): 4710.50
+SL: 4715.67
+TP: 4700.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-21 10:15
+Entry (NQ): 4818.25
+SL: 4820.92
+TP: 4812.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-23 09:30
+Entry (NQ): 4881.25
+SL: 4882.49
+TP: 4878.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-25 09:15
+Entry (NQ): 4855.00
+SL: 4852.95
+TP: 4859.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-29 09:15
+Entry (NQ): 4867.50
+SL: 4870.27
+TP: 4861.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-11-30 10:00
+Entry (NQ): 4876.75
+SL: 4872.88
+TP: 4884.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-01 09:30
+Entry (NQ): 4809.50
+SL: 4806.83
+TP: 4814.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-06 09:15
+Entry (NQ): 4782.75
+SL: 4785.29
+TP: 4777.67
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-07 11:15
+Entry (NQ): 4789.75
+SL: 4787.51
+TP: 4794.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-14 09:30
+Entry (NQ): 4941.00
+SL: 4942.28
+TP: 4938.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-15 10:30
+Entry (NQ): 4937.50
+SL: 4939.51
+TP: 4933.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-16 09:45
+Entry (NQ): 4932.00
+SL: 4930.51
+TP: 4934.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-19 09:30
+Entry (NQ): 4921.00
+SL: 4922.50
+TP: 4918.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-22 09:15
+Entry (NQ): 4945.25
+SL: 4941.80
+TP: 4952.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2016-12-28 10:00
+Entry (NQ): 4976.00
+SL: 4977.94
+TP: 4972.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-03 09:30
+Entry (NQ): 4895.25
+SL: 4894.11
+TP: 4897.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-04 11:15
+Entry (NQ): 4911.50
+SL: 4909.25
+TP: 4916.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-05 09:45
+Entry (NQ): 4929.75
+SL: 4931.53
+TP: 4926.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-06 09:30
+Entry (NQ): 4962.00
+SL: 4962.67
+TP: 4960.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-12 09:15
+Entry (NQ): 5030.50
+SL: 5027.74
+TP: 5036.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-13 09:30
+Entry (NQ): 5037.25
+SL: 5036.02
+TP: 5039.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-18 10:15
+Entry (NQ): 5046.75
+SL: 5044.53
+TP: 5051.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-19 09:15
+Entry (NQ): 5051.00
+SL: 5048.29
+TP: 5056.42
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-20 11:00
+Entry (NQ): 5065.50
+SL: 5066.97
+TP: 5062.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-24 09:30
+Entry (NQ): 5062.75
+SL: 5065.97
+TP: 5056.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-25 11:30
+Entry (NQ): 5117.00
+SL: 5118.21
+TP: 5114.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-01-30 10:00
+Entry (NQ): 5145.50
+SL: 5143.99
+TP: 5148.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-02 11:30
+Entry (NQ): 5132.00
+SL: 5134.78
+TP: 5126.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-07 09:15
+Entry (NQ): 5162.00
+SL: 5163.96
+TP: 5158.08
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-09 11:15
+Entry (NQ): 5195.75
+SL: 5196.46
+TP: 5194.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-16 09:15
+Entry (NQ): 5309.75
+SL: 5307.81
+TP: 5313.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-17 09:15
+Entry (NQ): 5294.75
+SL: 5293.26
+TP: 5297.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-21 09:15
+Entry (NQ): 5337.00
+SL: 5337.69
+TP: 5335.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-24 10:00
+Entry (NQ): 5322.25
+SL: 5325.21
+TP: 5316.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-27 09:15
+Entry (NQ): 5344.75
+SL: 5342.20
+TP: 5349.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-02-28 10:00
+Entry (NQ): 5345.25
+SL: 5346.45
+TP: 5342.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-02 09:15
+Entry (NQ): 5382.75
+SL: 5382.22
+TP: 5383.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-03 10:00
+Entry (NQ): 5348.00
+SL: 5347.01
+TP: 5349.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-07 09:45
+Entry (NQ): 5357.00
+SL: 5354.02
+TP: 5362.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-10 09:15
+Entry (NQ): 5384.50
+SL: 5387.73
+TP: 5378.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-21 09:15
+Entry (NQ): 5429.00
+SL: 5428.30
+TP: 5430.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-22 09:15
+Entry (NQ): 5326.75
+SL: 5319.27
+TP: 5341.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-23 09:45
+Entry (NQ): 5366.25
+SL: 5370.04
+TP: 5358.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-27 09:15
+Entry (NQ): 5327.25
+SL: 5321.72
+TP: 5338.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-03-31 11:00
+Entry (NQ): 5428.25
+SL: 5432.29
+TP: 5420.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-10 09:15
+Entry (NQ): 5425.00
+SL: 5421.20
+TP: 5432.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-11 09:15
+Entry (NQ): 5418.50
+SL: 5423.62
+TP: 5408.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-21 10:15
+Entry (NQ): 5450.00
+SL: 5448.51
+TP: 5452.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-24 09:30
+Entry (NQ): 5497.00
+SL: 5497.81
+TP: 5495.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-26 11:00
+Entry (NQ): 5553.75
+SL: 5554.96
+TP: 5551.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-04-27 09:15
+Entry (NQ): 5539.50
+SL: 5535.27
+TP: 5547.97
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-03 09:15
+Entry (NQ): 5621.00
+SL: 5624.43
+TP: 5614.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-16 11:30
+Entry (NQ): 5705.00
+SL: 5706.69
+TP: 5701.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-23 09:15
+Entry (NQ): 5714.25
+SL: 5715.92
+TP: 5710.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-24 09:45
+Entry (NQ): 5714.50
+SL: 5717.75
+TP: 5708.00
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-29 09:15
+Entry (NQ): 5797.50
+SL: 5799.16
+TP: 5794.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-05-30 10:00
+Entry (NQ): 5792.75
+SL: 5795.01
+TP: 5788.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-01 09:30
+Entry (NQ): 5807.25
+SL: 5810.01
+TP: 5801.73
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-05 10:30
+Entry (NQ): 5882.50
+SL: 5885.74
+TP: 5876.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-09 09:15
+Entry (NQ): 5889.00
+SL: 5883.35
+TP: 5900.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-14 09:15
+Entry (NQ): 5760.50
+SL: 5762.03
+TP: 5757.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-15 09:15
+Entry (NQ): 5683.00
+SL: 5670.05
+TP: 5708.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-19 10:30
+Entry (NQ): 5724.50
+SL: 5725.32
+TP: 5722.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-22 09:15
+Entry (NQ): 5793.00
+SL: 5784.70
+TP: 5809.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-27 09:15
+Entry (NQ): 5760.00
+SL: 5755.83
+TP: 5768.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-06-29 09:15
+Entry (NQ): 5755.00
+SL: 5752.08
+TP: 5760.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-07 11:30
+Entry (NQ): 5608.00
+SL: 5610.76
+TP: 5602.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-10 10:15
+Entry (NQ): 5675.75
+SL: 5674.39
+TP: 5678.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-14 09:45
+Entry (NQ): 5796.25
+SL: 5797.79
+TP: 5793.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-24 09:45
+Entry (NQ): 5911.75
+SL: 5915.09
+TP: 5905.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-26 09:15
+Entry (NQ): 5935.25
+SL: 5936.76
+TP: 5932.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-07-27 09:15
+Entry (NQ): 5979.25
+SL: 5977.95
+TP: 5981.86
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-08 09:15
+Entry (NQ): 5933.75
+SL: 5936.22
+TP: 5928.81
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-15 09:15
+Entry (NQ): 5921.25
+SL: 5916.89
+TP: 5929.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-18 09:30
+Entry (NQ): 5801.00
+SL: 5793.18
+TP: 5816.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-21 09:30
+Entry (NQ): 5781.75
+SL: 5778.28
+TP: 5788.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-22 09:30
+Entry (NQ): 5815.00
+SL: 5811.30
+TP: 5822.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-23 09:30
+Entry (NQ): 5869.25
+SL: 5866.63
+TP: 5874.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-24 09:15
+Entry (NQ): 5847.50
+SL: 5845.10
+TP: 5852.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-25 09:15
+Entry (NQ): 5845.00
+SL: 5847.99
+TP: 5839.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-29 09:15
+Entry (NQ): 5788.25
+SL: 5781.32
+TP: 5802.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-08-31 09:45
+Entry (NQ): 5949.00
+SL: 5952.60
+TP: 5941.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-01 10:00
+Entry (NQ): 5996.00
+SL: 5993.21
+TP: 6001.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-05 09:45
+Entry (NQ): 5982.50
+SL: 5985.13
+TP: 5977.25
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-06 10:45
+Entry (NQ): 5947.00
+SL: 5936.97
+TP: 5967.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-07 09:30
+Entry (NQ): 5947.25
+SL: 5949.87
+TP: 5942.01
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-14 09:15
+Entry (NQ): 6003.00
+SL: 6004.98
+TP: 5999.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-15 09:30
+Entry (NQ): 5968.25
+SL: 5970.56
+TP: 5963.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-19 09:30
+Entry (NQ): 5986.00
+SL: 5986.51
+TP: 5984.98
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-20 09:15
+Entry (NQ): 5994.25
+SL: 5995.73
+TP: 5991.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-22 09:30
+Entry (NQ): 5927.50
+SL: 5930.59
+TP: 5921.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-25 11:15
+Entry (NQ): 5931.50
+SL: 5933.65
+TP: 5927.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-09-29 09:15
+Entry (NQ): 5942.75
+SL: 5943.48
+TP: 5941.29
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-02 11:00
+Entry (NQ): 5990.75
+SL: 5992.24
+TP: 5987.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-04 10:15
+Entry (NQ): 5994.25
+SL: 5991.83
+TP: 5999.09
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-05 09:45
+Entry (NQ): 6007.25
+SL: 6008.68
+TP: 6004.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-12 09:30
+Entry (NQ): 6080.50
+SL: 6078.82
+TP: 6083.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-13 09:30
+Entry (NQ): 6073.50
+SL: 6072.28
+TP: 6075.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-16 09:15
+Entry (NQ): 6107.00
+SL: 6110.71
+TP: 6099.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-19 09:15
+Entry (NQ): 6068.75
+SL: 6054.38
+TP: 6097.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-23 09:30
+Entry (NQ): 6113.00
+SL: 6114.57
+TP: 6109.87
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-24 09:15
+Entry (NQ): 6069.75
+SL: 6066.67
+TP: 6075.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-10-25 09:45
+Entry (NQ): 6067.00
+SL: 6064.38
+TP: 6072.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-06 09:15
+Entry (NQ): 6288.75
+SL: 6284.37
+TP: 6297.52
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-16 09:45
+Entry (NQ): 6290.00
+SL: 6293.43
+TP: 6283.15
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-17 09:15
+Entry (NQ): 6341.75
+SL: 6339.37
+TP: 6346.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-20 09:30
+Entry (NQ): 6306.00
+SL: 6310.22
+TP: 6297.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-24 10:30
+Entry (NQ): 6394.00
+SL: 6395.75
+TP: 6390.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-28 10:15
+Entry (NQ): 6414.50
+SL: 6417.34
+TP: 6408.81
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-11-29 09:15
+Entry (NQ): 6414.50
+SL: 6410.66
+TP: 6422.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-01 09:15
+Entry (NQ): 6342.75
+SL: 6337.16
+TP: 6353.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-04 10:15
+Entry (NQ): 6365.25
+SL: 6362.78
+TP: 6370.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-08 09:15
+Entry (NQ): 6350.75
+SL: 6348.36
+TP: 6355.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-12 10:00
+Entry (NQ): 6417.50
+SL: 6413.92
+TP: 6424.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-14 09:30
+Entry (NQ): 6427.50
+SL: 6429.32
+TP: 6423.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-19 10:30
+Entry (NQ): 6539.50
+SL: 6538.02
+TP: 6542.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-21 09:30
+Entry (NQ): 6483.25
+SL: 6487.63
+TP: 6474.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2017-12-26 09:30
+Entry (NQ): 6478.50
+SL: 6480.18
+TP: 6475.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-02 09:45
+Entry (NQ): 6402.50
+SL: 6399.10
+TP: 6409.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-04 10:00
+Entry (NQ): 6599.75
+SL: 6602.28
+TP: 6594.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-08 09:45
+Entry (NQ): 6666.75
+SL: 6665.21
+TP: 6669.83
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-15 10:45
+Entry (NQ): 6784.50
+SL: 6789.15
+TP: 6775.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-17 10:15
+Entry (NQ): 6779.50
+SL: 6782.29
+TP: 6773.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-23 09:45
+Entry (NQ): 6947.75
+SL: 6946.64
+TP: 6949.97
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-01-24 10:45
+Entry (NQ): 6979.50
+SL: 6986.62
+TP: 6965.27
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-01 09:15
+Entry (NQ): 6972.50
+SL: 6968.49
+TP: 6980.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-05 09:30
+Entry (NQ): 6750.25
+SL: 6757.71
+TP: 6735.33
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-06 09:15
+Entry (NQ): 6502.50
+SL: 6543.21
+TP: 6421.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-14 10:00
+Entry (NQ): 6590.50
+SL: 6586.78
+TP: 6597.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-15 09:30
+Entry (NQ): 6738.00
+SL: 6740.81
+TP: 6732.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-16 11:00
+Entry (NQ): 6837.25
+SL: 6833.47
+TP: 6844.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-21 09:15
+Entry (NQ): 6786.50
+SL: 6779.72
+TP: 6800.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-22 09:15
+Entry (NQ): 6722.25
+SL: 6711.26
+TP: 6744.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-23 10:00
+Entry (NQ): 6811.25
+SL: 6818.35
+TP: 6797.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-02-26 09:15
+Entry (NQ): 6922.50
+SL: 6927.41
+TP: 6912.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-05 09:15
+Entry (NQ): 6802.75
+SL: 6805.30
+TP: 6797.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-07 09:30
+Entry (NQ): 6847.50
+SL: 6838.32
+TP: 6865.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-16 09:30
+Entry (NQ): 7070.50
+SL: 7073.29
+TP: 7064.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-21 09:15
+Entry (NQ): 6890.00
+SL: 6888.11
+TP: 6893.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-28 09:15
+Entry (NQ): 6505.00
+SL: 6483.28
+TP: 6548.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-03-29 09:30
+Entry (NQ): 6499.00
+SL: 6495.04
+TP: 6506.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-02 09:45
+Entry (NQ): 6551.00
+SL: 6557.59
+TP: 6537.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-03 09:15
+Entry (NQ): 6423.75
+SL: 6419.35
+TP: 6432.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-05 09:15
+Entry (NQ): 6631.25
+SL: 6622.61
+TP: 6648.54
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-10 09:15
+Entry (NQ): 6593.25
+SL: 6573.85
+TP: 6632.04
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-24 09:15
+Entry (NQ): 6684.25
+SL: 6689.12
+TP: 6674.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-04-27 11:45
+Entry (NQ): 6749.25
+SL: 6754.36
+TP: 6739.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-02 09:15
+Entry (NQ): 6720.00
+SL: 6722.90
+TP: 6714.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-03 09:15
+Entry (NQ): 6645.50
+SL: 6650.12
+TP: 6636.25
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-04 09:15
+Entry (NQ): 6660.25
+SL: 6666.78
+TP: 6647.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-07 09:15
+Entry (NQ): 6806.00
+SL: 6804.08
+TP: 6809.83
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-09 09:45
+Entry (NQ): 6838.50
+SL: 6844.37
+TP: 6826.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-11 09:15
+Entry (NQ): 6960.00
+SL: 6961.75
+TP: 6956.51
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-14 10:45
+Entry (NQ): 6984.50
+SL: 6988.15
+TP: 6977.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-15 09:30
+Entry (NQ): 6955.25
+SL: 6950.01
+TP: 6965.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-17 10:00
+Entry (NQ): 6908.75
+SL: 6906.30
+TP: 6913.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-23 09:15
+Entry (NQ): 6847.75
+SL: 6844.25
+TP: 6854.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-25 09:30
+Entry (NQ): 6979.75
+SL: 6981.38
+TP: 6976.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-05-30 09:45
+Entry (NQ): 6949.75
+SL: 6946.54
+TP: 6956.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-01 10:45
+Entry (NQ): 7000.25
+SL: 7007.07
+TP: 6986.61
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-04 10:15
+Entry (NQ): 7114.50
+SL: 7118.48
+TP: 7106.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-07 09:15
+Entry (NQ): 7227.00
+SL: 7223.10
+TP: 7234.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-12 09:15
+Entry (NQ): 7201.00
+SL: 7196.11
+TP: 7210.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-13 09:15
+Entry (NQ): 7234.25
+SL: 7229.85
+TP: 7243.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-15 09:15
+Entry (NQ): 7291.00
+SL: 7285.36
+TP: 7302.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-18 10:45
+Entry (NQ): 7238.50
+SL: 7234.46
+TP: 7246.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-19 09:15
+Entry (NQ): 7181.25
+SL: 7189.64
+TP: 7164.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-20 10:15
+Entry (NQ): 7272.50
+SL: 7274.84
+TP: 7267.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-21 09:15
+Entry (NQ): 7325.00
+SL: 7319.85
+TP: 7335.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-27 09:15
+Entry (NQ): 7034.25
+SL: 7022.98
+TP: 7056.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-06-29 09:30
+Entry (NQ): 7107.75
+SL: 7112.11
+TP: 7099.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-05 09:45
+Entry (NQ): 7052.25
+SL: 7058.76
+TP: 7039.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-09 10:45
+Entry (NQ): 7261.50
+SL: 7267.00
+TP: 7250.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-12 10:00
+Entry (NQ): 7276.25
+SL: 7264.58
+TP: 7299.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-16 09:15
+Entry (NQ): 7407.25
+SL: 7409.93
+TP: 7401.89
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-19 09:15
+Entry (NQ): 7393.00
+SL: 7385.21
+TP: 7408.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-20 09:30
+Entry (NQ): 7395.50
+SL: 7398.65
+TP: 7389.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-23 09:45
+Entry (NQ): 7339.00
+SL: 7343.63
+TP: 7329.74
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-24 09:30
+Entry (NQ): 7433.75
+SL: 7435.22
+TP: 7430.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-25 09:15
+Entry (NQ): 7415.50
+SL: 7422.49
+TP: 7401.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-26 09:15
+Entry (NQ): 7406.00
+SL: 7396.53
+TP: 7424.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-07-27 11:15
+Entry (NQ): 7445.50
+SL: 7439.93
+TP: 7456.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-02 09:15
+Entry (NQ): 7247.75
+SL: 7235.40
+TP: 7272.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-06 09:15
+Entry (NQ): 7405.00
+SL: 7400.56
+TP: 7413.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-08 09:45
+Entry (NQ): 7474.00
+SL: 7476.37
+TP: 7469.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-14 09:45
+Entry (NQ): 7452.50
+SL: 7446.60
+TP: 7464.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-15 10:30
+Entry (NQ): 7447.75
+SL: 7445.31
+TP: 7452.63
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-16 09:15
+Entry (NQ): 7407.00
+SL: 7392.91
+TP: 7435.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-20 09:15
+Entry (NQ): 7415.75
+SL: 7421.26
+TP: 7404.73
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-21 09:45
+Entry (NQ): 7397.00
+SL: 7399.16
+TP: 7392.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-24 09:15
+Entry (NQ): 7443.50
+SL: 7444.97
+TP: 7440.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-27 10:00
+Entry (NQ): 7527.00
+SL: 7528.87
+TP: 7523.25
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-28 09:15
+Entry (NQ): 7577.25
+SL: 7574.38
+TP: 7583.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-08-29 09:15
+Entry (NQ): 7595.50
+SL: 7591.91
+TP: 7602.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-14 09:15
+Entry (NQ): 7591.75
+SL: 7584.96
+TP: 7605.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-18 09:30
+Entry (NQ): 7481.25
+SL: 7485.69
+TP: 7472.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-19 09:15
+Entry (NQ): 7532.50
+SL: 7525.48
+TP: 7546.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-20 09:30
+Entry (NQ): 7526.25
+SL: 7528.17
+TP: 7522.41
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-09-24 09:15
+Entry (NQ): 7522.25
+SL: 7523.75
+TP: 7519.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-03 10:30
+Entry (NQ): 7666.00
+SL: 7663.18
+TP: 7671.64
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-04 09:45
+Entry (NQ): 7609.75
+SL: 7604.99
+TP: 7619.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-11 09:15
+Entry (NQ): 6987.25
+SL: 6979.41
+TP: 7002.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-15 09:30
+Entry (NQ): 7099.75
+SL: 7089.83
+TP: 7119.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-16 11:45
+Entry (NQ): 7122.00
+SL: 7128.47
+TP: 7109.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-19 09:15
+Entry (NQ): 7159.00
+SL: 7152.26
+TP: 7172.48
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-23 09:30
+Entry (NQ): 7051.50
+SL: 7041.90
+TP: 7070.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-24 09:30
+Entry (NQ): 7070.00
+SL: 7064.39
+TP: 7081.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-26 09:15
+Entry (NQ): 6848.25
+SL: 6828.88
+TP: 6886.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-10-31 09:15
+Entry (NQ): 6882.50
+SL: 6898.94
+TP: 6849.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-01 09:15
+Entry (NQ): 6988.25
+SL: 6997.78
+TP: 6969.18
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-02 09:15
+Entry (NQ): 7098.00
+SL: 7088.88
+TP: 7116.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-07 09:15
+Entry (NQ): 7096.00
+SL: 7106.75
+TP: 7074.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-08 09:15
+Entry (NQ): 7210.75
+SL: 7216.98
+TP: 7198.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-09 09:30
+Entry (NQ): 7123.50
+SL: 7130.95
+TP: 7108.59
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-12 09:45
+Entry (NQ): 7049.75
+SL: 7044.90
+TP: 7059.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-13 09:15
+Entry (NQ): 6881.50
+SL: 6874.35
+TP: 6895.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-15 09:15
+Entry (NQ): 6807.00
+SL: 6793.76
+TP: 6833.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-21 09:15
+Entry (NQ): 6598.25
+SL: 6607.68
+TP: 6579.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-23 11:00
+Entry (NQ): 6538.75
+SL: 6529.93
+TP: 6556.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-27 11:30
+Entry (NQ): 6634.25
+SL: 6630.19
+TP: 6642.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-28 09:30
+Entry (NQ): 6716.50
+SL: 6729.06
+TP: 6691.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-11-30 09:30
+Entry (NQ): 6892.75
+SL: 6886.11
+TP: 6906.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-05 09:15
+Entry (NQ): 6846.25
+SL: 6857.11
+TP: 6824.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-07 10:00
+Entry (NQ): 6805.50
+SL: 6813.01
+TP: 6790.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-14 10:00
+Entry (NQ): 6661.00
+SL: 6649.59
+TP: 6683.81
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-21 09:15
+Entry (NQ): 6287.25
+SL: 6263.95
+TP: 6333.85
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-24 09:15
+Entry (NQ): 6104.25
+SL: 6094.64
+TP: 6123.48
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2018-12-28 09:45
+Entry (NQ): 6319.50
+SL: 6330.07
+TP: 6298.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-03 10:15
+Entry (NQ): 6196.50
+SL: 6187.33
+TP: 6214.84
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-08 09:15
+Entry (NQ): 6537.25
+SL: 6540.58
+TP: 6530.60
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-09 09:30
+Entry (NQ): 6590.75
+SL: 6594.52
+TP: 6583.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-11 10:45
+Entry (NQ): 6612.50
+SL: 6605.51
+TP: 6626.48
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-14 10:30
+Entry (NQ): 6538.00
+SL: 6527.39
+TP: 6559.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-16 09:30
+Entry (NQ): 6677.50
+SL: 6672.72
+TP: 6687.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-17 09:15
+Entry (NQ): 6636.00
+SL: 6641.40
+TP: 6625.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-25 11:00
+Entry (NQ): 6741.25
+SL: 6745.61
+TP: 6732.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-01-30 09:15
+Entry (NQ): 6684.75
+SL: 6690.73
+TP: 6672.79
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-06 11:15
+Entry (NQ): 7003.25
+SL: 7008.79
+TP: 6992.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-07 09:15
+Entry (NQ): 6977.50
+SL: 6981.03
+TP: 6970.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-12 11:00
+Entry (NQ): 6972.00
+SL: 6975.64
+TP: 6964.73
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-13 09:15
+Entry (NQ): 7047.50
+SL: 7043.52
+TP: 7055.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-14 09:15
+Entry (NQ): 7045.25
+SL: 7038.73
+TP: 7058.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-15 09:30
+Entry (NQ): 7000.00
+SL: 7004.18
+TP: 6991.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-18 09:15
+Entry (NQ): 7060.25
+SL: 7057.71
+TP: 7065.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-21 11:15
+Entry (NQ): 7091.50
+SL: 7095.17
+TP: 7084.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-22 09:30
+Entry (NQ): 7058.25
+SL: 7066.40
+TP: 7041.95
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-02-25 10:30
+Entry (NQ): 7126.00
+SL: 7131.26
+TP: 7115.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-01 09:45
+Entry (NQ): 7155.75
+SL: 7160.04
+TP: 7147.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-04 09:15
+Entry (NQ): 7196.00
+SL: 7199.71
+TP: 7188.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-05 09:45
+Entry (NQ): 7164.75
+SL: 7169.83
+TP: 7154.60
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-08 10:30
+Entry (NQ): 6983.25
+SL: 6977.22
+TP: 6995.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-11 09:15
+Entry (NQ): 7060.50
+SL: 7058.65
+TP: 7064.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-13 10:00
+Entry (NQ): 7239.75
+SL: 7247.84
+TP: 7223.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-14 10:00
+Entry (NQ): 7314.25
+SL: 7319.07
+TP: 7304.60
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-18 11:30
+Entry (NQ): 7350.00
+SL: 7357.22
+TP: 7335.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-19 09:15
+Entry (NQ): 7376.25
+SL: 7379.40
+TP: 7369.94
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-22 09:30
+Entry (NQ): 7500.00
+SL: 7495.63
+TP: 7508.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-28 09:30
+Entry (NQ): 7342.50
+SL: 7345.68
+TP: 7336.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-03-29 09:15
+Entry (NQ): 7364.00
+SL: 7362.36
+TP: 7367.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-01 09:15
+Entry (NQ): 7477.50
+SL: 7484.82
+TP: 7462.86
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-03 09:15
+Entry (NQ): 7572.25
+SL: 7577.29
+TP: 7562.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-04 09:45
+Entry (NQ): 7565.25
+SL: 7562.68
+TP: 7570.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-05 09:15
+Entry (NQ): 7582.00
+SL: 7586.24
+TP: 7573.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-10 09:30
+Entry (NQ): 7603.00
+SL: 7598.84
+TP: 7611.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-11 09:30
+Entry (NQ): 7628.25
+SL: 7624.02
+TP: 7636.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-18 09:15
+Entry (NQ): 7669.00
+SL: 7659.65
+TP: 7687.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-22 09:15
+Entry (NQ): 7687.25
+SL: 7683.24
+TP: 7695.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-24 09:15
+Entry (NQ): 7821.75
+SL: 7817.57
+TP: 7830.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-04-25 09:30
+Entry (NQ): 7853.50
+SL: 7849.53
+TP: 7861.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-02 10:00
+Entry (NQ): 7777.50
+SL: 7780.53
+TP: 7771.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-06 09:45
+Entry (NQ): 7688.25
+SL: 7684.97
+TP: 7694.80
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-07 09:15
+Entry (NQ): 7780.00
+SL: 7776.37
+TP: 7787.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-08 10:00
+Entry (NQ): 7675.50
+SL: 7665.53
+TP: 7695.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-14 10:30
+Entry (NQ): 7375.25
+SL: 7380.79
+TP: 7364.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-15 09:15
+Entry (NQ): 7419.50
+SL: 7408.87
+TP: 7440.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-16 09:15
+Entry (NQ): 7501.75
+SL: 7509.30
+TP: 7486.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-22 09:15
+Entry (NQ): 7435.25
+SL: 7428.41
+TP: 7448.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-23 09:30
+Entry (NQ): 7350.50
+SL: 7343.27
+TP: 7364.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-27 10:00
+Entry (NQ): 7321.50
+SL: 7316.99
+TP: 7330.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-29 10:30
+Entry (NQ): 7224.75
+SL: 7217.25
+TP: 7239.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-30 09:30
+Entry (NQ): 7244.00
+SL: 7237.50
+TP: 7257.01
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-05-31 10:30
+Entry (NQ): 7153.00
+SL: 7146.85
+TP: 7165.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-03 10:15
+Entry (NQ): 7096.50
+SL: 7099.19
+TP: 7091.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-04 09:45
+Entry (NQ): 7025.75
+SL: 7029.89
+TP: 7017.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-05 09:45
+Entry (NQ): 7209.00
+SL: 7219.11
+TP: 7188.77
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-06 10:30
+Entry (NQ): 7257.25
+SL: 7260.33
+TP: 7251.10
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-10 09:15
+Entry (NQ): 7446.75
+SL: 7451.73
+TP: 7436.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-11 09:15
+Entry (NQ): 7547.50
+SL: 7549.85
+TP: 7542.81
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-12 09:15
+Entry (NQ): 7488.75
+SL: 7499.03
+TP: 7468.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-21 11:00
+Entry (NQ): 7752.25
+SL: 7742.35
+TP: 7772.06
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-24 09:15
+Entry (NQ): 7773.50
+SL: 7770.11
+TP: 7780.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-25 09:15
+Entry (NQ): 7737.25
+SL: 7742.22
+TP: 7727.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-06-26 09:15
+Entry (NQ): 7635.00
+SL: 7642.66
+TP: 7619.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-01 09:15
+Entry (NQ): 7824.25
+SL: 7817.13
+TP: 7838.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-04 09:30
+Entry (NQ): 7884.25
+SL: 7882.39
+TP: 7887.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-09 09:15
+Entry (NQ): 7749.50
+SL: 7742.26
+TP: 7763.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-10 11:00
+Entry (NQ): 7823.75
+SL: 7816.97
+TP: 7837.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-11 11:45
+Entry (NQ): 7949.00
+SL: 7940.81
+TP: 7965.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-16 09:15
+Entry (NQ): 7993.50
+SL: 7997.19
+TP: 7986.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-19 09:15
+Entry (NQ): 7970.00
+SL: 7973.15
+TP: 7963.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-25 10:00
+Entry (NQ): 8024.25
+SL: 8025.52
+TP: 8021.71
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-26 09:30
+Entry (NQ): 8005.50
+SL: 8001.95
+TP: 8012.61
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-29 09:30
+Entry (NQ): 8019.00
+SL: 8023.45
+TP: 8010.10
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-30 09:30
+Entry (NQ): 7987.25
+SL: 7983.22
+TP: 7995.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-07-31 09:15
+Entry (NQ): 7992.00
+SL: 7995.66
+TP: 7984.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-01 09:15
+Entry (NQ): 7871.25
+SL: 7875.19
+TP: 7863.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-02 10:00
+Entry (NQ): 7748.25
+SL: 7736.30
+TP: 7772.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-06 09:15
+Entry (NQ): 7429.00
+SL: 7403.68
+TP: 7479.65
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-07 09:15
+Entry (NQ): 7537.25
+SL: 7545.00
+TP: 7521.75
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-08 11:30
+Entry (NQ): 7597.00
+SL: 7606.69
+TP: 7577.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-09 09:15
+Entry (NQ): 7683.25
+SL: 7680.26
+TP: 7689.22
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-15 09:45
+Entry (NQ): 7549.00
+SL: 7555.09
+TP: 7536.81
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-19 09:15
+Entry (NQ): 7684.00
+SL: 7675.62
+TP: 7700.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-21 09:15
+Entry (NQ): 7720.50
+SL: 7728.98
+TP: 7703.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-22 09:45
+Entry (NQ): 7729.50
+SL: 7721.16
+TP: 7746.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-26 09:45
+Entry (NQ): 7593.50
+SL: 7606.46
+TP: 7567.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-28 09:15
+Entry (NQ): 7585.25
+SL: 7594.06
+TP: 7567.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-29 09:45
+Entry (NQ): 7668.75
+SL: 7675.06
+TP: 7656.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-08-30 09:15
+Entry (NQ): 7736.25
+SL: 7740.54
+TP: 7727.67
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-02 09:30
+Entry (NQ): 7671.25
+SL: 7679.29
+TP: 7655.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-03 11:00
+Entry (NQ): 7598.75
+SL: 7591.44
+TP: 7613.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-06 10:30
+Entry (NQ): 7882.75
+SL: 7893.30
+TP: 7861.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-09 09:30
+Entry (NQ): 7868.00
+SL: 7865.60
+TP: 7872.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-13 11:15
+Entry (NQ): 7949.75
+SL: 7951.90
+TP: 7945.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-19 09:45
+Entry (NQ): 7902.25
+SL: 7904.96
+TP: 7896.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-20 11:00
+Entry (NQ): 7940.50
+SL: 7942.36
+TP: 7936.79
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-09-25 09:15
+Entry (NQ): 7714.75
+SL: 7706.25
+TP: 7731.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-03 09:15
+Entry (NQ): 7578.50
+SL: 7563.61
+TP: 7608.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-04 10:15
+Entry (NQ): 7640.00
+SL: 7636.11
+TP: 7647.79
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-07 09:30
+Entry (NQ): 7729.25
+SL: 7722.85
+TP: 7742.04
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-08 10:00
+Entry (NQ): 7737.25
+SL: 7728.50
+TP: 7754.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-09 09:45
+Entry (NQ): 7658.00
+SL: 7664.85
+TP: 7644.31
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-10 11:15
+Entry (NQ): 7704.75
+SL: 7716.47
+TP: 7681.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-14 09:15
+Entry (NQ): 7844.50
+SL: 7838.81
+TP: 7855.88
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-16 09:15
+Entry (NQ): 7935.50
+SL: 7932.40
+TP: 7941.70
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-18 09:30
+Entry (NQ): 7937.25
+SL: 7944.25
+TP: 7923.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-24 09:15
+Entry (NQ): 7926.25
+SL: 7915.80
+TP: 7947.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-29 09:45
+Entry (NQ): 8099.75
+SL: 8093.03
+TP: 8113.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-10-30 09:15
+Entry (NQ): 8051.00
+SL: 8048.32
+TP: 8056.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-05 09:15
+Entry (NQ): 8238.00
+SL: 8241.76
+TP: 8230.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-06 09:45
+Entry (NQ): 8213.50
+SL: 8211.53
+TP: 8217.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-07 09:15
+Entry (NQ): 8252.50
+SL: 8255.36
+TP: 8246.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-08 09:15
+Entry (NQ): 8212.75
+SL: 8208.89
+TP: 8220.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-12 10:15
+Entry (NQ): 8260.75
+SL: 8265.14
+TP: 8251.96
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-14 09:15
+Entry (NQ): 8248.25
+SL: 8243.76
+TP: 8257.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-15 09:30
+Entry (NQ): 8296.00
+SL: 8300.75
+TP: 8286.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-18 09:15
+Entry (NQ): 8334.25
+SL: 8331.29
+TP: 8340.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-11-25 09:15
+Entry (NQ): 8308.50
+SL: 8312.69
+TP: 8300.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-03 10:00
+Entry (NQ): 8327.50
+SL: 8317.55
+TP: 8347.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-05 09:15
+Entry (NQ): 8306.50
+SL: 8301.75
+TP: 8316.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-11 09:15
+Entry (NQ): 8364.25
+SL: 8353.91
+TP: 8384.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-12 09:15
+Entry (NQ): 8423.50
+SL: 8427.44
+TP: 8415.62
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-19 10:00
+Entry (NQ): 8624.50
+SL: 8625.69
+TP: 8622.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-23 09:30
+Entry (NQ): 8718.50
+SL: 8720.54
+TP: 8714.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-27 09:15
+Entry (NQ): 8827.00
+SL: 8823.37
+TP: 8834.27
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2019-12-31 10:45
+Entry (NQ): 8742.25
+SL: 8745.12
+TP: 8736.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-03 09:15
+Entry (NQ): 8780.00
+SL: 8773.72
+TP: 8792.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-06 09:15
+Entry (NQ): 8731.25
+SL: 8724.87
+TP: 8744.02
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-08 10:00
+Entry (NQ): 8839.50
+SL: 8846.46
+TP: 8825.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-14 09:15
+Entry (NQ): 9071.25
+SL: 9073.62
+TP: 9066.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-20 09:15
+Entry (NQ): 9161.00
+SL: 9159.56
+TP: 9163.89
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-23 10:30
+Entry (NQ): 9202.50
+SL: 9204.83
+TP: 9197.83
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-01-31 09:15
+Entry (NQ): 9178.25
+SL: 9174.05
+TP: 9186.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-05 09:15
+Entry (NQ): 9408.25
+SL: 9423.11
+TP: 9378.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-06 09:15
+Entry (NQ): 9437.75
+SL: 9429.38
+TP: 9454.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-10 10:45
+Entry (NQ): 9421.25
+SL: 9428.69
+TP: 9406.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-13 09:15
+Entry (NQ): 9563.00
+SL: 9556.41
+TP: 9576.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-18 10:45
+Entry (NQ): 9560.50
+SL: 9568.31
+TP: 9544.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-19 09:45
+Entry (NQ): 9665.00
+SL: 9673.51
+TP: 9647.98
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-02-21 11:00
+Entry (NQ): 9580.00
+SL: 9589.89
+TP: 9560.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-02 09:15
+Entry (NQ): 8601.25
+SL: 8585.56
+TP: 8632.62
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-03 10:00
+Entry (NQ): 8897.50
+SL: 8910.41
+TP: 8871.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-04 09:15
+Entry (NQ): 8735.25
+SL: 8765.39
+TP: 8674.97
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-06 09:30
+Entry (NQ): 8535.25
+SL: 8521.15
+TP: 8563.44
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-12 09:30
+Entry (NQ): 7603.50
+SL: 7597.41
+TP: 7615.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-24 09:30
+Entry (NQ): 7323.75
+SL: 7333.77
+TP: 7303.70
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-27 09:15
+Entry (NQ): 7699.00
+SL: 7683.66
+TP: 7729.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-03-31 09:15
+Entry (NQ): 7934.75
+SL: 7946.66
+TP: 7910.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-01 09:45
+Entry (NQ): 7557.50
+SL: 7540.11
+TP: 7592.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-02 09:15
+Entry (NQ): 7575.75
+SL: 7588.88
+TP: 7549.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-03 09:45
+Entry (NQ): 7526.75
+SL: 7509.86
+TP: 7560.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-14 09:15
+Entry (NQ): 8432.00
+SL: 8424.82
+TP: 8446.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-16 10:15
+Entry (NQ): 8654.50
+SL: 8638.62
+TP: 8686.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-21 11:00
+Entry (NQ): 8662.25
+SL: 8641.68
+TP: 8703.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-22 09:15
+Entry (NQ): 8519.00
+SL: 8529.39
+TP: 8498.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-23 09:15
+Entry (NQ): 8612.75
+SL: 8592.82
+TP: 8652.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-24 09:30
+Entry (NQ): 8551.25
+SL: 8540.21
+TP: 8573.33
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-04-29 11:45
+Entry (NQ): 8804.50
+SL: 8787.48
+TP: 8838.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-01 10:00
+Entry (NQ): 8772.50
+SL: 8775.56
+TP: 8766.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-04 09:45
+Entry (NQ): 8647.25
+SL: 8638.37
+TP: 8665.01
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-05 09:15
+Entry (NQ): 8904.75
+SL: 8917.34
+TP: 8879.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-13 09:45
+Entry (NQ): 9118.25
+SL: 9128.20
+TP: 9098.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-14 11:00
+Entry (NQ): 9033.00
+SL: 9040.28
+TP: 9018.43
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-15 11:15
+Entry (NQ): 9119.50
+SL: 9096.99
+TP: 9164.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-21 09:30
+Entry (NQ): 9418.50
+SL: 9409.23
+TP: 9437.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-27 10:30
+Entry (NQ): 9493.00
+SL: 9502.49
+TP: 9474.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-28 11:00
+Entry (NQ): 9376.75
+SL: 9362.14
+TP: 9405.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-05-29 09:15
+Entry (NQ): 9400.00
+SL: 9388.81
+TP: 9422.38
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-03 10:45
+Entry (NQ): 9687.00
+SL: 9693.20
+TP: 9674.59
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-04 09:15
+Entry (NQ): 9686.50
+SL: 9695.95
+TP: 9667.60
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-05 10:00
+Entry (NQ): 9674.75
+SL: 9659.58
+TP: 9705.09
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-11 09:45
+Entry (NQ): 9948.50
+SL: 9940.78
+TP: 9963.95
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-19 11:00
+Entry (NQ): 10060.25
+SL: 10075.69
+TP: 10029.38
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-23 09:15
+Entry (NQ): 10184.75
+SL: 10199.67
+TP: 10154.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-06-30 09:45
+Entry (NQ): 9960.00
+SL: 9951.51
+TP: 9976.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-01 09:30
+Entry (NQ): 10134.50
+SL: 10125.70
+TP: 10152.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-02 09:15
+Entry (NQ): 10323.25
+SL: 10328.03
+TP: 10313.68
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-06 09:15
+Entry (NQ): 10486.50
+SL: 10476.38
+TP: 10506.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-07 10:30
+Entry (NQ): 10544.25
+SL: 10531.80
+TP: 10569.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-08 09:45
+Entry (NQ): 10575.00
+SL: 10587.23
+TP: 10550.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-13 09:15
+Entry (NQ): 10889.25
+SL: 10877.57
+TP: 10912.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-15 11:00
+Entry (NQ): 10676.25
+SL: 10664.85
+TP: 10699.04
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-17 09:15
+Entry (NQ): 10590.75
+SL: 10564.56
+TP: 10643.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-20 09:15
+Entry (NQ): 10565.50
+SL: 10578.17
+TP: 10540.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-22 09:15
+Entry (NQ): 10805.25
+SL: 10794.54
+TP: 10826.68
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-23 09:15
+Entry (NQ): 10911.75
+SL: 10922.89
+TP: 10889.46
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-29 10:15
+Entry (NQ): 10575.50
+SL: 10562.62
+TP: 10601.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-07-31 11:30
+Entry (NQ): 10895.00
+SL: 10873.92
+TP: 10937.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-05 09:15
+Entry (NQ): 11128.00
+SL: 11139.09
+TP: 11105.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-06 09:45
+Entry (NQ): 11086.00
+SL: 11080.11
+TP: 11097.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-07 09:15
+Entry (NQ): 11219.25
+SL: 11241.16
+TP: 11175.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-10 09:45
+Entry (NQ): 11099.00
+SL: 11093.59
+TP: 11109.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-11 09:15
+Entry (NQ): 11122.50
+SL: 11134.79
+TP: 11097.93
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-12 09:30
+Entry (NQ): 10969.25
+SL: 10987.11
+TP: 10933.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-14 09:30
+Entry (NQ): 11159.00
+SL: 11144.69
+TP: 11187.61
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-17 10:30
+Entry (NQ): 11202.50
+SL: 11210.63
+TP: 11186.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-19 10:30
+Entry (NQ): 11426.50
+SL: 11429.68
+TP: 11420.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-21 09:45
+Entry (NQ): 11468.25
+SL: 11460.03
+TP: 11484.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-24 09:15
+Entry (NQ): 11652.50
+SL: 11665.56
+TP: 11626.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-08-28 11:30
+Entry (NQ): 11932.00
+SL: 11918.71
+TP: 11958.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-04 09:45
+Entry (NQ): 11762.50
+SL: 11792.73
+TP: 11702.03
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-07 09:15
+Entry (NQ): 11443.00
+SL: 11452.46
+TP: 11424.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-14 09:15
+Entry (NQ): 11257.75
+SL: 11279.35
+TP: 11214.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-17 09:15
+Entry (NQ): 11077.75
+SL: 11107.07
+TP: 11019.11
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-25 09:15
+Entry (NQ): 10867.25
+SL: 10853.60
+TP: 10894.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-29 09:15
+Entry (NQ): 11346.75
+SL: 11331.66
+TP: 11376.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-09-30 10:15
+Entry (NQ): 11210.75
+SL: 11199.78
+TP: 11232.69
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-07 09:45
+Entry (NQ): 11327.00
+SL: 11318.16
+TP: 11344.67
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-19 10:30
+Entry (NQ): 11932.00
+SL: 11950.97
+TP: 11894.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-20 09:15
+Entry (NQ): 11723.50
+SL: 11745.52
+TP: 11679.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-22 09:15
+Entry (NQ): 11637.25
+SL: 11649.13
+TP: 11613.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-23 09:15
+Entry (NQ): 11673.00
+SL: 11683.78
+TP: 11651.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-26 10:30
+Entry (NQ): 11570.75
+SL: 11576.45
+TP: 11559.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-27 09:45
+Entry (NQ): 11523.50
+SL: 11543.74
+TP: 11483.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-28 11:00
+Entry (NQ): 11439.25
+SL: 11432.49
+TP: 11452.76
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-10-29 10:15
+Entry (NQ): 11233.50
+SL: 11222.09
+TP: 11256.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-03 09:45
+Entry (NQ): 11165.00
+SL: 11178.13
+TP: 11138.74
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-10 09:15
+Entry (NQ): 11771.75
+SL: 11756.92
+TP: 11801.41
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-17 11:00
+Entry (NQ): 12018.50
+SL: 12002.46
+TP: 12050.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-19 09:15
+Entry (NQ): 11829.00
+SL: 11802.52
+TP: 11881.96
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-20 09:15
+Entry (NQ): 11982.00
+SL: 11990.63
+TP: 11964.74
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-26 09:15
+Entry (NQ): 12188.00
+SL: 12171.38
+TP: 12221.25
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-27 09:15
+Entry (NQ): 12197.00
+SL: 12207.68
+TP: 12175.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-11-30 11:00
+Entry (NQ): 12264.50
+SL: 12269.33
+TP: 12254.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-03 09:15
+Entry (NQ): 12475.00
+SL: 12488.55
+TP: 12447.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-04 09:45
+Entry (NQ): 12507.25
+SL: 12500.43
+TP: 12520.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-09 10:30
+Entry (NQ): 12628.75
+SL: 12625.43
+TP: 12635.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-17 09:45
+Entry (NQ): 12746.75
+SL: 12750.88
+TP: 12738.50
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-23 11:45
+Entry (NQ): 12723.00
+SL: 12719.88
+TP: 12729.24
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-28 09:45
+Entry (NQ): 12776.25
+SL: 12764.00
+TP: 12800.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2020-12-29 09:15
+Entry (NQ): 12890.00
+SL: 12887.59
+TP: 12894.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-04 09:30
+Entry (NQ): 12952.50
+SL: 12956.83
+TP: 12943.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-05 09:45
+Entry (NQ): 12713.50
+SL: 12719.60
+TP: 12701.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-07 09:30
+Entry (NQ): 12704.25
+SL: 12720.05
+TP: 12672.65
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-11 10:00
+Entry (NQ): 13035.25
+SL: 13031.00
+TP: 13043.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-12 09:30
+Entry (NQ): 12941.50
+SL: 12952.69
+TP: 12919.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-15 09:15
+Entry (NQ): 12888.75
+SL: 12901.42
+TP: 12863.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-18 10:15
+Entry (NQ): 12784.75
+SL: 12792.39
+TP: 12769.46
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-26 09:15
+Entry (NQ): 13444.75
+SL: 13453.89
+TP: 13426.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-01-27 09:15
+Entry (NQ): 13550.75
+SL: 13567.90
+TP: 13516.46
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-05 11:15
+Entry (NQ): 13597.50
+SL: 13606.06
+TP: 13580.37
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-08 09:45
+Entry (NQ): 13644.50
+SL: 13626.86
+TP: 13679.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-10 09:45
+Entry (NQ): 13742.25
+SL: 13736.51
+TP: 13753.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-11 09:30
+Entry (NQ): 13698.75
+SL: 13705.14
+TP: 13685.97
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-15 09:30
+Entry (NQ): 13841.75
+SL: 13846.91
+TP: 13831.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-16 09:45
+Entry (NQ): 13856.50
+SL: 13845.09
+TP: 13879.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-02-24 09:15
+Entry (NQ): 13179.00
+SL: 13203.78
+TP: 13129.44
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-01 09:15
+Entry (NQ): 13096.50
+SL: 13086.68
+TP: 13116.14
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-02 09:15
+Entry (NQ): 13178.00
+SL: 13158.76
+TP: 13216.48
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-08 11:15
+Entry (NQ): 12480.00
+SL: 12497.06
+TP: 12445.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-10 10:00
+Entry (NQ): 12804.00
+SL: 12812.44
+TP: 12787.12
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-12 09:15
+Entry (NQ): 12827.25
+SL: 12816.82
+TP: 12848.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-18 09:15
+Entry (NQ): 13028.75
+SL: 12999.87
+TP: 13086.51
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-23 09:15
+Entry (NQ): 13054.00
+SL: 13067.85
+TP: 13026.30
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-24 09:15
+Entry (NQ): 13130.75
+SL: 13147.28
+TP: 13097.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-29 09:30
+Entry (NQ): 12879.25
+SL: 12848.73
+TP: 12940.29
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-03-30 09:30
+Entry (NQ): 12871.00
+SL: 12851.12
+TP: 12910.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-02 11:30
+Entry (NQ): 13352.75
+SL: 13350.34
+TP: 13357.58
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-07 09:30
+Entry (NQ): 13587.00
+SL: 13577.71
+TP: 13605.59
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-12 09:15
+Entry (NQ): 13811.75
+SL: 13827.81
+TP: 13779.64
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-13 09:15
+Entry (NQ): 13813.25
+SL: 13818.43
+TP: 13802.89
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-16 10:45
+Entry (NQ): 13990.75
+SL: 13994.24
+TP: 13983.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-20 09:30
+Entry (NQ): 13920.75
+SL: 13935.22
+TP: 13891.81
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-21 10:30
+Entry (NQ): 13769.75
+SL: 13782.46
+TP: 13744.32
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-04-22 10:15
+Entry (NQ): 13918.00
+SL: 13906.42
+TP: 13941.16
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-04 09:45
+Entry (NQ): 13736.25
+SL: 13724.04
+TP: 13760.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-06 10:00
+Entry (NQ): 13530.25
+SL: 13512.46
+TP: 13565.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-07 10:00
+Entry (NQ): 13621.75
+SL: 13627.60
+TP: 13610.04
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-10 09:30
+Entry (NQ): 13681.00
+SL: 13691.10
+TP: 13660.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-12 10:45
+Entry (NQ): 13263.00
+SL: 13249.76
+TP: 13289.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-14 09:45
+Entry (NQ): 13206.75
+SL: 13225.45
+TP: 13169.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-19 09:15
+Entry (NQ): 13060.25
+SL: 13048.42
+TP: 13083.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-20 09:45
+Entry (NQ): 13189.25
+SL: 13181.01
+TP: 13205.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-24 10:15
+Entry (NQ): 13482.00
+SL: 13489.32
+TP: 13467.36
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-05-27 10:15
+Entry (NQ): 13636.50
+SL: 13618.89
+TP: 13671.71
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-01 09:15
+Entry (NQ): 13713.50
+SL: 13727.55
+TP: 13685.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-04 09:30
+Entry (NQ): 13530.50
+SL: 13548.13
+TP: 13495.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-07 09:15
+Entry (NQ): 13721.75
+SL: 13705.18
+TP: 13754.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-08 11:30
+Entry (NQ): 13797.00
+SL: 13785.96
+TP: 13819.08
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-11 09:15
+Entry (NQ): 13951.50
+SL: 13947.16
+TP: 13960.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-17 09:30
+Entry (NQ): 13897.75
+SL: 13876.54
+TP: 13940.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-18 11:30
+Entry (NQ): 14179.50
+SL: 14165.67
+TP: 14207.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-22 11:15
+Entry (NQ): 14124.25
+SL: 14132.70
+TP: 14107.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-06-23 10:00
+Entry (NQ): 14265.25
+SL: 14256.15
+TP: 14283.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-01 10:30
+Entry (NQ): 14548.50
+SL: 14535.00
+TP: 14575.49
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-05 10:30
+Entry (NQ): 14696.25
+SL: 14700.56
+TP: 14687.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-13 09:15
+Entry (NQ): 14868.00
+SL: 14872.24
+TP: 14859.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-14 09:15
+Entry (NQ): 14865.50
+SL: 14854.14
+TP: 14888.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-16 11:15
+Entry (NQ): 14801.00
+SL: 14819.33
+TP: 14764.35
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-19 09:15
+Entry (NQ): 14659.75
+SL: 14665.93
+TP: 14647.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-20 09:15
+Entry (NQ): 14617.50
+SL: 14593.70
+TP: 14665.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-22 09:30
+Entry (NQ): 14853.00
+SL: 14849.26
+TP: 14860.47
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-27 10:45
+Entry (NQ): 15098.75
+SL: 15104.14
+TP: 15087.97
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-07-29 09:15
+Entry (NQ): 15005.25
+SL: 14997.20
+TP: 15021.34
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-02 09:15
+Entry (NQ): 15037.25
+SL: 15032.28
+TP: 15047.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-04 09:15
+Entry (NQ): 15051.00
+SL: 15039.55
+TP: 15073.91
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-06 09:15
+Entry (NQ): 15145.75
+SL: 15140.58
+TP: 15156.10
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-09 09:15
+Entry (NQ): 15087.25
+SL: 15090.74
+TP: 15080.27
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-10 09:15
+Entry (NQ): 15135.25
+SL: 15149.76
+TP: 15106.23
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-12 09:15
+Entry (NQ): 14993.50
+SL: 15004.04
+TP: 14972.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-18 09:30
+Entry (NQ): 14986.25
+SL: 14977.88
+TP: 15002.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-19 09:15
+Entry (NQ): 14734.25
+SL: 14720.50
+TP: 14761.74
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-25 11:30
+Entry (NQ): 15365.00
+SL: 15361.94
+TP: 15371.11
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-26 09:15
+Entry (NQ): 15337.00
+SL: 15348.05
+TP: 15314.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-30 09:15
+Entry (NQ): 15444.25
+SL: 15450.18
+TP: 15432.40
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-08-31 09:15
+Entry (NQ): 15659.00
+SL: 15651.04
+TP: 15674.93
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-09 09:15
+Entry (NQ): 15583.75
+SL: 15593.85
+TP: 15563.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-14 09:30
+Entry (NQ): 15437.75
+SL: 15440.11
+TP: 15433.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-16 09:45
+Entry (NQ): 15482.00
+SL: 15469.14
+TP: 15507.73
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-23 09:15
+Entry (NQ): 15258.75
+SL: 15267.40
+TP: 15241.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-24 09:30
+Entry (NQ): 15232.00
+SL: 15204.21
+TP: 15287.57
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-09-27 09:15
+Entry (NQ): 15335.50
+SL: 15330.30
+TP: 15345.90
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-04 09:15
+Entry (NQ): 14697.00
+SL: 14717.90
+TP: 14655.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-07 09:15
+Entry (NQ): 14891.50
+SL: 14906.38
+TP: 14861.74
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-12 09:15
+Entry (NQ): 14657.00
+SL: 14673.61
+TP: 14623.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-15 09:45
+Entry (NQ): 15075.50
+SL: 15091.48
+TP: 15043.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-19 09:15
+Entry (NQ): 15323.50
+SL: 15339.97
+TP: 15290.55
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-21 11:00
+Entry (NQ): 15358.25
+SL: 15362.74
+TP: 15349.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-22 10:00
+Entry (NQ): 15427.50
+SL: 15435.83
+TP: 15410.84
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-25 09:15
+Entry (NQ): 15383.00
+SL: 15392.97
+TP: 15363.07
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-10-26 09:15
+Entry (NQ): 15600.25
+SL: 15608.05
+TP: 15584.66
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-02 09:15
+Entry (NQ): 15862.00
+SL: 15855.62
+TP: 15874.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-03 09:15
+Entry (NQ): 15976.25
+SL: 15979.64
+TP: 15969.48
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-12 09:45
+Entry (NQ): 16049.50
+SL: 16035.78
+TP: 16076.94
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-15 09:15
+Entry (NQ): 16225.50
+SL: 16240.11
+TP: 16196.28
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-19 09:15
+Entry (NQ): 16564.50
+SL: 16568.46
+TP: 16556.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-23 10:30
+Entry (NQ): 16342.00
+SL: 16355.93
+TP: 16314.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-11-24 09:15
+Entry (NQ): 16288.25
+SL: 16271.19
+TP: 16322.37
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-01 10:15
+Entry (NQ): 16366.00
+SL: 16383.80
+TP: 16330.41
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-08 10:00
+Entry (NQ): 16373.75
+SL: 16354.35
+TP: 16412.55
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-10 10:15
+Entry (NQ): 16185.50
+SL: 16205.56
+TP: 16145.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-27 09:15
+Entry (NQ): 16336.75
+SL: 16343.10
+TP: 16324.06
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2021-12-31 09:15
+Entry (NQ): 16422.25
+SL: 16412.30
+TP: 16442.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-05 09:15
+Entry (NQ): 16228.25
+SL: 16239.74
+TP: 16205.28
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-07 09:30
+Entry (NQ): 15754.75
+SL: 15765.05
+TP: 15734.16
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-10 11:30
+Entry (NQ): 15524.25
+SL: 15512.49
+TP: 15547.78
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-12 11:00
+Entry (NQ): 15874.50
+SL: 15886.20
+TP: 15851.10
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-13 10:30
+Entry (NQ): 15911.75
+SL: 15921.38
+TP: 15892.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-21 10:00
+Entry (NQ): 14782.50
+SL: 14798.30
+TP: 14750.90
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-01-24 09:15
+Entry (NQ): 14487.75
+SL: 14471.63
+TP: 14519.99
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-03 09:15
+Entry (NQ): 14833.50
+SL: 14808.66
+TP: 14883.17
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-04 09:30
+Entry (NQ): 14702.00
+SL: 14677.11
+TP: 14751.77
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-08 09:30
+Entry (NQ): 14591.75
+SL: 14614.69
+TP: 14545.88
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-10 09:15
+Entry (NQ): 14982.75
+SL: 14964.66
+TP: 15018.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-02-15 09:15
+Entry (NQ): 14478.00
+SL: 14501.89
+TP: 14430.22
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-18 09:30
+Entry (NQ): 14015.75
+SL: 13995.50
+TP: 14056.26
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-22 09:15
+Entry (NQ): 14439.75
+SL: 14450.46
+TP: 14418.34
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-24 09:15
+Entry (NQ): 14564.25
+SL: 14572.28
+TP: 14548.19
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-28 11:30
+Entry (NQ): 14726.25
+SL: 14750.37
+TP: 14678.02
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-03-31 09:30
+Entry (NQ): 15139.75
+SL: 15129.39
+TP: 15160.48
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-01 10:15
+Entry (NQ): 14917.00
+SL: 14907.25
+TP: 14936.50
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-06 09:15
+Entry (NQ): 14733.75
+SL: 14727.98
+TP: 14745.30
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-12 09:30
+Entry (NQ): 13978.00
+SL: 13992.40
+TP: 13949.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-13 09:15
+Entry (NQ): 14061.00
+SL: 14079.59
+TP: 14023.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-22 11:00
+Entry (NQ): 13666.00
+SL: 13649.47
+TP: 13699.07
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-26 10:15
+Entry (NQ): 13521.00
+SL: 13532.61
+TP: 13497.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-04-29 09:15
+Entry (NQ): 13373.00
+SL: 13394.59
+TP: 13329.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-02 10:00
+Entry (NQ): 12890.00
+SL: 12868.99
+TP: 12932.02
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-10 09:45
+Entry (NQ): 12392.75
+SL: 12414.24
+TP: 12349.76
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-16 09:30
+Entry (NQ): 12310.00
+SL: 12330.74
+TP: 12268.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-18 09:30
+Entry (NQ): 12481.25
+SL: 12465.77
+TP: 12512.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-26 10:00
+Entry (NQ): 11893.00
+SL: 11869.91
+TP: 11939.18
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-27 09:15
+Entry (NQ): 12279.25
+SL: 12284.97
+TP: 12267.80
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-05-30 09:30
+Entry (NQ): 12859.75
+SL: 12869.99
+TP: 12839.26
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-07 09:15
+Entry (NQ): 12547.50
+SL: 12558.61
+TP: 12525.28
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-20 11:15
+Entry (NQ): 11389.50
+SL: 11404.01
+TP: 11360.49
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-21 09:15
+Entry (NQ): 11539.50
+SL: 11549.11
+TP: 11520.27
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-29 09:15
+Entry (NQ): 11684.25
+SL: 11706.06
+TP: 11640.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-06-30 09:15
+Entry (NQ): 11550.50
+SL: 11570.89
+TP: 11509.72
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-04 10:45
+Entry (NQ): 11567.75
+SL: 11576.24
+TP: 11550.78
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-07 09:15
+Entry (NQ): 11934.75
+SL: 11951.81
+TP: 11900.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-08 09:45
+Entry (NQ): 12080.25
+SL: 12070.28
+TP: 12100.19
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-11 09:15
+Entry (NQ): 12063.75
+SL: 12073.84
+TP: 12043.57
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-12 09:45
+Entry (NQ): 11820.25
+SL: 11827.56
+TP: 11805.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-22 09:45
+Entry (NQ): 12567.75
+SL: 12579.13
+TP: 12544.99
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-25 09:15
+Entry (NQ): 12424.50
+SL: 12442.20
+TP: 12389.09
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-26 09:30
+Entry (NQ): 12312.50
+SL: 12296.92
+TP: 12343.66
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-07-29 09:30
+Entry (NQ): 12908.75
+SL: 12889.62
+TP: 12947.01
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-03 10:00
+Entry (NQ): 12933.75
+SL: 12944.40
+TP: 12912.46
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-09 09:15
+Entry (NQ): 13180.50
+SL: 13166.29
+TP: 13208.92
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-10 09:15
+Entry (NQ): 13041.50
+SL: 13045.73
+TP: 13033.04
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-15 10:45
+Entry (NQ): 13503.75
+SL: 13493.93
+TP: 13523.39
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-17 09:15
+Entry (NQ): 13606.50
+SL: 13586.18
+TP: 13647.15
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-18 09:15
+Entry (NQ): 13455.25
+SL: 13464.46
+TP: 13436.82
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-08-24 09:45
+Entry (NQ): 12898.00
+SL: 12921.21
+TP: 12851.58
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-01 10:00
+Entry (NQ): 12140.25
+SL: 12122.15
+TP: 12176.45
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-08 09:15
+Entry (NQ): 12246.25
+SL: 12222.77
+TP: 12293.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-09 10:45
+Entry (NQ): 12448.00
+SL: 12465.94
+TP: 12412.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-13 11:45
+Entry (NQ): 12804.00
+SL: 12813.48
+TP: 12785.05
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-14 09:15
+Entry (NQ): 12185.00
+SL: 12193.07
+TP: 12168.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-21 11:00
+Entry (NQ): 11937.75
+SL: 11948.85
+TP: 11915.54
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-23 09:45
+Entry (NQ): 11491.75
+SL: 11477.63
+TP: 11520.00
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-27 10:15
+Entry (NQ): 11423.25
+SL: 11412.19
+TP: 11445.36
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-09-30 11:00
+Entry (NQ): 11291.75
+SL: 11277.86
+TP: 11319.53
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-03 09:15
+Entry (NQ): 10966.75
+SL: 10950.08
+TP: 11000.09
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-04 09:15
+Entry (NQ): 11490.25
+SL: 11501.15
+TP: 11468.45
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-05 09:15
+Entry (NQ): 11553.75
+SL: 11545.75
+TP: 11569.75
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-06 09:15
+Entry (NQ): 11608.25
+SL: 11602.60
+TP: 11619.56
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-07 09:15
+Entry (NQ): 11484.75
+SL: 11463.42
+TP: 11527.40
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-13 09:45
+Entry (NQ): 10852.50
+SL: 10860.99
+TP: 10835.52
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-20 11:00
+Entry (NQ): 11085.00
+SL: 11107.72
+TP: 11039.56
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-21 09:15
+Entry (NQ): 11013.00
+SL: 11000.39
+TP: 11038.21
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-24 09:15
+Entry (NQ): 11305.00
+SL: 11288.77
+TP: 11337.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-25 10:00
+Entry (NQ): 11472.75
+SL: 11466.01
+TP: 11486.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-10-28 11:45
+Entry (NQ): 11118.00
+SL: 11131.90
+TP: 11090.20
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-10 09:30
+Entry (NQ): 10866.00
+SL: 10847.51
+TP: 10902.98
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-11 10:30
+Entry (NQ): 11710.25
+SL: 11702.36
+TP: 11726.03
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-15 09:15
+Entry (NQ): 11853.25
+SL: 11862.75
+TP: 11834.24
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-22 09:30
+Entry (NQ): 11588.50
+SL: 11591.29
+TP: 11582.92
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-11-30 09:15
+Entry (NQ): 11569.75
+SL: 11582.06
+TP: 11545.13
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-02 09:15
+Entry (NQ): 12034.00
+SL: 12051.79
+TP: 11998.42
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-09 11:15
+Entry (NQ): 11689.00
+SL: 11710.65
+TP: 11645.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-19 10:30
+Entry (NQ): 11398.75
+SL: 11409.28
+TP: 11377.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-20 09:15
+Entry (NQ): 11159.50
+SL: 11175.64
+TP: 11127.21
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2022-12-23 09:30
+Entry (NQ): 11029.75
+SL: 11025.19
+TP: 11038.87
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-05 09:30
+Entry (NQ): 10975.25
+SL: 10985.68
+TP: 10954.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-09 09:15
+Entry (NQ): 11148.50
+SL: 11154.43
+TP: 11136.63
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-10 10:45
+Entry (NQ): 11194.25
+SL: 11207.45
+TP: 11167.85
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-12 10:30
+Entry (NQ): 11461.75
+SL: 11448.07
+TP: 11489.12
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-17 09:15
+Entry (NQ): 11562.75
+SL: 11578.78
+TP: 11530.69
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-23 09:15
+Entry (NQ): 11669.25
+SL: 11651.73
+TP: 11704.28
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-27 10:00
+Entry (NQ): 12040.75
+SL: 12046.54
+TP: 12029.17
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-30 09:15
+Entry (NQ): 12100.25
+SL: 12078.71
+TP: 12143.32
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-01-31 10:15
+Entry (NQ): 11908.00
+SL: 11900.20
+TP: 11923.60
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-01 09:15
+Entry (NQ): 12126.25
+SL: 12113.97
+TP: 12150.82
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-15 09:15
+Entry (NQ): 12573.75
+SL: 12594.43
+TP: 12532.39
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-16 09:15
+Entry (NQ): 12756.25
+SL: 12735.35
+TP: 12798.05
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-17 09:45
+Entry (NQ): 12394.50
+SL: 12410.18
+TP: 12363.14
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-22 11:45
+Entry (NQ): 12073.25
+SL: 12061.22
+TP: 12097.31
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-24 09:15
+Entry (NQ): 12140.50
+SL: 12129.02
+TP: 12163.46
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-27 09:45
+Entry (NQ): 12072.75
+SL: 12079.39
+TP: 12059.47
+RR: 2.0
+Reason: London range false break of the HIGH
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-02-28 09:15
+Entry (NQ): 12065.00
+SL: 12076.24
+TP: 12042.53
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-06 10:00
+Entry (NQ): 12309.50
+SL: 12302.14
+TP: 12324.23
+RR: 2.0
+Reason: London range false break of the LOW
+
+SHORT — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-08 09:15
+Entry (NQ): 12173.25
+SL: 12195.92
+TP: 12127.91
+RR: 2.0
+Reason: London range false break of the HIGH
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-14 10:15
+Entry (NQ): 11961.50
+SL: 11954.15
+TP: 11976.20
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-16 09:15
+Entry (NQ): 12415.75
+SL: 12403.76
+TP: 12439.72
+RR: 2.0
+Reason: London range false break of the LOW
+
+LONG — NQ_LONDON_FALSE_BREAK_v1.0
+Time (London): 2023-03-21 09:15
+Entry (NQ): 12708.50
+SL: 12701.31
+TP: 12722.89
+RR: 2.0
+Reason: London range false break of the LOW

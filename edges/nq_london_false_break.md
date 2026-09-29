@@ -44,3 +44,16 @@ El objetivo (límite) nunca lleva deslizamiento.
 - Si el NQ pasara, sería con un listón algo menos exigente de lo que parece: se ha probado en dos mercados y se
   informaría del que funciona.
 - Además, el proyecto ya probó varias ideas de rango y apertura en NQ (ORB, OR + VWAP) sin ventaja tras costes.
+
+## Resultado del desarrollo (2-ene-2015 → 21-mar-2023): añadido tras ejecutar
+Informe: `reports/NQ_LONDON_FALSE_BREAK_v1.0/`. Auditoría de look-ahead: OK en las 861 operaciones.
+
+| | A (sin costes) | B (1 tick + 1 $) | C (2 ticks + 1 $) |
+|---|---|---|---|
+| Operaciones (al año) | 913 (111) | 861 (105) | 808 (98) |
+| Profit factor | 0,91 | 0,48 | 0,38 |
+| R medio (t) | −0,057 (−1,33) | −0,409 (−8,82) | −0,539 (−10,79) |
+
+**Veredicto: RECHAZADA.** Ya pierde antes de costes, y con costes la pérdida es grande (stop mediano de 6 puntos
+frente a 1,5 puntos de costes). Largos y cortos, rango, profundidad y sensibilidad: todo en el ruido o negativo. El
+fuera de muestra sigue bloqueado. La regla ha fallado en los dos mercados.

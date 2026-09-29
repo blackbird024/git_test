@@ -2,7 +2,8 @@
 
 1) Auditoría de look-ahead (si falla, se detiene).  2) v1.0 exacta en DESARROLLO, escenarios A/B/C.
 3) Diagnóstico (no cambia la v1.0): lados, rango, profundidad, hora, sensibilidad.  El fuera de muestra NO se ejecuta.
-Uso: python -m src.report.gold_london   →   reports/GOLD_LONDON_FALSE_BREAK_v1.0/ (nunca se sobrescribe).
+Uso: python -m src.report.gold_london [GC|NQ]   →   reports/<VERSION>/ (nunca se sobrescribe).
+NQ: mismas reglas (NQ_LONDON_FALSE_BREAK_v1.0), tamaño en MNQ y costes estándar del proyecto para MNQ.
 """
 import sys
 from pathlib import Path
@@ -18,6 +19,10 @@ from src.strategies import gold_london_false_break as g
 from src.strategies.gold_swing_simple import ESCENARIOS, atr_wilder
 
 RAIZ = Path(__file__).resolve().parent.parent.parent
+MERCADOS = {
+    "GC": (g.VERSION, ESCENARIOS, g.Config()),
+    "NQ": (g.VERSION_NQ, g.ESCENARIOS_MNQ, g.Config(version=g.VERSION_NQ, valor_punto=2.0, costes=g.ESCENARIOS_MNQ["B"])),
+}
 
 
 def auditoria(m1, cfg, prep, ops, excl):
@@ -70,20 +75,20 @@ def auditoria(m1, cfg, prep, ops, excl):
     return res
 
 
-def carpeta() -> Path:
-    out, k = RAIZ / "reports" / g.VERSION, 2
+def carpeta(version: str) -> Path:
+    out, k = RAIZ / "reports" / version, 2
     while out.exists():
-        out, k = RAIZ / "reports" / f"{g.VERSION}_v{k}", k + 1
+        out, k = RAIZ / "reports" / f"{version}_v{k}", k + 1
     return out
 
 
-def ejecutar():
-    dev, _ = periodos()                                   # el fuera de muestra no se usa
-    excl = excluidos("GC")
-    base = g.Config()
+def ejecutar(raiz: str = "GC"):
+    version, escenarios, base = MERCADOS[raiz]
+    dev, _ = periodos(raiz)                               # el fuera de muestra no se usa
+    excl = excluidos(raiz)
     prep = g.preparar(dev, base)
     anios = (dev.index.max() - dev.index.min()).days / 365.25
-    salida = carpeta()
+    salida = carpeta(version)
     salida.mkdir(parents=True)
 
     ops_b, dias_b = g.backtest(dev, base, excl, prep)
@@ -95,7 +100,7 @@ def ejecutar():
         sys.exit(1)
 
     resumen, trades, anual, lados, horas, curvas = [], [], [], [], [], {}
-    for esc, costes in ESCENARIOS.items():
+    for esc, costes in escenarios.items():
         cfg = base.con(costes=costes)
         ops, _ = g.backtest(dev, cfg, excl, prep)
         m = metricas(ops, cfg.saldo_inicial)
@@ -136,7 +141,7 @@ def ejecutar():
     sens = []
     for nombre, cambios in {"v1.0 (oficial)": {}, "TP 1,5R": {"tp_r": 1.5}, "TP 2,5R": {"tp_r": 2.5},
                             "buffer 0": {"buffer_atr": 0.0}}.items():
-        for esc, costes in ESCENARIOS.items():
+        for esc, costes in escenarios.items():
             m = metricas(g.backtest(dev, base.con(**cambios, costes=costes), excl, prep)[0], base.saldo_inicial)
             sens.append({"variant": nombre, "scenario": esc, **{k: m.get(k) for k in
                          ["trades", "win_rate_%", "profit_factor", "expectancy_R", "expectancy_R_gross", "t_stat_R",
@@ -156,10 +161,10 @@ def ejecutar():
     pd.concat([rq.assign(tabla="range_pct"), dq.assign(tabla="depth_ratio")]).to_csv(
         salida / "range_depth_analysis.csv", index=False)
     sens.to_csv(salida / "sensitivity.csv", index=False)
-    (salida / "signals.txt").write_text("\n\n".join(g.alerta(op) for _, op in ops_b.iterrows()) + "\n")
-    graficos(curvas, salida, base.saldo_inicial, g.VERSION)
+    (salida / "signals.txt").write_text("\n\n".join(g.alerta(op, version, raiz) for _, op in ops_b.iterrows()) + "\n")
+    graficos(curvas, salida, base.saldo_inicial, version)
     (salida / "diagnostics.md").write_text("\n".join([
-        f"# Diagnóstico: {g.VERSION} (desarrollo, {anios:.2f} años)", "", "## Auditoría de look-ahead", "", tabla_audit,
+        f"# Diagnóstico: {version} (desarrollo, {anios:.2f} años)", "", "## Auditoría de look-ahead", "", tabla_audit,
         "", "## Estado de cada día (escenario B)", "",
         md(dias_b.estado.value_counts().rename_axis("estado").reset_index(name="n")), "",
         "## Primer extremo atacado (días con rango válido)", "",
@@ -171,4 +176,4 @@ def ejecutar():
 
 
 if __name__ == "__main__":
-    ejecutar()
+    ejecutar(sys.argv[1] if len(sys.argv) > 1 else "GC")

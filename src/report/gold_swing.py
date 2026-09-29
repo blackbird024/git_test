@@ -33,10 +33,10 @@ SENSIBILIDAD = {
 }
 
 
-def periodos():
-    m1 = velas_1m("GC")
+def periodos(raiz: str = "GC"):
+    m1 = velas_1m(raiz)
     ses = sesion_cme(m1.index)
-    corte = inicio_fuera_de_muestra("GC").date()
+    corte = inicio_fuera_de_muestra(raiz).date()
     return m1[ses < corte], m1[ses >= corte]
 
 
