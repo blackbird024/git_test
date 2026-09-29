@@ -26,6 +26,7 @@ from src.strategies import close_momentum_5m as cm  # noqa: E402
 from src.strategies import gold_ict  # noqa: E402
 from src.strategies import intraday_vwap as iv  # noqa: E402
 from src.strategies import ma_cross as ma  # noqa: E402
+from src.strategies import noise_area  # noqa: E402
 from src.strategies import orb_5m as orb  # noqa: E402
 from src.strategies import po3  # noqa: E402
 from src.validation.metrics import trade_list_stats  # noqa: E402
@@ -34,7 +35,7 @@ STUDIES = {"orb_final": "config/orb_5m_final.yaml", "cm": "config/close_momentum
            "mr": "config/mean_reversion.yaml", "vwap_mgc": "config/vwap_mgc.yaml",
            "po3_mnq": "config/po3_mnq.yaml", "po3_mgc": "config/po3_mgc.yaml",
            "ma_mnq": "config/ma_mnq.yaml", "ma_mgc": "config/ma_mgc.yaml",
-           "gold_ict": "config/gold_ict.yaml"}
+           "gold_ict": "config/gold_ict.yaml", "noise_area": "config/noise_area.yaml"}
 
 
 def t_stat(trades: pd.DataFrame) -> float:
@@ -61,6 +62,20 @@ def build(study: str, raw: dict):
                     for m in val["variantes_rango"] for t in val["variantes_target"]
                     for r in val["variantes_riesgo_usd"] for n in val["variantes_noticias"]]
         return variants, (lambda cfg: orb.backtest(bars, atr, cfg, news)), bars
+    if study == "noise_area":
+        base = noise_area.NoiseConfig.from_yaml(STUDIES[study])
+        variants = []
+        for hs in val["variantes_stop_duro"]:
+            variants.append(base.variant(hard_stop=hs))
+            variants.append(base.variant(hard_stop=hs, fixed_contracts=val["diagnostico_contratos_fijos"]))
+
+        def run_noise(cfg):  # necesita 14 días previos para sigma: se usan todos los datos y se recorta
+            t, dd, pp = noise_area.backtest(minutes, atr, cfg)
+            if t.empty:
+                return t, dd, pp
+            k = (t.date >= start).to_numpy()
+            return t[k].reset_index(drop=True), dd[dd.date >= start], [p for p, x in zip(pp, k) if x]
+        return variants, run_noise, minutes[keep]
     if study == "gold_ict":
         base = gold_ict.GoldICTConfig.from_yaml(STUDIES[study])
         silver = None

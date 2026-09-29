@@ -48,6 +48,8 @@ En cada fase se reporta: beneficio neto, drawdown máximo, profit factor, % de d
 
 ## Registro de estudios con criterios fijados de antemano
 
+Nota: el filtro de días ilíquidos (src/data/loader.py) usa el volumen del propio día, que por la mañana no se conoce. En la zona de ruido se comprobó que quitarlo no empeora el resultado (PF 1,21, t 2,25 solo con el filtro de calendario).
+
 Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en desarrollo y fuera de muestra.
 
 | Estudio | Configuración | Resultado |
@@ -60,6 +62,7 @@ Criterios: profit factor > 1,15 en el periodo completo, t > 2 y neto positivo en
 | Power of Three / Judas swing (MNQ y MGC) | config/po3_mnq.yaml, config/po3_mgc.yaml | **DESCARTADA**: 0 de 16 variantes; tras una barrida de un lado, la dirección posterior acierta el 49-52 % (azar) |
 | Cruce de medias EMA con filtro ADX (MNQ y MGC) | config/ma_mnq.yaml, config/ma_mgc.yaml | **DESCARTADA**: 0 de 24 variantes; el filtro ADX mejora algo la 20/50 pero sin costes el mejor t es 1,58 |
 | Setup ICT de oro, horario de Italia (MGC) — SIN SMT | config/gold_ict.yaml | Versión parcial: 0 de 4 variantes; PF 0,47-0,70, pierde antes de costes. **Pendiente: versión con SMT (requiere datos de plata)** |
+| **Zona de ruido (Zarattini, Aziz y Barbon 2024) en MNQ** | config/noise_area.yaml | **CUMPLE** la versión fiel con 1 contrato (PF 1,19, t 2,15; 2015-2026). La versión con stop duro no cumple (t 1,2). Ventaja real pero pequeña: NO sirve para aprobar Apex en 30 días (se quema más que se aprueba) |
 
 ## Estructura
 

@@ -1,0 +1,15 @@
+# Seguimiento de tendencia en futuros (Hurst, Ooi y Pedersen, AQR 2017). Criterios fijados ANTES de ver resultados.
+# NO es compatible con Apex (mantiene posiciones durante semanas). Ejecutar: python scripts/run_tsmom.py
+
+mercados: [ES, NQ, YM, RTY, ZN, ZB, ZF, ZT, GC, SI, HG, CL, NG, HO, 6E, 6J, 6B, 6A, 6C, ZC, ZS, ZW, LE, HE]
+senal_lookbacks_dias: [21, 63, 252]   # 1, 3 y 12 meses, como en el estudio
+vol_dias: 60
+vol_objetivo_por_mercado: 0.40        # como en el estudio (antes de repartir entre los mercados)
+coste_bps: 2.0                        # por unidad de nominal negociado y por cada cambio de contrato
+fecha_inicio: "2011-07-01"            # tras 1 año de historia para la señal de 12 meses
+fraccion_desarrollo: 0.70
+
+criterios:
+  t_min: 2.0                          # sobre los rendimientos diarios netos, periodo completo
+  pf_mensual_min: 1.15
+  positivo_en_desarrollo_y_oos: true
