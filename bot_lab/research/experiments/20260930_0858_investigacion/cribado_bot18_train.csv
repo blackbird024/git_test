@@ -1,0 +1,9 @@
+,operaciones,expectativa_$,t,profit_factor,neto_$,acierto_%,control
+18.1A RSI<5/>95 puro,134,43.87,1.42,1.409,5879.0,54.5,False
+18.1B RSI<5/>95 EMA200,31,56.29,0.76,1.429,1745.0,71.0,False
+18.1C RSI<5/>95 VWAP20,4,-37.37,-0.57,0.49,-149.0,50.0,False
+18.1D RSI<5/>95 EMA200+VWAP20,4,-37.37,-0.57,0.49,-149.0,50.0,False
+18.2A RSI<3/>97 puro,77,19.26,0.5,1.173,1483.0,50.6,False
+18.2B RSI<3/>97 EMA200,17,25.29,0.26,1.213,430.0,58.8,False
+18.2C RSI<3/>97 VWAP20,0,,,,0.0,,False
+18.2D RSI<3/>97 EMA200+VWAP20,0,,,,0.0,,False

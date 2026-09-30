@@ -1,0 +1,4 @@
+,operaciones,expectativa_$,t,profit_factor,neto_$,acierto_%,control
+24.1 ruptura del rango nocturno,1374,-4.87,-5.14,0.699,-6691.0,31.9,False
+24.2 reversión al punto medio,1272,-3.53,-2.2,0.827,-4490.0,38.1,False
+24.3 VWAP + punto medio a las 10:00,1312,4.86,1.69,1.161,6381.0,28.3,False

@@ -1,0 +1,7 @@
+,operaciones,expectativa_$,t,profit_factor,neto_$,acierto_%,control
+"15.01 base EMA200 ruptura 8 velas, 2R",2233,-0.04,-0.03,0.999,-93.0,41.6,False
+15.02 EMA50,2595,-1.13,-0.74,0.961,-2938.0,40.5,False
+15.03 EMA100,2408,-0.67,-0.42,0.976,-1611.0,41.1,False
+15.04 tendencia por estructura,1470,0.85,0.44,1.032,1252.0,41.6,False
+15.05 tendencia por ADX>25,1726,0.61,0.33,1.022,1052.0,41.1,False
+15.06 salida trailing 3 ATR,1907,1.32,0.7,1.049,2516.0,39.3,False

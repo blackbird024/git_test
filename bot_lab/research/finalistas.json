@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-09-30T08:59:40.410620+00:00",
+  "experimento": "20260930_0858_investigacion",
+  "finalistas": {
+    "24": {
+      "variante": "24.3 VWAP + punto medio a las 10:00",
+      "params": {
+        "modelo": "vwap",
+        "atr_k": 2.0
+      }
+    }
+  },
+  "n_variantes_cribado": 70
+}

@@ -1,0 +1,17 @@
+[08:58:59] experimento en bot_lab/research/experiments/20260930_0858_investigacion (TEST fuera de memoria)
+[08:59:06] FASE 1: cribado en TRAIN y validación de la variante elegida
+[08:59:10]   BOT 13 -> 13.04 k2.0: E  (TRAIN: 2560 op., expectativa -1.82 $, PF 0.88, t -2.17)
+[08:59:11]   BOT 14 -> 14.13 base + filtro compresión: E  (TRAIN: 871 op., expectativa 3.79 $, PF 1.12, t 1.13)
+[08:59:12]   BOT 15 -> 15.06 salida trailing 3 ATR: E  (TRAIN: 1907 op., expectativa 1.32 $, PF 1.05, t 0.70)
+[08:59:13]   BOT 16 -> 16.09 + volumen relativo > 1.5: E  (TRAIN: 3102 op., expectativa -1.62 $, PF 0.90, t -1.76)
+[08:59:13]   BOT 17 -> 17.04 EMA200 + VWAP, salida 15:55: E  (TRAIN: 2740 op., expectativa 0.12 $, PF 1.00, t 0.07)
+[08:59:16]   BOT 18 -> 18.1A RSI<5/>95 puro: E  (TRAIN: 134 op., expectativa 43.87 $, PF 1.41, t 1.42)
+[08:59:16]   BOT 19 -> 19.03 Tendencia VWAP solo en TENDENCIA (ADX): E  (TRAIN: 1295 op., expectativa -0.97 $, PF 0.97, t -0.43)
+[08:59:16] FASE 2: cribado en TRAIN y validación de la variante elegida
+[08:59:16]   BOT 21 -> 21.1 largo 18:00→09:25 NY: pasa E (TRAIN: 1766 op., expectativa 4.90 $, PF 1.14, t 1.62)
+[08:59:17]   BOT 23 -> 23.1 ruptura PDH/PDL: E  (TRAIN: 850 op., expectativa -2.87 $, PF 0.83, t -2.01)
+[08:59:18]   BOT 24 -> 24.3 VWAP + punto medio a las 10:00: pasa finalista (TRAIN: 1312 op., expectativa 4.86 $, PF 1.16, t 1.69)
+[08:59:18]   BOT 26 -> 26.3 z ±2.0: E  (TRAIN: 74 op., expectativa -20.82 $, PF 0.96, t -0.14)
+[08:59:18] Análisis de regímenes, hora y día (BOT 20-22) sobre la variante elegida de cada BOT, solo TRAIN
+[08:59:28] Finalistas: ['24']
+[08:59:28]   evaluación completa (TRAIN+VALIDATION) de BOT 24: 24.3 VWAP + punto medio a las 10:00

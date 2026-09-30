@@ -1,0 +1,5 @@
+,operaciones,expectativa_$,t,profit_factor,neto_$,acierto_%,control
+"17.01 base EMA200 + EMA20, 2R",4170,-1.65,-1.57,0.932,-6897.0,36.9,False
+"17.02 EMA200 + VWAP, 2R",3084,-1.46,-1.08,0.945,-4502.0,35.8,False
+"17.03 EMA200 + EMA20, salida 15:55",3365,-0.4,-0.26,0.985,-1333.0,30.9,False
+"17.04 EMA200 + VWAP, salida 15:55",2740,0.12,0.07,1.004,335.0,30.8,False

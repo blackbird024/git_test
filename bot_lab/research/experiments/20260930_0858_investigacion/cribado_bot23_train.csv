@@ -1,0 +1,5 @@
+,operaciones,expectativa_$,t,profit_factor,neto_$,acierto_%,control
+23.1 ruptura PDH/PDL,850,-2.87,-2.01,0.833,-2438.0,32.2,False
+23.2 barrido PDH/PDL,347,-4.81,-2.95,0.647,-1668.0,32.0,False
+23.3 rechazo PDH/PDL,99,-13.17,-2.49,0.472,-1304.0,23.2,False
+23.4 cierre del hueco hacia PDC,890,-9.86,-2.21,0.812,-8774.0,47.3,False
