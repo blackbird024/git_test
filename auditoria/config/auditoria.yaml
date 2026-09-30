@@ -1,0 +1,40 @@
+# Configuración de la auditoría (no modifica el código base; solo parametriza las pruebas)
+semilla: 20260930
+corte_desarrollo: "2023-03-22"        # primera sesión del periodo posterior (config/particion.json, NQ y GC)
+forward_desde: "2026-10-01"           # datos realmente nuevos (prueba hacia delante)
+
+bootstrap:
+  bloque_sesiones: 20
+  n: 5000
+  horizonte_sesiones: 252
+
+zona_ruido:
+  base: {dias_ruido: 14, mult: 1.0}
+  vecindad:                           # ±20-30 %, fijada antes de ver resultados
+    dias_ruido: [10, 12, 14, 17, 20]
+    mult: [0.8, 0.9, 1.0, 1.1, 1.2]
+  costes:
+    base: {ticks_entrada: 1, ticks_salida: 1, comision_lado: 1.0}
+    x2: {ticks_entrada: 2, ticks_salida: 2, comision_lado: 2.0}
+    x3: {ticks_entrada: 3, ticks_salida: 3, comision_lado: 3.0}
+  ejecucion_siguiente_minuto: true    # variante: ejecutar 1 minuto más tarde (latencia)
+
+rsi2:
+  base: {entrada: 20, salida: 70, max_dias: 5}
+  vecindad:
+    entrada: [16, 20, 24]
+    salida: [56, 70, 84]
+    max_dias: [4, 5, 6]
+  costes:
+    x2: {multiplicador: 2.0}
+    x3: {multiplicador: 3.0}
+
+cartera:
+  capital: 25000
+  pesos_relativos: {igual_riesgo: [1, 1], zona_2_1: [2, 1], zona_1_2: [1, 2]}
+
+riesgo:
+  capitales: [25000, 50000]
+  contratos: [1, 2]
+  limite_diario: [1000, 2000]
+  caida_maxima: [5000, 10000]
