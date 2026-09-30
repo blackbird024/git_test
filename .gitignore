@@ -4,3 +4,6 @@ __pycache__/
 data/raw/
 data/processed/
 .pytest_cache/
+
+# Trading Bot Lab: resultados completos en pickle (se regeneran con run_lab)
+bot_lab/research/experiments/*/resultados.pkl

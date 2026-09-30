@@ -1,0 +1,70 @@
+# Trading Bot Lab — configuración (fijada antes de ejecutar; ver CRITERIOS.md)
+semilla: 20260930
+
+particion:                 # por sesiones RTH de NQ 2015-01-02 -> 2026-09-28 (60/20/20)
+  train_desde: "2015-01-02"
+  validation_desde: "2022-01-18"
+  test_desde: "2024-05-23"
+  fin: "2026-09-28"
+  test_bloqueado: true     # se abre una sola vez con los finalistas congelados (run_lab.py --abrir-test)
+
+mercado:                   # MNQ
+  tick: 0.25
+  valor_punto: 2.0         # tick value 0,50 $
+  comision_lado: 1.0
+
+costes:                    # multiplicador de comisión y deslizamiento
+  BASE: 1.0
+  STRESS_1: 2.0
+  STRESS_2: 3.0
+
+cribado:
+  min_ops_intradia: 100
+  min_ops_diaria: 30
+  t_min: 1.5
+  pf_min: 1.05
+  empate_t: 0.3
+
+validacion:
+  pf_min: 1.0
+
+walk_forward:
+  meses_train: 12
+  meses_test: 3
+  min_ops_train: 20
+
+bootstrap:
+  bloque_sesiones: 20
+  n: 5000
+  horizonte_sesiones: 252
+
+regimenes:
+  vol_baja: 0.8
+  vol_alta: 1.2
+  er_tendencia: 0.3
+
+clasificacion:
+  pf_a: 1.15
+  min_ops: 200
+  min_ops_baja_frecuencia: 100
+  estabilidad_a: 0.70
+  estabilidad_fragil: 0.5
+  anios_positivos: 0.60
+  prob_anio_negativo: 0.30
+  calmar_min: 0.33
+
+cartera:
+  capital: 25000
+  correlacion_max: 0.3
+
+tamano:
+  riesgo_pct: [0.25, 0.5, 1.0]
+  max_contratos: 10
+
+prop_firm:
+  capital: 50000
+  limite_diario: 1000
+  trailing_dd: 2500
+  objetivo: 3000
+  max_contratos: 10
+  sesiones_max: 252
