@@ -1,0 +1,113 @@
+# Puntuaciones de las 7 categorías (Fase 1, 30-sep-2026).
+# Cada puntuación lleva su evidencia. Tipos de evidencia:
+#   fuente:S#  -> dato de una fuente listada abajo (secundaria salvo que se indique)
+#   juicio     -> valoración razonada del equipo, SIN dato que la respalde; es una hipótesis
+# Ninguna cifra de visualizaciones, búsquedas o audiencia de competidores ha sido verificada con la
+# YouTube Data API (no hay credenciales). Ver el flujo de verificación en reports/fase1_investigacion_nicho.md.
+
+fuentes:
+  S1: {titulo: "YouTube Monetization Policy Changes 2026 (AIR Media-Tech)", url: "https://air.io/en/monetization/youtube-monetization-policy-changes-2026-a-complete-dated-timeline", tipo: secundaria}
+  S2: {titulo: "YouTube Inauthentic Content Policy 2026 (AuditSocials)", url: "https://www.auditsocials.com/blog/youtube-inauthentic-content-policy-2026-mass-produced-ai-generated-monetization-creators-brands", tipo: secundaria}
+  S3: {titulo: "YouTube RPM by niche 2026 (AIR Media-Tech, 300 canales, may-2025 a may-2026)", url: "https://air.io/en/air-data-findings/which-youtube-niche-makes-the-most-money-in-2026-ranked-by-real-rpm-and-cpm", tipo: secundaria}
+  S4: {titulo: "Most Profitable YouTube Niches 2026 (OutlierKit)", url: "https://outlierkit.com/blog/most-profitable-youtube-niches", tipo: secundaria}
+  S5: {titulo: "AI Disclosure Rules by Platform (Influencer Marketing Hub)", url: "https://influencermarketinghub.com/ai-disclosure-rules/", tipo: secundaria}
+  S6: {titulo: "Most popular languages on YouTube in 2026 (AIR Media-Tech)", url: "https://air.io/en/audience-growth/what-are-the-most-popular-languages-on-youtube", tipo: secundaria}
+  S7: {titulo: "YouTube CPM Latin America 2026 (Fluxnote)", url: "https://fluxnote.io/guides/youtube-cpm-latin-america-by-country", tipo: secundaria}
+  S8: {titulo: "YouTube Shorts RPM vs long-form, 274 canales (AIR Media-Tech)", url: "https://air.io/en/air-data-findings/youtube-shorts-rpm-vs-long-form-how-much-do-shorts-earn-in-2026", tipo: secundaria}
+  S9: {titulo: "Do Faceless YouTube Channels Still Work in 2026? (Kineclip)", url: "https://kineclip.com/blog/do-faceless-channels-still-work-2026/", tipo: secundaria}
+  S10: {titulo: "Best Faceless YouTube Niches 2026 (Fliki)", url: "https://fliki.ai/blog/best-faceless-youtube-niches", tipo: secundaria}
+  S11: {titulo: "Los mejores canales para aprender ciencia en YouTube (Blog Lenovo)", url: "https://www.bloglenovo.es/ciencia-en-youtube/", tipo: secundaria}
+  S12: {titulo: "10 canales de YouTube para aprender Historia (Educación 3.0)", url: "https://www.educaciontrespuntocero.com/recursos/canales-youtube-aprender-historia/", tipo: secundaria}
+
+categorias:
+  ciencia_psicologia:
+    nombre: "Ciencia, psicología y comportamiento humano"
+    puntuaciones:
+      demanda:        {valor: 4, evidencia: "fuente:S3", nota: "Educación y ciencia aparece como nicho con más RPM en S3, lo que indica demanda de anunciantes; la demanda de audiencia no está medida."}
+      retencion:      {valor: 4, evidencia: "juicio", nota: "Las preguntas cotidianas ('¿por qué hacemos X?') dan buenos ganchos."}
+      internacional:  {valor: 5, evidencia: "juicio", nota: "La ciencia no depende del país."}
+      evergreen:      {valor: 5, evidencia: "juicio"}
+      tendencias:     {valor: 3, evidencia: "juicio", nota: "Estudios nuevos permiten vídeos de actualidad."}
+      diferenciacion: {valor: 2, evidencia: "fuente:S11", nota: "Espacio ocupado en español por canales grandes (S11); hace falta un subnicho muy concreto."}
+      coste:          {valor: 4, evidencia: "juicio", nota: "Diagramas y gráficos generados en código funcionan bien."}
+      formatos:       {valor: 5, evidencia: "juicio"}
+      monetizacion:   {valor: 5, evidencia: "fuente:S3", nota: "Mediana de RPM 10,22 $ en educación y ciencia según S3 (audiencia mayoritariamente de países de RPM alto)."}
+      riesgo:         {valor: 3, evidencia: "juicio", nota: "La psicología divulgativa arrastra estudios que no se replican: riesgo alto de afirmaciones falsas."}
+  historia_misterios:
+    nombre: "Historia, misterios y sucesos inexplicados"
+    puntuaciones:
+      demanda:        {valor: 5, evidencia: "fuente:S10", nota: "Citado de forma recurrente como nicho sin rostro con audiencia fiel (S10); sin cifra verificada."}
+      retencion:      {valor: 5, evidencia: "juicio", nota: "La estructura de misterio sostiene la atención de forma natural."}
+      internacional:  {valor: 4, evidencia: "juicio"}
+      evergreen:      {valor: 5, evidencia: "juicio"}
+      tendencias:     {valor: 2, evidencia: "juicio"}
+      diferenciacion: {valor: 2, evidencia: "fuente:S9", nota: "S9: la saturación se concentra en los temas genéricos; 'misterios' es de lo más genérico."}
+      coste:          {valor: 3, evidencia: "juicio", nota: "Hay imágenes de dominio público, pero se tienen que investigar y documentar una por una."}
+      formatos:       {valor: 4, evidencia: "juicio"}
+      monetizacion:   {valor: 3, evidencia: "fuente:S4", nota: "Historia y documental: 4-6 $ de RPM con audiencia de países de RPM alto (S4)."}
+      riesgo:         {valor: 2, evidencia: "juicio", nota: "Los 'misterios' empujan al sensacionalismo y a afirmaciones sin pruebas."}
+  tecnologia_ia:
+    nombre: "Tecnología, inteligencia artificial y futuro"
+    puntuaciones:
+      demanda:        {valor: 5, evidencia: "juicio", nota: "Tema de gran interés general; sin cifra verificada."}
+      retencion:      {valor: 3, evidencia: "juicio"}
+      internacional:  {valor: 5, evidencia: "juicio"}
+      evergreen:      {valor: 2, evidencia: "juicio", nota: "Los vídeos se quedan viejos en meses."}
+      tendencias:     {valor: 5, evidencia: "juicio"}
+      diferenciacion: {valor: 1, evidencia: "juicio", nota: "Competencia enorme, que además publica en el mismo momento que la noticia."}
+      coste:          {valor: 4, evidencia: "juicio"}
+      formatos:       {valor: 4, evidencia: "juicio"}
+      monetizacion:   {valor: 4, evidencia: "fuente:S3", nota: "Tecnología está en la franja alta de RPM en S3."}
+      riesgo:         {valor: 3, evidencia: "juicio", nota: "Riesgo de exagerar y de quedarse desactualizado."}
+  naturaleza:
+    nombre: "Naturaleza, entornos extremos y fauna"
+    puntuaciones:
+      demanda:        {valor: 4, evidencia: "juicio"}
+      retencion:      {valor: 4, evidencia: "juicio"}
+      internacional:  {valor: 5, evidencia: "juicio"}
+      evergreen:      {valor: 5, evidencia: "juicio"}
+      tendencias:     {valor: 2, evidencia: "juicio"}
+      diferenciacion: {valor: 3, evidencia: "juicio"}
+      coste:          {valor: 1, evidencia: "juicio", nota: "Sin grabaciones propias o con licencia no se puede contar bien; el vídeo realista por IA exige etiqueta (S5) y cuesta dinero."}
+      formatos:       {valor: 4, evidencia: "juicio"}
+      monetizacion:   {valor: 3, evidencia: "juicio"}
+      riesgo:         {valor: 3, evidencia: "fuente:S5", nota: "Riesgo de copyright de las imágenes y de etiquetado obligatorio de contenido sintético realista."}
+  inventos_descubrimientos:
+    nombre: "Historias de personas, inventos y descubrimientos"
+    puntuaciones:
+      demanda:        {valor: 4, evidencia: "juicio"}
+      retencion:      {valor: 5, evidencia: "juicio", nota: "Tiene arco narrativo natural: problema, intentos, giro y resultado."}
+      internacional:  {valor: 5, evidencia: "juicio", nota: "Los objetos cotidianos son universales."}
+      evergreen:      {valor: 5, evidencia: "juicio"}
+      tendencias:     {valor: 3, evidencia: "juicio", nota: "Aniversarios y efemérides."}
+      diferenciacion: {valor: 3, evidencia: "fuente:S9", nota: "S9: un subnicho acotado deja hueco; no hay medición de competencia en español."}
+      coste:          {valor: 4, evidencia: "juicio", nota: "Patentes, retratos antiguos y diagramas de dominio público, más líneas de tiempo generadas en código."}
+      formatos:       {valor: 5, evidencia: "juicio", nota: "Un dato curioso para Short y la historia completa en largo."}
+      monetizacion:   {valor: 4, evidencia: "fuente:S3", nota: "Encaja entre educación e historia en RPM (S3, S4); posibles patrocinios educativos."}
+      riesgo:         {valor: 4, evidencia: "juicio", nota: "Mitos de inventores muy repetidos (hay que verificarlos), pero poco riesgo de anunciantes."}
+  geografia_lugares:
+    nombre: "Geografía, culturas y lugares insólitos"
+    puntuaciones:
+      demanda:        {valor: 4, evidencia: "juicio"}
+      retencion:      {valor: 4, evidencia: "juicio"}
+      internacional:  {valor: 5, evidencia: "juicio"}
+      evergreen:      {valor: 5, evidencia: "juicio"}
+      tendencias:     {valor: 3, evidencia: "juicio", nota: "La actualidad geopolítica da temas, con cuidado."}
+      diferenciacion: {valor: 3, evidencia: "juicio", nota: "En inglés está muy trabajado; en español es una hipótesis que hay que medir."}
+      coste:          {valor: 5, evidencia: "juicio", nota: "Mapas con datos abiertos (Natural Earth es de dominio público; OpenStreetMap es ODbL y exige atribución)."}
+      formatos:       {valor: 5, evidencia: "juicio"}
+      monetizacion:   {valor: 4, evidencia: "fuente:S4", nota: "Ciencia educativa y geografía: 4-10 $ de RPM (S4)."}
+      riesgo:         {valor: 4, evidencia: "juicio", nota: "Las fronteras en disputa y los temas políticos son sensibles."}
+  desarrollo_personal:
+    nombre: "Desarrollo personal y conocimiento práctico"
+    puntuaciones:
+      demanda:        {valor: 5, evidencia: "juicio"}
+      retencion:      {valor: 3, evidencia: "juicio"}
+      internacional:  {valor: 4, evidencia: "juicio"}
+      evergreen:      {valor: 4, evidencia: "juicio"}
+      tendencias:     {valor: 2, evidencia: "juicio"}
+      diferenciacion: {valor: 1, evidencia: "juicio", nota: "Consejos genéricos muy repetidos."}
+      coste:          {valor: 5, evidencia: "juicio"}
+      formatos:       {valor: 4, evidencia: "juicio"}
+      monetizacion:   {valor: 4, evidencia: "juicio"}
+      riesgo:         {valor: 2, evidencia: "fuente:S2", nota: "El consejo genérico hecho en serie es justo lo que la política de contenido no auténtico penaliza (S2); además roza salud y finanzas."}

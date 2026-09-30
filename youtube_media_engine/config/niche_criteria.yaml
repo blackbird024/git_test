@@ -1,0 +1,14 @@
+# Marco de evaluación de nichos (Fase 1). Pesos fijados ANTES de puntuar las categorías.
+# Escala de cada criterio: 1 (muy desfavorable) a 5 (muy favorable).
+# "riesgo" se puntúa al revés: 5 = riesgo bajo de copyright, desinformación o anunciantes.
+criterios:
+  demanda:         {peso: 12, pregunta: "¿Hay público que ya busca y ve este tipo de contenido?"}
+  retencion:       {peso: 12, pregunta: "¿El tema se presta a historias que sostienen la atención varios minutos?"}
+  internacional:   {peso: 8,  pregunta: "¿Interesa igual en distintos países sin depender de contexto local?"}
+  evergreen:       {peso: 12, pregunta: "¿Un vídeo seguirá siendo válido y buscado dentro de 3 años?"}
+  tendencias:      {peso: 5,  pregunta: "¿Permite aprovechar temas de actualidad sin depender de ellos?"}
+  diferenciacion:  {peso: 12, pregunta: "¿Hay hueco para un ángulo propio frente a la competencia existente?"}
+  coste:           {peso: 12, pregunta: "¿Se puede producir bien con presupuesto 0 $ (visuales generados en código, voz local)?"}
+  formatos:        {peso: 7,  pregunta: "¿Funciona tanto en Shorts como en vídeos largos?"}
+  monetizacion:    {peso: 10, pregunta: "¿RPM razonable y opciones de patrocinio, afiliación o productos?"}
+  riesgo:          {peso: 10, pregunta: "¿Riesgo bajo de copyright, desinformación o contenido no apto para anunciantes?"}

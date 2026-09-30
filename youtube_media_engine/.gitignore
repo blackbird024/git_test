@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+renders/
+projects/*/audio/
+projects/*/render/
+logs/
