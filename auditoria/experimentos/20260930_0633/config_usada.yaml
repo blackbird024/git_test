@@ -1,0 +1,86 @@
+bootstrap:
+  bloque_sesiones: 20
+  horizonte_sesiones: 252
+  n: 5000
+cartera:
+  capital: 25000
+  pesos_relativos:
+    igual_riesgo:
+    - 1
+    - 1
+    zona_1_2:
+    - 1
+    - 2
+    zona_2_1:
+    - 2
+    - 1
+corte_desarrollo: '2023-03-22'
+forward_desde: '2026-10-01'
+riesgo:
+  caida_maxima:
+  - 5000
+  - 10000
+  capitales:
+  - 25000
+  - 50000
+  contratos:
+  - 1
+  - 2
+  limite_diario:
+  - 1000
+  - 2000
+rsi2:
+  base:
+    entrada: 20
+    max_dias: 5
+    salida: 70
+  costes:
+    x2:
+      multiplicador: 2.0
+    x3:
+      multiplicador: 3.0
+  vecindad:
+    entrada:
+    - 16
+    - 20
+    - 24
+    max_dias:
+    - 4
+    - 5
+    - 6
+    salida:
+    - 56
+    - 70
+    - 84
+semilla: 20260930
+zona_ruido:
+  base:
+    dias_ruido: 14
+    mult: 1.0
+  costes:
+    base:
+      comision_lado: 1.0
+      ticks_entrada: 1
+      ticks_salida: 1
+    x2:
+      comision_lado: 2.0
+      ticks_entrada: 2
+      ticks_salida: 2
+    x3:
+      comision_lado: 3.0
+      ticks_entrada: 3
+      ticks_salida: 3
+  ejecucion_siguiente_minuto: true
+  vecindad:
+    dias_ruido:
+    - 10
+    - 12
+    - 14
+    - 17
+    - 20
+    mult:
+    - 0.8
+    - 0.9
+    - 1.0
+    - 1.1
+    - 1.2

@@ -1,0 +1,238 @@
+{
+  "fecha_utc": "2026-09-30T06:33:26.705498+00:00",
+  "commit": "e457b48b090e3aeeb1aa2e60d98c33ed6b6eff09",
+  "cambios_sin_commit": "?? auditoria/.gitignore\n?? auditoria/__init__.py\n?? auditoria/experimentos/\n?? auditoria/run_auditoria.py\n?? auditoria/src/\n?? auditoria/tests/",
+  "python": "3.11.15",
+  "plataforma": "Linux-6.18.44-fc-v50-x86_64-with-glibc2.39",
+  "pandas": "3.0.6",
+  "numpy": "2.4.6",
+  "matplotlib": "3.11.2",
+  "semilla": 20260930,
+  "config": {
+    "semilla": 20260930,
+    "corte_desarrollo": "2023-03-22",
+    "forward_desde": "2026-10-01",
+    "bootstrap": {
+      "bloque_sesiones": 20,
+      "n": 5000,
+      "horizonte_sesiones": 252
+    },
+    "zona_ruido": {
+      "base": {
+        "dias_ruido": 14,
+        "mult": 1.0
+      },
+      "vecindad": {
+        "dias_ruido": [
+          10,
+          12,
+          14,
+          17,
+          20
+        ],
+        "mult": [
+          0.8,
+          0.9,
+          1.0,
+          1.1,
+          1.2
+        ]
+      },
+      "costes": {
+        "base": {
+          "ticks_entrada": 1,
+          "ticks_salida": 1,
+          "comision_lado": 1.0
+        },
+        "x2": {
+          "ticks_entrada": 2,
+          "ticks_salida": 2,
+          "comision_lado": 2.0
+        },
+        "x3": {
+          "ticks_entrada": 3,
+          "ticks_salida": 3,
+          "comision_lado": 3.0
+        }
+      },
+      "ejecucion_siguiente_minuto": true
+    },
+    "rsi2": {
+      "base": {
+        "entrada": 20,
+        "salida": 70,
+        "max_dias": 5
+      },
+      "vecindad": {
+        "entrada": [
+          16,
+          20,
+          24
+        ],
+        "salida": [
+          56,
+          70,
+          84
+        ],
+        "max_dias": [
+          4,
+          5,
+          6
+        ]
+      },
+      "costes": {
+        "x2": {
+          "multiplicador": 2.0
+        },
+        "x3": {
+          "multiplicador": 3.0
+        }
+      }
+    },
+    "cartera": {
+      "capital": 25000,
+      "pesos_relativos": {
+        "igual_riesgo": [
+          1,
+          1
+        ],
+        "zona_2_1": [
+          2,
+          1
+        ],
+        "zona_1_2": [
+          1,
+          2
+        ]
+      }
+    },
+    "riesgo": {
+      "capitales": [
+        25000,
+        50000
+      ],
+      "contratos": [
+        1,
+        2
+      ],
+      "limite_diario": [
+        1000,
+        2000
+      ],
+      "caida_maxima": [
+        5000,
+        10000
+      ]
+    }
+  },
+  "datos": {
+    "data/raw/GC_1m_2015.parquet": {
+      "bytes": 5125522,
+      "sha1": "8a75ed383e99ff70986270c68624fb3744425a8c"
+    },
+    "data/raw/GC_1m_2016.parquet": {
+      "bytes": 5261981,
+      "sha1": "e73f058b35146387b136bb435ed57d5cd5d47ae7"
+    },
+    "data/raw/GC_1m_2017.parquet": {
+      "bytes": 5069320,
+      "sha1": "d15b4c3f00bd976b8a7b9600656c9dee82e9e57b"
+    },
+    "data/raw/GC_1m_2018.parquet": {
+      "bytes": 5075477,
+      "sha1": "dcb02dc1f0d1184456a7aed760bb0cf3c5ae1627"
+    },
+    "data/raw/GC_1m_2019.parquet": {
+      "bytes": 5076666,
+      "sha1": "e0dca276c34ee02795847afb8671d666dc339032"
+    },
+    "data/raw/GC_1m_2020.parquet": {
+      "bytes": 5502669,
+      "sha1": "f4821af7832509378236efae8a23bb51a7e18362"
+    },
+    "data/raw/GC_1m_2021.parquet": {
+      "bytes": 5329314,
+      "sha1": "5d5945f94586ed859099a7a371dca24e0ed71c0e"
+    },
+    "data/raw/GC_1m_2022.parquet": {
+      "bytes": 5401459,
+      "sha1": "e4a98cb5ec1d89ac9307163e9499c1242aeafa20"
+    },
+    "data/raw/GC_1m_2023.parquet": {
+      "bytes": 5280711,
+      "sha1": "90a8d0670f7766051e83676dbdd95a3065029a95"
+    },
+    "data/raw/GC_1m_2024.parquet": {
+      "bytes": 5523012,
+      "sha1": "a9ac8a90da05557c685f081302f990ca3986a7ac"
+    },
+    "data/raw/GC_1m_2025.parquet": {
+      "bytes": 5904566,
+      "sha1": "14766e6db4270a63e4ca11777b537e931f42e250"
+    },
+    "data/raw/GC_1m_2026.parquet": {
+      "bytes": 4522981,
+      "sha1": "0726b3a2defa87f34bbc4924a6b784c473419c44"
+    },
+    "data/raw/NQ_1m_2015.parquet": {
+      "bytes": 5035536,
+      "sha1": "bfed19f47c6e47a5fe1671010112be05076aa0f9"
+    },
+    "data/raw/NQ_1m_2016.parquet": {
+      "bytes": 5244835,
+      "sha1": "0aba48bec6ba08285742746cc5a9d94c3ee2532c"
+    },
+    "data/raw/NQ_1m_2017.parquet": {
+      "bytes": 5334517,
+      "sha1": "540a837ead071ba10fc13af960201b896e6e4b16"
+    },
+    "data/raw/NQ_1m_2018.parquet": {
+      "bytes": 5591923,
+      "sha1": "73a0e60e1a88aab848c235b32e2e81934de656de"
+    },
+    "data/raw/NQ_1m_2019.parquet": {
+      "bytes": 5737679,
+      "sha1": "ce75a9bb74cf2b0fc78bef6d35af8f688324e9b6"
+    },
+    "data/raw/NQ_1m_2020.parquet": {
+      "bytes": 6165276,
+      "sha1": "fa54f9cf4b07ae66323b9743a839ef863cab7c38"
+    },
+    "data/raw/NQ_1m_2021.parquet": {
+      "bytes": 6024947,
+      "sha1": "71f44a1f9d074f0eb717e19983692f998b843943"
+    },
+    "data/raw/NQ_1m_2022.parquet": {
+      "bytes": 6311388,
+      "sha1": "e95a1d98f0ef1da78d21dee0f8d26dcebd893eaa"
+    },
+    "data/raw/NQ_1m_2023.parquet": {
+      "bytes": 6248581,
+      "sha1": "51508252ce05b73c03be610b7c37f01c2e957bfc"
+    },
+    "data/raw/NQ_1m_2024.parquet": {
+      "bytes": 6262498,
+      "sha1": "cdd0726b61f209f75840ca415552fd07d34f5a99"
+    },
+    "data/raw/NQ_1m_2025.parquet": {
+      "bytes": 6522342,
+      "sha1": "92e4f22742812afb47b9a2c214a20be267f32ef0"
+    },
+    "data/raw/NQ_1m_2026.parquet": {
+      "bytes": 4926778,
+      "sha1": "312c1da629260c031455f012deae925a4bf16041"
+    },
+    "data/raw/NQ_1m_actualizacion.parquet": {
+      "bytes": 4821,
+      "sha1": "403168edbb5c9627f47f5fae8b4bde22e12fa408"
+    },
+    "data/raw/daily/GC.parquet": {
+      "bytes": 177645,
+      "sha1": "8922f04ad5e78a5e238fa8c6a9216c5f11a24330"
+    },
+    "data/raw/daily/SI.parquet": {
+      "bytes": 165307,
+      "sha1": "c6c0b1cf1e7c1454f8d5e11efbb4495dc2eac521"
+    }
+  }
+}
