@@ -1,0 +1,101 @@
+{
+  "etapa": "test",
+  "fecha_utc": "2026-09-30T09:00:47.531798+00:00",
+  "commit": "6f792dbb3da3cc95f0212b0d14d436e7cde97afc",
+  "cambios_sin_commit": "",
+  "python": "3.11.15",
+  "plataforma": "Linux-6.18.44-fc-v50-x86_64-with-glibc2.39",
+  "pandas": "3.0.6",
+  "numpy": "2.4.6",
+  "numba": "0.67.0",
+  "semilla": 20260930,
+  "config": {
+    "semilla": 20260930,
+    "particion": {
+      "train_desde": "2015-01-02",
+      "validation_desde": "2022-01-18",
+      "test_desde": "2024-05-23",
+      "fin": "2026-09-28",
+      "test_bloqueado": true
+    },
+    "mercado": {
+      "tick": 0.25,
+      "valor_punto": 2.0,
+      "comision_lado": 1.0
+    },
+    "costes": {
+      "BASE": 1.0,
+      "STRESS_1": 2.0,
+      "STRESS_2": 3.0
+    },
+    "cribado": {
+      "min_ops_intradia": 100,
+      "min_ops_diaria": 30,
+      "t_min": 1.5,
+      "pf_min": 1.05,
+      "empate_t": 0.3
+    },
+    "validacion": {
+      "pf_min": 1.0
+    },
+    "walk_forward": {
+      "meses_train": 12,
+      "meses_test": 3,
+      "min_ops_train": 20
+    },
+    "bootstrap": {
+      "bloque_sesiones": 20,
+      "n": 5000,
+      "horizonte_sesiones": 252
+    },
+    "regimenes": {
+      "vol_baja": 0.8,
+      "vol_alta": 1.2,
+      "er_tendencia": 0.3
+    },
+    "clasificacion": {
+      "pf_a": 1.15,
+      "min_ops": 200,
+      "min_ops_baja_frecuencia": 100,
+      "estabilidad_a": 0.7,
+      "estabilidad_fragil": 0.5,
+      "anios_positivos": 0.6,
+      "prob_anio_negativo": 0.3,
+      "calmar_min": 0.33
+    },
+    "cartera": {
+      "capital": 25000,
+      "correlacion_max": 0.3
+    },
+    "tamano": {
+      "riesgo_pct": [
+        0.25,
+        0.5,
+        1.0
+      ],
+      "max_contratos": 10
+    },
+    "prop_firm": {
+      "capital": 50000,
+      "limite_diario": 1000,
+      "trailing_dd": 2500,
+      "objetivo": 3000,
+      "max_contratos": 10,
+      "sesiones_max": 252
+    }
+  },
+  "datos": {
+    "data/processed/NQ_1M.parquet": {
+      "bytes": 66833952,
+      "sha1": "90c09cbc2397d8d552c13f25fe8fbc08e7638ed8"
+    },
+    "data/raw/daily/GC.parquet": {
+      "bytes": 177645,
+      "sha1": "8922f04ad5e78a5e238fa8c6a9216c5f11a24330"
+    },
+    "data/raw/daily/SI.parquet": {
+      "bytes": 165307,
+      "sha1": "c6c0b1cf1e7c1454f8d5e11efbb4495dc2eac521"
+    }
+  }
+}
