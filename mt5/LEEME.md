@@ -58,7 +58,7 @@ curl -L -o "$EXP/APEX_Multiestrategia.mq5" \
 
 # 2. Compilar sin abrir MetaEditor (deja el resultado en APEX_Multiestrategia.log)
 cd "$EXP/../.." && WINEPREFIX=$HOME/.mt5 wine "C:\\Program Files\\MetaTrader 5\\MetaEditor64.exe" \
-  /compile:"MQL5\\Experts\\APEX_Cartera_NAS100.mq5" /log
+  /compile:"MQL5\\Experts\\APEX_Multiestrategia.mq5" /log
 iconv -f UTF-16 -t UTF-8 "MQL5/Experts/APEX_Multiestrategia.log" | tail -5   # "0 errors" = compilado
 ```
 Si prefieres, también vale abrir MetaEditor y pulsar F7 (paso 2 de abajo).
