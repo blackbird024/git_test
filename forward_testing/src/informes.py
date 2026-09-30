@@ -47,7 +47,7 @@ def diario(fecha, estado: dict, cerradas: dict, abiertas: pd.DataFrame, ea: pd.D
          f"NET P&L:          {_f(sum(pnl.values()))} $   (suma descriptiva; cada estrategia se evalúa por separado)",
          f"Noise Zone P&L:   {_f(pnl['NOISE_ZONE'])} $",
          f"RSI2 P&L:         {_f(pnl['RSI2'])} $   (realizado; posición abierta aparte)",
-         f"CUMULATIVE P&L:   Noise Zone {_f(acum['NOISE_ZONE'])} $ | RSI(2) {_f(acum['RSI2'])} $ (desde el 01/10/2026, 1 MNQ cada una)",
+         f"CUMULATIVE P&L:   Noise Zone {_f(acum['NOISE_ZONE'])} $ | RSI(2) {_f(acum['RSI2'])} $ (desde el 30/09/2026, 1 MNQ cada una)",
          f"CURRENT DD:       Noise Zone {_f(dd['NOISE_ZONE'])} $ | RSI(2) {_f(dd['RSI2'])} $",
          f"SLIPPAGE:         teórico = el del backtest; EA: {_resumen_slippage(ea, f)}",
          f"EXECUTION ISSUES: {_problemas_ejecucion(emparejadas, estado)}",

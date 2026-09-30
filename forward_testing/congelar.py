@@ -1,4 +1,4 @@
-"""Congela FORWARD_TESTING v1.0 (se ejecuta UNA vez, antes del 01/10/2026):
+"""Congela FORWARD_TESTING v1.0 (se ejecuta UNA vez, antes de las 09:30 NY del 30/09/2026):
 
     python -m forward_testing.congelar
 

@@ -14,7 +14,7 @@ Fijado el 30-sep-2026, antes del inicio. Pregunta que responde:
 
 Parámetros, costes, deslizamiento, horarios, reglas y SHA-256: `config/FORWARD_TESTING_CONFIG.json`. Su propio SHA-256 está en `config/FORWARD_TESTING_CONFIG.sha256`, guardado en git antes del inicio.
 
-**Inicio:** una operación es forward si su **entrada es ≥ 2026-10-01 00:00 (hora de NY)**. Todo dato desde esa fecha es **NO VISTO**: no se usa para optimizar, filtrar ni modificar nada.
+**Inicio:** una operación es forward si su **entrada es ≥ 2026-09-30 00:00 (hora de NY)**. Todo dato desde esa fecha es **NO VISTO**: no se usa para optimizar, filtrar ni modificar nada.
 
 ## 2. Dos pistas
 1. **Forward teórico (OFICIAL).** Es el código congelado, ejecutado cada día sobre datos nuevos de NQ 1 min (Databento, ≈ 0,005 $/día).
@@ -123,4 +123,5 @@ Un cambio en una estrategia **invalida el forward**: habría que empezar otro co
 
 | Fecha | Cambio | Motivo |
 |---|---|---|
+| 30-sep-2026 08:58 NY | Inicio adelantado del 01/10 al **30/09/2026** a petición del usuario, antes de la apertura de NY (09:30), sin haber visto ningún dato de la sesión del 30/09 | Operar desde hoy |
 | 30-sep-2026 | Comparación y deriva también en % del precio | Descubierto con un forward simulado **antes del inicio**: la escala de precio sesga las comparaciones en $ |

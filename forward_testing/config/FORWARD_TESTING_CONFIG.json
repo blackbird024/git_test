@@ -1,9 +1,9 @@
 {
   "version": "FORWARD_TESTING v1.0",
   "inicio_forward": {
-    "fecha": "2026-10-01",
+    "fecha": "2026-09-30",
     "zona": "America/New_York",
-    "regla": "operación forward = operación con ENTRADA >= 2026-10-01 00:00 NY"
+    "regla": "operación forward = operación con ENTRADA >= 2026-09-30 00:00 NY"
   },
   "estrategias": {
     "RSI2": {

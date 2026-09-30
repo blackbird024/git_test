@@ -1,6 +1,6 @@
 """Congelación de FORWARD_TESTING v1.0.
 
-`generar()` escribe config/FORWARD_TESTING_CONFIG.json UNA vez (antes del 01/10/2026) con los SHA-256 del código,
+`generar()` escribe config/FORWARD_TESTING_CONFIG.json UNA vez (antes de las 09:30 NY del 30/09/2026) con los SHA-256 del código,
 los parámetros, costes, deslizamiento, horarios, reglas, tamaño y exposición nocturna, y guarda el SHA-256 del propio
 JSON en config/FORWARD_TESTING_CONFIG.sha256. `verificar()` se ejecuta en CADA corrida: si algo no coincide, el día es
 INVALID (no se corrige nada en silencio).
@@ -39,8 +39,8 @@ def _parametros(cfg) -> dict:
 def contenido() -> dict:
     return {
         "version": "FORWARD_TESTING v1.0",
-        "inicio_forward": {"fecha": "2026-10-01", "zona": "America/New_York",
-                           "regla": "operación forward = operación con ENTRADA >= 2026-10-01 00:00 NY"},
+        "inicio_forward": {"fecha": "2026-09-30", "zona": "America/New_York",
+                           "regla": "operación forward = operación con ENTRADA >= 2026-09-30 00:00 NY"},
         "estrategias": {
             "RSI2": {"version": "RSI2_SURVIVOR_V1", "codigo": "src/strategies/nq_rsi2.py",
                      "parametros": _parametros(K.RSI2_SURVIVOR_V1),
@@ -83,7 +83,7 @@ def contenido() -> dict:
 
 def generar(forzar: bool = False) -> dict:
     if CONFIG.exists() and not forzar:
-        raise SystemExit("La configuración ya está congelada. No se regenera (usa forzar=True SOLO antes del 01/10/2026).")
+        raise SystemExit("La configuración ya está congelada. No se regenera (usa forzar=True SOLO antes de las 09:30 NY del 30/09/2026).")
     c = contenido()
     texto = json.dumps(c, indent=2, ensure_ascii=False)
     CONFIG.write_text(texto, encoding="utf-8")

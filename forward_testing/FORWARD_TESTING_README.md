@@ -1,6 +1,6 @@
 # FORWARD_TESTING v1.0 — README
 
-Sistema reproducible para validar en datos NUEVOS (desde el **01/10/2026**) las dos supervivientes: **RSI(2)** y **Noise Zone**, congeladas. Reglas completas: `FORWARD_TESTING_PROTOCOL.md`.
+Sistema reproducible para validar en datos NUEVOS (desde el **30/09/2026**) las dos supervivientes: **RSI(2)** y **Noise Zone**, congeladas. Reglas completas: `FORWARD_TESTING_PROTOCOL.md`.
 
 ## Estructura
 ```text
@@ -22,10 +22,10 @@ forward_testing/
   src/             congelado, datos, teorico, ea, integridad, comparar, deriva, informes
   tests/           pruebas de integridad
   run_diario.py    un comando por día
-  congelar.py      congelación (ya hecha el 30-sep-2026; no se vuelve a ejecutar)
+  congelar.py      congelación (hecha el 30-sep-2026 antes de la apertura; no se vuelve a ejecutar)
 ```
 
-## Instrucciones exactas desde el 01/10/2026
+## Instrucciones exactas desde el 30/09/2026
 
 ### Una vez (hoy, 30-sep)
 1. **EA en MT5.** El EA solo cambia en el registro; ninguna regla cambia.

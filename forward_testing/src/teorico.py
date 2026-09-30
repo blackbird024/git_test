@@ -1,6 +1,6 @@
 """Forward TEÓRICO (oficial): el código congelado de las dos supervivientes sobre datos que incluyen los días nuevos.
 
-Las operaciones forward son las de ENTRADA >= inicio del forward (01/10/2026 00:00 NY). Los días anteriores solo sirven
+Las operaciones forward son las de ENTRADA >= inicio del forward (30/09/2026 00:00 NY). Los días anteriores solo sirven
 de calentamiento (sigma de 14 días, SMA200...). Nada se ajusta.
 
 Precios:
