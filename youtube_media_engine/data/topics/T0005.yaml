@@ -1,0 +1,23 @@
+id: T0005
+titulo_trabajo: Por qué los semáforos son rojo, ámbar y verde
+pregunta_central: ¿De dónde salen los colores del semáforo y por qué no son otros?
+audiencia: 'Hispanohablantes curiosos, 18-45 (persona: Lucía)'
+formato: documental_corto
+duracion_min: 10
+gancho: El primer semáforo funcionaba con gas y no terminó bien. (PENDIENTE DE VERIFICAR)
+estructura: []
+recompensa: ''
+angulo_original: Contar la versión 1 con documentos y separar lo sabido de lo repetido.
+evidencia: []
+complejidad: media
+riesgos:
+- Afirmaciones del gancho sin verificar todavía
+por_que_atrae: Objeto cotidiano con historia desconocida (hipótesis).
+miniatura: ''
+tipo_oportunidad: evergreen
+categoria: inventos
+estado_investigacion: sin_investigar
+estado_produccion: idea
+historial:
+- fecha: '2026-09-30'
+  cambio: creado

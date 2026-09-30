@@ -1,0 +1,23 @@
+id: T0003
+titulo_trabajo: ¿Quién inventó el wifi? La respuesta es complicada
+pregunta_central: ¿Por qué hay varios países y personas que reclaman haber inventado el wifi?
+audiencia: 'Hispanohablantes curiosos, 18-45 (persona: Lucía)'
+formato: documental_corto
+duracion_min: 10
+gancho: Pregunta a diez personas quién inventó el wifi y obtendrás cinco respuestas. (PENDIENTE DE VERIFICAR)
+estructura: []
+recompensa: ''
+angulo_original: Contar la versión 1 con documentos y separar lo sabido de lo repetido.
+evidencia: []
+complejidad: media
+riesgos:
+- Afirmaciones del gancho sin verificar todavía
+por_que_atrae: Objeto cotidiano con historia desconocida (hipótesis).
+miniatura: ''
+tipo_oportunidad: hueco
+categoria: inventos
+estado_investigacion: sin_investigar
+estado_produccion: idea
+historial:
+- fecha: '2026-09-30'
+  cambio: creado

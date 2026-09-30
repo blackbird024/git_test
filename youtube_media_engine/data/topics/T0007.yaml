@@ -1,0 +1,23 @@
+id: T0007
+titulo_trabajo: Por qué las pilas tienen esos tamaños (AA, AAA)
+pregunta_central: ¿Quién decidió los tamaños de las pilas y por qué se llaman así?
+audiencia: 'Hispanohablantes curiosos, 18-45 (persona: Lucía)'
+formato: documental_corto
+duracion_min: 10
+gancho: Nadie sabe decir qué significa 'AA'. (PENDIENTE DE VERIFICAR)
+estructura: []
+recompensa: ''
+angulo_original: Contar la versión 1 con documentos y separar lo sabido de lo repetido.
+evidencia: []
+complejidad: media
+riesgos:
+- Afirmaciones del gancho sin verificar todavía
+por_que_atrae: Objeto cotidiano con historia desconocida (hipótesis).
+miniatura: ''
+tipo_oportunidad: hueco
+categoria: inventos
+estado_investigacion: sin_investigar
+estado_produccion: idea
+historial:
+- fecha: '2026-09-30'
+  cambio: creado

@@ -1,0 +1,52 @@
+id: T0001
+titulo_trabajo: ¿Por qué el teclado es QWERTY?
+pregunta_central: Si nadie lo diseñaría así hoy, ¿por qué seguimos escribiendo en QWERTY?
+audiencia: 'Hispanohablantes curiosos, 18-45 (persona: Lucía)'
+formato: documental_corto
+duracion_min: 10
+gancho: 'Abrir con el teclado de 1868: dos filas y teclas como de piano. Esa fue la versión 1.'
+estructura:
+- 'Versión 1.0: el teclado tipo piano de Sholes'
+- La explicación que todo el mundo repite (atascos)
+- 'Giro: los telegrafistas y la hipótesis de Yasuoka'
+- '1878: la patente donde aparece QWERTY'
+- '1893: la fusión que lo convirtió en estándar'
+- ¿Es peor que Dvorak? El debate David / Liebowitz-Margolis
+- Lo que sabemos / lo que no
+recompensa: Entender que un estándar no gana por ser el mejor, sino por llegar primero y quedarse.
+angulo_original: Casi todos los vídeos repiten lo de los atascos; aquí se contrasta con documentos y artículos académicos.
+evidencia:
+- titulo: Yasuoka, K. y Yasuoka, M. (2011). On the Prehistory of QWERTY. ZINBUN 42
+  url: https://core.ac.uk/download/pdf/39267946.pdf
+  tipo: articulo_academico
+  fecha: '2011'
+- titulo: Patente US 207,559 de C. L. Sholes (27-ago-1878)
+  url: https://aresluna.org/keyboard-secrets/qwerty-killer-patents/1875-1878%20US207559%20Sholes.pdf
+  tipo: fuente_primaria
+  fecha: '1878-08-27'
+- titulo: Liebowitz, S. y Margolis, S. (1990). The Fable of the Keys. Journal of Law and Economics 33(1)
+  url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1069950
+  tipo: articulo_academico
+  fecha: 1990-04
+- titulo: 'Hagley Museum: On this date in 1878'
+  url: https://www.hagley.org/research/news/hagley-vault/date-1878
+  tipo: archivo_museo
+  fecha: ''
+- titulo: 'Lemelson Center (Smithsonian): Was the Patent Application for the Typewriter Handwritten?'
+  url: https://invention.si.edu/invention-stories/was-patent-application-typewriter-handwritten
+  tipo: archivo_museo
+  fecha: ''
+complejidad: media
+riesgos:
+- 'El mito de los atascos está muy extendido: el guion debe presentarlo como explicación popular, no como falsa sin matices'
+- La hipótesis de Yasuoka es una interpretación académica, no un hecho cerrado
+- Las imágenes de las patentes de EE. UU. son de dominio público; comprobar la fuente de cada escaneo
+por_que_atrae: Todo el mundo usa el teclado a diario y casi nadie sabe por qué es así; además, desmonta un mito muy repetido.
+miniatura: Teclado dibujado con QWERTY resaltado + '¿Por qué QWERTY?' + sello '¿MITO?' (reports/marca/miniatura_ejemplo.png)
+tipo_oportunidad: evergreen
+categoria: inventos
+estado_investigacion: en_investigacion
+estado_produccion: idea
+historial:
+- fecha: '2026-09-30'
+  cambio: creado

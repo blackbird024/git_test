@@ -1,0 +1,23 @@
+id: T0006
+titulo_trabajo: La primera versión del inodoro
+pregunta_central: ¿Por qué el inodoro moderno tardó siglos en generalizarse si la idea era antigua?
+audiencia: 'Hispanohablantes curiosos, 18-45 (persona: Lucía)'
+formato: documental_corto
+duracion_min: 10
+gancho: Hubo inodoros con cisterna mucho antes de que se usaran en las casas. (PENDIENTE DE VERIFICAR)
+estructura: []
+recompensa: ''
+angulo_original: Contar la versión 1 con documentos y separar lo sabido de lo repetido.
+evidencia: []
+complejidad: media
+riesgos:
+- Afirmaciones del gancho sin verificar todavía
+por_que_atrae: Objeto cotidiano con historia desconocida (hipótesis).
+miniatura: ''
+tipo_oportunidad: evergreen
+categoria: inventos
+estado_investigacion: sin_investigar
+estado_produccion: idea
+historial:
+- fecha: '2026-09-30'
+  cambio: creado
