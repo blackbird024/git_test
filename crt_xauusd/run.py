@@ -136,7 +136,8 @@ def run(cfg_path: Path, out: Path, unlock_test: bool, data_override: str | None 
     res["walk_forward"] = wf
 
     # ---------------- falsification (TRAIN+VALIDATION)
-    res["falsification"] = {g: falsification.run_all(_trainval(groups[g]), df, h4, setups, cfg, tv_span, g, rng)
+    shared = falsification.shared_nulls(df, h4, cfg, tv_span, rng)
+    res["falsification"] = {g: falsification.run_all(_trainval(groups[g]), df, h4, setups, cfg, tv_span, g, rng, shared)
                             for g in GROUPS}
 
     # ---------------- regimes (descriptive, never filters)

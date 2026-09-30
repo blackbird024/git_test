@@ -1,0 +1,10 @@
+{
+  "source": "Databento GLBX.MDP3 GC.v.0 ohlcv-1m 2010-06-06..2026-09-29, aggregated to 15M",
+  "broker": "CME Globex (COMEX GC gold futures, 100 oz) - NOT spot XAUUSD",
+  "format": "generic",
+  "timestamp_tz": "UTC",
+  "timestamp_convention": "bar_open",
+  "price_side": "trade",
+  "volume_type": "real (exchange-traded contracts)",
+  "continuous": "volume-based front month, UNADJUSTED prices; rolls handled via instrument_id"
+}

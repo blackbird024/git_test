@@ -61,9 +61,9 @@ def kz_candidates(df: pd.DataFrame, setups: pd.DataFrame) -> dict[str, np.ndarra
 
 
 def run_all(trades: pd.DataFrame, df: pd.DataFrame, h4: pd.DataFrame, setups: pd.DataFrame, cfg: dict,
-            span: tuple, group: str, rng: np.random.Generator) -> dict:
+            span: tuple, group: str, rng: np.random.Generator, shared: dict) -> dict:
     fz = cfg["falsification"]
-    n_perm, n_vperm = fz["n_permutations"], fz["n_volume_permutations"]
+    n_perm = fz["n_permutations"]
     m = Market(df, cfg)
     cost = cost_price(cfg)
     tp_key = cfg["execution"]["base_tp"]
@@ -116,47 +116,55 @@ def run_all(trades: pd.DataFrame, df: pd.DataFrame, h4: pd.DataFrame, setups: pd
             null[k] = np.nanmean(vals)
         res["random_entry"] = _p(null, obs)
 
-    # 4) volume permutation (same time-of-day, inside span only)
+    # 4-6) detector re-runs are shared by all groups (computed once in shared_nulls)
+    for k in ("volume_permutation", "randomized_sweep"):
+        res[k] = _p(np.array([d[group] for d in shared[k]]), obs)
+    res["ablation_no_sweep"] = shared["ablation_no_sweep"][group]
+    res["ablation_no_volume"] = shared["ablation_no_volume"][group]
+    res["observed_mean_R"] = obs
+    return res
+
+
+def shared_nulls(df, h4, cfg, span, rng) -> dict:
+    """Full detector re-runs (expensive): computed once, each returns mean R per group."""
+    n_vperm = cfg["falsification"]["n_volume_permutations"]
+    base = cfg["volume"]["base"]
+    out = {"volume_permutation": [], "randomized_sweep": []}
     in_span = ((df["ts"] >= span[0]) & (df["ts"] < span[1])).to_numpy()
     tod = (df["ny"].dt.hour * 60 + df["ny"].dt.minute).to_numpy()
     vol = df["volume"].to_numpy(float)
     slots = [np.where(in_span & (tod == t))[0] for t in np.unique(tod[in_span])]
-    null = []
     for _ in range(n_vperm):
         v2 = vol.copy()
         for idx in slots:
             v2[idx] = vol[rng.permutation(idx)]
-        d2 = add_bar_features(df.assign(volume=v2), cfg)
-        null.append(_group_mean(d2, h4, cfg, span, group, cfg["volume"]["base"]))
-    res["volume_permutation"] = _p(np.array(null), obs)
-
-    # 5) randomized sweep levels
+        out["volume_permutation"].append(_group_means(add_bar_features(df.assign(volume=v2), cfg), h4, cfg, span, base))
     comp = h4[h4["complete"]]
     up = (comp["high"] - comp["close"]).to_numpy()
     dn = (comp["close"] - comp["low"]).to_numpy()
-    null = []
     for _ in range(n_vperm):
         k = rng.integers(len(up), size=len(h4))
         h4r = h4.copy()
         h4r["high"] = h4["close"].to_numpy() + np.maximum(up[k], 0)
         h4r["low"] = h4["close"].to_numpy() - np.maximum(dn[k], 0)
-        null.append(_group_mean(df, h4r, cfg, span, group, cfg["volume"]["base"]))
-    res["randomized_sweep"] = _p(np.array(null), obs)
-
-    # 6) ablations
-    res["ablation_no_sweep_mean_R"] = _group_mean(df, h4, cfg, span, group, cfg["volume"]["base"], require_sweep=False,
-                                                  with_n=True)
-    res["ablation_no_volume_mean_R"] = _group_mean(df, h4, cfg, span, group, {"type": "none"}, with_n=True)
-    res["observed_mean_R"] = obs
-    return res
+        out["randomized_sweep"].append(_group_means(df, h4r, cfg, span, base))
+    out["ablation_no_sweep"] = _group_means(df, h4, cfg, span, base, require_sweep=False, with_n=True)
+    out["ablation_no_volume"] = _group_means(df, h4, cfg, span, {"type": "none"}, with_n=True)
+    return out
 
 
-def _group_mean(df, h4, cfg, span, group, variant, require_sweep=True, with_n=False):
+def _group_means(df, h4, cfg, span, variant, require_sweep=True, with_n=False) -> dict:
+    groups = ("LONDON", "NY", "LONDON+NY")
+    empty = {g: ({"mean_R": np.nan, "trades": 0} if with_n else np.nan) for g in groups}
     sig, _, _, _ = detect_all(df, h4, cfg, variant, require_sweep=require_sweep)
     if len(sig) == 0:
-        return {"mean_R": np.nan, "trades": 0} if with_n else np.nan
+        return empty
     sig = sig[(sig["signal_time"] >= span[0]) & (sig["signal_time"] < span[1])]
     t, _ = build_trades(sig, Market(df, cfg), cfg, cfg["execution"]["base_tp"])
-    t = combine_groups(t)[group] if len(t) else t
-    mean = float(t["R"].mean()) if len(t) else np.nan
-    return {"mean_R": mean, "trades": int(len(t))} if with_n else mean
+    if len(t) == 0:
+        return empty
+    out = {}
+    for g, tg in combine_groups(t).items():
+        m = float(tg["R"].mean()) if len(tg) else np.nan
+        out[g] = {"mean_R": m, "trades": int(len(tg))} if with_n else m
+    return out
