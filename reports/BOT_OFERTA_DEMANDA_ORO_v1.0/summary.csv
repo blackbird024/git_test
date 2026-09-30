@@ -1,0 +1,10 @@
+variante,tramo,operaciones,acierto_%,PF,R_medio,t,neto_$,max_dd_%,horas_medias
+con costes,desarrollo,802,28.8,0.954,-0.0274,-0.5,-6148.0,-21.6,118.2
+con costes,fuera de muestra,473,30.2,1.028,0.0298,0.41,1846.0,-15.9,83.5
+con costes,completo,1275,29.3,0.978,-0.0062,-0.14,-4302.0,-28.5,105.3
+sin costes,desarrollo,787,29.9,1.039,0.0352,0.62,5664.0,-15.7,120.4
+sin costes,fuera de muestra,464,30.6,1.071,0.0553,0.75,6205.0,-19.4,85.2
+sin costes,completo,1251,30.1,1.051,0.0427,0.95,11869.0,-18.5,107.4
+costes x2,desarrollo,838,28.0,0.886,-0.0769,-1.46,-14457.0,-32.9,113.1
+costes x2,fuera de muestra,478,29.9,0.988,0.013,0.18,-592.0,-14.3,82.5
+costes x2,completo,1316,28.7,0.915,-0.0442,-1.04,-15049.0,-42.6,102.0

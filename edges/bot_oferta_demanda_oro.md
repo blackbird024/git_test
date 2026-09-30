@@ -40,3 +40,21 @@ PF~1.44, DD máx 8 %". Aquí se comprueba con nuestros datos.*
 Desarrollo: hasta el 21-mar-2023; fuera de muestra: desde el 22-mar-2023 (partición del proyecto para GC). Aviso: el
 bot se diseñó con datos que probablemente incluyen el periodo fuera de muestra, así que no es virgen para él.
 **Pasa** si, después de costes, en desarrollo PF > 1 y R medio > 0 con t ≥ 2, y fuera de muestra PF > 1 y R > 0.
+
+## Resultado (añadido tras ejecutar). Informe: `reports/BOT_OFERTA_DEMANDA_ORO_v1.0/`
+| Variante | Tramo | Operaciones | Acierto | PF | R medio | t | Neto | Max DD |
+|---|---|---|---|---|---|---|---|---|
+| **Con costes** | desarrollo 2015–mar 2023 | 802 | 28,8 % | **0,95** | **−0,027** | −0,50 | −6.148 $ | −21,6 % |
+| **Con costes** | fuera de muestra | 473 | 30,2 % | 1,03 | +0,030 | 0,41 | +1.846 $ | −15,9 % |
+| Sin costes | completo | 1.251 | 30,1 % | 1,05 | +0,043 | 0,95 | +11.869 $ | −18,5 % |
+| Costes x2 | completo | 1.316 | 28,7 % | 0,92 | −0,044 | −1,04 | −15.049 $ | −42,6 % |
+
+**Veredicto: RECHAZADO.** Con costes, el bot no gana en desarrollo (PF 0,95) y fuera de muestra queda en +0,03 R sin
+significación (t 0,4). Ni siquiera sin costes se acerca al "PF ~1,44" que cita su código (aquí 1,05). Detalles:
+- **Cortos −0,18 R de media (434), largos +0,08 R (841):** el lado corto resta todo lo que suma el largo.
+- **Fallo de diseño encontrado:** el 9-nov-2020 (anuncio de la vacuna) el ATR se disparó y el bot abrió 2 cortos con
+  stop a ~100 $ y objetivo a ~240 $. Sin salida por tiempo, siguieron abiertos **16 meses** (hasta mar-2022) y, con el
+  máximo de 2 posiciones ocupado, **el bot no operó en todo 2021**. En real pasaría lo mismo.
+- Años: 7 de 11 negativos.
+- Limitaciones: precio del futuro GC ajustado (no el CFD) y **sin swap**: el swap de posiciones de varios días
+  (media 105 h) empeoraría el resultado.
