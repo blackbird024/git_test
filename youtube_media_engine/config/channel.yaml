@@ -1,0 +1,42 @@
+# Identidad del canal (Fase 2). La leen los módulos de guion, miniaturas y edición.
+# Nombre provisional hasta que se confirme en YouTube que el nombre y el identificador (@) están libres.
+canal:
+  nombre: "Primera Versión"
+  handle_deseado: "@primeraversion"
+  lema: "Todo lo que usas tuvo una primera versión. Esta es su historia."
+  idioma: es
+  variante: "español neutro (sin localismos de España ni de un país concreto)"
+  concepto: A        # reports/fase1_investigacion_nicho.md
+
+marca:
+  colores:            # hex; contraste comprobado en reports/marca/paleta.png
+    papel: "#F2EBDD"      # fondo claro: papel de archivo
+    tinta: "#17171C"      # texto y fondo oscuro
+    sello: "#BB3229"      # acento: el sello rojo de "verificado / mito"
+    plano: "#1F4E79"      # azul de plano técnico (diagramas)
+    ocre: "#D9A441"       # resaltes y fechas
+    gris: "#8A8578"       # texto secundario
+  tipografia:         # OFL; ficheros y licencias en assets/fonts/
+    titulos: "assets/fonts/Fraunces_900Black.ttf"
+    titulos_cursiva: "assets/fonts/Fraunces_900Black_Italic.ttf"
+    subtitulos: "assets/fonts/Fraunces_700Bold.ttf"
+    texto: "assets/fonts/Inter_400Regular.ttf"
+    texto_semibold: "assets/fonts/Inter_600SemiBold.ttf"
+    etiquetas: "assets/fonts/Inter_800ExtraBold.ttf"
+
+voz:
+  persona: "Una investigadora curiosa que te enseña un documento que acaba de encontrar: cercana, precisa, con humor seco."
+  reglas:
+    - "Frases cortas para escuchar, no para leer. Una idea por frase."
+    - "Tutear al espectador. Nada de 'queridos amigos' ni 'no te lo vas a creer'."
+    - "Fechas y nombres solo con fuente registrada; si hay duda, se dice en voz alta."
+    - "Separar siempre lo que está documentado de lo que se cuenta."
+    - "Sin superlativos vacíos ('increíble', 'impactante') ni urgencia falsa."
+  firma_narrativa:
+    apertura: "Versión 1.0: cada vídeo empieza enseñando la primera versión, torpe o fallida, del objeto."
+    ficha: "Ficha de patente: tarjeta con fecha, lugar, persona y fuente cada vez que aparece un hito."
+    cierre: "Lo que sabemos / lo que no: tarjeta final que separa lo documentado de lo dudoso."
+
+formatos:
+  largo:  {duracion_min: [8, 14], relacion: "16:9", resolucion: [1920, 1080]}
+  corto:  {duracion_seg: [35, 58], relacion: "9:16", resolucion: [1080, 1920]}
