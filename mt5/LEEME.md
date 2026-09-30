@@ -1,4 +1,42 @@
-# EA de la cartera en MetaTrader 5 (cuenta DEMO de Pepperstone)
+# EAs de MetaTrader 5 (cuenta DEMO de Pepperstone)
+
+**Usa `APEX_Multiestrategia.mq5`** (versión 2). `APEX_Cartera_NAS100.mq5` es la versión 1, sin gestor de cartera; se
+conserva como referencia. Los pasos de instalación son los mismos cambiando el nombre del archivo.
+
+## Qué incluye la multiestrategia
+| Estrategia | Estado | Presupuesto por defecto |
+|---|---|---|
+| Zona de ruido (intradía, NAS100) | ✅ validada | 2 $/punto (= 1 MNQ) |
+| RSI(2) (swing, NAS100) | ✅ validada | 2 $/punto (= 1 MNQ) |
+| SMC kill zones, rango+London+VWAP, VWAP 15m, VWAP+EMAs, oro (zona ruido, RSI2, pares oro/plata), bot de oferta/demanda de oro | ❌ probadas y rechazadas: **no se incluyen** | — |
+
+Cada estrategia tiene su interruptor (`ActivarZonaRuido`, `ActivarRSI2`) y su presupuesto (`DineroPorPuntoZona`,
+`DineroPorPuntoRSI`).
+
+## Gestor de riesgo de la cartera
+Solo cuenta las operaciones de este EA (por sus magic numbers): tu bot de oro u otros EAs de la misma cuenta no le
+afectan, ni él a ellos.
+
+| Regla | Por defecto | Qué hace | Base histórica (1+1 MNQ, 2015-2026) |
+|---|---|---|---|
+| `PerdidaDiariaMax` | 1.000 $ | Pérdida del día (cerrado + abierto) → **no abre más** hasta mañana. No cierra lo abierto (`CerrarAlFrenarDia = false`) para no alterar las reglas validadas | 8 días en 11 años superan 1.000 $ (peor día: −2.798 $) |
+| `CaidaMaximaCartera` | 5.000 $ | Caída desde el máximo → **cierra todo y se detiene** hasta que la reanudes | Peor caída del backtest: 4.713 $ (en 2026) |
+
+- La detención se guarda en las variables globales del terminal: sobrevive a reinicios de MT5.
+- Para reanudar tras una detención: `ReiniciarFreno = true`, aceptar, y volver a ponerlo en `false`. Antes, revisa si
+  la caída está fuera de lo esperado (PLAN_OPERATIVO.md).
+- **Si cambias el tamaño** (más $/punto), escala los dos límites en la misma proporción.
+- Aviso: el backtest está ahora mismo cerca de su peor caída histórica (−4.713 $ en 2026). Con el límite de 5.000 $,
+  una racha algo peor que la histórica detendría la cartera: es la intención.
+
+## Añadir una estrategia en el futuro
+Solo si pasa el protocolo del proyecto (ficha antes de mirar, desarrollo y fuera de muestra, costes). En el código:
+nuevo índice `E_xxx` + fila en `InicializarRegistro()`, su función `ProcesarXxx()` usando `Abrir()/Cerrar()/Posicion()`,
+y llamarla en `Procesar()`. El gestor de cartera la incluye automáticamente.
+
+---
+
+## Versión 1: EA de la cartera (referencia)
 
 `APEX_Cartera_NAS100.mq5` opera solo las dos estrategias validadas del proyecto, en el CFD **NAS100**:
 
@@ -15,13 +53,13 @@ del tick de tu cuenta.
 # 1. Descargar el EA directamente en la carpeta de expertos
 EXP="$HOME/.mt5/drive_c/Program Files/MetaTrader 5/MQL5/Experts"
 ls "$EXP" || find "$HOME/.mt5/drive_c" -type d -path "*MQL5/Experts" 2>/dev/null   # si la ruta cambia, usa la que salga aquí
-curl -L -o "$EXP/APEX_Cartera_NAS100.mq5" \
-  https://raw.githubusercontent.com/blackbird024/git_test/claude/apex-telegram-token-fix-m74opt/mt5/APEX_Cartera_NAS100.mq5
+curl -L -o "$EXP/APEX_Multiestrategia.mq5" \
+  https://raw.githubusercontent.com/blackbird024/git_test/claude/apex-telegram-token-fix-m74opt/mt5/APEX_Multiestrategia.mq5
 
-# 2. Compilar sin abrir MetaEditor (deja el resultado en APEX_Cartera_NAS100.log)
+# 2. Compilar sin abrir MetaEditor (deja el resultado en APEX_Multiestrategia.log)
 cd "$EXP/../.." && WINEPREFIX=$HOME/.mt5 wine "C:\\Program Files\\MetaTrader 5\\MetaEditor64.exe" \
   /compile:"MQL5\\Experts\\APEX_Cartera_NAS100.mq5" /log
-iconv -f UTF-16 -t UTF-8 "MQL5/Experts/APEX_Cartera_NAS100.log" | tail -5   # "0 errors" = compilado
+iconv -f UTF-16 -t UTF-8 "MQL5/Experts/APEX_Multiestrategia.log" | tail -5   # "0 errors" = compilado
 ```
 Si prefieres, también vale abrir MetaEditor y pulsar F7 (paso 2 de abajo).
 
