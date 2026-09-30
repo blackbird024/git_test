@@ -1,0 +1,19 @@
+{
+  "fecha_utc": "2026-09-30T09:39:48.397337+00:00",
+  "commit": "96d022356d04890c126201693a7c7d00a66dc12c",
+  "cambios_sin_commit": "M .gitignore\n?? forward_testing/\n?? survivor/run_survivor.py\n?? survivor/src/caracteristicas.py\n?? survivor/src/cartera.py\n?? survivor/src/congeladas.py\n?? survivor/src/estres.py\n?? survivor/src/falsacion.py\n?? survivor/src/temporal.py\n?? survivor/src/trayectorias.py",
+  "python": "3.11.15",
+  "pandas": "3.0.6",
+  "numpy": "2.4.6",
+  "semilla": 20260930,
+  "sha256_fuentes": {
+    "src/strategies/nq_rsi2.py": "24716d144f90d0db2e9f0b49e1ed90bffda4774ea4d15ff9afccbd7eb315c898",
+    "src/strategies/zona_ruido.py": "a00839d165030e57fe5c54476aabd6439db57cacccfc59b73545d8527d052cdb",
+    "src/engine/costes.py": "d33f84d08cb9a4c9009f14922d9bf70a80eec2e9dff29614b434473d062b8007",
+    "src/data/datos.py": "bd1028b5b50b3062d40ff6fb30acb8f85103c57f2c5be25ffe94540e338b5108"
+  },
+  "datos": {
+    "data/processed/NQ_1M.parquet": "90c09cbc2397d8d552c13f25fe8fbc08e7638ed8"
+  },
+  "fuera_de_muestra": "NO: todo el periodo 2015-2026 ya se hab\u00eda visto (TEST_CONTAMINATION_LOG.md)"
+}

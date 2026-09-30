@@ -1,0 +1,12 @@
+[09:39:56] Reglas congeladas: reproducción
+[09:40:05] Rasgos previos a la entrada y trayectorias
+[09:40:07] Regímenes (Q1-Q4)
+[09:40:10] Q5: ganadoras frente a perdedoras (rasgos previos)
+[09:40:10] MAE/MFE, horizontes y tiempo hasta fallar
+[09:40:10] Temporal: años, meses, móviles, walk-forward congelado, subperiodos, concentración, atípicos, rachas
+[09:40:14] Crisis / extremos
+[09:40:14] Estrés: costes, deslizamiento, retraso, sensibilidad
+[09:41:59] Aleatorización (1.000 réplicas por prueba)
+[09:41:59] NQ frente a MNQ
+[09:41:59] Cartera a igual riesgo, correlaciones y Monte Carlo
+[09:42:00] Forward: bandas de deriva y referencia del backtest

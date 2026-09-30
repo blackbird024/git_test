@@ -1,0 +1,14 @@
+{
+  "RSI2": {
+    "operaciones_mes": 1.2,
+    "acierto_%": 69.6,
+    "expectativa_$": 125.45,
+    "dd_p95_1_a\u00f1o_$": -4508.0
+  },
+  "NOISE_ZONE": {
+    "operaciones_mes": 19.4,
+    "acierto_%": 37.5,
+    "expectativa_$": 7.79,
+    "dd_p95_1_a\u00f1o_$": -2667.0
+  }
+}

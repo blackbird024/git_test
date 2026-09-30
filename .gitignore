@@ -7,3 +7,6 @@ data/processed/
 
 # Trading Bot Lab: resultados completos en pickle (se regeneran con run_lab)
 bot_lab/research/experiments/*/resultados.pkl
+
+# Survivor analysis: pickle completo (se regenera)
+survivor/experimentos/*/resultados.pkl
