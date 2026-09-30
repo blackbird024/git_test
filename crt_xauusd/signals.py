@@ -185,6 +185,10 @@ class Detector:
         ref = self.h4.loc[setup.ref_start]
         if not (ref.complete and ref.contiguous):
             return None, "reference_4h_incomplete", []
+        if "instr" in self.h4:
+            ex = self.h4.loc[setup.exec_start]
+            if ref.instr_n != 1 or ex.instr_n != 1 or ref.instr != ex.instr:
+                return None, "contract_roll_ref_or_exec_4h", []
         sigs, events = [], []
         for d in ("long", "short"):
             sig, ev = self.scan_direction(setup, d, variant, require_sweep)

@@ -184,3 +184,22 @@ def test_session_close_exit():
     m = _M([100, 100.5], [100.6, 101], [99.9, 100], [100.5, 100.8])
     r = simulate(m, 0, "long", 100, 98, 102, 1)
     assert r["exit_reason"] == "session_close" and r["exit_price"] == 100.8
+
+
+# ---------------------------------------------------------------- futures contract roll
+def test_contract_roll_inside_exec_4h_skips_setup(cfg):
+    raw = scenario_frame(EXAMPLE, base_price=2651.0)
+    raw["instrument_id"] = 1
+    raw.loc[raw["ts"] >= pd.Timestamp("2024-01-10 03:00", tz=NY), "instrument_id"] = 2
+    df, h4, _ = prepare(raw, cfg)
+    sig, skips, _, _ = detect_all(df, h4, cfg, cfg["volume"]["base"])
+    assert (sig.kz == "london").sum() == 0 if len(sig) else True
+    assert "contract_roll_ref_or_exec_4h" in set(skips[skips.kz == "london"]["reason"])
+
+
+def test_single_contract_still_signals(cfg):
+    raw = scenario_frame(EXAMPLE, base_price=2651.0)
+    raw["instrument_id"] = 7
+    df, h4, _ = prepare(raw, cfg)
+    sig, _, _, _ = detect_all(df, h4, cfg, cfg["volume"]["base"])
+    assert (sig.kz == "london").sum() == 1

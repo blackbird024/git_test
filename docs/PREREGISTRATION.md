@@ -112,3 +112,13 @@ En cualquier otro caso: **NO ROBUST EDGE.**
 Grid search; seleccionar variantes de sensibilidad; mirar TEST antes de congelar; filtros derivados de ganadores; cambiar
 horarios o definiciones después de ver resultados. Cualquier mejora observada se anota como **POST-HOC OBSERVATION** y no
 entra en el sistema principal.
+
+## v2.1.0: fuente de datos (registrada antes de ver ningún dato)
+
+| Versión | Fecha | Cambio | ¿Se habían visto resultados? |
+|---|---|---|---|
+| 2.1.0 | 2026-09-30 | Dataset: **Databento GLBX.MDP3, futuros de oro de CME `GC.v.0`** (contrato continuo por volumen, sin ajustar), 1M agregado a 15M, 2010-06-06 → 2026-09-29. No hay XAUUSD spot con volumen accesible. Rollover: se omite el setup si la 4H de referencia o la de ejecución abarcan más de un contrato o son contratos distintos; se omite el trade si el contrato cambia entre la confirmación y la salida. Los costes provisionales no cambian. | **No** |
+
+Consecuencias que asumo: (1) es GC, no spot. El precio difiere por la base (contango), pero la geometría
+intradía es prácticamente la misma. (2) El volumen es **volumen real negociado en CME**, no tick volume.
+(3) El horario es igual al del CFD: domingo 18:00 a viernes 17:00 NY, con pausa de 17:00 a 18:00.

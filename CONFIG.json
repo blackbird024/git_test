@@ -1,6 +1,6 @@
 {
   "_comment": "CRT XAUUSD 4H+15M research. PRE-REGISTERED v2 (immediate engulfing confirmation; FVG/IFVG removed by owner before any evaluation). Do not edit parameters after observing results; any change must bump preregistration_version and be logged in docs/PREREGISTRATION.md.",
-  "preregistration_version": "2.0.0",
+  "preregistration_version": "2.1.0",
   "seed": 20260930,
   "data": {
     "path": "data/XAUUSD_M15.csv",
@@ -165,5 +165,13 @@
   "display_cell": {
     "_comment": "Only BASE exists as hypothesis; charts drawn for BASE, group LONDON+NY plus per-KZ comparisons.",
     "kz_group": "LONDON+NY"
+  },
+  "instrument": {
+    "_comment": "v2.1.0: data source = Databento CME GC futures (no spot XAUUSD with volume reachable). Registered before any data was seen.",
+    "dataset": "GLBX.MDP3",
+    "symbol": "GC.v.0",
+    "stype": "continuous volume-based front month, unadjusted",
+    "roll_rule": "setup skipped if ref or exec 4H spans >1 contract or they differ; trade skipped if contract changes between confirmation and exit",
+    "costs_note": "cost placeholders kept unchanged from v2.0.0 (spread 0.20 = 2 GC ticks, commission 0.07/oz = $7/contract RT, slippage 0.05/side)"
   }
 }

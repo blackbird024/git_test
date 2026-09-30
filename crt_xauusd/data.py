@@ -78,7 +78,7 @@ def read_raw(path: str | Path, meta: dict) -> pd.DataFrame:
 
 
 def _finish(df: pd.DataFrame) -> pd.DataFrame:
-    cols = ["ts", "open", "high", "low", "close", "volume"] + (["spread"] if "spread" in df else [])
+    cols = ["ts", "open", "high", "low", "close", "volume"] + [c for c in ("spread", "instrument_id") if c in df]
     return df[cols]
 
 
@@ -124,6 +124,8 @@ def clean_and_audit(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         scheduled = (prev_wall.dt.hour == 16) & (prev_wall.dt.minute == 45)  # daily break or weekend close
         audit["unexpected_gaps_gt_15m"] = int(((dt > BAR) & ~scheduled).sum())
         audit["has_spread_column"] = "spread" in df
+        if "instrument_id" in df:
+            audit["contract_changes"] = int((df["instrument_id"].diff().fillna(0) != 0).sum())
         if "spread" in df:
             audit["spread_median_price"] = float(df["spread"].median())
             audit["spread_p95_price"] = float(df["spread"].quantile(0.95))
@@ -194,6 +196,9 @@ def build_h4(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
         "volume": g["volume"].sum(), "n_bars": g.size(), "first_idx": g.apply(lambda x: x.index[0]),
         "last_idx": g.apply(lambda x: x.index[-1]),
     })
+    if "instrument_id" in df:  # futures: a bucket is usable only if it is one single contract
+        h4["instr"] = g["instrument_id"].first()
+        h4["instr_n"] = g["instrument_id"].nunique()
     anchor = cfg["time"]["h4_anchor_hour_ny"]
     # the 17:00 bucket contains the 17:00-18:00 daily maintenance break -> 12 bars expected
     expected = np.where(h4.index.hour == anchor, 12, 16)

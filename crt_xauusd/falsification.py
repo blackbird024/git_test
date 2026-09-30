@@ -36,6 +36,8 @@ def _sim_R(m: Market, ei: int, direction: str, risk: float, target_R: float, cos
     sl = entry - sgn * risk
     tp = entry + sgn * target_R * risk
     sim = simulate(m, ei, direction, entry, sl, tp, last_i)
+    if not m.same_contract(ei - 1, sim["exit_i"]):
+        return np.nan
     return (sgn * (sim["exit_price"] - entry) - cost) / risk
 
 

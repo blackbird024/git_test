@@ -31,6 +31,10 @@ class Market:
         # last bar whose open <= session_close - 15min
         self.last_idx = np.searchsorted(self.ts, target, side="right") - 1
         self.n = len(self.o)
+        self.instr = df["instrument_id"].to_numpy() if "instrument_id" in df else None
+
+    def same_contract(self, a: int, b: int) -> bool:
+        return self.instr is None or bool((self.instr[a:b + 1] == self.instr[a]).all())
 
 
 def simulate(m: Market, entry_i: int, direction: str, entry: float, sl: float, tp: float | None, last_i: int) -> dict:
@@ -114,6 +118,9 @@ def build_trades(signals: pd.DataFrame, m: Market, cfg: dict, tp_key: str, delay
             continue
         tp = entry + tp_def["value"] * risk if long_ else entry - tp_def["value"] * risk
         sim = simulate(m, ei, s["direction"], entry, sl, tp, last_i)
+        if not m.same_contract(ci, sim["exit_i"]):
+            skipped.append({**base, "reason": "contract_roll_during_trade"})
+            continue
         sgn = 1 if long_ else -1
         gross = sgn * (sim["exit_price"] - entry)
         exit_time = pd.Timestamp(m.ts[sim["exit_i"]]) + BAR
