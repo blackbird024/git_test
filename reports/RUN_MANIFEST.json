@@ -1,0 +1,39 @@
+{
+  "code_version": "1.0.0",
+  "git_commit": "1c0dda3035bfe0da728843c5d571325b92b05c12",
+  "config_sha256": "b0b0c02da4f74830da8eaa1ff5cd1333c88c76bc1f4bfe86fae80bf3dd8d9396",
+  "dataset_path": "/home/user/git_test/data/XAUUSD_M15.csv",
+  "dataset_sha256": "9df218f8a379cc6028bf413f35e9b1568b091c494bb4a8aefd6dfbd20ad85c01",
+  "critical_file_sha256": {
+    "crt_xauusd/__init__.py": "662b3bfec1fe39f1405742e733c83b79eaeca306b4ae0661097016bfc2e6ceac",
+    "crt_xauusd/analysis.py": "8de9880a40c0b4c518e0d6c66fec596d66e7bb24d5131c6b98c8579916f8223d",
+    "crt_xauusd/config.py": "637b0838480af2b9f8aa57521e6f06f73f38f710ef674f7fcfe612dd60b06f00",
+    "crt_xauusd/data.py": "4ad018e669554bcc889b717a83104a4d86440c250c068f2d2a9c5c1554ca023b",
+    "crt_xauusd/execution.py": "4dc0cc248fd6d4ebcc9e5a91000772663d646b7caeba85873a0ee8dd4fe6caa4",
+    "crt_xauusd/falsification.py": "ab1d60095e551615909ea046a34c15b5da4b1958931086482ce1911e6c4c4692",
+    "crt_xauusd/metrics.py": "d9c4924577cafb7ec9c95206a7d6dbbc9536aa7c435762f81bdbb171b52dc787",
+    "crt_xauusd/report.py": "0ead67249f879f5d327911957f0285b1777fe41b92c5cde41b1a553ae062b167",
+    "crt_xauusd/run.py": "111769123107ec30bb7776bac0e8b84ca9c92d88da2652dfb45153d3be9ae9be",
+    "crt_xauusd/signals.py": "f81e24fcd099f2fd26bd1f26ef2e06741171429fe7769a8e23a897545e82071e",
+    "CONFIG.json": "c344bf8a338f3c9d1995f795e555a4f5daa95bf93b8fed2cdbf08e73dc14c2c3"
+  },
+  "python": "3.11.15",
+  "pandas": "3.0.6",
+  "numpy": "2.4.6",
+  "seed": 20260930,
+  "splits_utc": {
+    "TRAIN": [
+      "2010-06-07 00:00:00+00:00",
+      "2020-03-01 05:00:00+00:00"
+    ],
+    "VALIDATION": [
+      "2020-03-01 05:00:00+00:00",
+      "2023-06-01 04:00:00+00:00"
+    ],
+    "TEST": [
+      "2023-06-01 04:00:00+00:00",
+      "2026-09-29 00:00:00+00:00"
+    ]
+  },
+  "test_unlocked": false
+}

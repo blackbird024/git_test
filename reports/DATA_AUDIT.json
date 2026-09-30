@@ -1,0 +1,28 @@
+{
+  "rows_raw": 384770,
+  "unparseable_or_dst_ambiguous_ts": 0,
+  "duplicate_ts_dropped": 0,
+  "misaligned_ts_dropped": 0,
+  "invalid_ohlc_dropped": 0,
+  "rows_clean": 384770,
+  "first_bar_utc": "2010-06-07 00:00:00+00:00",
+  "last_bar_utc": "2026-09-28 23:45:00+00:00",
+  "zero_volume_bars": 0,
+  "volume_all_integer": true,
+  "gaps_gt_15m": 4600,
+  "unexpected_gaps_gt_15m": 1879,
+  "has_spread_column": false,
+  "contract_changes": 81,
+  "h4_buckets": 25390,
+  "h4_complete": 24811,
+  "metadata": {
+    "source": "Databento GLBX.MDP3 GC.v.0 ohlcv-1m 2010-06-06..2026-09-29, aggregated to 15M",
+    "broker": "CME Globex (COMEX GC gold futures, 100 oz) - NOT spot XAUUSD",
+    "format": "generic",
+    "timestamp_tz": "UTC",
+    "timestamp_convention": "bar_open",
+    "price_side": "trade",
+    "volume_type": "real (exchange-traded contracts)",
+    "continuous": "volume-based front month, UNADJUSTED prices; rolls handled via instrument_id"
+  }
+}

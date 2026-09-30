@@ -3,7 +3,7 @@
 Investigación objetiva de una regla CRT sobre XAUUSD usando solo 4H, 15M, precio, volumen y Kill Zones.
 **Objetivo: saber si hay edge, no construir un bot.** La fase 2 (automatización) solo empieza si la fase 1 sobrevive.
 
-**Estado actual: NO EVALUADO. No hay dataset** (ver `docs/AUDIT.md` y `docs/DATA_REQUIREMENTS.md`).
+**Estado actual: VERDICT = NO ROBUST EDGE** (futuros GC de CME 2010-2023, TRAIN+VALIDATION; TEST sin tocar). Ver `reports/ANALYST_NOTES.md`. Los datos (Databento) no están en git: se regeneran con `scripts/fetch_databento.py`.
 
 ```
 pip install -r requirements.txt
