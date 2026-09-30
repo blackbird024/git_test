@@ -20,7 +20,7 @@ from scipy.stats import mannwhitneyu
 
 from auditoria.src import metricas as mt
 from bot_lab.core.datos import Contexto
-from forward_testing import deriva
+from forward_testing.src import deriva
 from src.data.datos import excluidos, velas_1m
 from src.strategies import nq_rsi2
 
@@ -317,13 +317,13 @@ def main():
         R["mc_individual"][k]["veredicto"] = "CONFIRMATION" if pdd < 10 else "WEAK EVIDENCE" if pdd <= 25 else "CONTRADICTION"
 
     log("Forward: bandas de deriva y referencia del backtest")
-    R["bandas_deriva"] = deriva.guardar_bandas(ops)
+    R["bandas_deriva"] = {k: deriva.bandas(o.neto.to_numpy(), {"NOISE_ZONE": 50, "RSI2": 15}[k]) for k, o in ops.items()}
     ref = {}
     for k, o in ops.items():
         meses = (o.t_salida.max() - o.t_entrada.min()).days / 30.4
         ref[k] = {"operaciones_mes": round(len(o) / meses, 1), "acierto_%": round((o.neto > 0).mean() * 100, 1),
                   "expectativa_$": round(o.neto.mean(), 2), "dd_p95_1_año_$": R["mc_individual"][k]["MC_DD_p95_$"]}
-    (RAIZ / "forward_testing" / "referencia_backtest.json").write_text(json.dumps(ref, indent=2), encoding="utf-8")
+    (RAIZ / "forward_testing" / "config" / "referencia_backtest.json").write_text(json.dumps(ref, indent=2), encoding="utf-8")
     R["referencia_forward"] = ref
     R["series"] = {"diario": dd, "zr": zr, "rsi2": rs, "rsi2_salida": rs_salida}
     zr.to_csv(carpeta / "operaciones_NOISE_ZONE.csv", index=False)

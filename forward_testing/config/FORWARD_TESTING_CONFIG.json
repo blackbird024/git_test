@@ -1,0 +1,156 @@
+{
+  "version": "FORWARD_TESTING v1.0",
+  "inicio_forward": {
+    "fecha": "2026-10-01",
+    "zona": "America/New_York",
+    "regla": "operación forward = operación con ENTRADA >= 2026-10-01 00:00 NY"
+  },
+  "estrategias": {
+    "RSI2": {
+      "version": "RSI2_SURVIVOR_V1",
+      "codigo": "src/strategies/nq_rsi2.py",
+      "parametros": {
+        "entrada": 20.0,
+        "salida": 70.0,
+        "max_dias": 5,
+        "filtro_vol": null,
+        "stop_atr": null,
+        "sma": 200,
+        "rsi_n": 2,
+        "tick": 0.25,
+        "valor_punto": 2.0,
+        "contratos": 1,
+        "costes": {
+          "comision_lado": 1.0,
+          "ticks_normal": 1,
+          "ticks_apertura": 2,
+          "multiplicador": 1.0
+        }
+      },
+      "reglas": {
+        "señal": "al cierre de la sesión CME: close_aj > SMA200 y RSI(2) < 20",
+        "entrada": "apertura de la sesión siguiente (reapertura de Globex 18:00 NY), a mercado",
+        "salida": "apertura siguiente al cierre con RSI(2) > 70 o tras 5 sesiones",
+        "stop": "ninguno",
+        "lado": "solo largos"
+      },
+      "horario": "decisión 17:00 NY (cierre de sesión CME), ejecución 18:00 NY",
+      "costes": {
+        "comision_lado_$": 1.0,
+        "desl_ticks_apertura_globex": 2,
+        "desl_ticks_resto": 1
+      },
+      "exposicion_nocturna": "SÍ: mantiene posiciones de 1 a 5 sesiones (incluye fines de semana)"
+    },
+    "NOISE_ZONE": {
+      "version": "NOISE_ZONE_SURVIVOR_V1",
+      "codigo": "src/strategies/zona_ruido.py",
+      "parametros": {
+        "version": "ZONA_RUIDO_MNQ_v1.0",
+        "primer_chequeo": 30,
+        "ultimo_chequeo": 360,
+        "cada": 30,
+        "dias_ruido": 14,
+        "mult": 1.0,
+        "contratos": 1,
+        "valor_punto": 2.0,
+        "tick": 0.25,
+        "comision_lado": 1.0,
+        "ticks_entrada": 1,
+        "ticks_salida": 1
+      },
+      "reglas": {
+        "bandas": "max/min(apertura, cierre anterior) × (1 ± sigma de 14 días del minuto)",
+        "entrada": "chequeos 10:00-15:30 NY cada 30 min con el cierre del minuto anterior; sobre la banda sup. -> largo, bajo la inf. -> corto; ejecución en la apertura del minuto",
+        "salida": "largo: precio < max(banda sup., VWAP); corto: simétrico; cierre forzado 15:59 NY",
+        "stop": "ninguno (trailing por banda/VWAP en cada chequeo)"
+      },
+      "horario": "09:30-16:00 NY",
+      "costes": {
+        "comision_lado_$": 1.0,
+        "desl_ticks_por_lado": 1
+      },
+      "exposicion_nocturna": "NO: todo se cierra en el día"
+    }
+  },
+  "mercado": {
+    "simbolo": "NQ.v.0 (Databento GLBX.MDP3, ohlcv-1m) -> se opera como MNQ",
+    "tick": 0.25,
+    "valor_punto_MNQ_$": 2.0,
+    "zona_horaria_datos": "UTC",
+    "sesiones_excluidas": "regla causal dias_iliquidos"
+  },
+  "tamano": {
+    "RSI2_MNQ": 1,
+    "NOISE_ZONE_MNQ": 1,
+    "nota": "cada estrategia se evalúa POR SEPARADO con 1 MNQ; la vista combinada es solo descriptiva. El tamaño no cambia por resultados."
+  },
+  "deriva": {
+    "NOISE_ZONE": {
+      "ventanas": [
+        20,
+        50,
+        100
+      ],
+      "umbral_oficial": {
+        "ventana": 50,
+        "media_$": -20.5
+      }
+    },
+    "RSI2": {
+      "ventanas": [
+        10,
+        15,
+        25
+      ],
+      "umbral_oficial": {
+        "ventana": 15,
+        "media_$": -71.0
+      }
+    },
+    "accion": "SOLO INFORMATIVA: no apaga, no cambia parámetros, no cambia el riesgo"
+  },
+  "referencia_backtest": {
+    "origen": "survivor/experimentos/20260930_0939 (2015-01-02 -> 2026-09-28, NOT OUT-OF-SAMPLE)",
+    "operaciones": {
+      "RSI2": "operaciones_RSI2.csv",
+      "NOISE_ZONE": "operaciones_NOISE_ZONE.csv"
+    }
+  },
+  "muestras_minimas_para_comparar": {
+    "NOISE_ZONE": 50,
+    "RSI2": 15
+  },
+  "ea_demo": {
+    "archivo": "mt5/APEX_Multiestrategia.mq5",
+    "registro": "MQL5/Files/APEX_registro_v2.csv",
+    "instrumento": "CFD NAS100 Pepperstone (NO es el futuro: mide ejecución, no la estrategia pura)",
+    "entradas_recomendadas": {
+      "DineroPorPuntoZona": 2.0,
+      "DineroPorPuntoRSI": 2.0,
+      "PerdidaDiariaMax": 5000.0,
+      "CaidaMaximaCartera": 5000.0
+    }
+  },
+  "sha256": {
+    "src/strategies/nq_rsi2.py": "24716d144f90d0db2e9f0b49e1ed90bffda4774ea4d15ff9afccbd7eb315c898",
+    "src/strategies/zona_ruido.py": "a00839d165030e57fe5c54476aabd6439db57cacccfc59b73545d8527d052cdb",
+    "src/engine/costes.py": "d33f84d08cb9a4c9009f14922d9bf70a80eec2e9dff29614b434473d062b8007",
+    "src/data/datos.py": "bd1028b5b50b3062d40ff6fb30acb8f85103c57f2c5be25ffe94540e338b5108",
+    "src/data/calidad.py": "3ea5f497feb8fbe8878e6c62ab5d4c8d8624df42db290727112b2e5bb652d5ee",
+    "src/horas.py": "a180cd4011d0b791104fe72f56071f6439e28bbea2b6d1cee9638ccb60a18aae",
+    "survivor/src/congeladas.py": "fa520c5bcaf22c901316ea282e598a030448fa03ee46062f6e4ec60034af150c",
+    "mt5/APEX_Multiestrategia.mq5": "2aafa03e1d42bed727b42148aeb50e196fa38d3b22315f615e14c5fc2035e2d8"
+  },
+  "archivos_referencia": {
+    "forward_testing/config/bandas_deriva_v1.json": "3c125e2a5a4cf16c07740a10e68b23778e8fc4728bfe227f80fcef1b3c8110b7",
+    "forward_testing/config/bandas_deriva_v1_pct.json": "f5efcd55d1e8ef82579b4dab4cbed27d2b6f4dd591bef6c922222af15005d686",
+    "forward_testing/config/referencia_mae_mfe.csv": "2a151b8d30887851d9c55c3ae9acba0310d19107d0cd40b6e9cdc4ae9aefb529",
+    "survivor/experimentos/20260930_0939/operaciones_RSI2.csv": "50681a2a678eb16d885921e79efbebfd962523a6f02d7260c99a459c90195bda",
+    "survivor/experimentos/20260930_0939/operaciones_NOISE_ZONE.csv": "f4a5d6302d620f6f59974198d201728a701faaf26c4833d47c197cda84eaa74e"
+  },
+  "datos_base": {
+    "archivo": "data/processed/NQ_1M.parquet",
+    "sha256": "8883a2095389e8af8f003ff9192ba53c08c0de8d63545c71d0183478df9d5a0e"
+  }
+}

@@ -142,14 +142,21 @@ void Telegram(string texto)
    if(r != 200) Print("Telegram: error ", r, " (¿añadiste https://api.telegram.org en Herramientas > Opciones > Asesores?)");
 }
 
-void Registrar(string estrategia, string accion, double precio, string motivo)
+// Registro de ejecuciones (solo registro: no interviene en ninguna decisión). v2 (30-sep-2026, forward testing):
+// añade bid/ask justo antes de enviar la orden, spread, deal, lotes y magic. El motivo se guarda sin comas.
+void Registrar(string estrategia, string accion, double precio, string motivo, double bid = 0, double ask = 0,
+               ulong deal = 0, double lotes = 0, long magic = 0)
 {
-   int f = FileOpen("APEX_registro.csv", FILE_READ | FILE_WRITE | FILE_CSV | FILE_ANSI, ',');
+   int f = FileOpen("APEX_registro_v2.csv", FILE_READ | FILE_WRITE | FILE_CSV | FILE_ANSI, ',');
    if(f == INVALID_HANDLE) return;
-   if(FileSize(f) == 0) FileWrite(f, "hora_servidor", "hora_NY", "estrategia", "accion", "precio", "motivo");
+   if(FileSize(f) == 0) FileWrite(f, "hora_servidor", "hora_NY", "estrategia", "accion", "precio", "bid_previo", "ask_previo",
+                                  "spread_previo", "deal", "lotes", "magic", "motivo");
    FileSeek(f, 0, SEEK_END);
+   string m = motivo;
+   StringReplace(m, ",", ";");
    FileWrite(f, TimeToString(TimeCurrent(), TIME_DATE | TIME_SECONDS), TimeToString(AhoraNY(), TIME_DATE | TIME_SECONDS),
-             estrategia, accion, DoubleToString(precio, _Digits), motivo);
+             estrategia, accion, DoubleToString(precio, _Digits), DoubleToString(bid, _Digits), DoubleToString(ask, _Digits),
+             DoubleToString(ask - bid, _Digits), IntegerToString((long)deal), DoubleToString(lotes, 2), IntegerToString(magic), m);
    FileClose(f);
 }
 
@@ -183,9 +190,11 @@ bool Cerrar(int e, string motivo)
    {
       ulong tk = PositionGetTicket(i);
       if(tk == 0 || PositionGetString(POSITION_SYMBOL) != _Symbol || PositionGetInteger(POSITION_MAGIC) != g_est[e].magic) continue;
+      double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID), ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+      double vol = PositionGetDouble(POSITION_VOLUME);
       if(trade.PositionClose(tk))
       {
-         Registrar(g_est[e].nombre, "CERRAR", trade.ResultPrice(), motivo);
+         Registrar(g_est[e].nombre, "CERRAR", trade.ResultPrice(), motivo, bid, ask, trade.ResultDeal(), vol, g_est[e].magic);
          Telegram("🔴 " + g_est[e].nombre + ": CERRADA a " + DoubleToString(trade.ResultPrice(), _Digits) + " (" + motivo + ")");
       }
       else { ok = false; Print(g_est[e].nombre, ": error al cerrar ", trade.ResultRetcode()); }
@@ -268,10 +277,12 @@ bool Abrir(int e, int dir, string motivo)
    if(!PuedeAbrir(e, porque)) { Print(g_est[e].nombre, ": entrada bloqueada (", porque, "). ", motivo); return true; }   // true: no reintentar
    trade.SetExpertMagicNumber(g_est[e].magic);
    double lotes = Lotes(e);
+   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID), ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
    bool ok = dir == 1 ? trade.Buy(lotes, _Symbol) : trade.Sell(lotes, _Symbol);
    if(ok && (trade.ResultRetcode() == TRADE_RETCODE_DONE || trade.ResultRetcode() == TRADE_RETCODE_PLACED))
    {
-      Registrar(g_est[e].nombre, dir == 1 ? "COMPRAR" : "VENDER", trade.ResultPrice(), motivo);
+      Registrar(g_est[e].nombre, dir == 1 ? "COMPRAR" : "VENDER", trade.ResultPrice(), motivo, bid, ask, trade.ResultDeal(),
+                lotes, g_est[e].magic);
       Telegram((dir == 1 ? "🟢 " : "🟠 ") + g_est[e].nombre + ": " + (dir == 1 ? "COMPRA " : "VENTA ") + DoubleToString(lotes, 2) +
                " lotes a " + DoubleToString(trade.ResultPrice(), _Digits) + " (" + motivo + ")");
       return true;

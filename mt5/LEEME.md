@@ -91,3 +91,12 @@ los mismos días (mismas horas y mismo sentido).
 ## Registro
 Cada operación queda en `MQL5/Files/APEX_registro.csv` (hora, estrategia, acción, precio, motivo). Sirve para
 comparar con el backtest y con `papel/registro.csv`.
+
+
+## Registro v2 (30-sep-2026, forward testing)
+Cambio **solo de registro** (ninguna regla cambia). El EA escribe ahora `MQL5/Files/APEX_registro_v2.csv` con:
+- bid y ask justo antes de cada orden, y el spread;
+- deal, lotes y magic;
+- el motivo, sin comas.
+
+Sirve para medir el deslizamiento real en el forward (`forward_testing/`). Entrada recomendada durante el forward: **PerdidaDiariaMax = 5000**, para que el freno diario no acople las dos estrategias; se evalúan por separado.

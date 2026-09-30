@@ -10,3 +10,8 @@ bot_lab/research/experiments/*/resultados.pkl
 
 # Survivor analysis: pickle completo (se regenera)
 survivor/experimentos/*/resultados.pkl
+
+# Forward: datos brutos (licencia Databento; copia en el repositorio privado apex-datos). Se versiona el MANIFIESTO con SHA-256.
+forward_testing/raw/nq/*.parquet
+forward_testing/raw/ea/*.csv
+!forward_testing/raw/ea/MANIFIESTO.csv
