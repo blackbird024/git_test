@@ -1,0 +1,26 @@
+[06:33:24] experimento en /home/user/git_test/auditoria/experimentos/20260930_0633
+[06:33:32] Fase 1: comprobaciones empíricas (calidad de datos, truncamiento)
+[06:33:40] Fase 2: reproducción exacta
+[06:33:46] Fase 4: costes y latencia
+[06:34:08] Fase 4: vecindad de parámetros
+[06:36:20] Fases 5-6: estrategias rechazadas y bot
+[06:37:52]   SMC/ICT A_original_0930_1530: 31 operaciones, No concluyente por muestra insuficiente
+[06:37:52]   SMC/ICT B_london_kz_0200_0500: 14 operaciones, No concluyente por muestra insuficiente
+[06:37:52]   SMC/ICT C_ny_kz_0700_1000: 20 operaciones, No concluyente por muestra insuficiente
+[06:37:52]   Rango 30 min + London + VWAP: 2637 operaciones, No concluyente (el IC 95 % incluye el 0)
+[06:37:53]   Cruce VWAP 15m 1:2: 4645 operaciones, No concluyente (el IC 95 % incluye el 0)
+[06:37:53]   Zona de ruido en oro: 2784 operaciones, Evidencia negativa
+[06:37:53]   RSI(2) en oro: 150 operaciones, No concluyente (el IC 95 % incluye el 0)
+[06:37:53]   Pares oro/plata: 84 operaciones, No concluyente por muestra insuficiente
+[06:37:53]   Bot oferta/demanda (oro): 1275 operaciones, No concluyente (el IC 95 % incluye el 0)
+[06:37:54]   VWAP direccional (baseline): 3794 operaciones, Evidencia negativa
+[06:37:54]   VWAP+EMAs modelo A (MNQ): 7007 operaciones, No concluyente (el IC 95 % incluye el 0)
+[06:37:54]   VWAP+EMAs modelo B (MNQ): 5141 operaciones, No concluyente (el IC 95 % incluye el 0)
+[06:37:54]   VWAP+EMAs modelo C (MNQ): 4078 operaciones, Evidencia negativa
+[06:37:54]   VWAP+EMAs modelo D (MNQ): 3610 operaciones, Evidencia negativa
+[06:37:55]   VWAP+EMAs modelo A (MGC): 4311 operaciones, Evidencia negativa
+[06:37:55]   VWAP+EMAs modelo B (MGC): 4295 operaciones, Evidencia negativa
+[06:37:55]   VWAP+EMAs modelo C (MGC): 4588 operaciones, Evidencia negativa
+[06:37:55]   VWAP+EMAs modelo D (MGC): 4259 operaciones, Evidencia negativa
+[06:37:55] Fase 7: cartera
+[06:37:56] Fase 8: simulación de riesgo

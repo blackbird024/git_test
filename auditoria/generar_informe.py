@@ -17,6 +17,17 @@ import pandas as pd  # noqa: E402
 from .src import metricas as mt  # noqa: E402
 
 
+def limpio(x):
+    """Convierte tipos numpy a nativos para que los diccionarios se lean bien en el informe."""
+    if isinstance(x, dict):
+        return {k: limpio(v) for k, v in x.items()}
+    if isinstance(x, (tuple, list)):
+        return type(x)(limpio(v) for v in x)
+    if isinstance(x, np.generic):
+        return x.item()
+    return x
+
+
 def md(df, **k):
     return df.to_markdown(**k) if df is not None and len(df) else "(sin datos)"
 
@@ -98,7 +109,7 @@ def main(carpeta: str) -> None:
       f"{au['calidad_datos_NQ']['cambios_de_contrato']}, sesiones ilíquidas excluidas {au['calidad_datos_NQ']['dias_iliquidos_previsibles']}.")
     a(f"- Truncamiento (look-ahead): zona de ruido **{au['lookahead_truncamiento_zona_ruido']}**, RSI(2) **{au['lookahead_truncamiento_rsi2']}**.")
     for n in ("zona_ruido", "rsi2"):
-        a(f"- Coherencia de operaciones {n}: {R['analisis'][n]['comprobaciones']}")
+        a(f"- Coherencia de operaciones {n}: {limpio(R['analisis'][n]['comprobaciones'])}")
     a("- Detalle de la revisión de código, supuestos y gravedad: `AUDITORIA_CODIGO.md`.\n")
 
     # ---------------------------------------------------------------------------------------------- B individuales
@@ -115,7 +126,7 @@ def main(carpeta: str) -> None:
                         **{f"reproducido {q}": an[k].get(q) for q in orig}})
         a(md(pd.DataFrame(rep), index=False))
         a("")
-        t = pd.DataFrame({k: an[k] for k in ("total", "desarrollo", "posterior (ya visto)")})
+        t = pd.DataFrame({k: limpio(an[k]) for k in ("total", "desarrollo", "posterior (ya visto)")})
         a(md(t))
         a(f"\nExposición: {an.get('exposicion_%_tiempo_RTH', an.get('exposicion_%_tiempo_calendario'))} % del tiempo "
           f"({'de la sesión regular' if n == 'zona_ruido' else 'de calendario'}).\n")
@@ -186,11 +197,13 @@ def main(carpeta: str) -> None:
     ca = R["cartera"]
     a("Modelo de capital: 25.000 $ fijos, sin reinvertir; P&L por día de salida (hora NY); el capital no usado no rinde. "
       "Pesos = contratos equivalentes de MNQ.\n")
-    a(f"- Correlaciones: {ca['correlaciones']}")
-    a(f"- Solapamiento de posiciones: {ca['solapamiento']}")
+    a(f"- Correlaciones: {limpio(ca['correlaciones'])}")
+    a(f"- Solapamiento de posiciones: {limpio(ca['solapamiento'])}")
     a(f"- Costes anuales de la zona de ruido con 1 MNQ: ≈ {ca['costes_anuales_1+1_$']} $; los del RSI(2) son pequeños (~13 operaciones/año). "
       "Operar las dos no reduce costes: cada estrategia paga los suyos (magic numbers distintos, cuenta de cobertura).\n")
-    a(md(ca["tabla"], index=False))
+    t = ca["tabla"].copy()
+    t["pesos (zona, rsi2)"] = t["pesos (zona, rsi2)"].map(limpio)
+    a(md(t, index=False))
     fig, ax = plt.subplots(figsize=(11, 4.5))
     for nombre, (wz, wr) in ca["asignaciones"].items():
         p = wz * ca["diario"].zona + wr * ca["diario"].rsi2
@@ -208,7 +221,7 @@ def main(carpeta: str) -> None:
       "la detención por caída sí se aplica.\n")
     a(md(R["riesgo"]["simulaciones"], index=False))
     a(f"\nPérdidas por encima del \"stop\": ninguna de las dos estrategias tiene stop, así que no hay riesgo teórico por stop. "
-      f"Peores operaciones históricas con 1 MNQ: {R['riesgo']['peores']}. Un hueco de fin de semana o una noticia puede producir "
+      f"Peores operaciones históricas con 1 MNQ: {limpio(R['riesgo']['peores'])}. Un hueco de fin de semana o una noticia puede producir "
       "pérdidas mayores que cualquiera de las observadas. El apalancamiento disponible en el broker no mide el riesgo aceptable.\n")
 
     # ---------------------------------------------------------------------------------------------- D-F
@@ -218,8 +231,16 @@ def main(carpeta: str) -> None:
       "las operaciones hasta la última del informe original son idénticas (neto 21.506 $ en ambos); la diferencia es 1 operación "
       "nueva (28-sep-2026, −274,5 $) con datos que no existían al hacer el informe.")
     a("- RSI(2): desarrollo 97 operaciones PF 1,463 y posterior 61 PF 1,929: **idénticos** a los originales.")
-    a("- Estrategias rechazadas: se re-ejecutan con su código; las diferencias con sus fichas, si las hay, vienen de los días "
-      "de datos añadidos después de cada informe y de medir aquí desarrollo y posterior con el mismo corte.\n")
+    a("- Estrategias rechazadas: se re-ejecutan con su código; las diferencias con sus fichas vienen de (1) los días de datos "
+      "añadidos después de cada informe, (2) medir aquí todo el periodo y no solo desarrollo, y (3) **clasificar por $ por "
+      "operación con 1 contrato** en lugar de por R. Ejemplo: el cruce VWAP 15m 1:2 da −0,087 R por operación (t −3,75, su ficha) "
+      "pero +0,97 $ por operación: la media en R da el mismo peso a operaciones con stops muy cortos, que son las que más pierden "
+      "en R. Con 1 contrato fijo, el dinero es lo que cuenta; en ambas medidas no hay ventaja que cubra costes.")
+    a("- VWAP+EMAs modelo A en MGC (riesgo 0,5 %): después del corte no hay operaciones porque **la cuenta simulada se quedó sin "
+      "capital** (caída de 50.260 $ sobre 50.000 $) y el tamaño por riesgo pasa a 0. No es un error: es el resultado del modelo "
+      "de capital con tamaño variable.")
+    a("- Zona de ruido: la ventaja depende del régimen de volatilidad (vol. baja del día anterior: 1,19 $/op, t 0,39; media "
+      "9,78 $; alta 13,65 $) y es sensible a costes (×3: 1,79 $/op, t 0,59). Es el riesgo principal de la estrategia.\n")
     a("## E. Limitaciones\n")
     a("- **No hay test intocable**: el periodo posterior a 2023 ya se miró; la validación honesta pendiente es la prueba hacia delante.")
     a("- **Selección múltiple** en el proyecto (25+ ideas): que 2 pasen umbrales de t ≈ 2 es compatible con el azar.")

@@ -1,0 +1,19 @@
+asignación,tramo,"pesos (zona, rsi2)",neto_$,volatilidad_diaria_$,sharpe_anual,max_dd_$,max_dd_%_capital,peor_dia_$,meses_positivos_%,años_positivos,neto/|max_dd|
+1. solo zona de ruido (1 MNQ),total,"(1.0, 0.0)",21231.0,140.6,0.78,-3645.0,-14.6,-912.0,59.6,8/12,5.82
+1. solo zona de ruido (1 MNQ),desarrollo,"(1.0, 0.0)",11034.0,104.1,0.78,-1483.0,-5.9,-912.0,57.6,5/9,7.44
+1. solo zona de ruido (1 MNQ),posterior (ya visto),"(1.0, 0.0)",10197.0,201.5,0.87,-3645.0,-14.6,-692.0,65.1,4/4,2.8
+2. solo RSI(2) (1 MNQ),total,"(0.0, 1.0)",19821.0,152.1,0.68,-2977.0,-11.9,-2977.0,45.4,9/12,6.66
+2. solo RSI(2) (1 MNQ),desarrollo,"(0.0, 1.0)",6919.0,111.1,0.46,-2016.0,-8.1,-2016.0,37.4,6/9,3.43
+2. solo RSI(2) (1 MNQ),posterior (ya visto),"(0.0, 1.0)",12902.0,219.6,1.01,-2977.0,-11.9,-2977.0,62.8,4/4,4.33
+3/4. igual_riesgo (misma vol. que la zona sola),total,"(np.float64(0.707), np.float64(0.663))",28152.0,139.0,1.05,-2893.0,-11.6,-1848.0,61.7,11/12,9.73
+3/4. igual_riesgo (misma vol. que la zona sola),desarrollo,"(np.float64(0.707), np.float64(0.663))",12388.0,104.1,0.88,-1961.0,-7.8,-1337.0,59.6,8/9,6.32
+3/4. igual_riesgo (misma vol. que la zona sola),posterior (ya visto),"(np.float64(0.707), np.float64(0.663))",15763.0,197.6,1.38,-2893.0,-11.6,-1848.0,67.4,4/4,5.45
+3/4. zona_2_1 (misma vol. que la zona sola),total,"(np.float64(0.895), np.float64(0.419))",27307.0,139.0,1.02,-3012.0,-12.0,-1088.0,61.0,10/12,9.07
+3/4. zona_2_1 (misma vol. que la zona sola),desarrollo,"(np.float64(0.895), np.float64(0.419))",12774.0,104.1,0.91,-1635.0,-6.5,-845.0,59.6,7/9,7.81
+3/4. zona_2_1 (misma vol. que la zona sola),posterior (ya visto),"(np.float64(0.895), np.float64(0.419))",14532.0,197.5,1.27,-3012.0,-12.0,-1088.0,65.1,4/4,4.83
+3/4. zona_1_2 (misma vol. que la zona sola),total,"(np.float64(0.447), np.float64(0.839))",26120.0,140.2,0.97,-2684.0,-10.7,-2418.0,59.6,11/12,9.73
+3/4. zona_1_2 (misma vol. que la zona sola),desarrollo,"(np.float64(0.447), np.float64(0.839))",10737.0,104.2,0.76,-2086.0,-8.3,-1691.0,58.6,8/9,5.15
+3/4. zona_1_2 (misma vol. que la zona sola),posterior (ya visto),"(np.float64(0.447), np.float64(0.839))",15383.0,200.2,1.33,-2684.0,-10.7,-2418.0,62.8,4/4,5.73
+"5. 1 + 1 MNQ (plan actual, más riesgo total)",total,"(1.0, 1.0)",41052.0,203.4,1.05,-4188.0,-16.8,-2798.0,61.0,11/12,9.8
+"5. 1 + 1 MNQ (plan actual, más riesgo total)",desarrollo,"(1.0, 1.0)",17953.0,152.2,0.87,-2899.0,-11.6,-2016.0,58.6,8/9,6.19
+"5. 1 + 1 MNQ (plan actual, más riesgo total)",posterior (ya visto),"(1.0, 1.0)",23099.0,289.1,1.38,-4188.0,-16.8,-2798.0,67.4,4/4,5.52
