@@ -67,7 +67,9 @@ bool CalcVwap(double &vwap, double &sd, double &lastClose)
    for(int i = 0; i < n; i++)
      {
       double tp  = (rates[i].high + rates[i].low + rates[i].close) / 3.0;
-      double vol = (double)MathMax(rates[i].tick_volume, 1);
+      double vol = (double)rates[i].tick_volume;
+      if(vol < 1)
+         vol = 1;
       pv  += tp * vol;
       pv2 += tp * tp * vol;
       v   += vol;
