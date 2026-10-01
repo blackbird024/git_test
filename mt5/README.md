@@ -43,3 +43,41 @@ cambia `InpSessionStartHour`/`Min`, `InpLastEntryHour`/`Min` y `InpCloseAllHour`
 Primero en el **Probador de Estrategias** (Ctrl+R): elige el EA, el símbolo, el modelo
 "Cada tick basado en ticks reales" y al menos 3-6 meses. Revisa el resultado neto, el drawdown
 máximo y el número de operaciones. Luego déjalo correr unas semanas en la cuenta demo.
+
+---
+
+# MT5 – IBS swing trading (`IbsSwing.mq5`)
+
+Estrategia de varios días en **NAS100** y **XAUUSD** (oro), la mejor del laboratorio de swing
+(`alpaca/swing_lab.py`): de 2016 a 2026, la cartera QQQ + GLD ganó un 14% anual con una caída
+máxima del 9.7% (con exposición 1x).
+
+## Cómo funciona
+
+1. A las **15:55 de Nueva York** mira dónde está el precio dentro del rango de la sesión de hoy
+   (9:30-15:55 de Nueva York): **IBS** = (precio - mínimo) / (máximo - mínimo).
+2. **IBS < 0.2** (cerca del mínimo del día) y sin posición: **compra**.
+3. **IBS > 0.8** (cerca del máximo del día) con posición: **cierra**.
+4. Solo compras. Cada operación dura unos 3-4 días. Un solo gráfico opera los dos símbolos.
+
+## Parámetros importantes
+
+| Parámetro | Por defecto | Nota |
+|-----------|-------------|------|
+| `InpSymbol1` / `InpSymbol2` | NAS100 / XAUUSD | Nombres exactos del bróker (en otros puede ser US100, USTEC, GOLD...) |
+| `InpServerMinusNY` | 7 | Horas que el servidor va por delante de Nueva York. Pepperstone: 7 todo el año |
+| `InpAllocationPct` | 50 | % del equity por símbolo |
+| `InpExposure` | 1.0 | Usa **0.5** en cuentas con límite de pérdida total del 6% (CFT 1 fase) |
+| `InpMaxDailyLossPct` | 3.5 | Cierra todo si la cuenta cae este % en el día |
+
+## Instalación
+
+Igual que el EA de VWAP: MetaEditor → Archivo → Nuevo → Asesor Experto (plantilla) → nombre
+`IbsSwing` → borrar todo, pegar el código, compilar (F7). Arrástralo a **un** gráfico (cualquiera,
+por ejemplo NAS100 en M1) con el trading algorítmico activado. Debe quedar abierto todos los días a
+las 15:55 de Nueva York (21:55 en Italia): usa un VPS o deja el ordenador encendido.
+
+## Probarlo
+
+En el Probador de Estrategias (Ctrl+R): EA IbsSwing, símbolo NAS100, periodo M1, modelo
+"OHLC en M1", al menos 1-2 años. El probador carga también el oro automáticamente.
