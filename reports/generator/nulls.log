@@ -1,0 +1,117 @@
+{
+ "label": "NULL_1",
+ "n_strategies": 50000,
+ "n_train_pass": 100,
+ "n_robust_pass": 76,
+ "n_val_pass": 33,
+ "frozen_idx": [
+  24583,
+  36420,
+  25559,
+  18831,
+  38633,
+  11030,
+  38299,
+  25825,
+  45526,
+  41614,
+  24286,
+  32133,
+  12204,
+  8301,
+  31180,
+  5850,
+  26600,
+  10980,
+  45262,
+  12090,
+  41494,
+  23946,
+  45909,
+  3205,
+  20225,
+  31014,
+  17143,
+  10296,
+  44481,
+  29288,
+  18833,
+  9436,
+  36087
+ ],
+ "deflated_sharpe": {
+  "strategy": "LONG [boll_above(k=2.5,n=50) & atr_ratio_below(r=1.2) & above_prev_day_high()] SL=3.0ATR TP=NoneATR max=48h",
+  "sr_per_trade": 0.196238266952283,
+  "n_trades": 209,
+  "n_trials": 50000,
+  "sr_var_across_trials": 0.005765913082500785,
+  "dsr_prob": 0.018074061461865524
+ },
+ "null_test_portfolio": {
+  "trades": 6728,
+  "exp_R": -0.05012322563596692,
+  "total_R": -337.22906207878543,
+  "p_one_sided": 0.9774971838377909
+ },
+ "null_test_n_holm_sig": 0
+}
+{
+ "label": "NULL_2",
+ "n_strategies": 50000,
+ "n_train_pass": 34,
+ "n_robust_pass": 14,
+ "n_val_pass": 5,
+ "frozen_idx": [
+  21885,
+  1500,
+  1629,
+  18055,
+  45923
+ ],
+ "deflated_sharpe": {
+  "strategy": "LONG [breakout_up(n=50) & boll_above(k=1.5,n=20) & engulf_bull()] SL=1.5ATR TP=NoneATR max=48h",
+  "sr_per_trade": 0.1639907207398933,
+  "n_trades": 214,
+  "n_trials": 50000,
+  "sr_var_across_trials": 0.005346181498104739,
+  "dsr_prob": 0.0038903271766671473
+ },
+ "null_test_portfolio": {
+  "trades": 410,
+  "exp_R": 0.06586713344105805,
+  "total_R": 27.005524710833797,
+  "p_one_sided": 0.16590915580924334
+ },
+ "null_test_n_holm_sig": 0
+}
+{
+ "label": "NULL_3",
+ "n_strategies": 50000,
+ "n_train_pass": 47,
+ "n_robust_pass": 28,
+ "n_val_pass": 7,
+ "frozen_idx": [
+  16625,
+  869,
+  10541,
+  9207,
+  2938,
+  28063,
+  40110
+ ],
+ "deflated_sharpe": {
+  "strategy": "LONG [rsi_above(lvl=80,n=7) & hour_window(h=18,w=3) & above_prev_day_high()] SL=1.5ATR TP=4.0ATR max=24h",
+  "sr_per_trade": 0.16292592373558723,
+  "n_trades": 234,
+  "n_trials": 50000,
+  "sr_var_across_trials": 0.005834253458151109,
+  "dsr_prob": 0.005011108082620302
+ },
+ "null_test_portfolio": {
+  "trades": 963,
+  "exp_R": 0.02237894064352738,
+  "total_R": 21.55091983971687,
+  "p_one_sided": 0.37096034080433277
+ },
+ "null_test_n_holm_sig": 0
+}

@@ -1,0 +1,18 @@
+{
+ "label": "REAL_GC",
+ "n_strategies": 50000,
+ "n_train_pass": 31,
+ "n_robust_pass": 18,
+ "n_val_pass": 1,
+ "frozen_idx": [
+  3959
+ ],
+ "deflated_sharpe": {
+  "strategy": "SHORT [rsi_below(lvl=20,n=14)] SL=3.0ATR TP=1.5ATR max=48h",
+  "sr_per_trade": 0.1855755946427289,
+  "n_trades": 241,
+  "n_trials": 50000,
+  "sr_var_across_trials": 0.005975236004255375,
+  "dsr_prob": 0.024307682098348646
+ }
+}
