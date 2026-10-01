@@ -176,7 +176,8 @@ void Decide(int k)
 
 int OnInit()
   {
-   if(InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
+   bool tester = (bool)MQLInfoInteger(MQL_TESTER);
+   if(InpDemoOnly && !tester && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
      {
       Alert("IbsSwing: la cuenta no es DEMO y InpDemoOnly está activo. EA detenido.");
       return INIT_FAILED;
@@ -193,7 +194,7 @@ int OnInit()
         }
      }
    trade.SetExpertMagicNumber(InpMagic);
-   EventSetTimer(20);
+   EventSetTimer(tester ? 60 : 20);   // en el probador, cada minuto basta y va más rápido
    return INIT_SUCCEEDED;
   }
 
@@ -230,6 +231,7 @@ void OnTimer()
      }
    if(dailyLossHit)
       status += "** LÍMITE DE PÉRDIDA DIARIA ALCANZADO **\n";
-   Comment(status);
+   if(!MQLInfoInteger(MQL_TESTER) || MQLInfoInteger(MQL_VISUAL_MODE))
+      Comment(status);
   }
 //+------------------------------------------------------------------+
