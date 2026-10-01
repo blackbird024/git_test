@@ -36,3 +36,10 @@ TRAIN+VALIDATION y en la comparación con comprar y mantener.
 ## Criterio de éxito de la cartera de 5
 Sharpe > 0 en TRAIN **y** en VALIDATION · p del desplazamiento circular < 0.05 (TRAIN+VALIDATION) · alfa frente a comprar y mantener con
 t > 2 (TRAIN+VALIDATION) · Sharpe > 0 en TEST, mostrado con su advertencia.
+
+## Corrección de datos tras la primera ejecución (no afecta a ningún parámetro)
+La primera ejecución empezaba en 2015-12. En 2010-2015 hay velas sueltas a las 17:00 NY que la fórmula de fecha de sesión (+7 h)
+convertía en ~50 "sesiones" falsas al año, sin vela de 09:00/12:00/18:00. Arreglo: la fecha de sesión pasa a usar +6 h (la vela
+de las 17:00 cierra la sesión del día) y un día sin datos cuenta como "sin operación". Las reglas, parámetros y criterios son
+los mismos. Se publican los resultados de las dos ejecuciones: la primera, con datos de 2015-12 en adelante, también falla
+todos los criterios en TRAIN y VALIDATION.

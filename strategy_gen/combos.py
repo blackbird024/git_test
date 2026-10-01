@@ -34,7 +34,9 @@ def load_h1_ratio() -> pd.DataFrame:
     h = pd.DataFrame({"open": g["open"].first(), "close": g["close"].last()}).dropna().reset_index()
     ny = h["ts"].dt.tz_convert(NY)
     h["hour"] = ny.dt.hour
-    h["tdate"] = (ny.dt.tz_localize(None) + pd.Timedelta(hours=7)).dt.normalize()
+    # session date: the session opening 18:00 NY belongs to the next date; the 17:00 bar (seen on some
+    # days in 2010-2015 before the break) closes the current session. +6h does both.
+    h["tdate"] = (ny.dt.tz_localize(None) + pd.Timedelta(hours=6)).dt.normalize()
     return h
 
 
@@ -53,7 +55,7 @@ def daily_table(h: pd.DataFrame) -> pd.DataFrame:
 
 
 def _w(series_known_through_t: pd.Series) -> pd.Series:
-    vol = series_known_through_t.rolling(VOL_LB, min_periods=VOL_LB).std() * np.sqrt(252)
+    vol = series_known_through_t.rolling(VOL_LB, min_periods=40).std() * np.sqrt(252)
     return (TARGET_VOL / vol).clip(upper=W_CAP)
 
 
@@ -85,7 +87,9 @@ def strategy_returns(d: pd.DataFrame, sig: dict[str, pd.Series]) -> pd.DataFrame
         w5 = _w(d["r5"]).shift(1)
         pos = sig["S5_asia_drift"] * w5
         out["S5_asia_drift"] = pos * d["r5"] - 2 * pos.abs() * cost_pct
-    return pd.DataFrame(out)
+    out = pd.DataFrame(out)
+    # a day with a missing bar = no trade that day (0), but only after the strategy has warmed up
+    return out.apply(lambda c: c.where(c.index < c.first_valid_index(), c.fillna(0.0)))
 
 
 def buy_hold(d: pd.DataFrame) -> pd.Series:
