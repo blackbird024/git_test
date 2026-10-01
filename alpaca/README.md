@@ -89,3 +89,17 @@ python crypto_intraday.py --backtest 180 --symbols BTC/USD ETH/USD
 
 Resultado (180 días): sin comisiones algunas variantes ganan, pero con la comisión de ~0.25% por lado
 **todas pierden mucho dinero**. No es viable operar cripto intradía en Alpaca con estas comisiones.
+
+## Cripto diaria: `crypto_trend.py`
+
+BTC, ETH y SOL a partes iguales ($10,000 en total), cada una solo mientras su cierre diario esté
+sobre la media de 200 días. Se ejecuta una vez al día.
+
+```bash
+python crypto_trend.py --backtest   # compara estrategias diarias desde 2021
+python crypto_trend.py              # simulación de hoy
+python crypto_trend.py --execute    # envía las órdenes
+```
+
+Backtest 2021-2026 con comisiones (cartera de las tres): +65% anual con caída máxima del 40%,
+frente a +86% anual y caída del 85% comprando y manteniendo.
