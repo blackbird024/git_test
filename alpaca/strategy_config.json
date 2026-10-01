@@ -7,11 +7,6 @@
         "trend_filter": true,
         "nota": "S&P 500"
       },
-      "QQQ": {
-        "weight": 0.1,
-        "trend_filter": true,
-        "nota": "Nasdaq-100"
-      },
       "VIG": {
         "weight": 0.1,
         "trend_filter": true,

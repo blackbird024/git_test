@@ -9,8 +9,8 @@ Misma lógica que el EA de MT5 (mt5/VwapReversion.mq5):
     de un día para otro.
   * Riesgo por operación, máximo de operaciones al día y pérdida diaria máxima.
 
-Usa QQQM (Nasdaq-100) e IAU (oro) para no mezclarse con las posiciones de
-largo plazo de auto_strategy.py, que usa QQQ y GLD.
+Opera QQQ (Nasdaq-100). QQQ no forma parte de auto_strategy.py, así que las
+dos estrategias no se mezclan en la misma cuenta.
 
 Uso:
     python vwap_intraday.py --backtest 90   # prueba con los últimos 90 días
@@ -31,13 +31,13 @@ from alpaca.data.enums import DataFeed
 from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
 from alpaca.trading.enums import OrderClass, OrderSide, TimeInForce
-from alpaca.trading.requests import GetOrdersRequest, MarketOrderRequest, StopLossRequest
 from alpaca.trading.enums import QueryOrderStatus
+from alpaca.trading.requests import GetOrdersRequest, MarketOrderRequest, StopLossRequest
 
 from alpaca_client import data_client, is_paper, trading_client
 
 NY = ZoneInfo("America/New_York")
-SYMBOLS = ["QQQM", "IAU"]
+SYMBOLS = ["QQQ"]
 SESSION_OPEN = dtime(9, 30)
 WARMUP_MINUTES = 30
 LAST_ENTRY = dtime(15, 0)
@@ -193,6 +193,25 @@ def close_symbol(client, symbol):
     client.close_position(symbol)
 
 
+def intraday_pnl(client, symbols, since):
+    """P/L del día de estos símbolos: ejecuciones desde `since` + posición abierta."""
+    orders = client.get_orders(GetOrdersRequest(
+        status=QueryOrderStatus.CLOSED, symbols=symbols, after=since, nested=True, limit=500))
+    flat = []
+    for order in orders:
+        flat.append(order)
+        flat.extend(order.legs or [])
+    cash = 0.0
+    for order in flat:
+        if order.filled_qty and order.filled_avg_price:
+            notional = float(order.filled_qty) * float(order.filled_avg_price)
+            cash += notional if order.side == OrderSide.SELL else -notional
+    for p in client.get_all_positions():
+        if p.symbol in symbols:
+            cash += float(p.market_value)  # negativo en cortos
+    return cash
+
+
 def live(symbols):
     if not is_paper():
         sys.exit("La estrategia intradía solo corre en la cuenta PAPER.")
@@ -214,7 +233,8 @@ def live(symbols):
         bars = minute_bars(symbols, today_open)
         current_minute = now.replace(second=0, microsecond=0)
         equity = float(client.get_account().equity)
-        loss_limit_hit = equity - start_equity <= -start_equity * MAX_DAILY_LOSS
+        day_pnl = intraday_pnl(client, symbols, today_open)
+        loss_limit_hit = day_pnl <= -start_equity * MAX_DAILY_LOSS
         positions = {p.symbol: p for p in client.get_all_positions()}
 
         for symbol in symbols:
@@ -253,8 +273,8 @@ def live(symbols):
 
         time.sleep(60 - datetime.now().second + 2)
 
-    pnl = float(client.get_account().equity) - start_equity
-    print(f"Fin del día. Resultado de la cuenta: ${pnl:+,.2f}")
+    today_open = datetime.combine(datetime.now(NY).date(), SESSION_OPEN, NY)
+    print(f"Fin del día. Resultado intradía: ${intraday_pnl(client, symbols, today_open):+,.2f}")
 
 
 def main():

@@ -31,12 +31,11 @@ Estrategia "conservadora" incluida:
 | ETF | Peso | Filtro de tendencia |
 |-----|------|---------------------|
 | SPY (S&P 500) | 20% | sí |
-| QQQ (Nasdaq-100) | 10% | sí |
 | VIG (dividendos crecientes) | 10% | sí |
 | BND (bonos agregados) | 15% | no |
 | SHY (Tesoro 1-3 años) | 10% | no |
 | GLD (oro) | 5% | sí |
-| Efectivo | 30% | |
+| Efectivo | 40% | |
 
 - **Filtro de tendencia:** si el precio está bajo su media de 200 días, ese peso pasa a efectivo.
 - **Rebalanceo:** solo cuando una posición se desvía más de un 20% de su objetivo.
@@ -59,11 +58,11 @@ Reversión a la VWAP, la misma lógica que el EA de MT5 (`mt5/VwapReversion.mq5`
 Cierra todo a las 15:50 de Nueva York.
 
 ```bash
-python vwap_intraday.py --backtest 90                    # QQQM e IAU, últimos 90 días
+python vwap_intraday.py --backtest 90                    # QQQ, últimos 90 días
 python vwap_intraday.py --backtest 90 --symbols QQQ GLD
-python vwap_intraday.py --live --symbols QQQM            # opera hasta el cierre
+python vwap_intraday.py --live                           # opera QQQ hasta el cierre
 ```
 
 **Ojo:** si la cuenta también tiene posiciones de largo plazo en el mismo símbolo (QQQ, GLD),
-la estrategia intradía las cerraría. Usa otros símbolos o una cuenta paper aparte.
+la estrategia intradía las cerraría. Por eso QQQ se usa solo en la intradía y no está en la de largo plazo.
 Con el plan gratuito (datos IEX), QQQM e IAU tienen muchos minutos sin datos.
