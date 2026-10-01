@@ -66,3 +66,12 @@ python vwap_intraday.py --live                           # opera QQQ hasta el ci
 **Ojo:** si la cuenta también tiene posiciones de largo plazo en el mismo símbolo (QQQ, GLD),
 la estrategia intradía las cerraría. Por eso QQQ se usa solo en la intradía y no está en la de largo plazo.
 Con el plan gratuito (datos IEX), QQQM e IAU tienen muchos minutos sin datos.
+
+## Ruptura del rango de apertura: `orb_intraday.py` (solo backtest)
+
+Seguimiento de tendencia: marca el máximo y el mínimo de los primeros N minutos y opera la ruptura.
+Pensada para el oro, donde la reversión a la VWAP perdía dinero.
+
+```bash
+python orb_intraday.py --backtest 180 --symbols GLD   # compara 9 variantes
+```
