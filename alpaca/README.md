@@ -125,3 +125,13 @@ python swing_lab.py --symbols QQQ SPY DIA IWM GLD
 Mejor resultado: **IBS** (comprar al cierre si cerró en el 20% inferior del rango del día, vender
 cuando cierre en el 20% superior). Positiva en las dos mitades en los 5 activos y estable con
 otros parámetros. Cartera QQQ + GLD a partes iguales: +14% anual, caída máxima -9.7%.
+
+## IBS swing: `ibs_swing.py`
+
+La estrategia de swing ganadora (ver `swing_lab.py`) en QQQ y GLD, $10,000 cada uno.
+Igual que el EA `mt5/IbsSwing.mq5`. Hay que ejecutarla una vez al día entre las 15:50 y las 16:00 de Nueva York.
+
+```bash
+python ibs_swing.py             # muestra el IBS y lo que haría
+python ibs_swing.py --execute   # envía las órdenes (solo dentro del horario)
+```
