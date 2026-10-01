@@ -52,3 +52,18 @@ Estrategia "conservadora" incluida:
    ```
 2. Define esas variables de entorno con las claves de la cuenta.
 3. Para otra estrategia, copia `strategy_config.json`, cambia los pesos y usa `--config`.
+
+## Estrategia intradía: `vwap_intraday.py`
+
+Reversión a la VWAP, la misma lógica que el EA de MT5 (`mt5/VwapReversion.mq5`). Solo cuentas PAPER.
+Cierra todo a las 15:50 de Nueva York.
+
+```bash
+python vwap_intraday.py --backtest 90                    # QQQM e IAU, últimos 90 días
+python vwap_intraday.py --backtest 90 --symbols QQQ GLD
+python vwap_intraday.py --live --symbols QQQM            # opera hasta el cierre
+```
+
+**Ojo:** si la cuenta también tiene posiciones de largo plazo en el mismo símbolo (QQQ, GLD),
+la estrategia intradía las cerraría. Usa otros símbolos o una cuenta paper aparte.
+Con el plan gratuito (datos IEX), QQQM e IAU tienen muchos minutos sin datos.
