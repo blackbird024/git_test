@@ -103,3 +103,12 @@ python crypto_trend.py --execute    # envía las órdenes
 
 Backtest 2021-2026 con comisiones (cartera de las tres): +65% anual con caída máxima del 40%,
 frente a +86% anual y caída del 85% comprando y manteniendo.
+
+## Laboratorio de estrategias: `strategy_lab.py`
+
+Compara 8 estrategias intradía (2 años de velas de 1 minuto SIP) y 5 de varios días (desde 2016)
+con los mismos datos, costes y métricas, incluidas el peor día y la caída máxima (reglas de prop firms).
+
+```bash
+python strategy_lab.py --symbols QQQ GLD SPY
+```
