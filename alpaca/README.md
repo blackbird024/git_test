@@ -31,11 +31,12 @@ Estrategia "conservadora" incluida:
 | ETF | Peso | Filtro de tendencia |
 |-----|------|---------------------|
 | SPY (S&P 500) | 20% | sí |
+| QQQ (Nasdaq-100) | 10% | sí |
 | VIG (dividendos crecientes) | 10% | sí |
 | BND (bonos agregados) | 15% | no |
 | SHY (Tesoro 1-3 años) | 10% | no |
 | GLD (oro) | 5% | sí |
-| Efectivo | 40% | |
+| Efectivo | 30% | |
 
 - **Filtro de tendencia:** si el precio está bajo su media de 200 días, ese peso pasa a efectivo.
 - **Rebalanceo:** solo cuando una posición se desvía más de un 20% de su objetivo.

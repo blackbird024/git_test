@@ -2,14 +2,39 @@
   "strategy": {
     "name": "conservadora",
     "targets": {
-      "SPY": {"weight": 0.20, "trend_filter": true,  "nota": "S&P 500"},
-      "VIG": {"weight": 0.10, "trend_filter": true,  "nota": "empresas que aumentan dividendos"},
-      "BND": {"weight": 0.15, "trend_filter": false, "nota": "bonos agregados de EE. UU."},
-      "SHY": {"weight": 0.10, "trend_filter": false, "nota": "Tesoro 1-3 años"},
-      "GLD": {"weight": 0.05, "trend_filter": true,  "nota": "oro"}
+      "SPY": {
+        "weight": 0.2,
+        "trend_filter": true,
+        "nota": "S&P 500"
+      },
+      "QQQ": {
+        "weight": 0.1,
+        "trend_filter": true,
+        "nota": "Nasdaq-100"
+      },
+      "VIG": {
+        "weight": 0.1,
+        "trend_filter": true,
+        "nota": "empresas que aumentan dividendos"
+      },
+      "BND": {
+        "weight": 0.15,
+        "trend_filter": false,
+        "nota": "bonos agregados de EE. UU."
+      },
+      "SHY": {
+        "weight": 0.1,
+        "trend_filter": false,
+        "nota": "Tesoro 1-3 años"
+      },
+      "GLD": {
+        "weight": 0.05,
+        "trend_filter": true,
+        "nota": "oro"
+      }
     },
     "sma_days": 200,
-    "drift_tolerance": 0.20,
+    "drift_tolerance": 0.2,
     "min_order_usd": 100,
     "max_drawdown": 0.05
   },
