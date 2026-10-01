@@ -34,8 +34,7 @@ Estrategia "conservadora" incluida:
 | VIG (dividendos crecientes) | 10% | sí |
 | BND (bonos agregados) | 15% | no |
 | SHY (Tesoro 1-3 años) | 10% | no |
-| GLD (oro) | 5% | sí |
-| Efectivo | 40% | |
+| Efectivo | 45% | |
 
 - **Filtro de tendencia:** si el precio está bajo su media de 200 días, ese peso pasa a efectivo.
 - **Rebalanceo:** solo cuando una posición se desvía más de un 20% de su objetivo.
@@ -64,17 +63,21 @@ python vwap_intraday.py --live                           # opera QQQ hasta el ci
 ```
 
 **Ojo:** si la cuenta también tiene posiciones de largo plazo en el mismo símbolo (QQQ, GLD),
-la estrategia intradía las cerraría. Por eso QQQ se usa solo en la intradía y no está en la de largo plazo.
+la estrategia intradía las cerraría. Por eso QQQ y GLD se usan solo en las intradía y no están en la de largo plazo.
 Con el plan gratuito (datos IEX), QQQM e IAU tienen muchos minutos sin datos.
 
-## Ruptura del rango de apertura: `orb_intraday.py` (solo backtest)
+## Ruptura del rango de apertura: `orb_intraday.py`
 
 Seguimiento de tendencia: marca el máximo y el mínimo de los primeros N minutos y opera la ruptura.
 Pensada para el oro, donde la reversión a la VWAP perdía dinero.
 
 ```bash
 python orb_intraday.py --backtest 180 --symbols GLD   # compara 9 variantes
+python orb_intraday.py --live                         # GLD: rango 60 min, stop en el medio, sale al cierre
 ```
+
+En vivo usa la variante que fue positiva en las dos mitades del backtest: rango de 9:30 a 10:30,
+stop en el punto medio del rango y salida a las 15:50. Una operación por día, 0.5% de riesgo.
 
 ## Cripto intradía: `crypto_intraday.py` (solo backtest)
 
