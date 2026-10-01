@@ -212,12 +212,18 @@ def intraday_pnl(client, symbols, since):
     return cash
 
 
+def entries_today(client, symbol, since):
+    """Entradas de la estrategia hoy (órdenes OTO), leídas del bróker para sobrevivir reinicios."""
+    orders = client.get_orders(GetOrdersRequest(
+        status=QueryOrderStatus.ALL, symbols=[symbol], after=since, limit=500))
+    return sum(o.order_class == OrderClass.OTO for o in orders)
+
+
 def live(symbols):
     if not is_paper():
         sys.exit("La estrategia intradía solo corre en la cuenta PAPER.")
     client = trading_client()
     start_equity = float(client.get_account().equity)
-    trades_today = {s: 0 for s in symbols}
     print(f"Inicio: equity ${start_equity:,.2f}. Símbolos: {', '.join(symbols)}")
 
     while True:
@@ -249,11 +255,11 @@ def live(symbols):
                         (not is_long and sig.close <= sig.vwap):
                     close_symbol(client, symbol)
                     print(f"{now:%H:%M} {symbol}: salida (VWAP {sig.vwap:.2f}, "
-                          f"P/L ${float(pos.unrealized_pl):,.2f})")
+                          f"P/L ${float(pos.unrealized_pl):,.2f})", flush=True)
                 continue
 
             warmup_end = today_open + timedelta(minutes=WARMUP_MINUTES)
-            if loss_limit_hit or trades_today[symbol] >= MAX_TRADES_PER_DAY or \
+            if loss_limit_hit or entries_today(client, symbol, today_open) >= MAX_TRADES_PER_DAY or \
                     now < warmup_end or now.time() >= LAST_ENTRY:
                 continue
             side = entry_side(sig)
@@ -267,10 +273,11 @@ def live(symbols):
             client.submit_order(MarketOrderRequest(
                 symbol=symbol, qty=qty, side=side, time_in_force=TimeInForce.DAY,
                 order_class=OrderClass.OTO, stop_loss=StopLossRequest(stop_price=round(stop, 2))))
-            trades_today[symbol] += 1
             print(f"{now:%H:%M} {symbol}: {side.value} {qty} @ ~{sig.close:.2f} "
-                  f"(VWAP {sig.vwap:.2f}, stop {stop:.2f})")
+                  f"(VWAP {sig.vwap:.2f}, stop {stop:.2f})", flush=True)
 
+        if now.minute % 15 == 0:
+            print(f"{now:%H:%M} sigue activo. P/L intradía: ${day_pnl:+,.2f}", flush=True)
         time.sleep(60 - datetime.now().second + 2)
 
     today_open = datetime.combine(datetime.now(NY).date(), SESSION_OPEN, NY)
