@@ -75,3 +75,14 @@ Pensada para el oro, donde la reversión a la VWAP perdía dinero.
 ```bash
 python orb_intraday.py --backtest 180 --symbols GLD   # compara 9 variantes
 ```
+
+## Cripto intradía: `crypto_intraday.py` (solo backtest)
+
+VWAP y ruptura de rango en BTC, ETH, SOL (solo compras, comisión de Alpaca incluida).
+
+```bash
+python crypto_intraday.py --backtest 180 --symbols BTC/USD ETH/USD
+```
+
+Resultado (180 días): sin comisiones algunas variantes ganan, pero con la comisión de ~0.25% por lado
+**todas pierden mucho dinero**. No es viable operar cripto intradía en Alpaca con estas comisiones.
