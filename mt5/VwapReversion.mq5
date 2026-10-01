@@ -16,6 +16,9 @@
 
 #include <Trade/Trade.mqh>
 
+input group "Instrumento"
+input string InpSymbolPrefix = "NAS100"; // Solo opera en símbolos que empiecen así ("" = cualquiera)
+
 input group "Sesión (hora del SERVIDOR del bróker)"
 input int    InpSessionStartHour = 16;   // Hora de apertura de la sesión
 input int    InpSessionStartMin  = 30;   // Minuto de apertura de la sesión
@@ -143,6 +146,12 @@ int OnInit()
    if(InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
      {
       Alert("VwapReversion: la cuenta no es DEMO y InpDemoOnly está activo. EA detenido.");
+      return INIT_FAILED;
+     }
+   if(InpSymbolPrefix != "" && StringFind(_Symbol, InpSymbolPrefix) != 0)
+     {
+      Alert("VwapReversion: este EA está configurado para ", InpSymbolPrefix,
+            " y el gráfico es ", _Symbol, ". Ábrelo en un gráfico de ", InpSymbolPrefix, ".");
       return INIT_FAILED;
      }
    trade.SetExpertMagicNumber(InpMagic);

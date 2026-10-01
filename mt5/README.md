@@ -26,14 +26,16 @@ Expert Advisor para MetaTrader 5: `VwapReversion.mq5`.
 
 1. En MT5: **Archivo → Abrir carpeta de datos** → `MQL5/Experts/` y copia `VwapReversion.mq5`.
 2. Ábrelo en **MetaEditor** (F4) y compílalo (F7). Debe terminar con 0 errores.
-3. En MT5, abre un gráfico del instrumento (p. ej. `US500`, `NAS100` o `USTEC`; el nombre depende del bróker).
+3. En MT5, abre un gráfico de **NAS100** (Pepperstone). El EA se niega a correr en otro símbolo;
+   para usarlo con otro, cambia `InpSymbolPrefix` (o déjalo vacío).
 4. Arrastra el EA al gráfico, activa **Permitir trading algorítmico** y el botón **Algo Trading**.
 
 ## Ajustar el horario
 
 Las horas son **del servidor del bróker** (la que muestra la Observación del Mercado), no la tuya.
 Para índices de EE. UU. la sesión abre a las 9:30 de Nueva York. Con un servidor en GMT+3
-(muy común) eso son las **16:30**, que es el valor por defecto. Si tu bróker usa otra zona horaria,
+(muy común) eso son las **16:30**, que es el valor por defecto. **Pepperstone** usa GMT+2/GMT+3
+sincronizado con el horario de Nueva York, así que los valores por defecto sirven todo el año. Si tu bróker usa otra zona horaria,
 cambia `InpSessionStartHour`/`Min`, `InpLastEntryHour`/`Min` y `InpCloseAllHour`/`Min`.
 
 ## Probar antes de operar
