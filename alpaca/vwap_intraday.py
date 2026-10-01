@@ -227,57 +227,60 @@ def live(symbols):
     print(f"Inicio: equity ${start_equity:,.2f}. Símbolos: {', '.join(symbols)}")
 
     while True:
-        now = datetime.now(NY)
-        if not client.get_clock().is_open or now.time() >= CLOSE_ALL:
-            for p in client.get_all_positions():
-                if p.symbol in symbols:
-                    close_symbol(client, p.symbol)
-                    print(f"{now:%H:%M} cierre forzoso de {p.symbol}")
-            break
+        try:
+            now = datetime.now(NY)
+            if not client.get_clock().is_open or now.time() >= CLOSE_ALL:
+                for p in client.get_all_positions():
+                    if p.symbol in symbols:
+                        close_symbol(client, p.symbol)
+                        print(f"{now:%H:%M} cierre forzoso de {p.symbol}")
+                break
 
-        today_open = datetime.combine(now.date(), SESSION_OPEN, NY)
-        bars = minute_bars(symbols, today_open)
-        current_minute = now.replace(second=0, microsecond=0)
-        equity = float(client.get_account().equity)
-        day_pnl = intraday_pnl(client, symbols, today_open)
-        loss_limit_hit = day_pnl <= -start_equity * MAX_DAILY_LOSS
-        positions = {p.symbol: p for p in client.get_all_positions()}
+            today_open = datetime.combine(now.date(), SESSION_OPEN, NY)
+            bars = minute_bars(symbols, today_open)
+            current_minute = now.replace(second=0, microsecond=0)
+            equity = float(client.get_account().equity)
+            day_pnl = intraday_pnl(client, symbols, today_open)
+            loss_limit_hit = day_pnl <= -start_equity * MAX_DAILY_LOSS
+            positions = {p.symbol: p for p in client.get_all_positions()}
 
-        for symbol in symbols:
-            sbars = bars[(bars["symbol"] == symbol) & (bars["ts"] < current_minute)]
-            if len(sbars) < 2:
-                continue
-            sig = session_signal(sbars)
-            pos = positions.get(symbol)
-            if pos:
-                is_long = float(pos.qty) > 0
-                if loss_limit_hit or (is_long and sig.close >= sig.vwap) or \
-                        (not is_long and sig.close <= sig.vwap):
-                    close_symbol(client, symbol)
-                    print(f"{now:%H:%M} {symbol}: salida (VWAP {sig.vwap:.2f}, "
-                          f"P/L ${float(pos.unrealized_pl):,.2f})", flush=True)
-                continue
+            for symbol in symbols:
+                sbars = bars[(bars["symbol"] == symbol) & (bars["ts"] < current_minute)]
+                if len(sbars) < 2:
+                    continue
+                sig = session_signal(sbars)
+                pos = positions.get(symbol)
+                if pos:
+                    is_long = float(pos.qty) > 0
+                    if loss_limit_hit or (is_long and sig.close >= sig.vwap) or \
+                            (not is_long and sig.close <= sig.vwap):
+                        close_symbol(client, symbol)
+                        print(f"{now:%H:%M} {symbol}: salida (VWAP {sig.vwap:.2f}, "
+                              f"P/L ${float(pos.unrealized_pl):,.2f})", flush=True)
+                    continue
 
-            warmup_end = today_open + timedelta(minutes=WARMUP_MINUTES)
-            if loss_limit_hit or entries_today(client, symbol, today_open) >= MAX_TRADES_PER_DAY or \
-                    now < warmup_end or now.time() >= LAST_ENTRY:
-                continue
-            side = entry_side(sig)
-            if not side:
-                continue
-            stop_distance = STOP_BANDS * sig.sd
-            qty = position_size(equity, sig.close, stop_distance)
-            if qty <= 0:
-                continue
-            stop = sig.close - stop_distance if side == OrderSide.BUY else sig.close + stop_distance
-            client.submit_order(MarketOrderRequest(
-                symbol=symbol, qty=qty, side=side, time_in_force=TimeInForce.DAY,
-                order_class=OrderClass.OTO, stop_loss=StopLossRequest(stop_price=round(stop, 2))))
-            print(f"{now:%H:%M} {symbol}: {side.value} {qty} @ ~{sig.close:.2f} "
-                  f"(VWAP {sig.vwap:.2f}, stop {stop:.2f})", flush=True)
+                warmup_end = today_open + timedelta(minutes=WARMUP_MINUTES)
+                if loss_limit_hit or entries_today(client, symbol, today_open) >= MAX_TRADES_PER_DAY or \
+                        now < warmup_end or now.time() >= LAST_ENTRY:
+                    continue
+                side = entry_side(sig)
+                if not side:
+                    continue
+                stop_distance = STOP_BANDS * sig.sd
+                qty = position_size(equity, sig.close, stop_distance)
+                if qty <= 0:
+                    continue
+                stop = sig.close - stop_distance if side == OrderSide.BUY else sig.close + stop_distance
+                client.submit_order(MarketOrderRequest(
+                    symbol=symbol, qty=qty, side=side, time_in_force=TimeInForce.DAY,
+                    order_class=OrderClass.OTO, stop_loss=StopLossRequest(stop_price=round(stop, 2))))
+                print(f"{now:%H:%M} {symbol}: {side.value} {qty} @ ~{sig.close:.2f} "
+                      f"(VWAP {sig.vwap:.2f}, stop {stop:.2f})", flush=True)
 
-        if now.minute % 15 == 0:
-            print(f"{now:%H:%M} sigue activo. P/L intradía: ${day_pnl:+,.2f}", flush=True)
+            if now.minute % 15 == 0:
+                print(f"{now:%H:%M} sigue activo. P/L intradía: ${day_pnl:+,.2f}", flush=True)
+        except Exception as error:  # red o API caída: reintentar el minuto siguiente
+            print(f"{datetime.now(NY):%H:%M} error, se reintenta: {error}", flush=True)
         time.sleep(60 - datetime.now().second + 2)
 
     today_open = datetime.combine(datetime.now(NY).date(), SESSION_OPEN, NY)

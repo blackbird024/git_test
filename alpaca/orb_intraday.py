@@ -119,45 +119,48 @@ def live(symbol=LIVE_SYMBOL, range_minutes=LIVE_RANGE_MINUTES):
     announced = False
 
     while True:
-        now = datetime.now(NY)
-        today_open = datetime.combine(now.date(), SESSION_OPEN, NY)
-        positions = {p.symbol: p for p in client.get_all_positions()}
+        try:
+            now = datetime.now(NY)
+            today_open = datetime.combine(now.date(), SESSION_OPEN, NY)
+            positions = {p.symbol: p for p in client.get_all_positions()}
 
-        if not client.get_clock().is_open or now.time() >= CLOSE_ALL:
-            if symbol in positions:
-                close_symbol(client, symbol)
-                print(f"{now:%H:%M} cierre forzoso de {symbol}", flush=True)
-            break
+            if not client.get_clock().is_open or now.time() >= CLOSE_ALL:
+                if symbol in positions:
+                    close_symbol(client, symbol)
+                    print(f"{now:%H:%M} cierre forzoso de {symbol}", flush=True)
+                break
 
-        range_end = today_open + timedelta(minutes=range_minutes)
-        if now >= range_end and symbol not in positions and \
-                entries_today(client, symbol, today_open) == 0 and now.time() < LAST_ENTRY:
-            bars = minute_bars([symbol], today_open)
-            current_minute = now.replace(second=0, microsecond=0)
-            opening = bars[bars["ts"] < range_end]
-            closed = bars[(bars["ts"] >= range_end) & (bars["ts"] < current_minute)]
-            if len(opening) >= range_minutes * 0.5 and len(closed):
-                hi, lo = opening["high"].max(), opening["low"].min()
-                mid = (hi + lo) / 2
-                if not announced:
-                    print(f"{now:%H:%M} rango: {lo:.2f} - {hi:.2f} (stop en {mid:.2f})", flush=True)
-                    announced = True
-                last = float(closed["close"].iloc[-1])
-                side = OrderSide.BUY if last > hi else OrderSide.SELL if last < lo else None
-                if side:
-                    equity = float(client.get_account().equity)
-                    qty = position_size(equity, last, abs(last - mid))
-                    if qty > 0:
-                        client.submit_order(MarketOrderRequest(
-                            symbol=symbol, qty=qty, side=side, time_in_force=TimeInForce.DAY,
-                            order_class=OrderClass.OTO,
-                            stop_loss=StopLossRequest(stop_price=round(mid, 2))))
-                        print(f"{now:%H:%M} {symbol}: {side.value} {qty} @ ~{last:.2f} "
-                              f"(stop {mid:.2f})", flush=True)
+            range_end = today_open + timedelta(minutes=range_minutes)
+            if now >= range_end and symbol not in positions and \
+                    entries_today(client, symbol, today_open) == 0 and now.time() < LAST_ENTRY:
+                bars = minute_bars([symbol], today_open)
+                current_minute = now.replace(second=0, microsecond=0)
+                opening = bars[bars["ts"] < range_end]
+                closed = bars[(bars["ts"] >= range_end) & (bars["ts"] < current_minute)]
+                if len(opening) >= range_minutes * 0.5 and len(closed):
+                    hi, lo = opening["high"].max(), opening["low"].min()
+                    mid = (hi + lo) / 2
+                    if not announced:
+                        print(f"{now:%H:%M} rango: {lo:.2f} - {hi:.2f} (stop en {mid:.2f})", flush=True)
+                        announced = True
+                    last = float(closed["close"].iloc[-1])
+                    side = OrderSide.BUY if last > hi else OrderSide.SELL if last < lo else None
+                    if side:
+                        equity = float(client.get_account().equity)
+                        qty = position_size(equity, last, abs(last - mid))
+                        if qty > 0:
+                            client.submit_order(MarketOrderRequest(
+                                symbol=symbol, qty=qty, side=side, time_in_force=TimeInForce.DAY,
+                                order_class=OrderClass.OTO,
+                                stop_loss=StopLossRequest(stop_price=round(mid, 2))))
+                            print(f"{now:%H:%M} {symbol}: {side.value} {qty} @ ~{last:.2f} "
+                                  f"(stop {mid:.2f})", flush=True)
 
-        if now.minute % 15 == 0:
-            pnl = intraday_pnl(client, [symbol], today_open)
-            print(f"{now:%H:%M} sigue activo. P/L intradía {symbol}: ${pnl:+,.2f}", flush=True)
+            if now.minute % 15 == 0:
+                pnl = intraday_pnl(client, [symbol], today_open)
+                print(f"{now:%H:%M} sigue activo. P/L intradía {symbol}: ${pnl:+,.2f}", flush=True)
+        except Exception as error:  # red o API caída: reintentar el minuto siguiente
+            print(f"{datetime.now(NY):%H:%M} error, se reintenta: {error}", flush=True)
         time.sleep(60 - datetime.now().second + 2)
 
     today_open = datetime.combine(datetime.now(NY).date(), SESSION_OPEN, NY)
