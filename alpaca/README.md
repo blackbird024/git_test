@@ -112,3 +112,16 @@ con los mismos datos, costes y métricas, incluidas el peor día y la caída má
 ```bash
 python strategy_lab.py --symbols QQQ GLD SPY
 ```
+
+## Laboratorio de swing trading: `swing_lab.py`
+
+12 estrategias de días a semanas (RSI(2), Double 7s, IBS, Bollinger, Donchian, MACD...) en velas
+diarias desde 2016, con resumen de robustez entre activos.
+
+```bash
+python swing_lab.py --symbols QQQ SPY DIA IWM GLD
+```
+
+Mejor resultado: **IBS** (comprar al cierre si cerró en el 20% inferior del rango del día, vender
+cuando cierre en el 20% superior). Positiva en las dos mitades en los 5 activos y estable con
+otros parámetros. Cartera QQQ + GLD a partes iguales: +14% anual, caída máxima -9.7%.
