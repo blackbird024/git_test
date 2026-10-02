@@ -29,6 +29,7 @@ from alpaca.trading.enums import OrderSide, TimeInForce
 from alpaca.trading.requests import MarketOrderRequest
 
 from alpaca_client import is_paper, trading_client
+from notify import notify
 
 FEE = 0.0025
 SYMBOLS = ["BTC/USD", "ETH/USD", "SOL/USD"]
@@ -161,8 +162,10 @@ def run_live(execute):
     for symbol, side, qty, notional in orders:
         order = client.submit_order(MarketOrderRequest(
             symbol=symbol, side=side, qty=qty, notional=notional, time_in_force=TimeInForce.GTC))
-        print(f"Orden enviada: {side.value} {symbol} "
-              f"{qty if qty else f'${notional:,.2f}'}  estado: {order.status.value}")
+        message = (f"Orden enviada: {side.value} {symbol} "
+                   f"{qty if qty else f'${notional:,.2f}'}  estado: {order.status.value}")
+        print(message)
+        notify(f"[cripto] {message}")
 
 
 def main():

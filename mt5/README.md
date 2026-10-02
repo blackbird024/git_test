@@ -137,3 +137,24 @@ el lote no equivale: ajusta el multiplicador.
 
 **Reglas de las prop firms:** muchas permiten copiar entre cuentas propias, pero algunas lo prohíben
 o limitan el capital total con operaciones idénticas. Revísalo en cada firma.
+
+---
+
+# Avisos por Telegram (IbsSwing)
+
+El EA avisa cuando **compra**, **cierra** (con el resultado), si alcanza la **pérdida diaria** o si
+una orden **falla**, y al **iniciarse**.
+
+1. En Telegram, habla con **@BotFather**, envía `/newbot` y sigue los pasos. Te dará un **token**.
+2. Abre el chat con tu bot nuevo y envíale cualquier mensaje (si no, no podrá escribirte).
+3. Habla con **@userinfobot**: te dice tu **chat ID** (un número).
+4. En MT5: **Herramientas → Opciones → Asesores Expertos**, marca **Permitir WebRequest para las
+   URL listadas** y añade `https://api.telegram.org`.
+5. En los parámetros del EA (grupo **Avisos**) pon el token y el chat ID.
+
+Al cargar el EA llega el mensaje "EA iniciado". Si no llega, mira la pestaña **Expertos**.
+
+Sin Telegram: activa **Avisar también en la app MetaTrader del móvil** y pon tu MetaQuotes ID
+(app MetaTrader → Ajustes → Mensajes) en **Herramientas → Opciones → Notificaciones**.
+
+El token es privado: no lo compartas ni lo subas a ningún sitio.

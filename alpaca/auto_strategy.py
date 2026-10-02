@@ -37,6 +37,8 @@ from alpaca.trading.client import TradingClient
 from alpaca.trading.enums import OrderSide, TimeInForce
 from alpaca.trading.requests import MarketOrderRequest
 
+from notify import notify
+
 DEFAULT_CONFIG = Path(__file__).with_name("strategy_config.json")
 
 
@@ -140,8 +142,10 @@ def run_account(account, strategy, execute, allow_live):
         order = client.submit_order(MarketOrderRequest(
             symbol=symbol, side=side, qty=qty, notional=notional,
             time_in_force=TimeInForce.DAY))
-        print(f"Orden enviada: {side.value} {symbol} "
-              f"{qty if qty else f'${notional:,.2f}'}  estado: {order.status.value}")
+        message = (f"Orden enviada: {side.value} {symbol} "
+                   f"{qty if qty else f'${notional:,.2f}'}  estado: {order.status.value}")
+        print(message)
+        notify(f"[{name}] {message}")
     print()
 
 

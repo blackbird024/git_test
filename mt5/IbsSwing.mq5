@@ -40,7 +40,71 @@ input bool   InpDemoOnly         = true; // Solo operar en cuentas demo
 input long   InpMagic            = 240601; // Número mágico (distinto en cada copia del EA)
 input string InpLabel            = "NY";   // Etiqueta para distinguir copias (comentario de las órdenes)
 
+input group "Avisos"
+input string InpTelegramToken  = "";      // Token del bot de Telegram (de @BotFather; vacío = sin Telegram)
+input string InpTelegramChatId = "";      // Tu chat ID de Telegram (de @userinfobot)
+input bool   InpPushNotify     = false;   // Avisar también en la app MetaTrader del móvil
+
 CTrade   trade;
+
+//--- texto -> formato URL (UTF-8) para la API de Telegram
+string UrlEncode(string text)
+  {
+   uchar bytes[];
+   int n = StringToCharArray(text, bytes, 0, WHOLE_ARRAY, CP_UTF8) - 1;  // sin el 0 final
+   string out = "";
+   for(int i = 0; i < n; i++)
+     {
+      uchar b = bytes[i];
+      if((b >= '0' && b <= '9') || (b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z') ||
+         b == '-' || b == '_' || b == '.' || b == '~')
+         out += CharToString(b);
+      else
+         out += StringFormat("%%%02X", b);
+     }
+   return out;
+  }
+
+//--- aviso por Telegram y/o a la app MetaTrader del móvil (no hace nada en el probador)
+void Notify(string text)
+  {
+   string message = "IbsSwing " + InpLabel + " (" + IntegerToString(AccountInfoInteger(ACCOUNT_LOGIN)) + "): " + text;
+   Print(message);
+   if(MQLInfoInteger(MQL_TESTER))
+      return;
+   if(InpPushNotify)
+      SendNotification(message);
+   if(InpTelegramToken == "" || InpTelegramChatId == "")
+      return;
+
+   string url = "https://api.telegram.org/bot" + InpTelegramToken + "/sendMessage";
+   string body = "chat_id=" + InpTelegramChatId + "&text=" + UrlEncode(message);
+   char data[], result[];
+   string headers;
+   StringToCharArray(body, data, 0, StringLen(body), CP_UTF8);
+   ResetLastError();
+   int code = WebRequest("POST", url, "Content-Type: application/x-www-form-urlencoded\r\n",
+                         5000, data, result, headers);
+   if(code == -1)
+      Print("IbsSwing: no se pudo enviar a Telegram (error ", GetLastError(),
+            "). Añade https://api.telegram.org en Herramientas > Opciones > Asesores Expertos.");
+   else if(code != 200)
+      Print("IbsSwing: Telegram respondió ", code, ": ", CharArrayToString(result));
+  }
+
+//--- cierra la posición y avisa con el resultado
+void CloseAndNotify(ulong ticket, string reason)
+  {
+   if(!PositionSelectByTicket(ticket))
+      return;
+   string symbol = PositionGetString(POSITION_SYMBOL);
+   double profit = PositionGetDouble(POSITION_PROFIT) + PositionGetDouble(POSITION_SWAP);
+   if(trade.PositionClose(ticket) && trade.ResultRetcode() == TRADE_RETCODE_DONE)
+      Notify(StringFormat("CIERRE %s (%s). Resultado: %+.2f %s", symbol, reason, profit,
+                          AccountInfoString(ACCOUNT_CURRENCY)));
+   else
+      Notify(StringFormat("ERROR al cerrar %s: %s", symbol, trade.ResultRetcodeDescription()));
+  }
 string   symbols[2];
 datetime lastDecisionDay[2];
 datetime equityDay = 0;
@@ -145,10 +209,12 @@ void CheckDailyLoss()
         {
          ulong ticket = symbols[k] == "" ? (ulong)0 : OwnPosition(symbols[k]);
          if(ticket > 0)
-            trade.PositionClose(ticket);
+            CloseAndNotify(ticket, "pérdida diaria máxima");
         }
       Alert("IbsSwing: pérdida diaria de ", DoubleToString(InpMaxDailyLossPct, 1),
             "% alcanzada. Posiciones cerradas; no se opera más hoy.");
+      Notify(StringFormat("PÉRDIDA DIARIA del %.1f%% alcanzada. Posiciones cerradas; no se opera más hoy.",
+                          InpMaxDailyLossPct));
      }
   }
 
@@ -169,12 +235,17 @@ void Decide(int k)
                ticket > 0 ? "abierta" : "ninguna");
 
    if(ticket > 0 && ibs > InpExitIbs)
-      trade.PositionClose(ticket);
+      CloseAndNotify(ticket, StringFormat("IBS %.2f", ibs));
    else if(ticket == 0 && ibs < InpEntryIbs && !dailyLossHit)
      {
       double lots = LotsFor(symbol);
-      if(lots > 0)
-         trade.Buy(lots, symbol, 0, 0, 0, "IBS " + InpLabel);
+      if(lots <= 0)
+         return;
+      if(trade.Buy(lots, symbol, 0, 0, 0, "IBS " + InpLabel) && trade.ResultRetcode() == TRADE_RETCODE_DONE)
+         Notify(StringFormat("COMPRA %s %.2f lotes a %s (IBS %.2f)", symbol, lots,
+                             DoubleToString(trade.ResultPrice(), (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS)), ibs));
+      else
+         Notify(StringFormat("ERROR al comprar %s: %s", symbol, trade.ResultRetcodeDescription()));
      }
   }
 
@@ -198,6 +269,8 @@ int OnInit()
         }
      }
    trade.SetExpertMagicNumber(InpMagic);
+   if(!MQLInfoInteger(MQL_TESTER))
+      Notify("EA iniciado. Símbolos: " + InpSymbol1 + " " + InpSymbol2);
    EventSetTimer(tester ? 60 : 20);   // en el probador, cada minuto basta y va más rápido
    return INIT_SUCCEEDED;
   }

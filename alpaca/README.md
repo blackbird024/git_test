@@ -135,3 +135,8 @@ Igual que el EA `mt5/IbsSwing.mq5`. Hay que ejecutarla una vez al día entre las
 python ibs_swing.py             # muestra el IBS y lo que haría
 python ibs_swing.py --execute   # envía las órdenes (solo dentro del horario)
 ```
+
+## Avisos por Telegram
+
+`auto_strategy.py`, `crypto_trend.py` e `ibs_swing.py` avisan cada vez que envían una orden si existen las
+variables de entorno `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` (ver `mt5/README.md` para crearlas).

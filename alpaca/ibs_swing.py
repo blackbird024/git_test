@@ -23,6 +23,7 @@ from alpaca.trading.enums import OrderSide, TimeInForce
 from alpaca.trading.requests import MarketOrderRequest
 
 from alpaca_client import is_paper, trading_client
+from notify import notify
 from vwap_intraday import NY, SESSION_OPEN, minute_bars
 
 SYMBOLS = ["QQQ", "GLD"]
@@ -74,6 +75,7 @@ def main():
         if order and execute:
             sent = client.submit_order(order)
             print(f"         orden enviada: {sent.side.value} {symbol}  estado: {sent.status.value}")
+            notify(f"[IBS] {action} {symbol} a ~{price:.2f} (IBS {ibs:.2f})")
     if not execute:
         print("\nSimulación: no se enviaron órdenes.")
 
