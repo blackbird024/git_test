@@ -37,7 +37,8 @@ input double InpAllocationPct    = 50.0; // % del equity por símbolo
 input double InpExposure         = 1.0;  // Exposición (1.0 = 1x; usar 0.5 para cuentas con 6% de DD máx)
 input double InpMaxDailyLossPct  = 3.5;  // Pérdida diaria máxima: cierra todo y no opera más ese día (0 = no)
 input bool   InpDemoOnly         = true; // Solo operar en cuentas demo
-input long   InpMagic            = 240601; // Número mágico
+input long   InpMagic            = 240601; // Número mágico (distinto en cada copia del EA)
+input string InpLabel            = "NY";   // Etiqueta para distinguir copias (comentario de las órdenes)
 
 CTrade   trade;
 string   symbols[2];
@@ -157,12 +158,12 @@ void Decide(int k)
    double ibs, high, low, price;
    if(!SessionIbs(symbol, ibs, high, low, price))
      {
-      PrintFormat("IbsSwing: %s sin sesión completa hoy; no se decide.", symbol);
+      PrintFormat("IbsSwing %s: %s sin sesión completa hoy; no se decide.", InpLabel, symbol);
       return;
      }
    ulong ticket = OwnPosition(symbol);
-   PrintFormat("IbsSwing: %s IBS %.2f (precio %s, rango %s - %s), posición: %s",
-               symbol, ibs, DoubleToString(price, (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS)),
+   PrintFormat("IbsSwing %s: %s IBS %.2f (precio %s, rango %s - %s), posición: %s",
+               InpLabel, symbol, ibs, DoubleToString(price, (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS)),
                DoubleToString(low, (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS)),
                DoubleToString(high, (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS)),
                ticket > 0 ? "abierta" : "ninguna");
@@ -173,7 +174,7 @@ void Decide(int k)
      {
       double lots = LotsFor(symbol);
       if(lots > 0)
-         trade.Buy(lots, symbol, 0, 0, 0, "IBS entrada");
+         trade.Buy(lots, symbol, 0, 0, 0, "IBS " + InpLabel);
      }
   }
 
@@ -216,7 +217,7 @@ void OnTimer()
    datetime decision = nyDay + InpDecisionHour * 3600 + InpDecisionMin * 60;
    bool window = nyNow >= decision && nyNow < decision + 4 * 60;
 
-   string status = StringFormat("IbsSwing   Hora NY: %s   Decisión: %02d:%02d NY\n",
+   string status = StringFormat("IbsSwing " + InpLabel + "   Hora NY: %s   Decisión: %02d:%02d NY\n",
                                 TimeToString(nyNow, TIME_MINUTES), InpDecisionHour, InpDecisionMin);
    for(int k = 0; k < 2; k++)
      {

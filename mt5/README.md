@@ -94,6 +94,10 @@ siempre en hora de **Nueva York**. Para la sesión de Londres (8:00-16:25 de Lon
 | `InpSessionStartHour` / `Min` | 3 / 0 |
 | `InpDecisionHour` / `Min` | 11 / 25 |
 | `InpMagic` | otro número, p. ej. 240602 |
+| `InpLabel` | LON |
 
 Con un número mágico distinto puede convivir con el EA de la sesión de Nueva York en la misma cuenta.
+La etiqueta (`InpLabel`) aparece en el comentario de las órdenes y en los mensajes, para distinguirlos.
+Consejo: guarda cada configuración con el botón **Guardar** de la pestaña de parámetros
+(por ejemplo `IbsSwing_NY.set` e `IbsSwing_LON.set`) y cárgala con **Cargar**.
 Pruébalo antes en el Probador de Estrategias.
