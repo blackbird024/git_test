@@ -101,3 +101,39 @@ La etiqueta (`InpLabel`) aparece en el comentario de las órdenes y en los mensa
 Consejo: guarda cada configuración con el botón **Guardar** de la pestaña de parámetros
 (por ejemplo `IbsSwing_NY.set` e `IbsSwing_LON.set`) y cárgala con **Cargar**.
 Pruébalo antes en el Probador de Estrategias.
+
+---
+
+# MT5 – Copiador de operaciones (`TradeCopier.mq5`)
+
+Replica las posiciones de una cuenta (**MASTER**) en otras (**SLAVE**). Todas las cuentas tienen que
+estar abiertas en terminales MT5 del **mismo ordenador o VPS** (se comunican por la carpeta común
+de MetaTrader, `Common\Files`).
+
+> Para IbsSwing no hace falta: es más fiable poner el EA directamente en cada cuenta.
+> El copiador sirve para operaciones manuales u otros EAs.
+
+## Qué copia
+Aperturas, cierres, cierres parciales y stop-loss / take-profit. Si el master deja de actualizar
+(terminal cerrado), los slaves **no tocan nada**. Si una copia se cierra en el slave (por su propio
+límite), no se vuelve a abrir.
+
+## Instalación (una instalación de MT5 por cuenta)
+1. **Varias instalaciones de MT5:** al instalar, elige "Configuración" y una carpeta distinta para cada cuenta.
+2. **Master:** en la cuenta origen, pon el EA con `Modo = COPIER_MASTER` y un `Canal` (p. ej. "IBS").
+3. **Slave:** en cada cuenta copia, pon el EA con `Modo = COPIER_SLAVE` y **el mismo canal**.
+4. Activa Algo Trading en todos.
+
+## Parámetros del slave
+| Parámetro | Para qué |
+|-----------|----------|
+| Lote | `LOTS_BALANCE_RATIO`: proporcional al balance (cuenta de 50k copia la mitad que una de 100k). `LOTS_MULTIPLIER`: lote del master × multiplicador |
+| Multiplicador | 0.5 = la mitad de riesgo (recomendado en challenges con 6% de DD máx) |
+| Sufijo / Equivalencias | Si el símbolo se llama distinto: sufijo ".a", o `NAS100=US100,XAUUSD=GOLD` |
+| Pérdida diaria máxima | Cierra las copias y deja de copiar ese día (3.5% por defecto) |
+
+**Ojo:** si en dos brókers el mismo símbolo tiene distinto tamaño de contrato (mira *Especificación*),
+el lote no equivale: ajusta el multiplicador.
+
+**Reglas de las prop firms:** muchas permiten copiar entre cuentas propias, pero algunas lo prohíben
+o limitan el capital total con operaciones idénticas. Revísalo en cada firma.
