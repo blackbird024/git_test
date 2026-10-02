@@ -16,7 +16,7 @@ Uso:
 
 import argparse
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from datetime import time as dtime
 
 from alpaca.trading.enums import OrderSide, TimeInForce
@@ -48,7 +48,11 @@ def main():
     if args.execute and not in_window:
         print("Fuera del horario de decisión (15:50-16:00 NY con mercado abierto): solo se simula.")
 
-    bars = minute_bars(SYMBOLS, datetime.combine(now.date(), SESSION_OPEN, NY))
+    session_open = datetime.combine(now.date(), SESSION_OPEN, NY)
+    if now < session_open + timedelta(minutes=5):
+        print("La sesión de hoy aún no ha empezado: no hay IBS que calcular.")
+        return
+    bars = minute_bars(SYMBOLS, session_open)
     positions = {p.symbol: p for p in client.get_all_positions()}
     print(f"{now:%Y-%m-%d %H:%M} NY\n")
     print(f"{'Símbolo':8}{'Precio':>10}{'Mínimo':>10}{'Máximo':>10}{'IBS':>7}  Posición  Acción")
