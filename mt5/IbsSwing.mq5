@@ -25,6 +25,8 @@ input group "Horario"
 input int    InpServerMinusNY = 7;    // Horas que el servidor va por delante de Nueva York (Pepperstone: 7)
 input int    InpDecisionHour  = 15;   // Hora de decisión (Nueva York)
 input int    InpDecisionMin   = 55;   // Minuto de decisión (Nueva York)
+input int    InpSessionStartHour = 9;  // Inicio de la sesión para el rango (Nueva York). Londres: 3
+input int    InpSessionStartMin  = 30; // Minuto de inicio de la sesión (Nueva York). Londres: 0
 
 input group "Señal"
 input double InpEntryIbs = 0.20;      // Comprar si IBS < este valor
@@ -77,10 +79,11 @@ ulong OwnPosition(string symbol)
 bool SessionIbs(string symbol, double &ibs, double &high, double &low, double &price)
   {
    datetime nyNow   = ToNY(TimeCurrent());
-   datetime nyOpen  = DayOf(nyNow) + 9 * 3600 + 30 * 60;
+   datetime nyOpen  = DayOf(nyNow) + InpSessionStartHour * 3600 + InpSessionStartMin * 60;
+   int expected = (int)((DayOf(nyNow) + InpDecisionHour * 3600 + InpDecisionMin * 60 - nyOpen) / 60);
    MqlRates rates[];
    int n = CopyRates(symbol, PERIOD_M1, ToServer(nyOpen), TimeCurrent(), rates);
-   if(n < 300)   // sesión incompleta (festivo, cierre anticipado o sin datos)
+   if(n < expected * 0.75)   // sesión incompleta (festivo, cierre anticipado o sin datos)
       return false;
 
    high = rates[0].high;

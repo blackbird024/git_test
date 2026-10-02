@@ -81,3 +81,19 @@ las 15:55 de Nueva York (21:55 en Italia): usa un VPS o deja el ordenador encend
 
 En el Probador de Estrategias (Ctrl+R): EA IbsSwing, símbolo NAS100, periodo M1, modelo
 "OHLC en M1", al menos 1-2 años. El probador carga también el oro automáticamente.
+
+## Probar otra sesión (por ejemplo, Londres en el oro)
+
+El rango del IBS va de `InpSessionStartHour:InpSessionStartMin` a `InpDecisionHour:InpDecisionMin`,
+siempre en hora de **Nueva York**. Para la sesión de Londres (8:00-16:25 de Londres):
+
+| Parámetro | Valor |
+|-----------|-------|
+| `InpSymbol1` | (vacío) |
+| `InpSymbol2` | XAUUSD |
+| `InpSessionStartHour` / `Min` | 3 / 0 |
+| `InpDecisionHour` / `Min` | 11 / 25 |
+| `InpMagic` | otro número, p. ej. 240602 |
+
+Con un número mágico distinto puede convivir con el EA de la sesión de Nueva York en la misma cuenta.
+Pruébalo antes en el Probador de Estrategias.
