@@ -27,8 +27,10 @@ grpM = "Modelo"
 len      = input.int(3, "Velas a cada lado del swing", minval = 1, group = grpM)
 keep     = input.int(48, "Vigencia del swing (velas)", minval = 1, group = grpM, tooltip = "48 velas de 5m = 4 horas")
 cisdWin  = input.int(12, "Velas máximas entre barrido y CISD", minval = 2, group = grpM)
-minGrade = input.string("B+", "Nota mínima para avisar", options = ["B", "B+", "A"], group = grpM,
-                        tooltip = "A necesita un símbolo para SMT")
+minGradeLon = input.string("B+", "Nota mínima en London", options = ["B", "B+", "A"], group = grpM,
+                           tooltip = "Backtest NQ 2018-2026: en London el B perdió (-0,21R); B+ y A positivos")
+minGradeNY  = input.string("B", "Nota mínima en Nueva York", options = ["B", "B+", "A"], group = grpM,
+                           tooltip = "Backtest NQ 2018-2026: en NY B, B+ y A juntos dieron +0,17R. A necesita SMT")
 rr       = input.float(2.0, "Objetivo (R)", minval = 0.5, group = grpM)
 smtSym   = input.symbol("", "Símbolo para SMT (vacío = sin SMT; en NQ usar ES1!)", group = grpM)
 
@@ -144,7 +146,6 @@ if (inLon and not inLon[1]) or (inNY and not inNY[1])
         m.armed := false
 
 gradeRank(string g) => g == "A" ? 3 : g == "B+" ? 2 : 1
-minRank = gradeRank(minGrade)
 
 for m in machines
     if m.armed
@@ -185,7 +186,7 @@ for m in machines
                     tp    = close + d * rr * risk
                     side  = d == -1 ? "CORTO" : "LARGO"
                     lblStyle = d == -1 ? label.style_label_down : label.style_label_up
-                    if gradeRank(grade) >= minRank
+                    if gradeRank(grade) >= gradeRank(inLon ? minGradeLon : minGradeNY)
                         x2 = bar_index + 24
                         line.new(bar_index, close, x2, close, color = color.gray, width = 2)
                         line.new(bar_index, m.ext, x2, m.ext, color = color.red, width = 2)
