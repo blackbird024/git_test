@@ -24,7 +24,7 @@ G_C = "Contexto 4H"
 bodyMin  = input.float(0.5, "Cuerpo / rango mínimo", minval = 0, maxval = 1, step = 0.05, group = G_C)
 nearHigh = input.float(0.25, "Cierre cerca del máximo (fracción del rango desde el máximo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
 nearLow  = input.float(0.25, "Cierre cerca del mínimo (fracción del rango desde el mínimo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
-show4hHL = input.bool(true, "Dibujar máximo y mínimo de la última vela de 4H cerrada", group = G_C)
+show4hHL = input.bool(false, "Dibujar máximo y mínimo de la última vela de 4H cerrada", group = G_C)
 useObj   = input.bool(false, "Niveles como objetos de dibujo (si no, como plots)", group = G_C,
   tooltip = "Por defecto los niveles se dibujan como plots, que siempre se ven igual que las velas. Los objetos de dibujo pueden ocultarse con la opción de TradingView 'Ocultar dibujos'.")
 
@@ -35,6 +35,8 @@ swLen15    = input.int(3, "Swings de 15m: velas a cada lado", minval = 1, maxval
   tooltip = "Un swing de 15m se conoce cuando cierran las N velas de 15m posteriores: con 3, se confirma 45 minutos después del máximo o mínimo.")
 max15      = input.int(3, "Swings de 15m vivos por lado", minval = 1, maxval = 10, group = G_L)
 use4hLv    = input.bool(true, "Máximo/mínimo de la última vela de 4H como liquidez (nivel 3)", group = G_L)
+show15     = input.bool(false, "Dibujar los swings de 15m", group = G_L)
+showOpp    = input.bool(false, "Etiquetar también barridos del lado contrario al reversal", group = G_L)
 
 G_V = "Visual"
 showPD    = input.bool(true, "PDH / PDL", group = G_V, inline = "v1")
@@ -42,7 +44,8 @@ showAsia  = input.bool(true, "Asia", group = G_V, inline = "v1")
 shadeSess = input.bool(true, "Sombrear London", group = G_V, inline = "v1")
 sobrias   = input.bool(true, "Velas sobrias (plata / pizarra)", group = G_V, inline = "v2")
 darkBg    = input.bool(false, "Fondo #0D1117", group = G_V, inline = "v2")
-showPanel = input.bool(true, "Panel de verificación", group = G_V, inline = "pn")
+panelMode = input.string("Compacto", "Panel", options = ["Compacto", "Completo", "Oculto"], group = G_V, inline = "pn")
+showPanel = panelMode != "Oculto"
 panelPos  = input.string("Arriba derecha", "", options = ["Arriba derecha", "Abajo derecha", "Arriba izquierda", "Abajo izquierda"], group = G_V, inline = "pn")
 colBull   = input.color(#C9CED6, "Vela alcista", group = G_V, inline = "c1")
 colBear   = input.color(#5D6F8C, "Vela bajista", group = G_V, inline = "c1")
@@ -174,10 +177,11 @@ if ldnStart
 
 var line ln4H = na
 var line ln4L = na
-if new4h
+if ldnStart
     label.new(bar_index, high, "4H " + ctxTxt(ctx4), style = label.style_label_down, color = color.new(color.black, 100),
       textcolor = ctx4 == 0 ? color.new(col4h, 60) : col4h, size = size.tiny,
       tooltip = "Vela de 4H cerrada que abrió a las " + hhmm(h4T) + "\nO " + fmt(h4O) + " H " + fmt(h4H) + " L " + fmt(h4L) + " C " + fmt(h4C) + "\nCuerpo/rango " + str.tostring(body4, "#.##"))
+if new4h
     if show4hHL and useObj
         ln4H := line.new(bar_index, h4H, bar_index, h4H, color = color.new(col4h, 40), width = 1, style = line.style_dashed)
         ln4L := line.new(bar_index, h4L, bar_index, h4L, color = color.new(col4h, 40), width = 1, style = line.style_dashed)
@@ -264,11 +268,12 @@ if barstate.isconfirmed
                         primTier := L.tier
                         primPx := L.price
                         primT := time
-                    label.new(bar_index, L.isHigh ? high : low, L.name + " SWEEP", color = color.new(color.black, 100),
-                      textcolor = onRevSide ? colLiq : color.new(colLiq, 55), size = size.tiny,
-                      style = L.isHigh ? label.style_label_down : label.style_label_up,
-                      tooltip = "Nivel " + str.tostring(L.tier) + " · " + fmt(L.price) + " · barrido a las " + hhmm(time) + " · profundidad " + fmt(L.depth)
-                       + (onRevSide ? "\nLado del reversal según el contexto 4H" : ctxAtLdn == 0 ? "\nSin contexto 4H: no habrá setup" : "\nLado contrario al reversal"))
+                    if onRevSide or showOpp
+                        label.new(bar_index, L.isHigh ? high : low, L.name + " SWEEP", color = color.new(color.black, 100),
+                          textcolor = onRevSide ? colLiq : color.new(colLiq, 55), size = size.tiny,
+                          style = L.isHigh ? label.style_label_down : label.style_label_up,
+                          tooltip = "Nivel " + str.tostring(L.tier) + " · " + fmt(L.price) + " · barrido a las " + hhmm(time) + " · profundidad " + fmt(L.depth)
+                           + (onRevSide ? "\nLado del reversal según el contexto 4H" : ctxAtLdn == 0 ? "\nSin contexto 4H: no habrá setup" : "\nLado contrario al reversal"))
                     alert("Liquidity swept · " + syminfo.ticker + " · " + L.name + " " + fmt(L.price) + " · London · 4H " + ctxTxt(ctxAtLdn)
                       + (onRevSide ? " · lado del reversal" : ""), alert.freq_once_per_bar_close)
         else if L.swept and L.inLdn and inLdn
@@ -292,9 +297,9 @@ if barstate.isconfirmed
         addLevel("4H L", 3, false, h4L, ln4L)
     if new15 and use15sw
         if not na(s15h)
-            addLevel("15M SH", 3, true, s15h, line.new(s15t, s15h, time, s15h, xloc = xloc.bar_time, color = color.new(colLiq, 60), style = line.style_dashed))
+            addLevel("15M SH", 3, true, s15h, not show15 ? na : line.new(s15t, s15h, time, s15h, xloc = xloc.bar_time, color = color.new(colLiq, 60), style = line.style_dashed))
         if not na(s15l)
-            addLevel("15M SL", 3, false, s15l, line.new(s15t, s15l, time, s15l, xloc = xloc.bar_time, color = color.new(colLiq, 60), style = line.style_dashed))
+            addLevel("15M SL", 3, false, s15l, not show15 ? na : line.new(s15t, s15l, time, s15l, xloc = xloc.bar_time, color = color.new(colLiq, 60), style = line.style_dashed))
         // máximo de swings de 15m vivos por lado y caducidad de 24 h
         int nH = 0
         int nL = 0
@@ -352,6 +357,11 @@ cAH = isSwept("ASIA H") ? color.new(color.gray, 55) : colLiq
 cAL = isSwept("ASIA L") ? color.new(color.gray, 55) : colLiq
 bPDH = brk(pdh)
 bPDL = brk(pdl)
+var bool asiaVis = false
+if asiaEnd
+    asiaVis := true
+if ldnEnd or asiaStart
+    asiaVis := false
 bAH = brk(asiaH)
 bAL = brk(asiaL)
 bAM = brk(asiaM)
@@ -359,9 +369,9 @@ b4H = brk(h4H)
 b4L = brk(h4L)
 plot(showPD and not useObj ? bPDH : na, "PDH", cPDH, lineW + 1, plot.style_linebr)
 plot(showPD and not useObj ? bPDL : na, "PDL", cPDL, lineW + 1, plot.style_linebr)
-plot(showAsia and not useObj and not inAsia ? bAH : na, "Asia H", cAH, lineW, plot.style_linebr)
-plot(showAsia and not useObj and not inAsia ? bAL : na, "Asia L", cAL, lineW, plot.style_linebr)
-plot(showAsia and not useObj and not inAsia ? bAM : na, "Asia Mid", color.new(colLiq, 60), 1, plot.style_linebr)
+plot(showAsia and not useObj and asiaVis ? bAH : na, "Asia H", cAH, lineW, plot.style_linebr)
+plot(showAsia and not useObj and asiaVis ? bAL : na, "Asia L", cAL, lineW, plot.style_linebr)
+plot(showAsia and not useObj and asiaVis ? bAM : na, "Asia Mid", color.new(colLiq, 60), 1, plot.style_linebr)
 plot(show4hHL and not useObj ? b4H : na, "4H H", color.new(col4h, 40), 1, plot.style_linebr)
 plot(show4hHL and not useObj ? b4L : na, "4H L", color.new(col4h, 40), 1, plot.style_linebr)
 
@@ -372,30 +382,40 @@ alertcondition(evAH, "Asia High swept", "Asia High barrido en London · {{ticker
 alertcondition(evAL, "Asia Low swept", "Asia Low barrido en London · {{ticker}} · {{close}}")
 
 // ═════════════════════════════ PANEL DE VERIFICACIÓN ═════════════════════════════
+compact = panelMode == "Compacto"
+tsize = compact ? size.tiny : size.small
 var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left, 2, 22, bgcolor = color.new(#0D1117, 5), border_color = color.new(color.gray, 80), border_width = 1)
 row(int r, string a, string b) =>
-    pnl.cell(0, r, a, text_color = color.new(color.white, 20), text_size = size.small, text_halign = text.align_left)
-    pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
+    pnl.cell(0, r, a, text_color = color.new(color.white, 20), text_size = tsize, text_halign = text.align_left)
+    pnl.cell(1, r, b, text_color = color.white, text_size = tsize, text_halign = text.align_left)
 
 if showPanel and barstate.islast
-    row(0, "Hora (" + tz + ")", hhmm(time) + " · " + str.format_time(time, "dd/MM", tz))
-    row(1, "Sesión", sessState + " · London " + sessLdn)
-    row(2, "Asia H / L / Mid", na(asiaH) ? "—" : fmt(asiaH) + " / " + fmt(asiaL) + " / " + fmt(asiaM))
-    row(3, "Asia", inAsia ? "en curso: " + fmt(aHiRun) + " / " + fmt(aLoRun) + " (sin congelar)" : na(asiaFrozenT) ? "—" : "congelada a las " + hhmm(asiaFrozenT))
-    row(4, "PDH / PDL", na(pdh) ? "—" : fmt(pdh) + " / " + fmt(pdl))
-    row(5, "Día anterior", useCme ? "CME, vela diaria que abrió " + str.format_time(cmeT, "dd/MM HH:mm", tz) : "día natural en " + tz)
-    row(6, "4H actual", "4H " + ctxTxt(ctx4))
-    row(7, "  vela usada (cerrada)", "abrió " + str.format_time(h4T, "dd/MM HH:mm", tz) + " · cuerpo " + str.tostring(body4, "#.##"))
-    row(8, "4H al abrir London", "4H " + ctxTxt(ctxAtLdn) + (na(ctxAtLdnT) ? "" : " (vela de " + hhmm(ctxAtLdnT) + ")"))
-    row(9, "LADO DEL REVERSAL", revHighs ? "máximos (corto primero)" : revLows ? "mínimos (largo primero)" : "ninguno: sin contexto 4H")
-    row(10, "CURRENT STATE", state)
-    row(11, "PRIMARY LIQUIDITY", primName == "" ? "—" : primName + " " + fmt(primPx) + " · " + hhmm(primT))
-    row(12, "Siguiente objetivo", tgtTxt)
-    row(13, "Último barrido en London", lastSweep == "" ? "—" : lastSweep)
-    row(14, "PDH", statusOf("PDH"))
-    row(15, "PDL", statusOf("PDL"))
-    row(16, "ASIA H", statusOf("ASIA H"))
-    row(17, "ASIA L", statusOf("ASIA L"))
-    row(18, "4H H", statusOf("4H H"))
-    row(19, "4H L", statusOf("4H L"))
-    row(20, "Fase", "2 · barridos (sin señales de entrada)")
+    if compact
+        row(0, "4H (al abrir London)", ctxTxt(ctxAtLdn) + " · " + (revHighs ? "reversal en máximos" : revLows ? "reversal en mínimos" : "sin setup hoy"))
+        row(1, "ESTADO", state)
+        row(2, "LIQUIDEZ PRINCIPAL", primName == "" ? "—" : primName + " " + fmt(primPx) + " · " + hhmm(primT))
+        row(3, "Siguiente objetivo", tgtTxt)
+        row(4, "PDH · PDL", statusOf("PDH") + "  |  " + statusOf("PDL"))
+        row(5, "Asia H · L", statusOf("ASIA H") + "  |  " + statusOf("ASIA L"))
+    else
+        row(0, "Hora (" + tz + ")", hhmm(time) + " · " + str.format_time(time, "dd/MM", tz))
+        row(1, "Sesión", sessState + " · London " + sessLdn)
+        row(2, "Asia H / L / Mid", na(asiaH) ? "—" : fmt(asiaH) + " / " + fmt(asiaL) + " / " + fmt(asiaM))
+        row(3, "Asia", inAsia ? "en curso: " + fmt(aHiRun) + " / " + fmt(aLoRun) + " (sin congelar)" : na(asiaFrozenT) ? "—" : "congelada a las " + hhmm(asiaFrozenT))
+        row(4, "PDH / PDL", na(pdh) ? "—" : fmt(pdh) + " / " + fmt(pdl))
+        row(5, "Día anterior", useCme ? "CME, vela diaria que abrió " + str.format_time(cmeT, "dd/MM HH:mm", tz) : "día natural en " + tz)
+        row(6, "4H actual", "4H " + ctxTxt(ctx4))
+        row(7, "  vela usada (cerrada)", "abrió " + str.format_time(h4T, "dd/MM HH:mm", tz) + " · cuerpo " + str.tostring(body4, "#.##"))
+        row(8, "4H al abrir London", "4H " + ctxTxt(ctxAtLdn) + (na(ctxAtLdnT) ? "" : " (vela de " + hhmm(ctxAtLdnT) + ")"))
+        row(9, "LADO DEL REVERSAL", revHighs ? "máximos (corto primero)" : revLows ? "mínimos (largo primero)" : "ninguno: sin contexto 4H")
+        row(10, "CURRENT STATE", state)
+        row(11, "PRIMARY LIQUIDITY", primName == "" ? "—" : primName + " " + fmt(primPx) + " · " + hhmm(primT))
+        row(12, "Siguiente objetivo", tgtTxt)
+        row(13, "Último barrido en London", lastSweep == "" ? "—" : lastSweep)
+        row(14, "PDH", statusOf("PDH"))
+        row(15, "PDL", statusOf("PDL"))
+        row(16, "ASIA H", statusOf("ASIA H"))
+        row(17, "ASIA L", statusOf("ASIA L"))
+        row(18, "4H H", statusOf("4H H"))
+        row(19, "4H L", statusOf("4H L"))
+        row(20, "Fase", "2 · barridos (sin señales de entrada)")
