@@ -59,6 +59,8 @@ sessLon   = input.session("0200-0500", "", group = G_SES, inline = "lon")
 useNY     = input.bool(false, "Nueva York", group = G_SES, inline = "ny")
 sessNY    = input.session("0930-1100", "", group = G_SES, inline = "ny")
 noSessFlt = input.bool(false, "Investigación: ignorar el filtro horario", group = G_SES)
+preLon    = input.session("2200-0500", "Dibujar swings de London formados en", group = G_SES)
+preNY     = input.session("0530-1100", "Dibujar swings de NY formados en", group = G_SES)
 onePerSes = input.bool(false, "Una señal por sesión", group = G_SES)
 dMon = input.bool(true, "L", group = G_SES, inline = "d")
 dTue = input.bool(true, "M", group = G_SES, inline = "d")
@@ -119,6 +121,7 @@ inLon = not na(time(timeframe.period, sessLon, tz))
 inNY  = not na(time(timeframe.period, sessNY, tz))
 dow   = dayofweek(time, tz)
 dayOk = (dow == dayofweek.monday and dMon) or (dow == dayofweek.tuesday and dTue) or (dow == dayofweek.wednesday and dWed) or (dow == dayofweek.thursday and dThu) or (dow == dayofweek.friday and dFri)
+inPre = noSessFlt or (useLon and not na(time(timeframe.period, preLon, tz))) or (useNY and not na(time(timeframe.period, preNY, tz)))
 inSess = noSessFlt ? dayOk : dayOk and ((useLon and inLon) or (useNY and inNY))
 sesStart = inSess and not inSess[1]
 sesName  = noSessFlt ? "24h" : inLon ? "London" : "NY"
@@ -131,13 +134,14 @@ type Zone
     int   kind      // 1 alcista, -1 bajista
     int   tf        // 15 o 60
     int   tForm
+    int   tLeft
     bool  valid = true
     box   bx
 
 var array<Zone> zones = array.new<Zone>()
 
-[h15a, l15a, h15c, l15c, c15] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3], close[1]], lookahead = barmerge.lookahead_on)
-[h60a, l60a, h60c, l60c, c60] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3], close[1]], lookahead = barmerge.lookahead_on)
+[h15a, l15a, h15c, l15c, c15, t15] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3], close[1], time[3]], lookahead = barmerge.lookahead_on)
+[h60a, l60a, h60c, l60c, c60, t60] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3], close[1], time[3]], lookahead = barmerge.lookahead_on)
 new15 = timeframe.change("15")
 new60 = timeframe.change("60")
 
@@ -155,19 +159,19 @@ drawZone(Zone z) =>
                     if ov > 0.8 * math.min(q.top - q.bot, z.top - z.bot)
                         dup := true
             if not dup
-                z.bx := box.new(bar_index, z.top, bar_index + 6, z.bot, border_color = z.kind == 1 ? colFvgUp : colFvgDn,
+                z.bx := box.new(z.tLeft, z.top, time + 30 * 60000, z.bot, xloc = xloc.bar_time, border_color = z.kind == 1 ? colFvgUp : colFvgDn,
                   border_style = z.tf == 60 ? line.style_solid : line.style_dotted, bgcolor = z.kind == 1 ? colFvgUp : colFvgDn,
                   text = z.tf == 60 ? "1h" : "15m", text_size = size.tiny, text_color = color.new(color.gray, 30),
                   text_halign = text.align_right, text_valign = text.align_top)
     0   // valor neutro: evita que el último if sea el valor devuelto
 
-addZone(float ha, float la, float hc, float lc, int tf) =>
+addZone(float ha, float la, float hc, float lc, int tf, int tl) =>
     if la > hc
-        z = Zone.new(la, hc, 1, tf, time)
+        z = Zone.new(la, hc, 1, tf, time, tl)
         zones.push(z)
         drawZone(z)
     else if ha < lc
-        z = Zone.new(lc, ha, -1, tf, time)
+        z = Zone.new(lc, ha, -1, tf, time, tl)
         zones.push(z)
         drawZone(z)
     0   // valor neutro: evita que el último if sea el valor devuelto

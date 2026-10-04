@@ -58,7 +58,7 @@ dirTxt(int d) => d == 1 ? "ALCISTA" : "BAJISTA"
 colOf(int d) => d == 1 ? colBull : colBear
 
 phaseLabel(int bi, float y, string txt, int d) =>
-    if showPhases
+    if showPhases and MODE_B
         label.new(bi, y, txt, color = color.new(color.black, 100), textcolor = colOf(d), size = size.tiny,
           style = d == 1 ? label.style_label_up : label.style_label_down)
     0   // valor neutro: evita que el último if sea el valor devuelto

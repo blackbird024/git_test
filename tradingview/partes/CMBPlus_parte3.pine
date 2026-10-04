@@ -19,13 +19,13 @@ if tfOk and barstate.isconfirmed
             for z in zones
                 if z.valid and z.tf == 15 and ((z.kind == 1 and c15 < z.bot) or (z.kind == -1 and c15 > z.top))
                     killZone(z)
-        addZone(h15a, l15a, h15c, l15c, 15)
+        addZone(h15a, l15a, h15c, l15c, 15, t15)
     if new60
         if invMode == "Cierre HTF"
             for z in zones
                 if z.valid and z.tf == 60 and ((z.kind == 1 and c60 < z.bot) or (z.kind == -1 and c60 > z.top))
                     killZone(z)
-        addZone(h60a, l60a, h60c, l60c, 60)
+        addZone(h60a, l60a, h60c, l60c, 60, t60)
 
     // 2. FVG de 5m: nuevo hueco en esta vela (tercera vela = actual)
     if high < low[2]
@@ -92,8 +92,7 @@ if tfOk and barstate.isconfirmed
                         st.sweepL += 1
                     else
                         st.sweepS += 1
-                if MODE_B or showPhases
-                    phaseLabel(bar_index, s.ext, "S", s.d)
+                phaseLabel(bar_index, s.ext, "S", s.d)
                 if aSweep
                     alert("Barrido " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · nivel " + fmt(lvl) + " · extremo " + fmt(s.ext), alert.freq_once_per_bar_close)
                 if s.htf
@@ -131,7 +130,7 @@ if tfOk and barstate.isconfirmed
                     z.bx.delete()
                 zones.remove(i)
             else if z.valid and not na(z.bx)
-                z.bx.set_right(bar_index + 6)
+                z.bx.set_right(time + 30 * 60000)
 
     // 7. inversión de los FVG de 5m y limpieza
     if gaps.size() > 0
@@ -146,14 +145,14 @@ if tfOk and barstate.isconfirmed
     if not na(ph)
         b = bar_index - pivR
         ext = high[pivR] >= hiWin
-        swings.push(Swing.new(ph, b, bar_index, true, ext, showSwings ? line.new(b, ph, bar_index, ph, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        swings.push(Swing.new(ph, b, bar_index, true, ext, showSwings and inPre[pivR] ? line.new(b, ph, bar_index, ph, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
         lastPivHiBar := b
         if inStats
             st.swings += 1
     if not na(pl)
         b = bar_index - pivR
         ext = low[pivR] <= loWin
-        swings.push(Swing.new(pl, b, bar_index, false, ext, showSwings ? line.new(b, pl, bar_index, pl, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        swings.push(Swing.new(pl, b, bar_index, false, ext, showSwings and inPre[pivR] ? line.new(b, pl, bar_index, pl, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
         lastPivLoBar := b
         if inStats
             st.swings += 1

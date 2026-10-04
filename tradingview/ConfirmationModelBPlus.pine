@@ -59,6 +59,8 @@ sessLon   = input.session("0200-0500", "", group = G_SES, inline = "lon")
 useNY     = input.bool(false, "Nueva York", group = G_SES, inline = "ny")
 sessNY    = input.session("0930-1100", "", group = G_SES, inline = "ny")
 noSessFlt = input.bool(false, "Investigación: ignorar el filtro horario", group = G_SES)
+preLon    = input.session("2200-0500", "Dibujar swings de London formados en", group = G_SES)
+preNY     = input.session("0530-1100", "Dibujar swings de NY formados en", group = G_SES)
 onePerSes = input.bool(false, "Una señal por sesión", group = G_SES)
 dMon = input.bool(true, "L", group = G_SES, inline = "d")
 dTue = input.bool(true, "M", group = G_SES, inline = "d")
@@ -119,6 +121,7 @@ inLon = not na(time(timeframe.period, sessLon, tz))
 inNY  = not na(time(timeframe.period, sessNY, tz))
 dow   = dayofweek(time, tz)
 dayOk = (dow == dayofweek.monday and dMon) or (dow == dayofweek.tuesday and dTue) or (dow == dayofweek.wednesday and dWed) or (dow == dayofweek.thursday and dThu) or (dow == dayofweek.friday and dFri)
+inPre = noSessFlt or (useLon and not na(time(timeframe.period, preLon, tz))) or (useNY and not na(time(timeframe.period, preNY, tz)))
 inSess = noSessFlt ? dayOk : dayOk and ((useLon and inLon) or (useNY and inNY))
 sesStart = inSess and not inSess[1]
 sesName  = noSessFlt ? "24h" : inLon ? "London" : "NY"
@@ -131,13 +134,14 @@ type Zone
     int   kind      // 1 alcista, -1 bajista
     int   tf        // 15 o 60
     int   tForm
+    int   tLeft
     bool  valid = true
     box   bx
 
 var array<Zone> zones = array.new<Zone>()
 
-[h15a, l15a, h15c, l15c, c15] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3], close[1]], lookahead = barmerge.lookahead_on)
-[h60a, l60a, h60c, l60c, c60] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3], close[1]], lookahead = barmerge.lookahead_on)
+[h15a, l15a, h15c, l15c, c15, t15] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3], close[1], time[3]], lookahead = barmerge.lookahead_on)
+[h60a, l60a, h60c, l60c, c60, t60] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3], close[1], time[3]], lookahead = barmerge.lookahead_on)
 new15 = timeframe.change("15")
 new60 = timeframe.change("60")
 
@@ -155,19 +159,19 @@ drawZone(Zone z) =>
                     if ov > 0.8 * math.min(q.top - q.bot, z.top - z.bot)
                         dup := true
             if not dup
-                z.bx := box.new(bar_index, z.top, bar_index + 6, z.bot, border_color = z.kind == 1 ? colFvgUp : colFvgDn,
+                z.bx := box.new(z.tLeft, z.top, time + 30 * 60000, z.bot, xloc = xloc.bar_time, border_color = z.kind == 1 ? colFvgUp : colFvgDn,
                   border_style = z.tf == 60 ? line.style_solid : line.style_dotted, bgcolor = z.kind == 1 ? colFvgUp : colFvgDn,
                   text = z.tf == 60 ? "1h" : "15m", text_size = size.tiny, text_color = color.new(color.gray, 30),
                   text_halign = text.align_right, text_valign = text.align_top)
     0   // valor neutro: evita que el último if sea el valor devuelto
 
-addZone(float ha, float la, float hc, float lc, int tf) =>
+addZone(float ha, float la, float hc, float lc, int tf, int tl) =>
     if la > hc
-        z = Zone.new(la, hc, 1, tf, time)
+        z = Zone.new(la, hc, 1, tf, time, tl)
         zones.push(z)
         drawZone(z)
     else if ha < lc
-        z = Zone.new(lc, ha, -1, tf, time)
+        z = Zone.new(lc, ha, -1, tf, time, tl)
         zones.push(z)
         drawZone(z)
     0   // valor neutro: evita que el último if sea el valor devuelto
@@ -291,7 +295,7 @@ dirTxt(int d) => d == 1 ? "ALCISTA" : "BAJISTA"
 colOf(int d) => d == 1 ? colBull : colBear
 
 phaseLabel(int bi, float y, string txt, int d) =>
-    if showPhases
+    if showPhases and MODE_B
         label.new(bi, y, txt, color = color.new(color.black, 100), textcolor = colOf(d), size = size.tiny,
           style = d == 1 ? label.style_label_up : label.style_label_down)
     0   // valor neutro: evita que el último if sea el valor devuelto
@@ -466,13 +470,13 @@ if tfOk and barstate.isconfirmed
             for z in zones
                 if z.valid and z.tf == 15 and ((z.kind == 1 and c15 < z.bot) or (z.kind == -1 and c15 > z.top))
                     killZone(z)
-        addZone(h15a, l15a, h15c, l15c, 15)
+        addZone(h15a, l15a, h15c, l15c, 15, t15)
     if new60
         if invMode == "Cierre HTF"
             for z in zones
                 if z.valid and z.tf == 60 and ((z.kind == 1 and c60 < z.bot) or (z.kind == -1 and c60 > z.top))
                     killZone(z)
-        addZone(h60a, l60a, h60c, l60c, 60)
+        addZone(h60a, l60a, h60c, l60c, 60, t60)
 
     // 2. FVG de 5m: nuevo hueco en esta vela (tercera vela = actual)
     if high < low[2]
@@ -539,8 +543,7 @@ if tfOk and barstate.isconfirmed
                         st.sweepL += 1
                     else
                         st.sweepS += 1
-                if MODE_B or showPhases
-                    phaseLabel(bar_index, s.ext, "S", s.d)
+                phaseLabel(bar_index, s.ext, "S", s.d)
                 if aSweep
                     alert("Barrido " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · nivel " + fmt(lvl) + " · extremo " + fmt(s.ext), alert.freq_once_per_bar_close)
                 if s.htf
@@ -578,7 +581,7 @@ if tfOk and barstate.isconfirmed
                     z.bx.delete()
                 zones.remove(i)
             else if z.valid and not na(z.bx)
-                z.bx.set_right(bar_index + 6)
+                z.bx.set_right(time + 30 * 60000)
 
     // 7. inversión de los FVG de 5m y limpieza
     if gaps.size() > 0
@@ -593,14 +596,14 @@ if tfOk and barstate.isconfirmed
     if not na(ph)
         b = bar_index - pivR
         ext = high[pivR] >= hiWin
-        swings.push(Swing.new(ph, b, bar_index, true, ext, showSwings ? line.new(b, ph, bar_index, ph, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        swings.push(Swing.new(ph, b, bar_index, true, ext, showSwings and inPre[pivR] ? line.new(b, ph, bar_index, ph, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
         lastPivHiBar := b
         if inStats
             st.swings += 1
     if not na(pl)
         b = bar_index - pivR
         ext = low[pivR] <= loWin
-        swings.push(Swing.new(pl, b, bar_index, false, ext, showSwings ? line.new(b, pl, bar_index, pl, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        swings.push(Swing.new(pl, b, bar_index, false, ext, showSwings and inPre[pivR] ? line.new(b, pl, bar_index, pl, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
         lastPivLoBar := b
         if inStats
             st.swings += 1
