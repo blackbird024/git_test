@@ -79,7 +79,9 @@ showInv    = input.bool(false, "FVG HTF invalidados", group = G_VIS, inline = "v
 showPhases = input.bool(true, "Etiquetas de fase", group = G_VIS, inline = "v2")
 showFailed = input.bool(false, "Setups fallidos (en modo B siempre)", group = G_VIS)
 showLevels = input.bool(true, "Entrada / stop / objetivo", group = G_VIS)
-showPanel  = input.bool(true, "Panel de diagnóstico", group = G_VIS)
+showPanel  = input.bool(true, "Panel de diagnóstico", group = G_VIS, inline = "pn")
+panelPos   = input.string("Abajo derecha", "", options = ["Arriba derecha", "Abajo derecha", "Arriba izquierda", "Abajo izquierda"], group = G_VIS, inline = "pn")
+bigLabels  = input.bool(false, "Etiqueta de señal con todos los datos (si no, pasa el ratón por encima)", group = G_VIS)
 maxHtfBox  = input.int(40, "Máximo de cajas HTF", minval = 5, maxval = 200, group = G_VIS)
 colBull    = input.color(#C9CED6, "Señal alcista", group = G_VIS, inline = "c1")
 colBear    = input.color(#6A84A3, "Señal bajista", group = G_VIS, inline = "c1")
@@ -398,8 +400,11 @@ drawSignal(Setup s) =>
     col = MODE_C ? color.new(color.gray, 0) : colOf(s.d)
     tag = MODE_C ? cTag : "B+"
     txt = tag + (s.d == 1 ? " ▲" : " ▼") + "\nE " + fmt(entry) + "\nSL " + fmt(stop) + "\nTP " + fmt(tgt) + (na(s.htfTf) ? "" : "\nFVG " + str.tostring(s.htfTf) + "m")
-    label.new(bar_index, s.d == 1 ? s.ext : s.ext, txt, color = color.new(col, 10), textcolor = color.black, size = size.small,
-      style = s.d == 1 ? label.style_label_up : label.style_label_down)
+    // marca compacta pegada a la vela de entrada; el detalle va en el tooltip (pasa el ratón por encima)
+    label.new(bar_index, s.d == 1 ? low : high, bigLabels ? txt : tag, color = color.new(col, 0), textcolor = color.black,
+      size = bigLabels ? size.small : size.tiny, style = s.d == 1 ? label.style_label_up : label.style_label_down, tooltip = txt)
+    // punto exacto de entrada (precio de cierre de la vela de confirmación)
+    label.new(bar_index, entry, "", style = label.style_circle, color = col, size = size.tiny, tooltip = "Entrada " + fmt(entry))
     // nivel barrido, CISD e iFVG de este setup
     line.new(s.swingBar, s.swingPrice, s.sweepBar, s.swingPrice, color = colLiq, width = lineW)
     if s.cisdBar >= 0
@@ -623,7 +628,7 @@ alertcondition(evCisd, "4 · CISD", "CM B+: CISD confirmado en {{ticker}} ({{int
 alertcondition(evSignal, "5 · Setup completo", "CM B+: setup completo en {{ticker}} ({{interval}}) a {{close}}")
 
 // ═════════════════════════════ PANEL ═════════════════════════════
-var table pnl = table.new(position.top_right, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
+var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
 cell(int r, string a, string b, string c) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 10), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small)

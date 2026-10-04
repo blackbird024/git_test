@@ -161,8 +161,11 @@ drawSignal(Setup s) =>
     col = MODE_C ? color.new(color.gray, 0) : colOf(s.d)
     tag = MODE_C ? cTag : "B+"
     txt = tag + (s.d == 1 ? " ▲" : " ▼") + "\nE " + fmt(entry) + "\nSL " + fmt(stop) + "\nTP " + fmt(tgt) + (na(s.htfTf) ? "" : "\nFVG " + str.tostring(s.htfTf) + "m")
-    label.new(bar_index, s.d == 1 ? s.ext : s.ext, txt, color = color.new(col, 10), textcolor = color.black, size = size.small,
-      style = s.d == 1 ? label.style_label_up : label.style_label_down)
+    // marca compacta pegada a la vela de entrada; el detalle va en el tooltip (pasa el ratón por encima)
+    label.new(bar_index, s.d == 1 ? low : high, bigLabels ? txt : tag, color = color.new(col, 0), textcolor = color.black,
+      size = bigLabels ? size.small : size.tiny, style = s.d == 1 ? label.style_label_up : label.style_label_down, tooltip = txt)
+    // punto exacto de entrada (precio de cierre de la vela de confirmación)
+    label.new(bar_index, entry, "", style = label.style_circle, color = col, size = size.tiny, tooltip = "Entrada " + fmt(entry))
     // nivel barrido, CISD e iFVG de este setup
     line.new(s.swingBar, s.swingPrice, s.sweepBar, s.swingPrice, color = colLiq, width = lineW)
     if s.cisdBar >= 0

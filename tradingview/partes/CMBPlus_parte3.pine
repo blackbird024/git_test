@@ -172,7 +172,7 @@ alertcondition(evCisd, "4 · CISD", "CM B+: CISD confirmado en {{ticker}} ({{int
 alertcondition(evSignal, "5 · Setup completo", "CM B+: setup completo en {{ticker}} ({{interval}}) a {{close}}")
 
 // ═════════════════════════════ PANEL ═════════════════════════════
-var table pnl = table.new(position.top_right, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
+var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
 cell(int r, string a, string b, string c) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 10), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small)
