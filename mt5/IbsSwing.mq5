@@ -36,6 +36,7 @@ input group "Tamaño y riesgo"
 input double InpAllocationPct    = 50.0; // % del equity por símbolo
 input double InpExposure         = 1.0;  // Exposición (1.0 = 1x; usar 0.5 para cuentas con 6% de DD máx)
 input double InpMaxDailyLossPct  = 3.5;  // Pérdida diaria máxima: cierra todo y no opera más ese día (0 = no)
+input double InpStopLossPct      = 0.0;  // Stop-loss de seguridad, % bajo la entrada (0 = sin stop; 8 para firmas que exigen stop)
 input bool   InpDemoOnly         = true; // Solo operar en cuentas demo
 input long   InpMagic            = 240601; // Número mágico (distinto en cada copia del EA)
 input string InpLabel            = "NY";   // Etiqueta para distinguir copias (comentario de las órdenes)
@@ -241,7 +242,11 @@ void Decide(int k)
       double lots = LotsFor(symbol);
       if(lots <= 0)
          return;
-      if(trade.Buy(lots, symbol, 0, 0, 0, "IBS " + InpLabel) && trade.ResultRetcode() == TRADE_RETCODE_DONE)
+      double ask = SymbolInfoDouble(symbol, SYMBOL_ASK);
+      double sl  = InpStopLossPct > 0
+                   ? NormalizeDouble(ask * (1 - InpStopLossPct / 100.0), (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS))
+                   : 0;
+      if(trade.Buy(lots, symbol, 0, sl, 0, "IBS " + InpLabel) && trade.ResultRetcode() == TRADE_RETCODE_DONE)
          Notify(StringFormat("COMPRA %s %.2f lotes a %s (IBS %.2f)", symbol, lots,
                              DoubleToString(trade.ResultPrice(), (int)SymbolInfoInteger(symbol, SYMBOL_DIGITS)), ibs));
       else

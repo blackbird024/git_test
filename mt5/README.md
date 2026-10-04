@@ -158,3 +158,15 @@ Sin Telegram: activa **Avisar también en la app MetaTrader del móvil** y pon t
 (app MetaTrader → Ajustes → Mensajes) en **Herramientas → Opciones → Notificaciones**.
 
 El token es privado: no lo compartas ni lo subas a ningún sitio.
+
+## IbsSwing en prop firms
+
+| Firma | Reglas (verificar en su web) | Configuración recomendada |
+|-------|------------------------------|---------------------------|
+| Wall Street Funded | 5% diaria, 8% máx. fija, fin de semana permitido, EAs sí (no en cuentas Instant), **stop-loss obligatorio en 2 minutos** | `InpExposure` 0.75, **`InpStopLossPct` 8** |
+| Noctorial | Fase 1: +8%, 4% diaria, 8% máx.; fase 2: +5%, 10% máx.; fin de semana permitido | `InpExposure` 0.75 |
+| Crypto Fund Trader (2 fases) | 5% diaria, 12% máx., EAs y fin de semana permitidos | `InpExposure` 1.0 |
+| Apex | Cierre obligatorio cada día | **No compatible** con IbsSwing |
+
+Un stop del 8% casi no cambia los resultados (2016-2026: Nasdaq 17.0% anual en vez de 18.6%, oro igual);
+stops más ajustados (3-5%) empeoran la estrategia.
