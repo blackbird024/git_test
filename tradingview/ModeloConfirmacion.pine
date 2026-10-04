@@ -1,0 +1,236 @@
+//@version=6
+// Modelo de Confirmación (London) — mismas reglas que alpaca/confirmation_model_backtest.py.
+// Usar en gráfico de 5 minutos (NQ, ES u oro).
+//   1. Barrido: el precio supera un swing de 5m (3 velas a cada lado) de las últimas 4 horas que nadie había tocado.
+//   2. HTF: la mecha del barrido entra en un FVG de 15m o 1h de los últimos 3 días aún no invalidado.
+//   3. iFVG: un FVG de 5m a favor del barrido (12 velas antes del extremo) que el precio cierra al revés.
+//   4. CISD: cierre más allá de la apertura de la última serie de velas que hicieron el extremo (máx. 12 velas
+//      después del barrido). Entrada al cierre de esa vela, stop en el extremo, objetivo 2R.
+//   5. SMT (opcional): el otro índice no confirma el nuevo extremo.
+// Notas: B = 1+2+4, B+ = B + 3, A = B+ + 5. Solo B+ y A tuvieron resultado positivo en el backtest.
+indicator("Modelo de Confirmación – setup", "ModConf", overlay = true, max_lines_count = 500,
+          max_labels_count = 500, max_bars_back = 500)
+
+TZ = "America/New_York"
+
+grpS = "Sesión (hora de Nueva York)"
+sessSetup     = input.session("0200-0500", "Ventana para buscar setups", group = grpS)
+sessShow      = input.session("2200-0500", "Dibujar swings formados en", group = grpS)
+onePerSession = input.bool(true, "Solo el primer setup con HTF de la sesión (como el backtest)", group = grpS)
+shadeSession  = input.bool(true, "Sombrear la ventana", group = grpS)
+
+grpM = "Modelo"
+len      = input.int(3, "Velas a cada lado del swing", minval = 1, group = grpM)
+keep     = input.int(48, "Vigencia del swing (velas)", minval = 1, group = grpM, tooltip = "48 velas de 5m = 4 horas")
+cisdWin  = input.int(12, "Velas máximas entre barrido y CISD", minval = 2, group = grpM)
+minGrade = input.string("B+", "Nota mínima para avisar", options = ["B", "B+", "A"], group = grpM,
+                        tooltip = "A necesita un símbolo para SMT")
+rr       = input.float(2.0, "Objetivo (R)", minval = 0.5, group = grpM)
+smtSym   = input.symbol("", "Símbolo para SMT (vacío = sin SMT; en NQ usar ES1!)", group = grpM)
+
+grpV = "Vista"
+showSwings  = input.bool(true, "Líneas de swings vivos (desaparecen al barrerse o caducar)", group = grpV)
+showSweeps  = input.bool(true, "Marcar barridos dentro de la ventana", group = grpV)
+showMinor   = input.bool(true, "Mostrar en gris los setups por debajo de la nota mínima", group = grpV)
+alertSweeps = input.bool(false, "Avisar también en cada barrido", group = grpV)
+colHi = input.color(color.red, "Swing high", group = grpV)
+colLo = input.color(color.teal, "Swing low", group = grpV)
+
+inSetup = not na(time(timeframe.period, sessSetup, TZ))
+inShow  = not na(time(timeframe.period, sessShow, TZ))
+bgcolor(shadeSession and inSetup ? color.new(color.blue, 93) : na, title = "Ventana")
+
+// ── FVG de 15m y 1h (velas cerradas, sin repintar)
+type Zone
+    float top
+    float bot
+    int   kind      // 1 alcista, -1 bajista
+    int   t
+
+var array<Zone> zones = array.new<Zone>()
+
+[h15, l15, h15b, l15b] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3]], lookahead = barmerge.lookahead_on)
+[h60, l60, h60b, l60b] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3]], lookahead = barmerge.lookahead_on)
+new15 = ta.change(time("15")) != 0
+new60 = ta.change(time("60")) != 0
+
+addZone(float h1, float l1, float h3, float l3) =>
+    if l1 > h3
+        zones.push(Zone.new(l1, h3, 1, time))
+    else if h1 < l3
+        zones.push(Zone.new(l3, h1, -1, time))
+
+if new15
+    addZone(h15, l15, h15b, l15b)
+if new60
+    addZone(h60, l60, h60b, l60b)
+
+if zones.size() > 0
+    for i = zones.size() - 1 to 0
+        z = zones.get(i)
+        if (z.kind == -1 and close > z.top) or (z.kind == 1 and close < z.bot) or time - z.t > 3 * 86400000
+            zones.remove(i)
+
+htfTouch(int d, float extreme) =>
+    bool ok = false
+    for z in zones
+        if z.kind == -d
+            if d == -1 and extreme >= z.bot and close <= z.top
+                ok := true
+            if d == 1 and extreme <= z.top and close >= z.bot
+                ok := true
+    ok
+
+// apertura de la última serie de velas a favor del barrido que termina en esta vela (nivel del CISD)
+runStartOpen(int d) =>
+    int s = 0
+    while s < 100 and (d == -1 ? close[s + 1] > open[s + 1] : close[s + 1] < open[s + 1])
+        s += 1
+    open[s]
+
+levelShort = runStartOpen(-1)
+levelLong  = runStartOpen(1)
+
+useSmt = smtSym != ""
+[oh, ol] = request.security(useSmt ? smtSym : syminfo.tickerid, timeframe.period, [high, low])
+
+// ── Swings de 5m
+type Swing
+    float price
+    int   bar
+    bool  isHigh
+    line  ln
+
+var array<Swing> swings = array.new<Swing>()
+ph = ta.pivothigh(high, len, len)
+pl = ta.pivotlow(low, len, len)
+drawIt = showSwings and inShow[len]
+
+if not na(ph)
+    swings.push(Swing.new(ph, bar_index - len, true, drawIt ? line.new(bar_index - len, ph, bar_index, ph, color = colHi, style = line.style_dotted) : na))
+if not na(pl)
+    swings.push(Swing.new(pl, bar_index - len, false, drawIt ? line.new(bar_index - len, pl, bar_index, pl, color = colLo, style = line.style_dotted) : na))
+
+// ── Máquina de estados por dirección (-1 corto, 1 largo)
+type Machine
+    int   dir
+    bool  armed = false
+    int   sweepBar
+    int   swingBar
+    int   extBar
+    float ext
+    float level
+    bool  htf = false
+    float runClose      // mínimo (corto) o máximo (largo) de los cierres desde el extremo
+
+var array<Machine> machines = array.from(Machine.new(-1), Machine.new(1))
+var bool done = false
+
+if inSetup and not inSetup[1]
+    done := false
+    for m in machines
+        m.armed := false
+
+gradeRank(string g) => g == "A" ? 3 : g == "B+" ? 2 : 1
+minRank = gradeRank(minGrade)
+
+for m in machines
+    if m.armed
+        d = m.dir
+        if not inSetup or bar_index - m.sweepBar >= cisdWin
+            m.armed := false
+        else if (d == -1 and high > m.ext) or (d == 1 and low < m.ext)
+            m.ext      := d == -1 ? high : low
+            m.extBar   := bar_index
+            m.level    := d == -1 ? levelShort : levelLong
+            m.htf      := htfTouch(d, m.ext)
+            m.runClose := close
+        else
+            m.runClose := d == -1 ? math.min(m.runClose, close) : math.max(m.runClose, close)
+            if (d == -1 and close < m.level) or (d == 1 and close > m.level)
+                m.armed := false
+                if m.htf and not (onePerSession and done)
+                    done := onePerSession
+                    eOff = bar_index - m.extBar
+                    bool ifvg = false
+                    for o = eOff to eOff + 12
+                        if d == -1 and low[o] > high[o + 2] and m.runClose < high[o + 2]
+                            ifvg := true
+                        if d == 1 and high[o] < low[o + 2] and m.runClose > low[o + 2]
+                            ifvg := true
+                    bool smt = false
+                    kOff = bar_index - m.swingBar
+                    if useSmt and kOff - 3 >= eOff
+                        float ref = d == -1 ? -1e10 : 1e10
+                        for o = kOff - 2 to kOff + 2
+                            ref := d == -1 ? math.max(ref, oh[o]) : math.min(ref, ol[o])
+                        float now = d == -1 ? -1e10 : 1e10
+                        for o = eOff to kOff - 3
+                            now := d == -1 ? math.max(now, oh[o]) : math.min(now, ol[o])
+                        smt := d == -1 ? now <= ref : now >= ref
+                    grade = ifvg and smt ? "A" : ifvg ? "B+" : "B"
+                    risk  = math.abs(close - m.ext)
+                    tp    = close + d * rr * risk
+                    side  = d == -1 ? "CORTO" : "LARGO"
+                    lblStyle = d == -1 ? label.style_label_down : label.style_label_up
+                    if gradeRank(grade) >= minRank
+                        x2 = bar_index + 24
+                        line.new(bar_index, close, x2, close, color = color.gray, width = 2)
+                        line.new(bar_index, m.ext, x2, m.ext, color = color.red, width = 2)
+                        line.new(bar_index, tp, x2, tp, color = color.green, width = 2)
+                        txt = (d == -1 ? "🔴 " : "🟢 ") + side + " " + grade
+                              + "\nEntrada " + str.tostring(close, format.mintick)
+                              + "\nStop " + str.tostring(m.ext, format.mintick)
+                              + "\nObjetivo " + str.tostring(tp, format.mintick) + " (" + str.tostring(rr) + "R)"
+                        label.new(bar_index, m.ext, txt, color = d == -1 ? color.new(color.red, 15) : color.new(color.green, 15),
+                                  textcolor = color.white, size = size.normal, style = lblStyle)
+                        alert("Setup " + grade + " " + side + " en " + syminfo.ticker
+                              + " | entrada " + str.tostring(close, format.mintick)
+                              + " | stop " + str.tostring(m.ext, format.mintick)
+                              + " | objetivo " + str.tostring(tp, format.mintick)
+                              + " | riesgo " + str.tostring(risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
+                    else if showMinor
+                        label.new(bar_index, m.ext, grade + " – no operar", color = color.new(color.gray, 100),
+                                  textcolor = color.gray, size = size.small, style = lblStyle)
+
+// ── Barridos de swings (y caducidad)
+int sweptHi = -1
+int sweptLo = -1
+if swings.size() > 0
+    for i = swings.size() - 1 to 0
+        s = swings.get(i)
+        if bar_index - s.bar > keep
+            if not na(s.ln)
+                s.ln.delete()
+            swings.remove(i)
+        else if s.bar + len < bar_index
+            if s.isHigh ? high > s.price : low < s.price
+                if s.isHigh
+                    sweptHi := math.max(sweptHi, s.bar)
+                else
+                    sweptLo := math.max(sweptLo, s.bar)
+                if not na(s.ln)
+                    s.ln.delete()
+                swings.remove(i)
+            else if not na(s.ln)
+                s.ln.set_x2(bar_index)
+
+if inSetup and not (onePerSession and done)
+    for m in machines
+        sb = m.dir == -1 ? sweptHi : sweptLo
+        if not m.armed and sb >= 0
+            m.armed    := true
+            m.sweepBar := bar_index
+            m.swingBar := sb
+            m.extBar   := bar_index
+            m.ext      := m.dir == -1 ? high : low
+            m.level    := m.dir == -1 ? levelShort : levelLong
+            m.htf      := htfTouch(m.dir, m.ext)
+            m.runClose := close
+            if showSweeps
+                label.new(bar_index, m.ext, "barrido", color = color.new(color.white, 100),
+                          textcolor = m.dir == -1 ? colHi : colLo, size = size.tiny,
+                          style = m.dir == -1 ? label.style_label_down : label.style_label_up)
+            if alertSweeps
+                alert("Barrido de swing " + (m.dir == -1 ? "HIGH" : "LOW") + " en " + syminfo.ticker + " — esperar CISD",
+                      alert.freq_once_per_bar_close)
