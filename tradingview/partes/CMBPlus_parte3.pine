@@ -1,0 +1,204 @@
+// ═════════════════════════════ MOTOR (solo con la vela cerrada) ═════════════════════════════
+int sweptHiBar = -1
+float sweptHiPx = na
+int sweptLoBar = -1
+float sweptLoPx = na
+bool firedL = false
+bool firedS = false
+
+if tfOk and barstate.isconfirmed
+    if inStats
+        st.firstT := na(st.firstT) ? time : st.firstT
+        st.lastT := time
+    if sesStart
+        doneSes := false
+
+    // 1. FVG HTF: nuevas zonas (vela HTF recién cerrada) e invalidación por cierre HTF
+    if new15
+        if invMode == "Cierre HTF"
+            for z in zones
+                if z.valid and z.tf == 15 and ((z.kind == 1 and c15 < z.bot) or (z.kind == -1 and c15 > z.top))
+                    killZone(z)
+        addZone(h15a, l15a, h15c, l15c, 15)
+    if new60
+        if invMode == "Cierre HTF"
+            for z in zones
+                if z.valid and z.tf == 60 and ((z.kind == 1 and c60 < z.bot) or (z.kind == -1 and c60 > z.top))
+                    killZone(z)
+        addZone(h60a, l60a, h60c, l60c, 60)
+
+    // 2. FVG de 5m: nuevo hueco en esta vela (tercera vela = actual)
+    if high < low[2]
+        gaps.push(Gap.new(bar_index, low[2], high, -1))
+    if low > high[2]
+        gaps.push(Gap.new(bar_index, high[2], low, 1))
+
+    // 3. barridos de swings (cualquier hora: un swing barrido deja de ser liquidez)
+    if swings.size() > 0
+        for i = swings.size() - 1 to 0
+            sw = swings.get(i)
+            if bar_index - sw.bar > swingLb
+                if not na(sw.ln)
+                    sw.ln.delete()
+                swings.remove(i)
+            else if sw.confBar < bar_index
+                if sw.isHigh ? high > sw.price : low < sw.price
+                    if sw.isHigh and sw.bar > sweptHiBar
+                        sweptHiBar := sw.bar
+                        sweptHiPx := sw.price
+                    if not sw.isHigh and sw.bar > sweptLoBar
+                        sweptLoBar := sw.bar
+                        sweptLoPx := sw.price
+                    if not na(sw.ln)
+                        sw.ln.delete()
+                    swings.remove(i)
+                else if not na(sw.ln)
+                    sw.ln.set_x2(bar_index)
+
+    // 4. avanzar setups activos
+    firedL := step(sL)
+    firedS := step(sS)
+    for s in array.from(sL, sS)
+        if (s.d == 1 and firedL) or (s.d == -1 and firedS)
+            [e, sl, tp] = drawSignal(s)
+            evSignal := true
+            if inStats
+                if s.d == 1
+                    st.sigL += 1
+                else
+                    st.sigS += 1
+            if aSignal
+                alert((MODE_C ? "INVESTIGACIÓN " + cTag : "B+") + " " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · " + sesName + " · entrada " + fmt(e) + " · stop " + fmt(sl) + " · objetivo " + fmt(tp) + " (" + str.tostring(rr) + "R)" + (na(s.htfTf) ? "" : " · FVG " + str.tostring(s.htfTf) + "m"), alert.freq_once_per_bar_close)
+            finish(s, "señal")
+            doneSes := true
+
+    // 5. nuevos barridos → nuevos setups
+    for s in array.from(sL, sS)
+        sb = s.d == 1 ? sweptLoBar : sweptHiBar
+        allowed = s.d == 1 ? ALLOW_L : ALLOW_S
+        justFired = (s.d == 1 and firedL) or (s.d == -1 and firedS)
+        if not s.active and not justFired and sb >= 0 and allowed and inSess and not (onePerSes and doneSes)
+            lvl = s.d == 1 ? sweptLoPx : sweptHiPx
+            if not sweepClose or (s.d == 1 ? close > lvl : close < lvl)
+                s.active := true
+                s.sweepBar := bar_index
+                s.swingBar := sb
+                s.swingPrice := lvl
+                s.alHtf := false
+                setExtreme(s)
+                evSweep := true
+                if inStats
+                    if s.d == 1
+                        st.sweepL += 1
+                    else
+                        st.sweepS += 1
+                if MODE_B or showPhases
+                    phaseLabel(bar_index, s.ext, "S", s.d)
+                if aSweep
+                    alert("Barrido " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · nivel " + fmt(lvl) + " · extremo " + fmt(s.ext), alert.freq_once_per_bar_close)
+                if s.htf
+                    s.alHtf := true
+                    s.htfAlertBar := bar_index
+                    if MODE_B
+                        phaseLabel(bar_index, s.ext, "H" + str.tostring(s.htfTf), s.d)
+
+    // alertas de fase (una vez por setup y fase)
+    for s in array.from(sL, sS)
+        if s.active
+            if s.htf and s.htfAlertBar == bar_index
+                evHtf := true
+                if aHtf
+                    alert("Entrega HTF " + dirTxt(s.d) + " · " + syminfo.ticker + " · FVG " + str.tostring(s.htfTf) + "m " + fmt(s.htfBot) + "–" + fmt(s.htfTop) + " · penetración " + str.tostring(math.round(s.htfPen * 100)) + "%", alert.freq_once_per_bar_close)
+            if s.ifvgBar == bar_index
+                evIfvg := true
+                if aIfvg
+                    alert("iFVG " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · cierre " + fmt(close) + " más allá de " + fmt(s.usedGap.edge), alert.freq_once_per_bar_close)
+            if s.cisdBar == bar_index
+                evCisd := true
+                if aCisd
+                    alert("CISD " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · cierre " + fmt(close) + " más allá de " + fmt(s.level), alert.freq_once_per_bar_close)
+
+    // 6. invalidación de FVG HTF por cierre de 5m o por mecha (después de usarlos en esta vela) y caducidad
+    if zones.size() > 0
+        for i = zones.size() - 1 to 0
+            z = zones.get(i)
+            if z.valid and invMode == "Cierre 5m" and ((z.kind == 1 and close < z.bot) or (z.kind == -1 and close > z.top))
+                killZone(z)
+            if z.valid and invMode == "Mecha" and ((z.kind == 1 and low < z.bot) or (z.kind == -1 and high > z.top))
+                killZone(z)
+            if time - z.tForm > htfDays * DAY_MS
+                if not na(z.bx)
+                    z.bx.delete()
+                zones.remove(i)
+            else if z.valid and not na(z.bx)
+                z.bx.set_right(bar_index + 6)
+
+    // 7. inversión de los FVG de 5m y limpieza
+    if gaps.size() > 0
+        for i = gaps.size() - 1 to 0
+            g = gaps.get(i)
+            if g.invBar < 0 and g.bar < bar_index and ((g.dir == -1 and close > g.edge) or (g.dir == 1 and close < g.edge))
+                g.invBar := bar_index
+            if bar_index - g.bar > ifvgLb + winBars + 300
+                gaps.remove(i)
+
+    // 8. nuevos swings confirmados (se añaden al final: no pueden barrerse en su propia vela)
+    if not na(ph)
+        b = bar_index - pivR
+        ext = high[pivR] >= hiWin
+        swings.push(Swing.new(ph, b, bar_index, true, ext, showSwings ? line.new(b, ph, bar_index, ph, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        lastPivHiBar := b
+        if inStats
+            st.swings += 1
+    if not na(pl)
+        b = bar_index - pivR
+        ext = low[pivR] <= loWin
+        swings.push(Swing.new(pl, b, bar_index, false, ext, showSwings ? line.new(b, pl, bar_index, pl, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        lastPivLoBar := b
+        if inStats
+            st.swings += 1
+
+// aviso intrabar opcional (vela sin cerrar): claramente marcado
+if tfOk and aIntra and barstate.isrealtime and not barstate.isconfirmed and inSess
+    for sw in swings
+        if sw.confBar < bar_index and (sw.isHigh ? high > sw.price : low < sw.price)
+            alert("INTRABAR (vela sin cerrar) · posible barrido de swing " + (sw.isHigh ? "high " : "low ") + fmt(sw.price) + " · " + syminfo.ticker, alert.freq_once_per_bar)
+            break
+
+// ═════════════════════════════ ALERTCONDITION (una alerta por condición) ═════════════════════════════
+alertcondition(evSweep, "1 · Barrido", "CM B+: barrido de liquidez en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evHtf, "2 · Entrega HTF", "CM B+: entrega en FVG HTF en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evIfvg, "3 · iFVG", "CM B+: iFVG confirmado en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evCisd, "4 · CISD", "CM B+: CISD confirmado en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evSignal, "5 · Setup completo", "CM B+: setup completo en {{ticker}} ({{interval}}) a {{close}}")
+
+// ═════════════════════════════ PANEL ═════════════════════════════
+var table pnl = table.new(position.top_right, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
+cell(int r, string a, string b, string c) =>
+    pnl.cell(0, r, a, text_color = color.new(color.white, 10), text_size = size.small, text_halign = text.align_left)
+    pnl.cell(1, r, b, text_color = color.white, text_size = size.small)
+    pnl.cell(2, r, c, text_color = color.new(color.gray, 20), text_size = size.small)
+
+pct(int a, int b) => b > 0 ? str.tostring(math.round(100.0 * a / b)) + "%" : "—"
+
+if barstate.islast
+    if not tfOk
+        pnl.cell(0, 0, "⚠️ CM B+ v2 calcula solo en gráfico de 5 minutos", text_color = color.orange)
+    else if showPanel
+        sweeps = st.sweepL + st.sweepS
+        sigs = st.sigL + st.sigS
+        months = na(st.firstT) ? 1.0 : math.max((st.lastT - st.firstT) / (30.44 * DAY_MS), 0.1)
+        cell(0, MODE_A ? "Modo A · B+ estricto" : MODE_B ? "Modo B · diagnóstico" : "Modo C · " + cTag, "", "")
+        cell(1, "Swings confirmados", str.tostring(st.swings), "")
+        cell(2, "Barridos (setups)", str.tostring(sweeps), "▲" + str.tostring(st.sweepL) + " ▼" + str.tostring(st.sweepS))
+        cell(3, "  con FVG HTF", str.tostring(st.htf), pct(st.htf, sweeps))
+        cell(4, "  + iFVG", str.tostring(st.htfIfvg), pct(st.htfIfvg, sweeps))
+        cell(5, MODE_C ? "  señales C" : "  + CISD = B+", str.tostring(sigs), pct(sigs, sweeps))
+        cell(6, "Señales al mes", str.tostring(sigs / months, "#.##"), "▲" + str.tostring(st.sigL) + " ▼" + str.tostring(st.sigS))
+        cell(7, "Expirados sin HTF", str.tostring(st.expHtf), "")
+        cell(8, "Expirados sin iFVG", str.tostring(st.expIfvg), "")
+        cell(9, "Expirados sin CISD", str.tostring(st.expCisd), "")
+        cell(10, "Cortados por fin de sesión", str.tostring(st.expSes), "")
+        cell(11, "Independiente: con iFVG", str.tostring(st.anyIfvg), pct(st.anyIfvg, sweeps))
+        cell(12, "Independiente: con CISD", str.tostring(st.anyCisd), pct(st.anyCisd, sweeps))
+        cell(13, "Meses contados", str.tostring(months, "#.#"), "")

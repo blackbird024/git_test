@@ -1,0 +1,212 @@
+// ═════════════════════════════ SETUP ═════════════════════════════
+type Setup
+    int    d
+    bool   active = false
+    int    sweepBar
+    int    swingBar
+    float  swingPrice
+    int    extBar
+    float  ext
+    bool   htf = false
+    int    htfTf
+    float  htfTop
+    float  htfBot
+    float  htfPen
+    float  level
+    int    levelBar
+    int    ifvgBar = -1
+    int    cisdBar = -1
+    array<Gap> cands
+    Gap    usedGap
+    bool   alHtf = false
+    int    htfAlertBar = -1
+    label  lb
+
+var Setup sL = Setup.new(1)
+var Setup sS = Setup.new(-1)
+var bool doneSes = false
+
+// estadísticas (objeto para poder actualizarlas desde funciones)
+type Stats
+    int swings = 0
+    int sweepL = 0
+    int sweepS = 0
+    int htf = 0
+    int htfIfvg = 0
+    int sigL = 0
+    int sigS = 0
+    int expHtf = 0
+    int expIfvg = 0
+    int expCisd = 0
+    int expSes = 0
+    int anyIfvg = 0
+    int anyCisd = 0
+    int firstT
+    int lastT
+
+var Stats st = Stats.new()
+
+// eventos de esta vela para alertcondition
+bool evSweep = false
+bool evHtf = false
+bool evIfvg = false
+bool evCisd = false
+bool evSignal = false
+
+fmt(float x) => str.tostring(x, format.mintick)
+dirTxt(int d) => d == 1 ? "ALCISTA" : "BAJISTA"
+colOf(int d) => d == 1 ? colBull : colBear
+
+phaseLabel(int bi, float y, string txt, int d) =>
+    if showPhases
+        label.new(bi, y, txt, color = color.new(color.black, 100), textcolor = colOf(d), size = size.tiny,
+          style = d == 1 ? label.style_label_up : label.style_label_down)
+
+htfTouch(int d, float ext) =>
+    bool ok = false
+    int tfHit = na
+    float tp = na
+    float bt = na
+    float pen = na
+    for z in zones
+        if z.valid and z.kind == d and z.tForm <= time and time - z.tForm <= htfDays * DAY_MS and ((z.tf == 15 and use15) or (z.tf == 60 and use60))
+            hit = d == 1 ? (ext <= z.top and close >= z.bot) : (ext >= z.bot and close <= z.top)
+            if hit and not ok
+                ok := true
+                tfHit := z.tf
+                tp := z.top
+                bt := z.bot
+                pen := d == 1 ? (z.top - ext) / (z.top - z.bot) : (ext - z.bot) / (z.top - z.bot)
+    [ok, tfHit, tp, bt, pen]
+
+// candidatos iFVG para un extremo en esta vela
+candidates(int d) =>
+    array<Gap> out = array.new<Gap>()
+    for g in gaps
+        if g.dir == -d and g.bar >= bar_index - ifvgLb and g.bar <= bar_index and (g.invBar < 0 or g.invBar >= bar_index)
+            out.push(g)
+    if out.size() > 1 and ifvgSel != "Cualquiera"
+        Gap best = out.get(0)
+        for g in out
+            if ifvgSel == "Último" and g.bar > best.bar
+                best := g
+            if ifvgSel == "Más cercano" and (d == 1 ? g.edge < best.edge : g.edge > best.edge)
+                best := g
+        out := array.from(best)
+    out
+
+invertedNow(Setup s) =>
+    Gap hitG = na
+    if not na(s.cands)
+        for g in s.cands
+            if (s.d == 1 and close > g.edge) or (s.d == -1 and close < g.edge)
+                hitG := g
+                break
+    hitG
+
+// fija o actualiza el extremo del setup con la vela actual
+setExtreme(Setup s) =>
+    s.extBar := bar_index
+    s.ext := s.d == 1 ? low : high
+    [ok, tfH, tp, bt, pen] = htfTouch(s.d, s.ext)
+    s.htf := ok
+    s.htfTf := tfH
+    s.htfTop := tp
+    s.htfBot := bt
+    s.htfPen := pen
+    s.level := s.d == 1 ? lvlL : lvlS
+    s.levelBar := bar_index - (s.d == 1 ? offL : offS)
+    s.cands := candidates(s.d)
+    s.ifvgBar := -1
+    s.cisdBar := -1
+    s.usedGap := na
+    g = invertedNow(s)
+    if not na(g)
+        s.ifvgBar := bar_index
+        s.usedGap := g
+
+finish(Setup s, string reason) =>
+    // reason: "señal", "expirado", "fin de sesión"
+    if inStats
+        if s.htf
+            st.htf += 1
+            if s.ifvgBar >= 0
+                st.htfIfvg += 1
+        if s.ifvgBar >= 0
+            st.anyIfvg += 1
+        if s.cisdBar >= 0
+            st.anyCisd += 1
+        if reason == "expirado"
+            if REQ_HTF and not s.htf
+                st.expHtf += 1
+            else if REQ_IFVG and s.ifvgBar < 0
+                st.expIfvg += 1
+            else
+                st.expCisd += 1
+        if reason == "fin de sesión"
+            st.expSes += 1
+    if reason != "señal" and SHOW_FAILED and showPhases
+        miss = (REQ_HTF and not s.htf ? " HTF" : "") + (REQ_IFVG and s.ifvgBar < 0 ? " iFVG" : "") + (REQ_CISD and s.cisdBar < 0 ? " CISD" : "")
+        label.new(bar_index, s.d == 1 ? low : high, "✕" + (reason == "fin de sesión" ? " sesión" : " falta" + miss), color = color.new(color.black, 100),
+          textcolor = color.new(color.gray, 20), size = size.tiny, style = s.d == 1 ? label.style_label_up : label.style_label_down)
+    s.active := false
+
+drawSignal(Setup s) =>
+    entry = close
+    stop = s.ext - s.d * stopBuf
+    risk = math.abs(entry - stop)
+    tgt = entry + s.d * rr * risk
+    col = MODE_C ? color.new(color.gray, 0) : colOf(s.d)
+    tag = MODE_C ? cTag : "B+"
+    txt = tag + (s.d == 1 ? " ▲" : " ▼") + "\nE " + fmt(entry) + "\nSL " + fmt(stop) + "\nTP " + fmt(tgt) + (na(s.htfTf) ? "" : "\nFVG " + str.tostring(s.htfTf) + "m")
+    label.new(bar_index, s.d == 1 ? s.ext : s.ext, txt, color = color.new(col, 10), textcolor = color.black, size = size.small,
+      style = s.d == 1 ? label.style_label_up : label.style_label_down)
+    // nivel barrido, CISD e iFVG de este setup
+    line.new(s.swingBar, s.swingPrice, s.sweepBar, s.swingPrice, color = colLiq, width = lineW)
+    if s.cisdBar >= 0
+        line.new(s.levelBar, s.level, bar_index, s.level, color = colCisd, width = lineW, style = line.style_dashed)
+    if not na(s.usedGap)
+        box.new(s.usedGap.bar - 2, math.max(s.usedGap.edge, s.usedGap.far), s.ifvgBar, math.min(s.usedGap.edge, s.usedGap.far),
+          border_color = colIfvg, bgcolor = colIfvg)
+    if showLevels
+        x2 = bar_index + 20
+        line.new(bar_index, entry, x2, entry, color = color.new(color.gray, 20), width = lineW)
+        line.new(bar_index, stop, x2, stop, color = color.new(color.red, 30), width = lineW)
+        line.new(bar_index, tgt, x2, tgt, color = color.new(color.green, 30), width = lineW)
+    [entry, stop, tgt]
+
+// avanza un setup activo una vela; devuelve true si da señal
+step(Setup s) =>
+    bool fired = false
+    if s.active
+        anchor = winFrom == "Extremo" ? s.extBar : s.sweepBar
+        newX = s.d == 1 ? low < s.ext : high > s.ext
+        if not inSess
+            finish(s, "fin de sesión")
+        else if bar_index - anchor > winBars and (not newX or winFrom == "Barrido")
+            finish(s, "expirado")
+        else if newX
+            hadHtf = s.htf
+            setExtreme(s)
+            if s.htf and not hadHtf and not s.alHtf
+                s.alHtf := true
+                s.htfAlertBar := bar_index
+                if MODE_B
+                    phaseLabel(bar_index, s.ext, "H" + str.tostring(s.htfTf), s.d)
+        else
+            if s.ifvgBar < 0
+                g = invertedNow(s)
+                if not na(g)
+                    s.ifvgBar := bar_index
+                    s.usedGap := g
+                    if MODE_B
+                        phaseLabel(bar_index, s.d == 1 ? low : high, "i", s.d)
+            if s.cisdBar < 0 and (s.d == 1 ? close > s.level : close < s.level)
+                s.cisdBar := bar_index
+                if MODE_B
+                    phaseLabel(bar_index, s.d == 1 ? low : high, "C", s.d)
+            ok = (not REQ_HTF or s.htf) and (not REQ_IFVG or s.ifvgBar >= 0) and (not REQ_CISD or s.cisdBar >= 0)
+            if ok and not (onePerSes and doneSes)
+                fired := true
+    fired
+
