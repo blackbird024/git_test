@@ -296,6 +296,8 @@ if barstate.isconfirmed
         int nH = 0
         int nL = 0
         for i = lv.size() - 1 to 0
+            if i < 0
+                break
             L = lv.get(i)
             if str.startswith(L.name, "15M")
                 old = time - L.tCreated > 86400000
