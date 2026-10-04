@@ -350,13 +350,20 @@ cPDH = isSwept("PDH") ? color.new(color.gray, 55) : colLiq
 cPDL = isSwept("PDL") ? color.new(color.gray, 55) : colLiq
 cAH = isSwept("ASIA H") ? color.new(color.gray, 55) : colLiq
 cAL = isSwept("ASIA L") ? color.new(color.gray, 55) : colLiq
-plot(showPD and not useObj ? brk(pdh) : na, "PDH", cPDH, lineW + 1, plot.style_linebr)
-plot(showPD and not useObj ? brk(pdl) : na, "PDL", cPDL, lineW + 1, plot.style_linebr)
-plot(showAsia and not useObj and not inAsia ? brk(asiaH) : na, "Asia H", cAH, lineW, plot.style_linebr)
-plot(showAsia and not useObj and not inAsia ? brk(asiaL) : na, "Asia L", cAL, lineW, plot.style_linebr)
-plot(showAsia and not useObj and not inAsia ? brk(asiaM) : na, "Asia Mid", color.new(colLiq, 60), 1, plot.style_linebr)
-plot(show4hHL and not useObj ? brk(h4H) : na, "4H H", color.new(col4h, 40), 1, plot.style_linebr)
-plot(show4hHL and not useObj ? brk(h4L) : na, "4H L", color.new(col4h, 40), 1, plot.style_linebr)
+bPDH = brk(pdh)
+bPDL = brk(pdl)
+bAH = brk(asiaH)
+bAL = brk(asiaL)
+bAM = brk(asiaM)
+b4H = brk(h4H)
+b4L = brk(h4L)
+plot(showPD and not useObj ? bPDH : na, "PDH", cPDH, lineW + 1, plot.style_linebr)
+plot(showPD and not useObj ? bPDL : na, "PDL", cPDL, lineW + 1, plot.style_linebr)
+plot(showAsia and not useObj and not inAsia ? bAH : na, "Asia H", cAH, lineW, plot.style_linebr)
+plot(showAsia and not useObj and not inAsia ? bAL : na, "Asia L", cAL, lineW, plot.style_linebr)
+plot(showAsia and not useObj and not inAsia ? bAM : na, "Asia Mid", color.new(colLiq, 60), 1, plot.style_linebr)
+plot(show4hHL and not useObj ? b4H : na, "4H H", color.new(col4h, 40), 1, plot.style_linebr)
+plot(show4hHL and not useObj ? b4L : na, "4H L", color.new(col4h, 40), 1, plot.style_linebr)
 
 alertcondition(evSweep, "Liquidity swept", "Liquidez barrida en London · {{ticker}} · {{close}}")
 alertcondition(evPDH, "PDH swept", "PDH barrido en London · {{ticker}} · {{close}}")
