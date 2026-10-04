@@ -1,0 +1,702 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// Daily CRT + Reversal / Continuation + Confirmation Model B+ — indicador de secuencia (5m)
+// Misma lógica que alpaca/dcrt_bplus_engine.py.
+//
+// Pregunta que responde: ¿en qué parte de la secuencia estoy y qué operación puedo buscar ahora?
+//   Daily fuerte (vela cerrada) → PDH/PDL → primero el REVERSAL en el lado del sesgo
+//   (Daily alcista: corto en el PDH) → confirmado (cierre de vuelta dentro + CISD) o FALLIDO
+//   (CISD con cierre todavía fuera, o expira la ventana) → si falla, solo CONTINUACIÓN a favor
+//   del Daily (retroceso a POI + CISD) → B+ como confirmación de entrada → stop en la invalidación, 2R fijo.
+// Modelos: A reversal · B + continuación · C + B+ (liquidez, iFVG, CISD) · D + FVG HTF de 15m/1h.
+// Sin repintado: todo se evalúa con la vela de 5m cerrada; el Daily, 15m y 1h solo con velas ya cerradas.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("Daily CRT + B+ (secuencia)", "DCRT B+", overlay = true, scale = scale.right, max_labels_count = 500,
+  max_lines_count = 500, max_boxes_count = 200, max_bars_back = 600)
+
+// ═════════════════════════════ AJUSTES ═════════════════════════════
+G_M = "Modelo"
+modelIn = input.string("D · + FVG HTF", "Modelo", options = ["A · reversal", "B · + continuación", "C · + B+ sin HTF", "D · + FVG HTF"], group = G_M)
+entryAt = input.string("Apertura siguiente", "Entrada", options = ["Apertura siguiente", "Cierre de la confirmación"], group = G_M)
+rr      = input.float(2.0, "Objetivo (R)", minval = 0.5, step = 0.5, group = G_M)
+stopBuf = input.float(0.0, "Buffer del stop (puntos)", minval = 0, group = G_M)
+showRun = input.bool(false, "Mostrar runner al lado opuesto del rango (solo visual)", group = G_M)
+
+G_D = "Daily"
+bodyMin   = input.float(0.5, "Cuerpo / rango mínimo", minval = 0, maxval = 1, step = 0.05, group = G_D)
+closeDist = input.float(0.25, "Distancia máx. del cierre al extremo (fracción del rango)", minval = 0, maxval = 1, step = 0.05, group = G_D)
+abovePrev = input.bool(false, "Exigir cierre más allá del extremo del Daily anterior", group = G_D)
+
+G_R = "Reversal y continuación"
+minSweep = input.float(0.0, "Barrido mínimo más allá de PDH/PDL (puntos)", minval = 0, group = G_R)
+revWin   = input.int(12, "Ventana del reversal (velas de 5m desde el extremo)", minval = 2, maxval = 60, group = G_R)
+contWin  = input.int(12, "Ventana del CISD de continuación (velas desde el mínimo del retroceso)", minval = 2, maxval = 60, group = G_R)
+poiFvg   = input.bool(true, "POI: FVG (5m, 15m, 1h)", group = G_R, inline = "poi")
+poiSwing = input.bool(true, "swing", group = G_R, inline = "poi")
+poiOb    = input.bool(true, "order block", group = G_R, inline = "poi")
+
+G_B = "B+"
+ifvgLb  = input.int(12, "iFVG: buscar hasta N velas antes del extremo", minval = 3, maxval = 60, group = G_B)
+pivLen  = input.int(3, "Swings de 5m (velas a cada lado)", minval = 1, maxval = 10, group = G_B)
+htfDays = input.float(3.0, "FVG HTF: antigüedad máxima (días)", minval = 0.5, step = 0.5, group = G_B)
+
+G_S = "Sesiones"
+tz       = input.string("America/New_York", "Zona horaria", group = G_S)
+useKZ    = input.bool(true, "London killzone", group = G_S, inline = "kz")
+sessKZ   = input.session("0200-0500", "", group = G_S, inline = "kz")
+exitKZ   = input.int(11, "salida (h)", group = G_S, inline = "kz")
+useNY    = input.bool(false, "Nueva York", group = G_S, inline = "ny")
+sessNY   = input.session("0930-1100", "", group = G_S, inline = "ny")
+exitNY   = input.int(16, "salida (h)", group = G_S, inline = "ny")
+useCus   = input.bool(false, "Personalizada", group = G_S, inline = "cu")
+sessCus  = input.session("0300-1200", "", group = G_S, inline = "cu")
+exitCus  = input.int(12, "salida (h)", group = G_S, inline = "cu")
+noFilter = input.bool(false, "Investigación: sin filtro de sesión (salida al final del día)", group = G_S)
+
+G_V = "Visual"
+showLv   = input.bool(true, "PDH / PDL", group = G_V, inline = "v1")
+showSeq  = input.bool(true, "Barrido, CISD, reversal ✓/✗", group = G_V, inline = "v1")
+showPoi  = input.bool(true, "POI y FVG de la entrada", group = G_V, inline = "v2")
+showLvl  = input.bool(true, "Entrada / stop / objetivo", group = G_V, inline = "v2")
+showDiag = input.bool(true, "Panel de diagnóstico", group = G_V, inline = "v3")
+panelPos = input.string("Abajo derecha", "", options = ["Arriba derecha", "Abajo derecha", "Arriba izquierda", "Abajo izquierda"], group = G_V, inline = "v3")
+colBull  = input.color(#C9CED6, "Alcista", group = G_V, inline = "c1")
+colBear  = input.color(#6A84A3, "Bajista", group = G_V, inline = "c1")
+colLiq   = input.color(#A89A5B, "Liquidez", group = G_V, inline = "c2")
+colCisd  = input.color(#E6E6E6, "CISD", group = G_V, inline = "c2")
+colFvgUp = input.color(color.new(#2E8C86, 80), "FVG HTF alcista", group = G_V, inline = "c3")
+colFvgDn = input.color(color.new(#6A55A0, 80), "FVG HTF bajista", group = G_V, inline = "c3")
+colOff   = input.color(#4A4A4A, "Invalidado", group = G_V, inline = "c4")
+lineW    = input.int(1, "Grosor", minval = 1, maxval = 4, group = G_V, inline = "c4")
+
+// ═════════════════════════════ CONSTANTES ═════════════════════════════
+M_CONT = modelIn != "A · reversal"
+M_BP   = modelIn == "C · + B+ sin HTF" or modelIn == "D · + FVG HTF"
+M_HTF  = modelIn == "D · + FVG HTF"
+tfOk   = timeframe.isminutes and timeframe.multiplier == 5
+DAY_MS = 86400000
+
+fmt(float x) => str.tostring(x, format.mintick)
+colOf(int d) => d == 1 ? colBull : colBear
+dirTxt(int d) => d == 1 ? "LONG" : "SHORT"
+yes(bool b) => b ? "✓" : "✗"
+
+// ═════════════════════════════ SESIONES ═════════════════════════════
+inKZ  = useKZ and not na(time(timeframe.period, sessKZ, tz))
+inNY  = useNY and not na(time(timeframe.period, sessNY, tz))
+inCus = useCus and not na(time(timeframe.period, sessCus, tz))
+inSess = noFilter or inKZ or inNY or inCus
+sesExitH = noFilter ? 17 : inKZ ? exitKZ : inNY ? exitNY : exitCus
+sesName = noFilter ? "sin filtro" : inKZ ? "London" : inNY ? "NY" : "personalizada"
+
+// ═════════════════════════════ DAILY (solo velas cerradas) ═════════════════════════════
+[dO, dH, dL, dC, dH2, dL2] = request.security(syminfo.tickerid, "D", [open[1], high[1], low[1], close[1], high[2], low[2]], lookahead = barmerge.lookahead_on)
+newDay = timeframe.change("D")
+
+// ═════════════════════════════ FVG HTF de 15m y 1h (solo velas cerradas) ═════════════════════════════
+type Zone
+    float top
+    float bot
+    int   kind
+    int   tf
+    int   tForm
+    int   tLeft
+    bool  valid = true
+
+var array<Zone> zones = array.new<Zone>()
+[a15, b15, c15h, d15l, e15, t15] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3], close[1], time[3]], lookahead = barmerge.lookahead_on)
+[a60, b60, c60h, d60l, e60, t60] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3], close[1], time[3]], lookahead = barmerge.lookahead_on)
+new15 = timeframe.change("15")
+new60 = timeframe.change("60")
+
+addZone(float ha, float la, float hc, float lc, int tf, int tl) =>
+    if la > hc
+        zones.push(Zone.new(la, hc, 1, tf, time, tl))
+    if ha < lc
+        zones.push(Zone.new(lc, ha, -1, tf, time, tl))
+    0
+
+// ¿la vela actual con extremo `ext` entra en un FVG HTF activo del tipo d? → [ok, tf, top, bot, tLeft]
+htfTouch(int d, float ext) =>
+    bool ok = false
+    int tf = na
+    float tp = na
+    float bt = na
+    int tl = na
+    for z in zones
+        if not ok and z.valid and z.kind == d and z.tForm <= time and time - z.tForm <= htfDays * DAY_MS
+            if (d == 1 and ext <= z.top and close >= z.bot) or (d == -1 and ext >= z.bot and close <= z.top)
+                ok := true
+                tf := z.tf
+                tp := z.top
+                bt := z.bot
+                tl := z.tLeft
+    [ok, tf, tp, bt, tl]
+
+// ═════════════════════════════ FVG DE 5m Y SWINGS ═════════════════════════════
+type Gap
+    int   bar
+    float edge      // límite que, cerrado al otro lado, invierte el FVG (alcista: high[2]; bajista: low[2])
+    float far
+    int   dir       // 1 alcista, -1 bajista
+    int   invBar = -1
+
+var array<Gap> gaps = array.new<Gap>()
+ph = ta.pivothigh(high, pivLen, pivLen)
+pl = ta.pivotlow(low, pivLen, pivLen)
+atr14 = ta.atr(14)
+
+type Piv
+    float price
+    int   bar
+    bool  isHigh
+
+var array<Piv> pivs = array.new<Piv>()
+var int lastSweptLoBar = -1
+var int lastSweptHiBar = -1
+
+// candidatos iFVG: FVG de dirección dmove formados en las ifvgLb velas hasta ahora y sin invertir
+cands(int dmove) =>
+    array<Gap> out = array.new<Gap>()
+    for g in gaps
+        if g.dir == dmove and g.bar >= bar_index - ifvgLb and g.bar <= bar_index and (g.invBar < 0 or g.invBar >= bar_index)
+            out.push(g)
+    out
+
+invertedBy(array<Gap> cs, int dmove) =>
+    Gap hit = na
+    if not na(cs)
+        for g in cs
+            if na(hit) and ((dmove == 1 and close < g.edge) or (dmove == -1 and close > g.edge))
+                hit := g
+    hit
+
+// apertura de la primera vela de la última serie (alcista si bull) que termina en la vela `off` velas atrás
+seriesOpen(bool bull, int off) =>
+    isS0 = bull ? close[off] > open[off] : close[off] < open[off]
+    int s = isS0 ? off : off + 1
+    isS = bull ? close[s] > open[s] : close[s] < open[s]
+    if not isS
+        s := off
+    else
+        while s < 400 and (bull ? close[s + 1] > open[s + 1] : close[s + 1] < open[s + 1])
+            s += 1
+    open[s]
+
+// ═════════════════════════════ ESTADO ═════════════════════════════
+type Stats
+    int dBull = 0
+    int dBear = 0
+    int dNeutral = 0
+    int sweepH = 0
+    int sweepL = 0
+    int revBull = 0
+    int revBear = 0
+    int failBull = 0
+    int failBear = 0
+    int contSetups = 0
+    int entRev = 0
+    int entCont = 0
+    int longs = 0
+    int shorts = 0
+    int rjHtf = 0
+    int rjIfvg = 0
+    int rjCisd = 0
+    int rjPoi = 0
+    int rjLiq = 0
+    int rjSes = 0
+    int rjExp = 0
+
+var Stats st = Stats.new()
+
+var int    bias = 0
+var float  pdh = na
+var float  pdl = na
+var string state = "NEUTRAL"
+var string why = ""
+// reversal
+var int    extBar = na
+var float  extPx = na
+var bool   rHtf = false
+var int    rHtfTf = na
+var float  rHtfTop = na
+var float  rHtfBot = na
+var int    rHtfL = na
+var bool   rIfvg = false
+var Gap    rGap = na
+var array<Gap> rC = na
+var bool   rInside = false
+var bool   rCisd = false
+var float  rLev = na
+// continuación
+var int    hiBar = na
+var float  hiPx = na
+var int    pBar = na
+var float  pPx = na
+var int    pDead = na
+var string poi = ""
+var bool   liq = false
+var bool   cHtf = false
+var int    cHtfTf = na
+var float  cHtfTop = na
+var float  cHtfBot = na
+var int    cHtfL = na
+var bool   cIfvg = false
+var Gap    cGap = na
+var array<Gap> cC = na
+var bool   cCisd = false
+var float  obHi = na
+var float  obLo = na
+// operación
+var int    tDir = 0
+var bool   tPending = false
+var float  tEntry = na
+var float  tStop = na
+var float  tTgt = na
+var int    tExitT = na
+var string tKind = ""
+var float  tStopRef = na
+// dibujos del día
+var line   lnH = na
+var line   lnL = na
+
+// eventos para alertcondition
+bool evDBull = false
+bool evDBear = false
+bool evSwH = false
+bool evSwL = false
+bool evRevOk = false
+bool evRevFail = false
+bool evCont = false
+bool evEntRev = false
+bool evEntCont = false
+
+lbl(float y, string txt, color col, bool up, string tip) =>
+    if showSeq
+        label.new(bar_index, y, txt, color = color.new(color.black, 100), textcolor = col, size = size.tiny,
+          style = up ? label.style_label_up : label.style_label_down, tooltip = tip)
+    0
+
+// ═════════════════════════════ MOTOR (vela de 5m cerrada) ═════════════════════════════
+if tfOk and barstate.isconfirmed
+    // ── 1. nuevo día: sesgo con la vela Daily ya cerrada
+    if newDay
+        rng = dH - dL
+        body = rng > 0 ? math.abs(dC - dO) / rng : 0.0
+        isBull = rng > 0 and dC > dO and body >= bodyMin and (dH - dC) / rng <= closeDist and (not abovePrev or dC > dH2)
+        isBear = rng > 0 and dC < dO and body >= bodyMin and (dC - dL) / rng <= closeDist and (not abovePrev or dC < dL2)
+        bias := isBull ? 1 : isBear ? -1 : 0
+        pdh := dH
+        pdl := dL
+        state := bias == 1 ? "BULLISH_DAILY_WAITING_REVERSAL" : bias == -1 ? "BEARISH_DAILY_WAITING_REVERSAL" : "NEUTRAL"
+        why := bias == 0 ? "Daily sin cierre fuerte: no se busca nada hoy" : "Esperando barrido del " + (bias == 1 ? "PDH" : "PDL")
+        if bias == 1
+            st.dBull += 1
+            evDBull := true
+            alert("Daily ALCISTA fuerte · " + syminfo.ticker + " · PDH " + fmt(pdh) + " · PDL " + fmt(pdl) + " · primero: SHORT reversal en el PDH", alert.freq_once_per_bar_close)
+        else if bias == -1
+            st.dBear += 1
+            evDBear := true
+            alert("Daily BAJISTA fuerte · " + syminfo.ticker + " · PDH " + fmt(pdh) + " · PDL " + fmt(pdl) + " · primero: LONG reversal en el PDL", alert.freq_once_per_bar_close)
+        else
+            st.dNeutral += 1
+        if showLv
+            lnH := line.new(bar_index, pdh, bar_index + 1, pdh, color = bias == 1 ? colBull : color.new(colBull, 60), width = lineW)
+            lnL := line.new(bar_index, pdl, bar_index + 1, pdl, color = bias == -1 ? colBear : color.new(colBear, 60), width = lineW)
+            label.new(bar_index, bias == -1 ? pdl : pdh, bias == 1 ? "Daily ▲" : bias == -1 ? "Daily ▼" : "Daily –", color = color.new(color.black, 100),
+              textcolor = bias == 1 ? colBull : bias == -1 ? colBear : colOff, size = size.tiny, style = label.style_label_left)
+        // nada cruza de un día a otro salvo una operación abierta
+        extBar := na
+        hiBar := na
+        pBar := na
+        pDead := na
+    if showLv and not na(lnH)
+        lnH.set_x2(bar_index)
+        lnL.set_x2(bar_index)
+
+    // ── 2. FVG HTF: nuevas zonas (vela recién cerrada) e invalidación por cierre de su temporalidad
+    if new15
+        for z in zones
+            if z.valid and z.tf == 15 and ((z.kind == 1 and e15 < z.bot) or (z.kind == -1 and e15 > z.top))
+                z.valid := false
+        addZone(a15, b15, c15h, d15l, 15, t15)
+    if new60
+        for z in zones
+            if z.valid and z.tf == 60 and ((z.kind == 1 and e60 < z.bot) or (z.kind == -1 and e60 > z.top))
+                z.valid := false
+        addZone(a60, b60, c60h, d60l, 60, t60)
+
+    // ── 3. FVG de 5m y swings (barridos de liquidez interna)
+    if high < low[2]
+        gaps.push(Gap.new(bar_index, low[2], high, -1))
+    if low > high[2]
+        gaps.push(Gap.new(bar_index, high[2], low, 1))
+    if pivs.size() > 0
+        for i = pivs.size() - 1 to 0
+            pv = pivs.get(i)
+            if bar_index - pv.bar > 48
+                pivs.remove(i)
+            else if pv.bar + pivLen < bar_index and (pv.isHigh ? high > pv.price : low < pv.price)
+                if pv.isHigh
+                    lastSweptHiBar := bar_index
+                else
+                    lastSweptLoBar := bar_index
+                pivs.remove(i)
+
+    // ── 4. gestión de la operación abierta
+    if tDir != 0
+        if tPending
+            tEntry := open
+            tPending := false
+            risk = (tEntry - tStop) * tDir
+            if risk <= 0
+                tDir := 0
+            else
+                tTgt := tEntry + tDir * rr * risk
+                if showLvl
+                    x2 = bar_index + 24
+                    line.new(bar_index, tEntry, x2, tEntry, color = color.new(color.gray, 20), width = lineW)
+                    line.new(bar_index, tStop, x2, tStop, color = color.new(color.red, 30), width = lineW)
+                    line.new(bar_index, tTgt, x2, tTgt, color = color.new(color.green, 30), width = lineW)
+                    if showRun
+                        line.new(bar_index, tDir == 1 ? pdh : pdl, x2, tDir == 1 ? pdh : pdl, color = color.new(color.green, 70), style = line.style_dotted)
+        if tDir != 0 and not tPending
+            if (tDir == 1 and low <= tStop) or (tDir == -1 and high >= tStop)
+                label.new(bar_index, tStop, "−1R", color = color.new(color.black, 100), textcolor = color.new(color.red, 10), size = size.tiny)
+                tDir := 0
+                state := "TRADE_EXPIRED"
+            else if (tDir == 1 and high >= tTgt) or (tDir == -1 and low <= tTgt)
+                label.new(bar_index, tTgt, "+" + str.tostring(rr) + "R", color = color.new(color.black, 100), textcolor = color.new(color.green, 10), size = size.tiny)
+                tDir := 0
+                state := "TRADE_EXPIRED"
+            else if time >= tExitT
+                label.new(bar_index, close, "⏱ salida", color = color.new(color.black, 100), textcolor = color.gray, size = size.tiny)
+                tDir := 0
+                state := "TRADE_EXPIRED"
+
+    // ── 5. máquina de estados de la secuencia
+    d = bias
+    lvl = d == 1 ? pdh : pdl
+    bool goEntry = false
+    int eDir = 0
+    float eStop = na
+    string eKind = ""
+    string eLiq = ""
+    string eHtf = ""
+    bool justFailed = false
+    if d != 0 and tDir == 0 and state != "TRADE_TRIGGERED" and state != "TRADE_EXPIRED"
+        // 5a. esperando el barrido del nivel del reversal
+        if str.contains(state, "WAITING_REVERSAL")
+            if (d == 1 and high > lvl + minSweep) or (d == -1 and low < lvl - minSweep)
+                state := d == 1 ? "BEARISH_REVERSAL_SETUP" : "BULLISH_REVERSAL_SETUP"
+                extBar := bar_index
+                extPx := d == 1 ? high : low
+                rC := cands(d)
+                [ok, tf, tp, bt, tl] = htfTouch(-d, extPx)
+                rHtf := ok
+                rHtfTf := tf
+                rHtfTop := tp
+                rHtfBot := bt
+                rHtfL := tl
+                rGap := invertedBy(rC, d)
+                rIfvg := not na(rGap)
+                rInside := false
+                rCisd := false
+                why := (d == 1 ? "PDH" : "PDL") + " barrido: esperando cierre dentro + CISD"
+                if d == 1
+                    st.sweepH += 1
+                    evSwH := true
+                else
+                    st.sweepL += 1
+                    evSwL := true
+                lbl(extPx, d == 1 ? "PDH ✓" : "PDL ✓", colLiq, d == -1, "Barrido de " + (d == 1 ? "PDH " : "PDL ") + fmt(lvl) + " · extremo " + fmt(extPx))
+                alert("Barrido del " + (d == 1 ? "PDH " : "PDL ") + fmt(lvl) + " · " + syminfo.ticker + " · buscando " + (d == 1 ? "SHORT" : "LONG") + " reversal", alert.freq_once_per_bar_close)
+        // 5b. reversal en curso
+        if str.contains(state, "REVERSAL_SETUP")
+            if bar_index > extBar and ((d == 1 and high > extPx) or (d == -1 and low < extPx))
+                extBar := bar_index
+                extPx := d == 1 ? high : low
+                rC := cands(d)
+                [ok, tf, tp, bt, tl] = htfTouch(-d, extPx)
+                rHtf := ok
+                rHtfTf := tf
+                rHtfTop := tp
+                rHtfBot := bt
+                rHtfL := tl
+                rGap := invertedBy(rC, d)
+                rIfvg := not na(rGap)
+            else if not rIfvg
+                rGap := invertedBy(rC, d)
+                rIfvg := not na(rGap)
+            rLev := seriesOpen(d == 1, bar_index - extBar)
+            cisdNow = d == 1 ? close < rLev : close > rLev
+            insNow = d == 1 ? close < lvl : close > lvl
+            rInside := rInside or insNow
+            if cisdNow and insNow
+                rCisd := true
+                state := d == 1 ? "BEARISH_REVERSAL_CONFIRMED" : "BULLISH_REVERSAL_CONFIRMED"
+                why := "Reversal confirmado: no se busca continuación hoy"
+                if d == 1
+                    st.revBear += 1
+                else
+                    st.revBull += 1
+                evRevOk := true
+                if showSeq
+                    line.new(bar_index - math.min(bar_index - extBar + 3, 50), rLev, bar_index, rLev, color = colCisd, width = lineW, style = line.style_dashed)
+                lbl(d == 1 ? high : low, "Reversal ✓", colOf(-d), d == -1, "Cierre de vuelta dentro del rango + CISD")
+                alert("Reversal CONFIRMADO · " + syminfo.ticker + " · " + dirTxt(-d) + " permitido en el " + (d == 1 ? "PDH" : "PDL"), alert.freq_once_per_bar_close)
+            else if cisdNow or bar_index - extBar > revWin
+                state := d == 1 ? "BULLISH_REVERSAL_FAILED" : "BEARISH_REVERSAL_FAILED"
+                why := cisdNow ? "CISD con cierre todavía fuera del rango: reversal fallido" : "Ventana agotada sin confirmación: reversal fallido"
+                if d == 1
+                    st.failBull += 1
+                else
+                    st.failBear += 1
+                evRevFail := true
+                lbl(d == 1 ? high : low, "Reversal ✗", colOff, d == -1, why)
+                alert("Reversal FALLIDO · " + syminfo.ticker + " · " + why, alert.freq_once_per_bar_close)
+        // 5c. reversal confirmado: confirmación B+ y entrada
+        if str.contains(state, "REVERSAL_CONFIRMED")
+            if not rIfvg
+                rGap := invertedBy(rC, d)
+                rIfvg := not na(rGap)
+            if M_HTF and not rHtf
+                st.rjHtf += 1
+                why := "Reversal confirmado sin FVG HTF del lado contrario: sin entrada (D)"
+                state := "TRADE_EXPIRED"
+            else if M_BP and not rIfvg
+                if bar_index - extBar > revWin
+                    st.rjIfvg += 1
+                    why := "Reversal confirmado sin iFVG: sin entrada (C/D)"
+                    state := "TRADE_EXPIRED"
+                else
+                    why := "Reversal confirmado: esperando iFVG"
+            else if not inSess
+                st.rjSes += 1
+                why := "Reversal confirmado fuera de sesión: sin entrada"
+                state := "TRADE_EXPIRED"
+            else
+                goEntry := true
+                eDir := -d
+                eStop := extPx
+                eKind := "REVERSAL"
+                eLiq := d == 1 ? "PDH" : "PDL"
+                eHtf := rHtf ? str.tostring(rHtfTf) + "M" : "—"
+                if showPoi and rHtf
+                    box.new(rHtfL, rHtfTop, time, rHtfBot, xloc = xloc.bar_time, border_color = d == 1 ? colFvgDn : colFvgUp, bgcolor = d == 1 ? colFvgDn : colFvgUp)
+                if showPoi and not na(rGap)
+                    box.new(rGap.bar - 2, math.max(rGap.edge, rGap.far), bar_index, math.min(rGap.edge, rGap.far), border_color = colLiq, bgcolor = color.new(colLiq, 85))
+        // 5d. reversal fallido → modo continuación (irreversible hoy)
+        if str.contains(state, "REVERSAL_FAILED")
+            if not M_CONT
+                state := "TRADE_EXPIRED"
+                why := "Modelo A: sin continuación"
+            else
+                state := d == 1 ? "BULLISH_CONTINUATION_SEARCH" : "BEARISH_CONTINUATION_SEARCH"
+                why := "Solo " + dirTxt(d) + ": esperando retroceso a un POI"
+                hiBar := extBar
+                hiPx := extPx
+                pBar := na
+                pDead := na
+                justFailed := true
+                evCont := true
+                alert("Modo CONTINUACIÓN " + dirTxt(d) + " activado · " + syminfo.ticker, alert.freq_once_per_bar_close)
+        // 5e. continuación: nuevo extremo, retroceso, POI, B+ y CISD
+        if str.contains(state, "CONTINUATION") and not justFailed
+            if (d == 1 and high > hiPx) or (d == -1 and low < hiPx)
+                hiBar := bar_index
+                hiPx := d == 1 ? high : low
+                pBar := na
+                state := d == 1 ? "BULLISH_CONTINUATION_SEARCH" : "BEARISH_CONTINUATION_SEARCH"
+                // order block: última vela en contra antes del impulso al nuevo extremo
+                obHi := na
+                obLo := na
+                for k = 1 to 36
+                    if na(obHi) and (d == 1 ? close[k] < open[k] : close[k] > open[k])
+                        obHi := high[k]
+                        obLo := low[k]
+            else if bar_index > hiBar
+                if na(pBar) or (d == 1 and low < pPx) or (d == -1 and high > pPx)
+                    pBar := bar_index
+                    pPx := d == 1 ? low : high
+                    tol = 0.25 * atr14
+                    poi := ""
+                    if poiFvg
+                        for g in gaps
+                            if poi == "" and g.dir == d and g.bar < bar_index and g.bar >= bar_index - 48 and g.invBar < 0
+                                if (d == 1 and pPx <= g.far and close >= g.edge) or (d == -1 and pPx >= g.far and close <= g.edge)
+                                    poi := "FVG 5m"
+                    [okc, tfc, tpc, btc, tlc] = htfTouch(d, pPx)
+                    cHtf := okc
+                    cHtfTf := tfc
+                    cHtfTop := tpc
+                    cHtfBot := btc
+                    cHtfL := tlc
+                    if poiFvg and poi == "" and okc
+                        poi := "FVG " + str.tostring(tfc) + "m"
+                    if poiSwing and poi == ""
+                        if (d == 1 and pPx <= lvl + tol and close >= lvl - tol) or (d == -1 and pPx >= lvl - tol and close <= lvl + tol)
+                            poi := "swing (" + (d == 1 ? "PDH" : "PDL") + ")"
+                        for pv in pivs
+                            if poi == "" and pv.isHigh == (d == 1) and pv.bar < hiBar
+                                if (d == 1 and pv.price < hiPx and pPx <= pv.price + tol and close >= pv.price - tol) or (d == -1 and pv.price > hiPx and pPx >= pv.price - tol and close <= pv.price + tol)
+                                    poi := "swing"
+                    if poiOb and poi == "" and not na(obHi)
+                        if (d == 1 and pPx <= obHi and close >= obLo) or (d == -1 and pPx >= obLo and close <= obHi)
+                            poi := "OB"
+                    liq := d == 1 ? lastSweptLoBar > hiBar : lastSweptHiBar > hiBar
+                    cC := cands(-d)
+                    cGap := na
+                    cIfvg := false
+                    cCisd := false
+                    state := poi != "" ? (d == 1 ? "BULLISH_CONTINUATION_SETUP" : "BEARISH_CONTINUATION_SETUP") : (d == 1 ? "BULLISH_CONTINUATION_SEARCH" : "BEARISH_CONTINUATION_SEARCH")
+                    why := poi != "" ? "Retroceso en POI (" + poi + "): esperando iFVG + CISD" : "Retroceso sin POI todavía"
+                else if pBar != pDead and bar_index - pBar <= contWin
+                    if not cIfvg
+                        cGap := invertedBy(cC, -d)
+                        cIfvg := not na(cGap)
+                    cLev = seriesOpen(d != 1, bar_index - pBar)
+                    if (d == 1 and close > cLev) or (d == -1 and close < cLev)
+                        cCisd := true
+                        pDead := pBar
+                        if poi == ""
+                            st.rjPoi += 1
+                            why := "CISD sin POI: no vale"
+                        else
+                            st.contSetups += 1
+                            if M_BP and not liq
+                                st.rjLiq += 1
+                                why := "Continuación sin barrido de liquidez de 5m"
+                            else if M_BP and not cIfvg
+                                st.rjIfvg += 1
+                                why := "Continuación sin iFVG"
+                            else if M_HTF and not cHtf
+                                st.rjHtf += 1
+                                why := "Continuación sin FVG HTF"
+                            else if not inSess
+                                st.rjSes += 1
+                                why := "Continuación fuera de sesión"
+                            else
+                                goEntry := true
+                                eDir := d
+                                eStop := pPx
+                                eKind := "CONTINUATION"
+                                eLiq := liq ? "SWING" : "—"
+                                eHtf := cHtf ? str.tostring(cHtfTf) + "M" : "—"
+                                if showSeq
+                                    line.new(pBar - 2, cLev, bar_index, cLev, color = colCisd, width = lineW, style = line.style_dashed)
+                                if showPoi and cHtf
+                                    box.new(cHtfL, cHtfTop, time, cHtfBot, xloc = xloc.bar_time, border_color = d == 1 ? colFvgUp : colFvgDn, bgcolor = d == 1 ? colFvgUp : colFvgDn)
+                                if showPoi and not na(cGap)
+                                    box.new(cGap.bar - 2, math.max(cGap.edge, cGap.far), bar_index, math.min(cGap.edge, cGap.far), border_color = colLiq, bgcolor = color.new(colLiq, 85))
+                else if pBar == pDead or bar_index - pBar > contWin
+                    if pBar != pDead and not na(pBar)
+                        st.rjCisd += 1
+                        pDead := pBar
+                        why := "Retroceso sin CISD a tiempo: esperando el siguiente"
+
+    // ── 6. entrada
+    if goEntry
+        tDir := eDir
+        tStop := eStop - eDir * stopBuf
+        tKind := eKind
+        tExitT := timestamp(tz, year(time, tz), month(time, tz), dayofmonth(time, tz), sesExitH, 0)
+        if tExitT <= time
+            tExitT += DAY_MS
+        state := "TRADE_TRIGGERED"
+        why := eKind + " " + dirTxt(eDir) + " en curso"
+        if eKind == "REVERSAL"
+            st.entRev += 1
+            evEntRev := true
+        else
+            st.entCont += 1
+            evEntCont := true
+        if eDir == 1
+            st.longs += 1
+        else
+            st.shorts += 1
+        tPending := true          // con "cierre de la confirmación" se fija justo abajo
+        tip = "MODEL: " + eKind + "\nDIRECTION: " + dirTxt(eDir) + "\nDAILY BIAS: " + (bias == 1 ? "BULLISH" : "BEARISH") + "\nLIQUIDITY: " + eLiq + "\nHTF FVG: " + eHtf + "\niFVG: " + (M_BP ? "CONFIRMED" : "—") + "\nCISD: CONFIRMED\nSTOP: " + fmt(tStop) + "\nTARGET: " + str.tostring(rr) + "R"
+        label.new(bar_index, eDir == 1 ? low : high, (eKind == "REVERSAL" ? "REV " : "CONT ") + (eDir == 1 ? "▲" : "▼"), color = colOf(eDir), textcolor = color.black,
+          size = size.tiny, style = eDir == 1 ? label.style_label_up : label.style_label_down, tooltip = tip)
+        alert("MODEL: " + eKind + " | DIRECTION: " + dirTxt(eDir) + " | DAILY BIAS: " + (bias == 1 ? "BULLISH" : "BEARISH") + " | LIQUIDITY: " + eLiq + " | HTF FVG: " + eHtf + " | iFVG: " + (M_BP ? "CONFIRMED" : "—") + " | CISD: CONFIRMED | ENTRY: " + (entryAt == "Apertura siguiente" ? "apertura siguiente ≈ " : "") + fmt(close) + " | STOP: " + fmt(tStop) + " | TARGET: " + str.tostring(rr) + "R · " + syminfo.ticker + " · " + sesName, alert.freq_once_per_bar_close)
+        if entryAt == "Cierre de la confirmación"
+            tEntry := close
+            tPending := false
+            risk = (tEntry - tStop) * tDir
+            if risk <= 0
+                tDir := 0
+            else
+                tTgt := tEntry + tDir * rr * risk
+                if showLvl
+                    x2 = bar_index + 24
+                    line.new(bar_index, tEntry, x2, tEntry, color = color.new(color.gray, 20), width = lineW)
+                    line.new(bar_index, tStop, x2, tStop, color = color.new(color.red, 30), width = lineW)
+                    line.new(bar_index, tTgt, x2, tTgt, color = color.new(color.green, 30), width = lineW)
+
+    // ── 7. invalidación de FVG de 5m, caducidad de zonas y nuevos pivotes (al final: no se usan en su propia vela)
+    if gaps.size() > 0
+        for i = gaps.size() - 1 to 0
+            g = gaps.get(i)
+            if g.invBar < 0 and g.bar < bar_index and ((g.dir == 1 and close < g.edge) or (g.dir == -1 and close > g.edge))
+                g.invBar := bar_index
+            if bar_index - g.bar > 400
+                gaps.remove(i)
+    if zones.size() > 0
+        for i = zones.size() - 1 to 0
+            if time - zones.get(i).tForm > htfDays * DAY_MS
+                zones.remove(i)
+    if not na(ph)
+        pivs.push(Piv.new(ph, bar_index - pivLen, true))
+    if not na(pl)
+        pivs.push(Piv.new(pl, bar_index - pivLen, false))
+
+// ═════════════════════════════ ALERTCONDITION ═════════════════════════════
+alertcondition(evDBull, "1 · Daily alcista fuerte", "DCRT: Daily alcista fuerte en {{ticker}}")
+alertcondition(evDBear, "2 · Daily bajista fuerte", "DCRT: Daily bajista fuerte en {{ticker}}")
+alertcondition(evSwH, "3 · Barrido del PDH", "DCRT: barrido del PDH en {{ticker}} a {{close}}")
+alertcondition(evSwL, "4 · Barrido del PDL", "DCRT: barrido del PDL en {{ticker}} a {{close}}")
+alertcondition(evRevOk, "5 · Reversal confirmado", "DCRT: reversal confirmado en {{ticker}} a {{close}}")
+alertcondition(evRevFail, "6 · Reversal fallido", "DCRT: reversal fallido en {{ticker}} a {{close}}")
+alertcondition(evCont, "7 · Modo continuación", "DCRT: modo continuación activado en {{ticker}}")
+alertcondition(evEntRev, "8 · Entrada B+ reversal", "DCRT: entrada REVERSAL en {{ticker}} a {{close}}")
+alertcondition(evEntCont, "9 · Entrada B+ continuación", "DCRT: entrada CONTINUATION en {{ticker}} a {{close}}")
+
+// ═════════════════════════════ PANEL DE DIAGNÓSTICO ═════════════════════════════
+var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left,
+  2, 26, bgcolor = color.new(#101418, 12), border_color = color.new(color.gray, 80), border_width = 1)
+row(int r, string a, string b) =>
+    pnl.cell(0, r, a, text_color = color.new(color.white, 15), text_size = size.small, text_halign = text.align_left)
+    pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
+
+if barstate.islast
+    if not tfOk
+        pnl.cell(0, 0, "⚠️ DCRT B+ calcula solo en 5 minutos", text_color = color.orange)
+    else if showDiag
+        d = bias
+        isRev = str.contains(state, "REVERSAL")
+        isCont = str.contains(state, "CONTINUATION")
+        row(0, "DAILY", d == 1 ? "BULLISH ✓" : d == -1 ? "BEARISH ✓" : "NEUTRAL")
+        row(1, "PDH / PDL", fmt(pdh) + " / " + fmt(pdl))
+        row(2, "ESTADO", state)
+        row(3, d == -1 ? "PDL BARRIDO" : "PDH BARRIDO", d == 0 ? "—" : str.contains(state, "WAITING") ? "esperando" : "✓")
+        row(4, "CIERRE DE VUELTA DENTRO", isRev or isCont ? yes(rInside) : "—")
+        row(5, "CISD DEL REVERSAL", isRev or isCont ? yes(rCisd) : "—")
+        row(6, "REVERSAL", str.contains(state, "CONFIRMED") ? "CONFIRMADO" : isCont ? "FALLIDO" : isRev ? "en curso" : "—")
+        row(7, "MODO ACTUAL", d == 0 ? "ninguno" : isCont ? dirTxt(d) + " CONTINUATION" : dirTxt(-d) + " REVERSAL")
+        row(8, "POI", isCont ? (poi == "" ? "esperando" : poi + " ✓") : "—")
+        row(9, "HTF FVG", isCont ? (cHtf ? "✓ " + str.tostring(cHtfTf) + "m" : "✗") : isRev ? (rHtf ? "✓ " + str.tostring(rHtfTf) + "m" : "✗") : "—")
+        row(10, "LIQUIDEZ 5m (B+)", isCont ? yes(liq) : isRev ? "✓ " + (d == 1 ? "PDH" : "PDL") : "—")
+        row(11, "5m iFVG", isCont ? (cIfvg ? "✓" : "esperando") : isRev ? (rIfvg ? "✓" : "esperando") : "—")
+        row(12, "CISD", isCont ? (cCisd ? "✓" : "esperando") : "—")
+        row(13, "MOTIVO", why)
+        row(14, "Días ▲ / ▼ / neutros", str.tostring(st.dBull) + " / " + str.tostring(st.dBear) + " / " + str.tostring(st.dNeutral))
+        row(15, "Barridos PDH / PDL", str.tostring(st.sweepH) + " / " + str.tostring(st.sweepL))
+        row(16, "Reversals bajistas / alcistas", str.tostring(st.revBear) + " / " + str.tostring(st.revBull))
+        row(17, "Reversals fallidos ▲ / ▼ Daily", str.tostring(st.failBull) + " / " + str.tostring(st.failBear))
+        row(18, "Setups de continuación", str.tostring(st.contSetups))
+        row(19, "Entradas reversal / continuación", str.tostring(st.entRev) + " / " + str.tostring(st.entCont))
+        row(20, "Largos / cortos", str.tostring(st.longs) + " / " + str.tostring(st.shorts))
+        row(21, "Rechazos: HTF · iFVG · liquidez", str.tostring(st.rjHtf) + " · " + str.tostring(st.rjIfvg) + " · " + str.tostring(st.rjLiq))
+        row(22, "Rechazos: POI · CISD tardío · sesión", str.tostring(st.rjPoi) + " · " + str.tostring(st.rjCisd) + " · " + str.tostring(st.rjSes))
+        row(23, "Modelo", modelIn)
