@@ -40,7 +40,8 @@ showAsia  = input.bool(true, "Asia", group = G_V, inline = "v1")
 shadeSess = input.bool(true, "Sombrear London", group = G_V, inline = "v1")
 sobrias   = input.bool(true, "Velas sobrias (plata / pizarra)", group = G_V, inline = "v2")
 darkBg    = input.bool(false, "Fondo #0D1117", group = G_V, inline = "v2")
-showPanel = input.bool(true, "Panel de verificación", group = G_V)
+showPanel = input.bool(true, "Panel de verificación", group = G_V, inline = "pn")
+panelPos  = input.string("Arriba derecha", "", options = ["Arriba derecha", "Abajo derecha", "Arriba izquierda", "Abajo izquierda"], group = G_V, inline = "pn")
 colBull   = input.color(#C9CED6, "Vela alcista", group = G_V, inline = "c1")
 colBear   = input.color(#5D6F8C, "Vela bajista", group = G_V, inline = "c1")
 colLiq    = input.color(#A89A5B, "Liquidez (PDH/PDL, Asia)", group = G_V, inline = "c2")
@@ -342,7 +343,7 @@ alertcondition(evAH, "Asia High swept", "Asia High barrido en London · {{ticker
 alertcondition(evAL, "Asia Low swept", "Asia Low barrido en London · {{ticker}} · {{close}}")
 
 // ═════════════════════════════ PANEL DE VERIFICACIÓN ═════════════════════════════
-var table pnl = table.new(position.bottom_right, 2, 22, bgcolor = color.new(#0D1117, 5), border_color = color.new(color.gray, 80), border_width = 1)
+var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left, 2, 22, bgcolor = color.new(#0D1117, 5), border_color = color.new(color.gray, 80), border_width = 1)
 row(int r, string a, string b) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 20), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
