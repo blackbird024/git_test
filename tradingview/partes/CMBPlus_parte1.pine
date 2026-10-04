@@ -159,6 +159,7 @@ drawZone(Zone z) =>
                   border_style = z.tf == 60 ? line.style_solid : line.style_dotted, bgcolor = z.kind == 1 ? colFvgUp : colFvgDn,
                   text = z.tf == 60 ? "1h" : "15m", text_size = size.tiny, text_color = color.new(color.gray, 30),
                   text_halign = text.align_right, text_valign = text.align_top)
+    0   // valor neutro: evita que el último if sea el valor devuelto
 
 addZone(float ha, float la, float hc, float lc, int tf) =>
     if la > hc
@@ -169,6 +170,7 @@ addZone(float ha, float la, float hc, float lc, int tf) =>
         z = Zone.new(lc, ha, -1, tf, time)
         zones.push(z)
         drawZone(z)
+    0   // valor neutro: evita que el último if sea el valor devuelto
 
 killZone(Zone z) =>
     z.valid := false
@@ -179,6 +181,7 @@ killZone(Zone z) =>
         else
             z.bx.delete()
             z.bx := na
+    0   // valor neutro: evita que el último if sea el valor devuelto
 
 // ═════════════════════════════ SWINGS ═════════════════════════════
 type Swing

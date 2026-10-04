@@ -61,6 +61,7 @@ phaseLabel(int bi, float y, string txt, int d) =>
     if showPhases
         label.new(bi, y, txt, color = color.new(color.black, 100), textcolor = colOf(d), size = size.tiny,
           style = d == 1 ? label.style_label_up : label.style_label_down)
+    0   // valor neutro: evita que el último if sea el valor devuelto
 
 htfTouch(int d, float ext) =>
     bool ok = false
@@ -124,6 +125,7 @@ setExtreme(Setup s) =>
     if not na(g)
         s.ifvgBar := bar_index
         s.usedGap := g
+    0   // valor neutro: evita que el último if sea el valor devuelto
 
 finish(Setup s, string reason) =>
     // reason: "señal", "expirado", "fin de sesión"
