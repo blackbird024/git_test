@@ -56,7 +56,7 @@ G_SES = "Sesiones y días"
 tz        = input.string("America/New_York", "Zona horaria de las sesiones", group = G_SES)
 useLon    = input.bool(true, "London", group = G_SES, inline = "lon")
 sessLon   = input.session("0200-0500", "", group = G_SES, inline = "lon")
-useNY     = input.bool(false, "Nueva York", group = G_SES, inline = "ny")
+useNY     = input.bool(true, "Nueva York", group = G_SES, inline = "ny")
 sessNY    = input.session("0930-1100", "", group = G_SES, inline = "ny")
 noSessFlt = input.bool(false, "Investigación: ignorar el filtro horario", group = G_SES)
 preLon    = input.session("2200-0500", "Dibujar swings de London formados en", group = G_SES)
