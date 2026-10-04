@@ -25,6 +25,8 @@ bodyMin  = input.float(0.5, "Cuerpo / rango mínimo", minval = 0, maxval = 1, st
 nearHigh = input.float(0.25, "Cierre cerca del máximo (fracción del rango desde el máximo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
 nearLow  = input.float(0.25, "Cierre cerca del mínimo (fracción del rango desde el mínimo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
 show4hHL = input.bool(true, "Dibujar máximo y mínimo de la última vela de 4H cerrada", group = G_C)
+useObj   = input.bool(false, "Niveles como objetos de dibujo (si no, como plots)", group = G_C,
+  tooltip = "Por defecto los niveles se dibujan como plots, que siempre se ven igual que las velas. Los objetos de dibujo pueden ocultarse con la opción de TradingView 'Ocultar dibujos'.")
 
 G_L = "Liquidez (fase 2)"
 minSwTicks = input.int(1, "Barrido mínimo más allá del nivel (ticks)", minval = 0, group = G_L)
@@ -110,7 +112,7 @@ if asiaEnd and not na(aHiRun)
     asiaL := aLoRun
     asiaM := (aHiRun + aLoRun) / 2
     asiaFrozenT := time
-    if showAsia
+    if showAsia and useObj
         lnAH := line.new(aHiBar, asiaH, bar_index, asiaH, color = colLiq, width = lineW)
         lnAL := line.new(aLoBar, asiaL, bar_index, asiaL, color = colLiq, width = lineW)
         lnAM := line.new(aStartBar, asiaM, bar_index, asiaM, color = color.new(colLiq, 50), width = 1, style = line.style_dotted)
@@ -147,7 +149,7 @@ pdl = useCme ? cmeL : calL
 
 var line lnPH = na
 var line lnPL = na
-if newPD and showPD and not na(pdh)
+if newPD and showPD and useObj and not na(pdh)
     lnPH := line.new(bar_index, pdh, bar_index, pdh, color = colLiq, width = lineW + 1)
     lnPL := line.new(bar_index, pdl, bar_index, pdl, color = colLiq, width = lineW + 1)
     label.new(bar_index, pdh, "PDH", style = label.style_label_right, color = color.new(color.black, 100), textcolor = colLiq, size = size.tiny)
@@ -176,7 +178,7 @@ if new4h
     label.new(bar_index, high, "4H " + ctxTxt(ctx4), style = label.style_label_down, color = color.new(color.black, 100),
       textcolor = ctx4 == 0 ? color.new(col4h, 60) : col4h, size = size.tiny,
       tooltip = "Vela de 4H cerrada que abrió a las " + hhmm(h4T) + "\nO " + fmt(h4O) + " H " + fmt(h4H) + " L " + fmt(h4L) + " C " + fmt(h4C) + "\nCuerpo/rango " + str.tostring(body4, "#.##"))
-    if show4hHL
+    if show4hHL and useObj
         ln4H := line.new(bar_index, h4H, bar_index, h4H, color = color.new(col4h, 40), width = 1, style = line.style_dashed)
         ln4L := line.new(bar_index, h4L, bar_index, h4L, color = color.new(col4h, 40), width = 1, style = line.style_dashed)
 if not na(ln4H)
@@ -335,6 +337,26 @@ statusOf(string nm) =>
         if L.name == nm
             out := fmt(L.price) + (L.swept ? (L.inLdn ? " · SWEPT " + hhmm(L.sweptT) + " +" + fmt(L.depth) : " · tomado fuera de London") : " · intacto")
     out
+
+// ── niveles como plots (siempre visibles); gris punteado cuando ya fueron barridos
+isSwept(string nm) =>
+    bool out = false
+    for L in lv
+        if L.name == nm and L.swept
+            out := true
+    out
+brk(float x) => x != x[1] ? float(na) : x
+cPDH = isSwept("PDH") ? color.new(color.gray, 55) : colLiq
+cPDL = isSwept("PDL") ? color.new(color.gray, 55) : colLiq
+cAH = isSwept("ASIA H") ? color.new(color.gray, 55) : colLiq
+cAL = isSwept("ASIA L") ? color.new(color.gray, 55) : colLiq
+plot(showPD and not useObj ? brk(pdh) : na, "PDH", cPDH, lineW + 1, plot.style_linebr)
+plot(showPD and not useObj ? brk(pdl) : na, "PDL", cPDL, lineW + 1, plot.style_linebr)
+plot(showAsia and not useObj and not inAsia ? brk(asiaH) : na, "Asia H", cAH, lineW, plot.style_linebr)
+plot(showAsia and not useObj and not inAsia ? brk(asiaL) : na, "Asia L", cAL, lineW, plot.style_linebr)
+plot(showAsia and not useObj and not inAsia ? brk(asiaM) : na, "Asia Mid", color.new(colLiq, 60), 1, plot.style_linebr)
+plot(show4hHL and not useObj ? brk(h4H) : na, "4H H", color.new(col4h, 40), 1, plot.style_linebr)
+plot(show4hHL and not useObj ? brk(h4L) : na, "4H L", color.new(col4h, 40), 1, plot.style_linebr)
 
 alertcondition(evSweep, "Liquidity swept", "Liquidez barrida en London · {{ticker}} · {{close}}")
 alertcondition(evPDH, "PDH swept", "PDH barrido en London · {{ticker}} · {{close}}")
