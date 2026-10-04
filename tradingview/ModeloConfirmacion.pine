@@ -1,6 +1,6 @@
 //@version=6
-// Modelo de Confirmación (London) — mismas reglas que alpaca/confirmation_model_backtest.py.
-// Usar en gráfico de 5 minutos (NQ, ES u oro).
+// Modelo de Confirmación (London y Nueva York) — mismas reglas que alpaca/confirmation_model_backtest.py.
+// Usar en gráfico de 5 minutos (NQ, ES u oro). En otra temporalidad cambian todas las velas y no es lo backtesteado.
 //   1. Barrido: el precio supera un swing de 5m (3 velas a cada lado) de las últimas 4 horas que nadie había tocado.
 //   2. HTF: la mecha del barrido entra en un FVG de 15m o 1h de los últimos 3 días aún no invalidado.
 //   3. iFVG: un FVG de 5m a favor del barrido (12 velas antes del extremo) que el precio cierra al revés.
@@ -14,9 +14,13 @@ indicator("Modelo de Confirmación – setup", "ModConf", overlay = true, max_li
 TZ = "America/New_York"
 
 grpS = "Sesión (hora de Nueva York)"
-sessSetup     = input.session("0200-0500", "Ventana para buscar setups", group = grpS)
-sessShow      = input.session("2200-0500", "Dibujar swings formados en", group = grpS)
-onePerSession = input.bool(true, "Solo el primer setup con HTF de la sesión (como el backtest)", group = grpS)
+useLon        = input.bool(true, "London", group = grpS, inline = "lon")
+sessLon       = input.session("0200-0500", "", group = grpS, inline = "lon")
+useNY         = input.bool(true, "Nueva York", group = grpS, inline = "ny")
+sessNY        = input.session("0930-1100", "", group = grpS, inline = "ny")
+showLon       = input.session("2200-0500", "Dibujar swings formados en (London)", group = grpS)
+showNY        = input.session("0530-1100", "Dibujar swings formados en (Nueva York)", group = grpS)
+onePerSession = input.bool(true, "Solo el primer setup con HTF de cada sesión (como el backtest)", group = grpS)
 shadeSession  = input.bool(true, "Sombrear la ventana", group = grpS)
 
 grpM = "Modelo"
@@ -36,8 +40,16 @@ alertSweeps = input.bool(false, "Avisar también en cada barrido", group = grpV)
 colHi = input.color(color.red, "Swing high", group = grpV)
 colLo = input.color(color.teal, "Swing low", group = grpV)
 
-inSetup = not na(time(timeframe.period, sessSetup, TZ))
-inShow  = not na(time(timeframe.period, sessShow, TZ))
+inLon   = useLon and not na(time(timeframe.period, sessLon, TZ))
+inNY    = useNY and not na(time(timeframe.period, sessNY, TZ))
+inSetup = inLon or inNY
+sesName = inLon ? "London" : "NY"
+inShow  = (useLon and not na(time(timeframe.period, showLon, TZ))) or (useNY and not na(time(timeframe.period, showNY, TZ)))
+
+var table warn = table.new(position.top_right, 1, 1)
+if barstate.islast and timeframe.period != "5"
+    warn.cell(0, 0, "⚠️ ModConf está pensado para 5 minutos.\nEn " + timeframe.period + " las señales no son las del backtest.",
+              bgcolor = color.new(color.orange, 20), text_color = color.white)
 bgcolor(shadeSession and inSetup ? color.new(color.blue, 93) : na, title = "Ventana")
 
 // ── FVG de 15m y 1h (velas cerradas, sin repintar)
@@ -126,7 +138,7 @@ type Machine
 var array<Machine> machines = array.from(Machine.new(-1), Machine.new(1))
 var bool done = false
 
-if inSetup and not inSetup[1]
+if (inLon and not inLon[1]) or (inNY and not inNY[1])
     done := false
     for m in machines
         m.armed := false
@@ -178,13 +190,13 @@ for m in machines
                         line.new(bar_index, close, x2, close, color = color.gray, width = 2)
                         line.new(bar_index, m.ext, x2, m.ext, color = color.red, width = 2)
                         line.new(bar_index, tp, x2, tp, color = color.green, width = 2)
-                        txt = (d == -1 ? "🔴 " : "🟢 ") + side + " " + grade
+                        txt = (d == -1 ? "🔴 " : "🟢 ") + side + " " + grade + " · " + sesName
                               + "\nEntrada " + str.tostring(close, format.mintick)
                               + "\nStop " + str.tostring(m.ext, format.mintick)
                               + "\nObjetivo " + str.tostring(tp, format.mintick) + " (" + str.tostring(rr) + "R)"
                         label.new(bar_index, m.ext, txt, color = d == -1 ? color.new(color.red, 15) : color.new(color.green, 15),
                                   textcolor = color.white, size = size.normal, style = lblStyle)
-                        alert("Setup " + grade + " " + side + " en " + syminfo.ticker
+                        alert("Setup " + grade + " " + side + " (" + sesName + ") en " + syminfo.ticker
                               + " | entrada " + str.tostring(close, format.mintick)
                               + " | stop " + str.tostring(m.ext, format.mintick)
                               + " | objetivo " + str.tostring(tp, format.mintick)
