@@ -5,7 +5,7 @@
 //
 //   1. Para cada hora de la sesión, el "ruido" es el movimiento medio desde la apertura (en %) de los últimos 14 días.
 //   2. Banda superior = max(apertura de hoy, cierre de ayer) × (1 + ruido); inferior = min(...) × (1 − ruido).
-//   3. Solo se decide al cierre de cada media hora (10:00, 10:30 ... 15:30 NY):
+//   3. Solo se decide al cierre de cada media hora (10:00, 10:30 ... 15:30 NY), o cada 15 minutos si se elige:
 //        cierre por encima de la banda superior → COMPRA; por debajo de la inferior → VENTA.
 //        Si estás dentro y el cierre vuelve dentro de la banda → SALIR (y si sale por el otro lado, entrar al revés).
 //   4. Lo que siga abierto se cierra a las 16:00 NY (22:00 en Italia).
@@ -15,6 +15,8 @@ indicator("Bandas de ruido NY", "Ruido NY", overlay = true, max_labels_count = 5
 TZ = "America/New_York"
 
 lookback = input.int(14, "Días para medir el ruido", minval = 5)
+every    = input.int(30, "Revisar cada (minutos)", options = [15, 30, 60],
+                     tooltip = "Backtest NQ 2018-2026 (1 MNQ): cada 30 min ≈ 17 entradas/mes, +2.900 $/año; cada 15 min ≈ 24 entradas/mes, +2.300 $/año y drawdown algo menor")
 bandMult = input.float(1.0, "Multiplicador de la banda", step = 0.1)
 useVwap  = input.bool(false, "Salida también si cruza el VWAP de la sesión", tooltip = "El backtest sin VWAP dio igual o mejor")
 showFill = input.bool(true, "Sombrear la zona de ruido")
@@ -22,7 +24,7 @@ showInfo = input.bool(true, "Panel de estado")
 
 // ── temporalidad
 tfMin   = timeframe.isminutes ? timeframe.multiplier : 0
-tfOk    = tfMin > 0 and 390 % tfMin == 0 and 30 % tfMin == 0
+tfOk    = tfMin > 0 and 390 % tfMin == 0 and every % tfMin == 0
 nCols   = tfOk ? int(390 / tfMin) : 1
 
 // ── sesión regular
@@ -84,7 +86,7 @@ fill(pU, pL, showFill ? color.new(color.gray, 90) : na, "Zona de ruido")
 
 // ── decisiones cada media hora
 var int pos = 0
-isCheck = tfOk and inRth and not na(ub) and (endMins - 570) % 30 == 0 and endMins >= 600 and endMins <= 930
+isCheck = tfOk and inRth and not na(ub) and (endMins - 570) % every == 0 and endMins >= 570 + every and endMins < 960
 isLast  = tfOk and inRth and endMins == 960
 
 fmt(float x) => str.tostring(x, format.mintick)
@@ -125,11 +127,12 @@ if showInfo and barstate.islast
     if not tfOk
         info.cell(0, 0, "⚠️ Usa un gráfico de 1, 3, 5, 10 o 15 minutos", text_color = color.orange)
     else
-        nextCheck = endMins < 600 ? 600 : math.min(930, (int(math.floor((endMins - 570) / 30)) + 1) * 30 + 570)
+        lastCheck = 570 + int(math.floor(385 / every)) * every
+        nextCheck = endMins < 570 + every ? 570 + every : math.min(lastCheck, (int(math.floor((endMins - 570) / every)) + 1) * every + 570)
         info.cell(0, 0, "Posición", text_color = color.white)
         info.cell(1, 0, pos == 1 ? "🟢 LARGO" : pos == -1 ? "🔴 CORTO" : "⬜ FUERA", text_color = color.white)
         info.cell(0, 1, "Próxima revisión", text_color = color.white)
-        info.cell(1, 1, inRth and endMins < 930 ? hhmm(int(nextCheck), 0) + " NY · " + hhmm(int(nextCheck), 6) + " Italia" : "10:00 NY · 16:00 Italia",
+        info.cell(1, 1, inRth and endMins < lastCheck ? hhmm(int(nextCheck), 0) + " NY · " + hhmm(int(nextCheck), 6) + " Italia" : hhmm(570 + every, 0) + " NY · " + hhmm(570 + every, 6) + " Italia",
                   text_color = color.white)
         info.cell(0, 2, "Bandas", text_color = color.white)
         info.cell(1, 2, na(ub) ? (filled < lookback ? "calentando " + str.tostring(filled) + "/" + str.tostring(lookback) + " días" : "fuera de sesión")
