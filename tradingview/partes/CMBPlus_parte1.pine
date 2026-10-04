@@ -174,13 +174,12 @@ addZone(float ha, float la, float hc, float lc, int tf) =>
 
 killZone(Zone z) =>
     z.valid := false
-    if not na(z.bx)
-        if showInv
-            z.bx.set_bgcolor(color.new(color.gray, 92))
-            z.bx.set_border_color(color.new(color.gray, 70))
-        else
-            z.bx.delete()
-            z.bx := na
+    if not na(z.bx) and showInv
+        z.bx.set_bgcolor(color.new(color.gray, 92))
+        z.bx.set_border_color(color.new(color.gray, 70))
+    if not na(z.bx) and not showInv
+        z.bx.delete()
+        z.bx := na
     0   // valor neutro: evita que el último if sea el valor devuelto
 
 // ═════════════════════════════ SWINGS ═════════════════════════════
