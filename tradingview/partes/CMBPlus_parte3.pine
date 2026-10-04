@@ -13,6 +13,63 @@ if tfOk and barstate.isconfirmed
     if sesStart
         doneSes := false
 
+    // 0. CRT de 4H: nueva vela de 4H cerrada → ¿CRT?; activar pendientes; caducidad
+    if CRT_ON
+        if new4h
+            c4.push(Candle4.new(c4Hi, c4Lo, c4Cl, c4T))
+            if c4.size() > 12
+                c4.shift()
+            if usedRefs.size() > 60
+                usedRefs.shift()
+            curHi4 := high
+            curLo4 := low
+            ev = detectCRT()
+            if not na(ev)
+                if inStats
+                    st.crtEvents += 1
+                contrary = biasDir != 0 and ev.d == -biasDir
+                if contrary and crtContra == "Anular ambos"
+                    fadeCRT(biasCrt, colCrtInv)
+                    biasDir := 0
+                    biasCrt := na
+                    crtState := "anulado por CRT contrario"
+                    drawCRT(ev, ev.tConf + 4 * H_MS)
+                    fadeCRT(ev, colCrtInv)
+                else if contrary and crtContra == "Esperar al cierre de 4H"
+                    fadeCRT(biasCrt, colCrtInv)
+                    biasDir := 0
+                    biasCrt := na
+                    pendDir := ev.d
+                    pendStart := ev.tConf + 4 * H_MS
+                    pendEnd := crtEnd(ev.tConf)
+                    pendCrt := ev
+                    crtState := "pendiente: espera el cierre de 4H"
+                    drawCRT(ev, pendEnd)
+                    fadeCRT(ev, colCrtPen)
+                else
+                    if biasDir != 0
+                        fadeCRT(biasCrt, colCrtInv)
+                    biasDir := ev.d
+                    biasCrt := ev
+                    biasEnd := crtEnd(ev.tConf)
+                    crtState := "confirmado"
+                    drawCRT(ev, biasEnd)
+        else
+            curHi4 := math.max(nz(curHi4, high), high)
+            curLo4 := math.min(nz(curLo4, low), low)
+        if pendDir != 0 and time >= pendStart
+            if time < pendEnd
+                biasDir := pendDir
+                biasCrt := pendCrt
+                biasEnd := pendEnd
+                crtState := "confirmado"
+                fadeCRT(biasCrt, crtColor(biasDir))
+            pendDir := 0
+        if biasDir != 0 and time >= biasEnd
+            fadeCRT(biasCrt, colCrtInv)
+            biasDir := 0
+            crtState := "expirado"
+
     // 1. FVG HTF: nuevas zonas (vela HTF recién cerrada) e invalidación por cierre HTF
     if new15
         if invMode == "Cierre HTF"
@@ -60,17 +117,30 @@ if tfOk and barstate.isconfirmed
     firedS := step(sS)
     for s in array.from(sL, sS)
         if (s.d == 1 and firedL) or (s.d == -1 and firedS)
-            [e, sl, tp] = drawSignal(s)
-            evSignal := true
-            if inStats
-                if s.d == 1
-                    st.sigL += 1
+            al = not CRT_ON ? "" : biasDir == 0 ? "sin CRT" : biasDir == s.d ? "alineada" : "contraria"
+            if inStats and CRT_ON
+                if al == "alineada"
+                    st.crtAl += 1
+                else if al == "contraria"
+                    st.crtCon += 1
                 else
-                    st.sigS += 1
-            if aSignal
-                alert((MODE_C ? "INVESTIGACIÓN " + cTag : "B+") + " " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · " + sesName + " · entrada " + fmt(e) + " · stop " + fmt(sl) + " · objetivo " + fmt(tp) + " (" + str.tostring(rr) + "R)" + (na(s.htfTf) ? "" : " · FVG " + str.tostring(s.htfTf) + "m"), alert.freq_once_per_bar_close)
-            finish(s, "señal")
-            doneSes := true
+                    st.crtNone += 1
+            if CRT_REQ and al != "alineada"
+                if inStats
+                    st.crtFilt += 1
+                finish(s, "filtrada CRT")
+            else
+                [e, sl, tp] = drawSignal(s, al)
+                evSignal := true
+                if inStats
+                    if s.d == 1
+                        st.sigL += 1
+                    else
+                        st.sigS += 1
+                if aSignal
+                    alert((MODE_C ? "INVESTIGACIÓN " + cTag : "B+") + " " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · " + sesName + " · entrada " + fmt(e) + " · stop " + fmt(sl) + " · objetivo " + fmt(tp) + " (" + str.tostring(rr) + "R)" + (na(s.htfTf) ? "" : " · FVG " + str.tostring(s.htfTf) + "m") + (al == "" ? "" : " · CRT 4H " + al), alert.freq_once_per_bar_close)
+                finish(s, "señal")
+                doneSes := true
 
     // 5. nuevos barridos → nuevos setups
     for s in array.from(sL, sS)
@@ -116,6 +186,12 @@ if tfOk and barstate.isconfirmed
                 evCisd := true
                 if aCisd
                     alert("CISD " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · cierre " + fmt(close) + " más allá de " + fmt(s.level), alert.freq_once_per_bar_close)
+
+    // 5b. invalidación del sesgo CRT por cierre de 5m más allá del barrido (después de evaluar las señales)
+    if CRT_ON and biasDir != 0 and crtInval and not na(biasCrt) and (biasDir == 1 ? close < biasCrt.ext : close > biasCrt.ext)
+        fadeCRT(biasCrt, colCrtInv)
+        biasDir := 0
+        crtState := "invalidado"
 
     // 6. invalidación de FVG HTF por cierre de 5m o por mecha (después de usarlos en esta vela) y caducidad
     if zones.size() > 0
@@ -172,7 +248,7 @@ alertcondition(evCisd, "4 · CISD", "CM B+: CISD confirmado en {{ticker}} ({{int
 alertcondition(evSignal, "5 · Setup completo", "CM B+: setup completo en {{ticker}} ({{interval}}) a {{close}}")
 
 // ═════════════════════════════ PANEL ═════════════════════════════
-var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
+var table pnl = table.new(panelPos == "Arriba derecha" ? position.top_right : panelPos == "Abajo derecha" ? position.bottom_right : panelPos == "Arriba izquierda" ? position.top_left : position.bottom_left, 3, 21, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
 cell(int r, string a, string b, string c) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 10), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small)
@@ -201,3 +277,20 @@ if barstate.islast
         cell(11, "Independiente: con iFVG", str.tostring(st.anyIfvg), pct(st.anyIfvg, sweeps))
         cell(12, "Independiente: con CISD", str.tostring(st.anyCisd), pct(st.anyCisd, sweeps))
         cell(13, "Meses contados", str.tostring(months, "#.#"), "")
+        if CRT_ON
+            mins = biasDir != 0 ? math.max(0, (biasEnd - time) / 60000) : 0.0
+            cell(14, "CRT 4H · sesgo", biasDir == 1 ? "▲ alcista" : biasDir == -1 ? "▼ bajista" : "—", crtState)
+            cell(15, "CRT confirmado", na(biasCrt) ? "—" : str.format_time(biasCrt.tConf, "dd/MM HH:mm", tz), crtModeIn)
+            cell(16, "Validez restante", biasDir != 0 ? (mins > 1440 ? "hasta CRT contrario" : str.tostring(math.round(mins)) + " min") : "—", "")
+            string alNow = "sin setup activo"
+            if sL.active or sS.active
+                dd = sL.active ? 1 : -1
+                alNow := (dd == 1 ? "▲ " : "▼ ") + (biasDir == 0 ? "sin CRT" : biasDir == dd ? "alineado" : "contrario")
+            cell(17, "Setup actual vs CRT", alNow, "")
+            cell(18, "Señales ✓ / ✗ / –", str.tostring(st.crtAl) + " / " + str.tostring(st.crtCon) + " / " + str.tostring(st.crtNone), CRT_REQ ? "filtradas " + str.tostring(st.crtFilt) : "")
+            cell(19, "CRT de 4H detectados", str.tostring(st.crtEvents), "")
+            if crtProv and c4.size() >= 1
+                r = c4.get(c4.size() - 1)
+                pb = curLo4 < r.lo and close > r.lo and close < r.hi
+                ps = curHi4 > r.hi and close > r.lo and close < r.hi
+                cell(20, "CRT provisional (vela en curso)", pb and not ps ? "▲ posible" : ps and not pb ? "▼ posible" : "—", "no filtra")

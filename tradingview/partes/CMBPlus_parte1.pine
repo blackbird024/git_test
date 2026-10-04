@@ -104,6 +104,24 @@ G_STAT = "Estadísticas"
 statFrom = input.time(timestamp("2000-01-01T00:00:00"), "Contar desde", group = G_STAT)
 statTo   = input.time(timestamp("2100-01-01T00:00:00"), "hasta", group = G_STAT)
 
+G_CRT = "CRT 4H (filtro direccional)"
+crtModeIn = input.string("1 · B+ original (sin CRT)", "Modo CRT", options = ["1 · B+ original (sin CRT)", "2 · CRT obligatorio", "3 · CRT informativo"], group = G_CRT,
+  tooltip = "1: no usa el CRT. 2: solo señales a favor de un CRT de 4H confirmado y vigente. 3: todas las señales, clasificadas como alineadas, contrarias o sin CRT.")
+crtRef    = input.string("Vela de 4H anterior", "Vela de referencia", options = ["Vela de 4H anterior", "Última vela de 4H antes de London", "Rango manual"], group = G_CRT)
+crtManHi  = input.float(0.0, "Rango manual: máximo", group = G_CRT, inline = "man")
+crtManLo  = input.float(0.0, "mínimo", group = G_CRT, inline = "man")
+crtConfN  = input.int(1, "Velas de 4H para barrer y cerrar dentro", minval = 1, maxval = 3, group = G_CRT)
+crtValid  = input.string("Hasta el siguiente cierre de 4H", "Validez del sesgo", options = ["Hasta el siguiente cierre de 4H", "Durante N horas", "Hasta el fin de London", "Hasta un CRT contrario"], group = G_CRT)
+crtHours  = input.float(8.0, "N horas", minval = 1, group = G_CRT)
+crtContra = input.string("Reemplazar", "Si aparece un CRT contrario", options = ["Reemplazar", "Esperar al cierre de 4H", "Anular ambos"], group = G_CRT)
+crtInval  = input.bool(true, "Invalidar si una vela de 5m cierra más allá del barrido", group = G_CRT)
+crtProv   = input.bool(false, "Mostrar CRT provisional de la vela de 4H en formación (no filtra)", group = G_CRT)
+crtShow   = input.bool(true, "Dibujar rango de referencia y barrido", group = G_CRT)
+colCrtUp  = input.color(#9FD9D3, "CRT alcista", group = G_CRT, inline = "cc")
+colCrtDn  = input.color(#6A84A3, "CRT bajista", group = G_CRT, inline = "cc")
+colCrtPen = input.color(#8C8C8C, "Pendiente", group = G_CRT, inline = "cc2")
+colCrtInv = input.color(#4A4A4A, "Invalidado / expirado", group = G_CRT, inline = "cc2")
+
 // ═════════════════════════════ CONSTANTES Y MODO ═════════════════════════════
 MODE_A = modeIn == "A · B+ estricto"
 MODE_B = modeIn == "B · Diagnóstico"
@@ -117,6 +135,9 @@ SHOW_FAILED = showFailed or MODE_B
 tfOk = timeframe.isminutes and timeframe.multiplier == 5
 cTag = "C" + (REQ_HTF ? "" : " ·sin HTF") + (REQ_IFVG ? "" : " ·sin iFVG") + (REQ_CISD ? "" : " ·sin CISD")
 DAY_MS = 86400000
+H_MS = 3600000
+CRT_ON  = crtModeIn != "1 · B+ original (sin CRT)"
+CRT_REQ = crtModeIn == "2 · CRT obligatorio"
 
 // ═════════════════════════════ SESIÓN ═════════════════════════════
 inLon = not na(time(timeframe.period, sessLon, tz))
@@ -128,6 +149,112 @@ inSess = noSessFlt ? dayOk : dayOk and ((useLon and inLon) or (useNY and inNY))
 sesStart = inSess and not inSess[1]
 sesName  = noSessFlt ? "24h" : inLon ? "London" : "NY"
 inStats  = time >= statFrom and time <= statTo
+
+// ═════════════════════════════ CRT 4H (solo velas de 4H cerradas) ═════════════════════════════
+[c4Hi, c4Lo, c4Cl, c4T] = request.security(syminfo.tickerid, "240", [high[1], low[1], close[1], time[1]], lookahead = barmerge.lookahead_on)
+new4h = timeframe.change("240")
+lonStartMin = int(str.tonumber(str.substring(sessLon, 0, 2))) * 60 + int(str.tonumber(str.substring(sessLon, 2, 4)))
+lonEndMin   = int(str.tonumber(str.substring(sessLon, 5, 7))) * 60 + int(str.tonumber(str.substring(sessLon, 7, 9)))
+
+type Candle4
+    float hi
+    float lo
+    float cl
+    int   tOpen
+
+type CRT
+    int   d
+    float refHi
+    float refLo
+    float ext
+    int   tConf
+    int   refT
+    int   sweepT
+    line  lnHi
+    line  lnLo
+    box   bx
+
+var array<Candle4> c4 = array.new<Candle4>()
+var array<int> usedRefs = array.new<int>()
+var int    biasDir = 0
+var int    biasEnd = na
+var CRT    biasCrt = na
+var int    pendDir = 0
+var int    pendStart = na
+var int    pendEnd = na
+var CRT    pendCrt = na
+var string crtState = "sin CRT"
+var float  curHi4 = na
+var float  curLo4 = na
+
+crtEnd(int tc) =>
+    int e = na
+    if crtValid == "Hasta el siguiente cierre de 4H"
+        e := tc + 4 * H_MS
+    else if crtValid == "Durante N horas"
+        e := tc + int(crtHours * H_MS)
+    else if crtValid == "Hasta el fin de London"
+        dEnd = timestamp(tz, year(tc, tz), month(tc, tz), dayofmonth(tc, tz), int(math.floor(lonEndMin / 60)), lonEndMin % 60)
+        e := dEnd > tc ? dEnd : dEnd + DAY_MS
+    else
+        e := tc + 7 * DAY_MS
+    e
+
+// busca un CRT confirmado por la vela de 4H que acaba de cerrar (la última de c4)
+detectCRT() =>
+    CRT ev = na
+    n = c4.size()
+    if n >= 1
+        k = c4.get(n - 1)
+        if crtRef == "Rango manual"
+            if crtManHi > crtManLo
+                bull = k.lo < crtManLo and k.cl > crtManLo and k.cl < crtManHi
+                bear = k.hi > crtManHi and k.cl > crtManLo and k.cl < crtManHi
+                if bull != bear
+                    ev := CRT.new(bull ? 1 : -1, crtManHi, crtManLo, bull ? k.lo : k.hi, time, k.tOpen, k.tOpen)
+        else if n >= 2
+            for back = 1 to math.min(crtConfN, n - 1)
+                r = c4.get(n - 1 - back)
+                rClose = r.tOpen + 4 * H_MS
+                isRef = crtRef == "Vela de 4H anterior" or (hour(rClose, tz) * 60 + minute(rClose, tz) == lonStartMin and back == 1)
+                if na(ev) and isRef and not usedRefs.includes(r.tOpen)
+                    float sLo = na
+                    float sHi = na
+                    for j = n - back to n - 1
+                        cj = c4.get(j)
+                        sLo := na(sLo) ? cj.lo : math.min(sLo, cj.lo)
+                        sHi := na(sHi) ? cj.hi : math.max(sHi, cj.hi)
+                    bull = sLo < r.lo and k.cl > r.lo and k.cl < r.hi
+                    bear = sHi > r.hi and k.cl > r.lo and k.cl < r.hi
+                    if bull or bear
+                        usedRefs.push(r.tOpen)
+                    if bull != bear
+                        ev := CRT.new(bull ? 1 : -1, r.hi, r.lo, bull ? sLo : sHi, time, r.tOpen, c4.get(n - back).tOpen)
+    ev
+
+crtColor(int d) => d == 1 ? colCrtUp : colCrtDn
+
+drawCRT(CRT ev, int tEnd) =>
+    if crtShow
+        col = crtColor(ev.d)
+        ev.lnHi := line.new(ev.refT, ev.refHi, tEnd, ev.refHi, xloc = xloc.bar_time, color = col, width = lineW, style = line.style_dashed)
+        ev.lnLo := line.new(ev.refT, ev.refLo, tEnd, ev.refLo, xloc = xloc.bar_time, color = col, width = lineW, style = line.style_dashed)
+        ev.bx := box.new(ev.sweepT, ev.d == 1 ? ev.refLo : ev.ext, ev.tConf, ev.d == 1 ? ev.ext : ev.refHi, xloc = xloc.bar_time,
+          border_color = color.new(col, 60), bgcolor = color.new(col, 85))
+        label.new(bar_index, ev.d == 1 ? ev.ext : ev.ext, "CRT 4H " + (ev.d == 1 ? "▲" : "▼"), color = color.new(col, 0), textcolor = color.black,
+          size = size.tiny, style = ev.d == 1 ? label.style_label_up : label.style_label_down,
+          tooltip = "CRT " + (ev.d == 1 ? "alcista" : "bajista") + " confirmado " + str.format_time(ev.tConf, "dd/MM HH:mm", tz) + "\nReferencia " + str.tostring(ev.refLo, format.mintick) + " – " + str.tostring(ev.refHi, format.mintick) + "\nBarrido " + str.tostring(ev.ext, format.mintick))
+    0
+
+fadeCRT(CRT ev, color col) =>
+    if not na(ev)
+        if not na(ev.lnHi)
+            ev.lnHi.set_color(col)
+            ev.lnHi.set_x2(time)
+        if not na(ev.lnLo)
+            ev.lnLo.set_color(col)
+            ev.lnLo.set_x2(time)
+    0
 
 // ═════════════════════════════ FVG HTF (solo velas cerradas) ═════════════════════════════
 type Zone

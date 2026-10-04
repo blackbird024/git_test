@@ -41,6 +41,11 @@ type Stats
     int expSes = 0
     int anyIfvg = 0
     int anyCisd = 0
+    int crtAl = 0
+    int crtCon = 0
+    int crtNone = 0
+    int crtFilt = 0
+    int crtEvents = 0
     int firstT
     int lastT
 
@@ -149,18 +154,18 @@ finish(Setup s, string reason) =>
             st.expSes += 1
     if reason != "señal" and SHOW_FAILED and showPhases
         miss = (REQ_HTF and not s.htf ? " HTF" : "") + (REQ_IFVG and s.ifvgBar < 0 ? " iFVG" : "") + (REQ_CISD and s.cisdBar < 0 ? " CISD" : "")
-        label.new(bar_index, s.d == 1 ? low : high, "✕" + (reason == "fin de sesión" ? " sesión" : " falta" + miss), color = color.new(color.black, 100),
+        label.new(bar_index, s.d == 1 ? low : high, "✕" + (reason == "fin de sesión" ? " sesión" : reason == "filtrada CRT" ? " CRT" : " falta" + miss), color = color.new(color.black, 100),
           textcolor = color.new(color.gray, 20), size = size.tiny, style = s.d == 1 ? label.style_label_up : label.style_label_down)
     s.active := false
 
-drawSignal(Setup s) =>
+drawSignal(Setup s, string al) =>
     entry = close
     stop = s.ext - s.d * stopBuf
     risk = math.abs(entry - stop)
     tgt = entry + s.d * rr * risk
     col = MODE_C ? color.new(color.gray, 0) : colOf(s.d)
-    tag = MODE_C ? cTag : "B+"
-    txt = tag + (s.d == 1 ? " ▲" : " ▼") + "\nE " + fmt(entry) + "\nSL " + fmt(stop) + "\nTP " + fmt(tgt) + (na(s.htfTf) ? "" : "\nFVG " + str.tostring(s.htfTf) + "m")
+    tag = (MODE_C ? cTag : "B+") + (al == "" ? "" : al == "alineada" ? " ✓" : al == "contraria" ? " ✗" : " –")
+    txt = tag + (s.d == 1 ? " ▲" : " ▼") + "\nE " + fmt(entry) + "\nSL " + fmt(stop) + "\nTP " + fmt(tgt) + (na(s.htfTf) ? "" : "\nFVG " + str.tostring(s.htfTf) + "m") + (al == "" ? "" : "\nCRT 4H: " + al)
     // marca compacta pegada a la vela de entrada; el detalle va en el tooltip (pasa el ratón por encima)
     label.new(bar_index, s.d == 1 ? low : high, bigLabels ? txt : tag, color = color.new(col, 0), textcolor = color.black,
       size = bigLabels ? size.small : size.tiny, style = s.d == 1 ? label.style_label_up : label.style_label_down, tooltip = txt)
