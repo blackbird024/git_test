@@ -1,0 +1,217 @@
+//@version=6
+// SMC London a favor de la tendencia de 1h — mismas reglas que alpaca/smc_london_backtest.py
+// (variante "BOS o CHoCH + OB + sesgo 1h"). Estructura y order blocks con las definiciones de LuxAlgo.
+// Backtest 2018-2026, objetivo 2R, costes incluidos:
+//   NQ: ~7 operaciones/mes, 41 % de acierto, +0,11R por operación, 7 de 9 años positivos (2024: −27R)
+//   ES: +0,08R por operación. Oro: sin ventaja (no usar).
+//
+//   1. Tendencia de 1h = dirección del último BOS/CHoCH interno (5 velas) en velas de 1 hora ya cerradas.
+//   2. Entre las 2:00 y las 5:00 NY (8:00-11:00 Italia), en 5 minutos: BOS o CHoCH a favor de esa tendencia.
+//   3. Orden límite en el borde del order block de esa ruptura (válida 12 velas = 1 hora, y no después de las 5:00).
+//   4. Stop al otro lado del order block, objetivo 2R, cierre forzoso a las 11:00 NY. Una operación por sesión.
+indicator("SMC London (tendencia 1h + order block)", "SMC London", overlay = true, max_labels_count = 500,
+          max_lines_count = 500, max_boxes_count = 200, max_bars_back = 500)
+
+TZ = "America/New_York"
+SIZE = 5
+
+sessWin   = input.session("0200-0500", "Ventana de entradas (hora NY)")
+exitHour  = input.int(11, "Cierre forzoso (hora NY)", minval = 5, maxval = 15)
+rr        = input.float(2.0, "Objetivo (R)", minval = 0.5, step = 0.5)
+validBars = input.int(12, "Velas que vale la orden límite", minval = 1)
+showBreaks = input.bool(false, "Mostrar BOS/CHoCH de 5m en la ventana")
+showInfo  = input.bool(true, "Panel de estado")
+
+// ── estructura interna estilo LuxAlgo
+smc(int size) =>
+    var int   leg   = 0
+    var int   trend = 0
+    var float hiLvl = na
+    var float loLvl = na
+    var int   hiIdx = 0
+    var int   loIdx = 0
+    var bool  hiX   = true
+    var bool  loX   = true
+    atr200 = ta.atr(200)
+    volBar = (high - low) >= 2 * atr200
+    pH = volBar ? low : high
+    pL = volBar ? high : low
+    upper = ta.highest(size)
+    lower = ta.lowest(size)
+    int nl = leg
+    if high[size] > upper
+        nl := 0
+    else if low[size] < lower
+        nl := 1
+    if nl != leg
+        if nl == 1
+            loLvl := low[size]
+            loIdx := bar_index - size
+            loX   := false
+        else
+            hiLvl := high[size]
+            hiIdx := bar_index - size
+            hiX   := false
+        leg := nl
+    int   brk   = 0
+    bool  choch = false
+    float obTop = na
+    float obBot = na
+    if not hiX and close > hiLvl and close[1] <= hiLvl
+        choch := trend == -1
+        brk   := 1
+        hiX   := true
+        trend := 1
+        span = math.min(bar_index - hiIdx, 490)
+        float best = na
+        int   off  = 1
+        for j = span to 1
+            if na(best) or pL[j] < best
+                best := pL[j]
+                off  := j
+        obTop := pH[off]
+        obBot := pL[off]
+    if not loX and close < loLvl and close[1] >= loLvl
+        choch := trend == 1
+        brk   := -1
+        loX   := true
+        trend := -1
+        span = math.min(bar_index - loIdx, 490)
+        float best = na
+        int   off  = 1
+        for j = span to 1
+            if na(best) or pH[j] > best
+                best := pH[j]
+                off  := j
+        obTop := pH[off]
+        obBot := pL[off]
+    [trend, brk, choch, obTop, obBot]
+
+trendPrev() =>
+    [t, b, c, ot, ob] = smc(SIZE)
+    t[1]
+
+[tr5, brk, choch, obTop, obBot] = smc(SIZE)
+htf = request.security(syminfo.tickerid, "60", trendPrev(), lookahead = barmerge.lookahead_on)
+
+inWin  = not na(time(timeframe.period, sessWin, TZ))
+mins   = hour(time, TZ) * 60 + minute(time, TZ)
+newDay = inWin and not inWin[1]
+afterExit = mins >= exitHour * 60 and mins < 18 * 60
+
+fmt(float x) => str.tostring(x, format.mintick)
+
+// ── setups pendientes (órdenes límite) y posición
+type Pending
+    int   dir
+    float edge
+    float stop
+    int   expiry
+    box   bx
+
+var array<Pending> pend = array.new<Pending>()
+var bool  done   = false
+var int   pos    = 0
+var float entry  = na
+var float stopPx = na
+var float tgtPx  = na
+
+clearPending() =>
+    for p in pend
+        p.bx.set_right(bar_index)
+    pend.clear()
+
+if newDay
+    done := false
+    clearPending()
+
+if showBreaks and inWin and brk != 0
+    label.new(bar_index, brk == 1 ? high : low, (choch ? "CHoCH" : "BOS"), color = color.new(color.white, 100),
+              textcolor = brk == 1 ? color.teal : color.red, size = size.tiny,
+              style = brk == 1 ? label.style_label_down : label.style_label_up)
+
+// 1. gestionar la posición abierta
+if pos != 0
+    hitStop = pos == 1 ? low <= stopPx : high >= stopPx
+    hitTgt  = pos == 1 ? high >= tgtPx : low <= tgtPx
+    if hitStop
+        label.new(bar_index, stopPx, "❌ Stop −1R", color = color.new(color.red, 20), textcolor = color.white, size = size.small,
+                  style = pos == 1 ? label.style_label_up : label.style_label_down)
+        alert("SMC London: STOP en " + syminfo.ticker + " (" + fmt(stopPx) + ")", alert.freq_once_per_bar)
+        pos := 0
+    else if hitTgt
+        label.new(bar_index, tgtPx, "✅ +" + str.tostring(rr) + "R", color = color.new(color.green, 20), textcolor = color.white,
+                  size = size.small, style = pos == 1 ? label.style_label_down : label.style_label_up)
+        alert("SMC London: OBJETIVO en " + syminfo.ticker + " (" + fmt(tgtPx) + ")", alert.freq_once_per_bar)
+        pos := 0
+    else if afterExit
+        label.new(bar_index, open, "⏱ Cierre " + str.tostring(exitHour) + ":00", color = color.new(color.orange, 20),
+                  textcolor = color.white, size = size.small)
+        alert("SMC London: cerrar la posición en " + syminfo.ticker + " (" + str.tostring(exitHour) + ":00 NY)", alert.freq_once_per_bar)
+        pos := 0
+
+// 2. ¿se llena alguna orden límite pendiente?
+if pos == 0 and not done and pend.size() > 0
+    if not inWin
+        clearPending()
+    else
+        for p in pend
+            touched = p.dir == 1 ? low <= p.edge : high >= p.edge
+            if bar_index <= p.expiry and touched
+                px = p.dir == 1 ? math.min(open, p.edge) : math.max(open, p.edge)
+                if (px - p.stop) * p.dir > 0
+                    pos    := p.dir
+                    entry  := px
+                    stopPx := p.stop
+                    tgtPx  := px + p.dir * rr * math.abs(px - p.stop)
+                    done   := true
+                    x2 = bar_index + 30
+                    line.new(bar_index, entry, x2, entry, color = color.gray, width = 2)
+                    line.new(bar_index, stopPx, x2, stopPx, color = color.red, width = 2)
+                    line.new(bar_index, tgtPx, x2, tgtPx, color = color.green, width = 2)
+                    label.new(bar_index, entry, (pos == 1 ? "🟢 LARGO" : "🔴 CORTO") + "\nEntrada " + fmt(entry) + "\nStop " + fmt(stopPx)
+                              + "\nObjetivo " + fmt(tgtPx), color = pos == 1 ? color.new(color.green, 15) : color.new(color.red, 15),
+                              textcolor = color.white, size = size.small, style = label.style_label_left)
+                    alert("SMC London: ENTRADA " + (pos == 1 ? "LARGO" : "CORTO") + " en " + syminfo.ticker + " a " + fmt(entry)
+                          + " | stop " + fmt(stopPx) + " | objetivo " + fmt(tgtPx), alert.freq_once_per_bar)
+                    // si el mismo bar toca el stop, cuenta como pérdida (como en el backtest)
+                    if (pos == 1 and low <= stopPx) or (pos == -1 and high >= stopPx)
+                        label.new(bar_index, stopPx, "❌ Stop −1R", color = color.new(color.red, 20), textcolor = color.white,
+                                  size = size.small, style = pos == 1 ? label.style_label_up : label.style_label_down)
+                        pos := 0
+                    else if (pos == 1 and high >= tgtPx) or (pos == -1 and low <= tgtPx)
+                        label.new(bar_index, tgtPx, "✅ +" + str.tostring(rr) + "R", color = color.new(color.green, 20), textcolor = color.white,
+                                  size = size.small, style = pos == 1 ? label.style_label_down : label.style_label_up)
+                        pos := 0
+                    break
+        if done
+            clearPending()
+        else
+            for i = pend.size() - 1 to 0
+                if bar_index >= pend.get(i).expiry
+                    pend.get(i).bx.set_right(bar_index)
+                    pend.remove(i)
+
+// 3. nueva ruptura a favor de la tendencia de 1h → orden límite en el order block
+if inWin and not done and pos == 0 and brk != 0 and brk == htf and not na(obTop)
+    edge = brk == 1 ? obTop : obBot
+    stop = brk == 1 ? obBot : obTop
+    if (edge - stop) * brk > 0
+        bx = box.new(bar_index, obTop, bar_index + validBars, obBot, border_color = brk == 1 ? color.teal : color.red,
+                     bgcolor = color.new(brk == 1 ? color.teal : color.red, 85))
+        pend.push(Pending.new(brk, edge, stop, bar_index + validBars, bx))
+        risk = math.abs(edge - stop)
+        alert("SMC London: " + (choch ? "CHoCH" : "BOS") + (brk == 1 ? " alcista" : " bajista") + " a favor de 1h en " + syminfo.ticker
+              + " → orden límite de " + (brk == 1 ? "COMPRA" : "VENTA") + " en " + fmt(edge) + " | stop " + fmt(stop)
+              + " | objetivo " + fmt(edge + brk * rr * risk) + " | válida 1 hora", alert.freq_once_per_bar_close)
+
+// ── panel
+var table info = table.new(position.top_right, 2, 3, bgcolor = color.new(color.black, 20), border_width = 1)
+if showInfo and barstate.islast
+    info.cell(0, 0, "Tendencia 1h", text_color = color.white)
+    info.cell(1, 0, htf == 1 ? "🟢 alcista: solo largos" : htf == -1 ? "🔴 bajista: solo cortos" : "—", text_color = color.white)
+    info.cell(0, 1, "Hoy", text_color = color.white)
+    info.cell(1, 1, pos != 0 ? (pos == 1 ? "en LARGO" : "en CORTO") : done ? "operación hecha" : pend.size() > 0 ? "orden límite esperando" : "esperando setup",
+              text_color = color.white)
+    info.cell(0, 2, "Ventana", text_color = color.white)
+    info.cell(1, 2, "8:00–11:00 Italia · cierre 17:00", text_color = color.white)
