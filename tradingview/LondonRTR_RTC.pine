@@ -1,13 +1,15 @@
 //@version=6
 // ─────────────────────────────────────────────────────────────────────────────────────────────
-// London Reversal (RTR) & Continuation (RTC) — FASE 1: contexto
+// London Reversal (RTR) & Continuation (RTC) — FASES 1 y 2: contexto y barridos de liquidez
 //   · Sesión de Londres con zona horaria (DST automático) y estados Pre-London / London / Post-London
 //   · Rango de Asia (máximo, mínimo, medio) congelado al cerrar Asia
 //   · PDH / PDL (día de CME o día natural de la zona horaria)
 //   · Contexto 4H con velas YA CERRADAS (sin repintado)
-// Todavía NO hay barridos, CISD, RTR, RTC, entradas ni estadísticas: llegan en las fases siguientes.
+//   · FASE 2: niveles de liquidez por niveles (1: PDH/PDL · 2: Asia H/L · 3: 4H H/L y swings de 15m confirmados),
+//     barridos SOLO dentro de London y con la vela cerrada, un barrido por nivel, liquidez principal y estado.
+// Todavía NO hay CISD, RTR, RTC, entradas ni estadísticas: llegan en las fases siguientes.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
-indicator("London RTR / RTC · Fase 1", "LDN F1", overlay = true, scale = scale.right, max_lines_count = 500, max_labels_count = 500)
+indicator("London RTR / RTC · Fase 2", "LDN F2", overlay = true, scale = scale.right, max_lines_count = 500, max_labels_count = 500)
 
 // ═════════════════════════════ AJUSTES ═════════════════════════════
 G_S = "Sesiones"
@@ -23,6 +25,14 @@ bodyMin  = input.float(0.5, "Cuerpo / rango mínimo", minval = 0, maxval = 1, st
 nearHigh = input.float(0.25, "Cierre cerca del máximo (fracción del rango desde el máximo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
 nearLow  = input.float(0.25, "Cierre cerca del mínimo (fracción del rango desde el mínimo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
 show4hHL = input.bool(true, "Dibujar máximo y mínimo de la última vela de 4H cerrada", group = G_C)
+
+G_L = "Liquidez (fase 2)"
+minSwTicks = input.int(1, "Barrido mínimo más allá del nivel (ticks)", minval = 0, group = G_L)
+use15sw    = input.bool(true, "Swings de 15m como liquidez (nivel 3)", group = G_L)
+swLen15    = input.int(3, "Swings de 15m: velas a cada lado", minval = 1, maxval = 10, group = G_L,
+  tooltip = "Un swing de 15m se conoce cuando cierran las N velas de 15m posteriores: con 3, se confirma 45 minutos después del máximo o mínimo.")
+max15      = input.int(3, "Swings de 15m vivos por lado", minval = 1, maxval = 10, group = G_L)
+use4hLv    = input.bool(true, "Máximo/mínimo de la última vela de 4H como liquidez (nivel 3)", group = G_L)
 
 G_V = "Visual"
 showPD    = input.bool(true, "PDH / PDL", group = G_V, inline = "v1")
@@ -172,8 +182,165 @@ if not na(ln4H)
     ln4H.set_x2(bar_index)
     ln4L.set_x2(bar_index)
 
+// ═════════════════════════════ LIQUIDEZ Y BARRIDOS (fase 2) ═════════════════════════════
+type Level
+    string name
+    int    tier
+    bool   isHigh
+    float  price
+    int    tCreated
+    bool   swept = false
+    bool   inLdn = false
+    int    sweptT
+    float  depth = 0.0
+    line   ln
+
+var array<Level> lv = array.new<Level>()
+minSw = minSwTicks * syminfo.mintick
+
+dropLevels(string nm) =>
+    if lv.size() > 0
+        for i = lv.size() - 1 to 0
+            if lv.get(i).name == nm
+                lv.remove(i)
+    0
+
+addLevel(string nm, int tier, bool isHigh, float px, line ln) =>
+    lv.push(Level.new(nm, tier, isHigh, px, time, ln = ln))
+    0
+
+// swings de 15m confirmados (velas de 15m ya cerradas)
+[s15h, s15l, s15t] = request.security(syminfo.tickerid, "15", [ta.pivothigh(high, swLen15, swLen15)[1], ta.pivotlow(low, swLen15, swLen15)[1], time[swLen15 + 1]], lookahead = barmerge.lookahead_on)
+new15 = timeframe.change("15")
+
+// contexto de la sesión: el de 4H al abrir London, congelado durante toda la sesión
+revHighs = ctxAtLdn == 1      // contexto alcista → el reversal se busca en los máximos (corto)
+revLows  = ctxAtLdn == -1
+
+var string primName = ""
+var int    primTier = 9
+var float  primPx = na
+var int    primT = na
+var string lastSweep = ""
+
+bool evSweep = false
+bool evPDH = false
+bool evPDL = false
+bool evAH = false
+bool evAL = false
+
+if barstate.isconfirmed
+    // ── 0. nueva sesión de London: se reinicia la liquidez principal
+    if ldnStart
+        primName := ""
+        primTier := 9
+        primPx := na
+        primT := na
+        lastSweep := ""
+    // ── 1. barridos (antes de registrar los niveles nuevos de esta vela)
+    for L in lv
+        if not L.swept and L.tCreated < time
+            if L.isHigh ? high > L.price + minSw : low < L.price - minSw
+                L.swept := true
+                L.sweptT := time
+                L.inLdn := inLdn
+                L.depth := L.isHigh ? high - L.price : L.price - low
+                if not na(L.ln)
+                    L.ln.set_style(line.style_dotted)
+                    L.ln.set_color(color.new(color.gray, 60))
+                if inLdn
+                    onRevSide = (L.isHigh and revHighs) or (not L.isHigh and revLows)
+                    evSweep := true
+                    evPDH := evPDH or L.name == "PDH"
+                    evPDL := evPDL or L.name == "PDL"
+                    evAH := evAH or L.name == "ASIA H"
+                    evAL := evAL or L.name == "ASIA L"
+                    lastSweep := L.name + " " + hhmm(time)
+                    if onRevSide and L.tier < primTier
+                        primName := L.name
+                        primTier := L.tier
+                        primPx := L.price
+                        primT := time
+                    label.new(bar_index, L.isHigh ? high : low, L.name + " SWEEP", color = color.new(color.black, 100),
+                      textcolor = onRevSide ? colLiq : color.new(colLiq, 55), size = size.tiny,
+                      style = L.isHigh ? label.style_label_down : label.style_label_up,
+                      tooltip = "Nivel " + str.tostring(L.tier) + " · " + fmt(L.price) + " · barrido a las " + hhmm(time) + " · profundidad " + fmt(L.depth)
+                       + (onRevSide ? "\nLado del reversal según el contexto 4H" : ctxAtLdn == 0 ? "\nSin contexto 4H: no habrá setup" : "\nLado contrario al reversal"))
+                    alert("Liquidity swept · " + syminfo.ticker + " · " + L.name + " " + fmt(L.price) + " · London · 4H " + ctxTxt(ctxAtLdn)
+                      + (onRevSide ? " · lado del reversal" : ""), alert.freq_once_per_bar_close)
+        else if L.swept and L.inLdn and inLdn
+            L.depth := math.max(L.depth, L.isHigh ? high - L.price : L.price - low)
+
+    // ── 2. niveles nuevos de esta vela
+    if newPD and not na(pdh)
+        dropLevels("PDH")
+        dropLevels("PDL")
+        addLevel("PDH", 1, true, pdh, lnPH)
+        addLevel("PDL", 1, false, pdl, lnPL)
+    if asiaEnd and not na(asiaH)
+        dropLevels("ASIA H")
+        dropLevels("ASIA L")
+        addLevel("ASIA H", 2, true, asiaH, lnAH)
+        addLevel("ASIA L", 2, false, asiaL, lnAL)
+    if new4h and use4hLv
+        dropLevels("4H H")
+        dropLevels("4H L")
+        addLevel("4H H", 3, true, h4H, ln4H)
+        addLevel("4H L", 3, false, h4L, ln4L)
+    if new15 and use15sw
+        if not na(s15h)
+            addLevel("15M SH", 3, true, s15h, line.new(s15t, s15h, time, s15h, xloc = xloc.bar_time, color = color.new(colLiq, 60), style = line.style_dashed))
+        if not na(s15l)
+            addLevel("15M SL", 3, false, s15l, line.new(s15t, s15l, time, s15l, xloc = xloc.bar_time, color = color.new(colLiq, 60), style = line.style_dashed))
+        // máximo de swings de 15m vivos por lado y caducidad de 24 h
+        int nH = 0
+        int nL = 0
+        for i = lv.size() - 1 to 0
+            L = lv.get(i)
+            if str.startswith(L.name, "15M")
+                old = time - L.tCreated > 86400000
+                if not L.swept
+                    if L.isHigh
+                        nH += 1
+                    else
+                        nL += 1
+                if (not L.swept and ((L.isHigh and nH > max15) or (not L.isHigh and nL > max15))) or old or (L.swept and time - L.sweptT > 3600000)
+                    if not na(L.ln)
+                        L.ln.delete()
+                    lv.remove(i)
+    for L in lv
+        if str.startswith(L.name, "15M") and not L.swept and not na(L.ln)
+            L.ln.set_x2(time)
+
+
+// objetivo: nivel intacto más cercano en el lado del reversal (el de mejor nivel si hay empate de distancia)
+string tgtTxt = "—"
+if revHighs or revLows
+    float best = na
+    for L in lv
+        if not L.swept and L.isHigh == revHighs and (revHighs ? L.price > close : L.price < close)
+            dist = math.abs(L.price - close)
+            if na(best) or dist < best
+                best := dist
+                tgtTxt := L.name + " " + fmt(L.price) + " (nivel " + str.tostring(L.tier) + ")"
+
+state = not inLdn ? (sessState == "PRE-LONDON" ? "PRE_LONDON" : "POST_LONDON") : ctxAtLdn == 0 ? "LONDON_WAITING (sin contexto 4H)" : primName != "" ? "LIQUIDITY_SWEPT" : "LIQUIDITY_TARGET_ACTIVE"
+
+statusOf(string nm) =>
+    string out = "—"
+    for L in lv
+        if L.name == nm
+            out := fmt(L.price) + (L.swept ? (L.inLdn ? " · SWEPT " + hhmm(L.sweptT) + " +" + fmt(L.depth) : " · tomado fuera de London") : " · intacto")
+    out
+
+alertcondition(evSweep, "Liquidity swept", "Liquidez barrida en London · {{ticker}} · {{close}}")
+alertcondition(evPDH, "PDH swept", "PDH barrido en London · {{ticker}} · {{close}}")
+alertcondition(evPDL, "PDL swept", "PDL barrido en London · {{ticker}} · {{close}}")
+alertcondition(evAH, "Asia High swept", "Asia High barrido en London · {{ticker}} · {{close}}")
+alertcondition(evAL, "Asia Low swept", "Asia Low barrido en London · {{ticker}} · {{close}}")
+
 // ═════════════════════════════ PANEL DE VERIFICACIÓN ═════════════════════════════
-var table pnl = table.new(position.bottom_right, 2, 12, bgcolor = color.new(#0D1117, 5), border_color = color.new(color.gray, 80), border_width = 1)
+var table pnl = table.new(position.bottom_right, 2, 22, bgcolor = color.new(#0D1117, 5), border_color = color.new(color.gray, 80), border_width = 1)
 row(int r, string a, string b) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 20), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
@@ -188,4 +355,15 @@ if showPanel and barstate.islast
     row(6, "4H actual", "4H " + ctxTxt(ctx4))
     row(7, "  vela usada (cerrada)", "abrió " + str.format_time(h4T, "dd/MM HH:mm", tz) + " · cuerpo " + str.tostring(body4, "#.##"))
     row(8, "4H al abrir London", "4H " + ctxTxt(ctxAtLdn) + (na(ctxAtLdnT) ? "" : " (vela de " + hhmm(ctxAtLdnT) + ")"))
-    row(9, "Fase", "1 · contexto (sin señales)")
+    row(9, "LADO DEL REVERSAL", revHighs ? "máximos (corto primero)" : revLows ? "mínimos (largo primero)" : "ninguno: sin contexto 4H")
+    row(10, "CURRENT STATE", state)
+    row(11, "PRIMARY LIQUIDITY", primName == "" ? "—" : primName + " " + fmt(primPx) + " · " + hhmm(primT))
+    row(12, "Siguiente objetivo", tgtTxt)
+    row(13, "Último barrido en London", lastSweep == "" ? "—" : lastSweep)
+    row(14, "PDH", statusOf("PDH"))
+    row(15, "PDL", statusOf("PDL"))
+    row(16, "ASIA H", statusOf("ASIA H"))
+    row(17, "ASIA L", statusOf("ASIA L"))
+    row(18, "4H H", statusOf("4H H"))
+    row(19, "4H L", statusOf("4H L"))
+    row(20, "Fase", "2 · barridos (sin señales de entrada)")
