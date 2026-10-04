@@ -140,3 +140,25 @@ python ibs_swing.py --execute   # envía las órdenes (solo dentro del horario)
 
 `auto_strategy.py`, `crypto_trend.py` e `ibs_swing.py` avisan cada vez que envían una orden si existen las
 variables de entorno `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` (ver `mt5/README.md` para crearlas).
+
+## Datos de futuros CME con Databento (`confirmation_model_backtest.py`)
+
+Para las sesiones nocturnas (Londres) se usan futuros NQ, ES y GC de Databento (24 h). Requiere la
+variable de entorno `DATABENTO_API_KEY` y acceso de red a `hist.databento.com`. Descarga (unos 8 $ de
+crédito para 2 años en velas de 1 minuto) y guarda velas de 5 minutos en `.lab_cache/dbn_<NQ|ES|GC>_5m.pkl`:
+
+```python
+import databento as db, os, pickle
+c = db.Historical(os.environ["DATABENTO_API_KEY"])
+for sym, cont in (("NQ", "NQ.c.0"), ("ES", "ES.c.0"), ("GC", "GC.v.0")):   # oro: contrato con más volumen
+    df = c.timeseries.get_range(dataset="GLBX.MDP3", symbols=[cont], stype_in="continuous",
+                                schema="ohlcv-1m", start="2024-10-01", end="2026-10-03").to_df()
+    d = df[["open", "high", "low", "close"]].tz_convert("America/New_York")
+    d5 = d.resample("5min", label="left", closed="left").agg(
+        {"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
+    open(f".lab_cache/dbn_{sym}_5m.pkl", "wb").write(pickle.dumps(d5))
+```
+
+`confirmation_model_backtest.py` prueba el "Confirmation Model" (barrido + entrega HTF + iFVG + CISD + SMT)
+en Londres (2:00-5:00 y 2:00-8:00 NY) y en la apertura de Nueva York. Traducción del documento original:
+`docs/Modelo_de_Confirmacion_Guia_ES.pdf`.

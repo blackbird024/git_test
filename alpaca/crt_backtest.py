@@ -37,7 +37,10 @@ YEARS = 2
 
 
 def load_5m(symbol):
+    """Velas de 5 minutos (hora de Nueva York). NQ, ES y GC vienen de Databento (futuros CME, 24 h)."""
     CACHE.mkdir(exist_ok=True)
+    if symbol in ("NQ", "ES", "GC"):
+        return pickle.loads((CACHE / f"dbn_{symbol}_5m.pkl").read_bytes())
     path = CACHE / f"crt_{symbol.replace('/', '')}_{datetime.now():%Y%m%d}.pkl"
     if path.exists():
         return pickle.loads(path.read_bytes())
