@@ -1,4 +1,5 @@
 //@version=6
+// ⚠️ OBSOLETO: usar ConfirmationModelBPlus.pine (v2). Esta v1 tenía el filtro HTF invertido (ya corregido aquí).
 // Modelo de Confirmación (London y Nueva York) — mismas reglas que alpaca/confirmation_model_backtest.py.
 // Usar en gráfico de 5 minutos (NQ, ES u oro). En otra temporalidad cambian todas las velas y no es lo backtesteado.
 //   1. Barrido: el precio supera un swing de 5m (3 velas a cada lado) de las últimas 4 horas que nadie había tocado.
@@ -88,7 +89,7 @@ if zones.size() > 0
 htfTouch(int d, float extreme) =>
     bool ok = false
     for z in zones
-        if z.kind == -d
+        if z.kind == d       // corregido: FVG alcista para largos, bajista para cortos
             if d == -1 and extreme >= z.bot and close <= z.top
                 ok := true
             if d == 1 and extreme <= z.top and close >= z.bot

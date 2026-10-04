@@ -72,7 +72,10 @@ class Market:
 def htf_touch(m, i, direction, extreme):
     """¿El extremo del barrido toca un FVG HTF activo y la vela no cierra al otro lado?"""
     t = m.t[i]
-    f = m.fvg[(m.fvg["t"] <= t) & (m.fvg["t"] >= t - pd.Timedelta(days=3)) & (m.fvg["kind"] == -direction)]
+    # Corregido (oct 2026): un corto necesita un FVG BAJISTA (kind -1) y un largo uno ALCISTA (kind 1).
+    # Antes se filtraba kind == -direction, es decir, el FVG del tipo contrario: los resultados B/B+/A anteriores
+    # a esta corrección no son válidos.
+    f = m.fvg[(m.fvg["t"] <= t) & (m.fvg["t"] >= t - pd.Timedelta(days=3)) & (m.fvg["kind"] == direction)]
     for _, z in f.iterrows():
         seg = m.c[(m.t >= z["t"]) & (m.t < t)]
         if direction == -1:                                     # corto: FVG bajista por encima

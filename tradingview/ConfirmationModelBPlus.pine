@@ -1,0 +1,647 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// Confirmation Model B+ · v2 — indicador de detección y diagnóstico (no es una estrategia)
+// Misma lógica que alpaca/cm_bplus_engine.py (motor de referencia en Python con datos de Databento).
+//
+// Setup alcista (el bajista es simétrico):
+//   1. BARRIDO   la mecha de una vela de 5m perfora un swing low confirmado (pivote L/R) de las últimas
+//                N velas que nadie había perforado. Opcional: exigir cierre de vuelta por encima del nivel.
+//   2. HTF       la vela del mínimo del barrido (el extremo; se actualiza si el precio sigue bajando) toca con
+//                la mecha un FVG ALCISTA activo de 15m o 1h y cierra por encima de su límite inferior.
+//   3. iFVG      un FVG BAJISTA de 5m formado en la caída (hasta la vela del extremo), sin invertir antes del
+//                extremo, y una vela que cierra por encima de su límite superior desde el extremo.
+//   4. CISD      una vela posterior al extremo cierra por encima de la apertura de la primera vela de la
+//                última serie bajista que llevó al mínimo.
+//   Las confirmaciones deben llegar dentro de la ventana (velas desde el extremo o desde el barrido).
+//
+// Sin repintado: toda la lógica se ejecuta solo al cierre de cada vela (barstate.isconfirmed); los datos de
+// 15m y 1h se piden con [1] + lookahead_on, es decir, solo velas HTF ya cerradas.
+// Pensado para gráfico de 5 minutos. En otra temporalidad muestra un aviso y no calcula.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("Confirmation Model B+ v2", "CM B+ v2", overlay = true, max_labels_count = 500, max_lines_count = 500,
+  max_boxes_count = 500, max_bars_back = 600)
+
+// ═════════════════════════════ AJUSTES ═════════════════════════════
+G_MODE = "Modo"
+modeIn   = input.string("A · B+ estricto", "Modo", options = ["A · B+ estricto", "B · Diagnóstico", "C · Configurable"], group = G_MODE,
+  tooltip = "A: solo señales con las 4 condiciones. B: muestra cada fase y por qué falla cada setup. C: investigación, activa/desactiva filtros; sus señales NO son B+.")
+dirIn    = input.string("Ambas", "Dirección", options = ["Ambas", "Solo largos", "Solo cortos"], group = G_MODE)
+cUseHtf  = input.bool(true, "C · exigir entrega HTF", group = G_MODE, inline = "c1")
+cUseIfvg = input.bool(true, "C · exigir iFVG", group = G_MODE, inline = "c1")
+cUseCisd = input.bool(true, "C · exigir CISD", group = G_MODE, inline = "c2")
+
+G_LIQ = "1 · Liquidez (swings de 5m)"
+pivL       = input.int(3, "Velas a la izquierda", minval = 1, maxval = 10, group = G_LIQ, inline = "piv")
+pivR       = input.int(3, "a la derecha", minval = 1, maxval = 10, group = G_LIQ, inline = "piv")
+swingLb    = input.int(48, "Vigencia del swing (velas)", minval = 6, maxval = 288, group = G_LIQ, tooltip = "48 velas de 5m = 4 horas")
+sweepClose = input.bool(false, "Exigir cierre de vuelta tras el barrido", group = G_LIQ)
+
+G_HTF = "2 · Entrega HTF (FVG de 15m y 1h)"
+use15    = input.bool(true, "FVG de 15m", group = G_HTF, inline = "tf")
+use60    = input.bool(true, "FVG de 1h", group = G_HTF, inline = "tf")
+htfDays  = input.float(3.0, "Antigüedad máxima (días)", minval = 0.5, step = 0.5, group = G_HTF)
+invMode  = input.string("Cierre HTF", "Invalidación", options = ["Cierre HTF", "Cierre 5m", "Mecha"], group = G_HTF,
+  tooltip = "Cierre HTF: una vela de su temporalidad cierra al otro lado. Cierre 5m: una vela de 5m cierra al otro lado. Mecha: el precio atraviesa toda la zona.")
+
+G_IFVG = "3 · iFVG (FVG de 5m invertido)"
+ifvgSel  = input.string("Cualquiera", "FVG contrario a usar", options = ["Cualquiera", "Último", "Más cercano"], group = G_IFVG)
+ifvgLb   = input.int(12, "Buscar FVG hasta N velas antes del extremo", minval = 3, maxval = 60, group = G_IFVG)
+
+G_CISD = "4 · CISD"
+cisdMode = input.string("Consecutivas", "Serie que lleva al extremo", options = ["Consecutivas", "Tolerante (1 vela)", "Estructura"], group = G_CISD)
+winBars  = input.int(12, "Ventana de confirmación (velas)", minval = 2, maxval = 60, group = G_CISD, tooltip = "12 velas de 5m = 1 hora")
+winFrom  = input.string("Extremo", "La ventana cuenta desde", options = ["Extremo", "Barrido"], group = G_CISD)
+
+G_SES = "Sesiones y días"
+tz        = input.string("America/New_York", "Zona horaria de las sesiones", group = G_SES)
+useLon    = input.bool(true, "London", group = G_SES, inline = "lon")
+sessLon   = input.session("0200-0500", "", group = G_SES, inline = "lon")
+useNY     = input.bool(false, "Nueva York", group = G_SES, inline = "ny")
+sessNY    = input.session("0930-1100", "", group = G_SES, inline = "ny")
+noSessFlt = input.bool(false, "Investigación: ignorar el filtro horario", group = G_SES)
+onePerSes = input.bool(false, "Una señal por sesión", group = G_SES)
+dMon = input.bool(true, "L", group = G_SES, inline = "d")
+dTue = input.bool(true, "M", group = G_SES, inline = "d")
+dWed = input.bool(true, "X", group = G_SES, inline = "d")
+dThu = input.bool(true, "J", group = G_SES, inline = "d")
+dFri = input.bool(true, "V", group = G_SES, inline = "d")
+
+G_TRD = "Niveles de la señal"
+rr       = input.float(2.0, "Objetivo (R)", minval = 0.5, step = 0.5, group = G_TRD)
+stopBuf  = input.float(0.0, "Buffer del stop (puntos)", minval = 0, group = G_TRD)
+
+G_VIS = "Visual"
+showSwings = input.bool(true, "Swings vivos", group = G_VIS, inline = "v1")
+showHtf    = input.bool(true, "FVG HTF activos", group = G_VIS, inline = "v1")
+showInv    = input.bool(false, "FVG HTF invalidados", group = G_VIS, inline = "v2")
+showPhases = input.bool(true, "Etiquetas de fase", group = G_VIS, inline = "v2")
+showFailed = input.bool(false, "Setups fallidos (en modo B siempre)", group = G_VIS)
+showLevels = input.bool(true, "Entrada / stop / objetivo", group = G_VIS)
+showPanel  = input.bool(true, "Panel de diagnóstico", group = G_VIS)
+maxHtfBox  = input.int(40, "Máximo de cajas HTF", minval = 5, maxval = 200, group = G_VIS)
+colBull    = input.color(#C9CED6, "Señal alcista", group = G_VIS, inline = "c1")
+colBear    = input.color(#6A84A3, "Señal bajista", group = G_VIS, inline = "c1")
+colFvgUp   = input.color(color.new(#1F7A73, 82), "FVG HTF alcista", group = G_VIS, inline = "c2")
+colFvgDn   = input.color(color.new(#5E4A8C, 82), "FVG HTF bajista", group = G_VIS, inline = "c2")
+colLiq     = input.color(#A89A5B, "Liquidez", group = G_VIS, inline = "c3")
+colCisd    = input.color(#D9D9D9, "CISD", group = G_VIS, inline = "c3")
+colIfvg    = input.color(color.new(#E0B060, 70), "iFVG", group = G_VIS, inline = "c4")
+lineW      = input.int(1, "Grosor de líneas", minval = 1, maxval = 4, group = G_VIS, inline = "c4")
+
+G_ALR = "Alertas"
+aSweep  = input.bool(true, "Barrido", group = G_ALR, inline = "a1")
+aHtf    = input.bool(true, "Entrega HTF", group = G_ALR, inline = "a1")
+aIfvg   = input.bool(true, "iFVG", group = G_ALR, inline = "a2")
+aCisd   = input.bool(true, "CISD", group = G_ALR, inline = "a2")
+aSignal = input.bool(true, "Setup completo", group = G_ALR)
+aIntra  = input.bool(false, "Aviso INTRABAR de barrido (vela sin cerrar)", group = G_ALR)
+
+G_STAT = "Estadísticas"
+statFrom = input.time(timestamp("2000-01-01T00:00:00"), "Contar desde", group = G_STAT)
+statTo   = input.time(timestamp("2100-01-01T00:00:00"), "hasta", group = G_STAT)
+
+// ═════════════════════════════ CONSTANTES Y MODO ═════════════════════════════
+MODE_A = modeIn == "A · B+ estricto"
+MODE_B = modeIn == "B · Diagnóstico"
+MODE_C = modeIn == "C · Configurable"
+REQ_HTF  = MODE_C ? cUseHtf : true
+REQ_IFVG = MODE_C ? cUseIfvg : true
+REQ_CISD = MODE_C ? cUseCisd : true
+ALLOW_L  = dirIn != "Solo cortos"
+ALLOW_S  = dirIn != "Solo largos"
+SHOW_FAILED = showFailed or MODE_B
+tfOk = timeframe.isminutes and timeframe.multiplier == 5
+cTag = "C" + (REQ_HTF ? "" : " ·sin HTF") + (REQ_IFVG ? "" : " ·sin iFVG") + (REQ_CISD ? "" : " ·sin CISD")
+DAY_MS = 86400000
+
+// ═════════════════════════════ SESIÓN ═════════════════════════════
+inLon = not na(time(timeframe.period, sessLon, tz))
+inNY  = not na(time(timeframe.period, sessNY, tz))
+dow   = dayofweek(time, tz)
+dayOk = (dow == dayofweek.monday and dMon) or (dow == dayofweek.tuesday and dTue) or (dow == dayofweek.wednesday and dWed) or (dow == dayofweek.thursday and dThu) or (dow == dayofweek.friday and dFri)
+inSess = noSessFlt ? dayOk : dayOk and ((useLon and inLon) or (useNY and inNY))
+sesStart = inSess and not inSess[1]
+sesName  = noSessFlt ? "24h" : inLon ? "London" : "NY"
+inStats  = time >= statFrom and time <= statTo
+
+// ═════════════════════════════ FVG HTF (solo velas cerradas) ═════════════════════════════
+type Zone
+    float top
+    float bot
+    int   kind      // 1 alcista, -1 bajista
+    int   tf        // 15 o 60
+    int   tForm
+    bool  valid = true
+    box   bx
+
+var array<Zone> zones = array.new<Zone>()
+
+[h15a, l15a, h15c, l15c, c15] = request.security(syminfo.tickerid, "15", [high[1], low[1], high[3], low[3], close[1]], lookahead = barmerge.lookahead_on)
+[h60a, l60a, h60c, l60c, c60] = request.security(syminfo.tickerid, "60", [high[1], low[1], high[3], low[3], close[1]], lookahead = barmerge.lookahead_on)
+new15 = timeframe.change("15")
+new60 = timeframe.change("60")
+
+drawZone(Zone z) =>
+    if showHtf
+        int shown = 0
+        for q in zones
+            if not na(q.bx)
+                shown += 1
+        if shown < maxHtfBox
+            dup = false
+            for q in zones
+                if q.valid and q.kind == z.kind and not na(q.bx) and q.tf != z.tf
+                    ov = math.min(q.top, z.top) - math.max(q.bot, z.bot)
+                    if ov > 0.8 * math.min(q.top - q.bot, z.top - z.bot)
+                        dup := true
+            if not dup
+                z.bx := box.new(bar_index, z.top, bar_index + 6, z.bot, border_color = z.kind == 1 ? colFvgUp : colFvgDn,
+                  border_style = z.tf == 60 ? line.style_solid : line.style_dotted, bgcolor = z.kind == 1 ? colFvgUp : colFvgDn,
+                  text = z.tf == 60 ? "1h" : "15m", text_size = size.tiny, text_color = color.new(color.gray, 30),
+                  text_halign = text.align_right, text_valign = text.align_top)
+
+addZone(float ha, float la, float hc, float lc, int tf) =>
+    if la > hc
+        z = Zone.new(la, hc, 1, tf, time)
+        zones.push(z)
+        drawZone(z)
+    else if ha < lc
+        z = Zone.new(lc, ha, -1, tf, time)
+        zones.push(z)
+        drawZone(z)
+
+killZone(Zone z) =>
+    z.valid := false
+    if not na(z.bx)
+        if showInv
+            z.bx.set_bgcolor(color.new(color.gray, 92))
+            z.bx.set_border_color(color.new(color.gray, 70))
+        else
+            z.bx.delete()
+            z.bx := na
+
+// ═════════════════════════════ SWINGS ═════════════════════════════
+type Swing
+    float price
+    int   bar
+    int   confBar
+    bool  isHigh
+    bool  external
+    line  ln
+
+var array<Swing> swings = array.new<Swing>()
+var int lastPivHiBar = na
+var int lastPivLoBar = na
+ph = ta.pivothigh(high, pivL, pivR)
+pl = ta.pivotlow(low, pivL, pivR)
+hiWin = ta.highest(high, swingLb)
+loWin = ta.lowest(low, swingLb)
+
+// ═════════════════════════════ FVG DE 5m (candidatos a iFVG) ═════════════════════════════
+type Gap
+    int   bar        // tercera vela
+    float edge       // límite que hay que cerrar para invertirlo
+    float far        // otro límite (para dibujar)
+    int   dir        // -1 FVG bajista (sirve a largos), 1 FVG alcista (sirve a cortos)
+    int   invBar = -1
+
+var array<Gap> gaps = array.new<Gap>()
+
+// ═════════════════════════════ NIVEL CISD (calculado cada vela) ═════════════════════════════
+// apertura de la primera vela de la última serie en contra que termina en esta vela
+cisdLevel(int d, int pivBar) =>
+    against0 = d == 1 ? close < open : close > open
+    int s = against0 ? 0 : 1
+    if cisdMode == "Estructura" and not na(pivBar)
+        s := math.min(bar_index - pivBar - 1, 300)
+        while s > 0 and not (d == 1 ? close[s] < open[s] : close[s] > open[s])
+            s -= 1
+    else
+        while s < 300 and (d == 1 ? close[s + 1] < open[s + 1] : close[s + 1] > open[s + 1])
+            s += 1
+        if cisdMode == "Tolerante (1 vela)"
+            while s < 296 and not (d == 1 ? close[s + 1] < open[s + 1] : close[s + 1] > open[s + 1]) and (d == 1 ? close[s + 2] < open[s + 2] : close[s + 2] > open[s + 2])
+                s += 2
+                while s < 300 and (d == 1 ? close[s + 1] < open[s + 1] : close[s + 1] > open[s + 1])
+                    s += 1
+    [open[s], s]
+
+[lvlL, offL] = cisdLevel(1, lastPivHiBar[1])
+[lvlS, offS] = cisdLevel(-1, lastPivLoBar[1])
+
+// ═════════════════════════════ SETUP ═════════════════════════════
+type Setup
+    int    d
+    bool   active = false
+    int    sweepBar
+    int    swingBar
+    float  swingPrice
+    int    extBar
+    float  ext
+    bool   htf = false
+    int    htfTf
+    float  htfTop
+    float  htfBot
+    float  htfPen
+    float  level
+    int    levelBar
+    int    ifvgBar = -1
+    int    cisdBar = -1
+    array<Gap> cands
+    Gap    usedGap
+    bool   alHtf = false
+    int    htfAlertBar = -1
+    label  lb
+
+var Setup sL = Setup.new(1)
+var Setup sS = Setup.new(-1)
+var bool doneSes = false
+
+// estadísticas (objeto para poder actualizarlas desde funciones)
+type Stats
+    int swings = 0
+    int sweepL = 0
+    int sweepS = 0
+    int htf = 0
+    int htfIfvg = 0
+    int sigL = 0
+    int sigS = 0
+    int expHtf = 0
+    int expIfvg = 0
+    int expCisd = 0
+    int expSes = 0
+    int anyIfvg = 0
+    int anyCisd = 0
+    int firstT
+    int lastT
+
+var Stats st = Stats.new()
+
+// eventos de esta vela para alertcondition
+bool evSweep = false
+bool evHtf = false
+bool evIfvg = false
+bool evCisd = false
+bool evSignal = false
+
+fmt(float x) => str.tostring(x, format.mintick)
+dirTxt(int d) => d == 1 ? "ALCISTA" : "BAJISTA"
+colOf(int d) => d == 1 ? colBull : colBear
+
+phaseLabel(int bi, float y, string txt, int d) =>
+    if showPhases
+        label.new(bi, y, txt, color = color.new(color.black, 100), textcolor = colOf(d), size = size.tiny,
+          style = d == 1 ? label.style_label_up : label.style_label_down)
+
+htfTouch(int d, float ext) =>
+    bool ok = false
+    int tfHit = na
+    float tp = na
+    float bt = na
+    float pen = na
+    for z in zones
+        if z.valid and z.kind == d and z.tForm <= time and time - z.tForm <= htfDays * DAY_MS and ((z.tf == 15 and use15) or (z.tf == 60 and use60))
+            hit = d == 1 ? (ext <= z.top and close >= z.bot) : (ext >= z.bot and close <= z.top)
+            if hit and not ok
+                ok := true
+                tfHit := z.tf
+                tp := z.top
+                bt := z.bot
+                pen := d == 1 ? (z.top - ext) / (z.top - z.bot) : (ext - z.bot) / (z.top - z.bot)
+    [ok, tfHit, tp, bt, pen]
+
+// candidatos iFVG para un extremo en esta vela
+candidates(int d) =>
+    array<Gap> out = array.new<Gap>()
+    for g in gaps
+        if g.dir == -d and g.bar >= bar_index - ifvgLb and g.bar <= bar_index and (g.invBar < 0 or g.invBar >= bar_index)
+            out.push(g)
+    if out.size() > 1 and ifvgSel != "Cualquiera"
+        Gap best = out.get(0)
+        for g in out
+            if ifvgSel == "Último" and g.bar > best.bar
+                best := g
+            if ifvgSel == "Más cercano" and (d == 1 ? g.edge < best.edge : g.edge > best.edge)
+                best := g
+        out := array.from(best)
+    out
+
+invertedNow(Setup s) =>
+    Gap hitG = na
+    if not na(s.cands)
+        for g in s.cands
+            if (s.d == 1 and close > g.edge) or (s.d == -1 and close < g.edge)
+                hitG := g
+                break
+    hitG
+
+// fija o actualiza el extremo del setup con la vela actual
+setExtreme(Setup s) =>
+    s.extBar := bar_index
+    s.ext := s.d == 1 ? low : high
+    [ok, tfH, tp, bt, pen] = htfTouch(s.d, s.ext)
+    s.htf := ok
+    s.htfTf := tfH
+    s.htfTop := tp
+    s.htfBot := bt
+    s.htfPen := pen
+    s.level := s.d == 1 ? lvlL : lvlS
+    s.levelBar := bar_index - (s.d == 1 ? offL : offS)
+    s.cands := candidates(s.d)
+    s.ifvgBar := -1
+    s.cisdBar := -1
+    s.usedGap := na
+    g = invertedNow(s)
+    if not na(g)
+        s.ifvgBar := bar_index
+        s.usedGap := g
+
+finish(Setup s, string reason) =>
+    // reason: "señal", "expirado", "fin de sesión"
+    if inStats
+        if s.htf
+            st.htf += 1
+            if s.ifvgBar >= 0
+                st.htfIfvg += 1
+        if s.ifvgBar >= 0
+            st.anyIfvg += 1
+        if s.cisdBar >= 0
+            st.anyCisd += 1
+        if reason == "expirado"
+            if REQ_HTF and not s.htf
+                st.expHtf += 1
+            else if REQ_IFVG and s.ifvgBar < 0
+                st.expIfvg += 1
+            else
+                st.expCisd += 1
+        if reason == "fin de sesión"
+            st.expSes += 1
+    if reason != "señal" and SHOW_FAILED and showPhases
+        miss = (REQ_HTF and not s.htf ? " HTF" : "") + (REQ_IFVG and s.ifvgBar < 0 ? " iFVG" : "") + (REQ_CISD and s.cisdBar < 0 ? " CISD" : "")
+        label.new(bar_index, s.d == 1 ? low : high, "✕" + (reason == "fin de sesión" ? " sesión" : " falta" + miss), color = color.new(color.black, 100),
+          textcolor = color.new(color.gray, 20), size = size.tiny, style = s.d == 1 ? label.style_label_up : label.style_label_down)
+    s.active := false
+
+drawSignal(Setup s) =>
+    entry = close
+    stop = s.ext - s.d * stopBuf
+    risk = math.abs(entry - stop)
+    tgt = entry + s.d * rr * risk
+    col = MODE_C ? color.new(color.gray, 0) : colOf(s.d)
+    tag = MODE_C ? cTag : "B+"
+    txt = tag + (s.d == 1 ? " ▲" : " ▼") + "\nE " + fmt(entry) + "\nSL " + fmt(stop) + "\nTP " + fmt(tgt) + (na(s.htfTf) ? "" : "\nFVG " + str.tostring(s.htfTf) + "m")
+    label.new(bar_index, s.d == 1 ? s.ext : s.ext, txt, color = color.new(col, 10), textcolor = color.black, size = size.small,
+      style = s.d == 1 ? label.style_label_up : label.style_label_down)
+    // nivel barrido, CISD e iFVG de este setup
+    line.new(s.swingBar, s.swingPrice, s.sweepBar, s.swingPrice, color = colLiq, width = lineW)
+    if s.cisdBar >= 0
+        line.new(s.levelBar, s.level, bar_index, s.level, color = colCisd, width = lineW, style = line.style_dashed)
+    if not na(s.usedGap)
+        box.new(s.usedGap.bar - 2, math.max(s.usedGap.edge, s.usedGap.far), s.ifvgBar, math.min(s.usedGap.edge, s.usedGap.far),
+          border_color = colIfvg, bgcolor = colIfvg)
+    if showLevels
+        x2 = bar_index + 20
+        line.new(bar_index, entry, x2, entry, color = color.new(color.gray, 20), width = lineW)
+        line.new(bar_index, stop, x2, stop, color = color.new(color.red, 30), width = lineW)
+        line.new(bar_index, tgt, x2, tgt, color = color.new(color.green, 30), width = lineW)
+    [entry, stop, tgt]
+
+// avanza un setup activo una vela; devuelve true si da señal
+step(Setup s) =>
+    bool fired = false
+    if s.active
+        anchor = winFrom == "Extremo" ? s.extBar : s.sweepBar
+        newX = s.d == 1 ? low < s.ext : high > s.ext
+        if not inSess
+            finish(s, "fin de sesión")
+        else if bar_index - anchor > winBars and (not newX or winFrom == "Barrido")
+            finish(s, "expirado")
+        else if newX
+            hadHtf = s.htf
+            setExtreme(s)
+            if s.htf and not hadHtf and not s.alHtf
+                s.alHtf := true
+                s.htfAlertBar := bar_index
+                if MODE_B
+                    phaseLabel(bar_index, s.ext, "H" + str.tostring(s.htfTf), s.d)
+        else
+            if s.ifvgBar < 0
+                g = invertedNow(s)
+                if not na(g)
+                    s.ifvgBar := bar_index
+                    s.usedGap := g
+                    if MODE_B
+                        phaseLabel(bar_index, s.d == 1 ? low : high, "i", s.d)
+            if s.cisdBar < 0 and (s.d == 1 ? close > s.level : close < s.level)
+                s.cisdBar := bar_index
+                if MODE_B
+                    phaseLabel(bar_index, s.d == 1 ? low : high, "C", s.d)
+            ok = (not REQ_HTF or s.htf) and (not REQ_IFVG or s.ifvgBar >= 0) and (not REQ_CISD or s.cisdBar >= 0)
+            if ok and not (onePerSes and doneSes)
+                fired := true
+    fired
+
+// ═════════════════════════════ MOTOR (solo con la vela cerrada) ═════════════════════════════
+int sweptHiBar = -1
+float sweptHiPx = na
+int sweptLoBar = -1
+float sweptLoPx = na
+bool firedL = false
+bool firedS = false
+
+if tfOk and barstate.isconfirmed
+    if inStats
+        st.firstT := na(st.firstT) ? time : st.firstT
+        st.lastT := time
+    if sesStart
+        doneSes := false
+
+    // 1. FVG HTF: nuevas zonas (vela HTF recién cerrada) e invalidación por cierre HTF
+    if new15
+        if invMode == "Cierre HTF"
+            for z in zones
+                if z.valid and z.tf == 15 and ((z.kind == 1 and c15 < z.bot) or (z.kind == -1 and c15 > z.top))
+                    killZone(z)
+        addZone(h15a, l15a, h15c, l15c, 15)
+    if new60
+        if invMode == "Cierre HTF"
+            for z in zones
+                if z.valid and z.tf == 60 and ((z.kind == 1 and c60 < z.bot) or (z.kind == -1 and c60 > z.top))
+                    killZone(z)
+        addZone(h60a, l60a, h60c, l60c, 60)
+
+    // 2. FVG de 5m: nuevo hueco en esta vela (tercera vela = actual)
+    if high < low[2]
+        gaps.push(Gap.new(bar_index, low[2], high, -1))
+    if low > high[2]
+        gaps.push(Gap.new(bar_index, high[2], low, 1))
+
+    // 3. barridos de swings (cualquier hora: un swing barrido deja de ser liquidez)
+    if swings.size() > 0
+        for i = swings.size() - 1 to 0
+            sw = swings.get(i)
+            if bar_index - sw.bar > swingLb
+                if not na(sw.ln)
+                    sw.ln.delete()
+                swings.remove(i)
+            else if sw.confBar < bar_index
+                if sw.isHigh ? high > sw.price : low < sw.price
+                    if sw.isHigh and sw.bar > sweptHiBar
+                        sweptHiBar := sw.bar
+                        sweptHiPx := sw.price
+                    if not sw.isHigh and sw.bar > sweptLoBar
+                        sweptLoBar := sw.bar
+                        sweptLoPx := sw.price
+                    if not na(sw.ln)
+                        sw.ln.delete()
+                    swings.remove(i)
+                else if not na(sw.ln)
+                    sw.ln.set_x2(bar_index)
+
+    // 4. avanzar setups activos
+    firedL := step(sL)
+    firedS := step(sS)
+    for s in array.from(sL, sS)
+        if (s.d == 1 and firedL) or (s.d == -1 and firedS)
+            [e, sl, tp] = drawSignal(s)
+            evSignal := true
+            if inStats
+                if s.d == 1
+                    st.sigL += 1
+                else
+                    st.sigS += 1
+            if aSignal
+                alert((MODE_C ? "INVESTIGACIÓN " + cTag : "B+") + " " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · " + sesName + " · entrada " + fmt(e) + " · stop " + fmt(sl) + " · objetivo " + fmt(tp) + " (" + str.tostring(rr) + "R)" + (na(s.htfTf) ? "" : " · FVG " + str.tostring(s.htfTf) + "m"), alert.freq_once_per_bar_close)
+            finish(s, "señal")
+            doneSes := true
+
+    // 5. nuevos barridos → nuevos setups
+    for s in array.from(sL, sS)
+        sb = s.d == 1 ? sweptLoBar : sweptHiBar
+        allowed = s.d == 1 ? ALLOW_L : ALLOW_S
+        justFired = (s.d == 1 and firedL) or (s.d == -1 and firedS)
+        if not s.active and not justFired and sb >= 0 and allowed and inSess and not (onePerSes and doneSes)
+            lvl = s.d == 1 ? sweptLoPx : sweptHiPx
+            if not sweepClose or (s.d == 1 ? close > lvl : close < lvl)
+                s.active := true
+                s.sweepBar := bar_index
+                s.swingBar := sb
+                s.swingPrice := lvl
+                s.alHtf := false
+                setExtreme(s)
+                evSweep := true
+                if inStats
+                    if s.d == 1
+                        st.sweepL += 1
+                    else
+                        st.sweepS += 1
+                if MODE_B or showPhases
+                    phaseLabel(bar_index, s.ext, "S", s.d)
+                if aSweep
+                    alert("Barrido " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · nivel " + fmt(lvl) + " · extremo " + fmt(s.ext), alert.freq_once_per_bar_close)
+                if s.htf
+                    s.alHtf := true
+                    s.htfAlertBar := bar_index
+                    if MODE_B
+                        phaseLabel(bar_index, s.ext, "H" + str.tostring(s.htfTf), s.d)
+
+    // alertas de fase (una vez por setup y fase)
+    for s in array.from(sL, sS)
+        if s.active
+            if s.htf and s.htfAlertBar == bar_index
+                evHtf := true
+                if aHtf
+                    alert("Entrega HTF " + dirTxt(s.d) + " · " + syminfo.ticker + " · FVG " + str.tostring(s.htfTf) + "m " + fmt(s.htfBot) + "–" + fmt(s.htfTop) + " · penetración " + str.tostring(math.round(s.htfPen * 100)) + "%", alert.freq_once_per_bar_close)
+            if s.ifvgBar == bar_index
+                evIfvg := true
+                if aIfvg
+                    alert("iFVG " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · cierre " + fmt(close) + " más allá de " + fmt(s.usedGap.edge), alert.freq_once_per_bar_close)
+            if s.cisdBar == bar_index
+                evCisd := true
+                if aCisd
+                    alert("CISD " + dirTxt(s.d) + " · " + syminfo.ticker + " 5m · cierre " + fmt(close) + " más allá de " + fmt(s.level), alert.freq_once_per_bar_close)
+
+    // 6. invalidación de FVG HTF por cierre de 5m o por mecha (después de usarlos en esta vela) y caducidad
+    if zones.size() > 0
+        for i = zones.size() - 1 to 0
+            z = zones.get(i)
+            if z.valid and invMode == "Cierre 5m" and ((z.kind == 1 and close < z.bot) or (z.kind == -1 and close > z.top))
+                killZone(z)
+            if z.valid and invMode == "Mecha" and ((z.kind == 1 and low < z.bot) or (z.kind == -1 and high > z.top))
+                killZone(z)
+            if time - z.tForm > htfDays * DAY_MS
+                if not na(z.bx)
+                    z.bx.delete()
+                zones.remove(i)
+            else if z.valid and not na(z.bx)
+                z.bx.set_right(bar_index + 6)
+
+    // 7. inversión de los FVG de 5m y limpieza
+    if gaps.size() > 0
+        for i = gaps.size() - 1 to 0
+            g = gaps.get(i)
+            if g.invBar < 0 and g.bar < bar_index and ((g.dir == -1 and close > g.edge) or (g.dir == 1 and close < g.edge))
+                g.invBar := bar_index
+            if bar_index - g.bar > ifvgLb + winBars + 300
+                gaps.remove(i)
+
+    // 8. nuevos swings confirmados (se añaden al final: no pueden barrerse en su propia vela)
+    if not na(ph)
+        b = bar_index - pivR
+        ext = high[pivR] >= hiWin
+        swings.push(Swing.new(ph, b, bar_index, true, ext, showSwings ? line.new(b, ph, bar_index, ph, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        lastPivHiBar := b
+        if inStats
+            st.swings += 1
+    if not na(pl)
+        b = bar_index - pivR
+        ext = low[pivR] <= loWin
+        swings.push(Swing.new(pl, b, bar_index, false, ext, showSwings ? line.new(b, pl, bar_index, pl, color = colLiq, width = ext ? lineW + 1 : lineW, style = ext ? line.style_solid : line.style_dotted) : na))
+        lastPivLoBar := b
+        if inStats
+            st.swings += 1
+
+// aviso intrabar opcional (vela sin cerrar): claramente marcado
+if tfOk and aIntra and barstate.isrealtime and not barstate.isconfirmed and inSess
+    for sw in swings
+        if sw.confBar < bar_index and (sw.isHigh ? high > sw.price : low < sw.price)
+            alert("INTRABAR (vela sin cerrar) · posible barrido de swing " + (sw.isHigh ? "high " : "low ") + fmt(sw.price) + " · " + syminfo.ticker, alert.freq_once_per_bar)
+            break
+
+// ═════════════════════════════ ALERTCONDITION (una alerta por condición) ═════════════════════════════
+alertcondition(evSweep, "1 · Barrido", "CM B+: barrido de liquidez en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evHtf, "2 · Entrega HTF", "CM B+: entrega en FVG HTF en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evIfvg, "3 · iFVG", "CM B+: iFVG confirmado en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evCisd, "4 · CISD", "CM B+: CISD confirmado en {{ticker}} ({{interval}}) a {{close}}")
+alertcondition(evSignal, "5 · Setup completo", "CM B+: setup completo en {{ticker}} ({{interval}}) a {{close}}")
+
+// ═════════════════════════════ PANEL ═════════════════════════════
+var table pnl = table.new(position.top_right, 3, 14, bgcolor = color.new(#101418, 15), border_color = color.new(color.gray, 80), border_width = 1)
+cell(int r, string a, string b, string c) =>
+    pnl.cell(0, r, a, text_color = color.new(color.white, 10), text_size = size.small, text_halign = text.align_left)
+    pnl.cell(1, r, b, text_color = color.white, text_size = size.small)
+    pnl.cell(2, r, c, text_color = color.new(color.gray, 20), text_size = size.small)
+
+pct(int a, int b) => b > 0 ? str.tostring(math.round(100.0 * a / b)) + "%" : "—"
+
+if barstate.islast
+    if not tfOk
+        pnl.cell(0, 0, "⚠️ CM B+ v2 calcula solo en gráfico de 5 minutos", text_color = color.orange)
+    else if showPanel
+        sweeps = st.sweepL + st.sweepS
+        sigs = st.sigL + st.sigS
+        months = na(st.firstT) ? 1.0 : math.max((st.lastT - st.firstT) / (30.44 * DAY_MS), 0.1)
+        cell(0, MODE_A ? "Modo A · B+ estricto" : MODE_B ? "Modo B · diagnóstico" : "Modo C · " + cTag, "", "")
+        cell(1, "Swings confirmados", str.tostring(st.swings), "")
+        cell(2, "Barridos (setups)", str.tostring(sweeps), "▲" + str.tostring(st.sweepL) + " ▼" + str.tostring(st.sweepS))
+        cell(3, "  con FVG HTF", str.tostring(st.htf), pct(st.htf, sweeps))
+        cell(4, "  + iFVG", str.tostring(st.htfIfvg), pct(st.htfIfvg, sweeps))
+        cell(5, MODE_C ? "  señales C" : "  + CISD = B+", str.tostring(sigs), pct(sigs, sweeps))
+        cell(6, "Señales al mes", str.tostring(sigs / months, "#.##"), "▲" + str.tostring(st.sigL) + " ▼" + str.tostring(st.sigS))
+        cell(7, "Expirados sin HTF", str.tostring(st.expHtf), "")
+        cell(8, "Expirados sin iFVG", str.tostring(st.expIfvg), "")
+        cell(9, "Expirados sin CISD", str.tostring(st.expCisd), "")
+        cell(10, "Cortados por fin de sesión", str.tostring(st.expSes), "")
+        cell(11, "Independiente: con iFVG", str.tostring(st.anyIfvg), pct(st.anyIfvg, sweeps))
+        cell(12, "Independiente: con CISD", str.tostring(st.anyCisd), pct(st.anyCisd, sweeps))
+        cell(13, "Meses contados", str.tostring(months, "#.#"), "")
