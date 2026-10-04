@@ -18,7 +18,7 @@
 // 15m y 1h se piden con [1] + lookahead_on, es decir, solo velas HTF ya cerradas.
 // Pensado para gráfico de 5 minutos. En otra temporalidad muestra un aviso y no calcula.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
-indicator("Confirmation Model B+ v2", "CM B+ v2", overlay = true, max_labels_count = 500, max_lines_count = 500,
+indicator("Confirmation Model B+ v2", "CM B+ v2", overlay = true, scale = scale.right, max_labels_count = 500, max_lines_count = 500,
   max_boxes_count = 500, max_bars_back = 600)
 
 // ═════════════════════════════ AJUSTES ═════════════════════════════
