@@ -1,0 +1,191 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// London Reversal (RTR) & Continuation (RTC) — FASE 1: contexto
+//   · Sesión de Londres con zona horaria (DST automático) y estados Pre-London / London / Post-London
+//   · Rango de Asia (máximo, mínimo, medio) congelado al cerrar Asia
+//   · PDH / PDL (día de CME o día natural de la zona horaria)
+//   · Contexto 4H con velas YA CERRADAS (sin repintado)
+// Todavía NO hay barridos, CISD, RTR, RTC, entradas ni estadísticas: llegan en las fases siguientes.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("London RTR / RTC · Fase 1", "LDN F1", overlay = true, scale = scale.right, max_lines_count = 500, max_labels_count = 500)
+
+// ═════════════════════════════ AJUSTES ═════════════════════════════
+G_S = "Sesiones"
+tz      = input.string("Europe/London", "Zona horaria", group = G_S, tooltip = "Las sesiones se interpretan en esta zona horaria; el cambio de hora (DST) se aplica solo.")
+sessLdn = input.session("0700-1000", "London", group = G_S, tooltip = "Por defecto la killzone 07:00-10:00 de Londres (= 02:00-05:00 de Nueva York). Para la sesión completa usa 0800-1630.")
+sessAsia = input.session("0000-0600", "Asia", group = G_S, tooltip = "El rango se congela al terminar esta ventana. Puede cruzar la medianoche (por ejemplo 2300-0600).")
+
+G_D = "Día anterior"
+pdSrc = input.string("Día de CME (18:00 NY)", "Definición del día", options = ["Día de CME (18:00 NY)", "Día natural en la zona horaria"], group = G_D)
+
+G_C = "Contexto 4H"
+bodyMin  = input.float(0.5, "Cuerpo / rango mínimo", minval = 0, maxval = 1, step = 0.05, group = G_C)
+nearHigh = input.float(0.25, "Cierre cerca del máximo (fracción del rango desde el máximo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
+nearLow  = input.float(0.25, "Cierre cerca del mínimo (fracción del rango desde el mínimo)", minval = 0, maxval = 1, step = 0.05, group = G_C)
+show4hHL = input.bool(true, "Dibujar máximo y mínimo de la última vela de 4H cerrada", group = G_C)
+
+G_V = "Visual"
+showPD    = input.bool(true, "PDH / PDL", group = G_V, inline = "v1")
+showAsia  = input.bool(true, "Asia", group = G_V, inline = "v1")
+shadeSess = input.bool(true, "Sombrear London", group = G_V, inline = "v1")
+sobrias   = input.bool(true, "Velas sobrias (plata / pizarra)", group = G_V, inline = "v2")
+darkBg    = input.bool(false, "Fondo #0D1117", group = G_V, inline = "v2")
+showPanel = input.bool(true, "Panel de verificación", group = G_V)
+colBull   = input.color(#C9CED6, "Vela alcista", group = G_V, inline = "c1")
+colBear   = input.color(#5D6F8C, "Vela bajista", group = G_V, inline = "c1")
+colLiq    = input.color(#A89A5B, "Liquidez (PDH/PDL, Asia)", group = G_V, inline = "c2")
+col4h     = input.color(#7D6BA8, "Contexto 4H", group = G_V, inline = "c2")
+colLdn    = input.color(color.new(#7D6BA8, 94), "Fondo London", group = G_V, inline = "c3")
+lineW     = input.int(1, "Grosor", minval = 1, maxval = 4, group = G_V, inline = "c3")
+
+fmt(float x) => str.tostring(x, format.mintick)
+hhmm(int t) => str.format_time(t, "HH:mm", tz)
+
+// ═════════════════════════════ ESTÉTICA ═════════════════════════════
+bgcolor(darkBg ? #0D1117 : na, title = "Fondo")
+plotcandle(sobrias ? open : na, high, low, close, "Velas", color = close >= open ? colBull : colBear, wickcolor = close >= open ? colBull : colBear,
+  bordercolor = close >= open ? colBull : colBear)
+
+// ═════════════════════════════ SESIÓN DE LONDRES Y ESTADO ═════════════════════════════
+inLdn    = not na(time(timeframe.period, sessLdn, tz))
+ldnStart = inLdn and not inLdn[1]
+ldnEnd   = not inLdn and inLdn[1]
+newTzDay = dayofmonth(time, tz) != dayofmonth(time[1], tz)
+
+var bool ldnDoneToday = false
+if newTzDay
+    ldnDoneToday := false
+if ldnEnd
+    ldnDoneToday := true
+sessState = inLdn ? "LONDON" : ldnDoneToday ? "POST-LONDON" : "PRE-LONDON"
+bgcolor(shadeSess and inLdn ? colLdn : na, title = "London")
+if ldnStart
+    alert("London session started · " + syminfo.ticker + " · " + hhmm(time) + " (" + tz + ")", alert.freq_once_per_bar)
+alertcondition(ldnStart, "London session started", "London session started en {{ticker}}")
+
+// ═════════════════════════════ RANGO DE ASIA (congelado al terminar) ═════════════════════════════
+inAsia    = not na(time(timeframe.period, sessAsia, tz))
+asiaStart = inAsia and not inAsia[1]
+asiaEnd   = not inAsia and inAsia[1]
+
+var float aHiRun = na
+var float aLoRun = na
+var int   aStartBar = na
+var int   aHiBar = na
+var int   aLoBar = na
+var float asiaH = na          // valores congelados (los que usará la estrategia)
+var float asiaL = na
+var float asiaM = na
+var int   asiaFrozenT = na
+var line  lnAH = na
+var line  lnAL = na
+var line  lnAM = na
+
+if asiaStart
+    aHiRun := high
+    aLoRun := low
+    aStartBar := bar_index
+    aHiBar := bar_index
+    aLoBar := bar_index
+else if inAsia
+    if high > aHiRun
+        aHiRun := high
+        aHiBar := bar_index
+    if low < aLoRun
+        aLoRun := low
+        aLoBar := bar_index
+if asiaEnd and not na(aHiRun)
+    asiaH := aHiRun
+    asiaL := aLoRun
+    asiaM := (aHiRun + aLoRun) / 2
+    asiaFrozenT := time
+    if showAsia
+        lnAH := line.new(aHiBar, asiaH, bar_index, asiaH, color = colLiq, width = lineW)
+        lnAL := line.new(aLoBar, asiaL, bar_index, asiaL, color = colLiq, width = lineW)
+        lnAM := line.new(aStartBar, asiaM, bar_index, asiaM, color = color.new(colLiq, 50), width = 1, style = line.style_dotted)
+        label.new(bar_index, asiaH, "ASIA H", style = label.style_label_left, color = color.new(color.black, 100), textcolor = colLiq, size = size.tiny)
+        label.new(bar_index, asiaL, "ASIA L", style = label.style_label_left, color = color.new(color.black, 100), textcolor = colLiq, size = size.tiny)
+// las líneas congeladas se prolongan hasta que empieza la siguiente Asia
+if not na(lnAH) and not inAsia
+    lnAH.set_x2(bar_index)
+    lnAL.set_x2(bar_index)
+    lnAM.set_x2(bar_index)
+
+// ═════════════════════════════ PDH / PDL ═════════════════════════════
+// Día de CME: vela diaria de TradingView ya cerrada ([1] + lookahead_on = nunca la del día en curso)
+[cmeH, cmeL, cmeT] = request.security(syminfo.tickerid, "D", [high[1], low[1], time[1]], lookahead = barmerge.lookahead_on)
+newCmeDay = timeframe.change("D")
+// Día natural en la zona horaria
+var float dHiRun = na
+var float dLoRun = na
+var float calH = na
+var float calL = na
+if newTzDay
+    calH := dHiRun
+    calL := dLoRun
+    dHiRun := high
+    dLoRun := low
+else
+    dHiRun := math.max(nz(dHiRun, high), high)
+    dLoRun := math.min(nz(dLoRun, low), low)
+
+useCme = pdSrc == "Día de CME (18:00 NY)"
+newPD  = useCme ? newCmeDay : newTzDay
+pdh = useCme ? cmeH : calH
+pdl = useCme ? cmeL : calL
+
+var line lnPH = na
+var line lnPL = na
+if newPD and showPD and not na(pdh)
+    lnPH := line.new(bar_index, pdh, bar_index, pdh, color = colLiq, width = lineW + 1)
+    lnPL := line.new(bar_index, pdl, bar_index, pdl, color = colLiq, width = lineW + 1)
+    label.new(bar_index, pdh, "PDH", style = label.style_label_right, color = color.new(color.black, 100), textcolor = colLiq, size = size.tiny)
+    label.new(bar_index, pdl, "PDL", style = label.style_label_right, color = color.new(color.black, 100), textcolor = colLiq, size = size.tiny)
+if not na(lnPH)
+    lnPH.set_x2(bar_index)
+    lnPL.set_x2(bar_index)
+
+// ═════════════════════════════ CONTEXTO 4H (solo velas cerradas) ═════════════════════════════
+[h4O, h4H, h4L, h4C, h4T] = request.security(syminfo.tickerid, "240", [open[1], high[1], low[1], close[1], time[1]], lookahead = barmerge.lookahead_on)
+new4h = timeframe.change("240")
+rng4 = h4H - h4L
+body4 = rng4 > 0 ? math.abs(h4C - h4O) / rng4 : 0.0
+ctx4 = rng4 <= 0 ? 0 : h4C > h4O and body4 >= bodyMin and (h4H - h4C) / rng4 <= nearHigh ? 1 : h4C < h4O and body4 >= bodyMin and (h4C - h4L) / rng4 <= nearLow ? -1 : 0
+ctxTxt(int c) => c == 1 ? "BULLISH" : c == -1 ? "BEARISH" : "NEUTRAL"
+
+var int ctxAtLdn = 0
+var int ctxAtLdnT = na
+if ldnStart
+    ctxAtLdn := ctx4
+    ctxAtLdnT := h4T
+
+var line ln4H = na
+var line ln4L = na
+if new4h
+    label.new(bar_index, high, "4H " + ctxTxt(ctx4), style = label.style_label_down, color = color.new(color.black, 100),
+      textcolor = ctx4 == 0 ? color.new(col4h, 60) : col4h, size = size.tiny,
+      tooltip = "Vela de 4H cerrada que abrió a las " + hhmm(h4T) + "\nO " + fmt(h4O) + " H " + fmt(h4H) + " L " + fmt(h4L) + " C " + fmt(h4C) + "\nCuerpo/rango " + str.tostring(body4, "#.##"))
+    if show4hHL
+        ln4H := line.new(bar_index, h4H, bar_index, h4H, color = color.new(col4h, 40), width = 1, style = line.style_dashed)
+        ln4L := line.new(bar_index, h4L, bar_index, h4L, color = color.new(col4h, 40), width = 1, style = line.style_dashed)
+if not na(ln4H)
+    ln4H.set_x2(bar_index)
+    ln4L.set_x2(bar_index)
+
+// ═════════════════════════════ PANEL DE VERIFICACIÓN ═════════════════════════════
+var table pnl = table.new(position.bottom_right, 2, 12, bgcolor = color.new(#0D1117, 5), border_color = color.new(color.gray, 80), border_width = 1)
+row(int r, string a, string b) =>
+    pnl.cell(0, r, a, text_color = color.new(color.white, 20), text_size = size.small, text_halign = text.align_left)
+    pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
+
+if showPanel and barstate.islast
+    row(0, "Hora (" + tz + ")", hhmm(time) + " · " + str.format_time(time, "dd/MM", tz))
+    row(1, "Sesión", sessState + " · London " + sessLdn)
+    row(2, "Asia H / L / Mid", na(asiaH) ? "—" : fmt(asiaH) + " / " + fmt(asiaL) + " / " + fmt(asiaM))
+    row(3, "Asia", inAsia ? "en curso: " + fmt(aHiRun) + " / " + fmt(aLoRun) + " (sin congelar)" : na(asiaFrozenT) ? "—" : "congelada a las " + hhmm(asiaFrozenT))
+    row(4, "PDH / PDL", na(pdh) ? "—" : fmt(pdh) + " / " + fmt(pdl))
+    row(5, "Día anterior", useCme ? "CME, vela diaria que abrió " + str.format_time(cmeT, "dd/MM HH:mm", tz) : "día natural en " + tz)
+    row(6, "4H actual", "4H " + ctxTxt(ctx4))
+    row(7, "  vela usada (cerrada)", "abrió " + str.format_time(h4T, "dd/MM HH:mm", tz) + " · cuerpo " + str.tostring(body4, "#.##"))
+    row(8, "4H al abrir London", "4H " + ctxTxt(ctxAtLdn) + (na(ctxAtLdnT) ? "" : " (vela de " + hhmm(ctxAtLdnT) + ")"))
+    row(9, "Fase", "1 · contexto (sin señales)")
