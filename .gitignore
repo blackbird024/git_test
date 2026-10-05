@@ -15,3 +15,6 @@ survivor/experimentos/*/resultados.pkl
 forward_testing/raw/nq/*.parquet
 forward_testing/raw/ea/*.csv
 !forward_testing/raw/ea/MANIFIESTO.csv
+carril_b/dax40/datos/*.parquet
+carril_b/dax40/datos/*.csv
+!carril_b/dax40/datos/MANIFIESTO.csv
