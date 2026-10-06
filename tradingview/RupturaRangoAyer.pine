@@ -68,7 +68,7 @@ if barstate.isconfirmed and inRth and not na(pdh)
     // salida: stop en el medio (desde la vela siguiente a la entrada) o cierre de la sesión
     if pos != 0
         hitStop = pos == 1 ? low <= mid : high >= mid
-        lastBar = hm >= 1555
+        lastBar = hour(time_close, TZ) * 100 + minute(time_close, TZ) >= 1600   // última vela de la sesión, en cualquier temporalidad
         if hitStop or lastBar
             px = hitStop ? mid : close
             res = pos * (px - entry)
