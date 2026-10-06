@@ -31,8 +31,9 @@ SPLIT = pd.Timestamp("2025-10-01", tz="America/New_York")
 N = 390                                            # minutos de la sesión regular
 
 
-def build_days(sym):
-    d = pickle.loads((CACHE / "databento_glbx_1m.pkl").read_bytes())
+def build_days(sym, d=None):
+    if d is None:
+        d = pickle.loads((CACHE / "databento_glbx_1m.pkl").read_bytes())
     d = d[d["symbol"] == f"{sym}.c.0"][["open", "high", "low", "close", "volume"]].sort_index()
     d.index = d.index.tz_convert("America/New_York")
     typ = ((d.high + d.low + d.close) / 3).to_numpy()
