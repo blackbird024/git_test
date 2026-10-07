@@ -1,0 +1,138 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// Impulso de apertura NQ / MNQ (alto acierto) — mismas reglas que alpaca/nq_80wr.py
+//   ATR = media del rango (máximo − mínimo) de las últimas 14 sesiones regulares (9:30-16:00 NY).
+//   OJO: no es el ATR(14) diario normal de TradingView (ese incluye la noche y es ~25 % mayor).
+//   1. Al abrir NY se marcan: apertura ± 0,38 · ATR.
+//   2. Hasta las 10:30 NY, si una vela CIERRA más allá de una de esas líneas → entrar a favor (a mercado).
+//   3. Objetivo 0,05 · ATR · stop 0,5 · ATR · si no toca nada, cierre a las 16:00 NY. Una operación al día.
+// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto): 93 % de acierto, ~115 operaciones/año, +718 $/año,
+// PF 1,49, peor racha −960 $. Cada pérdida equivale a ~10 ganancias: el stop no se mueve nunca.
+// Usar en gráfico de 1 minuto.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("Impulso de apertura NQ (alto acierto)", "Impulso NQ", overlay = true, max_labels_count = 300)
+
+TZ        = "America/New_York"
+sess      = input.session("0930-1600", "Sesión regular (NY)")
+lastEntry = input.int(1030, "Última entrada (HHMM, NY)", minval = 930, maxval = 1555)
+kThr      = input.float(0.38, "Umbral (× ATR)", step = 0.01)
+kTgt      = input.float(0.05, "Objetivo (× ATR)", step = 0.01)
+kStp      = input.float(0.50, "Stop (× ATR)", step = 0.05)
+atrLen    = input.int(14, "Sesiones para el ATR", minval = 5)
+ptVal     = input.float(2.0, "$ por punto (MNQ 2 · NQ 20)")
+showPanel = input.bool(true, "Panel")
+colLvl    = input.color(#8FA3BF, "Líneas de umbral")
+colOpen   = input.color(#C9CED6, "Apertura")
+
+fmt(float x) => str.tostring(x, format.mintick)
+usd(float pts) => str.tostring(pts * ptVal, "#") + " $"
+
+inRth    = not na(time(timeframe.period, sess, TZ))
+rthStart = inRth and not inRth[1]
+hm       = hour(time, TZ) * 100 + minute(time, TZ)
+lastBar  = inRth and hour(time_close, TZ) * 100 + minute(time_close, TZ) >= 1600
+
+// ── ATR propio: media de los rangos de las últimas sesiones regulares
+var float dH = na
+var float dL = na
+var array<float> rngs = array.new<float>()
+var float atrOwn = na
+if rthStart
+    if not na(dH)
+        rngs.push(dH - dL)
+        if rngs.size() > atrLen
+            rngs.shift()
+    atrOwn := rngs.size() >= atrLen ? rngs.avg() : na
+    dH := high
+    dL := low
+else if inRth
+    dH := math.max(dH, high)
+    dL := math.min(dL, low)
+
+// respaldo si el gráfico no carga 14 sesiones: velas diarias de la sesión regular
+tkR    = ticker.modify(syminfo.tickerid, session.regular)
+atrSec = request.security(tkR, "D", ta.sma(high - low, atrLen)[1], lookahead = barmerge.lookahead_on)
+
+// ── estado del día
+var float  op = na
+var float  up = na
+var float  dn = na
+var float  atrDay = na
+var string src = "—"
+var int    pos = 0
+var float  e = na
+var float  tg = na
+var float  sl = na
+var bool   done = false
+var string st = "—"
+
+if rthStart
+    atrDay := na(atrOwn) ? atrSec : atrOwn
+    src := na(atrOwn) ? "diario RTH" : "propio"
+    op := open
+    up := op + kThr * atrDay
+    dn := op - kThr * atrDay
+    pos := 0
+    done := false
+    st := na(atrDay) ? "sin ATR" : "esperando impulso hasta las 10:30 NY"
+    if not na(atrDay)
+        alert("Impulso NQ · " + syminfo.ticker + " · compra si cierra > " + fmt(up) + " · vende si cierra < " + fmt(dn)
+          + " · objetivo " + fmt(kTgt * atrDay) + " pts · stop " + fmt(kStp * atrDay) + " pts", alert.freq_once_per_bar)
+
+if barstate.isconfirmed and inRth and not na(atrDay)
+    if pos != 0
+        hitS = pos == 1 ? low <= sl : high >= sl
+        hitT = pos == 1 ? high >= tg : low <= tg
+        if hitS or hitT or lastBar
+            px = hitS ? sl : hitT ? tg : close
+            res = pos * (px - e)
+            label.new(bar_index, px, (hitS ? "STOP " : hitT ? "OBJETIVO " : "CIERRE ") + (res >= 0 ? "+" : "") + fmt(res) + " pts",
+              color = color.new(color.black, 100), textcolor = res >= 0 ? color.new(color.green, 10) : color.new(color.red, 10),
+              size = size.small, style = pos == 1 ? label.style_label_down : label.style_label_up)
+            alert("Impulso NQ · " + syminfo.ticker + " · " + (hitS ? "STOP" : hitT ? "OBJETIVO" : "cierre 16:00") + " · "
+              + (res >= 0 ? "+" : "") + fmt(res) + " pts", alert.freq_once_per_bar_close)
+            st := (hitS ? "stop" : hitT ? "objetivo" : "cerrado 16:00") + " · " + (res >= 0 ? "+" : "") + fmt(res) + " pts"
+            pos := 0
+            done := true
+    else if not done and hm <= lastEntry
+        side = close > up ? 1 : close < dn ? -1 : 0
+        if side != 0
+            pos := side
+            e := close
+            tg := e + side * kTgt * atrDay
+            sl := e - side * kStp * atrDay
+            st := (side == 1 ? "LARGO " : "CORTO ") + fmt(e) + " · obj " + fmt(tg) + " · stop " + fmt(sl)
+            label.new(bar_index, e, (side == 1 ? "▲ LARGO " : "▼ CORTO ") + fmt(e), color = side == 1 ? color.new(color.teal, 0) : color.new(color.maroon, 0),
+              textcolor = color.white, size = size.small, style = side == 1 ? label.style_label_up : label.style_label_down,
+              tooltip = "Objetivo " + fmt(tg) + " (" + usd(kTgt * atrDay) + " por contrato)\nStop " + fmt(sl) + " (" + usd(kStp * atrDay) + ")\nSi no toca nada: cierre 16:00 NY")
+            alert("Impulso NQ · " + syminfo.ticker + " · " + (side == 1 ? "COMPRA" : "VENTA") + " " + fmt(e) + " · objetivo " + fmt(tg)
+              + " · stop " + fmt(sl), alert.freq_once_per_bar_close)
+    else if not done and hm > lastEntry
+        st := "sin impulso: hoy no se opera"
+        done := true
+
+// ── líneas (plots: siempre visibles, se cortan entre días)
+brk(float x) => x != x[1] ? float(na) : x
+bO = brk(op)
+bU = brk(up)
+bD = brk(dn)
+bT = brk(pos != 0 ? tg : na)
+bS = brk(pos != 0 ? sl : na)
+plot(inRth ? bO : na, "Apertura 9:30", colOpen, 1, plot.style_linebr)
+plot(inRth ? bU : na, "Umbral arriba", colLvl, 2, plot.style_linebr)
+plot(inRth ? bD : na, "Umbral abajo", colLvl, 2, plot.style_linebr)
+plot(bT, "Objetivo", color.new(color.green, 0), 2, plot.style_linebr)
+plot(bS, "Stop", color.new(color.red, 0), 2, plot.style_linebr)
+
+// ── panel
+var table pnl = table.new(position.top_right, 2, 6, bgcolor = color.new(#0D1117, 10), border_color = color.new(color.gray, 80), border_width = 1)
+row(int r, string a, string b) =>
+    pnl.cell(0, r, a, text_color = color.new(color.white, 25), text_size = size.small, text_halign = text.align_left)
+    pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
+if showPanel and barstate.islast
+    row(0, "ATR sesión (" + src + ")", na(atrDay) ? "—" : fmt(atrDay) + " pts")
+    row(1, "Umbral ± " + str.tostring(kThr), na(atrDay) ? "—" : fmt(kThr * atrDay) + " pts")
+    row(2, "Compra si cierra >", na(up) ? "—" : fmt(up))
+    row(3, "Vende si cierra <", na(dn) ? "—" : fmt(dn))
+    row(4, "Objetivo / stop", na(atrDay) ? "—" : fmt(kTgt * atrDay) + " / " + fmt(kStp * atrDay) + " pts (" + usd(kTgt * atrDay) + " / " + usd(kStp * atrDay) + ")")
+    row(5, "Hoy", st)
