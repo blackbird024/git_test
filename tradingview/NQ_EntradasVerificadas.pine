@@ -1,0 +1,247 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// NQ · Entradas verificadas (gráfico de 5 min, MNQ1! / NQ1!)
+// Solo marca entradas de reglas que pasaron el backtest 2018-2026 en NQ con validación fuera de muestra
+// (se eligieron con 2018-2022 y se comprobaron con 2023-2026; coste 1 punto; por 1 MNQ):
+//   RA  Ruptura del rango de ayer   compra/vende STOP en máx/mín de la sesión de ayer; stop al medio; cierre 16:00
+//                                    ~90 ops/año · 50 % acierto · 2023-26 ≈ +2.700 $/año     (alpaca/nq_intraday_research.py)
+//   O5  ORB de 5 min                dirección de la vela 9:30-9:35; stop 10 % del ATR diario; cierre 16:00
+//                                    ~187 ops/año · 18 % acierto · ≈ +1.700 $/año           (alpaca/orb_research.py)
+//   EM  EMA 9/21 + CHOP < 40        retroceso a la EMA 9 a favor de 9/21 y sin rango; salida en el cruce contrario
+//                                    ~185 ops/año · 42 % acierto · ≈ +1.900 $/año           (alpaca/ema921_rango.py)
+//   VW  VWAP de Globex 11:00        a las 11:00 NY, si el precio está sobre la VWAP de la sesión → largo;
+//                                    salida si una vela cierra bajo la VWAP o a las 16:00
+//                                    ~127 ops/año · 38 % acierto · ≈ +1.900 $/año           (alpaca/vwap_globex_8y.py)
+// Las señales se calculan al CIERRE de la vela y no repintan. Ninguna gana siempre: hay rachas de pérdidas
+// (peor histórica entre −1.900 y −4.900 $ por MNQ según la estrategia). El panel muestra lo que habría dado
+// cada una en el histórico visible del gráfico.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("NQ · Entradas verificadas", "NQ verificadas", overlay = true, max_labels_count = 500, max_boxes_count = 500, max_lines_count = 500)
+
+TZ = "America/New_York"
+G1 = "Estrategias"
+onRA  = input.bool(true, "RA · Ruptura del rango de ayer", group = G1)
+onO5  = input.bool(true, "O5 · ORB de 5 min", group = G1)
+onEM  = input.bool(true, "EM · EMA 9/21 + CHOP < 40", group = G1)
+onVW  = input.bool(true, "VW · VWAP de Globex 11:00 (solo largos)", group = G1)
+G2 = "Ajustes"
+ptVal    = input.float(2.0, "$ por punto (MNQ 2 · NQ 20)", group = G2)
+costPts  = input.float(1.0, "Coste por operación (puntos)", group = G2)
+chopLen  = input.int(14, "CHOP: longitud", group = G2)
+chopMax  = input.float(40, "CHOP: máximo para entrar", group = G2)
+atrLen   = input.int(14, "Sesiones para el ATR diario (O5)", group = G2)
+G3 = "Vista"
+showPanel = input.bool(true, "Panel", group = G3)
+showLvls  = input.bool(true, "Niveles del rango de ayer", group = G3)
+colRA = input.color(#4C8DF6, "RA", group = G3)
+colO5 = input.color(#E0A526, "O5", group = G3)
+colEM = input.color(#B07CE8, "EM", group = G3)
+colVW = input.color(#26A69A, "VW", group = G3)
+colWin  = input.color(#26A69A, "Ganadora", group = G3)
+colLoss = input.color(#EF5350, "Perdedora", group = G3)
+
+// ── tiempo
+inRth    = not na(time(timeframe.period, "0930-1600", TZ))
+rthStart = inRth and not inRth[1]
+hm       = hour(time, TZ) * 100 + minute(time, TZ)
+hmC      = hour(time_close, TZ) * 100 + minute(time_close, TZ)
+lastBar  = inRth and hmC >= 1600
+is5      = timeframe.period == "5"
+
+fmt(float x) => str.tostring(x, format.mintick)
+
+// ── tipos
+type Trade
+    int    side = 0
+    float  e = na
+    float  sl = na
+    float  tg = na
+    box    bS = na
+    line   lE = na
+    string tag = ""
+    color  col = na
+
+type Stats
+    int   n = 0
+    int   w = 0
+    float pts = 0.0
+
+method enter(Trade t, int side, float e, float sl, float tg) =>
+    t.side := side
+    t.e := e
+    t.sl := sl
+    t.tg := tg
+    t.bS := na(sl) ? box(na) : box.new(bar_index, math.max(e, sl), bar_index, math.min(e, sl), border_color = color.new(colLoss, 60),
+      bgcolor = color.new(colLoss, 88))
+    t.lE := line.new(bar_index, e, bar_index, e, color = t.col, width = 2)
+    label.new(bar_index, e, t.tag + (side == 1 ? " ▲" : " ▼"), style = side == 1 ? label.style_label_up : label.style_label_down,
+      yloc = side == 1 ? yloc.belowbar : yloc.abovebar, size = size.tiny, color = t.col, textcolor = color.white,
+      tooltip = t.tag + (side == 1 ? " · LARGO " : " · CORTO ") + fmt(e) + (na(sl) ? "" : "\nStop " + fmt(sl)) + (na(tg) ? "" : "\nObjetivo " + fmt(tg)))
+    alert("NQ verificadas · " + t.tag + (side == 1 ? " · COMPRA " : " · VENTA ") + fmt(e) + (na(sl) ? "" : " · stop " + fmt(sl)), alert.freq_once_per_bar)
+    0
+
+// gestiona la operación en la vela actual: stop/objetivo dentro de la vela o salida forzada al precio dado
+method step(Trade t, Stats s, bool exitNow, float exitPx) =>
+    float res = na
+    if t.side != 0
+        bool hitS = not na(t.sl) and (t.side == 1 ? low <= t.sl : high >= t.sl)
+        bool hitT = not na(t.tg) and (t.side == 1 ? high >= t.tg : low <= t.tg)
+        float px = hitS ? (t.side == 1 ? math.min(t.sl, open) : math.max(t.sl, open)) : hitT ? t.tg : exitNow ? exitPx : na
+        if na(px)
+            if not na(t.bS)
+                t.bS.set_right(bar_index)
+            t.lE.set_x2(bar_index)
+        else
+            res := t.side * (px - t.e)
+            s.n += 1
+            s.w += res - costPts > 0 ? 1 : 0
+            s.pts += res - costPts
+            if not na(t.bS)
+                t.bS.set_right(bar_index)
+            t.lE.set_x2(bar_index)
+            label.new(bar_index, px, (res >= 0 ? "+" : "") + str.tostring(res, "#"), style = label.style_label_left, size = size.tiny,
+              color = color.new(res - costPts > 0 ? colWin : colLoss, 20), textcolor = color.white,
+              tooltip = t.tag + " · " + (hitS ? "stop" : hitT ? "objetivo" : "salida") + " · " + fmt(res) + " pts = " + str.tostring(res * ptVal, "#") + " $")
+            alert("NQ verificadas · " + t.tag + " · salida " + (res >= 0 ? "+" : "") + fmt(res) + " pts", alert.freq_once_per_bar)
+            t.side := 0
+    res
+
+// ── estado
+var Trade tRA = Trade.new(tag = "RA", col = colRA)
+var Trade tO5 = Trade.new(tag = "O5", col = colO5)
+var Trade tEM = Trade.new(tag = "EM", col = colEM)
+var Trade tVW = Trade.new(tag = "VW", col = colVW)
+var Stats sRA = Stats.new()
+var Stats sO5 = Stats.new()
+var Stats sEM = Stats.new()
+var Stats sVW = Stats.new()
+
+// rango de la sesión regular (el de hoy pasa a ser «ayer» al abrir la siguiente) y ATR diario de sesiones
+var float curH = na
+var float curL = na
+var float pdh = na
+var float pdl = na
+var array<float> rngs = array.new<float>()
+var float atrD = na
+var bool  raDone = false
+var bool  raSkip = false
+var int   emCount = 0
+var int   emPend = 0
+var bool  vwDone = false
+
+if rthStart
+    if not na(curH)
+        rngs.push(curH - curL)
+        if rngs.size() > atrLen
+            rngs.shift()
+    atrD := rngs.size() >= atrLen ? rngs.avg() : na
+    pdh := curH
+    pdl := curL
+    curH := high
+    curL := low
+    raDone := false
+    raSkip := na(pdh) or open > pdh or open < pdl
+    emCount := 0
+    emPend := 0
+    vwDone := false
+else if inRth
+    curH := math.max(curH, high)
+    curL := math.min(curL, low)
+
+// ── indicadores
+e9   = ta.ema(close, 9)
+e21  = ta.ema(close, 21)
+chop = 100 * math.log10(math.sum(ta.atr(1), chopLen) / (ta.highest(high, chopLen) - ta.lowest(low, chopLen))) / math.log10(chopLen)
+vwG  = ta.vwap(hlc3, timeframe.change("D"))
+mid  = (pdh + pdl) / 2
+
+// ── EM: entrada pendiente a la apertura de esta vela
+if onEM and emPend != 0 and inRth and tEM.side == 0
+    tEM.enter(emPend, open, na, na)
+    emPend := 0
+
+// ── gestión de lo abierto (en cada vela de la sesión)
+if inRth and barstate.isconfirmed
+    tRA.step(sRA, lastBar, close)
+    tO5.step(sO5, lastBar, close)
+    emX = tEM.side != 0 and barstate.isconfirmed and (tEM.side == 1 ? e9 < e21 : e9 > e21)
+    tEM.step(sEM, lastBar or emX, close)
+    vwX = tVW.side != 0 and barstate.isconfirmed and close < vwG
+    tVW.step(sVW, lastBar or vwX, close)
+
+// ── nuevas entradas (solo con la vela cerrada)
+if barstate.isconfirmed and inRth and not lastBar
+    // RA: ruptura del máximo/mínimo de ayer, hasta las 15:30
+    if onRA and not raDone and not raSkip and hm <= 1525 and tRA.side == 0
+        if high > pdh
+            tRA.enter(1, math.max(pdh, open), mid, na)
+            raDone := true
+        else if low < pdl
+            tRA.enter(-1, math.min(pdl, open), mid, na)
+            raDone := true
+    // O5: la vela 9:30-9:35 decide; se entra al cierre (= apertura de la siguiente)
+    if onO5 and hm == 930 and not na(atrD) and is5
+        dir = close > open ? 1 : close < open ? -1 : 0
+        if dir != 0
+            tO5.enter(dir, close, close - dir * 0.1 * atrD, na)
+    // EM: retroceso a la EMA 9 a favor de 9/21, sin rango (CHOP), máx. 3 al día, hasta las 15:30
+    if onEM and tEM.side == 0 and emPend == 0 and emCount < 3 and hm <= 1525 and chop < chopMax
+        if e9 > e21 and low <= e9 and close > e21 and close > open
+            emPend := 1
+            emCount += 1
+        else if e9 < e21 and high >= e9 and close < e21 and close < open
+            emPend := -1
+            emCount += 1
+    // VW: a las 11:00 NY (cierre de la vela de 10:55), largo si el precio está sobre la VWAP de Globex
+    if onVW and not vwDone and hmC == 1100 and tVW.side == 0
+        vwDone := true
+        if close > vwG
+            tVW.enter(1, close, na, na)
+
+// ── dibujos de referencia
+brk(float x) => x != x[1] ? float(na) : x
+bH = brk(pdh)
+bL = brk(pdl)
+plot(showLvls and onRA and inRth ? bH : na, "Máximo de ayer", color.new(colRA, 30), 1, plot.style_linebr)
+plot(showLvls and onRA and inRth ? bL : na, "Mínimo de ayer", color.new(colRA, 30), 1, plot.style_linebr)
+plot(onVW and inRth ? vwG : na, "VWAP de Globex", color.new(colVW, 50), 1, plot.style_linebr)
+
+// ── panel
+var table pnl = table.new(position.top_right, 4, 7, bgcolor = color.new(#0D1117, 8), border_color = color.new(color.gray, 85), border_width = 1)
+cellTxt(int col, int row, string s, color c) =>
+    pnl.cell(col, row, s, text_color = c, text_size = size.small, text_halign = text.align_left)
+statTxt(Stats s) =>
+    s.n == 0 ? "—" : str.tostring(s.n) + " ops · " + str.tostring(100.0 * s.w / s.n, "#") + " %"
+usdTxt(Stats s) =>
+    s.n == 0 ? "—" : str.tostring(s.pts * ptVal, "#") + " $"
+nowTxt(Trade t) =>
+    t.side == 1 ? "LARGO " + fmt(t.e) : t.side == -1 ? "CORTO " + fmt(t.e) : "—"
+if showPanel and barstate.islast
+    cellTxt(0, 0, "Estrategia", color.new(color.white, 40))
+    cellTxt(1, 0, "Ahora", color.new(color.white, 40))
+    cellTxt(2, 0, "En este gráfico", color.new(color.white, 40))
+    cellTxt(3, 0, "Neto", color.new(color.white, 40))
+    cellTxt(0, 1, "RA rango de ayer", colRA)
+    cellTxt(1, 1, onRA ? nowTxt(tRA) : "off", color.white)
+    cellTxt(2, 1, statTxt(sRA), color.white)
+    cellTxt(3, 1, usdTxt(sRA), sRA.pts >= 0 ? colWin : colLoss)
+    cellTxt(0, 2, "O5 ORB 5 min", colO5)
+    cellTxt(1, 2, onO5 ? nowTxt(tO5) : "off", color.white)
+    cellTxt(2, 2, statTxt(sO5), color.white)
+    cellTxt(3, 2, usdTxt(sO5), sO5.pts >= 0 ? colWin : colLoss)
+    cellTxt(0, 3, "EM 9/21 + CHOP", colEM)
+    cellTxt(1, 3, onEM ? nowTxt(tEM) : "off", color.white)
+    cellTxt(2, 3, statTxt(sEM), color.white)
+    cellTxt(3, 3, usdTxt(sEM), sEM.pts >= 0 ? colWin : colLoss)
+    cellTxt(0, 4, "VW VWAP 11:00", colVW)
+    cellTxt(1, 4, onVW ? nowTxt(tVW) : "off", color.white)
+    cellTxt(2, 4, statTxt(sVW), color.white)
+    cellTxt(3, 4, usdTxt(sVW), sVW.pts >= 0 ? colWin : colLoss)
+    cellTxt(0, 5, "Rango de ayer", color.new(color.white, 40))
+    cellTxt(1, 5, na(pdh) ? "—" : fmt(pdl) + " – " + fmt(pdh), color.white)
+    cellTxt(2, 5, "CHOP " + str.tostring(chop, "#"), chop < chopMax ? colWin : color.new(color.white, 40))
+    cellTxt(3, 5, "", color.white)
+    cellTxt(0, 6, is5 ? "Gráfico de 5 min ✓" : "⚠ Usa gráfico de 5 min", is5 ? color.new(color.white, 40) : colLoss)
+    cellTxt(1, 6, "", color.white)
+    cellTxt(2, 6, "", color.white)
+    cellTxt(3, 6, "", color.white)
