@@ -61,31 +61,33 @@ def main():
                     fv.append((k0, 1, bh[i - 2], bl[i], (bl[i] - bh[i - 2]) / atr5[k0]))   # alcista: lo, hi
                 elif bh[i] < bl[i - 2]:
                     fv.append((k0, -1, bh[i], bl[i - 2], (bl[i - 2] - bh[i]) / atr5[k0]))
+            F = np.array(fv)
+            yr5 = t5.year.to_numpy()
+            pre = {}
+            for entry in ("borde", "ce"):
+                lv = np.where(F[:, 1] == 1, F[:, 3], F[:, 2]) if entry == "borde" else (F[:, 2] + F[:, 3]) / 2
+                kr = np.array([retest(h5, l5, int(k0), int(min(eod[int(k0)], len(t5) - 1)), x, int(sd))
+                               for k0, sd, x in zip(F[:, 0], F[:, 1], lv)])
+                pre[entry] = (lv, kr)
             for minsz, entry, stopm, mode, rr in itertools.product((0.0, 0.05, 0.1), ("borde", "ce"), ("otro lado", "0,1 ATR"),
                                                                    ("a favor", "en contra"), (1.0, 2.0)):
-                K, S, E, Rk, Y = [], [], [], [], []
-                for k0, side, lo, hi, sz in fv:
-                    if sz < minsz:
-                        continue
-                    near = hi if side == 1 else lo
-                    lvl = near if entry == "borde" else (lo + hi) / 2
-                    end = min(eod[k0], len(t5) - 1)
-                    k = retest(h5, l5, k0, end, lvl, side)
-                    if k < 0 or not inwin[k]:
-                        continue
-                    s = side if mode == "a favor" else -side
-                    far = lo - tick if side == 1 else hi + tick
-                    risk = abs(lvl - far) if stopm == "otro lado" else 0.1 * atr5[k]
-                    if risk <= 0:
-                        continue
-                    K.append(k); S.append(s); E.append(lvl); Rk.append(risk); Y.append(t5.year[k])
+                lv, kr = pre[entry]
+                sel = (F[:, 4] >= minsz) & (kr >= 0)
+                sel[sel] &= inwin[kr[sel]]
+                kk = kr[sel].astype(np.int64)
+                side = F[sel, 1].astype(np.int64)
+                s_ = side if mode == "a favor" else -side
+                far = np.where(side == 1, F[sel, 2] - tick, F[sel, 3] + tick)
+                risk = np.abs(lv[sel] - far) if stopm == "otro lado" else 0.1 * atr5[kk]
+                g = risk > 0
+                K, S, E, Rk = kk[g], s_[g], lv[sel][g], risk[g]
+                Y = yr5[K]
                 if len(K) < 80:
                     continue
                 order = np.argsort(K, kind="stable")
-                K = np.array(K, np.int64)[order]
-                u = sim(h5, l5, o5, c5, K, np.array(S, np.int64)[order], np.array(E)[order], np.array(Rk)[order],
-                        eod[K].astype(np.int64), rr, cost, usd)
-                yrs = np.array(Y)[order]
+                K = K[order]
+                u = sim(h5, l5, o5, c5, K, S[order], E[order], Rk[order], eod[K].astype(np.int64), rr, cost, usd)
+                yrs = Y[order]
                 m = np.isfinite(u)
                 u, yrs = u[m], yrs[m]
                 dv, vv = u[yrs < 2023], u[yrs >= 2023]
