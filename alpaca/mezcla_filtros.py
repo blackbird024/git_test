@@ -97,7 +97,7 @@ def nq_trades():
                 if (s == 1 and l[q] <= sl) or (s == -1 and h[q] >= sl):
                     px = sl
                     break
-            out["ORB 5 min NQ"].append((y, s, (s * (px - e) - 1) * 2, f))
+            out["ORB 5 min NQ"].append((y, s, (s * (px - e) - 1) * 2, f, t[k0].normalize().tz_localize(None)))
         # rango de ayer
         ph, pl = h[p].max(), l[p].min()
         mid = (ph + pl) / 2
@@ -114,7 +114,7 @@ def nq_trades():
                     if (s == 1 and l[q] <= mid) or (s == -1 and h[q] >= mid):
                         px = min(mid, o[q]) if s == 1 else max(mid, o[q])
                         break
-                out["NQ rango de ayer"].append((y, s, (s * (px - e) - 1) * 2, f))
+                out["NQ rango de ayer"].append((y, s, (s * (px - e) - 1) * 2, f, t[k0].normalize().tz_localize(None)))
                 break
     return out
 
@@ -160,7 +160,7 @@ def gold_trades():
                     if (s == 1 and h[q] >= tg) or (s == -1 and l[q] <= tg):
                         px = tg
                         break
-            out.append((x["d"].year, s, (s * (px - e) - 0.3) * 10, f))
+            out.append((x["d"].year, s, (s * (px - e) - 0.3) * 10, f, x["d"].tz_localize(None).normalize() if x["d"].tzinfo else x["d"].normalize()))
             break
     return {"Oro Londres": out}
 
