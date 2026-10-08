@@ -21,7 +21,7 @@ from nq_intraday_research import build_days
 from orb_research import vela5
 
 
-def pdr_series():
+def pdr_series(stop=True):
     df = load_5m("NQ")
     t = df.index
     hm = (t.hour * 60 + t.minute).to_numpy()
@@ -41,7 +41,7 @@ def pdr_series():
             continue
         d, r, _, _ = x
         ph, pl = p[2], p[3]
-        mid = (ph + pl) / 2
+        mid = (ph + pl) / 2 if stop else np.nan
         if not (pl <= o[r[0]] <= ph):
             continue
         for j, k in enumerate(r[:73]):
@@ -61,16 +61,16 @@ def pdr_series():
     return pd.Series(out)
 
 
-def orb5_series():
+def orb5_series(stop=True):
     days = build_days("NQ")
-    return pd.Series({pd.Timestamp(d).normalize(): p * 2 for d, p in vela5(days, frac=0.1)})
+    return pd.Series({pd.Timestamp(d).normalize(): p * 2 for d, p in vela5(days, frac=0.1 if stop else 1e6)})
 
 
-def gold_series():
+def gold_series(stop=True):
     days, o, h, l, c = GL.build("GC")
     out = {}
     for x in days:
-        R = GL.run([x], o, h, l, c, "ayer NY", 720, "otro lado", 1.0, "14:25 Lon", 0.3, 10.0)
+        R = GL.run([x], o, h, l, c, "ayer NY", 720, "otro lado" if stop else "sin stop", 1.0, "14:25 Lon", 0.3, 10.0)
         if len(R):
             out[x["d"].normalize()] = R.u.iloc[0]
     return pd.Series(out)

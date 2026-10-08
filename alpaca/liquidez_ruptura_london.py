@@ -71,7 +71,7 @@ def run(days, o, h, l, c, ref, last_entry, stop, tgt, ex, cost, usd):
                 break
             s = 1 if up else -1
             e = max(H, o[k]) if s == 1 else min(L, o[k])
-            sl = mid if stop == "medio" else (L if s == 1 else H)
+            sl = mid if stop == "medio" else (-np.inf if s == 1 else np.inf) if stop == "sin stop" else (L if s == 1 else H)
             tg = None if tgt == 0 else (H if s == 1 else L) + s * tgt * R
             px = c[seg[-1]]
             if (s == 1 and l[k] <= sl) or (s == -1 and h[k] >= sl):
