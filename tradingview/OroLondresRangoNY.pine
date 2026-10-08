@@ -8,15 +8,20 @@
 //   3. Stop en el otro lado del rango. Objetivo: 1 rango completo más allá del nivel.
 //   4. Entradas hasta las 12:00 Londres (13:00 Italia). Salida forzosa a las 16:00 NY (22:00 Italia)
 //      o, si se elige, a las 14:25 Londres (15:25 Italia).
-// Backtest oro 2018-2026 (1 MGC, coste 0,3 puntos): ~75 ops/año, 52 % de acierto,
-//   salida 16:00 NY: 2018-22 +530 $/año (PF 1,16) · 2023-26 +2.550 $/año (PF 1,53) · peor racha −1.640 $ · 7/9 años +.
+//   5. FILTRO (activado por defecto): solo compras si el precio a las 08:00 Londres está POR DEBAJO de la media de
+//      20 cierres diarios; solo ventas si está POR ENCIMA. Si el precio rompe primero el lado no permitido, hoy no se opera.
+// Backtest oro 2018-2026 (1 MGC, coste 0,3 puntos), salida 14:25 Londres:
+//   sin filtro ~75 ops/año, 48 % · 2018-22 +400 $/año · 2023-26 +1.430 $/año · peor racha −1.270 $ · 6/9 años +
+//   con filtro ~32 ops/año, 51 % · 2018-22 +420 $/año (PF 1,47) · 2023-26 +1.330 $/año (PF 2,25) · peor racha −620 $ · 8/9 años +
+//   (el filtro salió de probar ~100 combinaciones: confírmalo en replay o con 1 micro antes de confiar del todo)
 // Si stop y objetivo caen en la misma vela, el indicador cuenta el stop (igual que el backtest).
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 indicator("Oro · Londres · rango NY de ayer", "Oro Londres", overlay = true, max_labels_count = 500, max_boxes_count = 500, max_lines_count = 500)
 
 TZN = "America/New_York"
 TZL = "Europe/London"
-exitMode  = input.string("16:00 NY (22:00 Italia)", "Salida", options = ["16:00 NY (22:00 Italia)", "14:25 Londres (15:25 Italia)"])
+exitMode  = input.string("14:25 Londres (15:25 Italia)", "Salida", options = ["14:25 Londres (15:25 Italia)", "16:00 NY (22:00 Italia)"])
+useFilter = input.bool(true, "Filtro: ruptura en contra de la media de 20 días")
 tgtMult   = input.float(1.0, "Objetivo (× rango)", step = 0.25)
 lastEntry = input.int(1200, "Última entrada (HHMM Londres)")
 ptVal     = input.float(10.0, "$ por punto (MGC 10 · GC 100)")
@@ -26,6 +31,7 @@ colUp     = input.color(#26A69A, "Largo / objetivo")
 colDn     = input.color(#EF5350, "Corto / stop")
 
 fmt(float x) => str.tostring(x, format.mintick)
+sma20 = request.security(syminfo.tickerid, "D", ta.sma(close, 20)[1], lookahead = barmerge.lookahead_on)   // media de los 20 cierres anteriores
 usd(float pts) => str.tostring(pts * ptVal, "#") + " $"
 
 inNY    = not na(time(timeframe.period, "0930-1600", TZN))
@@ -60,6 +66,7 @@ var float  e = na
 var float  sl = na
 var float  tg = na
 var string st = "—"
+var int    allowDir = 0     // con filtro: 1 solo compras · -1 solo ventas · 0 ninguno; sin filtro: 2 los dos
 var box    bxT = na
 var box    bxS = na
 var int    nOps = 0
@@ -70,11 +77,17 @@ if ldnOpen and not na(H)
     pos := 0
     done := false
     active := open > L and open < H
-    st := active ? "esperando ruptura (hasta las " + str.tostring(lastEntry) + " Londres)" : "abrió fuera del rango: hoy no se opera"
+    allowDir := not useFilter ? 2 : na(sma20) ? 0 : close[1] < sma20 ? 1 : close[1] > sma20 ? -1 : 0
+    if active and allowDir == 0
+        active := false
+        st := "filtro sin dirección: hoy no se opera"
+    else
+        st := active ? "esperando ruptura" + (allowDir == 1 ? " · SOLO COMPRAS" : allowDir == -1 ? " · SOLO VENTAS" : "") + " (hasta las " + str.tostring(lastEntry) + " Londres)" : "abrió fuera del rango: hoy no se opera"
     if not active
         done := true
     else
-        alert("Oro Londres · " + syminfo.ticker + " · COMPRA STOP " + fmt(H) + " · VENTA STOP " + fmt(L) + " · stop en el lado contrario · riesgo " + usd(H - L), alert.freq_once_per_bar)
+        orders = allowDir == 1 ? "COMPRA STOP " + fmt(H) + " (solo compras; si rompe antes " + fmt(L) + ", hoy no)" : allowDir == -1 ? "VENTA STOP " + fmt(L) + " (solo ventas; si rompe antes " + fmt(H) + ", hoy no)" : "COMPRA STOP " + fmt(H) + " · VENTA STOP " + fmt(L)
+        alert("Oro Londres · " + syminfo.ticker + " · " + orders + " · stop en el lado contrario · riesgo " + usd(H - L), alert.freq_once_per_bar)
 
 if pos != 0
     bxT.set_right(bar_index)
@@ -101,6 +114,11 @@ if barstate.isconfirmed and not na(H)
         dn = low < L
         if up and dn
             st := "rompió los dos lados en la misma vela: hoy no"
+            done := true
+        else if (up or dn) and allowDir != 2 and (up ? 1 : -1) != allowDir
+            st := "rompió primero el lado no permitido por el filtro: hoy no"
+            label.new(bar_index, up ? H : L, "✕ filtro", style = up ? label.style_label_down : label.style_label_up, size = size.tiny,
+              color = color.new(color.gray, 30), textcolor = color.white)
             done := true
         else if up or dn
             s = up ? 1 : -1
@@ -137,7 +155,7 @@ plot(showLvls ? bH : na, "Máximo NY de ayer", colLvl, 2, plot.style_linebr)
 plot(showLvls ? bL : na, "Mínimo NY de ayer", colLvl, 2, plot.style_linebr)
 
 // ── panel
-var table pnl = table.new(position.top_right, 2, 6, bgcolor = color.new(#0D1117, 8), border_color = color.new(color.gray, 85), border_width = 1)
+var table pnl = table.new(position.top_right, 2, 7, bgcolor = color.new(#0D1117, 8), border_color = color.new(color.gray, 85), border_width = 1)
 row(int r, string a, string b) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 35), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
@@ -147,4 +165,5 @@ if showPanel and barstate.islast
     row(2, "Riesgo / objetivo", na(H) ? "—" : usd(H - L) + " / " + usd(tgtMult * (H - L)))
     row(3, "Salida", exitMode)
     row(4, "Hoy", st)
-    row(5, "En este gráfico", nOps == 0 ? "—" : str.tostring(nOps) + " ops · " + str.tostring(100.0 * nWin / nOps, "#") + " % · " + str.tostring(sumUsd, "#") + " $")
+    row(5, "Filtro (media 20 días)", not useFilter ? "desactivado" : na(sma20) ? "—" : (close < sma20 ? "precio debajo → solo COMPRAS" : "precio encima → solo VENTAS"))
+    row(6, "En este gráfico", nOps == 0 ? "—" : str.tostring(nOps) + " ops · " + str.tostring(100.0 * nWin / nOps, "#") + " % · " + str.tostring(sumUsd, "#") + " $")

@@ -6,8 +6,13 @@
 //        el precio supera el máximo de ayer → largo en ese nivel; pierde el mínimo → corto en ese nivel.
 //   3. Stop en el punto medio del rango de ayer. Sin objetivo: se cierra a las 16:00 NY.
 //   4. Una operación por día; no se entra después de las 15:30 NY.
-// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto): ~90 operaciones/año, 50 % de acierto,
-// 2023-2026 +2.700 $/año, PF 1,31; 7 de 9 años positivos (2021: −1.700 $). En ES no funciona.
+//   5. FILTRO (activado por defecto): RSI 14 de 1 h (última vela de 1 h cerrada a las 9:30 NY).
+//      Solo compras si el RSI está POR DEBAJO de 50; solo ventas si está POR ENCIMA de 50.
+//      Si el precio rompe primero el lado no permitido, hoy no se opera.
+// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto):
+//   sin filtro ~88 ops/año, 47 % · 2018-22 +610 $/año · 2023-26 +1.880 $/año · peor racha −3.490 $ · 6/9 años +
+//   con filtro ~28 ops/año, 50 % · 2018-22 +710 $/año (PF 1,39) · 2023-26 +2.055 $/año (PF 2,06) · peor racha −1.250 $ · 8/9 años +
+//   (el filtro salió de probar ~100 combinaciones: confírmalo en replay o con 1 micro antes de confiar del todo). En ES no funciona.
 // Práctico: al abrir NY pon dos órdenes STOP (compra en el máximo de ayer, venta en el mínimo) y cancela la otra al entrar.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 indicator("Ruptura del rango de ayer", "Rango ayer", overlay = true, scale = scale.right, max_labels_count = 300, max_lines_count = 300)
@@ -15,12 +20,14 @@ indicator("Ruptura del rango de ayer", "Rango ayer", overlay = true, scale = sca
 TZ        = "America/New_York"
 sessRth   = input.session("0930-1600", "Sesión regular (NY)")
 lastEntry = input.int(1530, "Última entrada (HHMM, NY)", minval = 930, maxval = 1555)
+useFilter = input.bool(true, "Filtro: ruptura en contra del RSI 14 de 1 h")
 showPanel = input.bool(true, "Panel")
 colHi     = input.color(#C9CED6, "Máximo de ayer")
 colLo     = input.color(#6A84A3, "Mínimo de ayer")
 colMid    = input.color(#A89A5B, "Punto medio (stop)")
 
 fmt(float x) => str.tostring(x, format.mintick)
+rsi1h = request.security(syminfo.tickerid, "60", ta.rsi(close, 14)[1], lookahead = barmerge.lookahead_on)   // última vela de 1 h cerrada
 
 inRth    = not na(time(timeframe.period, sessRth, TZ))
 rthStart = inRth and not inRth[1]
@@ -39,6 +46,8 @@ var int    pos = 0          // 1 largo, -1 corto, 0 fuera
 var float  entry = na
 var bool   done = false
 var string st = "—"
+var int    allowDir = 2     // con filtro: 1 solo compras · -1 solo ventas · 0 ninguno; sin filtro: 2 los dos
+var float  rsiOpen = na
 
 if rthStart
     pdh := curH
@@ -56,8 +65,13 @@ if rthStart
         st := "abrió fuera del rango: hoy no se opera"
         done := true
     else
-        st := "esperando ruptura"
-        alert("Rango de ayer · " + syminfo.ticker + " · COMPRA STOP " + fmt(pdh) + " · VENTA STOP " + fmt(pdl) + " · stop en " + fmt(mid)
+        rsiOpen := rsi1h
+        allowDir := not useFilter ? 2 : na(rsiOpen) ? 0 : rsiOpen < 50 ? 1 : rsiOpen > 50 ? -1 : 0
+        st := allowDir == 0 ? "RSI = 50: hoy no se opera" : "esperando ruptura" + (allowDir == 1 ? " · SOLO COMPRAS" : allowDir == -1 ? " · SOLO VENTAS" : "")
+        if allowDir == 0
+            done := true
+        orders = allowDir == 1 ? "solo COMPRA STOP " + fmt(pdh) + " (si rompe antes " + fmt(pdl) + ", hoy no)" : allowDir == -1 ? "solo VENTA STOP " + fmt(pdl) + " (si rompe antes " + fmt(pdh) + ", hoy no)" : "COMPRA STOP " + fmt(pdh) + " · VENTA STOP " + fmt(pdl)
+        alert("Rango de ayer · " + syminfo.ticker + " · " + orders + " · stop en " + fmt(mid)
           + " · riesgo " + fmt(pdh - mid) + " pts (" + str.tostring((pdh - mid) * 2, "#") + " $ por MNQ) · cierre a las 16:00 NY", alert.freq_once_per_bar)
 else if inRth
     curH := math.max(curH, high)
@@ -82,7 +96,12 @@ if barstate.isconfirmed and inRth and not na(pdh)
     // entrada: ruptura del máximo o del mínimo de ayer (primero el máximo si la vela toca los dos)
     else if not done and hm <= lastEntry
         side = high > pdh ? 1 : low < pdl ? -1 : 0
-        if side != 0
+        if side != 0 and allowDir != 2 and side != allowDir
+            st := "rompió primero el lado no permitido por el filtro: hoy no"
+            label.new(bar_index, side == 1 ? pdh : pdl, "✕ filtro RSI", color = color.new(color.gray, 30), textcolor = color.white, size = size.tiny,
+              style = side == 1 ? label.style_label_down : label.style_label_up)
+            done := true
+        else if side != 0
             pos := side
             entry := side == 1 ? pdh : pdl
             st := (side == 1 ? "LARGO" : "CORTO") + " desde " + fmt(entry)
@@ -102,7 +121,7 @@ plot(inRth ? bL : na, "Mínimo de ayer", colLo, 2, plot.style_linebr)
 plot(inRth ? bM : na, "Medio (stop)", colMid, 1, plot.style_linebr)
 
 // ── panel
-var table pnl = table.new(position.top_right, 2, 5, bgcolor = color.new(#0D1117, 10), border_color = color.new(color.gray, 80), border_width = 1)
+var table pnl = table.new(position.top_right, 2, 6, bgcolor = color.new(#0D1117, 10), border_color = color.new(color.gray, 80), border_width = 1)
 row(int r, string a, string b) =>
     pnl.cell(0, r, a, text_color = color.new(color.white, 25), text_size = size.small, text_halign = text.align_left)
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
@@ -111,4 +130,5 @@ if showPanel and barstate.islast
     row(1, "Venta stop", na(pdl) ? "—" : fmt(pdl))
     row(2, "Stop (medio)", na(mid) ? "—" : fmt(mid))
     row(3, "Riesgo 1 MNQ", na(pdh) ? "—" : fmt(pdh - mid) + " pts · " + str.tostring((pdh - mid) * 2, "#") + " $")
-    row(4, "Hoy", st)
+    row(4, "Filtro RSI 1 h (9:30)", not useFilter ? "desactivado" : na(rsiOpen) ? "—" : str.tostring(rsiOpen, "#.0") + (rsiOpen < 50 ? " → solo COMPRAS" : rsiOpen > 50 ? " → solo VENTAS" : ""))
+    row(5, "Hoy", st)
