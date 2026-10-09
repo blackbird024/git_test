@@ -1,0 +1,41 @@
+# Protocolo de validación, fijado el 2026-10-09 ANTES de calcular ningún resultado del laboratorio.
+version: 1
+
+datos:
+  intradia: "NQ.c.0 1 min (Databento), 2018-01-02 → 2026-10-02. No existe dataset desde 2015 en este entorno (MNQ cotiza desde 2019-05-06)."
+  swing: "QQQ diario ajustado por dividendos (Alpaca SIP, gratuito), 2016-01-04 → 2026-10-08; NQ diario (de las velas de 1 min) 2018 → 2026."
+
+particion:
+  # El esquema propuesto (2015-2020 / 2021-2023 / 2024-2026) no es posible porque los datos empiezan en 2018 (intradía)
+  # y 2016 (swing). Se desplaza el desarrollo y se mantienen validación y prueba lo más parecidas posible.
+  intradia:
+    desarrollo: ["2018-01-01", "2021-12-31"]
+    validacion: ["2022-01-01", "2024-12-31"]
+    prueba:     ["2025-01-01", "2026-10-02"]
+  swing:
+    desarrollo: ["2016-01-01", "2020-12-31"]   # los indicadores de 200 días consumen 2016 como calentamiento
+    validacion: ["2021-01-01", "2023-12-31"]
+    prueba:     ["2024-01-01", "2026-10-08"]
+  advertencia: >
+    En esta misma conversación ya se probaron muchas variantes de ORB, tendencia y "ruido" sobre NQ 2018-2026. Ningún
+    periodo es una prueba verdaderamente independiente para esas familias. La única prueba limpia será el forward test.
+
+seleccion:
+  hipotesis_principal_A1: "ORB con stop estructural, objetivo 2R y cierre 11:30, en sus tres variantes (immediate, close, retest), evaluadas por separado"
+  variantes_secundarias: "stop por volatilidad y salida al cierre del día; solo informativas salvo que ganen en desarrollo Y validación"
+  filtros: "se conserva un filtro solo si mejora la esperanza neta en desarrollo Y en validación con coste base, sin bajar de 100 operaciones en validación (intradía) / 20 (swing)"
+  prueba_final: "se evalúa una sola vez con las reglas congeladas en experiments/reglas_congeladas.yaml"
+  coste_de_referencia: "escenario base (2 ticks por lado + 0,75 USD fijos por lado y contrato)"
+
+criterios:
+  RECHAZADA: "esperanza neta <= 0 con coste base en validación o en prueba; o negativa con coste bajo en todo el periodo fuera de muestra"
+  INCONCLUSA: "positiva fuera de muestra pero el IC bootstrap al 90 % de la esperanza (validación+prueba) incluye 0, o menos de 100 operaciones fuera de muestra (intradía) / 30 (swing), o parámetros vecinos inestables"
+  CANDIDATA: >
+    esperanza > 0 y PF > 1,10 con coste base en validación Y en prueba; IC90 de la esperanza fuera de muestra con límite
+    inferior > 0; ningún año aporta más del 50 % del neto; las 10 mejores operaciones aportan menos del 50 % del neto;
+    al menos el 70 % de las perturbaciones de parámetros son positivas fuera de muestra
+  VALIDADA_PARA_SIMULACION: >
+    CANDIDATA + PF > 1,20 con coste base fuera de muestra + positiva con coste alto en validación y en prueba +
+    (sistema A) probabilidad simulada de superar el Combine mayor que la de perderlo, con el riesgo elegido;
+    (sistema B) mejor rentabilidad ajustada a drawdown que el benchmark pasivo en el mismo periodo
+  APTA_PARA_EVALUAR_EN_REAL: "nunca desde el backtest; solo tras un forward test satisfactorio (mín. 60 operaciones o 3 meses)"

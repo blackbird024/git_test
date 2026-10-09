@@ -1,0 +1,31 @@
+# Costes de ejecución del laboratorio. TODOS LOS VALORES SON EDITABLES.
+# Estado: PROVISIONAL. Ninguna tarifa de Topstep ni de IBKR ha podido verificarse en la fuente oficial
+# desde este entorno (help.topstep.com, topstep.com, cmegroup.com e interactivebrokers.com están bloqueados por el proxy).
+version: 1
+fecha: 2026-10-09
+
+MNQ:
+  especificacion:            # CME Micro E-mini Nasdaq-100. Fuente: conocimiento general; VERIFICAR en cmegroup.com
+    multiplicador_usd_por_punto: 2.0
+    tick: 0.25
+    valor_tick_usd: 0.50
+    verificado: false
+  comision_por_lado_usd: 0.50     # PENDIENTE: no conozco tu tarifa real de Topstep. Valor de trabajo conservador.
+  tasas_por_lado_usd: 0.25        # PENDIENTE: tasas de bolsa + NFA. Valor de trabajo.
+  # Coste fijo ida y vuelta por contrato con estos valores: 2 x (0.50 + 0.25) = 1.50 USD.
+  # Pista sin confirmar: tu captura mostraba "Commis. 2,50 $" y "Fees 3,60 $" en una fila, sin el número de contratos.
+  #   Si esa fila eran 5 contratos ida y vuelta (10 lados) serían 0,25 + 0,36 = 0,61 USD por lado (1,22 USD i/v).
+  #   No se usa hasta que lo confirmes: se cubre con el escenario "alto".
+  slippage_ticks_por_lado:        # aplicado a órdenes a mercado y stop (entrada, stop-loss, salida por tiempo)
+    bajo: 1
+    base: 2
+    alto: 3
+  slippage_ordenes_limite: 0      # el take-profit límite solo se llena si el precio cruza el nivel por al menos 1 tick
+  limite_requiere_cruce_ticks: 1
+  stop_y_objetivo_misma_vela: stop_primero   # hipótesis conservadora con velas de 1 min
+  gap_mas_alla_del_stop: ejecuta_en_apertura # no al precio del stop
+
+QQQ_ETF_proxy:                    # solo para comparar señales; un ETF UCITS real tiene otros costes (ver INFORME)
+  comision_por_operacion_eur: 3.0 # PENDIENTE: tarifa IBKR para ETF UCITS en Xetra/Borsa Italiana. Valor de trabajo.
+  spread_y_slippage_pct_por_lado: 0.05
+  ter_anual_pct: 0.30             # típico de los ETF UCITS sobre el Nasdaq-100 (CNDX/EQQQ/SXRV): VERIFICAR en el KID
