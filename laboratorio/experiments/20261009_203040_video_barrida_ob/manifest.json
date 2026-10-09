@@ -1,0 +1,46 @@
+{
+  "fecha": "2026-10-09T20:31:34",
+  "version_codigo": "8e84e87+cambios_sin_commit",
+  "experimento": "estrategia del vídeo: barrida + liquidity sweep H1/H4 + envolvente 1:1",
+  "variantes": {
+    "M3 + H1/H4, 1R (vídeo)": {
+      "tf": 3,
+      "htf": true,
+      "target_r": 1.0
+    },
+    "M5 + H1/H4, 1R (vídeo)": {
+      "tf": 5,
+      "htf": true,
+      "target_r": 1.0
+    },
+    "M3 sin H1/H4, 1R": {
+      "tf": 3,
+      "htf": false,
+      "target_r": 1.0
+    },
+    "M5 sin H1/H4, 1R": {
+      "tf": 5,
+      "htf": false,
+      "target_r": 1.0
+    },
+    "M3 + H1/H4, 2R": {
+      "tf": 3,
+      "htf": true,
+      "target_r": 2.0
+    }
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

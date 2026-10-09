@@ -33,6 +33,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 20:20:12 | `20261009_202012_orb_retest_pdhl` | ORB 5 min ruptura + retesteo con objetivo en PDH/PDL (4 variantes) | Negativa en desarrollo y prueba en todas; el objetivo queda a ~5,6 R y solo se alcanza en el 16-19 % | ❌ RECHAZADAS |
 
+| 20:30:40 | `20261009_203040_video_barrida_ob` | Estrategia de un vídeo de YouTube: barrida de PDH/Asia/Londres + liquidity sweep H1/H4 + vela envolvente M3/M5, 1:1 (5 variantes) | Versiones del vídeo negativas en desarrollo y prueba (M3: −5,1/−4,2/−4,4 $/op); acierto 48-50 % con 1:1 = moneda al aire menos costes. El filtro H1/H4 no mejora | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
