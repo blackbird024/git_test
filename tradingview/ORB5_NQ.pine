@@ -1,28 +1,32 @@
 //@version=6
 // ─────────────────────────────────────────────────────────────────────────────────────────────
-// ORB 5 minutos · NQ / MNQ (sesión regular de NY) — mismas reglas que alpaca/orb_research.py (vela5, frac = 0,1)
-//   1. Primera vela de 5 min de NY (9:30-9:35 NY = 15:30-15:35 Italia):
-//        verde → COMPRA · roja → VENTA · si abre y cierra igual, hoy no se opera.
-//   2. Entrada a mercado al abrir la siguiente vela (9:35 NY = 15:35 Italia).
-//   3. Stop a 10 % del ATR desde la entrada. Sin objetivo: cierre a las 16:00 NY (22:00 Italia).
-//   4. Una operación al día. Si salta el stop, se acabó por hoy.
+// ORB 5 min con «la vela habla» · NQ / MNQ (sesión regular de NY) — alpaca/orb_vela_previa.py y orb_ratio.py
+//   1. Vela previa: 9:25-9:30 NY (15:25-15:30 Italia). Se marcan su máximo y su mínimo.
+//   2. Primera vela de NY: 9:30-9:35 (15:30-15:35 Italia).
+//        verde que CIERRA por encima del máximo de la previa → COMPRA a las 9:35
+//        roja que CIERRA por debajo del mínimo de la previa → VENTA a las 9:35   · stop 10 % del ATR
+//   3. Si no rompe la previa → se mira la vela de 15 min (9:30-9:45): si su mecha en contra es MENOR que su cuerpo
+//      → entrada a las 9:45 en su color, stop 15 % del ATR. Si no → hoy no se opera.
+//   4. Sin objetivo: cierre a las 16:00 NY (22:00 Italia). Una operación al día.
 //   ATR = media del rango (máximo − mínimo) de las últimas 14 sesiones regulares (9:30-16:00 NY).
-//   OJO: no es el ATR(14) diario de TradingView (ese incluye la noche y es ~25-40 % mayor).
-// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto): ~180 ops/año, 17-18 % de acierto,
-//   2018-22 +1.470 $/año (PF 1,24) · 2023-26 +1.740 $/año (PF 1,19) · peor racha −1.870 $ · 9/9 años positivos.
-//   Pierdes ~8 de cada 10: el beneficio viene de pocos días de tendencia. No te saltes días ni cierres antes.
+// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto): ~170 ops/año, ~19 % de acierto,
+//   2018-22 +2.070 $/año (PF 1,36) · 2023-26 +2.870 $/año (PF 1,34) · peor racha −1.540 $ · 9/9 años positivos.
+//   Con objetivo fijo empeora (1:2 ≈ 0). Pierdes ~8 de cada 10: no te saltes días ni cierres antes.
 // Úsalo en un gráfico de 1 o 5 minutos de MNQ1! / NQ1!.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
-indicator("ORB 5 min · NQ", "ORB5", overlay = true, max_labels_count = 500, max_boxes_count = 500)
+indicator("ORB 5 min · NQ · la vela habla", "ORB5", overlay = true, max_labels_count = 500, max_boxes_count = 500)
 
 TZ        = "America/New_York"
-stopFrac  = input.float(0.10, "Stop (× ATR de la sesión)", step = 0.01)
+stop5     = input.float(0.10, "Stop entrada 9:35 (× ATR)", step = 0.01)
+stop15    = input.float(0.15, "Stop entrada 9:45 (× ATR)", step = 0.01)
+use15     = input.bool(true, "Segunda opción: vela de 15 min")
 atrLen    = input.int(14, "Sesiones para el ATR", minval = 5)
 ptVal     = input.float(2.0, "$ por punto (MNQ 2 · NQ 20)")
 showPanel = input.bool(true, "Panel")
 colUp     = input.color(#26A69A, "Largo")
 colDn     = input.color(#EF5350, "Corto / stop")
 colBox    = input.color(#C9A227, "Primera vela")
+colPre    = input.color(#8A93A6, "Vela previa 9:25")
 
 fmt(float x) => str.tostring(x, format.mintick)
 usd(float pts) => str.tostring(pts * ptVal, "#") + " $"
@@ -32,6 +36,7 @@ rthStart = inRth and not inRth[1]
 hm       = hour(time, TZ) * 100 + minute(time, TZ)
 hmC      = hour(time_close, TZ) * 100 + minute(time_close, TZ)
 lastBar  = inRth and hmC >= 1600
+inPre    = hm >= 925 and hm < 930
 
 // ── ATR propio: media de los rangos de las últimas sesiones regulares
 var float dH = na
@@ -49,21 +54,31 @@ if rthStart
 else if inRth
     dH := math.max(dH, high)
     dL := math.min(dL, low)
-
-// respaldo si el gráfico no carga suficientes sesiones: velas diarias de la sesión regular
 tkR    = ticker.modify(syminfo.tickerid, session.regular)
 atrSec = request.security(tkR, "D", ta.sma(high - low, atrLen)[1], lookahead = barmerge.lookahead_on)
+
+// ── vela previa 9:25-9:30
+var float preH = na
+var float preL = na
+if inPre and not inPre[1]
+    preH := high
+    preL := low
+else if inPre
+    preH := math.max(preH, high)
+    preL := math.min(preL, low)
 
 // ── estado del día
 var float  atrDay = na
 var float  op = na
 var float  fH = na
 var float  fL = na
-var int    side = 0
 var int    pos = 0
+var int    pend = 0          // dirección pendiente de entrar en la apertura siguiente
+var float  pendStop = na
 var float  e = na
 var float  sl = na
 var bool   done = true
+var bool   waiting15 = false
 var string st = "—"
 var box    fb = na
 var int    nOps = 0
@@ -75,38 +90,64 @@ if rthStart
     op := open
     fH := high
     fL := low
-    side := 0
     pos := 0
-    done := na(atrDay)
-    st := na(atrDay) ? "sin ATR" : "esperando la primera vela (9:30-9:35)"
+    pend := 0
+    waiting15 := false
+    done := na(atrDay) or na(preH)
+    st := na(atrDay) ? "sin ATR" : na(preH) ? "sin vela previa (9:25)" : "esperando la vela de 15:30-15:35"
     fb := box.new(bar_index, high, bar_index, low, border_color = color.new(colBox, 30), bgcolor = color.new(colBox, 88))
-else if inRth and hm < 935
+else if inRth and hm < 945
     fH := math.max(fH, high)
     fL := math.min(fL, low)
-    fb.set_top(fH)
-    fb.set_bottom(fL)
-    fb.set_right(bar_index)
+    if hm < 935 or waiting15
+        fb.set_top(fH)
+        fb.set_bottom(fL)
+        fb.set_right(bar_index)
 
 if barstate.isconfirmed and inRth and not done
-    // fin de la primera vela de 5 min: decide la dirección
-    if hmC == 935 and side == 0
-        side := int(math.sign(close - op))
-        if side == 0
-            st := "primera vela sin color: hoy no se opera"
-            done := true
-        else
-            st := (side == 1 ? "COMPRA" : "VENTA") + " a mercado a las 9:35 NY · stop ≈ " + fmt(close - side * stopFrac * atrDay)
-            alert("ORB5 · " + syminfo.ticker + " · " + (side == 1 ? "COMPRA" : "VENTA") + " a mercado ahora · stop a " + fmt(stopFrac * atrDay)
-              + " pts (≈ " + fmt(close - side * stopFrac * atrDay) + " · " + usd(stopFrac * atrDay) + ") · cierre 16:00 NY", alert.freq_once_per_bar_close)
-    // entrada en la apertura de la vela de las 9:35 (la vela de entrada ya cuenta para el stop, como el backtest)
-    else if hm == 935 and side != 0 and pos == 0
+    // entrada pendiente: se abre en esta vela (la primera tras la señal)
+    if pend != 0 and pos == 0
         e := open
-        sl := e - side * stopFrac * atrDay
-        pos := side
-        label.new(bar_index, e, side == 1 ? "LARGO" : "CORTO", style = side == 1 ? label.style_label_up : label.style_label_down,
-          yloc = side == 1 ? yloc.belowbar : yloc.abovebar, size = size.tiny, color = side == 1 ? colUp : colDn, textcolor = color.white,
-          tooltip = "Entrada " + fmt(e) + "\nStop " + fmt(sl) + " (" + usd(stopFrac * atrDay) + ")\nSin objetivo: cierre 16:00 NY")
-        st := (side == 1 ? "LARGO " : "CORTO ") + fmt(e) + " · stop " + fmt(sl)
+        sl := e - pend * pendStop
+        pos := pend
+        pend := 0
+        label.new(bar_index, e, pos == 1 ? "LARGO" : "CORTO", style = pos == 1 ? label.style_label_up : label.style_label_down,
+          yloc = pos == 1 ? yloc.belowbar : yloc.abovebar, size = size.tiny, color = pos == 1 ? colUp : colDn, textcolor = color.white,
+          tooltip = "Entrada " + fmt(e) + "\nStop " + fmt(sl) + " (" + usd(math.abs(e - sl)) + ")\nSin objetivo: cierre 16:00 NY")
+        st := (pos == 1 ? "LARGO " : "CORTO ") + fmt(e) + " · stop " + fmt(sl)
+    // 9:35: ¿la primera vela rompe la previa?
+    if hmC == 935 and pos == 0 and pend == 0 and not waiting15
+        s = close > op ? 1 : close < op ? -1 : 0
+        brk = (s == 1 and close > preH) or (s == -1 and close < preL)
+        if brk
+            pend := s
+            pendStop := stop5 * atrDay
+            st := (s == 1 ? "COMPRA" : "VENTA") + " a mercado 15:35 · rompió la vela de 15:25"
+            alert("ORB5 · " + syminfo.ticker + " · " + (s == 1 ? "COMPRA" : "VENTA") + " ahora (rompe la vela de 15:25) · stop " + fmt(pendStop)
+              + " pts (" + usd(pendStop) + ") · cierre 22:00", alert.freq_once_per_bar_close)
+        else if use15
+            waiting15 := true
+            st := "no rompió la vela de 15:25 → esperando la vela de 15 min (15:45)"
+            alert("ORB5 · " + syminfo.ticker + " · no rompe la previa → espera a las 15:45", alert.freq_once_per_bar_close)
+        else
+            st := "no rompió la vela de 15:25: hoy no"
+            done := true
+    // 9:45: vela de 15 min como segunda opción
+    else if hmC == 945 and waiting15 and pos == 0 and pend == 0
+        waiting15 := false
+        s = close > op ? 1 : close < op ? -1 : 0
+        body = math.abs(close - op)
+        wick = s == 1 ? math.min(op, close) - fL : fH - math.max(op, close)
+        if s != 0 and wick < body
+            pend := s
+            pendStop := stop15 * atrDay
+            st := (s == 1 ? "COMPRA" : "VENTA") + " a mercado 15:45 · vela de 15 min sin rechazo"
+            alert("ORB5 · " + syminfo.ticker + " · " + (s == 1 ? "COMPRA" : "VENTA") + " ahora (vela de 15 min sin rechazo) · stop " + fmt(pendStop)
+              + " pts (" + usd(pendStop) + ") · cierre 22:00", alert.freq_once_per_bar_close)
+        else
+            st := "vela de 15 min con rechazo: hoy no"
+            done := true
+            alert("ORB5 · " + syminfo.ticker + " · hoy no se opera", alert.freq_once_per_bar_close)
     // gestión
     if pos != 0
         hitS = pos == 1 ? low <= sl : high >= sl
@@ -118,12 +159,16 @@ if barstate.isconfirmed and inRth and not done
             sumUsd += (res - 1) * ptVal
             label.new(bar_index, px, (res >= 0 ? "+" : "") + usd(res), style = label.style_label_left, size = size.tiny,
               color = color.new(res > 0 ? colUp : colDn, 15), textcolor = color.white)
-            alert("ORB5 · " + syminfo.ticker + " · " + (hitS ? "STOP" : "cierre 16:00") + " · " + usd(res), alert.freq_once_per_bar_close)
-            st := (hitS ? "stop · hoy no más" : "cerrado a las 16:00") + " · " + usd(res)
+            alert("ORB5 · " + syminfo.ticker + " · " + (hitS ? "STOP" : "cierre 22:00") + " · " + usd(res), alert.freq_once_per_bar_close)
+            st := (hitS ? "stop · hoy no más" : "cerrado a las 22:00") + " · " + usd(res)
             pos := 0
             done := true
 
-// ── línea del stop mientras hay posición
+// ── líneas
+brk(float x) => x != x[1] ? float(na) : x
+showPre = inRth and hm < 1000
+plot(showPre ? brk(preH) : na, "Máximo vela 9:25", colPre, 1, plot.style_linebr)
+plot(showPre ? brk(preL) : na, "Mínimo vela 9:25", colPre, 1, plot.style_linebr)
 plot(pos != 0 ? sl : na, "Stop", colDn, 1, plot.style_linebr)
 plot(pos != 0 ? e : na, "Entrada", color.new(color.gray, 30), 1, plot.style_linebr)
 
@@ -134,7 +179,7 @@ row(int r, string a, string b) =>
     pnl.cell(1, r, b, text_color = color.white, text_size = size.small, text_halign = text.align_left)
 if showPanel and barstate.islast
     row(0, "ATR sesión", na(atrDay) ? "—" : fmt(atrDay) + " pts" + (na(atrOwn) ? " (diario RTH)" : ""))
-    row(1, "Stop (" + str.tostring(stopFrac * 100, "#") + " % ATR)", na(atrDay) ? "—" : fmt(stopFrac * atrDay) + " pts · " + usd(stopFrac * atrDay))
-    row(2, "Primera vela", side == 0 ? "—" : side == 1 ? "verde → COMPRA" : "roja → VENTA")
+    row(1, "Stop 15:35 / 15:45", na(atrDay) ? "—" : usd(stop5 * atrDay) + " / " + usd(stop15 * atrDay))
+    row(2, "Vela 15:25", na(preH) ? "—" : "máx " + fmt(preH) + " · mín " + fmt(preL))
     row(3, "Hoy", st)
     row(4, "En este gráfico", nOps == 0 ? "—" : str.tostring(nOps) + " ops · " + str.tostring(100.0 * nWin / nOps, "#") + " % · " + str.tostring(sumUsd, "#") + " $")
