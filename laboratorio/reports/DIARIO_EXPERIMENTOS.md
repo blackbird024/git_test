@@ -25,6 +25,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 | — | (sin carpeta) | Zona de ruido con salida solo por banda (por defecto en `BandasRuidoNY.pine`; variante preexistente "sin media") | PF 1,33 / 1,34 / 1,20; IC90 FM [7,3; 28,2]; top-10 = 70 % | ✅ coherencia indicador-backtest |
 | — | (sin carpeta) | Sensibilidad a las semanas de vencimiento (fuera de muestra) | Todas las estrategias rinden peor en esas semanas; ruido 4,0 frente a 15,0 $/op | ✅ (INFORME §7) |
 
+| 20:06:18 | `20261009_200618_orb_italia_13h` | ORB 5 min desde las 13:00 Italia (hipótesis nueva; 3 variantes × 3 salidas, reglas fijadas antes) | Ninguna variante gana en los tres periodos; con salida antes de NY: PF 0,65-1,00; con salida al cierre de NY: alterna años buenos y malos | ❌ todas RECHAZADAS |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

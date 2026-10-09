@@ -1,0 +1,76 @@
+{
+  "fecha": "2026-10-09T20:07:01",
+  "version_codigo": "b6bc099+cambios_sin_commit",
+  "experimento": "ORB 5 min desde las 13:00 Italia",
+  "variantes": {
+    "immediate 2R_1500": {
+      "variant": "immediate",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "exit_k": 120
+    },
+    "immediate 2R_1525": {
+      "variant": "immediate",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "exit_k": 145
+    },
+    "immediate cierre": {
+      "variant": "immediate",
+      "stop_mode": "rango",
+      "exit": "eod",
+      "exit_k": 10000
+    },
+    "close 2R_1500": {
+      "variant": "close",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "exit_k": 120
+    },
+    "close 2R_1525": {
+      "variant": "close",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "exit_k": 145
+    },
+    "close cierre": {
+      "variant": "close",
+      "stop_mode": "rango",
+      "exit": "eod",
+      "exit_k": 10000
+    },
+    "retest 2R_1500": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "exit_k": 120
+    },
+    "retest 2R_1525": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "exit_k": 145
+    },
+    "retest cierre": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "eod",
+      "exit_k": 10000
+    }
+  },
+  "sesiones": 2165,
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
