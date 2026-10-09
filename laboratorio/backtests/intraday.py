@@ -105,6 +105,8 @@ def simulate(date, m: np.ndarray, close_min: int, o: Order, c: FutCost) -> Optio
     target = o.target
     if o.target_r is not None:
         target = entry + s * o.target_r * risk
+    if target is not None and s * (target - entry) <= 0:
+        return None                                  # el objetivo ya está superado al entrar: se cancela
     tgt_cross = c.limit_cross_ticks * tick
     ek = k
     # ── gestión minuto a minuto (el minuto de entrada incluido)

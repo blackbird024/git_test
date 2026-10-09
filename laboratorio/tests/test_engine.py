@@ -141,3 +141,18 @@ def test_limit_entry_needs_cross_and_cancels_if_stop_first():
     bar(m3, 12, 100, 100.25, 99, 99)
     bar(m3, 13, 99, 99, 90, 90)                   # nunca vuelve al nivel
     assert simulate("d", m3, 390, Order(-1, "limit", 10, 102, None, 300, level=100.5, k_last=60), C1) is None
+
+
+def test_orb_retest_target_pdh():
+    s = _orb_session([(100.5, 102, 100.5, 102), (102, 103, 101.8, 102.5), (102.5, 102.5, 101.25, 101.75)])
+    o = orb(s, {s.date: dict(prev_high=110.0, prev_low=90.0)}, variant="retest", target="pdhl")
+    assert o.target == 110.0 and o.target_r is None
+    # PDH por debajo del precio: sin operación
+    assert orb(s, {s.date: dict(prev_high=101.0, prev_low=90.0)}, variant="retest", target="pdhl") is None
+    # objetivo a menos de 1R: descartado con min_r=1 (riesgo 0,75, distancia 0,25)
+    assert orb(s, {s.date: dict(prev_high=102.0, prev_low=90.0)}, variant="retest", target="pdhl", min_r=1) is None
+
+
+def test_fixed_target_already_passed_cancels():
+    m = flat()
+    assert simulate("d", m, 390, Order(1, "market", 10, 95, 99, 300), C0) is None

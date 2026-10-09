@@ -1,0 +1,54 @@
+{
+  "fecha": "2026-10-09T20:20:32",
+  "version_codigo": "4e2e15f+cambios_sin_commit",
+  "experimento": "ORB retest con objetivo PDH/PDL",
+  "variantes": {
+    "PDH/PDL salida 2R_1130 minR 0.0": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "target": "pdhl",
+      "min_r": 0.0
+    },
+    "PDH/PDL salida 2R_1130 minR 1.0": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "2R_1130",
+      "target": "pdhl",
+      "min_r": 1.0
+    },
+    "PDH/PDL salida eod minR 0.0": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "eod",
+      "target": "pdhl",
+      "min_r": 0.0
+    },
+    "PDH/PDL salida eod minR 1.0": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "eod",
+      "target": "pdhl",
+      "min_r": 1.0
+    },
+    "referencia 2R salida 11:30": {
+      "variant": "retest",
+      "stop_mode": "rango",
+      "exit": "2R_1130"
+    }
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

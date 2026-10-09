@@ -53,7 +53,9 @@ def _stop(side, ref, orh, orl, stop_mode, ctx_day, mult=0.10):
 
 
 def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False, vol=False,
-        range_min=5, entry_last_k=ENTRY_LAST_K, exit_k=None, vol_mult=0.10):
+        range_min=5, entry_last_k=ENTRY_LAST_K, exit_k=None, vol_mult=0.10, target="R", min_r=0.0):
+    """target="R": objetivo en múltiplos de R (según `exit`); target="pdhl": objetivo en el máximo (largos) o mínimo
+    (cortos) de la sesión regular de ayer, solo en la variante retest; se descarta si está a menos de `min_r` R."""
     """`range_min`, `exit_k` y `vol_mult` solo se usan en las pruebas de perturbación (range_min solo en immediate)."""
     r = _range(s, range_min)
     if r is None:
@@ -128,6 +130,13 @@ def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False,
                     st = _stop(side, c, orh, orl, "vol", cd, vol_mult)
                     if st is None:
                         return None
+                if target == "pdhl":
+                    if cd is None:
+                        return None
+                    tgt = cd["prev_high"] if side == 1 else cd["prev_low"]
+                    if tgt is None or np.isnan(tgt) or side * (tgt - c) < min_r * side * (c - st) or side * (tgt - c) <= 0:
+                        return None
+                    return Order(side, "market", 5 * (i + 1), st, tgt, xk, tag="retest_pdhl")
                 return Order(side, "market", 5 * (i + 1), st, None, xk, target_r=tr, tag="retest")
         return None
     raise ValueError(variant)
