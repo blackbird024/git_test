@@ -1,0 +1,32 @@
+# Reglas congeladas el 2026-10-09 tras desarrollo + validación (experimento 20261009_193511_sistema_a),
+# ANTES de calcular la prueba final 2025-01-01 → 2026-10-02. Aplicación literal de config/PROTOCOLO.yaml → seleccion.
+sistema_A:
+  A1_immediate:
+    regla: {variant: immediate, stop_mode: rango, exit: 2R_1130, vol: true}
+    motivo: "principal; el filtro de volatilidad mejora la esperanza en desarrollo (-2,99 vs -4,39) y validación (-0,60 vs -1,18) con 557 ops; el de tendencia empeora en validación"
+  A1_close:
+    regla: {variant: close, stop_mode: rango, exit: 2R_1130, vol: true}
+    motivo: "principal; filtro vol mejora en desarrollo (-4,41 vs -6,02) y validación (3,30 vs 3,00); tendencia empeora en desarrollo"
+  A1_retest:
+    regla: {variant: retest, stop_mode: rango, exit: 2R_1130}
+    motivo: "principal; ningún filtro mejora en los dos periodos"
+  A1_immediate_eod:
+    regla: {variant: immediate, stop_mode: rango, exit: eod}
+    motivo: "única variante secundaria positiva en desarrollo (+0,91) Y validación (+11,59). Elegida entre 9 secundarias: sesgo de selección"
+  A2_tendencia:
+    regla: {vwap: true}
+    motivo: "el filtro VWAP mejora desarrollo (-2,86 vs -3,74) y validación (+2,59 vs -5,45) con 203 ops; ema200 y vol no mejoran ambos"
+  A3_ruido:
+    regla: {lookback: 14, step: 6, band_mult: 1.0}
+    motivo: "reglas originales de alpaca/mnq_intraday_lab.py, sin cambios"
+sistema_B:   # congelado tras experimento 20261009_194122_sistema_b, antes de la prueba 2024-01-01 → 2026-10-08
+  ejecucion_principal: next_open   # implementable sin vigilar el cierre; "close" solo como referencia
+  B1_ruptura20:
+    regla: {n_hi: 20, n_lo: 10, atr_mult: 2.0, max_days: 20, filt: null}
+    motivo: "EMA200 y volatilidad empeoran la validación; la pendiente mejora ambos periodos pero deja 15 operaciones en validación (< 20 exigidas): no se incorpora"
+  B3_rsi2:
+    regla: {lo: 10, salida: "cierre > SMA5", filtro: "cierre > SMA200"}
+    motivo: "reglas originales de alpaca/swing_lab.py; estrategia de reversión, se clasifica aparte"
+  B4_retroceso_ema20:
+    regla: {atr_mult: 2.0, max_days: 20}
+    motivo: "sin cambios; negativa en validación"

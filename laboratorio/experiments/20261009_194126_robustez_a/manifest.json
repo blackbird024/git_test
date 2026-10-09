@@ -1,0 +1,38 @@
+{
+  "fecha": "2026-10-09T19:41:26",
+  "version_codigo": "f845184+cambios_sin_commit",
+  "experimento": "robustez sistema A (sin prueba final)",
+  "reglas": "experiments/reglas_congeladas.yaml",
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ]
+  },
+  "semillas": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ]
+}

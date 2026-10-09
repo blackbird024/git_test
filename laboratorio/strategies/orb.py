@@ -23,8 +23,8 @@ ENTRY_LAST_K = 90           # 11:00 ET
 EXITS = {"2R_1130": (2.0, 120), "eod": (None, 385)}
 
 
-def _range(s):
-    x = s.m[:5]
+def _range(s, n=5):
+    x = s.m[:n]
     if np.isnan(x[:, 0]).all():
         return None
     return np.nanmax(x[:, 1]), np.nanmin(x[:, 2])
@@ -42,27 +42,31 @@ def _filters_ok(side, ctx_day, trend, vol):
     return True
 
 
-def _stop(side, ref, orh, orl, stop_mode, ctx_day):
+def _stop(side, ref, orh, orl, stop_mode, ctx_day, mult=0.10):
     if stop_mode == "rango":
         return orl - TICK if side == 1 else orh + TICK
     a = ctx_day["atr14"] if ctx_day else np.nan
     if a is None or np.isnan(a):
         return None
-    d = max(round(0.10 * a / TICK) * TICK, TICK)
+    d = max(round(mult * a / TICK) * TICK, TICK)
     return ref - side * d
 
 
-def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False, vol=False):
-    r = _range(s)
+def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False, vol=False,
+        range_min=5, entry_last_k=ENTRY_LAST_K, exit_k=None, vol_mult=0.10):
+    """`range_min`, `exit_k` y `vol_mult` solo se usan en las pruebas de perturbación (range_min solo en immediate)."""
+    r = _range(s, range_min)
     if r is None:
         return None
     orh, orl = r
     cd = ctx.get(s.date)
     tr, xk = EXITS[exit]
+    xk = exit_k or xk
+    ENTRY_LAST = entry_last_k
     if variant == "immediate":
         up, dn = orh + TICK, orl - TICK
         H, L, O = s.m[:, 1], s.m[:, 2], s.m[:, 0]
-        for k in range(5, ENTRY_LAST_K):
+        for k in range(range_min, ENTRY_LAST):
             if np.isnan(O[k]):
                 continue
             hu, hd = H[k] >= up, L[k] <= dn
@@ -75,7 +79,7 @@ def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False,
             lvl = up if side == 1 else dn
             if not _filters_ok(side, cd, trend, vol):
                 return None
-            st = _stop(side, lvl, orh, orl, stop_mode, cd)
+            st = _stop(side, lvl, orh, orl, stop_mode, cd, vol_mult)
             if st is None:
                 return None
             return Order(side, "stop", k, st, None, xk, level=lvl, k_last=k + 1, target_r=tr, tag="immediate")
@@ -83,23 +87,23 @@ def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False,
     b = bars5(s)
     nb = len(b)
     if variant == "close":
-        for i in range(1, min(nb, ENTRY_LAST_K // 5)):
+        for i in range(1, min(nb, ENTRY_LAST // 5)):
             c = b[i, 3]
             if np.isnan(c):
                 continue
             side = 1 if c > orh else (-1 if c < orl else 0)
             if not side:
                 continue
-            if 5 * (i + 1) >= ENTRY_LAST_K or not _filters_ok(side, cd, trend, vol):
+            if 5 * (i + 1) >= ENTRY_LAST or not _filters_ok(side, cd, trend, vol):
                 return None
-            st = _stop(side, c, orh, orl, stop_mode, cd)
+            st = _stop(side, c, orh, orl, stop_mode, cd, vol_mult)
             if st is None:
                 return None
             return Order(side, "market", 5 * (i + 1), st, None, xk, target_r=tr, tag="close")
         return None
     if variant == "retest":
         side, ib = 0, None
-        for i in range(1, min(nb, ENTRY_LAST_K // 5)):
+        for i in range(1, min(nb, ENTRY_LAST // 5)):
             o, h, l, c = b[i]
             if np.isnan(c):
                 continue
@@ -117,11 +121,11 @@ def orb(s, ctx, variant="close", stop_mode="rango", exit="2R_1130", trend=False,
             touched = (l <= lvl + 2 * TICK) if side == 1 else (h >= lvl - 2 * TICK)
             beyond = c > lvl if side == 1 else c < lvl
             if touched and beyond:
-                if 5 * (i + 1) >= ENTRY_LAST_K or not _filters_ok(side, cd, trend, vol):
+                if 5 * (i + 1) >= ENTRY_LAST or not _filters_ok(side, cd, trend, vol):
                     return None
                 st = (l - TICK) if side == 1 else (h + TICK)
                 if stop_mode == "vol":
-                    st = _stop(side, c, orh, orl, "vol", cd)
+                    st = _stop(side, c, orh, orl, "vol", cd, vol_mult)
                     if st is None:
                         return None
                 return Order(side, "market", 5 * (i + 1), st, None, xk, target_r=tr, tag="retest")
