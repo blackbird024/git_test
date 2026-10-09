@@ -1,4 +1,4 @@
-"""ORB de 5 minutos a partir de las 13:00 hora de Italia (Europe/Rome) en MNQ. Hipótesis nueva (no probada antes).
+"""ORB de 5 minutos a partir de las 13:00 (o la hora indicada con --hora) de Italia (Europe/Rome) en MNQ. Hipótesis nueva (no probada antes).
 
 13:00 en Italia = 7:00 ET casi todo el año (8:00 ET en las semanas en que solo un país ha cambiado de hora).
 Reglas fijadas antes de mirar resultados (las mismas del ORB del laboratorio, solo cambia la hora):
@@ -9,6 +9,8 @@ Reglas fijadas antes de mirar resultados (las mismas del ORB del laboratorio, so
     cierre   sin objetivo, cierre a las 15:55 ET (21:55 Italia normalmente)
 Costes del laboratorio (bajo/base/alto). Particiones de config/PROTOCOLO.yaml. Se informan todas las variantes.
 """
+import argparse
+
 import numpy as np
 import pandas as pd
 
@@ -20,7 +22,8 @@ from strategies.orb import orb
 from validation.metrics import block_bootstrap_mean, summary, trades_frame
 from validation.runner import calendar_split, new_experiment, periods, split, write_manifest
 
-N = 540                                    # 13:00 → 22:00 Italia
+HORA = 13
+N = 540                                    # desde la hora de inicio, 9 horas
 
 
 def rome_sessions():
@@ -31,7 +34,7 @@ def rome_sessions():
     out = []
     for s in sessions():
         d = s.date.date()
-        t0 = pd.Timestamp(f"{d} 13:00", tz="Europe/Rome")
+        t0 = pd.Timestamp(f"{d} {HORA:02d}:00", tz="Europe/Rome")
         close_et = pd.Timestamp(f"{d} 09:30", tz="America/New_York") + pd.Timedelta(minutes=s.close_min)
         close_min = min(int((close_et - t0).total_seconds() // 60) - 5, N)       # 5 min antes del cierre de NY
         lo, hi = df.index.searchsorted(t0), df.index.searchsorted(t0 + pd.Timedelta(minutes=N))
@@ -44,9 +47,15 @@ def rome_sessions():
     return out
 
 
-VARIANTS = {f"{v} {x}": dict(variant=v, stop_mode="rango", exit="2R_1130" if x != "cierre" else "eod",
-                             exit_k={"2R_1500": 120, "2R_1525": 145, "cierre": 10_000}[x])
-            for v in ("immediate", "close", "retest") for x in ("2R_1500", "2R_1525", "cierre")}
+def variants():
+    """Salidas: 2R con cierre forzoso 2 h después del inicio; 2R con cierre a las 15:25 Italia (antes de NY,
+    solo si es posterior al inicio + 30 min); sin objetivo hasta 5 min antes del cierre de NY."""
+    exits = {f"2R_+2h": 120, "cierre": 10_000}
+    k1525 = (15 * 60 + 25) - HORA * 60
+    if k1525 >= 30:
+        exits["2R_1525"] = k1525
+    return {f"{v} {x}": dict(variant=v, stop_mode="rango", exit="2R_1130" if x != "cierre" else "eod", exit_k=k)
+            for v in ("immediate", "close", "retest") for x, k in exits.items()}
 
 
 def main():
@@ -55,9 +64,9 @@ def main():
     cal = pd.DatetimeIndex([s.date for s in S])
     per = periods("intradia", include_test=True)
     cals = calendar_split(cal, per)
-    exp = new_experiment("orb_italia_13h")
+    exp = new_experiment(f"orb_italia_{HORA}h")
     rows = []
-    for name, p in VARIANTS.items():
+    for name, p in variants().items():
         for scen in ("bajo", "base", "alto"):
             c = mnq(scen)
             t = trades_frame(run(S, orb, c, ctx=ctx, **p), c)
@@ -74,7 +83,7 @@ def main():
         print(name, "ok", flush=True)
     res = pd.DataFrame(rows)
     res.to_csv(exp / "resultados.csv", index=False)
-    write_manifest(exp, experimento="ORB 5 min desde las 13:00 Italia", variantes=VARIANTS, sesiones=len(S),
+    write_manifest(exp, experimento=f"ORB 5 min desde las {HORA}:00 Italia", variantes=variants(), sesiones=len(S),
                    periodos={k: [str(a.date()), str(b.date())] for k, (a, b) in per.items()})
     pd.set_option("display.width", 250, "display.max_rows", 300)
     b = res[res.coste == "base"]
@@ -84,4 +93,7 @@ def main():
 
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--hora", type=int, default=13)
+    HORA = ap.parse_args().hora
     main()

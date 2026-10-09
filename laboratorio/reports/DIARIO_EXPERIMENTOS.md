@@ -27,6 +27,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 20:06:18 | `20261009_200618_orb_italia_13h` | ORB 5 min desde las 13:00 Italia (hipótesis nueva; 3 variantes × 3 salidas, reglas fijadas antes) | Ninguna variante gana en los tres periodos; con salida antes de NY: PF 0,65-1,00; con salida al cierre de NY: alterna años buenos y malos | ❌ todas RECHAZADAS |
 
+| 20:09:46 | `20261009_200946_orb_italia_14h` | ORB 5 min desde las 14:00 Italia (`run_orb_italia.py --hora 14`) | Peor que a las 13:00: esperanza negativa en casi todo; el retesteo pierde con IC90 entero por debajo de 0 | ❌ todas RECHAZADAS |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
