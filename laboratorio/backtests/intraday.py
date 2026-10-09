@@ -24,7 +24,7 @@ from execution_costs.costs import FutCost
 @dataclass
 class Order:
     side: int                    # +1 largo, -1 corto
-    kind: str                    # "market" o "stop"
+    kind: str                    # "market", "stop" o "limit"
     k: int                       # minuto de sesión (0 = 9:30) desde el que la orden está activa
     stop: float
     target: Optional[float]      # None = sin objetivo
@@ -68,6 +68,23 @@ def simulate(date, m: np.ndarray, close_min: int, o: Order, c: FutCost) -> Optio
         if k >= end:
             return None
         entry = O[k] + s * slip
+    elif o.kind == "limit":
+        # límite: se llena solo si el precio cruza el nivel en limit_cross_ticks; se cancela si antes toca el stop
+        last = min(o.k_last, end)
+        cross = c.limit_cross_ticks * tick
+        while k < last:
+            if not np.isnan(O[k]):
+                if s == 1 and L[k] <= o.level - cross:
+                    entry = min(o.level, O[k])
+                    break
+                if s == -1 and H[k] >= o.level + cross:
+                    entry = max(o.level, O[k])
+                    break
+                if (s == 1 and L[k] <= o.stop) or (s == -1 and H[k] >= o.stop):
+                    return None
+            k += 1
+        if entry is None:
+            return None
     else:
         last = min(o.k_last, end)
         while k < last:
@@ -97,7 +114,7 @@ def simulate(date, m: np.ndarray, close_min: int, o: Order, c: FutCost) -> Optio
             j += 1
             continue
         first = j == ek
-        tgt_ok = target is not None and not (first and o.kind == "stop")   # en la vela de entrada stop: sin objetivo
+        tgt_ok = target is not None and not (first and o.kind in ("stop", "limit"))   # en la vela de entrada stop: sin objetivo
         if s == 1:
             if not first and O[j] <= stop:
                 return _fill(date, o, ek, entry, stop, target, j, O[j] - slip, "stop_hueco", risk)

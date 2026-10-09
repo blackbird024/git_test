@@ -124,3 +124,20 @@ def test_rome_time_handles_both_dst_changes():
     assert et_to_rome("2026-04-06", "09:30") == "15:30"
     assert et_to_rome("2026-10-30", "09:30") == "14:30"     # Europa ya en invierno, EE. UU. todavía no
     assert et_to_rome("2026-11-05", "09:30") == "15:30"
+
+
+def test_limit_entry_needs_cross_and_cancels_if_stop_first():
+    m = flat()
+    bar(m, 12, 100, 100.5, 99.5, 100)             # toca el nivel 100.5 pero no lo cruza: sin entrada
+    bar(m, 13, 100, 100.75, 99.5, 100)            # lo cruza 1 tick: venta límite a 100.5
+    bar(m, 20, 100, 100, 94, 95)
+    f = simulate("d", m, 390, Order(-1, "limit", 10, 102, None, 300, level=100.5, k_last=60, target_r=1.0), C1)
+    assert f.entry == 100.5 and f.entry_k == 13 and f.reason == "objetivo"     # sin deslizamiento en la entrada límite
+    m2 = flat()
+    bar(m2, 12, 100, 103, 100, 100)               # toca el stop (102) en la misma vela que cruzaría la entrada
+    f2 = simulate("d", m2, 390, Order(-1, "limit", 10, 102, None, 300, level=100.5, k_last=60), C1)
+    assert f2.reason in ("stop", "stop_hueco")    # entra y sale por stop (conservador)
+    m3 = flat()
+    bar(m3, 12, 100, 100.25, 99, 99)
+    bar(m3, 13, 99, 99, 90, 90)                   # nunca vuelve al nivel
+    assert simulate("d", m3, 390, Order(-1, "limit", 10, 102, None, 300, level=100.5, k_last=60), C1) is None

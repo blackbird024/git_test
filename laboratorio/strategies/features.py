@@ -18,6 +18,8 @@ def daily_context(daily: pd.DataFrame) -> dict:
     d = daily.copy()
     f = pd.DataFrame(index=d.index)
     f["prev_close"] = d["close"]
+    f["prev_high"] = d["high"]
+    f["prev_low"] = d["low"]
     f["atr14"] = atr(d, 14)
     f["ema50"] = ema(d["close"], 50)
     f["ema200"] = ema(d["close"], 200)

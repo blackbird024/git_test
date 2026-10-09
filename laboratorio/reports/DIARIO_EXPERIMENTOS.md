@@ -29,6 +29,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 20:09:46 | `20261009_200946_orb_italia_14h` | ORB 5 min desde las 14:00 Italia (`run_orb_italia.py --hora 14`) | Peor que a las 13:00: esperanza negativa en casi todo; el retesteo pierde con IC90 entero por debajo de 0 | ❌ todas RECHAZADAS |
 
+| 20:16:26 | `20261009_201626_sweep_fvg_robin_hood` | Barrida del máx/mín de la sesión anterior (15 min) + reversión en FVG de 1 min ("Robin Hood"), 12 variantes fijadas antes | Con niveles de ayer (PDH/PDL): ninguna gana en los 3 periodos. Con niveles nocturnos y sin confirmación: las 3 salidas ganan en validación y prueba, pero poco (+1,6 a +8,5 $/op), IC90 incluye 0, top-10 = 146 % del neto | ⚠️ mejor variante INCONCLUSA; resto rechazadas |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

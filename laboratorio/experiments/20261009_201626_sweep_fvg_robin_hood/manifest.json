@@ -1,0 +1,82 @@
+{
+  "fecha": "2026-10-09T20:16:37",
+  "version_codigo": "7ad46b9+cambios_sin_commit",
+  "experimento": "barrida sesión anterior + FVG 1 min",
+  "variantes": {
+    "pdhl sin_conf 2R_1200": {
+      "level": "pdhl",
+      "confirm15": false,
+      "exit": "2R_1200"
+    },
+    "pdhl sin_conf 2R_cierre": {
+      "level": "pdhl",
+      "confirm15": false,
+      "exit": "2R_cierre"
+    },
+    "pdhl sin_conf cierre": {
+      "level": "pdhl",
+      "confirm15": false,
+      "exit": "cierre"
+    },
+    "pdhl conf15 2R_1200": {
+      "level": "pdhl",
+      "confirm15": true,
+      "exit": "2R_1200"
+    },
+    "pdhl conf15 2R_cierre": {
+      "level": "pdhl",
+      "confirm15": true,
+      "exit": "2R_cierre"
+    },
+    "pdhl conf15 cierre": {
+      "level": "pdhl",
+      "confirm15": true,
+      "exit": "cierre"
+    },
+    "overnight sin_conf 2R_1200": {
+      "level": "overnight",
+      "confirm15": false,
+      "exit": "2R_1200"
+    },
+    "overnight sin_conf 2R_cierre": {
+      "level": "overnight",
+      "confirm15": false,
+      "exit": "2R_cierre"
+    },
+    "overnight sin_conf cierre": {
+      "level": "overnight",
+      "confirm15": false,
+      "exit": "cierre"
+    },
+    "overnight conf15 2R_1200": {
+      "level": "overnight",
+      "confirm15": true,
+      "exit": "2R_1200"
+    },
+    "overnight conf15 2R_cierre": {
+      "level": "overnight",
+      "confirm15": true,
+      "exit": "2R_cierre"
+    },
+    "overnight conf15 cierre": {
+      "level": "overnight",
+      "confirm15": true,
+      "exit": "cierre"
+    }
+  },
+  "sesiones": 2165,
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
