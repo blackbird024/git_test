@@ -1,0 +1,53 @@
+{
+  "fecha": "2026-10-09T19:43:37",
+  "version_codigo": "52966a2",
+  "experimento": "sistema_b",
+  "incluye_prueba": true,
+  "datos": [
+    {
+      "archivo": "laboratorio/data/cache/QQQ_daily_adj.pkl",
+      "bytes": 144485,
+      "md5_primer_mb": "0cc1e8fc75347dfa505b301a42a77568"
+    }
+  ],
+  "ultima_fecha": "2026-10-08",
+  "periodos": {
+    "desarrollo": [
+      "2016-01-01",
+      "2020-12-31"
+    ],
+    "validacion": [
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "prueba": [
+      "2024-01-01",
+      "2026-10-08"
+    ]
+  },
+  "costes": {
+    "capital 10k": {
+      "pct_side": 0.0005,
+      "fixed": 3.0,
+      "capital": 10000
+    },
+    "capital 2k": {
+      "pct_side": 0.0005,
+      "fixed": 3.0,
+      "capital": 2000
+    },
+    "capital 10k coste x2": {
+      "pct_side": 0.001,
+      "fixed": 6.0,
+      "capital": 10000
+    }
+  },
+  "estrategias": {
+    "B1 Ruptura 20 sesiones": "{}",
+    "B2 Ruptura 20 + EMA200": "{'filt': 'ema200'}",
+    "B2 Ruptura 20 + pendiente EMA200": "{'filt': 'pendiente'}",
+    "B2 Ruptura 20 + volatilidad baja": "{'filt': 'vol'}",
+    "B3 RSI(2) Connors (reversión)": "{}",
+    "B4 Retroceso a EMA20 en tendencia": "{}"
+  }
+}

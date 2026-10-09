@@ -1,0 +1,13 @@
+{
+  "fecha": "2026-10-09T19:47:27",
+  "version_codigo": "52966a2",
+  "experimento": "sistema B complementario",
+  "impuesto": 0.26,
+  "ejecucion": "next_open",
+  "coste": {
+    "pct_side": 0.0005,
+    "fixed": 3.0,
+    "capital": 10000
+  },
+  "nota_fiscal": "simplificación; requiere confirmación de un asesor fiscal italiano"
+}

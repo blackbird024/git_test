@@ -1,0 +1,28 @@
+{
+  "fecha": "2026-10-09T19:48:07",
+  "version_codigo": "52966a2",
+  "experimento": "simulación Topstep 50K Combine",
+  "reglas": {
+    "start": 50000,
+    "target": 3000,
+    "mll": 2000,
+    "mll_lock": 50000,
+    "dll": 1000,
+    "consistency": 0.55,
+    "personal_daily_stop": 300
+  },
+  "limites_personales": {
+    "stop_diario_usd": 300,
+    "colchon_minimo_usd": 500,
+    "riesgo_por_operacion_usd": [
+      50,
+      100,
+      150,
+      200
+    ],
+    "max_contratos_operativos": 5
+  },
+  "coste": "base",
+  "max_dias_por_intento": 250,
+  "metodo": "un intento por cada día de inicio, ventanas secuenciales solapadas (no independientes)"
+}

@@ -1,0 +1,19 @@
+{
+  "fecha": "2026-10-09T19:48:40",
+  "version_codigo": "52966a2",
+  "experimento": "plan financiero 200 €/mes",
+  "aportacion": 200.0,
+  "objetivo_emergencia": 3000.0,
+  "escenarios": {
+    "adverso": 0.0,
+    "moderado": 0.05,
+    "favorable": 0.09
+  },
+  "volatilidad": 0.22,
+  "ter": 0.003,
+  "ivafe": 0.002,
+  "comision_compra": 3.0,
+  "impuesto": 0.26,
+  "simulaciones": 5000,
+  "semilla": 11
+}

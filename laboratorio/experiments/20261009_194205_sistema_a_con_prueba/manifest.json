@@ -1,0 +1,224 @@
+{
+  "fecha": "2026-10-09T19:43:32",
+  "version_codigo": "52966a2",
+  "experimento": "sistema_a",
+  "incluye_prueba": true,
+  "datos": [
+    {
+      "archivo": "alpaca/.lab_cache/databento_nq_1m_2018_2024.pkl",
+      "bytes": 162370500,
+      "md5_primer_mb": "0f5c0fe125cac86851830e6aaec2b909"
+    },
+    {
+      "archivo": "alpaca/.lab_cache/databento_glbx_1m.pkl",
+      "bytes": 98903728,
+      "md5_primer_mb": "e7cadf775e93b0295323ea146ff9c799"
+    }
+  ],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  },
+  "costes": {
+    "bajo": {
+      "point_value": 2.0,
+      "tick": 0.25,
+      "fixed_per_side": 0.75,
+      "slip_ticks": 1.0,
+      "limit_cross_ticks": 1
+    },
+    "base": {
+      "point_value": 2.0,
+      "tick": 0.25,
+      "fixed_per_side": 0.75,
+      "slip_ticks": 2.0,
+      "limit_cross_ticks": 1
+    },
+    "alto": {
+      "point_value": 2.0,
+      "tick": 0.25,
+      "fixed_per_side": 0.75,
+      "slip_ticks": 3.0,
+      "limit_cross_ticks": 1
+    }
+  },
+  "variantes": {
+    "A1 ORB immediate stop=rango salida=2R_1130": {
+      "params": {
+        "variant": "immediate",
+        "stop_mode": "rango",
+        "exit": "2R_1130"
+      },
+      "tipo": "principal"
+    },
+    "A1 ORB immediate stop=rango salida=eod": {
+      "params": {
+        "variant": "immediate",
+        "stop_mode": "rango",
+        "exit": "eod"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB immediate stop=vol salida=2R_1130": {
+      "params": {
+        "variant": "immediate",
+        "stop_mode": "vol",
+        "exit": "2R_1130"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB immediate stop=vol salida=eod": {
+      "params": {
+        "variant": "immediate",
+        "stop_mode": "vol",
+        "exit": "eod"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB close stop=rango salida=2R_1130": {
+      "params": {
+        "variant": "close",
+        "stop_mode": "rango",
+        "exit": "2R_1130"
+      },
+      "tipo": "principal"
+    },
+    "A1 ORB close stop=rango salida=eod": {
+      "params": {
+        "variant": "close",
+        "stop_mode": "rango",
+        "exit": "eod"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB close stop=vol salida=2R_1130": {
+      "params": {
+        "variant": "close",
+        "stop_mode": "vol",
+        "exit": "2R_1130"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB close stop=vol salida=eod": {
+      "params": {
+        "variant": "close",
+        "stop_mode": "vol",
+        "exit": "eod"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB retest stop=rango salida=2R_1130": {
+      "params": {
+        "variant": "retest",
+        "stop_mode": "rango",
+        "exit": "2R_1130"
+      },
+      "tipo": "principal"
+    },
+    "A1 ORB retest stop=rango salida=eod": {
+      "params": {
+        "variant": "retest",
+        "stop_mode": "rango",
+        "exit": "eod"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB retest stop=vol salida=2R_1130": {
+      "params": {
+        "variant": "retest",
+        "stop_mode": "vol",
+        "exit": "2R_1130"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB retest stop=vol salida=eod": {
+      "params": {
+        "variant": "retest",
+        "stop_mode": "vol",
+        "exit": "eod"
+      },
+      "tipo": "secundaria"
+    },
+    "A1 ORB immediate principal + filtro trend": {
+      "params": {
+        "variant": "immediate",
+        "trend": true
+      },
+      "tipo": "filtro"
+    },
+    "A1 ORB immediate principal + filtro vol": {
+      "params": {
+        "variant": "immediate",
+        "vol": true
+      },
+      "tipo": "filtro"
+    },
+    "A1 ORB close principal + filtro trend": {
+      "params": {
+        "variant": "close",
+        "trend": true
+      },
+      "tipo": "filtro"
+    },
+    "A1 ORB close principal + filtro vol": {
+      "params": {
+        "variant": "close",
+        "vol": true
+      },
+      "tipo": "filtro"
+    },
+    "A1 ORB retest principal + filtro trend": {
+      "params": {
+        "variant": "retest",
+        "trend": true
+      },
+      "tipo": "filtro"
+    },
+    "A1 ORB retest principal + filtro vol": {
+      "params": {
+        "variant": "retest",
+        "vol": true
+      },
+      "tipo": "filtro"
+    },
+    "A2 Tendencia base": {
+      "params": {},
+      "tipo": "principal"
+    },
+    "A2 Tendencia + filtro ema200": {
+      "params": {
+        "ema200": true
+      },
+      "tipo": "filtro"
+    },
+    "A2 Tendencia + filtro vwap": {
+      "params": {
+        "vwap": true
+      },
+      "tipo": "filtro"
+    },
+    "A2 Tendencia + filtro vol": {
+      "params": {
+        "vol": true
+      },
+      "tipo": "filtro"
+    },
+    "A3 Zona de ruido (reglas originales)": {
+      "params": {},
+      "tipo": "auditoria"
+    }
+  },
+  "semilla_bootstrap": 7,
+  "bloque_bootstrap": 10,
+  "sesiones": 2165
+}

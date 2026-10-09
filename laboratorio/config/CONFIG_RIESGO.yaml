@@ -1,0 +1,38 @@
+# Parámetros de riesgo y reglas de cuenta. EDITABLES. Ninguna regla oficial de Topstep se ha podido verificar en la
+# fuente (help.topstep.com bloqueado desde este entorno). Fuente de cada valor indicada; "verificado: false" = pendiente.
+version: 1
+fecha: 2026-10-09
+
+topstep_50k_combine:
+  saldo_inicial: 50000
+  objetivo_beneficio:      {valor: 3000, fuente: "tu panel de Topstep (captura)", verificado: true}
+  max_loss_limit:
+    valor: 2000
+    tipo: trailing_fin_de_dia      # sube con el máximo saldo de CIERRE; se comprueba también intradía con el flotante
+    deja_de_subir_en: 50000        # cuando el umbral alcanza el saldo inicial deja de moverse
+    fuente: "deducido de tu panel: umbral 49.561,70 = máximo de cierre 51.561,70 − 2.000; tipo de trailing por conocimiento general"
+    verificado: false
+  daily_loss_limit:
+    valor: 1000
+    efecto: "corta el día (no suspende la cuenta)"
+    fuente: "conocimiento general para 50K; tu cuenta se llama '50K DLL COMBINE' pero no he visto el valor"
+    verificado: false
+  consistencia:
+    max_mejor_dia_pct: 0.55        # el mejor día debe ser ≤ 55 % del beneficio total al aprobar
+    fuente: "tu panel muestra 55 %; la interpretación (sobre beneficio total) está sin verificar"
+    verificado: false
+  max_contratos_mnq: {valor: 50, fuente: "conocimiento general (5 minis = 50 micros)", verificado: false}
+  cierre_obligatorio_et: {valor: "16:10", fuente: "conocimiento general (15:10 hora de Chicago)", verificado: false}
+  restricciones_noticias: {valor: "desconocidas", verificado: false}
+
+limites_personales:              # más estrictos que los oficiales: el sistema se detiene antes
+  stop_diario_usd: 300           # tras perder esto en el día no se abren más operaciones
+  colchon_minimo_usd: 500        # si el saldo queda a menos de esto del MLL, se pausa (revisión manual)
+  riesgo_por_operacion_usd: [50, 100, 150, 200]   # niveles a evaluar; no se aumenta tras pérdidas ni rachas
+  max_contratos_operativos: 5    # el máximo permitido por Topstep nunca es el tamaño recomendado
+
+swing_capital_propio:
+  capital_inicial_eur: 2000      # SUPUESTO de trabajo: no me has dicho tu capital; cámbialo
+  aportacion_mensual_max_eur: 200
+  riesgo_por_operacion_pct: 1.0
+  apalancamiento_max: 1.0

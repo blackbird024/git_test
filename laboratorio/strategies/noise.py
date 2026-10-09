@@ -20,7 +20,8 @@ from backtests.intraday import Fill
 from data.loaders import bars5
 
 
-def noise_trades(sessions, cost, lookback=14, step=6, band_mult=1.0):
+def noise_trades(sessions, cost, lookback=14, step=6, band_mult=1.0, trail=True):
+    """trail=False: salida solo por la banda (variante 'sin media', la que usa por defecto tradingview/BandasRuidoNY.pine)."""
     out = []
     hist = []                                   # (perfil de |c/o-1| de 78 velas, cierre) de sesiones completas
     prev_close = None
@@ -28,7 +29,7 @@ def noise_trades(sessions, cost, lookback=14, step=6, band_mult=1.0):
         b = bars5(s)
         full = len(b) == 78 and not np.isnan(b[:, 3]).any()
         if full and len(hist) >= lookback and prev_close is not None:
-            out += _day(s, b, np.mean([h for h in hist[-lookback:]], axis=0) * band_mult, prev_close, cost, step)
+            out += _day(s, b, np.mean([h for h in hist[-lookback:]], axis=0) * band_mult, prev_close, cost, step, trail)
         if full:
             hist.append(np.abs(b[:, 3] / b[0, 0] - 1))
         last = b[~np.isnan(b[:, 3])]
@@ -36,7 +37,7 @@ def noise_trades(sessions, cost, lookback=14, step=6, band_mult=1.0):
     return out
 
 
-def _day(s, b, sigma, pc, c, step):
+def _day(s, b, sigma, pc, c, step, trail=True):
     o = b[0, 0]
     ub = max(o, pc) * (1 + sigma)
     lb = min(o, pc) * (1 - sigma)
@@ -47,9 +48,9 @@ def _day(s, b, sigma, pc, c, step):
     for k in range(step - 1, 77, step):
         cl = b[k, 3]
         px = b[k + 1, 0]
-        if pos == 1 and cl < max(ub[k], twap[k]):
+        if pos == 1 and cl < (max(ub[k], twap[k]) if trail else ub[k]):
             fills.append(_f(s, 1, ek, entry, 5 * (k + 1), px - slip)); pos = 0
-        elif pos == -1 and cl > min(lb[k], twap[k]):
+        elif pos == -1 and cl > (min(lb[k], twap[k]) if trail else lb[k]):
             fills.append(_f(s, -1, ek, entry, 5 * (k + 1), px + slip)); pos = 0
         if pos == 0 and cl > ub[k]:
             pos, entry, ek = 1, px + slip, 5 * (k + 1)

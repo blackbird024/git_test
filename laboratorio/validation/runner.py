@@ -23,7 +23,7 @@ def periods(kind="intradia", include_test=False):
 def git_rev():
     try:
         rev = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=LAB, text=True).strip()
-        dirty = subprocess.call(["git", "diff", "--quiet"], cwd=LAB) != 0
+        dirty = bool(subprocess.check_output(["git", "status", "--porcelain", "."], cwd=LAB, text=True).strip())
         return rev + ("+cambios_sin_commit" if dirty else "")
     except Exception:
         return "desconocida"
