@@ -53,6 +53,8 @@ def build_days(sym="NQ"):
         rth = idx[(mm >= 570) & (mm < 960)]
         ldn = idx[(mm >= 120) & (mm < 480)]
         pre = idx[(mm >= 0) & (mm < 570)]
+        if len(rth) == 0:
+            continue                                  # día sin sesión regular (domingo, festivo): no rompe la cadena
         if len(rth) != 78:
             prev = None
             continue

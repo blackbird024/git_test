@@ -75,6 +75,8 @@ def nq_trades():
     for d in sorted(groups):
         idx = np.asarray(groups[d])
         rth = idx[(hm[idx] >= 570) & (hm[idx] < 960)]
+        if len(rth) == 0:
+            continue                                  # domingo / festivo sin sesión: no rompe la cadena de días
         days.append(rth if len(rth) == 78 else None)
     rng = [np.nan if r is None else h[r].max() - l[r].min() for r in days]
     atr = pd.Series(rng).rolling(14, min_periods=10).mean().shift(1).to_numpy()

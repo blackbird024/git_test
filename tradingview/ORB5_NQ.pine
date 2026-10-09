@@ -9,8 +9,8 @@
 //      → entrada a las 9:45 en su color, stop 15 % del ATR. Si no → hoy no se opera.
 //   4. Sin objetivo: cierre a las 16:00 NY (22:00 Italia). Una operación al día.
 //   ATR = media del rango (máximo − mínimo) de las últimas 14 sesiones regulares (9:30-16:00 NY).
-// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto): ~170 ops/año, ~19 % de acierto,
-//   2018-22 +2.070 $/año (PF 1,36) · 2023-26 +2.870 $/año (PF 1,34) · peor racha −1.540 $ · 9/9 años positivos.
+// Backtest NQ 2018-2026 (1 MNQ, coste 1 punto, todos los días incl. lunes): ~210 ops/año, ~18 % de acierto,
+//   2018-22 +2.215 $/año (PF 1,31) · 2023-26 +2.477 $/año (PF 1,23) · peor racha −1.790 $ · 9/9 años positivos.
 //   Con objetivo fijo empeora (1:2 ≈ 0). Pierdes ~8 de cada 10: no te saltes días ni cierres antes.
 // Úsalo en un gráfico de 1 o 5 minutos de MNQ1! / NQ1!.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
