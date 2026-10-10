@@ -1,0 +1,75 @@
+# Laboratorio VWAP + EMA. Todos los parámetros son editables.
+# Comisiones y especificaciones NO verificadas en fuentes oficiales desde este entorno: revisarlas antes de usar.
+
+seed: 20261010
+output_dir: vwap_lab/results
+split: [0.6, 0.2, 0.2]          # desarrollo / validación / OOS final, por sesiones y en orden cronológico
+bootstrap_samples: 3000
+bootstrap_block_days: 5
+
+instruments:
+  MNQ:
+    data_file: vwap_lab/data/cache/MNQ_5m.csv       # generado por vwap_lab/tools/build_5m_from_databento.py
+    data_label: "Databento GLBX.MDP3 NQ.c.0 1 min → 5 min con volumen (precios de NQ usados como MNQ)"
+    tick_size: 0.25
+    tick_value: 0.50
+    point_value: 2.0
+    sessions: [london, newyork]
+  MGC:
+    data_file: vwap_lab/data/cache/MGC_5m.csv       # NO DISPONIBLE: hace falta OHLCV de 1 min con volumen (ver data/README.md)
+    data_label: "pendiente: GC.v.0 o MGC.v.0 1 min de Databento (coste estimado 10-11 USD, sin autorizar)"
+    tick_size: 0.10
+    tick_value: 1.00
+    point_value: 10.0
+    sessions: [london, newyork]
+
+sessions:
+  london:
+    timezone: Europe/London
+    start: "08:00"              # inicio del VWAP
+    entry_end: "10:45"          # la vela de ENTRADA debe empezar antes de esta hora
+    flat: "11:00"               # cierre obligatorio en la apertura de esta vela
+    calendar: null              # CME abre en festivos británicos; validez por datos
+  newyork:
+    timezone: America/New_York
+    start: "09:30"
+    entry_end: "15:30"
+    flat: "15:55"
+    calendar: XNYS              # festivos y medias jornadas de la NYSE
+
+data_quality:
+  min_bar_coverage: 0.9         # fracción mínima de velas presentes en la sesión
+  exclude_first_session_after_roll: true
+
+costs:                          # por contrato y POR LADO
+  base:      {commission_per_side: 0.62, slippage_ticks_per_side: 1}
+  stress:    {commission_per_side: 0.93, slippage_ticks_per_side: 2}
+  severe:    {commission_per_side: 1.24, slippage_ticks_per_side: 3}
+  limit_fill_ticks_through: 1   # el objetivo solo se llena si el precio lo supera en 1 tick
+  nota: "0,62 USD/lado = SUPUESTO; sustituir por la tarifa real (comisión + tasas de bolsa)"
+
+strategy:
+  slope_bars: 6                 # 6 velas de 5 min = 30 min
+  atr_period: 14
+  thresholds: [null, 0.05, 0.10, 0.15, 0.20]   # null = filtro desactivado
+  base_threshold: 0.10
+  targets_R: [1.0, 1.5, 2.0]
+  base_target_R: 2.0
+  stop_buffer_ticks: 1
+  atr_stop_mult: 1.0            # solo en la prueba separada de stop por ATR
+  retest_bars: 3
+  retest_tolerance_ticks: 2     # E: el mínimo llega a EMA21 + 2 ticks o más abajo...
+  retest_max_depth_atr: 0.5     # ...pero no más de 0,5 ATR por debajo (si no, es una ruptura, no un retesteo)
+  ema50_slope_bars: 6           # F: EMA50 no descendente = EMA50[t] − EMA50[t−6] >= 0
+  max_trades_per_session: 2
+  min_risk_to_cost: 3.0         # se descarta si el riesgo por contrato < 3 × coste ida y vuelta
+
+risk:
+  initial_capital: 50000
+  risk_pct: 0.0025
+  compounding: true
+  daily_loss_stop_R: null       # experimento separado: 2.0
+
+selection:                      # SOLO con desarrollo y validación
+  min_trades_validation: 30
+  require_positive_development: true

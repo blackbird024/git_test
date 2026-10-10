@@ -1,0 +1,49 @@
+{
+  "validacion": {
+    "rows": 614269,
+    "first": "2018-01-01 18:00:00-05:00",
+    "last": "2026-10-02 16:55:00-04:00",
+    "duplicates": 0,
+    "out_of_order": 0,
+    "impossible_ohlc": 0,
+    "non_positive": 0,
+    "off_grid_prices": 0,
+    "misaligned_timestamps": 0,
+    "suspicious_jumps": 1,
+    "bars_outside_rth": 443562,
+    "rth_sessions": 2224,
+    "rth_sessions_with_missing_bars": 81,
+    "rth_missing_bars": 2765,
+    "fatal": [],
+    "warnings": [
+      "1 saltos > 8% entre velas consecutivas (¿error de escala o rollover?)",
+      "81 sesiones regulares incompletas (2765 velas ausentes; incluye medias jornadas y festivos con Globex abierto)"
+    ]
+  },
+  "calidad": {
+    "volumen_nan": 0,
+    "volumen_cero": 0,
+    "cambios_de_contrato": 35
+  },
+  "sesiones": 2224,
+  "sesiones_validas": 2133,
+  "invalidas": {
+    "festivo XNYS": 58,
+    "primera sesión tras rollover (EMA/ATR afectados por el salto)": 32,
+    "cobertura de velas 1/78": 1
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-02",
+      "2023-03-31"
+    ],
+    "validacion": [
+      "2023-04-03",
+      "2024-12-30"
+    ],
+    "oos": [
+      "2024-12-31",
+      "2026-10-02"
+    ]
+  }
+}
