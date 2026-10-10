@@ -10,7 +10,9 @@
   - Es negativa en el OOS (2025 a octubre de 2026) en las 12 combinaciones de estrategia y sesión: entre −0,06R y −0,33R por operación, con costes base.
   - El profit factor está entre 0,51 y 0,89.
 - **Walk-forward anual:** la regla casi nunca encuentra una configuración positiva con los datos anteriores a cada año. Cuando la encuentra (estrategia A en Londres y en Nueva York, E en Nueva York), el año siguiente pierde.
-- **MGC (oro):** no evaluado por falta de datos con volumen; ver `data/README.md`. Los datos costarían unos 11 USD y no se han comprado sin autorización.
+- **MGC (oro):** evaluado el 10 de octubre con GC.v.0, velas de 1 minuto con volumen, compradas a Databento por 11,16 USD con tu autorización.
+  - **Selección:** **sin candidatos** en Londres ni en Nueva York. Londres: 0 de 90 configuraciones positivas en desarrollo. Nueva York: 1 positiva en desarrollo, pero ninguna en desarrollo y validación a la vez.
+  - **Configuración de partida en el OOS:** negativa en 10 de 12 casos. La excepción es F (cruce 9/21 + EMA50): +0,19R en Londres y +0,12R en Nueva York, pero con 58 y 46 operaciones, negativa en desarrollo y en validación (−0,18/−0,34 y −0,07/−0,31) y negativa en el walk-forward. Es ruido, no una ventaja.
 
 Esto es historia, no una previsión. La conclusión correcta es **«no se ha encontrado evidencia suficiente de una ventaja estadística robusta»**.
 
@@ -20,8 +22,8 @@ Esto es historia, no una previsión. La conclusión correcta es **«no se ha enc
 |---|---|---|---|---|
 | MNQ Londres | F, umbral 0,10, 1,5R: +0,11R (47 operaciones) | −0,23R | todas negativas | sin candidato |
 | MNQ Nueva York | F, umbral 0,20, 2R: +0,17R (29 operaciones) | −0,25R | todas negativas | sin candidato |
-| MGC Londres | — | — | — | sin datos |
-| MGC Nueva York | — | — | — | sin datos |
+| MGC Londres | ninguna positiva en validación | 0 de 90 positivas | 10 de 12 negativas (F +0,19R con 58 operaciones) | sin candidato |
+| MGC Nueva York | 1 positiva en validación (no en desarrollo) | 1 de 90 positiva | F +0,12R con 46 operaciones; el resto negativas | sin candidato |
 
 Los "mejores en validación" tienen pocas operaciones y pierden en desarrollo. Son el resultado esperable al probar 90 configuraciones por sesión, no una ventaja.
 
@@ -44,7 +46,7 @@ No hay ninguno. No es obligatorio que exista un ganador.
 
 - No hay nada que pasar a simulación en tiempo real desde este laboratorio.
 - Si quieres seguir:
-  1. Autoriza la compra de los datos del oro (unos 11 USD) para completar MGC con el mismo protocolo, sin cambiar reglas.
+  1. Los datos del oro ya están comprados y evaluados.
   2. No ajustes los umbrales ni las reglas con estos resultados. Cualquier idea nueva es un experimento nuevo y necesita datos posteriores a octubre de 2026.
 - No se recomienda operar con dinero real ninguna de estas estrategias.
 
@@ -54,3 +56,11 @@ No hay ninguno. No es obligatorio que exista un ganador.
 - **Datos ya vistos:** ya se habían probado variantes de EMA + VWAP sobre los mismos datos de NQ en este repositorio.
 - **Rollover:** contrato continuo sin ajuste; se excluye la primera sesión tras cada vencimiento.
 - **Costes severos mejores que los base:** en algunas filas pasa porque la regla de "stop demasiado pequeño" y el tamaño de posición cambian el conjunto de operaciones. No es un error de cálculo.
+
+## Cambio de protocolo documentado
+
+El 10 de octubre, antes de calcular el OOS del oro, la regla de selección pasó a exigir también una esperanza > 0 en validación, como pide tu criterio 14. Antes de este cambio, la estrategia E en Nueva York (oro) se habría seleccionado con −0,29R en validación. En MNQ no cambia nada.
+
+## Experimento con RSI
+
+Está en `results_rsi/` (`CONCLUSIONES_RSI.md`): las mismas reglas más RSI(14) > 50 para largos y < 50 para cortos, con su propio protocolo.
