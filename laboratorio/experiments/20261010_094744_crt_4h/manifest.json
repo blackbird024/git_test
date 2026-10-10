@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-10-10T09:47:52",
+  "version_codigo": "678a7c7+cambios_sin_commit",
+  "experimento": "CRT 4h (C1 5-9 ET, C2 9-13 ET)",
+  "variantes": {
+    "clasica, objetivo rango": {
+      "entry": "clasica",
+      "target": "rango"
+    },
+    "clasica, objetivo 2R": {
+      "entry": "clasica",
+      "target": "2R"
+    },
+    "cisd, objetivo rango": {
+      "entry": "cisd",
+      "target": "rango"
+    },
+    "cisd, objetivo 2R": {
+      "entry": "cisd",
+      "target": "2R"
+    }
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

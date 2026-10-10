@@ -37,6 +37,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 09:45:35 (10-oct) | `20261010_094535_teoria_caja` | "Teoría de la caja" intradía: caja = PDH/PDL, vender en el 20 % superior, comprar en el 20 % inferior, stop fuera de la caja (4 variantes) | Ninguna gana en los 3 periodos; dos versiones pierden con IC90 entero por debajo de 0 (−9,9 y −11,7 $/op). Vender arriba / comprar abajo va contra la tendencia intradía del NQ | ❌ RECHAZADA |
 
+| 09:47:44 (10-oct) | `20261010_094744_crt_4h` | CRT 4 h (C1 5-9 ET, C2 9-13 ET): clásica al cierre de C2 y con CISD 5 min; objetivo extremo opuesto o 2R (4 variantes) | Ninguna gana en los 3 periodos; la versión CISD pierde −22 $/op en 2025-26. Clásica: solo ~37 operaciones/año y stop mediano de 220 $ | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
