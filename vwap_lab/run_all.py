@@ -173,7 +173,7 @@ def step_oos(cfg, out_dir):
                     trades_all.append(t.assign(config=label))
                 for k in ("desarrollo", "validacion", "oos"):
                     s = psum(t, prep, per, k)
-                    res.append(dict(config=label, estrategia=strat, umbral=thr, objetivo_R=tg, costes=cn, periodo=k, **s))
+                    res.append(dict(config=label, estrategia=strat, umbral=thr, objetivo_R=tg, escenario_costes=cn, periodo=k, **s))
         R = pd.DataFrame(res)
         R.to_csv(d / "resultados_dev_val_oos.csv", index=False)
         T = pd.concat(trades_all) if trades_all else pd.DataFrame()

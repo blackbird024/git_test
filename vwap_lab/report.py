@@ -47,10 +47,10 @@ def write(cfg, out: Path):
                   "validacion_esperanza_R", "validacion_pf", "validacion_dd_usd"]), ""]
         r = pd.read_csv(d / "resultados_dev_val_oos.csv")
         part = r[r.config.str.contains("partida")]
-        piv = part.pivot_table(index=["estrategia", "costes"], columns="periodo", values="esperanza_R").reset_index()
+        piv = part.pivot_table(index=["estrategia", "escenario_costes"], columns="periodo", values="esperanza_R").reset_index()
         L += ["### Configuración de partida (umbral 0,10, objetivo 2R): esperanza en R por periodo y escenario de costes", "",
-              _t(piv[["estrategia", "costes", "desarrollo", "validacion", "oos"]]), ""]
-        ob = part[(part.costes == "base")][["estrategia", "periodo", "n", "acierto", "esperanza_R", "esperanza_usd", "pf",
+              _t(piv[["estrategia", "escenario_costes", "desarrollo", "validacion", "oos"]]), ""]
+        ob = part[(part.escenario_costes == "base")][["estrategia", "periodo", "n", "acierto", "esperanza_R", "esperanza_usd", "pf",
                                             "neto", "costes", "costes_pct_bruto_positivo", "dd_usd", "dd_pct", "racha_perdedora",
                                             "ops_por_sesion", "exposicion", "ambiguas", "ic90_R_bajo", "ic90_R_alto"]]
         L += ["### Métricas completas de la configuración de partida (costes base)", "", _t(ob), ""]
