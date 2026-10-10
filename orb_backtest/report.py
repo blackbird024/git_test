@@ -27,7 +27,7 @@ def _md_table(df: pd.DataFrame, cols=None):
 
 def write_report(cfg, out) -> Path:
     stamp = pd.Timestamp.now().strftime("%Y%m%d_%H%M%S")
-    d = Path(cfg.output_dir) / f"{cfg.instrument.symbol}_{stamp}"
+    d = Path(cfg.output_dir) / f"{cfg.instrument.symbol}{'_' + cfg.run_label if cfg.run_label else ''}_{stamp}"
     d.mkdir(parents=True, exist_ok=False)
     for name, (t, l) in out["results"].items():
         t.to_csv(d / f"operaciones_{name}.csv", index=False)
@@ -68,7 +68,10 @@ def write_report(cfg, out) -> Path:
             "duracion_media_min", "exposicion"]
     main = s[s.version.isin(["completa", "sin_filtro_1h"])]
     other = s[~s.version.isin(["completa", "sin_filtro_1h"])]
-    lines = [f"# Informe ORB 1h + estructura 1h + entrada 5m — {cfg.instrument.symbol}", "",
+    s_ = cfg.strategy
+    lines = [f"# Informe ORB + estructura 1h + entrada 5m — {cfg.instrument.symbol} {cfg.run_label}", "",
+             f"Zona horaria {cfg.timezone}; rango {s_.or_start:%H:%M}-{s_.or_end:%H:%M}; entradas hasta {s_.entry_cutoff:%H:%M}; "
+             f"cierre obligatorio {s_.flat_time:%H:%M}; calendario {cfg.calendar}.", "",
              "**Aviso:** resultados de un backtest. No demuestran rentabilidad futura. "
              f"Costes: {cfg.costs.nota or 'ver configuración'}.", "",
              "## Datos", f"- Archivo: `{m['datos']['archivo']}` (sha256 `{m['datos']['sha256'][:16]}…`) — {m['datos']['etiqueta']}",

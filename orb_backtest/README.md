@@ -44,6 +44,19 @@ python -m orb_backtest --config orb_backtest/configs/mes.yaml run
 | `tests/` | Pruebas con fixtures sintéticas de resultado conocido |
 | `results/MNQ`, `results/MES` | Informes, operaciones, sesiones, resumen, bootstrap, gráficos y manifiesto de las ejecuciones reales |
 
+## Otras sesiones e instrumentos
+
+- **Londres:**
+  - Configuraciones `configs/{mnq,mes}_london_cierre_{1425,1625}.yaml` y `configs/mgc_london.yaml`.
+  - Usan `timezone: Europe/London` y `calendar: XLON`.
+  - Rango 8:00–9:00, entradas hasta las 13:00 y cierre obligatorio a las 14:25 o a las 16:25, hora de Londres.
+  - Las velas de 1 h siguen el reloj de Londres; el sesgo se fija a las 8:00 de Londres.
+- **Oro:**
+  - MGC (tick 0,10, 1 USD por tick).
+  - Datos GC: `GC.v.0`, continuo por volumen.
+  - Configuraciones `mgc_london.yaml` y `mgc_ny.yaml`.
+- `calendar: null` desactiva el calendario de bolsa.
+
 ## Esquema del CSV
 
 ```

@@ -63,7 +63,7 @@ def backtest(cfg: Config, write=True):
     df, v = load_and_validate(cfg)
     if not v.ok:
         raise RunError("datos inválidos: " + "; ".join(v.fatal))
-    sess, cal_warn = bars.sessions(df, cfg.strategy, cfg.bar_minutes)
+    sess, cal_warn = bars.sessions(df, cfg.strategy, cfg.bar_minutes, cfg.calendar)
     hb = bars.hourly_bars(df, cfg.strategy.hourly_min_bars)
     piv = structure.find_pivots(hb, cfg.strategy.pivot_left, cfg.strategy.pivot_right)
     regime = vol_regime([s for s in sess if not s.invalid_reason])

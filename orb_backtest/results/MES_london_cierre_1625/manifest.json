@@ -1,0 +1,120 @@
+{
+  "fecha": "2026-10-10T12:30:02",
+  "version_codigo": "b57c966",
+  "datos": {
+    "archivo": "/home/user/git_test/orb_backtest/data/ES_5m_databento.csv",
+    "sha256": "15da2be41380dd740480cbc0ac20264189161e850834f392386cf9bc9d146ff2",
+    "etiqueta": "Databento GLBX.MDP3 ES (archivo dbn_ES_5m.pkl de una descarga anterior; se SUPONE ES.c.0 continuo por calendario sin ajuste, no verificado), 5 min desde 1 min. Precios de ES = precios de MES (mismo subyacente y tick).",
+    "filas": 614628,
+    "primera": "2018-01-01 23:00:00+00:00",
+    "ultima": "2026-10-02 21:55:00+01:00"
+  },
+  "validacion": {
+    "rows": 614628,
+    "first": "2018-01-01 23:00:00+00:00",
+    "last": "2026-10-02 21:55:00+01:00",
+    "duplicates": 0,
+    "out_of_order": 0,
+    "impossible_ohlc": 0,
+    "non_positive": 0,
+    "off_grid_prices": 0,
+    "misaligned_timestamps": 0,
+    "suspicious_jumps": 1,
+    "bars_outside_rth": 384994,
+    "rth_sessions": 2263,
+    "rth_sessions_with_missing_bars": 47,
+    "rth_missing_bars": 1192,
+    "fatal": [],
+    "warnings": [
+      "1 saltos > 8% entre velas consecutivas (¿error de escala o rollover?)",
+      "47 sesiones regulares incompletas (1192 velas ausentes; incluye medias jornadas y festivos con Globex abierto)"
+    ]
+  },
+  "aviso_calendario": null,
+  "velas_1h": 51445,
+  "velas_1h_descartadas_incompletas": 86,
+  "pivotes": {
+    "highs": 6309,
+    "lows": 6466
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-02",
+      "2023-04-04"
+    ],
+    "validacion": [
+      "2023-04-05",
+      "2025-01-02"
+    ],
+    "test": [
+      "2025-01-03",
+      "2026-10-02"
+    ]
+  },
+  "configuracion": {
+    "instrument": {
+      "symbol": "MES",
+      "tick_size": 0.25,
+      "tick_value": 1.25,
+      "point_value": 5.0
+    },
+    "data_file": "/home/user/git_test/orb_backtest/data/ES_5m_databento.csv",
+    "timestamp_is": "start",
+    "timezone": "Europe/London",
+    "bar_minutes": 5,
+    "costs": {
+      "commission_per_side": 0.62,
+      "slippage_ticks_per_side": 1,
+      "extra_cost_per_side": 0.0,
+      "limit_fill_ticks_through": 1,
+      "nota": "comisión 0,62 USD/lado (supuesto no verificado) + 1 tick de slippage por lado"
+    },
+    "stress_costs": {
+      "slippage_2_ticks": {
+        "slippage_ticks_per_side": 2
+      },
+      "slippage_3_ticks_comision_x2": {
+        "slippage_ticks_per_side": 3,
+        "commission_per_side": 1.24
+      }
+    },
+    "strategy": {
+      "or_start": "08:00:00",
+      "or_end": "09:00:00",
+      "entry_cutoff": "13:00:00",
+      "flat_time": "16:25:00",
+      "session_start": "08:00:00",
+      "session_end": "16:30:00",
+      "retest_window_bars": 3,
+      "retest_tolerance_ticks": 2,
+      "stop_offset_ticks": 2,
+      "reward_risk": 2.0,
+      "use_structure_filter": true,
+      "pivot_left": 2,
+      "pivot_right": 2,
+      "invalidate_on_close_inside": true,
+      "hourly_min_bars": 6
+    },
+    "risk": {
+      "initial_capital": 50000,
+      "risk_pct": 0.0025,
+      "sizing_mode": "percent",
+      "fixed_contracts": 1,
+      "compounding": true,
+      "max_contracts": null
+    },
+    "start_date": null,
+    "end_date": null,
+    "split": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "output_dir": "orb_backtest/output",
+    "bootstrap_samples": 5000,
+    "seed": 12345,
+    "data_label": "Databento GLBX.MDP3 ES (archivo dbn_ES_5m.pkl de una descarga anterior; se SUPONE ES.c.0 continuo por calendario sin ajuste, no verificado), 5 min desde 1 min. Precios de ES = precios de MES (mismo subyacente y tick).",
+    "calendar": "XLON",
+    "run_label": "london_cierre_1625"
+  }
+}

@@ -94,3 +94,16 @@ def test_integration_hours_and_invariants(synth_cfg):
     assert (t.loc[long_, "stop"] < t.loc[long_, "entry"]).all() and (t.loc[~long_, "stop"] > t.loc[~long_, "entry"]).all()
     assert (t["planned_risk_usd"] <= t["risk_budget"] + 1e-9).all()
     assert (out["dir"] / "INFORME.md").exists()
+
+
+def test_london_session_clock(tmp_path, cfg):
+    # 29 mar 2024 (Reino Unido aún en GMT) y 2 abr 2024 (BST): las 8:00 de Londres son 08:00Z y 07:00Z
+    from datetime import time as _t
+    from dataclasses import replace as _r
+    df = synthetic_5m("2024-03-27", "2024-04-03")
+    d = data_io.read_csv(to_csv(df.tz_convert("UTC"), tmp_path / "u.csv"), tz="Europe/London")
+    st = _r(cfg.strategy, session_start=_t(8, 0), session_end=_t(16, 30))
+    sess, _ = bars.sessions(d, st, 5, calendar=None)
+    by = {str(s.date.date()): s for s in sess}
+    assert by["2024-03-27"].start[0].tz_convert("UTC").hour == 8
+    assert by["2024-04-02"].start[0].tz_convert("UTC").hour == 7

@@ -1,0 +1,104 @@
+session,status,reason,bias,bias_detail,or_high,or_low,periodo
+2018-01-15,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-01-31,invalida,rango incompleto (6/12 velas),,,,,desarrollo
+2018-02-15,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2018-02-14 13:00:00-05:00', 1358.6), 'sh2': ('2018-02-15 03:00:00-05:00', 1359.8), 'sl1': ('2018-02-14 18:00:00-05:00', 1352.7), 'sl2': ('2018-02-15 02:00:00-05:00', 1354.9), 'sh2_confirmado': '2018-02-15 06:00:00-05:00', 'sl2_confirmado': '2018-02-15 05:00:00-05:00'}",1357.0,1351.2,desarrollo
+2018-02-19,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-05-28,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-05-31,invalida,rango incompleto (9/12 velas),,,,,desarrollo
+2018-07-04,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-07-31,invalida,rango incompleto (10/12 velas),,,,,desarrollo
+2018-09-03,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-09-18,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2018-09-17 18:00:00-04:00', 1206.8), 'sh2': ('2018-09-18 02:00:00-04:00', 1205.3), 'sl1': ('2018-09-17 21:00:00-04:00', 1201.6), 'sl2': ('2018-09-18 03:00:00-04:00', 1200.3), 'sh2_confirmado': '2018-09-18 05:00:00-04:00', 'sl2_confirmado': '2018-09-18 06:00:00-04:00'}",1208.2,1202.2,desarrollo
+2018-11-22,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-11-30,invalida,rango incompleto (9/12 velas),,,,,desarrollo
+2018-12-05,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2018-12-20,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2018-12-19 21:00:00-05:00', 1249.2), 'sh2': ('2018-12-20 05:00:00-05:00', 1260.6), 'sl1': ('2018-12-19 16:00:00-05:00', 1245.3), 'sl2': ('2018-12-19 20:00:00-05:00', 1246.2), 'sh2_confirmado': '2018-12-20 08:00:00-05:00', 'sl2_confirmado': '2018-12-19 23:00:00-05:00'}",1265.9,1261.7,desarrollo
+2019-01-18,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2019-01-17 06:00:00-05:00', 1294.8), 'sh2': ('2019-01-17 22:00:00-05:00', 1292.0), 'sl1': ('2019-01-17 21:00:00-05:00', 1289.9), 'sl2': ('2019-01-18 04:00:00-05:00', 1283.0), 'sh2_confirmado': '2019-01-18 01:00:00-05:00', 'sl2_confirmado': '2019-01-18 07:00:00-05:00'}",1284.9,1281.2,desarrollo
+2019-01-21,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2019-01-31,invalida,rango incompleto (10/12 velas),,,,,desarrollo
+2019-02-18,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2019-03-29,invalida,rango incompleto (8/12 velas),,,,,desarrollo
+2019-05-27,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2019-07-04,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2019-07-31,invalida,rango incompleto (11/12 velas),,,,,desarrollo
+2019-08-20,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2019-08-19 18:00:00-04:00', 1507.9), 'sh2': ('2019-08-19 21:00:00-04:00', 1509.6), 'sl1': ('2019-08-19 18:00:00-04:00', 1503.0), 'sl2': ('2019-08-19 23:00:00-04:00', 1504.4), 'sh2_confirmado': '2019-08-20 00:00:00-04:00', 'sl2_confirmado': '2019-08-20 02:00:00-04:00'}",1517.7,1512.8,desarrollo
+2019-09-02,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2019-11-28,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-01-20,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-01-31,invalida,rango incompleto (9/12 velas),,,,,desarrollo
+2020-02-17,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-02-28,invalida,rango incompleto (0/12 velas),,,,,desarrollo
+2020-05-25,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-06-30,invalida,rango incompleto (9/12 velas),,,,,desarrollo
+2020-07-03,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-07-29,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2020-07-28 21:00:00-04:00', 1959.2), 'sh2': ('2020-07-29 03:00:00-04:00', 1960.0), 'sl1': ('2020-07-28 23:00:00-04:00', 1944.4), 'sl2': ('2020-07-29 02:00:00-04:00', 1945.3), 'sh2_confirmado': '2020-07-29 06:00:00-04:00', 'sl2_confirmado': '2020-07-29 05:00:00-04:00'}",1956.1,1935.2,desarrollo
+2020-07-31,invalida,rango incompleto (11/12 velas),,,,,desarrollo
+2020-08-12,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2020-08-10 18:00:00-04:00', 2040.5), 'sh2': ('2020-08-12 04:00:00-04:00', 1956.4), 'sl1': ('2020-08-11 16:00:00-04:00', 1911.3), 'sl2': ('2020-08-12 00:00:00-04:00', 1874.2), 'sh2_confirmado': '2020-08-12 07:00:00-04:00', 'sl2_confirmado': '2020-08-12 03:00:00-04:00'}",1956.1,1937.1,desarrollo
+2020-09-07,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-10-19,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2020-10-16 13:00:00-04:00', 1908.0), 'sh2': ('2020-10-18 21:00:00-04:00', 1906.7), 'sl1': ('2020-10-16 16:00:00-04:00', 1901.5), 'sl2': ('2020-10-18 21:00:00-04:00', 1900.2), 'sh2_confirmado': '2020-10-19 00:00:00-04:00', 'sl2_confirmado': '2020-10-19 00:00:00-04:00'}",1915.8,1905.7,desarrollo
+2020-11-26,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2020-12-03,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2020-12-02 22:00:00-05:00', 1840.8), 'sh2': ('2020-12-03 03:00:00-05:00', 1846.7), 'sl1': ('2020-12-03 01:00:00-05:00', 1833.9), 'sl2': ('2020-12-03 05:00:00-05:00', 1837.8), 'sh2_confirmado': '2020-12-03 06:00:00-05:00', 'sl2_confirmado': '2020-12-03 08:00:00-05:00'}",1844.5,1832.8,desarrollo
+2021-01-18,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2021-01-20,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2021-01-19 09:00:00-05:00', 1842.4), 'sh2': ('2021-01-19 12:00:00-05:00', 1842.9), 'sl1': ('2021-01-19 08:00:00-05:00', 1831.8), 'sl2': ('2021-01-19 14:00:00-05:00', 1836.1), 'sh2_confirmado': '2021-01-19 15:00:00-05:00', 'sl2_confirmado': '2021-01-19 17:00:00-05:00'}",1868.5,1853.2,desarrollo
+2021-02-15,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2021-05-31,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2021-07-05,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2021-07-30,invalida,rango incompleto (10/12 velas),,,,,desarrollo
+2021-09-06,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2021-11-25,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2021-11-30,invalida,rango incompleto (11/12 velas),,,,,desarrollo
+2022-01-17,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-02-21,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-05-30,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-06-20,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-07-04,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-07-28,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2022-07-27 21:00:00-04:00', 1740.0), 'sh2': ('2022-07-28 04:00:00-04:00', 1746.7), 'sl1': ('2022-07-27 22:00:00-04:00', 1732.0), 'sl2': ('2022-07-28 01:00:00-04:00', 1733.3), 'sh2_confirmado': '2022-07-28 07:00:00-04:00', 'sl2_confirmado': '2022-07-28 04:00:00-04:00'}",1752.2,1745.2,desarrollo
+2022-07-29,invalida,rango incompleto (9/12 velas),,,,,desarrollo
+2022-09-05,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-10-31,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2022-10-28 08:00:00-04:00', 1657.0), 'sh2': ('2022-10-28 16:00:00-04:00', 1649.2), 'sl1': ('2022-10-30 21:00:00-04:00', 1643.5), 'sl2': ('2022-10-31 04:00:00-04:00', 1638.4), 'sh2_confirmado': '2022-10-30 20:00:00-04:00', 'sl2_confirmado': '2022-10-31 07:00:00-04:00'}",1644.2,1636.2,desarrollo
+2022-11-24,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2022-11-30,invalida,rango incompleto (11/12 velas),,,,,desarrollo
+2023-01-16,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2023-02-20,invalida,festivo XNYS (sin sesión regular),,,,,desarrollo
+2023-03-10,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2023-03-09 19:00:00-05:00', 1838.8), 'sh2': ('2023-03-10 03:00:00-05:00', 1841.5), 'sl1': ('2023-03-09 23:00:00-05:00', 1831.6), 'sl2': ('2023-03-10 05:00:00-05:00', 1834.7), 'sh2_confirmado': '2023-03-10 06:00:00-05:00', 'sl2_confirmado': '2023-03-10 08:00:00-05:00'}",1869.1,1853.3,desarrollo
+2023-05-29,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2023-05-31,invalida,rango incompleto (11/12 velas),,,,,validacion
+2023-06-19,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2023-07-04,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2023-09-04,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2023-11-23,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-01-15,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-02-19,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-05-27,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-06-19,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-06-20,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2024-06-19 21:00:00-04:00', 2352.9), 'sh2': ('2024-06-20 02:00:00-04:00', 2359.2), 'sl1': ('2024-06-19 20:00:00-04:00', 2341.3), 'sl2': ('2024-06-20 05:00:00-04:00', 2345.2), 'sh2_confirmado': '2024-06-20 05:00:00-04:00', 'sl2_confirmado': '2024-06-20 08:00:00-04:00'}",2373.0,2350.9,validacion
+2024-07-04,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-08-01,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2024-07-31 21:00:00-04:00', 2502.8), 'sh2': ('2024-08-01 02:00:00-04:00', 2492.9), 'sl1': ('2024-07-31 22:00:00-04:00', 2481.6), 'sl2': ('2024-08-01 05:00:00-04:00', 2474.0), 'sh2_confirmado': '2024-08-01 05:00:00-04:00', 'sl2_confirmado': '2024-08-01 08:00:00-04:00'}",2506.6,2487.3,validacion
+2024-08-13,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2024-08-12 20:00:00-04:00', 2517.3), 'sh2': ('2024-08-13 03:00:00-04:00', 2505.9), 'sl1': ('2024-08-13 01:00:00-04:00', 2498.7), 'sl2': ('2024-08-13 04:00:00-04:00', 2498.2), 'sh2_confirmado': '2024-08-13 06:00:00-04:00', 'sl2_confirmado': '2024-08-13 07:00:00-04:00'}",2515.6,2506.4,validacion
+2024-09-02,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2024-09-11,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2024-09-10 21:00:00-04:00', 2552.0), 'sh2': ('2024-09-11 02:00:00-04:00', 2558.0), 'sl1': ('2024-09-10 10:00:00-04:00', 2529.7), 'sl2': ('2024-09-10 21:00:00-04:00', 2543.6), 'sh2_confirmado': '2024-09-11 05:00:00-04:00', 'sl2_confirmado': '2024-09-11 00:00:00-04:00'}",2539.5,2529.0,validacion
+2024-11-19,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2024-11-18 14:00:00-05:00', 2617.0), 'sh2': ('2024-11-18 22:00:00-05:00', 2629.7), 'sl1': ('2024-11-18 01:00:00-05:00', 2584.9), 'sl2': ('2024-11-19 02:00:00-05:00', 2621.4), 'sh2_confirmado': '2024-11-19 01:00:00-05:00', 'sl2_confirmado': '2024-11-19 05:00:00-05:00'}",2635.0,2625.9,validacion
+2024-11-28,invalida,festivo XNYS (sin sesión regular),,,,,validacion
+2025-01-09,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-01-20,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-02-17,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-05-26,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-06-02,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2025-06-01 19:00:00-04:00', 3339.9), 'sh2': ('2025-06-02 03:00:00-04:00', 3384.0), 'sl1': ('2025-05-30 16:00:00-04:00', 3312.7), 'sl2': ('2025-06-01 21:00:00-04:00', 3324.3), 'sh2_confirmado': '2025-06-02 06:00:00-04:00', 'sl2_confirmado': '2025-06-02 00:00:00-04:00'}",3403.2,3374.5,test
+2025-06-06,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2025-06-06 01:00:00-04:00', 3398.3), 'sh2': ('2025-06-06 04:00:00-04:00', 3391.0), 'sl1': ('2025-06-05 21:00:00-04:00', 3377.9), 'sl2': ('2025-06-06 05:00:00-04:00', 3375.0), 'sh2_confirmado': '2025-06-06 07:00:00-04:00', 'sl2_confirmado': '2025-06-06 08:00:00-04:00'}",3378.5,3338.5,test
+2025-06-19,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-07-04,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-09-01,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-10-02,descartada_riesgo,1 contrato arriesga 145.24 > presupuesto 100.39,bajista,"{'sh1': ('2025-10-01 08:00:00-04:00', 3918.8), 'sh2': ('2025-10-01 22:00:00-04:00', 3895.2), 'sl1': ('2025-10-01 14:00:00-04:00', 3881.4), 'sl2': ('2025-10-01 21:00:00-04:00', 3877.0), 'sh2_confirmado': '2025-10-02 01:00:00-04:00', 'sl2_confirmado': '2025-10-02 00:00:00-04:00'}",3923.3,3882.0,test
+2025-11-27,invalida,festivo XNYS (sin sesión regular),,,,,test
+2025-11-28,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2025-11-27 10:00:00-05:00', 4193.9), 'sh2': ('2025-11-27 20:00:00-05:00', 4227.5), 'sl1': ('2025-11-27 08:00:00-05:00', 4181.5), 'sl2': ('2025-11-27 11:00:00-05:00', 4183.6), 'sh2_confirmado': '2025-11-28 09:00:00-05:00', 'sl2_confirmado': '2025-11-27 14:00:00-05:00'}",4246.6,4220.1,test
+2026-01-13,descartada_riesgo,1 contrato arriesga 108.24 > presupuesto 99.31,bajista,"{'sh1': ('2026-01-13 00:00:00-05:00', 4611.2), 'sh2': ('2026-01-13 03:00:00-05:00', 4605.4), 'sl1': ('2026-01-12 20:00:00-05:00', 4584.3), 'sl2': ('2026-01-13 01:00:00-05:00', 4582.8), 'sh2_confirmado': '2026-01-13 06:00:00-05:00', 'sl2_confirmado': '2026-01-13 04:00:00-05:00'}",4644.0,4609.1,test
+2026-01-19,invalida,festivo XNYS (sin sesión regular),,,,,test
+2026-02-02,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2026-01-30 00:00:00-05:00', 5269.2), 'sh2': ('2026-01-30 07:00:00-05:00', 5175.6), 'sl1': ('2026-02-01 20:00:00-05:00', 4604.3), 'sl2': ('2026-02-02 01:00:00-05:00', 4423.2), 'sh2_confirmado': '2026-01-30 10:00:00-05:00', 'sl2_confirmado': '2026-02-02 04:00:00-05:00'}",4818.0,4695.4,test
+2026-02-16,invalida,festivo XNYS (sin sesión regular),,,,,test
+2026-05-12,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2026-05-11 09:00:00-04:00', 4758.4), 'sh2': ('2026-05-11 20:00:00-04:00', 4783.4), 'sl1': ('2026-05-12 03:00:00-04:00', 4692.4), 'sl2': ('2026-05-12 06:00:00-04:00', 4692.8), 'sh2_confirmado': '2026-05-11 23:00:00-04:00', 'sl2_confirmado': '2026-05-12 09:00:00-04:00'}",4709.5,4683.4,test
+2026-05-25,invalida,festivo XNYS (sin sesión regular),,,,,test
+2026-05-29,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2026-05-28 21:00:00-04:00', 4551.2), 'sh2': ('2026-05-29 06:00:00-04:00', 4574.4), 'sl1': ('2026-05-28 19:00:00-04:00', 4487.9), 'sl2': ('2026-05-29 04:00:00-04:00', 4540.0), 'sh2_confirmado': '2026-05-29 09:00:00-04:00', 'sl2_confirmado': '2026-05-29 07:00:00-04:00'}",4584.0,4553.0,test
+2026-06-19,invalida,festivo XNYS (sin sesión regular),,,,,test
+2026-07-03,invalida,festivo XNYS (sin sesión regular),,,,,test
+2026-09-07,invalida,festivo XNYS (sin sesión regular),,,,,test
+2026-09-28,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2026-09-25 12:00:00-04:00', 4336.0), 'sh2': ('2026-09-25 15:00:00-04:00', 4332.4), 'sl1': ('2026-09-25 10:00:00-04:00', 4289.2), 'sl2': ('2026-09-28 05:00:00-04:00', 4172.7), 'sh2_confirmado': '2026-09-27 19:00:00-04:00', 'sl2_confirmado': '2026-09-28 08:00:00-04:00'}",4193.2,4168.0,test

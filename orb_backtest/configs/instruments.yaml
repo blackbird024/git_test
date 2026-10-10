@@ -12,3 +12,9 @@ MES:
   tick_value: 1.25
   point_value: 5.0
   verificado: false
+MGC:
+  descripcion: Micro Gold (10 onzas troy)
+  tick_size: 0.10
+  tick_value: 1.00
+  point_value: 10.0
+  verificado: false

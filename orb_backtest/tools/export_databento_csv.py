@@ -12,7 +12,7 @@ for sym in sys.argv[1:] or ["NQ", "ES"]:
     df = df.tz_convert("America/New_York")
     out = df[["open", "high", "low", "close"]].copy()
     out.insert(0, "timestamp", out.index.map(lambda t: t.isoformat()))
-    out["contract"] = f"{sym}.c.0"
+    out["contract"] = {"GC": "GC.v.0"}.get(sym, f"{sym}.c.0")
     p = ROOT / "orb_backtest" / "data" / f"{sym}_5m_databento.csv"
     out.to_csv(p, index=False)
     print(sym, len(out), out.timestamp.iloc[0], out.timestamp.iloc[-1], "→", p)

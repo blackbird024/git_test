@@ -92,6 +92,8 @@ class Config:
     bootstrap_samples: int = 5000
     seed: int = 12345
     data_label: str = ""
+    calendar: Optional[str] = "XNYS"
+    run_label: str = ""
     raw: dict = field(default_factory=dict)
 
 
@@ -130,7 +132,8 @@ def load(path) -> Config:
                       bar_minutes=int(c.get("bar_minutes", 5)), costs=costs, stress_costs=c.get("stress_costs", {}),
                       strategy=strat, risk=risk, start_date=c.get("start_date"), end_date=c.get("end_date"),
                       split=split, output_dir=out, bootstrap_samples=int(c.get("bootstrap_samples", 5000)),
-                      seed=int(c.get("seed", 12345)), data_label=c.get("data_label", ""), raw=c)
+                      seed=int(c.get("seed", 12345)), data_label=c.get("data_label", ""),
+                      calendar=c.get("calendar", "XNYS"), run_label=c.get("run_label", ""), raw=c)
     except KeyError as e:
         raise ConfigError(f"falta la clave obligatoria {e} en {path}") from e
     except TypeError as e:

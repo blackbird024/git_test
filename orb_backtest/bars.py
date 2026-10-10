@@ -32,18 +32,20 @@ class SessionBars:
     invalid_reason: Optional[str] = None
 
 
-def _calendar(first, last):
+def _calendar(first, last, name="XNYS"):
     try:
         import exchange_calendars as xc
     except ImportError:
         return None
-    cal = xc.get_calendar("XNYS")
+    if not name:
+        return None
+    cal = xc.get_calendar(name)
     lo = max(pd.Timestamp(first.date()), cal.first_session)
     hi = min(pd.Timestamp(last.date()), cal.last_session)
     return cal.schedule.loc[lo:hi]
 
 
-def sessions(df: pd.DataFrame, strat, bar_minutes: int):
+def sessions(df: pd.DataFrame, strat, bar_minutes: int, calendar: str = "XNYS"):
     """Divide los datos en sesiones regulares. Devuelve (lista de SessionBars, aviso_calendario)."""
     t = df.index
     tod = t.hour * 60 + t.minute
@@ -51,8 +53,9 @@ def sessions(df: pd.DataFrame, strat, bar_minutes: int):
     b = strat.session_end.hour * 60 + strat.session_end.minute
     rth = (tod >= a) & (tod < b) & (t.dayofweek < 5)
     x = df[rth]
-    sch = _calendar(t[0], t[-1])
-    warn = None if sch is not None else "exchange_calendars no instalado: festivos y cierres anticipados deducidos de los datos"
+    sch = _calendar(t[0], t[-1], calendar)
+    warn = None if sch is not None else ("sin calendario de bolsa (calendar: null)" if not calendar else
+                                         "exchange_calendars no instalado: festivos y cierres anticipados deducidos de los datos")
     out = []
     has_contract = "contract" in x.columns
     for d, g in x.groupby(x.index.date):
@@ -62,7 +65,7 @@ def sessions(df: pd.DataFrame, strat, bar_minutes: int):
         reason = None
         if sch is not None:
             if day not in sch.index:
-                reason = "festivo NYSE (sin sesión regular)"
+                reason = f"festivo {calendar} (sin sesión regular)"
             else:
                 close_et = sch.loc[day, "close"].tz_convert(t.tz)
                 if close_et.time() < strat.session_end:
