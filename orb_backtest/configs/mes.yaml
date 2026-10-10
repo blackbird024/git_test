@@ -1,0 +1,51 @@
+# Backtest MES con los datos de Databento exportados por orb_backtest/tools/export_databento_csv.py
+instrument: MES
+data_file: orb_backtest/data/ES_5m_databento.csv
+data_label: "Databento GLBX.MDP3 ES (archivo dbn_ES_5m.pkl de una descarga anterior; se SUPONE ES.c.0 continuo por calendario sin ajuste, no verificado), 5 min desde 1 min. Precios de ES = precios de MES (mismo subyacente y tick)."
+timezone: America/New_York
+timestamp_is: start          # la marca de tiempo es la APERTURA de la vela
+bar_minutes: 5
+start_date: null
+end_date: null
+output_dir: orb_backtest/output
+
+costs:
+  commission_per_side: 0.62      # USD por contrato y lado. SUPUESTO: no conozco la tarifa real de tu broker/prop firm
+  slippage_ticks_per_side: 1
+  extra_cost_per_side: 0.0
+  limit_fill_ticks_through: 1
+  nota: "comisión 0,62 USD/lado (supuesto no verificado) + 1 tick de slippage por lado"
+
+stress_costs:                    # escenarios de estrés (sustituyen campos de costs)
+  slippage_2_ticks: {slippage_ticks_per_side: 2}
+  slippage_3_ticks_comision_x2: {slippage_ticks_per_side: 3, commission_per_side: 1.24}
+
+strategy:
+  or_start: "09:30"
+  or_end: "10:30"
+  entry_cutoff: "15:00"          # decisión conservadora: no se abren operaciones a partir de las 15:00
+  flat_time: "15:55"
+  session_start: "09:30"
+  session_end: "16:00"
+  retest_window_bars: 3
+  retest_tolerance_ticks: 2
+  stop_offset_ticks: 2
+  reward_risk: 2.0
+  use_structure_filter: true
+  pivot_left: 2
+  pivot_right: 2
+  invalidate_on_close_inside: true
+  hourly_min_bars: 6
+
+risk:
+  initial_capital: 50000
+  risk_pct: 0.0025
+  sizing_mode: percent           # percent | fixed
+  fixed_contracts: 1
+  compounding: true
+  max_contracts: null
+
+sensitivity_risk_pct: [0.005, 0.01]   # solo análisis de sensibilidad; nunca se selecciona el mejor
+split: [0.6, 0.2, 0.2]
+bootstrap_samples: 5000
+seed: 12345

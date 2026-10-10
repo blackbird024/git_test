@@ -1,0 +1,94 @@
+session,status,reason,bias,bias_detail,or_high,or_low,periodo
+2018-01-15,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2018-02-19,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2018-02-20,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2018-02-19 19:00:00-05:00', 2735.0), 'sh2': ('2018-02-19 23:00:00-05:00', 2734.0), 'sl1': ('2018-02-19 21:00:00-05:00', 2722.5), 'sl2': ('2018-02-20 05:00:00-05:00', 2709.0), 'sh2_confirmado': '2018-02-20 02:00:00-05:00', 'sl2_confirmado': '2018-02-20 08:00:00-05:00'}",2732.25,2720.5,desarrollo
+2018-05-15,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2018-05-14 20:00:00-04:00', 2731.25), 'sh2': ('2018-05-15 06:00:00-04:00', 2728.75), 'sl1': ('2018-05-14 14:00:00-04:00', 2724.25), 'sl2': ('2018-05-15 02:00:00-04:00', 2720.5), 'sh2_confirmado': '2018-05-15 09:00:00-04:00', 'sl2_confirmado': '2018-05-15 05:00:00-04:00'}",2717.0,2703.25,desarrollo
+2018-05-28,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2018-06-13,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2018-06-12 21:00:00-04:00', 2791.75), 'sh2': ('2018-06-13 01:00:00-04:00', 2790.25), 'sl1': ('2018-06-12 22:00:00-04:00', 2788.0), 'sl2': ('2018-06-13 04:00:00-04:00', 2785.0), 'sh2_confirmado': '2018-06-13 04:00:00-04:00', 'sl2_confirmado': '2018-06-13 07:00:00-04:00'}",2790.0,2786.25,desarrollo
+2018-06-15,invalida,rango incompleto (1/12 velas),,,,,desarrollo
+2018-07-04,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2018-07-31,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2018-07-30 21:00:00-04:00', 2807.25), 'sh2': ('2018-07-31 03:00:00-04:00', 2809.5), 'sl1': ('2018-07-30 20:00:00-04:00', 2802.75), 'sl2': ('2018-07-31 04:00:00-04:00', 2804.75), 'sh2_confirmado': '2018-07-31 06:00:00-04:00', 'sl2_confirmado': '2018-07-31 07:00:00-04:00'}",2818.0,2808.5,desarrollo
+2018-08-31,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2018-08-30 10:00:00-04:00', 2913.0), 'sh2': ('2018-08-31 01:00:00-04:00', 2904.0), 'sl1': ('2018-08-30 11:00:00-04:00', 2904.0), 'sl2': ('2018-08-30 15:00:00-04:00', 2895.5), 'sh2_confirmado': '2018-08-31 04:00:00-04:00', 'sl2_confirmado': '2018-08-30 19:00:00-04:00'}",2907.5,2897.0,desarrollo
+2018-09-03,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2018-11-22,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2019-01-21,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2019-02-18,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2019-02-26,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2019-02-24 18:00:00-05:00', 2803.5), 'sh2': ('2019-02-25 11:00:00-05:00', 2814.0), 'sl1': ('2019-02-25 21:00:00-05:00', 2783.25), 'sl2': ('2019-02-26 04:00:00-05:00', 2785.0), 'sh2_confirmado': '2019-02-25 14:00:00-05:00', 'sl2_confirmado': '2019-02-26 07:00:00-05:00'}",2800.25,2790.0,desarrollo
+2019-03-29,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2019-03-28 23:00:00-04:00', 2828.5), 'sh2': ('2019-03-29 03:00:00-04:00', 2828.75), 'sl1': ('2019-03-28 12:00:00-04:00', 2802.5), 'sl2': ('2019-03-29 06:00:00-04:00', 2822.0), 'sh2_confirmado': '2019-03-29 06:00:00-04:00', 'sl2_confirmado': '2019-03-29 09:00:00-04:00'}",2837.5,2828.0,desarrollo
+2019-05-27,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2019-06-13,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2019-06-12 09:00:00-04:00', 2889.75), 'sh2': ('2019-06-12 20:00:00-04:00', 2888.5), 'sl1': ('2019-06-12 12:00:00-04:00', 2875.25), 'sl2': ('2019-06-12 22:00:00-04:00', 2867.25), 'sh2_confirmado': '2019-06-12 23:00:00-04:00', 'sl2_confirmado': '2019-06-13 01:00:00-04:00'}",2896.5,2885.25,desarrollo
+2019-07-04,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2019-08-21,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2019-08-20 11:00:00-04:00', 2924.5), 'sh2': ('2019-08-21 05:00:00-04:00', 2920.75), 'sl1': ('2019-08-20 09:00:00-04:00', 2904.25), 'sl2': ('2019-08-20 18:00:00-04:00', 2893.0), 'sh2_confirmado': '2019-08-21 08:00:00-04:00', 'sl2_confirmado': '2019-08-20 21:00:00-04:00'}",2929.5,2921.75,desarrollo
+2019-09-02,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2019-09-19,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2019-09-18 16:00:00-04:00', 3011.0), 'sh2': ('2019-09-18 20:00:00-04:00', 3008.5), 'sl1': ('2019-09-18 23:00:00-04:00', 2995.0), 'sl2': ('2019-09-19 03:00:00-04:00', 2988.75), 'sh2_confirmado': '2019-09-18 23:00:00-04:00', 'sl2_confirmado': '2019-09-19 06:00:00-04:00'}",3019.5,3010.5,desarrollo
+2019-11-28,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2020-01-20,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2020-02-12,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2020-02-11 18:00:00-05:00', 3362.75), 'sh2': ('2020-02-12 03:00:00-05:00', 3372.75), 'sl1': ('2020-02-11 19:00:00-05:00', 3355.5), 'sl2': ('2020-02-12 03:00:00-05:00', 3363.5), 'sh2_confirmado': '2020-02-12 06:00:00-05:00', 'sl2_confirmado': '2020-02-12 06:00:00-05:00'}",3377.0,3368.5,desarrollo
+2020-02-17,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2020-03-06,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2020-03-05 19:00:00-05:00', 3037.0), 'sh2': ('2020-03-06 03:00:00-05:00', 2997.0), 'sl1': ('2020-03-05 15:00:00-05:00', 2996.5), 'sl2': ('2020-03-06 00:00:00-05:00', 2971.5), 'sh2_confirmado': '2020-03-06 06:00:00-05:00', 'sl2_confirmado': '2020-03-06 03:00:00-05:00'}",2962.75,2911.25,desarrollo
+2020-03-09,invalida,rango incompleto (11/12 velas),,,,,desarrollo
+2020-03-12,invalida,rango incompleto (10/12 velas),,,,,desarrollo
+2020-03-16,invalida,rango incompleto (10/12 velas),,,,,desarrollo
+2020-05-15,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2020-05-14 20:00:00-04:00', 2858.5), 'sh2': ('2020-05-15 03:00:00-04:00', 2863.5), 'sl1': ('2020-05-14 22:00:00-04:00', 2834.75), 'sl2': ('2020-05-15 02:00:00-04:00', 2842.0), 'sh2_confirmado': '2020-05-15 06:00:00-04:00', 'sl2_confirmado': '2020-05-15 05:00:00-04:00'}",2847.0,2809.5,desarrollo
+2020-05-25,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2020-06-22,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2020-06-21 23:00:00-04:00', 3083.0), 'sh2': ('2020-06-22 05:00:00-04:00', 3096.75), 'sl1': ('2020-06-21 18:00:00-04:00', 3027.25), 'sl2': ('2020-06-22 02:00:00-04:00', 3062.25), 'sh2_confirmado': '2020-06-22 08:00:00-04:00', 'sl2_confirmado': '2020-06-22 05:00:00-04:00'}",3095.25,3066.25,desarrollo
+2020-07-03,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2020-08-10,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2020-08-07 16:00:00-04:00', 3347.75), 'sh2': ('2020-08-10 01:00:00-04:00', 3355.5), 'sl1': ('2020-08-07 14:00:00-04:00', 3322.25), 'sl2': ('2020-08-10 04:00:00-04:00', 3343.25), 'sh2_confirmado': '2020-08-10 04:00:00-04:00', 'sl2_confirmado': '2020-08-10 07:00:00-04:00'}",3355.25,3346.25,desarrollo
+2020-09-07,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2020-11-26,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2021-01-18,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2021-01-21,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2021-01-20 15:00:00-05:00', 3852.5), 'sh2': ('2021-01-20 23:00:00-05:00', 3859.75), 'sl1': ('2021-01-19 23:00:00-05:00', 3788.5), 'sl2': ('2021-01-21 03:00:00-05:00', 3847.75), 'sh2_confirmado': '2021-01-21 02:00:00-05:00', 'sl2_confirmado': '2021-01-21 06:00:00-05:00'}",3852.5,3836.5,desarrollo
+2021-02-08,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2021-02-05 09:00:00-05:00', 3886.25), 'sh2': ('2021-02-08 01:00:00-05:00', 3899.0), 'sl1': ('2021-02-05 15:00:00-05:00', 3875.25), 'sl2': ('2021-02-08 04:00:00-05:00', 3885.75), 'sh2_confirmado': '2021-02-08 04:00:00-05:00', 'sl2_confirmado': '2021-02-08 07:00:00-05:00'}",3902.25,3894.5,desarrollo
+2021-02-15,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2021-05-06,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2021-05-05 21:00:00-04:00', 4168.0), 'sh2': ('2021-05-06 03:00:00-04:00', 4174.5), 'sl1': ('2021-05-05 22:00:00-04:00', 4151.5), 'sl2': ('2021-05-06 05:00:00-04:00', 4156.75), 'sh2_confirmado': '2021-05-06 06:00:00-04:00', 'sl2_confirmado': '2021-05-06 08:00:00-04:00'}",4167.0,4140.5,desarrollo
+2021-05-31,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2021-07-05,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2021-09-06,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2021-11-25,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-01-17,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-02-07,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2022-02-06 23:00:00-05:00', 4497.25), 'sh2': ('2022-02-07 02:00:00-05:00', 4504.25), 'sl1': ('2022-02-06 21:00:00-05:00', 4471.25), 'sl2': ('2022-02-07 03:00:00-05:00', 4472.5), 'sh2_confirmado': '2022-02-07 05:00:00-05:00', 'sl2_confirmado': '2022-02-07 06:00:00-05:00'}",4508.25,4486.0,desarrollo
+2022-02-18,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2022-02-17 23:00:00-05:00', 4411.5), 'sh2': ('2022-02-18 03:00:00-05:00', 4407.25), 'sl1': ('2022-02-17 10:00:00-05:00', 4401.25), 'sl2': ('2022-02-17 16:00:00-05:00', 4367.25), 'sh2_confirmado': '2022-02-18 06:00:00-05:00', 'sl2_confirmado': '2022-02-17 20:00:00-05:00'}",4390.25,4362.5,desarrollo
+2022-02-21,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-05-30,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-06-13,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2022-06-10 15:00:00-04:00', 3942.5), 'sh2': ('2022-06-13 00:00:00-04:00', 3854.5), 'sl1': ('2022-06-12 21:00:00-04:00', 3832.75), 'sl2': ('2022-06-13 04:00:00-04:00', 3797.5), 'sh2_confirmado': '2022-06-13 03:00:00-04:00', 'sl2_confirmado': '2022-06-13 07:00:00-04:00'}",3818.0,3769.0,desarrollo
+2022-06-20,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-07-04,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-08-25,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2022-08-24 21:00:00-04:00', 4157.25), 'sh2': ('2022-08-25 02:00:00-04:00', 4187.75), 'sl1': ('2022-08-24 20:00:00-04:00', 4143.0), 'sl2': ('2022-08-25 05:00:00-04:00', 4160.25), 'sh2_confirmado': '2022-08-25 05:00:00-04:00', 'sl2_confirmado': '2022-08-25 08:00:00-04:00'}",4182.75,4147.5,desarrollo
+2022-09-05,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2022-11-17,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2022-11-16 20:00:00-05:00', 3980.0), 'sh2': ('2022-11-17 03:00:00-05:00', 3990.25), 'sl1': ('2022-11-16 15:00:00-05:00', 3962.0), 'sl2': ('2022-11-16 21:00:00-05:00', 3968.0), 'sh2_confirmado': '2022-11-17 06:00:00-05:00', 'sl2_confirmado': '2022-11-17 00:00:00-05:00'}",3934.75,3913.75,desarrollo
+2022-11-24,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2023-01-16,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2023-02-20,invalida,festivo NYSE (sin sesión regular),,,,,desarrollo
+2023-05-29,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2023-05-30,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2023-05-29 03:00:00-04:00', 4232.5), 'sh2': ('2023-05-29 18:00:00-04:00', 4229.75), 'sl1': ('2023-05-29 19:00:00-04:00', 4221.0), 'sl2': ('2023-05-29 23:00:00-04:00', 4220.75), 'sh2_confirmado': '2023-05-29 21:00:00-04:00', 'sl2_confirmado': '2023-05-30 02:00:00-04:00'}",4238.5,4214.25,validacion
+2023-06-16,invalida,rango incompleto (1/12 velas),,,,,validacion
+2023-06-19,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2023-07-04,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2023-09-04,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2023-09-06,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2023-09-06 01:00:00-04:00', 4501.0), 'sh2': ('2023-09-06 06:00:00-04:00', 4496.0), 'sl1': ('2023-09-05 21:00:00-04:00', 4496.25), 'sl2': ('2023-09-06 03:00:00-04:00', 4486.25), 'sh2_confirmado': '2023-09-06 09:00:00-04:00', 'sl2_confirmado': '2023-09-06 06:00:00-04:00'}",4494.25,4469.25,validacion
+2023-11-23,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-01-15,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-01-17,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2024-01-15 02:00:00-05:00', 4823.0), 'sh2': ('2024-01-16 11:00:00-05:00', 4815.75), 'sl1': ('2024-01-16 14:00:00-05:00', 4779.5), 'sl2': ('2024-01-17 04:00:00-05:00', 4768.75), 'sh2_confirmado': '2024-01-16 14:00:00-05:00', 'sl2_confirmado': '2024-01-17 07:00:00-05:00'}",4770.75,4758.0,validacion
+2024-02-19,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-03-28,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2024-03-27 21:00:00-04:00', 5308.0), 'sh2': ('2024-03-28 01:00:00-04:00', 5308.25), 'sl1': ('2024-03-27 03:00:00-04:00', 5276.0), 'sl2': ('2024-03-28 05:00:00-04:00', 5301.0), 'sh2_confirmado': '2024-03-28 04:00:00-04:00', 'sl2_confirmado': '2024-03-28 08:00:00-04:00'}",5315.0,5305.0,validacion
+2024-05-27,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-06-19,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-07-04,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-09-02,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2024-09-04,descartada_hora,la vela de entrada empieza en/tras la hora límite,bajista,"{'sh1': ('2024-09-03 08:00:00-04:00', 5636.75), 'sh2': ('2024-09-04 05:00:00-04:00', 5530.5), 'sl1': ('2024-09-03 21:00:00-04:00', 5507.5), 'sl2': ('2024-09-04 03:00:00-04:00', 5506.75), 'sh2_confirmado': '2024-09-04 08:00:00-04:00', 'sl2_confirmado': '2024-09-04 06:00:00-04:00'}",5549.0,5520.75,validacion
+2024-11-28,invalida,festivo NYSE (sin sesión regular),,,,,validacion
+2025-01-20,invalida,festivo NYSE (sin sesión regular),,,,,test
+2025-01-30,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2025-01-29 21:00:00-05:00', 6094.0), 'sh2': ('2025-01-30 03:00:00-05:00', 6101.5), 'sl1': ('2025-01-29 14:00:00-05:00', 6042.25), 'sl2': ('2025-01-30 02:00:00-05:00', 6084.75), 'sh2_confirmado': '2025-01-30 06:00:00-05:00', 'sl2_confirmado': '2025-01-30 05:00:00-05:00'}",6109.75,6073.5,test
+2025-02-17,invalida,festivo NYSE (sin sesión regular),,,,,test
+2025-05-02,descartada_hora,la vela de entrada empieza en/tras la hora límite,alcista,"{'sh1': ('2025-05-01 21:00:00-04:00', 5672.5), 'sh2': ('2025-05-02 00:00:00-04:00', 5674.0), 'sl1': ('2025-05-01 18:00:00-04:00', 5601.0), 'sl2': ('2025-05-02 05:00:00-04:00', 5633.5), 'sh2_confirmado': '2025-05-02 03:00:00-04:00', 'sl2_confirmado': '2025-05-02 08:00:00-04:00'}",5703.75,5663.0,test
+2025-05-26,invalida,festivo NYSE (sin sesión regular),,,,,test
+2025-06-19,invalida,festivo NYSE (sin sesión regular),,,,,test
+2025-07-04,invalida,festivo NYSE (sin sesión regular),,,,,test
+2025-09-01,invalida,festivo NYSE (sin sesión regular),,,,,test
+2025-11-27,invalida,festivo NYSE (sin sesión regular),,,,,test
+2026-01-19,invalida,festivo NYSE (sin sesión regular),,,,,test
+2026-02-16,invalida,festivo NYSE (sin sesión regular),,,,,test
+2026-05-25,invalida,festivo NYSE (sin sesión regular),,,,,test
+2026-06-19,invalida,festivo NYSE (sin sesión regular),,,,,test
+2026-07-03,invalida,festivo NYSE (sin sesión regular),,,,,test
+2026-09-07,invalida,festivo NYSE (sin sesión regular),,,,,test

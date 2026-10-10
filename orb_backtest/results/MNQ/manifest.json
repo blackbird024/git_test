@@ -1,0 +1,118 @@
+{
+  "fecha": "2026-10-10T12:25:23",
+  "version_codigo": "9aa01d1",
+  "datos": {
+    "archivo": "/home/user/git_test/orb_backtest/data/NQ_5m_databento.csv",
+    "sha256": "3e20c8094b64b4f44c3989c0884df08109ceef75d6b82cb6ea782415bae7996b",
+    "etiqueta": "Databento GLBX.MDP3 NQ.c.0 (continuo por calendario, SIN ajuste de rollover), 5 min desde 1 min. Precios de NQ = precios de MNQ (mismo subyacente y tick).",
+    "filas": 614269,
+    "primera": "2018-01-01 18:00:00-05:00",
+    "ultima": "2026-10-02 16:55:00-04:00"
+  },
+  "validacion": {
+    "rows": 614269,
+    "first": "2018-01-01 18:00:00-05:00",
+    "last": "2026-10-02 16:55:00-04:00",
+    "duplicates": 0,
+    "out_of_order": 0,
+    "impossible_ohlc": 0,
+    "non_positive": 0,
+    "off_grid_prices": 0,
+    "misaligned_timestamps": 0,
+    "suspicious_jumps": 1,
+    "bars_outside_rth": 443562,
+    "rth_sessions": 2224,
+    "rth_sessions_with_missing_bars": 81,
+    "rth_missing_bars": 2765,
+    "fatal": [],
+    "warnings": [
+      "1 saltos > 8% entre velas consecutivas (¿error de escala o rollover?)",
+      "81 sesiones regulares incompletas (2765 velas ausentes; incluye medias jornadas y festivos con Globex abierto)"
+    ]
+  },
+  "aviso_calendario": null,
+  "velas_1h": 51430,
+  "velas_1h_descartadas_incompletas": 72,
+  "pivotes": {
+    "highs": 6726,
+    "lows": 6747
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-02",
+      "2023-03-31"
+    ],
+    "validacion": [
+      "2023-04-03",
+      "2024-12-31"
+    ],
+    "test": [
+      "2025-01-02",
+      "2026-10-02"
+    ]
+  },
+  "configuracion": {
+    "instrument": {
+      "symbol": "MNQ",
+      "tick_size": 0.25,
+      "tick_value": 0.5,
+      "point_value": 2.0
+    },
+    "data_file": "/home/user/git_test/orb_backtest/data/NQ_5m_databento.csv",
+    "timestamp_is": "start",
+    "timezone": "America/New_York",
+    "bar_minutes": 5,
+    "costs": {
+      "commission_per_side": 0.62,
+      "slippage_ticks_per_side": 1,
+      "extra_cost_per_side": 0.0,
+      "limit_fill_ticks_through": 1,
+      "nota": "comisión 0,62 USD/lado (supuesto no verificado) + 1 tick de slippage por lado"
+    },
+    "stress_costs": {
+      "slippage_2_ticks": {
+        "slippage_ticks_per_side": 2
+      },
+      "slippage_3_ticks_comision_x2": {
+        "slippage_ticks_per_side": 3,
+        "commission_per_side": 1.24
+      }
+    },
+    "strategy": {
+      "or_start": "09:30:00",
+      "or_end": "10:30:00",
+      "entry_cutoff": "15:00:00",
+      "flat_time": "15:55:00",
+      "session_start": "09:30:00",
+      "session_end": "16:00:00",
+      "retest_window_bars": 3,
+      "retest_tolerance_ticks": 2,
+      "stop_offset_ticks": 2,
+      "reward_risk": 2.0,
+      "use_structure_filter": true,
+      "pivot_left": 2,
+      "pivot_right": 2,
+      "invalidate_on_close_inside": true,
+      "hourly_min_bars": 6
+    },
+    "risk": {
+      "initial_capital": 50000,
+      "risk_pct": 0.0025,
+      "sizing_mode": "percent",
+      "fixed_contracts": 1,
+      "compounding": true,
+      "max_contracts": null
+    },
+    "start_date": null,
+    "end_date": null,
+    "split": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "output_dir": "orb_backtest/output",
+    "bootstrap_samples": 5000,
+    "seed": 12345,
+    "data_label": "Databento GLBX.MDP3 NQ.c.0 (continuo por calendario, SIN ajuste de rollover), 5 min desde 1 min. Precios de NQ = precios de MNQ (mismo subyacente y tick)."
+  }
+}

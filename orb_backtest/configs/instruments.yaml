@@ -1,0 +1,14 @@
+# Especificaciones de contrato. Fuente: conocimiento general de las especificaciones CME (no verificadas en cmegroup.com,
+# inaccesible desde este entorno). Comprobar antes de usar con dinero real.
+MNQ:
+  descripcion: Micro E-mini Nasdaq-100
+  tick_size: 0.25
+  tick_value: 0.50          # USD por tick y contrato
+  point_value: 2.0          # USD por punto
+  verificado: false
+MES:
+  descripcion: Micro E-mini S&P 500
+  tick_size: 0.25
+  tick_value: 1.25
+  point_value: 5.0
+  verificado: false
