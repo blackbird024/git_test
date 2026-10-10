@@ -41,6 +41,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 09:50:06 (10-oct) | `20261010_095006_crt_italia_4h_1h` | CRT del usuario: vela 4 h de 4:00-8:00 (y 0:00-4:00) Italia + vela 1 h que rompe y cierra dentro; objetivo extremo opuesto o 2R | Las 4 variantes negativas en los 3 periodos (−0,4 a −11,2 $/op); acierto 27-45 % | ❌ RECHAZADA |
 
+| 17:02:50 (10-oct) | `20261010_170250_vwap_ema9_rsi` | VWAP + EMA 9 + RSI(14) en MNQ, 5 y 15 min, salida 2R o cruce de EMA 9 (4 variantes, hasta 3 ops/día) | Negativa antes de costes en todas (R bruto −0,03 a −0,05); netas −3 a −8 $/op fuera de muestra; 2 variantes con IC90 entero por debajo de 0 | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

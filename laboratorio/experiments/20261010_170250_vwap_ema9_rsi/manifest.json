@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-10T17:03:39",
+  "version_codigo": "c067445+cambios_sin_commit",
+  "experimento": "VWAP + EMA 9 + RSI(14), 5 y 15 min, MNQ",
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  },
+  "reglas": "VWAP + EMA 9 + RSI(14) en MNQ, velas de 5 y 15 min (señales) con ejecución en velas de 1 min.\n\nReglas fijadas ANTES de ver resultados (versión habitual de la estrategia):\n  Largo, al cierre de una vela del marco elegido:\n    1. cierre > VWAP de la sesión (tendencia del día)\n    2. RSI(14) > 50 (impulso)\n    3. retroceso a la EMA 9: el mínimo de la vela toca la EMA 9 y la vela cierra por encima, alcista (cierre > apertura)\n  Corto: espejo (cierre < VWAP, RSI < 50, el máximo toca la EMA 9, cierre por debajo, vela bajista).\n  Entrada a mercado en la apertura siguiente. Stop: mínimo (máximo) de la vela de señal ∓ 1 tick.\n  Salidas (dos variantes): objetivo 2R, o salir cuando una vela cierra al otro lado de la EMA 9 (sin objetivo).\n  Señales de 10:00 a 15:00 ET; cierre forzoso 15:55; máx. 3 operaciones al día, una después de otra.\n  VWAP: anclado a las 9:30 con el volumen de 1 min. EMA 9 y RSI 14 (Wilder): calculados de forma continua sobre las\n  velas de la sesión regular (se arrastran de un día a otro).\n"
+}
