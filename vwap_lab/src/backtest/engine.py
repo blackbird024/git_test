@@ -53,7 +53,7 @@ class Trade:
 
 
 def run_session(sess, arr, sig_side, sig_ref, inst, costs, p, risk, equity, strat, thr, target_R, stop_mode="bar",
-                max_trades=2, daily_loss_R=None, skipped=None):
+                max_trades=2, daily_loss_R=None, skipped=None, bar_minutes=5):
     tick, pv = inst["tick_size"], inst["point_value"]
     slip = costs["slippage_ticks_per_side"] * tick
     comm = costs["commission_per_side"]
@@ -125,7 +125,7 @@ def run_session(sess, arr, sig_side, sig_ref, inst, costs, p, risk, equity, stra
         net = gross - slip_usd - comm_usd
         R = net / (risk_pts * pv * nc)
         trades.append(Trade(inst["symbol"], sess.name, str(sess.date.date()), strat, thr, target_R, s,
-                            str(start[t] + pd.Timedelta(minutes=5)), str(start[k]), str(start[xi]), entry, stop, target,
+                            str(start[t] + pd.Timedelta(minutes=bar_minutes)), str(start[k]), str(start[xi]), entry, stop, target,
                             xf, why, nc, risk_pts, nc * loss_pc, gross, comm_usd, slip_usd, net, R, amb,
                             float(arr["slope"][t]), int(start[t].hour), equity))
         equity += net

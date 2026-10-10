@@ -1,0 +1,69 @@
+# Escrito por --step select ANTES de calcular el OOS. No modificar después de ver el OOS.
+MNQ_london:
+  estado: OK
+  periodos:
+    desarrollo:
+    - '2018-01-02'
+    - '2023-04-05'
+    validacion:
+    - '2023-04-06'
+    - '2024-12-30'
+    oos:
+    - '2024-12-31'
+    - '2026-10-02'
+  candidatos: {}
+  mejor_candidato: null
+  partida:
+    umbral: 0.1
+    objetivo_R: 2.0
+MNQ_newyork:
+  estado: OK
+  periodos:
+    desarrollo:
+    - '2018-01-02'
+    - '2023-03-31'
+    validacion:
+    - '2023-04-03'
+    - '2024-12-30'
+    oos:
+    - '2024-12-31'
+    - '2026-10-02'
+  candidatos: {}
+  mejor_candidato: null
+  partida:
+    umbral: 0.1
+    objetivo_R: 2.0
+MGC_london:
+  estado: OK
+  periodos:
+    desarrollo:
+    - '2018-01-02'
+    - '2023-04-05'
+    validacion:
+    - '2023-04-06'
+    - '2025-01-02'
+    oos:
+    - '2025-01-03'
+    - '2026-10-02'
+  candidatos: {}
+  mejor_candidato: null
+  partida:
+    umbral: 0.1
+    objetivo_R: 2.0
+MGC_newyork:
+  estado: OK
+  periodos:
+    desarrollo:
+    - '2018-01-02'
+    - '2023-04-10'
+    validacion:
+    - '2023-04-11'
+    - '2025-01-03'
+    oos:
+    - '2025-01-06'
+    - '2026-10-02'
+  candidatos: {}
+  mejor_candidato: null
+  partida:
+    umbral: 0.1
+    objetivo_R: 2.0

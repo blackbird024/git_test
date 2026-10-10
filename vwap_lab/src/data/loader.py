@@ -35,12 +35,12 @@ class Session:
     invalid: Optional[str] = None
 
 
-def load(path, tick_size):
+def load(path, tick_size, bar_minutes=5):
     df = data_io.read_csv(path, "UTC")
     if "volume" not in df.columns:
         raise data_io.DataError("el VWAP necesita la columna volume")
     df["volume"] = pd.to_numeric(df["volume"], errors="coerce")
-    v = data_io.validate(df.tz_convert("America/New_York"), tick_size, 5)
+    v = data_io.validate(df.tz_convert("America/New_York"), tick_size, bar_minutes)
     q = dict(volumen_nan=int(df["volume"].isna().sum()), volumen_cero=int((df["volume"] <= 0).sum()))
     if "contract" in df.columns:
         ch = df["contract"].astype(str)
@@ -48,7 +48,7 @@ def load(path, tick_size):
     return df, v, q
 
 
-def sessions(df: pd.DataFrame, cfg_s: dict, quality: dict):
+def sessions(df: pd.DataFrame, cfg_s: dict, quality: dict, bar_minutes: int = 5):
     tz = cfg_s["timezone"]
     st, ee, fl = _t(cfg_s["start"]), _t(cfg_s["entry_end"]), _t(cfg_s["flat"])
     loc = df.index.tz_convert(tz)
@@ -60,7 +60,6 @@ def sessions(df: pd.DataFrame, cfg_s: dict, quality: dict):
         import exchange_calendars as xc
         cal = xc.get_calendar(cfg_s["calendar"])
         sch = cal.schedule.loc[max(pd.Timestamp(loc[0].date()), cal.first_session):min(pd.Timestamp(loc[-1].date()), cal.last_session)]
-    expected = (b - a) // 5 + 1
     dates = pd.Index(loc[sel].date)
     contract = df["contract"].astype(str).to_numpy() if "contract" in df.columns else None
     vol = df["volume"].to_numpy()
@@ -77,11 +76,11 @@ def sessions(df: pd.DataFrame, cfg_s: dict, quality: dict):
             else:
                 close_local = sch.loc[day, "close"].tz_convert(tz)
                 if close_local.time() < _t("16:00") and close_local.time() <= fl:
-                    flat = (close_local - pd.Timedelta(minutes=5)).time()
+                    flat = (close_local - pd.Timedelta(minutes=bar_minutes)).time()
                     keep = (loc[ix].hour * 60 + loc[ix].minute) <= flat.hour * 60 + flat.minute
                     ix = ix[keep]
         start_local = loc[ix]
-        n_exp = (flat.hour * 60 + flat.minute - a) // 5 + 1
+        n_exp = (flat.hour * 60 + flat.minute - a) // bar_minutes + 1
         if reason is None and len(ix) < quality["min_bar_coverage"] * n_exp:
             reason = f"cobertura de velas {len(ix)}/{n_exp}"
         if reason is None and (np.isnan(vol[ix]).any() or vol[ix].sum() <= 0):

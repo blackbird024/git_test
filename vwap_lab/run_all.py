@@ -28,9 +28,11 @@ from .src.backtest.engine import run_session, to_df
 from .src.data import loader
 from .src.indicators import core
 from .src.metrics.stats import day_block_bootstrap, summary
-from .src.strategies.signals import STRATEGIES, signals
+from .src.strategies import signals as _sig
+from .src.strategies.signals import signals
 
 SESSION_MIN = {"london": 180, "newyork": 385}
+STRATEGIES = _sig.STRATEGIES
 
 
 # ───────────────────────── preparación ─────────────────────────
@@ -39,7 +41,7 @@ def prepare(cfg, sym, sname):
     path = Path(ic["data_file"])
     if not path.exists():
         return None, f"no existe {path}"
-    df, v, q = loader.load(path, ic["tick_size"])
+    df, v, q = loader.load(path, ic["tick_size"], cfg.get("bar_minutes", 5))
     if not v.ok:
         return None, "datos inválidos: " + "; ".join(v.fatal)
     o, h, l, c, vol = (df[k].to_numpy(float) for k in ("open", "high", "low", "close", "volume"))
@@ -50,7 +52,7 @@ def prepare(cfg, sym, sname):
     d50 = np.full(len(c), np.nan)
     d50[k:] = g["ema50"][k:] - g["ema50"][:-k]
     scfg = dict(cfg["sessions"][sname], name=sname)
-    sess = loader.sessions(df, scfg, cfg["data_quality"])
+    sess = loader.sessions(df, scfg, cfg["data_quality"], cfg.get("bar_minutes", 5))
     items = []
     for s in sess:
         if s.invalid:
@@ -87,7 +89,7 @@ def run_config(prep, cfg, strat, thr, target, costs_name="base", stop_mode="bar"
         side, ref = signals(a, strat, thr, p, tick)
         raw += int((side != 0).sum())
         tr, eq = run_session(s, a, side, ref, prep["inst"], costs, p, risk, eq, strat, thr, target, stop_mode,
-                             max_trades or p["max_trades_per_session"], daily_loss_R, skipped)
+                             max_trades or p["max_trades_per_session"], daily_loss_R, skipped, cfg.get("bar_minutes", 5))
         out += tr
     t = to_df(out)
     return t, raw, skipped
@@ -270,7 +272,7 @@ def step_oos(cfg, out_dir, only=None):
                                esperanza_R=cur.R.mean() if len(cur) else np.nan, neto_usd=float(cur.net_usd.sum())))
         pd.DataFrame(wf).to_csv(d / "walk_forward.csv", index=False)
         # ── descriptivo: pendiente del VWAP frente al resultado (sin filtro, objetivo 2R, desarrollo + validación)
-        allt = pd.concat([grid_trades[(s_, None, 2.0)] for s_ in STRATEGIES])
+        allt = pd.concat([grid_trades[(s_, None, 2.0)] for s_ in STRATEGIES if (s_, None, 2.0) in grid_trades])
         allt = allt[allt.date <= per["validacion"][1]]
         if len(allt):
             allt["pend_a_favor"] = allt.slope * allt.side
@@ -292,6 +294,8 @@ def main(argv=None):
     ap.add_argument("--only", nargs="*", help="limitar a estos instrumentos (fusiona con las reglas ya congeladas)")
     a = ap.parse_args(argv)
     cfg = yaml.safe_load(Path(a.config).read_text())
+    global STRATEGIES
+    STRATEGIES = tuple(cfg.get("strategies", _sig.STRATEGIES))
     np.random.seed(cfg["seed"])
     out = Path(cfg["output_dir"])
     out.mkdir(parents=True, exist_ok=True)

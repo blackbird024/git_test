@@ -1,0 +1,97 @@
+{
+  "validacion": {
+    "rows": 3057355,
+    "first": "2018-01-01 18:00:00-05:00",
+    "last": "2026-10-02 16:59:00-04:00",
+    "duplicates": 0,
+    "out_of_order": 0,
+    "impossible_ohlc": 0,
+    "non_positive": 0,
+    "off_grid_prices": 0,
+    "misaligned_timestamps": 0,
+    "suspicious_jumps": 0,
+    "bars_outside_rth": 2196577,
+    "rth_sessions": 2260,
+    "rth_sessions_with_missing_bars": 229,
+    "rth_missing_bars": 20622,
+    "fatal": [],
+    "warnings": [
+      "229 sesiones regulares incompletas (20622 velas ausentes; incluye medias jornadas y festivos con Globex abierto)"
+    ]
+  },
+  "calidad": {
+    "volumen_nan": 0,
+    "volumen_cero": 0,
+    "cambios_de_contrato": 44
+  },
+  "sesiones": 2260,
+  "sesiones_validas": 2101,
+  "invalidas": {
+    "festivo XNYS": 60,
+    "primera sesión tras rollover (EMA/ATR afectados por el salto)": 42,
+    "cobertura de velas 316/386": 3,
+    "cobertura de velas 282/386": 3,
+    "cobertura de velas 286/386": 2,
+    "cobertura de velas 127/386": 2,
+    "cobertura de velas 218/386": 2,
+    "cobertura de velas 305/386": 1,
+    "cobertura de velas 88/386": 1,
+    "cobertura de velas 317/386": 1,
+    "cobertura de velas 301/386": 1,
+    "cobertura de velas 60/386": 1,
+    "cobertura de velas 344/386": 1,
+    "cobertura de velas 69/386": 1,
+    "cobertura de velas 326/386": 1,
+    "cobertura de velas 45/386": 1,
+    "cobertura de velas 331/386": 1,
+    "cobertura de velas 65/386": 1,
+    "cobertura de velas 347/386": 1,
+    "cobertura de velas 48/386": 1,
+    "cobertura de velas 64/386": 1,
+    "cobertura de velas 231/386": 1,
+    "cobertura de velas 56/386": 1,
+    "cobertura de velas 315/386": 1,
+    "cobertura de velas 41/386": 1,
+    "cobertura de velas 334/386": 1,
+    "cobertura de velas 85/386": 1,
+    "cobertura de velas 253/386": 1,
+    "cobertura de velas 87/386": 1,
+    "cobertura de velas 252/386": 1,
+    "cobertura de velas 300/386": 1,
+    "cobertura de velas 68/386": 1,
+    "cobertura de velas 273/386": 1,
+    "cobertura de velas 276/386": 1,
+    "cobertura de velas 328/386": 1,
+    "cobertura de velas 83/386": 1,
+    "cobertura de velas 91/386": 1,
+    "cobertura de velas 242/386": 1,
+    "cobertura de velas 93/386": 1,
+    "cobertura de velas 232/386": 1,
+    "cobertura de velas 57/386": 1,
+    "cobertura de velas 274/386": 1,
+    "cobertura de velas 234/386": 1,
+    "cobertura de velas 199/386": 1,
+    "cobertura de velas 205/386": 1,
+    "cobertura de velas 228/386": 1,
+    "cobertura de velas 203/386": 1,
+    "cobertura de velas 264/386": 1,
+    "cobertura de velas 178/386": 1,
+    "cobertura de velas 202/386": 1,
+    "cobertura de velas 233/386": 1,
+    "cobertura de velas 142/386": 1
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-02",
+      "2023-04-10"
+    ],
+    "validacion": [
+      "2023-04-11",
+      "2025-01-03"
+    ],
+    "oos": [
+      "2025-01-06",
+      "2026-10-02"
+    ]
+  }
+}
