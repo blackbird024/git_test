@@ -35,6 +35,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 20:30:40 | `20261009_203040_video_barrida_ob` | Estrategia de un vídeo de YouTube: barrida de PDH/Asia/Londres + liquidity sweep H1/H4 + vela envolvente M3/M5, 1:1 (5 variantes) | Versiones del vídeo negativas en desarrollo y prueba (M3: −5,1/−4,2/−4,4 $/op); acierto 48-50 % con 1:1 = moneda al aire menos costes. El filtro H1/H4 no mejora | ❌ RECHAZADA |
 
+| 09:45:35 (10-oct) | `20261010_094535_teoria_caja` | "Teoría de la caja" intradía: caja = PDH/PDL, vender en el 20 % superior, comprar en el 20 % inferior, stop fuera de la caja (4 variantes) | Ninguna gana en los 3 periodos; dos versiones pierden con IC90 entero por debajo de 0 (−9,9 y −11,7 $/op). Vender arriba / comprar abajo va contra la tendencia intradía del NQ | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

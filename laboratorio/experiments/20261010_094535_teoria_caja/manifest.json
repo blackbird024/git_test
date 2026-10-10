@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-10-10T09:45:44",
+  "version_codigo": "01b0f2a+cambios_sin_commit",
+  "experimento": "teoría de la caja (PDH/PDL) intradía",
+  "variantes": {
+    "entrada limite, objetivo media": {
+      "entry": "limite",
+      "target": "media"
+    },
+    "entrada limite, objetivo zona_contraria": {
+      "entry": "limite",
+      "target": "zona_contraria"
+    },
+    "entrada confirmacion, objetivo media": {
+      "entry": "confirmacion",
+      "target": "media"
+    },
+    "entrada confirmacion, objetivo zona_contraria": {
+      "entry": "confirmacion",
+      "target": "zona_contraria"
+    }
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
