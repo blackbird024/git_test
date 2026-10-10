@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-10-10T09:50:14",
+  "version_codigo": "6166c92+cambios_sin_commit",
+  "experimento": "CRT usuario: 4 h (hora Italia) + vela 1 h que rompe y cierra dentro",
+  "variantes": {
+    "C1 4:00-8:00 Italia, objetivo extremo_opuesto": {
+      "c1_start": 4,
+      "target": "extremo_opuesto"
+    },
+    "C1 4:00-8:00 Italia, objetivo 2R": {
+      "c1_start": 4,
+      "target": "2R"
+    },
+    "C1 0:00-4:00 Italia, objetivo extremo_opuesto": {
+      "c1_start": 0,
+      "target": "extremo_opuesto"
+    },
+    "C1 0:00-4:00 Italia, objetivo 2R": {
+      "c1_start": 0,
+      "target": "2R"
+    }
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
