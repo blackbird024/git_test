@@ -34,8 +34,36 @@ MNQ_newyork:
     umbral: 0.1
     objetivo_R: 2.0
 MGC_london:
-  estado: BLOQUEADO
-  motivo: no existe vwap_lab/data/cache/MGC_5m.csv
+  estado: OK
+  periodos:
+    desarrollo:
+    - '2018-01-02'
+    - '2023-04-12'
+    validacion:
+    - '2023-04-13'
+    - '2025-01-07'
+    oos:
+    - '2025-01-08'
+    - '2026-10-02'
+  candidatos: {}
+  mejor_candidato: null
+  partida:
+    umbral: 0.1
+    objetivo_R: 2.0
 MGC_newyork:
-  estado: BLOQUEADO
-  motivo: no existe vwap_lab/data/cache/MGC_5m.csv
+  estado: OK
+  periodos:
+    desarrollo:
+    - '2018-01-02'
+    - '2023-04-04'
+    validacion:
+    - '2023-04-05'
+    - '2024-12-31'
+    oos:
+    - '2025-01-02'
+    - '2026-10-02'
+  candidatos: {}
+  mejor_candidato: null
+  partida:
+    umbral: 0.1
+    objetivo_R: 2.0

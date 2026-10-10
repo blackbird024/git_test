@@ -7,7 +7,9 @@
 
 Regla de selección (fijada antes de ver resultados): para cada estrategia, entre umbral ∈ {sin filtro, 0,05 … 0,20} y
 objetivo ∈ {1R, 1,5R, 2R}, se elige la configuración con mayor esperanza en R en VALIDACIÓN entre las que tienen
-esperanza > 0 en DESARROLLO y al menos `min_trades_validation` operaciones en validación. Si ninguna cumple → sin
+esperanza > 0 en DESARROLLO, esperanza > 0 en VALIDACIÓN y al menos `min_trades_validation` operaciones en validación.
+(La condición "> 0 en validación" se añadió el 10-oct-2026 ANTES de calcular el OOS del oro, para cumplir el criterio
+14 del usuario; no altera MNQ, que no tenía configuraciones positivas en desarrollo.) Si ninguna cumple → sin
 candidato. El "mejor candidato" de cada instrumento-sesión es el de mayor min(esperanza desarrollo, validación).
 Se informa siempre además la configuración de partida (umbral 0,10, objetivo 2R).
 """
@@ -43,7 +45,7 @@ def prepare(cfg, sym, sname):
     o, h, l, c, vol = (df[k].to_numpy(float) for k in ("open", "high", "low", "close", "volume"))
     p = cfg["strategy"]
     g = dict(o=o, h=h, l=l, c=c, ema9=core.ema(c, 9), ema20=core.ema(c, 20), ema21=core.ema(c, 21),
-             ema50=core.ema(c, 50), atr=core.atr(h, l, c, p["atr_period"]))
+             ema50=core.ema(c, 50), atr=core.atr(h, l, c, p["atr_period"]), rsi=core.rsi(c, 14))
     k = p["ema50_slope_bars"]
     d50 = np.full(len(c), np.nan)
     d50[k:] = g["ema50"][k:] - g["ema50"][:-k]
@@ -103,12 +105,15 @@ def psum(t, prep, per, key):
 
 
 # ───────────────────────── paso 1: selección (sin OOS) ─────────────────────────
-def step_select(cfg, out_dir):
-    frozen = {}
+def step_select(cfg, out_dir, only=None):
+    fpath = out_dir / "reglas_congeladas.yaml"
+    frozen = yaml.safe_load(fpath.read_text()) if (only and fpath.exists()) else {}
     p = cfg["strategy"]
     for sym, ic in cfg["instruments"].items():
         for sname in ic["sessions"]:
             key = f"{sym}_{sname}"
+            if only and sym not in only:
+                continue
             prep, err = prepare(cfg, sym, sname)
             d = out_dir / key
             d.mkdir(parents=True, exist_ok=True)
@@ -133,7 +138,7 @@ def step_select(cfg, out_dir):
             sel = cfg["selection"]
             cands = {}
             for strat, g in grid.groupby("estrategia"):
-                ok = g[(g.validacion_n >= sel["min_trades_validation"]) &
+                ok = g[(g.validacion_n >= sel["min_trades_validation"]) & (g.validacion_esperanza_R > 0) &
                        ((g.desarrollo_esperanza_R > 0) if sel["require_positive_development"] else True)]
                 if len(ok):
                     b = ok.sort_values("validacion_esperanza_R", ascending=False).iloc[0]
@@ -153,13 +158,15 @@ def step_select(cfg, out_dir):
 
 
 # ───────────────────────── paso 2: OOS, estrés, robustez, walk-forward ─────────────────────────
-def step_oos(cfg, out_dir):
+def step_oos(cfg, out_dir, only=None):
     frozen = yaml.safe_load((out_dir / "reglas_congeladas.yaml").read_text())
     p = cfg["strategy"]
     for key, fz in frozen.items():
         if fz.get("estado") != "OK":
             continue
         sym, sname = key.split("_", 1)
+        if only and sym not in only:
+            continue
         prep, _ = prepare(cfg, sym, sname)
         per = fz["periodos"]
         d = out_dir / key
@@ -282,6 +289,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="vwap_lab/config/vwap_lab.yaml")
     ap.add_argument("--step", default="all", choices=["select", "oos", "report", "all"])
+    ap.add_argument("--only", nargs="*", help="limitar a estos instrumentos (fusiona con las reglas ya congeladas)")
     a = ap.parse_args(argv)
     cfg = yaml.safe_load(Path(a.config).read_text())
     np.random.seed(cfg["seed"])
@@ -291,9 +299,9 @@ def main(argv=None):
                                                       pandas=pd.__version__, numpy=np.__version__, config=cfg), indent=2,
                                                  ensure_ascii=False, default=str))
     if a.step in ("select", "all"):
-        step_select(cfg, out)
+        step_select(cfg, out, a.only)
     if a.step in ("oos", "all"):
-        step_oos(cfg, out)
+        step_oos(cfg, out, a.only)
     if a.step in ("report", "all"):
         step_report(cfg, out)
     return 0

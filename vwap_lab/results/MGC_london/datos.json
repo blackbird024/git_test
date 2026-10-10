@@ -1,0 +1,61 @@
+{
+  "validacion": {
+    "rows": 617168,
+    "first": "2018-01-01 18:00:00-05:00",
+    "last": "2026-10-02 16:55:00-04:00",
+    "duplicates": 0,
+    "out_of_order": 0,
+    "impossible_ohlc": 0,
+    "non_positive": 0,
+    "off_grid_prices": 0,
+    "misaligned_timestamps": 0,
+    "suspicious_jumps": 0,
+    "bars_outside_rth": 443669,
+    "rth_sessions": 2260,
+    "rth_sessions_with_missing_bars": 120,
+    "rth_missing_bars": 2781,
+    "fatal": [],
+    "warnings": [
+      "120 sesiones regulares incompletas (2781 velas ausentes; incluye medias jornadas y festivos con Globex abierto)"
+    ]
+  },
+  "calidad": {
+    "volumen_nan": 0,
+    "volumen_cero": 0,
+    "cambios_de_contrato": 44
+  },
+  "sesiones": 2259,
+  "sesiones_validas": 2196,
+  "invalidas": {
+    "primera sesión tras rollover (EMA/ATR afectados por el salto)": 44,
+    "cobertura de velas 17/37": 2,
+    "cobertura de velas 15/37": 2,
+    "cobertura de velas 10/37": 2,
+    "cobertura de velas 12/37": 2,
+    "cobertura de velas 14/37": 1,
+    "cobertura de velas 11/37": 1,
+    "cobertura de velas 21/37": 1,
+    "cobertura de velas 32/37": 1,
+    "cobertura de velas 19/37": 1,
+    "cobertura de velas 30/37": 1,
+    "cobertura de velas 20/37": 1,
+    "cobertura de velas 22/37": 1,
+    "cobertura de velas 27/37": 1,
+    "cobertura de velas 7/37": 1,
+    "cobertura de velas 28/37": 1
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-02",
+      "2023-04-12"
+    ],
+    "validacion": [
+      "2023-04-13",
+      "2025-01-07"
+    ],
+    "oos": [
+      "2025-01-08",
+      "2026-10-02"
+    ]
+  }
+}

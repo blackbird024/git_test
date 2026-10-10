@@ -11,6 +11,8 @@ es un cruce. Todas las condiciones usan valores de la vela t ya cerrada; nada po
   E  cruce de C; en las 3 velas siguientes una vela retestea la EMA21 (mínimo <= EMA21 + tolerancia y
      >= EMA21 − profundidad·ATR) y cierra por encima → señal en esa vela; si no, la señal caduca
   F  C + cierre > EMA50 y EMA50[t] − EMA50[t−6] >= 0 (largos; cortos espejo)
+Filtro RSI opcional (experimento separado, `rsi_filter`): RSI(14) > 50 en largos y < 50 en cortos en la vela de señal
+(en E, en la vela del cruce).
 Filtro de VWAP plano (todas): pendiente >= umbral (largos) / <= −umbral (cortos); umbral None = sin filtro.
 En E el filtro se evalúa en la vela del cruce.
 """
@@ -61,6 +63,9 @@ def signals(a: dict, strat: str, thr, p: dict, tick: float):
             S &= (c < e50) & (d50_all <= 0)
     L &= _slope_ok(a["slope"], thr, 1)
     S &= _slope_ok(a["slope"], thr, -1)
+    if p.get("rsi_filter") is not None and "rsi" in a:          # experimento RSI: largos RSI > nivel, cortos < 100 − nivel
+        L &= a["rsi"] > p["rsi_filter"]
+        S &= a["rsi"] < 100 - p["rsi_filter"]
     if strat != "E":
         side[L] = 1
         side[S] = -1

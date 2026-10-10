@@ -143,3 +143,17 @@ def test_london_sessions_follow_uk_clock(tmp_path):
     by = {str(x.date.date()): x for x in s}
     assert by["2024-03-28"].start[0].tz_convert("UTC").hour == 8 and by["2024-04-02"].start[0].tz_convert("UTC").hour == 7
     assert by["2024-04-02"].flat_pos == len(by["2024-04-02"].idx) - 1
+
+
+def test_rsi_filter_and_no_lookahead():
+    rng = np.random.default_rng(1)
+    c = 100 + np.cumsum(rng.normal(size=300))
+    c2 = c.copy(); c2[200:] -= 40
+    assert np.allclose(core.rsi(c)[:200], core.rsi(c2)[:200])
+    a = _arr()
+    a["ema9"][5:] = 101; a["c"][5:] = 101.5
+    a["rsi"] = np.full(20, 45.0)
+    P2 = dict(P, rsi_filter=50)
+    assert signals(a, "A", 0.10, P2, 0.25)[0].sum() == 0             # largo con RSI < 50: filtrado
+    a["rsi"][:] = 60
+    assert signals(a, "A", 0.10, P2, 0.25)[0][5] == 1

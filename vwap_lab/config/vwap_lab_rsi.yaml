@@ -1,8 +1,9 @@
+# EXPERIMENTO SEPARADO: mismas reglas que vwap_lab.yaml + filtro RSI(14) 50. Protocolo propio (selección, congelación, OOS).
 # Laboratorio VWAP + EMA. Todos los parámetros son editables.
 # Comisiones y especificaciones NO verificadas en fuentes oficiales desde este entorno: revisarlas antes de usar.
 
 seed: 20261010
-output_dir: vwap_lab/results
+output_dir: vwap_lab/results_rsi
 split: [0.6, 0.2, 0.2]          # desarrollo / validación / OOS final, por sesiones y en orden cronológico
 bootstrap_samples: 3000
 bootstrap_block_days: 5
@@ -62,6 +63,7 @@ strategy:
   retest_max_depth_atr: 0.5     # ...pero no más de 0,5 ATR por debajo (si no, es una ruptura, no un retesteo)
   ema50_slope_bars: 6           # F: EMA50 no descendente = EMA50[t] − EMA50[t−6] >= 0
   max_trades_per_session: 2
+  rsi_filter: 50                # EXPERIMENTO RSI (fijado antes de ver resultados): largos RSI(14) > 50, cortos < 50
   min_risk_to_cost: 3.0         # se descarta si el riesgo por contrato < 3 × coste ida y vuelta
 
 risk:

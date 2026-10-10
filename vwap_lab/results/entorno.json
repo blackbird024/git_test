@@ -27,7 +27,7 @@
       },
       "MGC": {
         "data_file": "vwap_lab/data/cache/MGC_5m.csv",
-        "data_label": "pendiente: GC.v.0 o MGC.v.0 1 min de Databento (coste estimado 10-11 USD, sin autorizar)",
+        "data_label": "Databento GLBX.MDP3 GC.v.0 1 min (comprado el 10-oct-2026, 11,16 USD) → 5 min con volumen; precios de GC usados como MGC",
         "tick_size": 0.1,
         "tick_value": 1.0,
         "point_value": 10.0,

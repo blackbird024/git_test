@@ -33,3 +33,12 @@ def vwap_slope(vwap: np.ndarray, atr_: np.ndarray, k=6) -> np.ndarray:
     if len(vwap) > k:
         out[k:] = (vwap[k:] - vwap[:-k]) / atr_[k:]
     return out
+
+
+def rsi(close: np.ndarray, n=14) -> np.ndarray:
+    """RSI de Wilder sobre cierres de 5 min, continuo en toda la serie (solo usa cierres pasados y el actual)."""
+    d = np.diff(close, prepend=close[0])
+    up = pd.Series(np.clip(d, 0, None)).ewm(alpha=1 / n, adjust=False).mean().to_numpy()
+    dn = pd.Series(np.clip(-d, 0, None)).ewm(alpha=1 / n, adjust=False).mean().to_numpy()
+    with np.errstate(divide="ignore", invalid="ignore"):
+        return np.where(dn == 0, 100.0, 100 - 100 / (1 + up / dn))
