@@ -43,6 +43,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 17:02:50 (10-oct) | `20261010_170250_vwap_ema9_rsi` | VWAP + EMA 9 + RSI(14) en MNQ, 5 y 15 min, salida 2R o cruce de EMA 9 (4 variantes, hasta 3 ops/día) | Negativa antes de costes en todas (R bruto −0,03 a −0,05); netas −3 a −8 $/op fuera de muestra; 2 variantes con IC90 entero por debajo de 0 | ❌ RECHAZADA |
 
+| 07:56:26 (11-oct) | `20261011_075626_ib_mid_pullback` | IB mid pullback (vídeo "A+ setup"): primera hora direccional (>= 0,5 rango IB), retroceso al IB mid con cierre a favor (con/sin mecha de rechazo), objetivo extremo del IB o 2R | Negativa en desarrollo y validación en las 4 variantes; positiva solo en 2025-26 (sin mecha, 103 ops). La versión "A+" con mecha es la peor (−0,36R en desarrollo) | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-11T07:56:43",
+  "version_codigo": "eefc1e6+cambios_sin_commit",
+  "experimento": "IB mid pullback (vídeo)",
+  "reglas": "Initial Balance (IB) mid pullback (vídeo de YouTube, \"A+ setup\"), traducido a reglas mecánicas para MNQ.\nReglas fijadas ANTES de ver resultados:\n\n1. IB = máximo y mínimo de 9:30 a 10:30 ET (velas de 5 min 9:30…10:25). IB mid = punto medio.\n2. \"Movimiento direccional\" en la primera hora: |cierre de 10:25-10:30 − apertura 9:30| >= 0,5 × rango del IB.\n   Dirección = signo de ese movimiento. Si no hay movimiento direccional, no se opera.\n3. Desde las 10:30 (IB ya fijado; el vídeo dice que así lo hace \"la mayoría de las veces\") se espera un retroceso al\n   IB mid: vela de 5 min cuyo mínimo (largos) llega al mid (<= mid + 2 ticks) y que CIERRA por encima del mid.\n   Variante \"con mecha\": además la mecha inferior es >= 40 % del rango de la vela (rechazo).\n   Si antes de la señal una vela cierra por debajo del mínimo del IB (largos), el día se cancela.\n4. Entrada en la apertura de la vela siguiente (señales hasta las 15:00). Stop: mínimo de la vela de señal − 1 tick.\n5. Objetivo: el extremo del IB a favor (máximo del IB para largos) o 2R. Cierre forzoso 15:55. Una operación por día.\nLa entrada \"por momentum\" del vídeo es discrecional y no se modela.\n",
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
