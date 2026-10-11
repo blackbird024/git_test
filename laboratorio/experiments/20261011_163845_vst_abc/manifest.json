@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-11T16:39:17",
+  "version_codigo": "dd3e306+cambios_sin_commit",
+  "experimento": "VST ABC / pullback (Robin Hood)",
+  "reglas": "Estrategia \"ABC / pullback de rompimiento\" de Voy a Ser Trader (\"Robin Hood\"), traducida a reglas mecánicas para MNQ.\nReglas fijadas ANTES de ver resultados (la versión del vídeo tiene partes discrecionales; esta es la más fiel posible):\n\nVelas de 5 min de la sesión regular, con volumen (suma del volumen de 1 min). Señales de 10:00 a 15:00 ET.\nSwings: pivote 2/2 (máximo/mínimo estrictamente mayor/menor que las 2 velas a cada lado), confirmado al cierre de la\n2.ª vela posterior. Solo se usan pivotes ya confirmados.\nLargo (corto espejo):\n  0. Contexto (\"fuerza dominante\"): EMA20 > EMA200 en 5 min (continuas) y cierre > EMA20 en la vela A-alta… se exige\n     EMA20 > EMA200 en la vela de señal.\n  1. Impulso A: último swing low confirmado L0 seguido de un swing high confirmado H1, con H1 − L0 >= 1 × ATR14 (5 min).\n  2. Retroceso B \"ordenado\": desde H1, el mínimo B_low queda entre el 23,6 % y el 78,6 % del impulso (sin perder L0),\n     dura al menos 2 velas y su volumen medio es MENOR que el del impulso (\"secado\").\n  3. Inicio de C: vela alcista que cierra por encima del máximo de la vela anterior, con volumen > volumen medio de B.\n  4. Entrada en la apertura siguiente. Stop: B_low − 1 tick.\nObjetivos (variantes): máximo anterior H1 (el que el vídeo dice que da 60-70 % de acierto; se descarta la operación si\nH1 está a menos de 0,5R), proyección del impulso (entrada + (H1 − L0)) y 2R fijo. Cierre 15:55; máx. 3 operaciones/día.\n",
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

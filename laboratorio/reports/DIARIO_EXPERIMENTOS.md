@@ -45,6 +45,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 07:56:26 (11-oct) | `20261011_075626_ib_mid_pullback` | IB mid pullback (vídeo "A+ setup"): primera hora direccional (>= 0,5 rango IB), retroceso al IB mid con cierre a favor (con/sin mecha de rechazo), objetivo extremo del IB o 2R | Negativa en desarrollo y validación en las 4 variantes; positiva solo en 2025-26 (sin mecha, 103 ops). La versión "A+" con mecha es la peor (−0,36R en desarrollo) | ❌ RECHAZADA |
 
+| 16:38:45 (11-oct) | `20261011_163845_vst_abc` | VST "Robin Hood" ABC / pullback de rompimiento: EMA20>EMA200, impulso ≥1 ATR (pivotes 2/2), retroceso 23,6-78,6 % con volumen secándose, vela de inicio de C con volumen; objetivo máximo anterior, proyección del impulso o 2R | Negativa en desarrollo y prueba en las 3 variantes. Máximo anterior: acierto 47-55 % pero −7,1 / −2,0 / −6,8 $/op. Proyección y 2R: R bruto ≈ 0 (sin ventaja antes de costes); FM 2022-26 ≈ 0 $/op | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
