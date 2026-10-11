@@ -1,0 +1,276 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// ABC / pullback de rompimiento («Robin Hood», Voy a Ser Trader) · NQ / MNQ, sesión regular de NY
+// Mismas reglas que laboratorio/run_vst_abc.py (experimento 20261011_163845_vst_abc):
+//   0. Contexto: EMA20 > EMA200 (largos) / EMA20 < EMA200 (cortos). EMAs y ATR14 calculados SOLO con velas de
+//      5 min de 9:30-16:00 NY, encadenadas día tras día (igual que el backtest).
+//   1. Impulso A: último swing low confirmado L0 → swing high confirmado H1 (pivotes 2/2 estrictos dentro del día,
+//      confirmados 2 velas después), con H1 − L0 >= 1 × ATR14.
+//   2. Retroceso B: desde H1, el mínimo B queda entre el 23,6 % y el 78,6 % del impulso, sin perder L0 ni superar H1,
+//      dura al menos 2 velas y su volumen medio es MENOR que el del impulso (L0…H1).
+//   3. Inicio de C: vela alcista que cierra por encima del máximo de la anterior con volumen > volumen medio de B.
+//   4. Entrada en la apertura de la vela siguiente · stop = mínimo de B − 1 tick (cortos: espejo).
+//   Señales cuyo cierre cae entre 10:00 y 15:00 NY (16:00-21:00 Italia), máx. 3 operaciones/día, una a la vez,
+//   cierre forzoso a las 15:55 NY (21:55 Italia).
+//   Objetivo (elige): máximo anterior H1 (se descarta si está a < 0,5R) · proyección del impulso · 2R.
+// RESULTADO DEL BACKTEST (MNQ 2018-2026, costes base): NEGATIVO en desarrollo (2018-21) y prueba (2025-26) con los
+//   tres objetivos. Máximo anterior: acierta 47-55 % pero −2 a −7 $/op. Proyección / 2R: 0R antes de costes.
+//   → ❌ RECHAZADA. Este indicador sirve para ESTUDIAR la idea en el gráfico, no para operarla.
+// Diferencia con el backtest: aquí la gestión se hace con velas de 5 min (si stop y objetivo caben en la misma vela,
+//   cuenta stop); el backtest la hace minuto a minuto. Úsalo en un gráfico de 5 minutos de MNQ1! / NQ1!.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("ABC pullback VST · NQ", "VST ABC", overlay = true, max_labels_count = 500, max_lines_count = 500)
+
+TZ        = "America/New_York"
+tgtMode   = input.string("Máximo anterior", "Objetivo", options = ["Máximo anterior", "Proyección del impulso", "2R"])
+useLong   = input.bool(true, "Largos")
+useShort  = input.bool(true, "Cortos")
+atrMult   = input.float(1.0, "Impulso mínimo (× ATR14)", step = 0.1)
+retMin    = input.float(0.236, "Retroceso mínimo", step = 0.001)
+retMax    = input.float(0.786, "Retroceso máximo", step = 0.001)
+maxTrades = input.int(3, "Máx. operaciones por día", minval = 1)
+ptVal     = input.float(2.0, "$ por punto (MNQ 2 · NQ 20)")
+costTk    = input.float(2.0, "Deslizamiento por lado (ticks)", step = 0.5)
+commSide  = input.float(0.75, "Comisión + tasas por lado ($)", step = 0.01)
+showABC   = input.bool(true, "Dibujar A-B del setup")
+showPanel = input.bool(true, "Panel")
+colUp     = input.color(#26A69A, "Largo")
+colDn     = input.color(#EF5350, "Corto / stop")
+colTgt    = input.color(#C9A227, "Objetivo")
+
+is5 = timeframe.period == "5"
+if barstate.islast and not is5
+    label.new(bar_index, high, "VST ABC: usa un gráfico de 5 minutos", color = color.orange, textcolor = color.black)
+
+fmt(float x) => str.tostring(x, format.mintick)
+
+inRth    = not na(time(timeframe.period, "0930-1600", TZ))
+rthStart = inRth and not inRth[1]
+hm       = hour(time, TZ) * 100 + minute(time, TZ)
+hmC      = hour(time_close, TZ) * 100 + minute(time_close, TZ)
+
+// ── EMA20, EMA200 y ATR14 (Wilder) solo con velas de la sesión regular
+var float e20 = na
+var float e200 = na
+var float atr = na
+var float pcRth = na
+if inRth and is5
+    e20  := na(e20) ? close : e20 + 2.0 / 21.0 * (close - e20)
+    e200 := na(e200) ? close : e200 + 2.0 / 201.0 * (close - e200)
+    tr = na(pcRth) ? high - low : math.max(high - low, math.abs(high - pcRth), math.abs(low - pcRth))
+    atr := na(atr) ? tr : atr + (tr - atr) / 14.0
+    pcRth := close
+plot(inRth and is5 ? e20 : na, "EMA20 (RTH)", color.new(color.blue, 30), style = plot.style_linebr)
+plot(inRth and is5 ? e200 : na, "EMA200 (RTH)", color.new(color.gray, 20), 2, style = plot.style_linebr)
+
+// ── velas del día
+var array<float> aH = array.new<float>()
+var array<float> aL = array.new<float>()
+var array<float> aV = array.new<float>()
+var array<int>   aB = array.new<int>()        // bar_index de cada vela del día
+var array<int>   hp = array.new<int>()        // pivotes altos (índice dentro del día)
+var array<int>   lp = array.new<int>()
+
+// estado de la operación
+var int   pos = 0
+var float ent = na
+var float stp = na
+var float tgt = na
+var int   pend = 0
+var float pStop = na
+var float pLvl = na
+var float pImp = na
+var float pRef = na
+var int   nDay = 0
+var line  lnS = na
+var line  lnT = na
+// estadísticas
+var int   nOps = 0
+var int   nWin = 0
+var float netUsd = 0.0
+var float dayUsd = 0.0
+
+tick = syminfo.mintick
+slipPts = costTk * tick
+
+// Busca el setup en la vela actual t (índice dentro del día). s = 1 largos, −1 cortos.
+setup(int s) =>
+    int t = aH.size() - 1
+    bool ok = false
+    float st = na
+    float lvl = na
+    float imp = na
+    int iP = na
+    int iQ = na
+    if t >= 4
+        array<int> pivA = s == 1 ? hp : lp     // pivote del final del impulso (H1 / L1)
+        array<int> pivB = s == 1 ? lp : hp     // pivote del inicio (L0 / H0)
+        int P = -1
+        if pivA.size() > 0
+            for k = pivA.size() - 1 to 0
+                if pivA.get(k) <= t - 2
+                    P := pivA.get(k)
+                    break
+        int Q = -1
+        if P >= 0 and pivB.size() > 0
+            for k = pivB.size() - 1 to 0
+                if pivB.get(k) < P
+                    Q := pivB.get(k)
+                    break
+        if P >= 0 and Q >= 0 and t - P >= 3
+            float ext = s == 1 ? aH.get(P) : aL.get(P)
+            float org = s == 1 ? aL.get(Q) : aH.get(Q)
+            imp := s * (ext - org)
+            float bExt = s == 1 ? 1e12 : -1e12      // mínimo de B (largos) / máximo de B (cortos)
+            float bOpp = s == 1 ? -1e12 : 1e12      // no debe superar H1 / perder L1
+            float vb = 0.0
+            for i = P + 1 to t - 1
+                bExt := s == 1 ? math.min(bExt, aL.get(i)) : math.max(bExt, aH.get(i))
+                bOpp := s == 1 ? math.max(bOpp, aH.get(i)) : math.min(bOpp, aL.get(i))
+                vb += aV.get(i)
+            vb /= (t - 1 - P)
+            float va = 0.0
+            for i = Q to P
+                va += aV.get(i)
+            va /= (P - Q + 1)
+            float ret = s * (ext - bExt) / imp
+            bool trig = s == 1 ? (close > open and close > aH.get(t - 1)) : (close < open and close < aL.get(t - 1))
+            ok := imp >= atrMult * atr and ret >= retMin and ret <= retMax and s * (bExt - org) > 0
+                  and s * (bOpp - ext) <= 0 and vb < va and trig and volume > vb
+            st := bExt - s * tick
+            lvl := ext
+            iP := P
+            iQ := Q
+    [ok, st, lvl, imp, iP, iQ]
+
+if is5 and inRth
+    if rthStart
+        aH.clear()
+        aL.clear()
+        aV.clear()
+        aB.clear()
+        hp.clear()
+        lp.clear()
+        nDay := 0
+        pend := 0
+        dayUsd := 0.0
+    float xPx = na
+    string why = ""
+    bool xLim = false
+    // 1) cierre forzoso 15:55
+    if pos != 0 and hm >= 1555
+        xPx := open
+        why := "15:55"
+    // 2) entrada pendiente en la apertura
+    if pend != 0 and hm < 1555 and pos == 0
+        float e = open
+        float r = pend * (e - pStop)
+        float tg = tgtMode == "Máximo anterior" ? pLvl : tgtMode == "Proyección del impulso" ? pRef + pend * pImp : e + pend * 2 * r
+        if r > 0 and pend * (tg - e) > 0
+            pos := pend
+            ent := e
+            stp := pStop
+            tgt := tg
+            nDay += 1
+            label.new(bar_index, pos == 1 ? low : high, (pos == 1 ? "C ▲ " : "C ▼ ") + fmt(e) + "\nstop " + fmt(stp) + "\nobj " + fmt(tgt),
+                      style = pos == 1 ? label.style_label_up : label.style_label_down, size = size.small,
+                      color = pos == 1 ? colUp : colDn, textcolor = color.white)
+            lnS := line.new(bar_index, stp, bar_index, stp, color = colDn, style = line.style_dashed)
+            lnT := line.new(bar_index, tgt, bar_index, tgt, color = colTgt, style = line.style_dashed)
+        pend := 0
+    // 3) gestión dentro de la vela (stop primero; el objetivo exige 1 tick de cruce)
+    if pos != 0 and na(xPx)
+        line.set_x2(lnS, bar_index)
+        line.set_x2(lnT, bar_index)
+        bool newBar = bar_index > line.get_x1(lnS)
+        if newBar and pos * (open - stp) <= 0
+            xPx := open
+            why := "stop (hueco)"
+        else if pos * ((pos == 1 ? low : high) - stp) <= 0
+            xPx := stp
+            why := "stop"
+        else if newBar and pos * (open - tgt) >= 0
+            xPx := open
+            why := "objetivo (hueco)"
+            xLim := true
+        else if pos * ((pos == 1 ? high : low) - tgt) >= tick
+            xPx := tgt
+            why := "objetivo"
+            xLim := true
+    if pos != 0 and not na(xPx)
+        // deslizamiento en la entrada (mercado) y en la salida salvo objetivo límite; comisión en los dos lados
+        float net = (pos * (xPx - ent) - slipPts - (xLim ? 0.0 : slipPts)) * ptVal - 2 * commSide
+        nOps += 1
+        nWin += net > 0 ? 1 : 0
+        netUsd += net
+        dayUsd += net
+        label.new(bar_index, pos == 1 ? high : low, why + "\n" + str.tostring(net, "#.#") + " $",
+                  style = pos == 1 ? label.style_label_down : label.style_label_up, size = size.tiny,
+                  color = net > 0 ? color.new(colUp, 20) : color.new(colDn, 20), textcolor = color.white)
+        line.set_x2(lnS, bar_index)
+        line.set_x2(lnT, bar_index)
+        pos := 0
+    // 4) registrar la vela y los pivotes 2/2 confirmados ahora
+    aH.push(high)
+    aL.push(low)
+    aV.push(volume)
+    aB.push(bar_index)
+    int t = aH.size() - 1
+    if t >= 4
+        int i = t - 2
+        float hi = aH.get(i)
+        float lo = aL.get(i)
+        if hi > math.max(aH.get(i - 2), aH.get(i - 1)) and hi > math.max(aH.get(i + 1), aH.get(i + 2))
+            hp.push(i)
+        if lo < math.min(aL.get(i - 2), aL.get(i - 1)) and lo < math.min(aL.get(i + 1), aL.get(i + 2))
+            lp.push(i)
+    // 5) señal al cierre de esta vela → entrada en la siguiente
+    bool win = hmC >= 1000 and hmC <= 1500
+    if pos == 0 and nDay < maxTrades and win and not na(atr)
+        [okS, stS, lvS, imS, pS, qS] = setup(-1)
+        [okL, stL, lvL, imL, pL, qL] = setup(1)
+        bool goS = useShort and okS and e20 < e200
+        bool goL = useLong and okL and e20 > e200
+        if goS or goL
+            int s = goS ? -1 : 1                    // empate: corto primero, como en el backtest
+            float st = s == 1 ? stL : stS
+            float lv = s == 1 ? lvL : lvS
+            float im = s == 1 ? imL : imS
+            float risk = s * (close - st)
+            bool far = tgtMode != "Máximo anterior" or s * (lv - close) >= 0.5 * risk
+            if risk > 0 and far
+                pend := s
+                pStop := st
+                pLvl := lv
+                pImp := im
+                pRef := close
+                if showABC
+                    int P = s == 1 ? pL : pS
+                    int Q = s == 1 ? qL : qS
+                    float pA = s == 1 ? aH.get(P) : aL.get(P)
+                    float pO = s == 1 ? aL.get(Q) : aH.get(Q)
+                    line.new(aB.get(Q), pO, aB.get(P), pA, color = s == 1 ? colUp : colDn, width = 2)
+                    line.new(aB.get(P), pA, bar_index, st + s * tick, color = color.gray, width = 1)
+                    label.new(aB.get(P), pA, "A", style = label.style_none, textcolor = s == 1 ? colUp : colDn)
+                    label.new(bar_index, st + s * tick, "B", style = label.style_none, textcolor = color.gray)
+
+plotshape(is5 and pend != 0 and pend == 1, "Señal largo", shape.triangleup, location.belowbar, colUp, size = size.tiny)
+plotshape(is5 and pend != 0 and pend == -1, "Señal corto", shape.triangledown, location.abovebar, colDn, size = size.tiny)
+alertcondition(pend == 1, "VST ABC largo", "VST ABC: señal de LARGO, entrada en la apertura de la próxima vela")
+alertcondition(pend == -1, "VST ABC corto", "VST ABC: señal de CORTO, entrada en la apertura de la próxima vela")
+
+// ── panel
+var table tb = table.new(position.top_right, 2, 6, bgcolor = color.new(color.black, 20), border_width = 1)
+if showPanel and barstate.islast
+    table.cell(tb, 0, 0, "VST ABC · " + tgtMode, text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, 0, "⚠ backtest: RECHAZADA", text_color = color.orange, text_size = size.small)
+    table.cell(tb, 0, 1, "Operaciones en el gráfico", text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, 1, str.tostring(nOps), text_color = color.white, text_size = size.small)
+    table.cell(tb, 0, 2, "Acierto", text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, 2, nOps > 0 ? str.tostring(100.0 * nWin / nOps, "#") + " %" : "—", text_color = color.white, text_size = size.small)
+    table.cell(tb, 0, 3, "Neto (con costes)", text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, 3, str.tostring(netUsd, "#") + " $", text_color = netUsd >= 0 ? colUp : colDn, text_size = size.small)
+    table.cell(tb, 0, 4, "Hoy", text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, 4, str.tostring(dayUsd, "#") + " $ · " + str.tostring(nDay) + " ops", text_color = color.white, text_size = size.small)
+    table.cell(tb, 0, 5, "Posición", text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, 5, pos == 0 ? "—" : (pos == 1 ? "LARGO " : "CORTO ") + fmt(ent), text_color = color.white, text_size = size.small)
