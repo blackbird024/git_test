@@ -45,9 +45,9 @@ if barstate.islast and not is5
 fmt(float x) => str.tostring(x, format.mintick)
 
 inRth    = not na(time(timeframe.period, "0930-1600", TZ))
-rthStart = inRth and not inRth[1]
 hm       = hour(time, TZ) * 100 + minute(time, TZ)
 hmC      = hour(time_close, TZ) * 100 + minute(time_close, TZ)
+rthStart = inRth and (not inRth[1] or hm == 930 or dayofmonth(time, TZ) != dayofmonth(time[1], TZ))
 
 // ── EMA20, EMA200 y ATR14 (Wilder) solo con velas de la sesión regular
 var float e20 = na
@@ -89,6 +89,11 @@ var int   nOps = 0
 var int   nWin = 0
 var float netUsd = 0.0
 var float dayUsd = 0.0
+// diagnóstico: velas que llegan a cada etapa (1 pivotes A, 2 impulso >= ATR, 3 retroceso, 4 volumen seco, 5 gatillo)
+var array<int> diag = array.new<int>(6, 0)
+var int nCtxOff = 0
+var int nRthBars = 0
+var int nDays = 0
 
 tick = syminfo.mintick
 slipPts = costTk * tick
@@ -97,6 +102,7 @@ slipPts = costTk * tick
 setup(int s) =>
     int t = aH.size() - 1
     bool ok = false
+    int stage = 0
     float st = na
     float lvl = na
     float imp = na
@@ -118,6 +124,7 @@ setup(int s) =>
                     Q := pivB.get(k)
                     break
         if P >= 0 and Q >= 0 and t - P >= 3
+            stage := 1
             float ext = s == 1 ? aH.get(P) : aL.get(P)
             float org = s == 1 ? aL.get(Q) : aH.get(Q)
             imp := s * (ext - org)
@@ -135,16 +142,21 @@ setup(int s) =>
             va /= (P - Q + 1)
             float ret = s * (ext - bExt) / imp
             bool trig = s == 1 ? (close > open and close > aH.get(t - 1)) : (close < open and close < aL.get(t - 1))
-            ok := imp >= atrMult * atr and ret >= retMin and ret <= retMax and s * (bExt - org) > 0
-                  and s * (bOpp - ext) <= 0 and vb < va and trig and volume > vb
+            bool c2 = imp >= atrMult * atr
+            bool c3 = c2 and ret >= retMin and ret <= retMax and s * (bExt - org) > 0 and s * (bOpp - ext) <= 0
+            bool c4 = c3 and vb < va
+            ok := c4 and trig and volume > vb
+            stage := ok ? 5 : c4 ? 4 : c3 ? 3 : c2 ? 2 : 1
             st := bExt - s * tick
             lvl := ext
             iP := P
             iQ := Q
-    [ok, st, lvl, imp, iP, iQ]
+    [ok, st, lvl, imp, iP, iQ, stage]
 
 if is5 and inRth
+    nRthBars += 1
     if rthStart
+        nDays += 1
         aH.clear()
         aL.clear()
         aV.clear()
@@ -227,8 +239,14 @@ if is5 and inRth
     // 5) señal al cierre de esta vela → entrada en la siguiente
     bool win = hmC >= 1000 and hmC <= 1500
     if pos == 0 and nDay < maxTrades and win and not na(atr)
-        [okS, stS, lvS, imS, pS, qS] = setup(-1)
-        [okL, stL, lvL, imL, pL, qL] = setup(1)
+        [okS, stS, lvS, imS, pS, qS, sgS] = setup(-1)
+        [okL, stL, lvL, imL, pL, qL, sgL] = setup(1)
+        int sg = math.max(useLong ? sgL : 0, useShort ? sgS : 0)
+        for k = 1 to 5
+            if sg >= k
+                diag.set(k, diag.get(k) + 1)
+        if (okL and useLong and e20 <= e200) or (okS and useShort and e20 >= e200)
+            nCtxOff += 1
         bool goS = useShort and okS and e20 < e200
         bool goL = useLong and okL and e20 > e200
         if goS or goL
@@ -260,17 +278,21 @@ alertcondition(pend == 1, "VST ABC largo", "VST ABC: señal de LARGO, entrada en
 alertcondition(pend == -1, "VST ABC corto", "VST ABC: señal de CORTO, entrada en la apertura de la próxima vela")
 
 // ── panel
-var table tb = table.new(position.top_right, 2, 6, bgcolor = color.new(color.black, 20), border_width = 1)
+var table tb = table.new(position.top_right, 2, 13, bgcolor = color.new(color.black, 20), border_width = 1)
+row(int r, string a, string b, color c) =>
+    table.cell(tb, 0, r, a, text_color = color.white, text_size = size.small)
+    table.cell(tb, 1, r, b, text_color = c, text_size = size.small)
 if showPanel and barstate.islast
-    table.cell(tb, 0, 0, "VST ABC · " + tgtMode, text_color = color.white, text_size = size.small)
-    table.cell(tb, 1, 0, "⚠ backtest: RECHAZADA", text_color = color.orange, text_size = size.small)
-    table.cell(tb, 0, 1, "Operaciones en el gráfico", text_color = color.white, text_size = size.small)
-    table.cell(tb, 1, 1, str.tostring(nOps), text_color = color.white, text_size = size.small)
-    table.cell(tb, 0, 2, "Acierto", text_color = color.white, text_size = size.small)
-    table.cell(tb, 1, 2, nOps > 0 ? str.tostring(100.0 * nWin / nOps, "#") + " %" : "—", text_color = color.white, text_size = size.small)
-    table.cell(tb, 0, 3, "Neto (con costes)", text_color = color.white, text_size = size.small)
-    table.cell(tb, 1, 3, str.tostring(netUsd, "#") + " $", text_color = netUsd >= 0 ? colUp : colDn, text_size = size.small)
-    table.cell(tb, 0, 4, "Hoy", text_color = color.white, text_size = size.small)
-    table.cell(tb, 1, 4, str.tostring(dayUsd, "#") + " $ · " + str.tostring(nDay) + " ops", text_color = color.white, text_size = size.small)
-    table.cell(tb, 0, 5, "Posición", text_color = color.white, text_size = size.small)
-    table.cell(tb, 1, 5, pos == 0 ? "—" : (pos == 1 ? "LARGO " : "CORTO ") + fmt(ent), text_color = color.white, text_size = size.small)
+    row(0, "VST ABC · " + tgtMode, "⚠ backtest: RECHAZADA", color.orange)
+    row(1, "Gráfico", is5 ? "5 min ✓" : "✗ pon 5 minutos (ahora " + timeframe.period + ")", is5 ? color.white : color.orange)
+    row(2, "Operaciones en el gráfico", str.tostring(nOps), color.white)
+    row(3, "Acierto", nOps > 0 ? str.tostring(100.0 * nWin / nOps, "#") + " %" : "—", color.white)
+    row(4, "Neto (con costes)", str.tostring(netUsd, "#") + " $", netUsd >= 0 ? colUp : colDn)
+    row(5, "Hoy", str.tostring(dayUsd, "#") + " $ · " + str.tostring(nDay) + " ops", color.white)
+    row(6, "Posición", pos == 0 ? "—" : (pos == 1 ? "LARGO " : "CORTO ") + fmt(ent), color.white)
+    row(7, "Diag: días / velas 9:30-16:00", str.tostring(nDays) + " / " + str.tostring(nRthBars), color.gray)
+    row(8, "Diag: con impulso A ≥ ATR", str.tostring(diag.get(2)), color.gray)
+    row(9, "Diag: + retroceso B válido", str.tostring(diag.get(3)), color.gray)
+    row(10, "Diag: + volumen secándose", str.tostring(diag.get(4)), color.gray)
+    row(11, "Diag: + vela gatillo C", str.tostring(diag.get(5)), color.gray)
+    row(12, "Diag: descartadas por EMA20/200", str.tostring(nCtxOff), color.gray)
