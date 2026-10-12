@@ -68,6 +68,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 19:50:51 (12-oct) | `20261012_195051_fvg_1m_3m` | Mismo setup (barrida + pullback a FVG respetado, GIRO y CONTINUACIÓN) con FVG de 1 y 3 min en Asia 2-6, Londres 1.ª vela 15 min y NY 1.ª vela 15 min (48 variantes) | Setup en el 31-91 % de los días. Stops sobre el FVG de 1-3 min: 5-30 $, saltan el 54-95 %. 3 variantes pasan la regla (todas NY con FVG de 3 min) y las 3 pierden en la prueba 2025-26 (−6,9 a −14,8 $/op). R bruto entre −0,53 y +0,03 | ❌ RECHAZADA |
 
+| 19:58:35 (12-oct) | `20261012_195835_silver_bullet` | ICT Silver Bullet: ventanas 3-4, 10-11 y 14-15 ET; liquidez = máx/mín de la hora anterior; barrida dentro de la ventana, FVG de 1/3/5 min en contra, retroceso que lo respeta; stop barrida o FVG; objetivo liquidez opuesta o 2R (36 variantes) | Ninguna positiva en desarrollo y validación a la vez → ninguna seleccionada. Setup en el 16-80 % de los días. R bruto entre −0,40 y +0,06. 17 variantes con IC90 FM 2022-26 entero por debajo de 0. Mejor: NY AM FVG 5 min stop barrida (+9 a +11 $/op en 2018-21, −6/−7 en 2022-24) | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

@@ -1,0 +1,21 @@
+{
+  "fecha": "2026-10-12T20:00:09",
+  "version_codigo": "8791c9c+cambios_sin_commit",
+  "experimento": "ICT Silver Bullet",
+  "reglas": "ICT Silver Bullet, mecanizada para NQ/MNQ. Reglas fijadas ANTES de ver resultados (hora de Nueva York, ET):\n\nVentanas de una hora: 3:00-4:00 (Londres), 10:00-11:00 (NY AM), 14:00-15:00 (NY PM).\n1. Liquidez: máximo y mínimo de la hora ANTERIOR a la ventana (p. ej. 9:00-10:00 para la de las 10:00).\n2. Barrida: dentro de la ventana, la primera vela (del marco del FVG) que supera ese máximo → cortos (o perfora el\n   mínimo → largos). Si la misma vela barre los dos lados, no se opera.\n3. Desplazamiento: FVG en contra de la barrida (cortos: máximo de la vela i+1 < mínimo de la vela i−1) formado después\n   de la barrida y dentro de la ventana; se usa el más reciente.\n4. Entrada: el precio vuelve al FVG y lo respeta (cierra por debajo del borde superior en cortos) → entrada a mercado\n   en la apertura siguiente, como muy tarde al final de la ventana. Se anula si antes supera el extremo de la barrida\n   o ya ha tocado el objetivo.\n5. Stop (variantes): extremo de la barrida + 1 tick, o borde del FVG + 1 tick.\n6. Objetivo (variantes): la liquidez opuesta (mínimo de la hora anterior en cortos) o 2R.\n7. Marco del FVG (variantes): 1, 3 y 5 min. Cierre forzoso: 9:25 ET para la ventana de las 3:00; 15:55 ET para las otras.\nUna operación por ventana y día. Regla de selección: esperanza > 0 en desarrollo Y validación (coste base), n_val >= 30.\n",
+  "seleccionadas": [],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
