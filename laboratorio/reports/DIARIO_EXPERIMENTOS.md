@@ -62,6 +62,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 19:02:05 (12-oct) | `20261012_190205_fvg_londres` | Estrategia del hallazgo anterior: ruptura del rango 0:00-4:00 / Asia en Londres, pullback que entra en el último FVG de 5 min y lo respeta → entrada a favor; stop sobre el FVG o en la mitad del rango; objetivo nivel − 0,5R, 1R o 2R; salida 15:25 (12 variantes) | Ninguna cumple la regla de selección (dev>0 y val>0): las 12 negativas en desarrollo. Stop sobre el FVG: riesgo mediano 14-19 $, se toca el 56-77 % (R bruto −0,2/−0,3). Stop en la mitad: acierta 56-61 % (coincide con la estadística) pero la recompensa es menor que el riesgo (la entrada queda por debajo del nivel roto) → R bruto ≈ 0 | ❌ RECHAZADA |
 
+| 19:42:15 (12-oct) | `20261012_194215_asia_barrida_fvg_londres` | Idea del usuario (ICT): rango asiático 2:00-6:00 Italia; barrida de un lado; pullback que entra en un FVG de 5 o 15 min y lo respeta; todo antes de las 11:00 (killzone de Londres). Dos lecturas: GIRO (FVG en contra de la barrida; stop barrida/FVG; objetivo lado opuesto de Asia o 2R) y CONTINUACIÓN (FVG a favor; stop FVG/nivel de Asia; 1R/2R). 16 variantes, salida 15:25. Una ejecución previa solo con GIRO (`194111`) se borró, mismos números | Las 16 negativas en desarrollo (2018-21) → ninguna seleccionada. R bruto entre −0,41 y +0,06. Solo 2025-26 positivo en las de 15 min con stop amplio (top-10 > 100 % del neto) | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

@@ -1,0 +1,21 @@
+{
+  "fecha": "2026-10-12T19:43:18",
+  "version_codigo": "3ea889e+cambios_sin_commit",
+  "experimento": "barrida de Asia (2-6 Italia) + FVG respetado en killzone de Londres",
+  "reglas": "Estrategia del usuario (ICT, killzone de Londres), NQ/MNQ, hora de Italia. Reglas fijadas ANTES de ver resultados:\n\n1. Rango asiático: máximo y mínimo de 2:00 a 6:00 Italia (velas de 1 min).\n2. Barrida: desde las 6:00, la primera vela (del marco elegido) cuyo máximo supera el máximo de Asia → se buscan CORTOS\n   (o cuyo mínimo perfora el mínimo de Asia → LARGOS). Se usa el primer lado barrido del día.\n3. FVG en la dirección del giro (cortos: FVG bajista, máximo de la vela i+1 < mínimo de la vela i−1), formado DESPUÉS\n   de la barrida (la vela i−1 es la de la barrida o posterior). Se usa el más reciente ya formado.\n4. Pullback que entra en el FVG (su máximo llega al borde inferior del hueco) y lo RESPETA (cierra por debajo del borde\n   superior) → entrada a mercado en la apertura siguiente.\n   Se anula si antes de la entrada el precio supera el extremo de la barrida, o ya ha tocado el objetivo.\n5. Killzone: barrida, FVG y señal antes de las 11:00 Italia (la entrada, como muy tarde, en la vela de las 11:00).\n6. Marco del FVG (variantes): 5 min o 15 min (velas alineadas a la hora de Italia).\n7. Stop (variantes): extremo de la barrida + 1 tick, o borde superior del FVG + 1 tick.\n8. Objetivo (variantes): el lado opuesto del rango asiático, o 2R. Cierre forzoso a las 15:25 Italia.\nVariante \"continuación\" (segunda lectura de la frase del usuario): tras barrer el máximo de Asia, el pullback BAJA a un\nFVG ALCISTA de la subida (tercera vela del FVG en la vela de la barrida o posterior, primera vela desde 2 antes) y lo\nrespeta (cierra por encima del borde inferior) → LARGO. Stop: borde inferior del FVG − 1 tick, o el máximo de Asia\n(nivel barrido) − 1 tick. Objetivo: 1R o 2R. Se anula si antes cierra de nuevo dentro del rango de Asia.\nUna operación al día. Regla de selección (antes de la prueba): esperanza > 0 en desarrollo Y validación (coste base), n_val >= 30.\n",
+  "seleccionadas": [],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
