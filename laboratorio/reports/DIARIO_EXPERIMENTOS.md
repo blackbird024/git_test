@@ -49,6 +49,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 06:43:33 (12-oct) | `20261012_064333_edgeful` | Guía de edgeful: (1) reproducir sus % (IB un lado 77 % vs su 78 %; OD alcista revierte 67 % vs 71 %; inside toca PDH/PDL 88 % vs 85 %) y por año 2018-26; (2) OD reversal (apertura / confirmación 5 min; solo alcista / ambos; objetivo PDH-PDL, stop "by-spike" p75 de desarrollo) e IB breakout (stop al otro lado; objetivo extensión mediana de desarrollo 0,55×IB, 1R o cierre). Una ejecución previa (`064303`) tenía un bug en la tabla de frecuencias (media de columna object) y se borró; las operaciones eran idénticas | IB: negativo en desarrollo en las 3 variantes → rechazado. OD confirmación alcista: positivo en los 3 periodos (+5,4 / +2,4 / +56 $/op con coste alto), IC90 FM [5,8; 48,7], pero el top-10 = 94 % del neto y 2018-24 da ~+4 $/op; ~25 ops/año. La elección "solo alcista" viene de datos de 2026 de la guía (solapa con la prueba). OD apertura alcista: positivo en los 3, IC90 incluye 0, top-10 = 136 % | IB ❌ RECHAZADA · OD ⚠️ INCONCLUSA |
 
+| 13:22:05 (12-oct) | `20261012_132205_orb1m_scalp` | ORB 1 min "scalping" (vídeo): rango 9:30-9:35, EMA100 de 1 min (24 h), ruptura con desplazamiento >= 0,7×rango, retroceso a FVG/demanda + envolvente, 2R, salida 12:00 (stop demanda u ORB; con/sin EMA) | R bruto ≈ 0 en todas; prueba 2025-26 −18 a −25 $/op; FM 2022-26 −1 a −4 $/op. El filtro EMA100 casi no cambia nada (475 vs 477 ops): una ruptura del máximo de apertura ya está casi siempre por encima de la EMA100 de 1 min | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

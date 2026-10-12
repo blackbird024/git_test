@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-12T13:22:11",
+  "version_codigo": "a169b44+cambios_sin_commit",
+  "experimento": "ORB 1 min scalping (EMA100 + FVG/demanda + envolvente)",
+  "reglas": "ORB 1 min \"scalping\" de YouTube (tendencia EMA100 → nivel FVG/demanda → envolvente), traducido a reglas para MNQ.\nReglas fijadas ANTES de ver resultados:\n\n1. Rango: máximo y mínimo de la primera vela de 5 min de NY (9:30-9:35 ET). R = máximo − mínimo.\n2. Tendencia: EMA100 de velas de 1 min calculada con las 24 h (como en un gráfico de TradingView con ETH).\n   Largos solo si la vela de ruptura cierra por encima de la EMA100; cortos solo por debajo (variante \"sin EMA\" = ablación).\n3. Ruptura con desplazamiento (largos; cortos espejo): una vela de 1 min cierra por encima del máximo del rango y,\n   antes de que alguna vela vuelva a cerrar dentro del rango, el precio llega a máximo + 0,7 × R (el \"−0,7\" del Fibonacci).\n   Si vuelve a cerrar dentro antes de llegar, era una \"ruptura blanda\" y se espera la siguiente.\n4. Niveles: demanda = última vela bajista antes de la ruptura (hasta 15 velas atrás, desde las 9:30), zona [mínimo,\n   máximo] de esa vela; FVG = el hueco alcista más alto (mín. de la vela i+1 > máx. de la vela i−1) entre la demanda y\n   la vela de desplazamiento. Zona de entrada: desde lo alto del FVG (o de la demanda si no hay FVG) hasta el mínimo\n   de la demanda.\n5. Entrada: después del desplazamiento, el precio retrocede y toca la zona; luego la primera envolvente alcista\n   (vela bajista seguida de vela alcista que abre <= cierre anterior y cierra > apertura anterior) → entrada a mercado en la\n   apertura siguiente. Se anula si antes alguna vela cierra por debajo del mínimo de la demanda.\n6. Stop (variantes): mínimo de la demanda − 1 tick, o mínimo del rango de apertura − 1 tick. Objetivo: 2R.\n7. Señales hasta las 11:00 ET; salida por tiempo a las 12:00 ET (scalping \"menos de una hora al día\"). Una operación al día.\n",
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
