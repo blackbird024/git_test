@@ -1,0 +1,25 @@
+{
+  "fecha": "2026-10-12T19:48:57",
+  "version_codigo": "71a3dc1+cambios_sin_commit",
+  "experimento": "barrida del rango de la 1.ª vela de 15 min + FVG",
+  "reglas": "Mismo setup que run_asia_sweep_fvg.py (barrida de un lado del rango, pullback que entra en un FVG de 5/15 min y lo\nrespeta; lecturas GIRO y CONTINUACIÓN, mismas variantes de stop y objetivo), pero el rango es la PRIMERA VELA DE 15 MIN\nde la sesión. Pregunta del usuario: \"¿cuántas veces ocurre lo mismo en el rango de la primera vela de 15 min?\".\nReglas fijadas antes de ver resultados:\n  Londres: rango 9:00-9:15 Italia (apertura de Londres); barrida, FVG y señal hasta las 11:00 Italia; cierre 15:25.\n  Nueva York: rango 9:30-9:45 ET (normalmente 15:30-15:45 Italia); barrida, FVG y señal hasta las 11:00 ET\n  (killzone de NY); cierre 5 min antes del cierre de NY.\n",
+  "seleccionadas": [
+    "Londres · GIRO · FVG 15 min, stop barrida, objetivo 2R",
+    "NY · GIRO · FVG 5 min, stop barrida, objetivo lado opuesto",
+    "NY · CONTINUACIÓN · FVG 15 min, stop fvg, objetivo 1R"
+  ],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

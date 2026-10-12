@@ -37,15 +37,15 @@ def _r(x):
     return round(x / TICK) * TICK
 
 
-def signal(m, tf, stop_mode, target):
+def signal(m, tf, stop_mode, target, a0=A0, a1=A1, w0=W0, kz=KZ_END, exit_k=EXIT_K):
     H, L, C = m[:, 1], m[:, 2], m[:, 3]
-    if np.isnan(H[A0:A1]).sum() > (A1 - A0) / 2:
+    if np.isnan(H[a0:a1]).sum() > (a1 - a0) / 2:
         return None
-    ah, al = np.nanmax(H[A0:A1]), np.nanmin(L[A0:A1])
+    ah, al = np.nanmax(H[a0:a1]), np.nanmin(L[a0:a1])
     if ah <= al:
         return None
     ks, b = [], []
-    for k in range(W0, KZ_END, tf):
+    for k in range(w0, kz, tf):
         ok = ~np.isnan(C[k:k + tf])
         if ok.any():
             ks.append(k)
@@ -68,14 +68,14 @@ def signal(m, tf, stop_mode, target):
                 return None                             # supera el extremo de la barrida antes de entrar
             if xc[t] < fvg[1]:
                 k_in = ks[t] + tf
-                if k_in > KZ_END:
+                if k_in > kz:
                     return None
                 sx = (ext if stop_mode == "barrida" else fvg[1]) + TICK
                 stop = sx if side == -1 else -sx
                 if target == "asia":
                     tgt = tgt_x if side == -1 else -tgt_x
-                    return Order(side, "market", k_in, _r(stop), _r(tgt), EXIT_K, tag="asia_fvg")
-                return Order(side, "market", k_in, _r(stop), None, EXIT_K, target_r=2.0, tag="asia_fvg")
+                    return Order(side, "market", k_in, _r(stop), _r(tgt), exit_k, tag="asia_fvg")
+                return Order(side, "market", k_in, _r(stop), None, exit_k, target_r=2.0, tag="asia_fvg")
             fvg = None                                  # lo atraviesa con cierre: FVG invalidado
         if xh[t] > ext:
             ext = xh[t]
@@ -86,15 +86,15 @@ def signal(m, tf, stop_mode, target):
     return None
 
 
-def signal_cont(m, tf, stop_mode, target):
+def signal_cont(m, tf, stop_mode, target, a0=A0, a1=A1, w0=W0, kz=KZ_END, exit_k=EXIT_K):
     H, L, C = m[:, 1], m[:, 2], m[:, 3]
-    if np.isnan(H[A0:A1]).sum() > (A1 - A0) / 2:
+    if np.isnan(H[a0:a1]).sum() > (a1 - a0) / 2:
         return None
-    ah, al = np.nanmax(H[A0:A1]), np.nanmin(L[A0:A1])
+    ah, al = np.nanmax(H[a0:a1]), np.nanmin(L[a0:a1])
     if ah <= al:
         return None
     ks, b = [], []
-    for k in range(W0, KZ_END, tf):
+    for k in range(w0, kz, tf):
         ok = ~np.isnan(C[k:k + tf])
         if ok.any():
             ks.append(k)
@@ -119,11 +119,11 @@ def signal_cont(m, tf, stop_mode, target):
         if fvg is not None and xl[t] <= fvg[1]:
             if xc[t] > fvg[0]:
                 k_in = ks[t] + tf
-                if k_in > KZ_END:
+                if k_in > kz:
                     return None
                 sx = (fvg[0] if stop_mode == "fvg" else lvl) - TICK
                 stop = sx if side == 1 else -sx
-                return Order(side, "market", k_in, _r(stop), None, EXIT_K,
+                return Order(side, "market", k_in, _r(stop), None, exit_k,
                              target_r=1.0 if target == "1R" else 2.0, tag="asia_fvg_cont")
             fvg = None
         if t - 2 >= isw - 2 and xl[t] > xh[t - 2]:

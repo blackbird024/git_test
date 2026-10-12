@@ -64,6 +64,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 19:42:15 (12-oct) | `20261012_194215_asia_barrida_fvg_londres` | Idea del usuario (ICT): rango asiático 2:00-6:00 Italia; barrida de un lado; pullback que entra en un FVG de 5 o 15 min y lo respeta; todo antes de las 11:00 (killzone de Londres). Dos lecturas: GIRO (FVG en contra de la barrida; stop barrida/FVG; objetivo lado opuesto de Asia o 2R) y CONTINUACIÓN (FVG a favor; stop FVG/nivel de Asia; 1R/2R). 16 variantes, salida 15:25. Una ejecución previa solo con GIRO (`194111`) se borró, mismos números | Las 16 negativas en desarrollo (2018-21) → ninguna seleccionada. R bruto entre −0,41 y +0,06. Solo 2025-26 positivo en las de 15 min con stop amplio (top-10 > 100 % del neto) | ❌ RECHAZADA |
 
+| 19:48:26 (12-oct) | `20261012_194826_or15_barrida_fvg` | Mismo setup (barrida + pullback a FVG 5/15 min respetado; GIRO y CONTINUACIÓN) con el rango de la 1.ª vela de 15 min: Londres 9:00-9:15 Italia (hasta 11:00 Italia) y NY 9:30-9:45 ET (hasta 11:00 ET). 32 variantes | Barre un lado del rango de 15 min el 99 % de los días. Setup completo: 25-34 % de los días con FVG de 5 min, 1-15 % con FVG de 15 min. 3 variantes pasan la regla (dev>0 y val>0); en la prueba fallan 2 (NY giro 5 min −12,2 $/op; NY continuación 15 min −16,8). Sobrevive Londres GIRO FVG 15 min stop barrida 2R: +7,4 / +3,2 / +38,9 $/op pero n = 41/40/12, ~10 ops/año, neto total 898 $, top-5 = 132 %, IC90 [−5,7; 27,7]. Con 32 variantes, 1 superviviente es lo esperable por azar | ❌ RECHAZADA (1 variante anecdótica) |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
