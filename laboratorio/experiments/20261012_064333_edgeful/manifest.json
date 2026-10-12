@@ -1,0 +1,22 @@
+{
+  "fecha": "2026-10-12T06:43:50",
+  "version_codigo": "ae848a8+cambios_sin_commit",
+  "experimento": "guía edgeful: outside days e IB breakout",
+  "reglas": "Guía de edgeful (\"data-backed futures trading\", sept. 2026): ¿las frecuencias altas se traducen en dinero? NQ/MNQ.\nReglas fijadas ANTES de ver resultados. \"Ayer\" = sesión regular (9:30-16:00 ET) anterior, como en la guía.\n\nParte 1 · Reproducir sus porcentajes (10-mar-2026 a 8-sep-2026) y ver cómo cambian por año en 2018-2026:\n  IB 60 min: un solo lado roto / ambos / ninguno (ruptura por mecha, 10:30-16:00).\n  Outside day alcista (abre > PDH): \"reversal\" = el precio vuelve a tocar el PDH en la sesión. Bajista: espejo con PDL.\n  Inside day (abre dentro de ayer): toca PDH o PDL.\n\nParte 2 · Estrategias, tal como las propone la guía:\n  OD (outside day reversal). Abre por encima del PDH → corto; por debajo del PDL → largo (variante \"ambos lados\";\n      la guía solo operaría el alcista). Objetivo: el PDH (PDL). Cierre 15:55. Una operación al día.\n      entrada \"apertura\": a mercado a las 9:30; stop = apertura + q × ATR14 diario, con q = percentil 75 del \"spike\"\n          (lo que sube desde la apertura antes de tocar el PDH) en los outside days que revirtieron de DESARROLLO\n          (2018-21) — equivalente al subreport \"by-spike\", calculado sin mirar validación ni prueba.\n      entrada \"confirmacion\": primera vela de 5 min (9:35-15:00) que cierra por debajo del mínimo de la vela 9:30-9:35\n          (cortos); entrada en la apertura siguiente; stop = máximo de la sesión hasta ese momento + 1 tick.\n  IB (initial balance breakout). IB = 9:30-10:30. Primera ruptura entre 10:30 y 15:00: orden stop 1 tick fuera del IB,\n      stop al otro lado del IB (como dice la guía). Objetivo (variantes): mediana de la extensión más allá del IB\n      en DESARROLLO (en múltiplos del rango del IB; equivalente al subreport \"by-levels\"), 1R, o sin objetivo (15:55).\n      Si los dos lados se rompen en el mismo minuto, no se opera.\n",
+  "spike_q75_atr": 0.15530655786979009,
+  "ib_ext_mediana": 0.5517131599448672,
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

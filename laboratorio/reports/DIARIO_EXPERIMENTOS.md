@@ -47,6 +47,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 16:38:45 (11-oct) | `20261011_163845_vst_abc` | VST "Robin Hood" ABC / pullback de rompimiento: EMA20>EMA200, impulso ≥1 ATR (pivotes 2/2), retroceso 23,6-78,6 % con volumen secándose, vela de inicio de C con volumen; objetivo máximo anterior, proyección del impulso o 2R | Negativa en desarrollo y prueba en las 3 variantes. Máximo anterior: acierto 47-55 % pero −7,1 / −2,0 / −6,8 $/op. Proyección y 2R: R bruto ≈ 0 (sin ventaja antes de costes); FM 2022-26 ≈ 0 $/op | ❌ RECHAZADA |
 
+| 06:43:33 (12-oct) | `20261012_064333_edgeful` | Guía de edgeful: (1) reproducir sus % (IB un lado 77 % vs su 78 %; OD alcista revierte 67 % vs 71 %; inside toca PDH/PDL 88 % vs 85 %) y por año 2018-26; (2) OD reversal (apertura / confirmación 5 min; solo alcista / ambos; objetivo PDH-PDL, stop "by-spike" p75 de desarrollo) e IB breakout (stop al otro lado; objetivo extensión mediana de desarrollo 0,55×IB, 1R o cierre). Una ejecución previa (`064303`) tenía un bug en la tabla de frecuencias (media de columna object) y se borró; las operaciones eran idénticas | IB: negativo en desarrollo en las 3 variantes → rechazado. OD confirmación alcista: positivo en los 3 periodos (+5,4 / +2,4 / +56 $/op con coste alto), IC90 FM [5,8; 48,7], pero el top-10 = 94 % del neto y 2018-24 da ~+4 $/op; ~25 ops/año. La elección "solo alcista" viene de datos de 2026 de la guía (solapa con la prueba). OD apertura alcista: positivo en los 3, IC90 incluye 0, top-10 = 136 % | IB ❌ RECHAZADA · OD ⚠️ INCONCLUSA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
