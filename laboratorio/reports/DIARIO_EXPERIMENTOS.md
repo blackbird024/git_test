@@ -60,6 +60,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:58:18 (12-oct) | `20261012_185818_stats_londres_barrida_ultimo_max` | Estadística (idea del usuario): tras la ruptura con cierre del rango 0:00-4:00 / Asia, el pullback (a) rompe el último máximo de 5 min (pivote 2/2) con mecha o con cuerpo, o (b) entra en el último FVG de 5 min (respeta / atraviesa); carrera hasta nuevo extremo o nivel − 0,5R frente a la mitad del rango. Una ejecución previa sin el FVG (`185750`) se borró, mismos números | A: FVG respetado → nivel − 0,5R antes de la mitad 60,6 % vs 32,3 % (estable por año, 70-87 % a nuevo extremo); barrida del último máximo 56,7 vs 35,2 %; ruptura con cuerpo del último máximo 50,8 vs 42,3 %. B (Asia): FVG respetado 49,8 vs 26,0 %. HALLAZGO A POSTERIORI: hay que validarlo como estrategia con costes y periodos | ℹ️ descriptivo, candidato |
 
+| 19:02:05 (12-oct) | `20261012_190205_fvg_londres` | Estrategia del hallazgo anterior: ruptura del rango 0:00-4:00 / Asia en Londres, pullback que entra en el último FVG de 5 min y lo respeta → entrada a favor; stop sobre el FVG o en la mitad del rango; objetivo nivel − 0,5R, 1R o 2R; salida 15:25 (12 variantes) | Ninguna cumple la regla de selección (dev>0 y val>0): las 12 negativas en desarrollo. Stop sobre el FVG: riesgo mediano 14-19 $, se toca el 56-77 % (R bruto −0,2/−0,3). Stop en la mitad: acierta 56-61 % (coincide con la estadística) pero la recompensa es menor que el riesgo (la entrada queda por debajo del nivel roto) → R bruto ≈ 0 | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

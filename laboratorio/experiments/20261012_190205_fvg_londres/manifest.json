@@ -1,0 +1,21 @@
+{
+  "fecha": "2026-10-12T19:04:09",
+  "version_codigo": "f7e61e3+cambios_sin_commit",
+  "experimento": "FVG respetado tras ruptura del rango nocturno en Londres",
+  "reglas": "Estrategia candidata (de run_stats_londres_barrida_max.py, hallazgo A POSTERIORI): ruptura del rango nocturno en\nLondres, pullback que entra en el último FVG de 5 min y lo respeta → entrada a favor de la ruptura. NQ/MNQ, hora de Italia.\nReglas fijadas ANTES de ver resultados de esta prueba (los periodos y la regla de selección son los del protocolo):\n\nRangos: (A) vela de 4 h 0:00-4:00, ventana 4:00-15:30; (B) Asia 0:00-9:00, ventana 9:00-15:30.\n1. Ruptura: la primera vela de 5 min (alineada a la hora de Italia) que CIERRA por debajo del mínimo del rango → cortos\n   (por encima del máximo → largos). Una operación al día como máximo.\n2. FVG bajista (cortos): velas i−1, i, i+1 de 5 min con máximo(i+1) < mínimo(i−1); hueco [máximo(i+1), mínimo(i−1)].\n   Se usa el FVG más reciente ya formado, desde la vela de ruptura − 1.\n3. Señal: la primera vela posterior que ENTRA en ese FVG (su máximo llega al borde inferior) y cierra por debajo del\n   borde superior (\"respeta\"). Si esa vela ya tocó la mitad del rango, no hay operación. Señales hasta las 15:00 Italia.\n4. Entrada a mercado en la apertura siguiente (minuto a minuto con el simulador del laboratorio).\n5. Stop (variantes): borde superior del FVG + 1 tick (\"fvg\"), o la mitad del rango (\"mitad\").\n6. Objetivo (variantes): nivel roto − 0,5 × tamaño del rango (\"medio_rango\"), 1R o 2R.\n7. Cierre forzoso a las 15:25 Italia (antes de la apertura de NY en la mayor parte del año).\nRegla de selección (antes de la prueba): esperanza > 0 en desarrollo Y en validación con coste base y n_val >= 30.\n",
+  "seleccionadas": [],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
