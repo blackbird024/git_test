@@ -56,6 +56,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:47:12 (12-oct) | `20261012_184712_stats_londres_rupturas` | Estadística (no estrategia): primera ruptura con cierre de 5 min del rango 0:00-4:00 Italia (ventana 4:00-15:30) y del rango de Asia 0:00-9:00 (ventana Londres 9:00-15:30) | Vela 4 h: rompe el 97 % de los días; vuelve a cerrar dentro el 89 %, continúa el 11 %; llega al extremo opuesto el 35 %. Asia: rompe el 87 %; vuelve el 83 %, continúa el 17 %; extremo opuesto el 17 %. Extensión mediana antes de volver: 0,21 × rango. Estable por año | ℹ️ descriptivo |
 
+| 18:53:01 (12-oct) | `20261012_185301_stats_londres_pullback` | Estadística: tras la ruptura con cierre del rango 0:00-4:00 / Asia, ¿pullback al nivel roto y continuación? Carrera tras el pullback: nuevo extremo / nivel + 0,5R / + 1R frente a la mitad del rango | Pullback al nivel en el 90-94 % (mediana 5 min). Nuevo extremo antes de la mitad: 73-75 % (pero el extremo previo es pequeño, mediana 0,21 R). Nivel + 0,5R antes de la mitad (riesgo = recompensa): 47,5 vs 44,2 % (A) y 36,5 vs 37,4 % (B) → moneda al aire antes de costes | ℹ️ descriptivo |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

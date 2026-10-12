@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-12T18:53:07",
+  "version_codigo": "d28cd27+cambios_sin_commit",
+  "experimento": "estadística pullback y continuación en Londres",
+  "reglas": "Estadística (no estrategia): tras la primera ruptura con cierre de 5 min del rango nocturno, ¿el precio hace pullback\nal nivel roto y continúa? Mismos rangos y ventanas que run_stats_londres.py (hora de Italia, NQ 2018-2026).\n\nTras la vela de ruptura (largos; cortos espejo), hasta las 15:30:\n  sin_pullback   el precio no vuelve a tocar el nivel roto (máximo del rango)\n  pullback       alguna vela de 5 min toca el nivel roto (mínimo <= máximo del rango)\n      cierra_dentro   en el pullback alguna vela cierra dentro del rango (antes de la carrera de abajo)\n  Carrera tras el primer toque del nivel: ¿qué llega antes?\n      \"continúa (nuevo extremo)\"  supera el máximo hecho entre la ruptura y el pullback\n      \"continúa +0,5 R\"           llega a nivel roto + 0,5 × tamaño del rango\n      \"falla\"                      llega a la mitad del rango\n  Si las dos cosas pasan en la misma vela de 5 min, cuenta como fallo (conservador). Si ninguna, \"nada\".\n"
+}
