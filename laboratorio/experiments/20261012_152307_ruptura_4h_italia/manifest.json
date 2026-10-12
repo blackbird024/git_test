@@ -1,0 +1,150 @@
+{
+  "fecha": "2026-10-12T15:24:02",
+  "version_codigo": "23db560+cambios_sin_commit",
+  "experimento": "ruptura en 5 min del rango de una vela de 4 h (hora Italia)",
+  "reglas": "Ruptura del rango de una vela de 4 h (hora de Italia) en velas de 5 min, idea del usuario. NQ/MNQ.\nReglas fijadas ANTES de ver resultados:\n\n- Vela \"Londres\": 0:00-4:00 Italia (= 18:00-22:00 ET del día anterior, la primera vela de 4 h de Globex).\n  Rupturas de 4:00 a 12:00 Italia; cierre forzoso a las 15:25 Italia (antes de la apertura de NY).\n- Vela \"NY\": 12:00-16:00 Italia (la vela de 4 h que contiene la apertura de NY, ≈ 6:00-10:00 ET).\n  Rupturas de 16:00 a 19:00 Italia; cierre forzoso 5 min antes del cierre de NY.\n- Ruptura CON CUERPO (no vale solo la mecha): la primera vela de 5 min (alineada a la hora de Italia) cuyo cuerpo rompe.\n  Variantes: \"cierre\" = el cierre queda por encima del máximo de la vela de 4 h (largo) / debajo del mínimo (corto);\n  \"cuerpo entero\" = apertura Y cierre de la vela de 5 min fuera del rango (vela completamente fuera). Entrada a mercado en la apertura de la vela siguiente. Una operación por vela.\n- Stop (variantes): mitad del rango de la vela de 4 h, o el extremo opuesto (± 1 tick).\n- Objetivo (variantes): 1R o 2R.\n",
+  "variantes": {
+    "Londres (vela 0:00-4:00), cierre, stop mitad, 1R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "mitad",
+      "rr": 1.0,
+      "body": "cierre"
+    },
+    "Londres (vela 0:00-4:00), cierre, stop mitad, 2R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "mitad",
+      "rr": 2.0,
+      "body": "cierre"
+    },
+    "Londres (vela 0:00-4:00), cierre, stop opuesto, 1R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "opuesto",
+      "rr": 1.0,
+      "body": "cierre"
+    },
+    "Londres (vela 0:00-4:00), cierre, stop opuesto, 2R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "opuesto",
+      "rr": 2.0,
+      "body": "cierre"
+    },
+    "Londres (vela 0:00-4:00), cuerpo entero, stop mitad, 1R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "mitad",
+      "rr": 1.0,
+      "body": "cuerpo entero"
+    },
+    "Londres (vela 0:00-4:00), cuerpo entero, stop mitad, 2R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "mitad",
+      "rr": 2.0,
+      "body": "cuerpo entero"
+    },
+    "Londres (vela 0:00-4:00), cuerpo entero, stop opuesto, 1R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "opuesto",
+      "rr": 1.0,
+      "body": "cuerpo entero"
+    },
+    "Londres (vela 0:00-4:00), cuerpo entero, stop opuesto, 2R": {
+      "c_start": 0,
+      "last_sig": 720,
+      "exit_k": 925,
+      "stop_mode": "opuesto",
+      "rr": 2.0,
+      "body": "cuerpo entero"
+    },
+    "NY (vela 12:00-16:00), cierre, stop mitad, 1R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "mitad",
+      "rr": 1.0,
+      "body": "cierre"
+    },
+    "NY (vela 12:00-16:00), cierre, stop mitad, 2R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "mitad",
+      "rr": 2.0,
+      "body": "cierre"
+    },
+    "NY (vela 12:00-16:00), cierre, stop opuesto, 1R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "opuesto",
+      "rr": 1.0,
+      "body": "cierre"
+    },
+    "NY (vela 12:00-16:00), cierre, stop opuesto, 2R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "opuesto",
+      "rr": 2.0,
+      "body": "cierre"
+    },
+    "NY (vela 12:00-16:00), cuerpo entero, stop mitad, 1R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "mitad",
+      "rr": 1.0,
+      "body": "cuerpo entero"
+    },
+    "NY (vela 12:00-16:00), cuerpo entero, stop mitad, 2R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "mitad",
+      "rr": 2.0,
+      "body": "cuerpo entero"
+    },
+    "NY (vela 12:00-16:00), cuerpo entero, stop opuesto, 1R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "opuesto",
+      "rr": 1.0,
+      "body": "cuerpo entero"
+    },
+    "NY (vela 12:00-16:00), cuerpo entero, stop opuesto, 2R": {
+      "c_start": 12,
+      "last_sig": 1140,
+      "exit_k": null,
+      "stop_mode": "opuesto",
+      "rr": 2.0,
+      "body": "cuerpo entero"
+    }
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

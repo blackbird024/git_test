@@ -51,6 +51,9 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 13:22:05 (12-oct) | `20261012_132205_orb1m_scalp` | ORB 1 min "scalping" (vídeo): rango 9:30-9:35, EMA100 de 1 min (24 h), ruptura con desplazamiento >= 0,7×rango, retroceso a FVG/demanda + envolvente, 2R, salida 12:00 (stop demanda u ORB; con/sin EMA) | R bruto ≈ 0 en todas; prueba 2025-26 −18 a −25 $/op; FM 2022-26 −1 a −4 $/op. El filtro EMA100 casi no cambia nada (475 vs 477 ops): una ruptura del máximo de apertura ya está casi siempre por encima de la EMA100 de 1 min | ❌ RECHAZADA |
 
+| 15:23:07 (12-oct) | `20261012_152307_ruptura_4h_italia` | Ruptura en 5 min (cuerpo) del rango de la vela de 4 h, versión con la vela de NY mal interpretada (12:00-16:00 Italia) | Sustituido: el usuario aclaró que la vela de NY es la de 8:00-12:00. Ninguna variante gana en los 3 periodos | Sustituido |
+| 15:24:24 (12-oct) | `20261012_152424_ruptura_4h_italia` | Idea del usuario: rango de la vela de 4 h de 0:00-4:00 Italia (Londres, rupturas 4:00-12:00, salida 15:25) y de 8:00-12:00 (NY, rupturas desde 12:00 o desde la apertura de NY); ruptura con cuerpo (cierre fuera / cuerpo entero fuera) en 5 min; stop mitad u opuesto; 1R/2R (24 variantes) | Las 24 negativas en desarrollo (2018-21); solo 2025-26 positivo en la mayoría de NY. R bruto 0,00-0,06. Ninguna cumple la regla de selección | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
