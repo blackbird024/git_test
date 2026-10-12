@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-12T18:47:18",
+  "version_codigo": "82f305b+cambios_sin_commit",
+  "experimento": "estadística de rupturas en Londres",
+  "reglas": "Estadística (no estrategia): ¿cuántas veces el NQ rompe el máximo/mínimo de un rango nocturno en la sesión de Londres\ny retrocede, y cuántas continúa? Hora de Italia. Velas de 5 min alineadas a la hora de Italia; 2018-2026.\n\nRangos: (A) vela de 4 h 0:00-4:00, ventana 4:00-15:30; (B) rango de Asia 0:00-9:00, ventana Londres 9:00-15:30.\nPor día, la PRIMERA ruptura de la ventana:\n  sin_toque           el precio no supera ni el máximo ni el mínimo\n  solo_mecha          lo supera con mecha pero ninguna vela de 5 min cierra fuera (barrida)\n  ruptura_cierre      una vela de 5 min cierra fuera (\"con cuerpo\"); después, hasta las 15:30:\n      vuelve_dentro       alguna vela de 5 min vuelve a cerrar dentro del rango (falsa ruptura)\n        llega_mitad / llega_opuesto   además toca la mitad / el extremo opuesto del rango\n      continua            no vuelve a cerrar dentro hasta las 15:30\n  extension_50 / extension_100: tras la ruptura, el precio se aleja >= 50 % / 100 % del tamaño del rango desde el\n      nivel roto ANTES de volver a cerrar dentro.\n"
+}

@@ -54,6 +54,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 | 15:23:07 (12-oct) | `20261012_152307_ruptura_4h_italia` | Ruptura en 5 min (cuerpo) del rango de la vela de 4 h, versión con la vela de NY mal interpretada (12:00-16:00 Italia) | Sustituido: el usuario aclaró que la vela de NY es la de 8:00-12:00. Ninguna variante gana en los 3 periodos | Sustituido |
 | 15:24:24 (12-oct) | `20261012_152424_ruptura_4h_italia` | Idea del usuario: rango de la vela de 4 h de 0:00-4:00 Italia (Londres, rupturas 4:00-12:00, salida 15:25) y de 8:00-12:00 (NY, rupturas desde 12:00 o desde la apertura de NY); ruptura con cuerpo (cierre fuera / cuerpo entero fuera) en 5 min; stop mitad u opuesto; 1R/2R (24 variantes) | Las 24 negativas en desarrollo (2018-21); solo 2025-26 positivo en la mayoría de NY. R bruto 0,00-0,06. Ninguna cumple la regla de selección | ❌ RECHAZADA |
 
+| 18:47:12 (12-oct) | `20261012_184712_stats_londres_rupturas` | Estadística (no estrategia): primera ruptura con cierre de 5 min del rango 0:00-4:00 Italia (ventana 4:00-15:30) y del rango de Asia 0:00-9:00 (ventana Londres 9:00-15:30) | Vela 4 h: rompe el 97 % de los días; vuelve a cerrar dentro el 89 %, continúa el 11 %; llega al extremo opuesto el 35 %. Asia: rompe el 87 %; vuelve el 83 %, continúa el 17 %; extremo opuesto el 17 %. Extensión mediana antes de volver: 0,21 × rango. Estable por año | ℹ️ descriptivo |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
