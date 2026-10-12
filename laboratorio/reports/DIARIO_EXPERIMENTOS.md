@@ -58,6 +58,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:53:01 (12-oct) | `20261012_185301_stats_londres_pullback` | Estadística: tras la ruptura con cierre del rango 0:00-4:00 / Asia, ¿pullback al nivel roto y continuación? Carrera tras el pullback: nuevo extremo / nivel + 0,5R / + 1R frente a la mitad del rango | Pullback al nivel en el 90-94 % (mediana 5 min). Nuevo extremo antes de la mitad: 73-75 % (pero el extremo previo es pequeño, mediana 0,21 R). Nivel + 0,5R antes de la mitad (riesgo = recompensa): 47,5 vs 44,2 % (A) y 36,5 vs 37,4 % (B) → moneda al aire antes de costes | ℹ️ descriptivo |
 
+| 18:58:18 (12-oct) | `20261012_185818_stats_londres_barrida_ultimo_max` | Estadística (idea del usuario): tras la ruptura con cierre del rango 0:00-4:00 / Asia, el pullback (a) rompe el último máximo de 5 min (pivote 2/2) con mecha o con cuerpo, o (b) entra en el último FVG de 5 min (respeta / atraviesa); carrera hasta nuevo extremo o nivel − 0,5R frente a la mitad del rango. Una ejecución previa sin el FVG (`185750`) se borró, mismos números | A: FVG respetado → nivel − 0,5R antes de la mitad 60,6 % vs 32,3 % (estable por año, 70-87 % a nuevo extremo); barrida del último máximo 56,7 vs 35,2 %; ruptura con cuerpo del último máximo 50,8 vs 42,3 %. B (Asia): FVG respetado 49,8 vs 26,0 %. HALLAZGO A POSTERIORI: hay que validarlo como estrategia con costes y periodos | ℹ️ descriptivo, candidato |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
