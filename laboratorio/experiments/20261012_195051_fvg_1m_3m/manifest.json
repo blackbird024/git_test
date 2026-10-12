@@ -1,0 +1,25 @@
+{
+  "fecha": "2026-10-12T19:56:05",
+  "version_codigo": "deccc22+cambios_sin_commit",
+  "experimento": "barrida + FVG de 1 y 3 min (Asia, Londres 15 min, NY 15 min)",
+  "reglas": "Mismo setup (barrida de un lado del rango, pullback que entra en un FVG y lo respeta; lecturas GIRO y CONTINUACIÓN,\nmismas variantes de stop y objetivo) con FVG de 1 min y 3 min, a petición del usuario. Rangos:\n  Asia 2:00-6:00 Italia (hasta 11:00 Italia) · Londres 1.ª vela de 15 min 9:00-9:15 Italia (hasta 11:00 Italia) ·\n  NY 1.ª vela de 15 min 9:30-9:45 ET (hasta 11:00 ET). Cierre forzoso: 15:25 Italia (Asia y Londres) / fin de NY.\nReglas idénticas a run_asia_sweep_fvg.py y run_or15_sweep_fvg.py; solo cambia el marco del FVG. Fijadas antes de ver\nresultados. Regla de selección: esperanza > 0 en desarrollo Y validación con coste base y n_val >= 30.\n",
+  "seleccionadas": [
+    "NY · GIRO · FVG 3 min, stop barrida, obj 2R",
+    "NY · CONT · FVG 3 min, stop nivel roto, obj 1R",
+    "NY · CONT · FVG 3 min, stop nivel roto, obj 2R"
+  ],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

@@ -66,6 +66,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 19:48:26 (12-oct) | `20261012_194826_or15_barrida_fvg` | Mismo setup (barrida + pullback a FVG 5/15 min respetado; GIRO y CONTINUACIÓN) con el rango de la 1.ª vela de 15 min: Londres 9:00-9:15 Italia (hasta 11:00 Italia) y NY 9:30-9:45 ET (hasta 11:00 ET). 32 variantes | Barre un lado del rango de 15 min el 99 % de los días. Setup completo: 25-34 % de los días con FVG de 5 min, 1-15 % con FVG de 15 min. 3 variantes pasan la regla (dev>0 y val>0); en la prueba fallan 2 (NY giro 5 min −12,2 $/op; NY continuación 15 min −16,8). Sobrevive Londres GIRO FVG 15 min stop barrida 2R: +7,4 / +3,2 / +38,9 $/op pero n = 41/40/12, ~10 ops/año, neto total 898 $, top-5 = 132 %, IC90 [−5,7; 27,7]. Con 32 variantes, 1 superviviente es lo esperable por azar | ❌ RECHAZADA (1 variante anecdótica) |
 
+| 19:50:51 (12-oct) | `20261012_195051_fvg_1m_3m` | Mismo setup (barrida + pullback a FVG respetado, GIRO y CONTINUACIÓN) con FVG de 1 y 3 min en Asia 2-6, Londres 1.ª vela 15 min y NY 1.ª vela 15 min (48 variantes) | Setup en el 31-91 % de los días. Stops sobre el FVG de 1-3 min: 5-30 $, saltan el 54-95 %. 3 variantes pasan la regla (todas NY con FVG de 3 min) y las 3 pierden en la prueba 2025-26 (−6,9 a −14,8 $/op). R bruto entre −0,53 y +0,03 | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
