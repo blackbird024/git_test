@@ -1,0 +1,26 @@
+{
+  "fecha": "2026-10-13T18:45:31",
+  "version_codigo": "4033598+cambios_sin_commit",
+  "experimento": "oro: gira o continúa + estrategias de rango (5/15/30/60/240 min)",
+  "reglas": "Mismo trabajo completo que en el NQ, ahora en ORO (GC.v.0 1 min de Databento, operado como MGC: 10 $/punto, tick 0,1).\nReglas idénticas a run_rangos_multi_tf.py, run_rangos15_objetivos.py y run_rangos_objetivo_parcial.py, fijadas antes:\nFASE 1 · ¿gira o continúa? Tras la 1.ª ruptura (1 tick) del rango de cada vela (5 min cada 5 min y 15/30 min de 0:00 a\n         14:00 ET; 1 h cada hora de 0:00 a 13:00 ET; 4 h a las 2:00, 6:00 y 10:00 ET), carrera hasta el plazo\n         máx(3,5 h, 2 × vela), máx. 15:55 ET: continuación = nivel roto + 1 rango, giro = otro lado del rango.\nFASE 2 · Candidatas: continuación (o giro) gana en >= 8 de 9 años y diferencia >= 5 puntos. Estrategia: a favor (orden\n         stop OCO, stop = otro lado, objetivo +1 rango) o en contra para las de giro (entrada en la ruptura, objetivo\n         el otro lado, stop a 1 rango del nivel roto). Costes base, alto, alto + 4 ticks.\nFASE 3 · Las velas de 15 min y las candidatas que pasen la fase 2 con objetivo 0,5 / 0,75 / 1 rango (base y alto).\nRegla de selección: esperanza > 0 en desarrollo (2018-21) Y validación (2022-24), n_val >= 30; luego se mira la prueba.\nCalidad de datos: se excluyen días con < 80 % de minutos entre 8:20 y 13:30 ET, días con cambio de contrato dentro del\ndía y el primer día tras un cambio de contrato (GC.v.0 rueda por volumen).",
+  "datos": "/home/user/git_test/vwap_lab/data/cache/GC_v0_1m.pkl",
+  "exclusiones": {
+    "cobertura": 34,
+    "cambio_contrato": 0,
+    "primer_dia_tras_cambio": 44
+  },
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}

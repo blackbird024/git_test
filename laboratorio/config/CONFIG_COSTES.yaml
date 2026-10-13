@@ -25,6 +25,21 @@ MNQ:
   stop_y_objetivo_misma_vela: stop_primero   # hipótesis conservadora con velas de 1 min
   gap_mas_alla_del_stop: ejecuta_en_apertura # no al precio del stop
 
+MGC:
+  especificacion:            # CME/COMEX Micro Gold. Fuente: conocimiento general; VERIFICAR en cmegroup.com
+    multiplicador_usd_por_punto: 10.0
+    tick: 0.10
+    valor_tick_usd: 1.00
+    verificado: false
+  comision_por_lado_usd: 0.50     # PENDIENTE: mismo valor de trabajo que MNQ (no verificado)
+  tasas_por_lado_usd: 0.25        # PENDIENTE
+  slippage_ticks_por_lado:
+    bajo: 1
+    base: 2
+    alto: 3
+  limite_requiere_cruce_ticks: 1
+  # Datos: GC.v.0 1 min de Databento (precios de GC usados como MGC; mismo precio, 1/10 del valor por punto).
+
 QQQ_ETF_proxy:                    # solo para comparar señales; un ETF UCITS real tiene otros costes (ver INFORME)
   comision_por_operacion_eur: 3.0 # PENDIENTE: tarifa IBKR para ETF UCITS en Xetra/Borsa Italiana. Valor de trabajo.
   spread_y_slippage_pct_por_lado: 0.05

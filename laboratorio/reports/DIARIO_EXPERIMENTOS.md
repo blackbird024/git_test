@@ -87,6 +87,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:40:13 (13-oct) | `20261013_184013_obstaculos_apertura` | Pregunta del usuario ("rompió abajo en la apertura pero estaba el Low de Asia y giró"): ruptura a favor de la vela de 5 min 9:25 y 8:25 ET (objetivo 0,75 rango) separando días con un nivel EN EL CAMINO (Asia 2-6 Italia intacta, Londres, PDH/PDL) | Asia en el camino: solo 1 % de los días (16 y 18 ops), sin efecto medible. Londres en el camino (12-15 %): rinde IGUAL O MEJOR (apertura +10,7 vs +5,4 $/op). Día anterior (2-3 %, 45 ops): peor (−6,3 y −1,4 $/op) pero muestra mínima. No justifica un filtro | ℹ️ descriptivo |
 
+| 18:42:13 (13-oct) | `20261013_184213_oro_rangos` | ORO (GC.v.0 1 min como MGC, 10 $/pt, tick 0,1; costes MGC añadidos a CONFIG_COSTES.yaml, provisionales): mismo trabajo completo que en NQ (gira o continúa en velas de 5/15/30/60/240 min; estrategia en 95 candidatas; objetivos 0,5/0,75/1 en las 57 velas de 15 min). 2.182 días (excluidos 34 por cobertura y 44 primeros días tras rollover) | Ninguna hora gira. La continuación gana más que en NQ (5 min 8:25 ET: 62/37 %, 9/9 años) pero NINGUNA de las 95 candidatas ni de las 171 combinaciones de 15 min pasa la regla: los rangos del oro son pequeños (riesgo mediano 12-55 $) y el coste ida y vuelta (5,5 $ + deslizamiento) se come la ventaja (R bruto −0,26 a +0,13). Mejor: 5 min 8:25 ET (dato 8:30): −1,2 / +4,8 / +15,0 $/op | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
