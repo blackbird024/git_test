@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:30:53",
+  "version_codigo": "e88ec7f+cambios_sin_commit",
+  "experimento": "gira o continúa + estrategia, velas de 5/30/60/240 min",
+  "reglas": "Gira o continúa tras la 1.ª ruptura del rango de una vela, para velas de 5, 30, 60 y 240 min (NQ 2018-2026, ET).\nDistancias iguales: continuación = nivel roto + 1 × rango; reversión = otro lado del rango.\nPlazo = máx(3,5 h, 2 × duración de la vela) tras cerrar el rango, como muy tarde 15:55 ET.\nVentanas: 5 min cada 5 min y 30 min cada 30 min de 0:00 a 14:00 ET; 1 h en cada hora de 0:00 a 13:00 ET;\n4 h alineadas con las velas de CME (2:00, 6:00, 10:00 ET).\nFASE 2 (regla fijada antes de ver la fase 1): son candidatas las ventanas con continuación > reversión en >= 8 de 9 años\ny diferencia total >= 5 puntos; se prueban como estrategia: orden stop OCO 1 tick fuera del rango, stop = otro lado,\nobjetivo = +1 rango, salida al plazo; costes base, alto y alto + 4 ticks. Regla de selección: dev>0 y val>0 (base).\n"
+}

@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:31:43",
+  "version_codigo": "e88ec7f+cambios_sin_commit",
+  "experimento": "objetivo 0,5/0,75/1 rango en rangos que terminan en el dato o la apertura",
+  "reglas": "Petición del usuario: objetivo de medio rango o 3/4 de rango (además de 1 rango, para comparar) en la ruptura A FAVOR\ndel rango de las velas que terminan a las 8:30 ET (dato macro, 14:30 Italia) y a las 9:30 ET (apertura NY, 15:30 Italia),\nen 5, 15, 30 y 60 min. Mismas reglas que run_rangos_multi_tf.py (orden stop OCO 1 tick fuera, stop = otro lado del rango,\nplazo máx(3,5 h, 2 × vela), si rompe los dos lados en el mismo minuto no se opera). Costes base, alto y alto + 4 ticks.\nVentanas elegidas A POSTERIORI (familia \"dato/apertura\" de los estudios anteriores): la prueba 2025-26 no es virgen."
+}
