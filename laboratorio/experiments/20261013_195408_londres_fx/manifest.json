@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T20:01:23",
+  "version_codigo": "f43a648+cambios_sin_commit",
+  "experimento": "Londres (ruptura vs pullback) en 4 mercados + estudio completo EUR/USD y GBP/USD",
+  "reglas": "Petición del usuario (\"me gusta operar Londres\" → opción c):\nPARTE A · Londres (9:00 Italia) en NQ, oro, EUR/USD y GBP/USD: entrada en la ruptura frente a entrada en el PULLBACK\n          (orden límite en el nivel roto tras la ruptura; se cancela si antes llega al objetivo). Velas de 5 min 8:55\n          y 9:00 Italia, 15 min, 30 min y 1 h desde las 9:00 Italia (2:55/3:00 ET). Stop: otro lado del rango o mitad\n          del rango. Objetivo: 0,75 o 1 rango desde el nivel roto.\nPARTE B · Estudio completo (mismas fases que el NQ y el oro) en EUR/USD y GBP/USD: gira o continúa en velas de\n          5/15/30/60/240 min de 0:00 a 14:00 ET; estrategia a favor (+1 rango) en las candidatas (>= 8/9 años, dif >= 5);\n          objetivos 0,5/0,75/1 en las velas de 15 min.\nReglas fijadas antes de ver resultados. Selección: dev>0 y val>0 (coste base), n_val >= 30. Costes M6E/M6B provisionales.\nDatos FX comprados con autorización del usuario (≈ 21,55 USD). Rejilla ET; 3:00 ET = 9:00 Italia salvo ~3 semanas al año."
+}

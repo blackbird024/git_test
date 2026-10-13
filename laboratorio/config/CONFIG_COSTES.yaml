@@ -40,6 +40,34 @@ MGC:
   limite_requiere_cruce_ticks: 1
   # Datos: GC.v.0 1 min de Databento (precios de GC usados como MGC; mismo precio, 1/10 del valor por punto).
 
+M6E:
+  especificacion:            # Micro EUR/USD (12.500 €). Precios del 6E (Databento 6E.v.0). VERIFICAR en cmegroup.com
+    multiplicador_usd_por_punto: 12500.0
+    tick: 0.00005             # deslizamiento medido en ticks del libro del 6E (0,5 pip); el M6E cotiza a 0,0001
+    valor_tick_usd: 0.625
+    verificado: false
+  comision_por_lado_usd: 0.50     # PENDIENTE: mismo valor de trabajo que los otros micros
+  tasas_por_lado_usd: 0.25
+  slippage_ticks_por_lado:
+    bajo: 1
+    base: 2                   # 1 pip por lado
+    alto: 3
+  limite_requiere_cruce_ticks: 1
+
+M6B:
+  especificacion:            # Micro GBP/USD (6.250 £). Precios del 6B (Databento 6B.v.0). VERIFICAR en cmegroup.com
+    multiplicador_usd_por_punto: 6250.0
+    tick: 0.0001              # tick del 6B (1 pip)
+    valor_tick_usd: 0.625
+    verificado: false
+  comision_por_lado_usd: 0.50
+  tasas_por_lado_usd: 0.25
+  slippage_ticks_por_lado:
+    bajo: 1
+    base: 2                   # 2 pips por lado
+    alto: 3
+  limite_requiere_cruce_ticks: 1
+
 QQQ_ETF_proxy:                    # solo para comparar señales; un ETF UCITS real tiene otros costes (ver INFORME)
   comision_por_operacion_eur: 3.0 # PENDIENTE: tarifa IBKR para ETF UCITS en Xetra/Borsa Italiana. Valor de trabajo.
   spread_y_slippage_pct_por_lado: 0.05

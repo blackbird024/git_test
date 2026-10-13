@@ -44,3 +44,13 @@ def mgc(scenario="base", fixed_mult=1.0, extra_slip_ticks=0.0) -> FutCost:
                    fixed_per_side=(c["comision_por_lado_usd"] + c["tasas_por_lado_usd"]) * fixed_mult,
                    slip_ticks=c["slippage_ticks_por_lado"][scenario] + extra_slip_ticks,
                    limit_cross_ticks=c["limite_requiere_cruce_ticks"])
+
+
+def fut(symbol, scenario="base", fixed_mult=1.0, extra_slip_ticks=0.0) -> FutCost:
+    """Coste genérico para cualquier contrato del YAML (MNQ, MGC, M6E, M6B…)."""
+    c = load_yaml()[symbol]
+    e = c["especificacion"]
+    return FutCost(point_value=e["multiplicador_usd_por_punto"], tick=e["tick"],
+                   fixed_per_side=(c["comision_por_lado_usd"] + c["tasas_por_lado_usd"]) * fixed_mult,
+                   slip_ticks=c["slippage_ticks_por_lado"][scenario] + extra_slip_ticks,
+                   limit_cross_ticks=c["limite_requiere_cruce_ticks"])
