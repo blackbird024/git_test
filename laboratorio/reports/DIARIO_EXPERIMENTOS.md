@@ -78,6 +78,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:10:50 (13-oct) | `20261013_181050_orb15_gira_o_continua_todo_el_dia` | Estadística: gira o continúa tras la 1.ª ruptura de cada vela de 15 min de 0:00 a 14:00 ET (57 ventanas), distancias iguales (+1 rango vs otro lado), por año | Ninguna hora gira de forma fija (máx. −2,7 puntos, ningún año consistente). Continúan más en 9/9 años: 8:15 ET (14:15 Italia) 57,3/42,5; 9:15 ET (15:15 Italia) 55,4/44,1; 1:30 ET 54,7/44,5; 0:00 ET 52,7/46,1. Las dos primeras = rango que termina a las 8:30 (datos macro) y a las 9:30 (apertura NY). HALLAZGO A POSTERIORI entre 57 ventanas: candidato a validar | ℹ️ descriptivo, candidato |
 
+| 18:22:34 (13-oct) | `20261013_182234_orb15_continuacion` | Candidato a posteriori: ruptura A FAVOR (orden stop OCO) del rango 8:15-8:30 ET (14:15 Italia) y 9:15-9:30 ET (15:15 Italia); stop otro lado; objetivo +1 rango o sin objetivo; plazo 3,5 h; costes base/alto/alto+4 ticks | Pasan la regla 2 de 4 y las 2 ganan en la prueba. 8:15 objetivo 1 rango: +1,8 / +14,2 / +1,9 $/op, PF FM 1,31, IC90 FM [5,1; 14,4], top-10 = 42 %, 7/9 años +, ~1.300 $/año/MNQ; con +4 ticks de deslizamiento desarrollo y prueba pasan a −1,8. 9:15 sin objetivo: +4,4 / +9,3 / +17,4, IC90 FM [2,7; 22,1], top-10 = 74 %, 6/9 años +; con +4 ticks desarrollo −0,7. Ventanas elegidas mirando todo el periodo (prueba no virgen) y sensibles al deslizamiento del dato/apertura | ⚠️ INCONCLUSA (las más prometedoras de los ORB; solo forward) |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

@@ -1,0 +1,24 @@
+{
+  "fecha": "2026-10-13T18:22:37",
+  "version_codigo": "94ec663+cambios_sin_commit",
+  "experimento": "ORB 15 min a favor: 8:15 y 9:15 ET",
+  "reglas": "Candidato del estudio \"gira o continúa\" (run_orb_rev_vs_cont_todas.py, hallazgo A POSTERIORI entre 57 ventanas):\nruptura A FAVOR del rango de la vela de 15 min de 8:15-8:30 ET (14:15 Italia; termina con los datos macro de las 8:30)\ny de 9:15-9:30 ET (15:15 Italia; termina en la apertura de NY). MNQ. Reglas fijadas ANTES de ver resultados:\n1. Rango: máximo y mínimo de la vela de 15 min.\n2. Entrada: orden stop 1 tick fuera del rango en el lado que rompe primero (OCO). Si rompe los dos lados en el mismo\n   minuto, no se opera. Una operación al día por ventana.\n3. Stop: el otro lado del rango ∓ 1 tick.\n4. Objetivo (variantes): nivel roto + 1 × rango (distancias iguales, como la estadística) o sin objetivo.\n5. Plazo: 3,5 h tras cerrar el rango (12:00 ET para 8:15; 13:00 ET para 9:15). Salida a mercado.\nCostes: base, alto y alto + 4 ticks extra de deslizamiento por lado (minutos de dato/apertura).\nRegla de selección: esperanza > 0 en desarrollo Y validación (coste base), n_val >= 30.\nAVISO: la ventana se eligió mirando 2018-2026 entero; la prueba 2025-26 no es virgen.\n",
+  "seleccionadas": [
+    "8:15 ET (14:15 Italia), objetivo 1rango",
+    "9:15 ET (15:15 Italia), objetivo sin_objetivo"
+  ],
+  "periodos": {
+    "desarrollo": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "validacion": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "prueba": [
+      "2025-01-01",
+      "2026-10-02"
+    ]
+  }
+}
