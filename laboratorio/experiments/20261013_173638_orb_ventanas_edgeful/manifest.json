@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T17:36:43",
+  "version_codigo": "ab132e4+cambios_sin_commit",
+  "experimento": "ventanas ORB 15 min (newsletter edgeful)",
+  "reglas": "Newsletter de edgeful (oct. 2026): \"doble ruptura\" de ORB de 15 min en NQ para las 37 ventanas de 3:00 a 12:00 ET.\n(1) Reproducir sus porcentajes con nuestros datos (últimos 12 meses) y ver su estabilidad por año 2018-2026.\n(2) Probar lo que sugieren (\"cuando rompe un lado, el otro lado es el objetivo\") como estrategia, con reglas fijadas antes:\n    en la primera ruptura (1 tick fuera del rango, minuto a minuto), entrada a mercado en el minuto siguiente EN CONTRA\n    de la ruptura; objetivo = el otro lado del rango; stop = entrada ± 1 × rango (1:1 aprox.) o ± 0,5 × rango.\n    Si ambos lados se rompen en el mismo minuto, no se opera. Ventanas probadas: 5:45 (cierre 9:25 ET), 9:30 y 11:15\n    (cierre 15:55 ET). Coste base del laboratorio.\n\"Doble ruptura en X h\" = el máximo y el mínimo del rango se superan (1 tick) dentro de las X horas tras cerrar el rango.\n"
+}

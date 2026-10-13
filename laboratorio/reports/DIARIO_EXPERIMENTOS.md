@@ -70,6 +70,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 19:58:35 (12-oct) | `20261012_195835_silver_bullet` | ICT Silver Bullet: ventanas 3-4, 10-11 y 14-15 ET; liquidez = máx/mín de la hora anterior; barrida dentro de la ventana, FVG de 1/3/5 min en contra, retroceso que lo respeta; stop barrida o FVG; objetivo liquidez opuesta o 2R (36 variantes) | Ninguna positiva en desarrollo y validación a la vez → ninguna seleccionada. Setup en el 16-80 % de los días. R bruto entre −0,40 y +0,06. 17 variantes con IC90 FM 2022-26 entero por debajo de 0. Mejor: NY AM FVG 5 min stop barrida (+9 a +11 $/op en 2018-21, −6/−7 en 2022-24) | ❌ RECHAZADA |
 
+| 17:36:38 (13-oct) | `20261013_173638_orb_ventanas_edgeful` | Newsletter de edgeful: doble ruptura del ORB de 15 min en las 37 ventanas 3:00-12:00 ET. (1) Reproducción últimos 12 meses y por año; (2) "el otro lado es el objetivo": entrada en contra en la primera ruptura, objetivo el otro lado, stop 1 o 0,5 × rango (ventanas 5:45, 9:30, 11:15) | Sus cifras se reproducen (5:45 antes de 9:30: 77,6 % vs 78,3 %; 9:30 al cierre 51,8 vs 50,2; 11:15 al cierre 64,1 vs 63,8). Estables por año, pero la "mejor ventana" cambia cada año (6:45-9:00). Estrategia: las 6 variantes negativas en desarrollo; R bruto −0,01 a −0,17; llega al otro lado antes del stop 1× rango solo el 43-49 % | ❌ RECHAZADA (estadística correcta, sin ventaja operable) |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
