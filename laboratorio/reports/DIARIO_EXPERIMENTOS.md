@@ -74,6 +74,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:02:06 (13-oct) | `20261013_180206_orb_37_ventanas` | Las 37 ventanas ORB de 15 min (3:00-12:00 ET), 2018-2026: doble ruptura en 3,5 h y "el otro lado es el objetivo" (stop 1 × rango) | Doble ruptura máxima 7:45 ET (85 %); mínima 9:30 (42 %). Estrategia: las 37 con esperanza total negativa (−0,4 a −5,8 $/op), ninguna positiva en los 3 periodos, R bruto −0,01 a −0,13. Menos malas: 8:30, 12:00 y 11:15 ET (≈ −0,4 a −0,6 $/op). Más doble ruptura no da más beneficio | ❌ RECHAZADA |
 
+| 18:07:56 (13-oct) | `20261013_180756_orb_reversion_vs_continuacion` | Estadística: tras la primera ruptura del ORB de 15 min (Londres 9:00 Italia, 14:30 Italia, NY 15:30 Italia), ¿llega antes a +1 rango (o +0,5) a favor o al otro lado del rango? Plazo 3,5 h | A distancias iguales (+1 rango vs otro lado): 14:30 47,8/47,9 %; Londres 46,1/43,7 %; NY 42,1/38,1 % (resto sin resolver). Con +0,5 rango la continuación gana ~66/30 (pero el objetivo está a la mitad de distancia). Estable por año: moneda al aire | ℹ️ descriptivo |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

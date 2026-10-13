@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:07:57",
+  "version_codigo": "658532a+cambios_sin_commit",
+  "experimento": "reversión vs continuación tras la ruptura del ORB 15 min",
+  "reglas": "¿Qué se da más tras la primera ruptura del ORB de 15 min: reversión o continuación? (NQ 2018-2026, minuto a minuto)\nTras la primera ruptura (1 tick fuera), carrera hasta el plazo (3,5 h tras cerrar el rango, máx. 15:55 ET):\n  continuación = llega a nivel roto + k × rango ; reversión = llega al otro lado del rango. Mismo minuto → \"ambos\".\nk = 0,5 y 1 (con k = 1 las dos distancias desde el nivel roto son iguales)."
+}
