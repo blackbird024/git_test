@@ -94,16 +94,16 @@ method paso(Win w) =>
             box.new(bar_index - 1, w.hi, bar_index + 40, w.lo, border_color = colRng, bgcolor = colRng)
         if w.st == 2
             if hm >= w.exM
-                w.st := 4
                 w.hoy := "sin ruptura"
+                w.st := 4
             else
                 bool up = high >= w.hi + tick
                 bool dn = low <= w.lo - tick
                 if up and dn
-                    w.st := 4
                     w.hoy := "rompe los 2 lados: no se opera"
                     label.new(bar_index, high, w.name + ": doble ruptura, no se opera", size = size.tiny,
                               color = color.gray, textcolor = color.white)
+                    w.st := 4
                 else if up or dn
                     w.side := up ? 1 : -1
                     float lvl = up ? w.hi + tick : w.lo - tick
@@ -123,6 +123,7 @@ method paso(Win w) =>
                     // en la vela de entrada solo cuenta el stop
                     if (w.side == 1 and low <= w.stp) or (w.side == -1 and high >= w.stp)
                         w.cerrar(w.stp, false, "stop")
+                    w.st := w.st       // cada rama termina en int (requisito de Pine, CE10235)
         else if w.st == 3 and bar_index > w.bIn
             line.set_x2(w.lS, bar_index)
             line.set_x2(w.lT, bar_index)
