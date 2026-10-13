@@ -93,6 +93,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 20:18:45 (13-oct) | `20261013_201845_stop_minimo_30` | Petición del usuario: stop mínimo de 30 pts en las rupturas a favor (5 min 8:25/9:25 ET, 15 min 8:15/9:15, 30 min 8:00): filtro (solo rango >= 30) o stop a máx(R, 30) con objetivo 0,75 R / 0,75 S / 1 S | APERTURA 5 min 9:25 MEJORA con stop mínimo: 1 S → +3,6 / +6,8 / +20,9 $/op, 9/9 años, IC90 FM [7,9; 15,5], ~1.450 $/año; 0,75 R → +2,9 / +5,8 / +20,2, acierto 79 %. DATO 5 min 8:25 con 0,75 R ≈ igual que sin mínimo (+0,8 / +16,8 / +8,2; acierto 81 %); con objetivo sobre S falla desarrollo. 30 min 8:00 también pasa (0,75 S, filtro 30). Riesgo típico 62 $/MNQ. Indicador actualizado (stop mínimo y objetivo por ventana) | ⚠️ INCONCLUSA (mejora la apertura) |
 
+| 21:01:34 (13-oct) | `20261013_210134_mgc_orb5_doble_ruptura` | Short de edgeful: MGC ORB 5 min (9:30-9:35 ET) doble ruptura 101/128 = 78,9 % "que aguanta 2 años". Reproducción + estrategia "en contra de la 1.ª ruptura, objetivo el otro lado" (stop 1 rango o mínimo 3 pts) | Se reproduce: 98/123 = 79,7 % en su ventana; 72,9 % en 2 años, 5 años y 2018-26 (68-79 % por año). Rango mediano 3,1 pts (31 $). Estrategia: llega al otro lado antes del stop solo el 47-54 %; las 4 variantes pierden en los 3 periodos (−4 a −8 $/op), 0/9 años positivos | ❌ RECHAZADA (estadística correcta, sin ventaja) |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

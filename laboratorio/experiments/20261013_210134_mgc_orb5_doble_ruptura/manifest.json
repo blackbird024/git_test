@@ -1,0 +1,11 @@
+{
+  "fecha": "2026-10-13T21:01:35",
+  "version_codigo": "67a1390+cambios_sin_commit",
+  "experimento": "short edgeful: MGC ORB 5 min doble ruptura",
+  "reglas": "Short de edgeful: \"MGC 5 min ORB (9:30-9:35 ET), doble ruptura 101/128 = 78,9 % (25-feb-2026 a 24-ago-2026),\n'the one setup that's held up for 2 years'\". Reproducción y prueba como estrategia en oro (GC.v.0 como MGC).\nDoble ruptura = se superan máximo y mínimo del rango (por mecha, 1 tick) entre 9:35 y 16:00 ET.\nEstrategia \"el otro lado es el objetivo\" (reglas fijadas antes): en la primera ruptura se entra EN CONTRA a mercado en el\nminuto siguiente; objetivo = el otro lado; stop = 1 rango más allá del nivel roto (y variante con stop mínimo 5 $ de\nrecorrido = 0,5 pts... no: variante con stop mínimo de 3 pts); salida 15:55 ET. Costes MGC base/alto.",
+  "exclusiones": {
+    "cobertura": 34,
+    "cambio_contrato": 0,
+    "primer_dia_tras_cambio": 44
+  }
+}
