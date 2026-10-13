@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:40:14",
+  "version_codigo": "84127b8+cambios_sin_commit",
+  "experimento": "niveles en el camino de la ruptura de apertura/dato",
+  "reglas": "Pregunta del usuario: \"hoy en la apertura de NY el precio rompió abajo pero estaba el Low de Asia\".\n¿La ruptura a favor de la vela de 5 min que termina en la apertura (9:25-9:30 ET) y en el dato (8:25-8:30 ET) funciona\npeor cuando hay un nivel importante EN EL CAMINO (entre el nivel roto y el objetivo)? Hora de Italia para los niveles.\nNiveles: Asia = máx/mín de 2:00-6:00 Italia (definición del usuario); Londres = máx/mín de 9:00 Italia hasta el inicio\nde la vela; día anterior = máx/mín de la sesión regular de ayer (PDH/PDL).\nEstrategia: la de run_rangos_objetivo_parcial.py (orden stop OCO, stop = otro lado, objetivo 0,75 rango, plazo 3,5 h).\n\"En el camino\": el nivel está más allá del lado roto y a menos de 0,75 rango (antes del objetivo). Para Asia y Londres\nse exige además que el nivel siga intacto (no superado antes de la vela). Coste base. Es un análisis, no una regla nueva."
+}

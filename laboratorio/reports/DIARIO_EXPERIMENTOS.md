@@ -85,6 +85,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:32:26 (13-oct) | `20261013_183226_rangos15_objetivos` | Las 57 velas de 15 min (0:00-14:00 ET) con ruptura a favor y objetivo 0,5 / 0,75 / 1 rango (coste base y alto) | Solo 8:15 ET (14:15 Italia) pasa la regla con los 3 objetivos (+0,5 a +1,8 / +14 a +16 / +0,5 a +2,3 $/op) y 9:45 ET con 0,75 (marginal, +0,2 $/op/año ≈ 235 $). De 57 ventanas, 53-55 pierden con cualquier objetivo (media −620 $/año). Cambiar el objetivo no crea ventaja donde no la hay | ❌ salvo 8:15 (⚠️ ya registrada) |
 
+| 18:40:13 (13-oct) | `20261013_184013_obstaculos_apertura` | Pregunta del usuario ("rompió abajo en la apertura pero estaba el Low de Asia y giró"): ruptura a favor de la vela de 5 min 9:25 y 8:25 ET (objetivo 0,75 rango) separando días con un nivel EN EL CAMINO (Asia 2-6 Italia intacta, Londres, PDH/PDL) | Asia en el camino: solo 1 % de los días (16 y 18 ops), sin efecto medible. Londres en el camino (12-15 %): rinde IGUAL O MEJOR (apertura +10,7 vs +5,4 $/op). Día anterior (2-3 %, 45 ops): peor (−6,3 y −1,4 $/op) pero muestra mínima. No justifica un filtro | ℹ️ descriptivo |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
