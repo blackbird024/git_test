@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T21:18:07",
+  "version_codigo": "864875f+cambios_sin_commit",
+  "experimento": "entrada en la ruptura vs al cierre de la vela que rompe",
+  "reglas": "Pregunta del usuario: \"¿espero al cierre de la vela que rompe?\" Velas de 5 min 8:55, 14:25 y 15:25 Italia (2:55, 8:25\ny 9:25 ET). MNQ. Reglas fijadas antes de ver resultados:\n  ruptura    orden stop 1 tick fuera del rango (referencia, como el indicador)\n  cierre1    la primera vela de 1 min que CIERRA fuera del rango → entrada a mercado en la apertura siguiente\n  cierre5    la primera vela de 5 min (alineada al cierre del rango) que CIERRA fuera → entrada en la apertura siguiente\nStop a S = máx(R, 30 pts) del nivel roto (como el indicador; si al entrar el precio ya está más allá del objetivo se\ncancela). Objetivo 0,75 R o 1 S. Plazo 3,5 h tras cerrar el rango. Coste base."
+}
