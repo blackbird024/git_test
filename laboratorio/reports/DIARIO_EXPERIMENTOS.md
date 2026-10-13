@@ -97,6 +97,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 21:07:21 (13-oct) | `20261013_210721_orb5_reversion_confirmada` | Reversión CONFIRMADA del ORB 5 min 9:30-9:35 ET (como la opera edgeful): tras la 1.ª ruptura, la primera vela de 1 o 5 min que cierra de nuevo dentro → entrada en contra; stop = extremo de la ruptura; objetivo el otro lado o 2R; salida 15:55. MGC y MNQ, 8 variantes por mercado | Ninguna pasa la regla. MGC: las 8 negativas en los 3 periodos (−3 a −17 $/op), llega al objetivo 24-53 %. MNQ: cerca de 0 (mejor: cierre 1 min, otro lado: −0,3 / +1,0 / +2,5 $/op, ~157 $/año; con coste alto ≈ 0) | ❌ RECHAZADA |
 
+| 21:16:23 (13-oct) | `20261013_211623_pullback_dato_apertura` | "¿Espero el pullback?" en las velas de 5 min 8:55, 14:25 y 15:25 Italia (stop mín. 30 pts): entrada en la ruptura vs límite en el nivel roto vs límite en la mitad del rango; objetivo 0,75 R o 1 S. (Una ejecución previa sin 8:55, `211608`, se borró: mismos números) | El pullback empeora siempre: DATO 14:25 pasa de +1.582 a −316 $/año (solo se llena el 60 %; se pierden las rupturas que salen directas); APERTURA 15:25 de +1.447 a −484 $/año. LONDRES 8:55: ≈ 0 entrando en la ruptura (−7 a −195 $/año) y negativa con pullback | ℹ️ entrar en la ruptura; 8:55 ❌ |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

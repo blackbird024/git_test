@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T21:16:31",
+  "version_codigo": "cc429bf+cambios_sin_commit",
+  "experimento": "ruptura vs pullback en las velas del dato y la apertura",
+  "reglas": "Pregunta del usuario: \"¿y espero el pullback?\" (y \"la de 8:55\": 2:55 ET, añadida después) en las velas de 5 min del dato (8:25 ET, 14:25 Italia) y de la apertura\n(9:25 ET, 15:25 Italia). MNQ. Reglas fijadas antes de ver resultados:\n  ruptura   orden stop 1 tick fuera del rango (como el indicador)\n  pullback  tras la 1.ª ruptura, orden LÍMITE en el nivel roto (se llena si el precio vuelve a cruzarlo 1 tick); se\n            cancela si antes toca el objetivo o el stop, o al plazo\n  pullback_mitad  orden límite en la mitad del rango (pullback más profundo), mismas cancelaciones\nStop a S = máx(R, 30 pts) del nivel roto. Objetivo: 0,75 R (dato) y 1 S (apertura), más el otro de cada uno.\nPlazo 3,5 h tras cerrar el rango. Coste base (y alto en el CSV)."
+}
