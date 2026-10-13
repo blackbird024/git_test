@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:02:16",
+  "version_codigo": "f3e3506+cambios_sin_commit",
+  "experimento": "37 ventanas ORB 15 min: doble ruptura y 'el otro lado es el objetivo'",
+  "reglas": "Ampliación de run_orb_ventanas_edgeful.py a las 37 ventanas de 15 min (3:00-12:00 ET): doble ruptura en 3,5 h\n(2018-2026) y estrategia \"el otro lado es el objetivo\" (entrada en contra en la primera ruptura, objetivo el otro lado,\nstop 1 × rango; plazo 3,5 h tras cerrar el rango, como muy tarde 15:55 ET). Mismas reglas, fijadas antes."
+}
