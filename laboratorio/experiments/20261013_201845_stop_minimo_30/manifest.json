@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T20:18:58",
+  "version_codigo": "dd765a3+cambios_sin_commit",
+  "experimento": "stop mínimo de 30 puntos en las rupturas del dato y la apertura",
+  "reglas": "Petición del usuario: \"los stops son muy chicos, busca 30 pts mínimo\". MNQ, ruptura A FAVOR (orden stop OCO 1 tick\nfuera del rango; mismo minuto en ambos lados = no se opera; plazo 3,5 h). Reglas fijadas antes de ver resultados:\n  orig      stop = otro lado del rango, objetivo 0,75 R (referencia, sin cambios)\n  filtro30  igual que orig, pero SOLO días con rango >= 30 puntos\n  min30_R   stop a max(R, 30 pts) del nivel roto; objetivo 0,75 R (el del rango)\n  min30_S   stop a S = max(R, 30 pts) del nivel roto; objetivo 0,75 S\n  min30_1S  stop a S; objetivo 1 S\nVentanas: 5 min 8:25 y 9:25 ET (14:25/15:25 Italia), 15 min 8:15 y 9:15 ET, 30 min 8:00 ET. Costes base y alto."
+}
