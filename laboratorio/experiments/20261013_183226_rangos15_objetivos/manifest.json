@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:33:28",
+  "version_codigo": "e9af78d+cambios_sin_commit",
+  "experimento": "57 velas de 15 min con objetivo 0,5/0,75/1 rango",
+  "reglas": "Petición del usuario: las 57 velas de 15 min (0:00-14:00 ET) con ruptura a favor y objetivo 0,5 / 0,75 / 1 rango.\nMismas reglas que run_rangos_objetivo_parcial.py (orden stop OCO, stop = otro lado, plazo 3,5 h, mismo minuto = no se opera).\nCoste base y alto. Regla: dev>0 y val>0 (base) → se mira la prueba."
+}
