@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T21:07:39",
+  "version_codigo": "d241003+cambios_sin_commit",
+  "experimento": "reversión confirmada del ORB 5 min (MGC y MNQ)",
+  "reglas": "Reversión del ORB de 5 min (9:30-9:35 ET) CON CONFIRMACIÓN, como la opera edgeful (doble ruptura → el otro lado es el\nobjetivo). Reglas fijadas antes de ver resultados:\n1. Rango 9:30-9:35 ET. Primera ruptura (1 tick fuera) desde las 9:35.\n2. Confirmación de reversión: la primera vela (1 min o 5 min, variantes) que CIERRA de nuevo dentro del rango después de\n   la ruptura → entrada a mercado en la apertura siguiente, en contra de la ruptura.\n3. Stop: el extremo de la ruptura (máximo/mínimo alcanzado fuera del rango hasta la señal) ± 1 tick.\n4. Objetivo: el otro lado del rango (variante \"otro_lado\") o 2R.\n5. Señales hasta las 14:00 ET; salida 15:55 ET. Una operación al día. Costes base y alto. MGC (oro) y MNQ."
+}

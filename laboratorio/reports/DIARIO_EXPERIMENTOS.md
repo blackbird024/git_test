@@ -95,6 +95,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 21:01:34 (13-oct) | `20261013_210134_mgc_orb5_doble_ruptura` | Short de edgeful: MGC ORB 5 min (9:30-9:35 ET) doble ruptura 101/128 = 78,9 % "que aguanta 2 años". Reproducción + estrategia "en contra de la 1.ª ruptura, objetivo el otro lado" (stop 1 rango o mínimo 3 pts) | Se reproduce: 98/123 = 79,7 % en su ventana; 72,9 % en 2 años, 5 años y 2018-26 (68-79 % por año). Rango mediano 3,1 pts (31 $). Estrategia: llega al otro lado antes del stop solo el 47-54 %; las 4 variantes pierden en los 3 periodos (−4 a −8 $/op), 0/9 años positivos | ❌ RECHAZADA (estadística correcta, sin ventaja) |
 
+| 21:07:21 (13-oct) | `20261013_210721_orb5_reversion_confirmada` | Reversión CONFIRMADA del ORB 5 min 9:30-9:35 ET (como la opera edgeful): tras la 1.ª ruptura, la primera vela de 1 o 5 min que cierra de nuevo dentro → entrada en contra; stop = extremo de la ruptura; objetivo el otro lado o 2R; salida 15:55. MGC y MNQ, 8 variantes por mercado | Ninguna pasa la regla. MGC: las 8 negativas en los 3 periodos (−3 a −17 $/op), llega al objetivo 24-53 %. MNQ: cerca de 0 (mejor: cierre 1 min, otro lado: −0,3 / +1,0 / +2,5 $/op, ~157 $/año; con coste alto ≈ 0) | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
