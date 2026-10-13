@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T18:11:00",
+  "version_codigo": "16a4247+cambios_sin_commit",
+  "experimento": "gira o continúa tras la ruptura de cada vela de 15 min",
+  "reglas": "Reversión vs continuación tras la primera ruptura del rango de cada vela de 15 min, de 0:00 a 14:00 ET (6:00-20:00\nItalia la mayor parte del año). Misma carrera que run_orb_rev_vs_cont.py con distancias iguales: continuación = nivel roto\n+ 1 rango; reversión = otro lado del rango; plazo 3,5 h tras cerrar el rango (máx. 15:55 ET). NQ 2018-2026."
+}

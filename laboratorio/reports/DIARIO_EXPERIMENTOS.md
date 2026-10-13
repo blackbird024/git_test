@@ -76,6 +76,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 18:07:56 (13-oct) | `20261013_180756_orb_reversion_vs_continuacion` | Estadística: tras la primera ruptura del ORB de 15 min (Londres 9:00 Italia, 14:30 Italia, NY 15:30 Italia), ¿llega antes a +1 rango (o +0,5) a favor o al otro lado del rango? Plazo 3,5 h | A distancias iguales (+1 rango vs otro lado): 14:30 47,8/47,9 %; Londres 46,1/43,7 %; NY 42,1/38,1 % (resto sin resolver). Con +0,5 rango la continuación gana ~66/30 (pero el objetivo está a la mitad de distancia). Estable por año: moneda al aire | ℹ️ descriptivo |
 
+| 18:10:50 (13-oct) | `20261013_181050_orb15_gira_o_continua_todo_el_dia` | Estadística: gira o continúa tras la 1.ª ruptura de cada vela de 15 min de 0:00 a 14:00 ET (57 ventanas), distancias iguales (+1 rango vs otro lado), por año | Ninguna hora gira de forma fija (máx. −2,7 puntos, ningún año consistente). Continúan más en 9/9 años: 8:15 ET (14:15 Italia) 57,3/42,5; 9:15 ET (15:15 Italia) 55,4/44,1; 1:30 ET 54,7/44,5; 0:00 ET 52,7/46,1. Las dos primeras = rango que termina a las 8:30 (datos macro) y a las 9:30 (apertura NY). HALLAZGO A POSTERIORI entre 57 ventanas: candidato a validar | ℹ️ descriptivo, candidato |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
