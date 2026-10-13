@@ -1,0 +1,417 @@
+<title>Playbook Dato y Apertura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: columna de lectura de ~980px; una franja horaria (reloj de Italia) como columna vertebral,
+   dos fichas de setup en paralelo, diagrama de la orden, y abajo riesgo, Topstep, reglas y registro. */
+:root{
+  --bg:#F2F4F7; --surface:#FFFFFF; --ink:#101826; --muted:#5A6577; --line:#D9DEE6;
+  --amber:#B87A00; --amber-soft:#F6E7C4; --long:#0E7F68; --long-soft:#D7F0E9;
+  --short:#B8382F; --short-soft:#F7DEDB; --slate:#22324A;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B111A; --surface:#121A26; --ink:#E7ECF3; --muted:#93A0B4; --line:#253246;
+  --amber:#E6AE3C; --amber-soft:#3A2E14; --long:#39C2A0; --long-soft:#123229;
+  --short:#EF6F64; --short-soft:#3A1A18; --slate:#C9D5E8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B111A; --surface:#121A26; --ink:#E7ECF3; --muted:#93A0B4; --line:#253246;
+  --amber:#E6AE3C; --amber-soft:#3A2E14; --long:#39C2A0; --long-soft:#123229;
+  --short:#EF6F64; --short-soft:#3A1A18; --slate:#C9D5E8; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:2rem;font-weight:700;letter-spacing:.01em}
+h3{font-size:1.35rem;font-weight:700}
+p{margin:0;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:16px}
+
+/* Cabecera */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:22px}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.005em}
+.hero h1 span{color:var(--amber)}
+.hero .lead{color:var(--muted);margin-top:12px}
+.ticket{font-family:var(--mono);font-size:.82rem;border:1px solid var(--line);background:var(--surface);padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.ticket b{font-weight:600}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--amber);border:1px solid var(--amber);padding:4px 10px;border-radius:999px;width:fit-content}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber)}
+
+/* Reloj */
+.clock{background:var(--surface);border:1px solid var(--line);padding:20px 18px 14px;overflow-x:auto}
+.clock svg{display:block;min-width:720px;width:100%;height:auto}
+.dst{font-size:.9rem;color:var(--muted);border-left:3px solid var(--amber);padding-left:12px}
+
+/* Setups */
+.setups{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.card .tag{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.12em;color:var(--amber)}
+.card h3{font-size:2.1rem}
+.card h3 small{font-family:var(--mono);font-size:.9rem;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:8px}
+dl.rules{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:.95rem}
+dl.rules dt{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:3px}
+dl.rules dd{margin:0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:1px dashed var(--line);padding-top:14px}
+.kpi .v{font-family:var(--mono);font-size:1.25rem;font-weight:600}
+.kpi .l{font-size:.75rem;color:var(--muted)}
+.pos{color:var(--long)} .neg{color:var(--short)}
+
+/* Diagrama */
+.diagram{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:20px}
+.diagram svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-direction:column;gap:10px;font-size:.92rem}
+.legend div{display:grid;grid-template-columns:14px 1fr;gap:10px;align-items:start}
+.sw{width:14px;height:14px;margin-top:4px}
+
+/* Pasos */
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:62px 92px 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-weight:800;font-size:1.7rem;color:var(--amber);line-height:1}
+ol.steps .t{font-family:var(--mono);font-weight:600;padding-top:3px}
+ol.steps label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+ol.steps input{margin-top:5px;accent-color:var(--long);width:16px;height:16px;flex:none}
+ol.steps input:checked + span{color:var(--muted);text-decoration:line-through}
+.resetbtn{align-self:flex-start;font-family:var(--mono);font-size:.8rem;background:transparent;color:var(--muted);border:1px solid var(--line);padding:6px 12px;cursor:pointer}
+.resetbtn:hover,.resetbtn:focus-visible{color:var(--ink);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+/* Reglas de oro */
+.dont{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dont div{border-top:3px solid var(--short);background:var(--surface);padding:14px 16px;font-size:.93rem;min-width:0}
+.dont b{display:block;font-family:var(--display);font-size:1.15rem;margin-bottom:4px}
+.do div{border-top-color:var(--long)}
+
+/* Números */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);padding:14px}
+.stat .v{font-family:var(--mono);font-size:1.45rem;font-weight:600}
+.stat .l{font-size:.8rem;color:var(--muted)}
+.chart{background:var(--surface);border:1px solid var(--line);padding:18px}
+.chart svg{width:100%;height:auto;display:block}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500}
+td.num{text-align:right} th.r{text-align:right}
+tr.pick td{background:var(--long-soft)}
+.note{font-size:.88rem;color:var(--muted)}
+
+/* Cierre */
+.gate{background:var(--slate);color:var(--bg);padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gate h2{color:var(--bg)}
+.gate ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.gate .eyebrow{color:var(--bg);opacity:.75}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:760px){
+  .hero,.setups,.diagram,.gate{grid-template-columns:1fr}
+  .dont{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  ol.steps li{grid-template-columns:44px 1fr}
+  ol.steps .t{grid-column:2}
+  ol.steps label{grid-column:2}
+}
+@media (prefers-reduced-motion:no-preference){.card,.stat{transition:border-color .2s}.card:hover{border-color:var(--amber)}}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">MNQ · Micro E-mini Nasdaq-100 · plan diario</div>
+    <h1>Dato <span>&amp;</span> Apertura</h1>
+    <p class="lead">Dos operaciones al día con la misma idea: el rango de la vela de 5 minutos que se forma justo antes de un evento y la ruptura que provoca el propio evento. Se entra en la ruptura, a favor, con una orden stop.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span class="status">Fase actual: simulación</span>
+    <div class="ticket">
+      <span>Mercado</span><b>MNQ1! · 1 min</b>
+      <span>Ventanas</span><b>14:25 y 15:25 Italia</b>
+      <span>Stop</span><b>mín. 30 pts (~62 $)</b>
+      <span>Indicador</span><b>RangoDatoApertura_NQ</b>
+      <span>Backtest</span><b>2018 → oct 2026</b>
+    </div>
+  </div>
+</header>
+
+<section aria-labelledby="h-reloj">
+  <div class="eyebrow">El día, en hora de Italia</div>
+  <h2 id="h-reloj">El reloj de la estrategia</h2>
+  <div class="clock" role="img" aria-label="Línea de tiempo de 14:00 a 19:30 hora de Italia con las dos ventanas y sus cierres por tiempo">
+    <svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .ax{stroke:var(--line);stroke-width:1}
+        .tk{font:500 12px var(--mono);fill:var(--muted)}
+        .lb{font:700 14px var(--display);fill:var(--ink);letter-spacing:.04em}
+        .sm{font:400 11.5px var(--body);fill:var(--muted)}
+      </style>
+      <!-- escala: 14:00 → 19:30 = 330 min sobre 60..860 px -->
+      <line class="ax" x1="60" y1="120" x2="860" y2="120"/>
+      <g class="tk">
+        <text x="60" y="142" text-anchor="middle">14:00</text>
+        <text x="205.5" y="142" text-anchor="middle">15:00</text>
+        <text x="351" y="142" text-anchor="middle">16:00</text>
+        <text x="496.5" y="142" text-anchor="middle">17:00</text>
+        <text x="642" y="142" text-anchor="middle">18:00</text>
+        <text x="787.5" y="142" text-anchor="middle">19:00</text>
+      </g>
+      <g stroke="var(--line)"><line x1="60" y1="114" x2="60" y2="126"/><line x1="205.5" y1="114" x2="205.5" y2="126"/><line x1="351" y1="114" x2="351" y2="126"/><line x1="496.5" y1="114" x2="496.5" y2="126"/><line x1="642" y1="114" x2="642" y2="126"/><line x1="787.5" y1="114" x2="787.5" y2="126"/></g>
+      <!-- DATO: vela 14:25-14:30 (x 120.6-127.8), operación hasta 18:00 (642) -->
+      <rect x="127.8" y="62" width="514.2" height="14" fill="var(--long-soft)"/>
+      <rect x="120.6" y="56" width="7.3" height="64" fill="var(--amber)"/>
+      <text class="lb" x="120" y="44">DATO · vela 14:25–14:30</text>
+      <text class="sm" x="134" y="73">ruptura con el dato de EE. UU. de las 14:30 · cierre por tiempo 18:00</text>
+      <!-- APERTURA: vela 15:25-15:30 (x 266.1-273.4), hasta 19:00 (787.5) -->
+      <rect x="273.4" y="94" width="514.1" height="14" fill="var(--long-soft)"/>
+      <rect x="266.1" y="88" width="7.3" height="32" fill="var(--amber)"/>
+      <text class="lb" x="266" y="172">APERTURA · vela 15:25–15:30</text>
+      <text class="sm" x="280" y="105">ruptura con la apertura de Nueva York de las 15:30 · cierre por tiempo 19:00</text>
+      <circle cx="642" cy="69" r="4" fill="var(--short)"/>
+      <circle cx="787.5" cy="101" r="4" fill="var(--short)"/>
+    </svg>
+  </div>
+  <p class="dst">Del 26 al 30 de octubre de 2026 Europa ya habrá cambiado la hora y Estados Unidos todavía no: esa semana todo va una hora antes (vela del DATO 13:25, vela de la APERTURA 14:25, cierres 17:00 y 18:00). Lo mismo pasa a finales de marzo. El indicador lo ajusta solo porque trabaja en hora de Nueva York.</p>
+</section>
+
+<section aria-labelledby="h-setups">
+  <div class="eyebrow">Las dos operaciones</div>
+  <h2 id="h-setups">Ficha de cada setup</h2>
+  <div class="setups">
+    <article class="card">
+      <span class="tag">SETUP 1 · DATO</span>
+      <h3>14:25 <small>8:25 Nueva York</small></h3>
+      <dl class="rules">
+        <dt>Rango</dt><dd>Máximo y mínimo de la vela de 5 min 14:25–14:30</dd>
+        <dt>Entrada</dt><dd>Stop de compra 1 tick sobre el máximo y stop de venta 1 tick bajo el mínimo (OCO)</dd>
+        <dt>Stop</dt><dd>El otro lado del rango, como mínimo a 30 pts del nivel roto</dd>
+        <dt>Objetivo</dt><dd><b>0,75 × rango</b> desde el nivel roto (objetivo corto, acierto alto)</dd>
+        <dt>Tiempo</dt><dd>Cierre a mercado a las 18:00 si no tocó nada</dd>
+      </dl>
+      <div class="kpis">
+        <div class="kpi"><div class="v pos">81 %</div><div class="l">acierto</div></div>
+        <div class="kpi"><div class="v pos">+1.580 $</div><div class="l">por año, 1 MNQ</div></div>
+        <div class="kpi"><div class="v">7 / 9</div><div class="l">años positivos</div></div>
+      </div>
+    </article>
+    <article class="card">
+      <span class="tag">SETUP 2 · APERTURA</span>
+      <h3>15:25 <small>9:25 Nueva York</small></h3>
+      <dl class="rules">
+        <dt>Rango</dt><dd>Máximo y mínimo de la vela de 5 min 15:25–15:30</dd>
+        <dt>Entrada</dt><dd>Stop de compra 1 tick sobre el máximo y stop de venta 1 tick bajo el mínimo (OCO)</dd>
+        <dt>Stop</dt><dd>El otro lado del rango, como mínimo a 30 pts del nivel roto</dd>
+        <dt>Objetivo</dt><dd><b>1 × stop</b> (relación 1:1, unos 30 pts)</dd>
+        <dt>Tiempo</dt><dd>Cierre a mercado a las 19:00 si no tocó nada</dd>
+      </dl>
+      <div class="kpis">
+        <div class="kpi"><div class="v pos">58 %</div><div class="l">acierto</div></div>
+        <div class="kpi"><div class="v pos">+1.450 $</div><div class="l">por año, 1 MNQ</div></div>
+        <div class="kpi"><div class="v">9 / 9</div><div class="l">años positivos</div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="h-orden">
+  <div class="eyebrow">Ejemplo con precios</div>
+  <h2 id="h-orden">Cómo se ve la orden</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de una ruptura alcista: rango de 12 puntos, entrada, stop a 30 puntos y los dos objetivos">
+      <style>
+        .px{font:500 12px var(--mono);fill:var(--muted)}
+        .tx{font:600 12.5px var(--body)}
+      </style>
+      <!-- escala: 1 pt = 3,867 px; 30.812 → y 190,3 -->
+      <g class="px" text-anchor="end">
+        <text x="70" y="78">30.842</text>
+        <text x="70" y="159">30.821</text>
+        <text x="70" y="194">30.812</text>
+        <text x="70" y="240">30.800</text>
+        <text x="70" y="311">30.782</text>
+      </g>
+      <!-- rango -->
+      <rect x="90" y="190.3" width="70" height="46.4" fill="var(--amber-soft)" stroke="var(--amber)"/>
+      <text class="tx" x="125" y="262" text-anchor="middle" fill="var(--amber)">rango 12 pts</text>
+      <!-- velas -->
+      <g stroke="var(--muted)">
+        <line x1="112" y1="196" x2="112" y2="232"/><rect x="106" y="204" width="12" height="20" fill="var(--surface)"/>
+        <line x1="138" y1="192" x2="138" y2="228"/><rect x="132" y="199" width="12" height="18" fill="var(--muted)"/>
+      </g>
+      <g stroke="var(--long)">
+        <line x1="184" y1="186" x2="184" y2="226"/><rect x="178" y="192" width="12" height="28" fill="var(--long)"/>
+        <line x1="210" y1="150" x2="210" y2="196"/><rect x="204" y="158" width="12" height="32" fill="var(--long)"/>
+      </g>
+      <!-- entrada -->
+      <line x1="160" y1="189.3" x2="500" y2="189.3" stroke="var(--ink)" stroke-dasharray="4 3"/>
+      <text class="tx" x="500" y="183" text-anchor="end" fill="var(--ink)">entrada 30.812,25 (stop de compra)</text>
+      <!-- stop -->
+      <line x1="160" y1="307.3" x2="500" y2="307.3" stroke="var(--short)" stroke-width="2"/>
+      <text class="tx" x="500" y="301" text-anchor="end" fill="var(--short)">stop 30.781,75 · 30 pts · −61 $</text>
+      <!-- objetivos -->
+      <line x1="160" y1="155.6" x2="500" y2="155.6" stroke="var(--long)" stroke-width="2"/>
+      <text class="tx" x="500" y="149" text-anchor="end" fill="var(--long)">DATO: objetivo 30.821 (0,75 × 12 = 9 pts)</text>
+      <line x1="160" y1="74.3" x2="500" y2="74.3" stroke="var(--long)" stroke-width="2" stroke-dasharray="8 4"/>
+      <text class="tx" x="500" y="68" text-anchor="end" fill="var(--long)">APERTURA: objetivo 30.842 (1 × 30 = 30 pts)</text>
+    </svg>
+    <div class="legend">
+      <div><span class="sw" style="background:var(--amber)"></span><span>La vela de 5 min marca un rango de 30.800 a 30.812 (12 pts). Es menor de 30, así que el stop se coloca a 30 pts del nivel roto.</span></div>
+      <div><span class="sw" style="background:var(--ink)"></span><span>A las 14:30 (o 15:30) el precio supera 30.812 y se activa la compra en 30.812,25. Se cancela la venta.</span></div>
+      <div><span class="sw" style="background:var(--short)"></span><span>Stop en 30.781,75, debajo del mínimo del rango. Con 1 MNQ son unos 61 $ más costes.</span></div>
+      <div><span class="sw" style="background:var(--long)"></span><span>DATO: objetivo corto de 9 pts. APERTURA: objetivo de 30 pts. Si el rango mide 30 o más, el stop es el otro lado del rango y el objetivo se calcula con ese rango.</span></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-pasos">
+  <div class="eyebrow">Checklist diario · se marca en tu navegador</div>
+  <h2 id="h-pasos">Paso a paso</h2>
+  <ol class="steps" id="steps">
+    <li><span class="t">14:15</span><label><input type="checkbox" id="s1"><span>Abre MNQ1! en 1 minuto con el indicador. Mira el calendario: el dato de las 14:30 no hace falta que sea importante, la regla se aplica todos los días.</span></label></li>
+    <li><span class="t">14:30</span><label><input type="checkbox" id="s2"><span>Al cerrar la vela 14:25–14:30, coloca las dos órdenes stop (1 tick fuera de cada lado) con su stop y su objetivo. Cuando se active una, cancela la otra.</span></label></li>
+    <li><span class="t">14:30</span><label><input type="checkbox" id="s3"><span>Si las dos se activan en el mismo minuto, cierra y no operes esa ventana hoy.</span></label></li>
+    <li><span class="t">15:30</span><label><input type="checkbox" id="s4"><span>Repite con la vela 15:25–15:30: dos órdenes stop, stop mínimo 30 pts, objetivo 1:1.</span></label></li>
+    <li><span class="t">18:00</span><label><input type="checkbox" id="s5"><span>Si la operación del DATO sigue abierta, ciérrala a mercado.</span></label></li>
+    <li><span class="t">19:00</span><label><input type="checkbox" id="s6"><span>Si la operación de la APERTURA sigue abierta, ciérrala a mercado.</span></label></li>
+    <li><span class="t">19:05</span><label><input type="checkbox" id="s7"><span>Anota en el registro: precio teórico del indicador, tu precio real de entrada y salida, y el resultado.</span></label></li>
+  </ol>
+  <button class="resetbtn" type="button" id="reset">Desmarcar todo para mañana</button>
+</section>
+
+<section aria-labelledby="h-reglas">
+  <div class="eyebrow">Probado en el laboratorio, no son opiniones</div>
+  <h2 id="h-reglas">Reglas de oro</h2>
+  <div class="dont do">
+    <div><b>Entra en la ruptura</b>Con la orden stop ya puesta. Es la única entrada que salió positiva.</div>
+    <div><b>Deja trabajar las órdenes</b>Stop y objetivo fijos desde el primer minuto. Una operación por ventana.</div>
+    <div><b>Opera las dos ventanas</b>Se compensan entre sí: juntas tienen menos meses malos que cada una por separado.</div>
+  </div>
+  <div class="dont">
+    <div><b>No esperes el pullback</b>Te deja fuera de las rupturas buenas. Pasa de +1.580 $/año a −316 $/año en el DATO.</div>
+    <div><b>No esperes el cierre de la vela</b>Entras peor y pierdes las que salen disparadas. En el DATO baja a −422 $/año.</div>
+    <div><b>No persigas</b>Si se te escapó la entrada, ese día ya está. Tampoco operes la vela de las 8:55 de Londres: queda en cero.</div>
+  </div>
+</section>
+
+<section aria-labelledby="h-numeros">
+  <div class="eyebrow">Backtest MNQ 2018 → 2 oct 2026 · las dos ventanas juntas · 1 MNQ · comisión y 2 ticks de deslizamiento incluidos</div>
+  <h2 id="h-numeros">Lo que dicen los números</h2>
+  <div class="stats">
+    <div class="stat"><div class="v pos">+3.030 $</div><div class="l">por año (≈ 250 $ al mes)</div></div>
+    <div class="stat"><div class="v">71 %</div><div class="l">operaciones ganadoras</div></div>
+    <div class="stat"><div class="v">+38 / −67 $</div><div class="l">ganancia media / pérdida media</div></div>
+    <div class="stat"><div class="v">75 %</div><div class="l">meses positivos</div></div>
+    <div class="stat"><div class="v neg">−1.299 $</div><div class="l">peor caída desde un máximo</div></div>
+    <div class="stat"><div class="v neg">−445 $</div><div class="l">peor día</div></div>
+    <div class="stat"><div class="v neg">−646 $</div><div class="l">peor mes</div></div>
+    <div class="stat"><div class="v">7</div><div class="l">pérdidas seguidas como máximo</div></div>
+  </div>
+  <div class="chart">
+    <div class="eyebrow" style="margin-bottom:8px">Resultado por año con 1 MNQ ($)</div>
+    <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Barras por año: 2018 −146, 2019 1208, 2020 109, 2021 1978, 2022 6754, 2023 3232, 2024 3752, 2025 4864, 2026 hasta octubre 4749">
+      <style>.yl{font:500 11px var(--mono);fill:var(--muted)}.bl{font:600 11.5px var(--mono);fill:var(--ink)}</style>
+      <!-- escala: 0 → y 210 ; 7000 → y 20 ; 1 $ = 0.02714 px -->
+      <g stroke="var(--line)"><line x1="56" y1="210" x2="710" y2="210"/><line x1="56" y1="155.7" x2="710" y2="155.7" stroke-dasharray="3 4"/><line x1="56" y1="101.4" x2="710" y2="101.4" stroke-dasharray="3 4"/><line x1="56" y1="47.1" x2="710" y2="47.1" stroke-dasharray="3 4"/></g>
+      <g class="yl" text-anchor="end"><text x="50" y="214">0</text><text x="50" y="160">2.000</text><text x="50" y="105">4.000</text><text x="50" y="51">6.000</text></g>
+      <g>
+        <rect x="70"  y="210"   width="50" height="4"     fill="var(--short)"/>
+        <rect x="142" y="177.2" width="50" height="32.8"  fill="var(--long)"/>
+        <rect x="214" y="207"   width="50" height="3"     fill="var(--long)"/>
+        <rect x="286" y="156.3" width="50" height="53.7"  fill="var(--long)"/>
+        <rect x="358" y="26.7"  width="50" height="183.3" fill="var(--long)"/>
+        <rect x="430" y="122.3" width="50" height="87.7"  fill="var(--long)"/>
+        <rect x="502" y="108.2" width="50" height="101.8" fill="var(--long)"/>
+        <rect x="574" y="78"    width="50" height="132"   fill="var(--long)"/>
+        <rect x="646" y="81.1"  width="50" height="128.9" fill="var(--long)"/>
+      </g>
+      <g class="bl" text-anchor="middle">
+        <text x="95" y="229">−146</text><text x="167" y="171">1.208</text><text x="239" y="201">109</text><text x="311" y="150">1.978</text>
+        <text x="383" y="21">6.754</text><text x="455" y="116">3.232</text><text x="527" y="102">3.752</text><text x="599" y="72">4.864</text><text x="671" y="75">4.749</text>
+      </g>
+      <g class="yl" text-anchor="middle">
+        <text x="95" y="250">2018</text><text x="167" y="250">2019</text><text x="239" y="250">2020</text><text x="311" y="250">2021</text><text x="383" y="250">2022</text><text x="455" y="250">2023</text><text x="527" y="250">2024</text><text x="599" y="250">2025</text><text x="671" y="250">2026*</text>
+      </g>
+    </svg>
+    <p class="note">* 2026 hasta el 2 de octubre. Los años 2018–2021 fueron mucho más flojos que 2022–2026: la ventaja del DATO creció con los años de inflación alta.</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-topstep">
+  <div class="eyebrow">Tu cuenta: balance ≈ 50.555 $ · suelo 49.561,70 $ · colchón ≈ 993 $ · objetivo 3.000 $</div>
+  <h2 id="h-topstep">Tamaño para el Combine de Topstep</h2>
+  <p>Simulación remuestreando días del backtest en bloques de 5: ¿qué pasa antes, ganar los ~2.445 $ que faltan o perder el colchón de ~993 $? Supone que el futuro se parece a 2018–2026 de media y que el suelo no se mueve; tómalo como orientación, no como promesa.</p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Contratos</th><th class="r">Riesgo por operación</th><th class="r">Aprueba</th><th class="r">Pierde la cuenta</th><th class="r">Días hábiles (mediana)</th></tr></thead>
+      <tbody>
+        <tr class="pick"><td><b>1 MNQ</b> · para empezar</td><td class="num">~62 $</td><td class="num pos">98 %</td><td class="num">1 %</td><td class="num">≈ 187</td></tr>
+        <tr><td><b>2 MNQ</b> · con colchón &gt; 1.500 $</td><td class="num">~124 $</td><td class="num pos">89 %</td><td class="num neg">11 %</td><td class="num">≈ 83</td></tr>
+        <tr><td>3 MNQ</td><td class="num">~186 $</td><td class="num">80 %</td><td class="num neg">20 %</td><td class="num">≈ 49</td></tr>
+        <tr><td>4 MNQ</td><td class="num">~248 $</td><td class="num">71 %</td><td class="num neg">29 %</td><td class="num">≈ 32</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Plan sugerido: 1 MNQ hasta que el colchón supere ~1.500 $, luego 2 MNQ. Con 2 MNQ el peor día del backtest (−890 $) casi se come el colchón actual; por eso no se empieza con 2.</p>
+</section>
+
+<section aria-labelledby="h-registro">
+  <div class="eyebrow">Lo que decide si funciona contigo</div>
+  <h2 id="h-registro">Registro de simulación</h2>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Fecha</th><th>Ventana</th><th>Lado</th><th class="r">Entrada teórica</th><th class="r">Entrada real</th><th class="r">Deslizamiento (ticks)</th><th>Salida</th><th class="r">Resultado $</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">14-oct</td><td>DATO</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="num">—</td></tr>
+        <tr><td class="mono">14-oct</td><td>APERTURA</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Copia estas columnas a una hoja de cálculo. El dato clave es el deslizamiento real: con 1–2 ticks por lado la estrategia aguanta; con 4 o más, la ventaja desaparece.</p>
+</section>
+
+<section class="gate" aria-labelledby="h-gate">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div class="eyebrow">Antes de dinero real</div>
+    <h2 id="h-gate">De simulación a los retiros</h2>
+    <p>Las dos ventanas salieron de revisar muchas horas del día, así que el backtest no es una prueba limpia. La prueba de verdad son las próximas semanas, con datos que nadie ha visto.</p>
+  </div>
+  <ul>
+    <li>Mínimo 40 operaciones en simulación (unas 4–5 semanas).</li>
+    <li>Deslizamiento medio de 2 ticks o menos por lado.</li>
+    <li>Acierto cerca del backtest: DATO ≥ 70 %, APERTURA ≥ 50 %.</li>
+    <li>Resultado de la simulación positivo o cerca de cero, sin días fuera de reglas.</li>
+    <li>Si se cumple: Combine con 1 MNQ. Si no: volvemos al laboratorio.</li>
+  </ul>
+</section>
+
+<footer>
+  Fuente: laboratorio propio (`laboratorio/`), experimentos 20261013_201845_stop_minimo_30, 20261013_211623_pullback_dato_apertura, 20261013_211803_cierre_vela_ruptura y 20261013_212433_playbook_numeros. Datos Databento NQ 1 min, costes provisionales (0,75 $ por lado + 2 ticks). Backtest, no garantía de resultados futuros.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = "playbook-da-checks";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#steps input[type="checkbox"]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  boxes.forEach(function(b){
+    if (saved[b.id]) b.checked = true;
+    b.addEventListener("change", function(){
+      saved[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+  document.getElementById("reset").addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+  });
+})();
+</script>

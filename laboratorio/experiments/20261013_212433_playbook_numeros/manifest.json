@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-13T21:24:35",
+  "version_codigo": "86271e6+cambios_sin_commit",
+  "experimento": "números del playbook (DATO + APERTURA)",
+  "reglas": "Números para el playbook: combinación DATO (5 min 8:25 ET, objetivo 0,75 R) + APERTURA (5 min 9:25 ET, objetivo 1 S),\nstop mínimo 30 pts, coste base, 1 MNQ (reglas de run_stop30.py). Curva diaria, rachas, meses, caída máxima y una\nsimulación tipo Topstep con remuestreo de días (colchón 993 $ = balance 50.555 − suelo 49.561,70; objetivo +3.000 $\ndesde el inicio de la cuenta: con el balance actual faltan ~2.445 $). No es una predicción: es el backtest remuestreado."
+}
