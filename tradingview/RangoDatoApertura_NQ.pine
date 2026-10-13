@@ -1,0 +1,172 @@
+//@version=6
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// Ruptura A FAVOR de la vela de 5 min del DATO (8:25-8:30 NY) y de la APERTURA (9:25-9:30 NY) · MNQ / NQ
+// Mismas reglas que laboratorio/run_rangos_objetivo_parcial.py (experimento 20261013_183125):
+//   1. Rango: máximo y mínimo de la vela de 5 min 8:25-8:30 NY (14:25 Italia) y 9:25-9:30 NY (15:25 Italia).
+//      Las horas van en hora de Nueva York: TradingView ajusta solo los cambios de horario (en Italia es 13:25 / 14:25
+//      las ~3 semanas al año en que EE. UU. ya cambió la hora y Europa no).
+//   2. Entrada: orden stop 1 tick fuera del rango en el lado que rompe primero (OCO). Si rompe los dos lados en la
+//      misma vela, ese día no se opera.
+//   3. Stop: el otro lado del rango ∓ 1 tick. Objetivo: nivel roto + 0,75 × rango (elegible: 0,5 / 0,75 / 1).
+//   4. Cierre por tiempo: 12:00 NY (18:00 Italia) para la del dato · 13:00 NY (19:00 Italia) para la de la apertura.
+//   5. Una operación por ventana y día. Stop primero si stop y objetivo caben en la misma vela; el objetivo exige
+//      1 tick de cruce; en la vela de entrada solo cuenta el stop (como el backtest).
+// BACKTEST MNQ 2018-2026 (coste base, objetivo 0,75 rango): dato 8:25 → +0,8 / +16,6 / +8,6 $/op (2018-21 / 2022-24 /
+//   2025-26), ~64 % acierto, ~1.585 $/año/MNQ · apertura 9:25 → +1,7 / +4,6 / +19,2 $/op, ~67 % acierto.
+//   ⚠ INCONCLUSA: ventanas elegidas a posteriori; casi toda la ventaja del dato viene de 2022-24; con +4 ticks de
+//   deslizamiento 2018-21 pasa a negativo. Úsalo para SEGUIRLA EN SIMULACIÓN y apuntar tu precio de entrada real.
+// Usa un gráfico de 1 minuto (recomendado; es como el backtest) o de 5 minutos (menos preciso). MNQ1! / NQ1!.
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+indicator("Rango dato/apertura NQ", "RangoDA", overlay = true, max_labels_count = 500, max_lines_count = 500, max_boxes_count = 200)
+
+TZ        = "America/New_York"
+useDato   = input.bool(true, "Ventana DATO 8:25-8:30 NY (14:25 Italia)")
+useAper   = input.bool(true, "Ventana APERTURA 9:25-9:30 NY (15:25 Italia)")
+fracS     = input.string("0.75", "Objetivo (× rango desde el nivel roto)", options = ["0.5", "0.75", "1.0"])
+ptVal     = input.float(2.0, "$ por punto (MNQ 2 · NQ 20)")
+slipTk    = input.float(2.0, "Deslizamiento por lado (ticks)", step = 0.5)
+commSide  = input.float(0.75, "Comisión + tasas por lado ($)", step = 0.01)
+showPanel = input.bool(true, "Panel")
+colUp     = input.color(#26A69A, "Largo / ganancia")
+colDn     = input.color(#EF5350, "Corto / pérdida")
+colRng    = input.color(color.new(#C9A227, 75), "Rango")
+
+frac = str.tonumber(fracS)
+tick = syminfo.mintick
+okTF = timeframe.isminutes and timeframe.multiplier <= 5
+if barstate.islast and not okTF
+    label.new(bar_index, high, "RangoDA: usa un gráfico de 1 o 5 minutos", color = color.orange, textcolor = color.black)
+
+hm = hour(time, TZ) * 60 + minute(time, TZ)
+newDay = dayofmonth(time, TZ) != dayofmonth(time[1], TZ)
+
+type Win
+    int    a
+    int    exM
+    string name
+    bool   on
+    float  hi = na
+    float  lo = na
+    int    st = 0          // 0 sin empezar · 1 formando rango · 2 esperando ruptura · 3 en operación · 4 terminado
+    int    side = 0
+    float  ent = na
+    float  stp = na
+    float  tgt = na
+    int    bIn = na
+    int    nOps = 0
+    int    nWin = 0
+    float  net = 0.0
+    string hoy = "—"
+    line   lS = na
+    line   lT = na
+
+method cerrar(Win w, float px, bool esObj, string why) =>
+    float pnl = w.side * (px - w.ent) * ptVal - 2 * commSide - slipTk * tick * ptVal * (esObj ? 1 : 2)
+    w.nOps += 1
+    w.nWin += pnl > 0 ? 1 : 0
+    w.net += pnl
+    w.hoy := why + " " + str.tostring(pnl, "#.#") + " $"
+    label.new(bar_index, w.side == 1 ? high : low, w.name + ": " + why + "\n" + str.tostring(pnl, "#.#") + " $",
+              style = w.side == 1 ? label.style_label_down : label.style_label_up, size = size.tiny,
+              color = pnl > 0 ? color.new(colUp, 15) : color.new(colDn, 15), textcolor = color.white)
+    line.set_x2(w.lS, bar_index)
+    line.set_x2(w.lT, bar_index)
+    w.st := 4
+
+method paso(Win w) =>
+    if newDay
+        w.st := 0
+        w.hi := na
+        w.lo := na
+        w.side := 0
+        w.hoy := "—"
+    if w.on and okTF
+        // 1) formar el rango
+        if hm >= w.a and hm < w.a + 5 and w.st <= 1
+            w.hi := na(w.hi) ? high : math.max(w.hi, high)
+            w.lo := na(w.lo) ? low : math.min(w.lo, low)
+            w.st := 1
+        // 2) rango cerrado → esperar ruptura
+        if w.st == 1 and hm >= w.a + 5
+            w.st := 2
+            w.hoy := "esperando ruptura"
+            box.new(bar_index - 1, w.hi, bar_index + 40, w.lo, border_color = colRng, bgcolor = colRng)
+        if w.st == 2
+            if hm >= w.exM
+                w.st := 4
+                w.hoy := "sin ruptura"
+            else
+                bool up = high >= w.hi + tick
+                bool dn = low <= w.lo - tick
+                if up and dn
+                    w.st := 4
+                    w.hoy := "rompe los 2 lados: no se opera"
+                    label.new(bar_index, high, w.name + ": doble ruptura, no se opera", size = size.tiny,
+                              color = color.gray, textcolor = color.white)
+                else if up or dn
+                    w.side := up ? 1 : -1
+                    float lvl = up ? w.hi + tick : w.lo - tick
+                    w.ent := up ? math.max(lvl, open) : math.min(lvl, open)
+                    float R = w.hi - w.lo
+                    w.stp := up ? w.lo - tick : w.hi + tick
+                    w.tgt := math.round_to_mintick(up ? w.hi + frac * R : w.lo - frac * R)
+                    w.bIn := bar_index
+                    w.st := 3
+                    w.hoy := (up ? "LARGO " : "CORTO ") + str.tostring(w.ent, format.mintick)
+                    label.new(bar_index, up ? low : high, w.name + (up ? " ▲ " : " ▼ ") + str.tostring(w.ent, format.mintick) +
+                              "\nstop " + str.tostring(w.stp, format.mintick) + "\nobj " + str.tostring(w.tgt, format.mintick),
+                              style = up ? label.style_label_up : label.style_label_down, size = size.small,
+                              color = up ? colUp : colDn, textcolor = color.white)
+                    w.lS := line.new(bar_index, w.stp, bar_index, w.stp, color = colDn, style = line.style_dashed)
+                    w.lT := line.new(bar_index, w.tgt, bar_index, w.tgt, color = colUp, style = line.style_dashed)
+                    // en la vela de entrada solo cuenta el stop
+                    if (w.side == 1 and low <= w.stp) or (w.side == -1 and high >= w.stp)
+                        w.cerrar(w.stp, false, "stop")
+        else if w.st == 3 and bar_index > w.bIn
+            line.set_x2(w.lS, bar_index)
+            line.set_x2(w.lT, bar_index)
+            if hm >= w.exM
+                w.cerrar(open, false, "cierre por tiempo")
+            else if w.side * (open - w.stp) <= 0
+                w.cerrar(open, false, "stop (hueco)")
+            else if (w.side == 1 and low <= w.stp) or (w.side == -1 and high >= w.stp)
+                w.cerrar(w.stp, false, "stop")
+            else if w.side * (open - w.tgt) >= 0
+                w.cerrar(open, true, "objetivo (hueco)")
+            else if (w.side == 1 and high >= w.tgt + tick) or (w.side == -1 and low <= w.tgt - tick)
+                w.cerrar(w.tgt, true, "objetivo")
+
+var Win wD = Win.new(505, 720, "DATO", useDato)
+var Win wA = Win.new(565, 780, "APERTURA", useAper)
+wD.on := useDato
+wA.on := useAper
+int stD0 = wD.st
+int stA0 = wA.st
+wD.paso()
+wA.paso()
+
+entD = stD0 == 2 and wD.st >= 3 and wD.side != 0 and not na(wD.bIn) and wD.bIn == bar_index
+entA = stA0 == 2 and wA.st >= 3 and wA.side != 0 and not na(wA.bIn) and wA.bIn == bar_index
+alertcondition(entD, "Entrada DATO", "RangoDA: entrada en la ventana del DATO (8:30 NY)")
+alertcondition(entA, "Entrada APERTURA", "RangoDA: entrada en la ventana de la APERTURA (9:30 NY)")
+
+var table tb = table.new(position.top_right, 4, 4, bgcolor = color.new(color.black, 20), border_width = 1)
+cell(int c, int r, string s, color col) =>
+    table.cell(tb, c, r, s, text_color = col, text_size = size.small)
+if showPanel and barstate.islast
+    cell(0, 0, "Rango dato/apertura · obj " + fracS + " R", color.white)
+    cell(1, 0, "Ops", color.white)
+    cell(2, 0, "Acierto", color.white)
+    cell(3, 0, "Neto (con costes)", color.white)
+    cell(0, 1, "DATO 8:25 NY (14:25 IT)", color.white)
+    cell(1, 1, str.tostring(wD.nOps), color.white)
+    cell(2, 1, wD.nOps > 0 ? str.tostring(100.0 * wD.nWin / wD.nOps, "#") + " %" : "—", color.white)
+    cell(3, 1, str.tostring(wD.net, "#") + " $", wD.net >= 0 ? colUp : colDn)
+    cell(0, 2, "APERTURA 9:25 NY (15:25 IT)", color.white)
+    cell(1, 2, str.tostring(wA.nOps), color.white)
+    cell(2, 2, wA.nOps > 0 ? str.tostring(100.0 * wA.nWin / wA.nOps, "#") + " %" : "—", color.white)
+    cell(3, 2, str.tostring(wA.net, "#") + " $", wA.net >= 0 ? colUp : colDn)
+    cell(0, 3, "Hoy", color.gray)
+    cell(1, 3, "DATO: " + wD.hoy, color.gray)
+    cell(2, 3, "APERTURA: " + wA.hoy, color.gray)
+    cell(3, 3, okTF ? (timeframe.multiplier == 1 ? "1 min ✓" : "5 min (aprox.)") : "✗ usa 1 o 5 min", okTF ? color.gray : color.orange)
