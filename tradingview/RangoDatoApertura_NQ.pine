@@ -72,6 +72,7 @@ method cerrar(Win w, float px, bool esObj, string why) =>
     line.set_x2(w.lS, bar_index)
     line.set_x2(w.lT, bar_index)
     w.st := 4
+    w.st
 
 method paso(Win w) =>
     if newDay
@@ -135,6 +136,7 @@ method paso(Win w) =>
                 w.cerrar(open, true, "objetivo (hueco)")
             else if (w.side == 1 and high >= w.tgt + tick) or (w.side == -1 and low <= w.tgt - tick)
                 w.cerrar(w.tgt, true, "objetivo")
+    w.st                       // valor de retorno fijo (evita el error CE10235 de tipos distintos en los if)
 
 var Win wD = Win.new(505, 720, "DATO", useDato)
 var Win wA = Win.new(565, 780, "APERTURA", useAper)
