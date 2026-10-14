@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-14T06:32:14",
+  "version_codigo": "80438b3+cambios_sin_commit",
+  "experimento": "filtro EMA 100 en las rupturas de 5 min",
+  "reglas": "Petición del usuario: \"sumemos la EMA 100\". Filtro de tendencia sobre las rupturas de 5 min.\nReglas fijadas antes de ver resultados:\n- EMA 100 calculada con velas de 1, 5, 15 o 60 min de las 24 h (datos ET continuos); se usa el valor de la última vela\n  CERRADA al terminar la vela del rango (sin mirar el futuro).\n- Si el cierre de la vela del rango está POR ENCIMA de la EMA → solo se coloca la orden stop de COMPRA (1 tick sobre el\n  máximo); por debajo → solo la de VENTA. La orden queda activa hasta el plazo (3,5 h); si el precio rompe primero el\n  otro lado no pasa nada (la orden sigue esperando).\n- Resto igual que el playbook: NQ DATO (8:25 ET, objetivo 0,75 R) y APERTURA (9:25 ET, objetivo 1 S), stop a máx(R, 30)\n  del nivel roto. Oro (MGC): 5 min 8:25 ET (14:25 Italia) y 3:00 ET (9:00 Italia), stop = otro lado, objetivo 1 rango.\n- Variante \"OCO+EMA\" (añadida tras ver que la orden solitaria activa 3,5 h empeoraba): órdenes OCO como sin filtro\n  (cuenta solo la 1.ª ruptura del evento) y se descarta la operación si esa ruptura va contra la EMA.\n- Comparación: sin filtro (orden OCO) frente a cada EMA. Coste base. Regla: dev>0 y val>0, luego prueba."
+}

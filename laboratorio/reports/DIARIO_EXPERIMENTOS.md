@@ -101,6 +101,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 21:18:03 (13-oct) | `20261013_211803_cierre_vela_ruptura` | "¿Espero al cierre de la vela que rompe?" Velas de 5 min 8:55, 14:25 y 15:25 Italia: entrada en la ruptura vs al cierre de la 1.ª vela de 1 min o de 5 min fuera del rango (stop mín. 30 pts, objetivo 0,75 R o 1 S) | Esperar el cierre empeora siempre: DATO 14:25 de +1.582 a −422/−569 $/año; APERTURA 15:25 de +1.447 a −124/−403 $/año. Al cierre el precio ya recorrió parte del objetivo (o lo superó: menos operaciones) y el stop queda más lejos | ℹ️ entrar en la ruptura |
 
+| 06:31:51 (14-oct) | `20261014_063151_ema100_filtro` | Filtro EMA 100 (velas de 1/5/15/60 min, 24 h) en las rupturas de 5 min: NQ DATO 14:25 y APERTURA 15:25 (reglas del playbook) y oro 14:25 y 9:00. Dos formas: "solo un lado" (orden únicamente a favor de la EMA, activa 3,5 h) y "OCO" (1.ª ruptura del evento, se descarta si va contra la EMA). Una ejecución previa solo con "solo un lado" (`063119`) se borró: mismos números | "Solo un lado" destruye el resultado (NQ −353 a −2.054 $/año): rellena rupturas tardías ajenas al evento. "OCO" mantiene $/op (DATO 1 min +1,3 / +17,4 / +10,0 vs +0,8 / +16,8 / +8,2) pero opera la mitad → menos neto al año (DATO 982 vs 1.582 $; APERTURA 857 vs 1.447 $): las rupturas contra la EMA también ganan. Oro: ninguna versión pasa | ❌ no añadir el filtro |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
