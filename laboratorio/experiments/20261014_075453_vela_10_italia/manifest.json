@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-14T07:55:07",
+  "version_codigo": "c9b12ac+cambios_sin_commit",
+  "experimento": "vela de 5 min de las 10:00 Italia",
+  "reglas": "Pregunta del usuario: \"dame otra vela, por ejemplo la de las 10:00 hora de Italia\" (= 4:00 ET la mayor parte del año;\na esa hora salen datos europeos). Velas de 5 min 9:55-10:00 y 10:00-10:05 Italia (3:55 y 4:00 ET) en MNQ y MGC.\nMismas reglas que el playbook (run_stop30.py): ruptura a favor con orden stop OCO; modos:\n  orig      stop otro lado, objetivo 0,75 R      min30_R   stop mín. 30 pts (NQ), objetivo 0,75 R\n  min30_1S  stop mín. 30 pts, objetivo 1 S (1:1)\nAdemás, estadística gira/continúa (de run_rangos_multi_tf / run_oro_rangos). Coste base."
+}

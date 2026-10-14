@@ -105,6 +105,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 06:51:42 (14-oct) | `20261014_065142_orb_retest_video` | Vídeo "stupid simple" (9.000 → 140.000 $ en 90 días): ORB 5 min 9:30-9:35 ET, vela de 5 min que cierra fuera (cuerpo entero o solo cierre), retesteo que toca el nivel y cierra fuera → entrada; stop mitad del rango; 2R; señales hasta 11:00; salida 15:55 u 11:00. MNQ y MGC, con y sin retesteo (16 variantes) | Ninguna pasa la regla. Con retesteo: acierto 32-41 % (el vídeo dice 70 %), MNQ −631 a −788 $/año, prueba 2025-26 hasta −30 $/op. Sin retesteo apenas mejor (MNQ cuerpo 15:55: −1,0 / +3,4 / +1,0). El retesteo NO duplica el acierto: lo baja o lo deja igual | ❌ RECHAZADA |
 
+| 07:54:53 (14-oct) | `20261014_075453_vela_10_italia` | Vela de 5 min de las 10:00 Italia (9:55-10:00 y 10:00-10:05; datos europeos) en MNQ y MGC con las reglas del playbook. Comprobación adicional (sin carpeta): 15:55 Italia (9:55 ET, dato de las 10:00 ET) | 10:00 Italia: continúa 53-54 % vs gira 45-46 %; las 8 variantes pierden (MNQ −517 a −1.083 $/año, 0-2 años positivos; oro −913). 15:55 Italia: 53/47, 6/9 años; estrategia ≈ +170 a +280 $/año pero negativa en 2018-21 o 2022-24 → no pasa. Las únicas velas con continuación clara siguen siendo 15:25 (65/33) y 14:25 (60/39) | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.
