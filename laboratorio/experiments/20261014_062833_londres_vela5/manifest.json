@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-14T06:28:54",
+  "version_codigo": "2d75fc1+cambios_sin_commit",
+  "experimento": "ruptura de la vela de 5 min de las 8:00 y 9:00 Italia",
+  "reglas": "Pregunta del usuario: en Londres, ¿cuántas veces rompe la vela de 5 min de las 8:00 o de las 9:00 (hora de Italia)?\nNQ y oro (GC.v.0), 2018-2026, reloj de Italia. Para cada vela (y las que TERMINAN a esa hora: 7:55 y 8:55):\nrompe (1 tick fuera) en las 3,5 h siguientes · un lado / los dos · minutos hasta la 1.ª ruptura · tras la 1.ª ruptura,\n¿llega antes a +1 rango (continúa) o al otro lado (gira)?"
+}
