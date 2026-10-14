@@ -103,6 +103,8 @@ Se anotan todos los experimentos, también los fallidos o parciales. Cada carpet
 
 | 06:31:51 (14-oct) | `20261014_063151_ema100_filtro` | Filtro EMA 100 (velas de 1/5/15/60 min, 24 h) en las rupturas de 5 min: NQ DATO 14:25 y APERTURA 15:25 (reglas del playbook) y oro 14:25 y 9:00. Dos formas: "solo un lado" (orden únicamente a favor de la EMA, activa 3,5 h) y "OCO" (1.ª ruptura del evento, se descarta si va contra la EMA). Una ejecución previa solo con "solo un lado" (`063119`) se borró: mismos números | "Solo un lado" destruye el resultado (NQ −353 a −2.054 $/año): rellena rupturas tardías ajenas al evento. "OCO" mantiene $/op (DATO 1 min +1,3 / +17,4 / +10,0 vs +0,8 / +16,8 / +8,2) pero opera la mitad → menos neto al año (DATO 982 vs 1.582 $; APERTURA 857 vs 1.447 $): las rupturas contra la EMA también ganan. Oro: ninguna versión pasa | ❌ no añadir el filtro |
 
+| 06:51:42 (14-oct) | `20261014_065142_orb_retest_video` | Vídeo "stupid simple" (9.000 → 140.000 $ en 90 días): ORB 5 min 9:30-9:35 ET, vela de 5 min que cierra fuera (cuerpo entero o solo cierre), retesteo que toca el nivel y cierra fuera → entrada; stop mitad del rango; 2R; señales hasta 11:00; salida 15:55 u 11:00. MNQ y MGC, con y sin retesteo (16 variantes) | Ninguna pasa la regla. Con retesteo: acierto 32-41 % (el vídeo dice 70 %), MNQ −631 a −788 $/año, prueba 2025-26 hasta −30 $/op. Sin retesteo apenas mejor (MNQ cuerpo 15:55: −1,0 / +3,4 / +1,0). El retesteo NO duplica el acierto: lo baja o lo deja igual | ❌ RECHAZADA |
+
 ## Hipótesis descartadas en el camino (ya no hay que volver a probarlas con estos datos)
 
 - **ORB con retesteo según tu especificación:** negativo en los tres periodos.

@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-14T06:52:10",
+  "version_codigo": "a855f55+cambios_sin_commit",
+  "experimento": "ORB 5 min + cierre fuera + retesteo (vídeo 'stupid simple')",
+  "reglas": "Vídeo de YouTube \"stupid simple\" (Casper): ORB de 5 min 9:30-9:35 ET + vela de 5 min que cierra fuera + retesteo\nque toca el nivel y cierra fuera → entrada; stop en la mitad del rango (Fibonacci 0,5); objetivo 2R; \"primeros 90 minutos\".\nReglas fijadas antes de ver resultados (variantes donde el vídeo es ambiguo):\n1. Rango = vela de 5 min 9:30-9:35 ET. Velas de 5 min alineadas a las 9:30.\n2. Ruptura: vela de 5 min cuyo CUERPO entero queda fuera (apertura y cierre > máximo; variante \"cierre\": solo el cierre).\n3. Retesteo: una vela POSTERIOR cuyo mínimo vuelve al nivel (<= máximo del rango, largos) y que CIERRA fuera (> máximo).\n   Entrada a mercado en la apertura siguiente. Si antes una vela cierra DENTRO del rango, se anula y se espera una\n   nueva ruptura.\n4. Stop: mitad del rango ∓ 1 tick. Objetivo: 2R (desde la entrada real). Señales hasta las 11:00 ET (90 min);\n   salida forzosa 15:55 ET (variante: 11:00 ET). Una operación al día. MNQ y MGC, costes base y alto.\nComparación: entrada directa al cierre de la vela de ruptura, sin retesteo (el vídeo dice que el retesteo duplica el acierto)."
+}
