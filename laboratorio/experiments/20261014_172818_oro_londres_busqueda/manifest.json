@@ -1,0 +1,7 @@
+{
+  "fecha": "2026-10-14T17:28:39",
+  "version_codigo": "3170d11+cambios_sin_commit",
+  "experimento": "oro en Londres: búsqueda de estrategia simple",
+  "reglas": "Pregunta del usuario: \"¿mejor que mire el oro en Londres?\". Mismas familias que run_londres_busqueda.py (MNQ),\naplicadas al oro (GC 1 min como MGC), reloj de Italia 0:00-22:00, más la ruptura de velas de 5 min de Londres.\nComo el oro pasó de ~1.300 a más de 3.000 $, las distancias fijas se escalan con el precio: unidad U = 0,15 % del\nprecio a las 9:00 (≈ 2 pts en 2018, ≈ 5 pts en 2025; equivale a los 30 pts del NQ respecto al rango de Londres).\n  MOMENTO   a favor / en contra del movimiento de Asia (0:00 → 8:59); stop U; objetivo 1:1 o solo tiempo.\n  TRAMPA    barrida de Asia 0-9 / Asia 2-6 / máximo-mínimo del día anterior y cierre de 5 min de nuevo dentro → en\n            contra; stop extremo ± 1 tick (mínimo U/3); objetivo mitad del rango (Asia), 1R o 2R.\n  HUECO     |apertura 9:00 − cierre 22:00 del día anterior| >= 2U/3: relleno o sigue (1:1).\n  RUPTURA   vela de 5 min 8:00 / 8:55 / 9:00 Italia; OCO stop 1 tick fuera; stop S = máx(rango, U/2 o U);\n            objetivo 0,5 S o 1 S; plazo 3,5 h.\nSeñales 9:00-11:00 (salvo RUPTURA), cierre 12:00 o 14:20. Selección: neto > 0 en dev Y val (coste base), n_val >= 30.",
+  "seleccionadas": []
+}
