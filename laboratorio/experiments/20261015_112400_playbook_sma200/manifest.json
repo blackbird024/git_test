@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T11:24:02",
+  "version_codigo": "e1398b7+cambios_sin_commit",
+  "experimento": "filtro SMA 200 en el playbook dato/apertura",
+  "reglas": "Petición: \"incluiré el filtro de la SMA 200\" en el playbook (DATO 5 min 8:25 ET obj 0,75 R; APERTURA 5 min 9:25 ET\nobj 1 S; stop S = máx(rango, 30 pts); OCO stop 1 tick fuera; plazo 3,5 h). Reglas fijadas antes de ver resultados:\nSMA 200 de cierres (1 min o 5 min), encadenada entre días (rejilla ET 0:00-16:00, incluye la noche), leída al cierre de\nla vela del rango. Lado permitido = largo si cierre > SMA, corto si cierre < SMA.\n  sin_filtro   referencia (playbook actual)\n  primera      solo se opera si la PRIMERA ruptura va en el lado permitido (si no, no hay operación)\n  solo_lado    solo se pone la orden del lado permitido (puede entrar aunque antes rompiera el otro lado)\nSelección: neto > 0 en desarrollo Y validación (coste base), n_val >= 30, y mejor que sin filtro."
+}
