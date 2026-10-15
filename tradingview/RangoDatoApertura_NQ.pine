@@ -18,6 +18,9 @@
 //   ~1.450 $/año/MNQ, 9/9 años positivos. Riesgo típico ~62 $/MNQ.
 //   ⚠ INCONCLUSA: ventanas elegidas a posteriori; casi toda la ventaja del dato viene de 2022-24; con +4 ticks de
 //   deslizamiento 2018-21 pasa a negativo. Úsalo para SEGUIRLA EN SIMULACIÓN y apuntar tu precio de entrada real.
+// ⚠ REVISIÓN 15-oct-2026 (datos de 1 s, exp. 20261015_134052): contando los días en que la vela se rompe por los dos
+//   lados en el mismo minuto (antes excluidos), DATO → 79 % acierto, ~+1.035 $/año; APERTURA → NEGATIVA (−951 $/año 1:1).
+//   La APERTURA queda SUSPENDIDA. Los números de arriba son los antiguos.
 // Usa un gráfico de 1 minuto (recomendado; es como el backtest) o de 5 minutos (menos preciso). MNQ1! / NQ1!.
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 indicator("Rango dato/apertura NQ", "RangoDA", overlay = true, max_labels_count = 500, max_lines_count = 500, max_boxes_count = 200)

@@ -1,0 +1,11 @@
+{
+  "fecha": "2026-10-15T13:40:54",
+  "version_codigo": "29fe9b2+cambios_sin_commit",
+  "experimento": "playbook con días de doble ruptura resueltos con 1 s",
+  "reglas": "Revisión del playbook con los días de DOBLE RUPTURA en el mismo minuto resueltos con datos de 1 SEGUNDO (NQ ohlcv-1s,\ntools/download_nq_1s_doble_ruptura.py). Reglas del playbook sin cambios: OCO stop 1 tick fuera de la vela de 5 min\n(8:25 ET DATO / 9:25 ET APERTURA), stop S = máx(rango, 30) desde el nivel roto, objetivo DATO 0,75 × rango, APERTURA\n1 × S o 0,7 × S, plazo 3,5 h. En esos días:\n  - lado = el nivel que el precio toca PRIMERO en las velas de 1 s (si los dos en el mismo segundo: caso peor, se toma\n    el lado que acaba peor);\n  - entrada = nivel (o apertura del segundo si salta más allá) + deslizamiento; gestión segundo a segundo durante los\n    3 minutos descargados (stop primero si caben stop y objetivo en el mismo segundo; el objetivo exige 1 tick de cruce;\n    en el segundo de entrada solo cuenta el stop), y después minuto a minuto como el simulador normal.\nResultado: el playbook completo (días normales + días de doble ruptura) por periodo.",
+  "ambiguos_mismo_segundo": {
+    "DATO 14:25": 22,
+    "APERTURA 15:25 1:1": 2,
+    "APERTURA 15:25 1:0,7": 2
+  }
+}

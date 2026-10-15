@@ -118,6 +118,12 @@ footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padd
   ol.steps label{grid-column:2}
 }
 @media (prefers-reduced-motion:no-preference){.card,.stat{transition:border-color .2s}.card:hover{border-color:var(--amber)}}
+.aviso{border:2px solid var(--short);background:var(--short-soft);border-radius:10px;padding:18px 20px;display:grid;gap:10px}
+.aviso h2{margin:0;font-family:var(--display);font-size:28px;color:var(--short)}
+.aviso p{margin:0;max-width:70ch}
+.aviso table{border-collapse:collapse;font-variant-numeric:tabular-nums;width:100%}
+.aviso td,.aviso th{padding:6px 10px;border-top:1px solid var(--line);text-align:left}
+.aviso-tabla{overflow-x:auto}
 </style>
 
 <div class="wrap">
@@ -129,7 +135,7 @@ footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padd
     <p class="lead">Dos operaciones al día con la misma idea: el rango de la vela de 5 minutos que se forma justo antes de un evento y la ruptura que provoca el propio evento. Se entra en la ruptura, a favor, con una orden stop.</p>
   </div>
   <div style="display:flex;flex-direction:column;gap:12px">
-    <span class="status">Fase actual: simulación</span>
+    <span class="status">Fase actual: simulación · APERTURA suspendida</span>
     <div class="ticket">
       <span>Mercado</span><b>MNQ1! · 1 min</b>
       <span>Ventanas</span><b>14:25 y 15:25 Italia</b>
@@ -139,6 +145,18 @@ footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padd
     </div>
   </div>
 </header>
+
+<section class="aviso" aria-labelledby="h-aviso">
+  <h2 id="h-aviso">Revisión del 15-oct: la APERTURA queda suspendida</h2>
+  <p>Los números de esta página dejaban fuera los días en que la vela se rompe por arriba y por abajo en el mismo minuto. En la realidad la orden OCO entra en uno de los dos lados. Con datos de 1 segundo ya se sabe qué lado entra primero, y esos días son muy malos: en la APERTURA son el 28 % de los días y se gana solo el 26 %.</p>
+  <div class="aviso-tabla"><table>
+    <tr><th>Vela</th><th>Antes (sin esos días)</th><th>Real (con todos los días)</th></tr>
+    <tr><td>DATO 14:25 · 0,75 × vela</td><td>82 % · +1.582 $/año</td><td><b>79 % · +1.035 $/año</b> · 6/9 años · peor racha −1.962 $</td></tr>
+    <tr><td>APERTURA 15:25 · 1:1</td><td>59 % · +1.447 $/año</td><td><b>49 % · −951 $/año</b> ❌</td></tr>
+    <tr><td>APERTURA 15:25 · 1:0,7</td><td>66 % · +1.258 $/año</td><td><b>56 % · −1.172 $/año</b> ❌</td></tr>
+  </table></div>
+  <p><b>Qué hacer:</b> no operar la APERTURA. El DATO sigue en simulación: casi cero en 2018-21, positivo en 2022-24 y en 2025-26. Las cifras de más abajo (acierto, Topstep, años) son las antiguas y están infladas.</p>
+</section>
 
 <section aria-labelledby="h-reloj">
   <div class="eyebrow">El día, en hora de Italia</div>
