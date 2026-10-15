@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T16:30:35",
+  "version_codigo": "db8c92d+cambios_sin_commit",
+  "experimento": "ORB El Autómata (guía pública)",
+  "reglas": "Guía \"ORB El Autómata\" (Los Autómatas): ORB en MNQ, velas de 5 min, hora de NY. Reglas de la guía:\n  rango con velas de 1 min (1:00-1:15 NY, o 9:15-9:30 NY); esperar una vela de 5 min que CIERRE fuera del rango y sea\n  A FAVOR (alcista para largo, bajista para corto); entrar al cierre de esa vela; stop en la MECHA de la vela de ruptura\n  o en el LADO OPUESTO del rango (+ buffer); objetivo en múltiplos de R; omite la operación si el stop supera el máximo\n  permitido; una operación por sesión; cierre obligatorio a una hora.\nLo que la guía no dice (los ajustes \"son parte de la membresía\") se fija ANTES de ver resultados:\n  buffer de ruptura 0; buffer de stop 1 tick; objetivo 0,5 / 1 / 1,5 / 2 R; stop máximo: sin límite o 30 pts;\n  horas: 1 AM → entradas hasta 4:00 NY y cierre 5:00 NY; NY 9:15 → entradas hasta 11:30 y cierre 12:30.\n  Entrada en la apertura del minuto siguiente al cierre de la vela (≈ su cierre) con deslizamiento.\nSe mide en 8 años (2018-2026) y además en el último año y los últimos 90 días (los periodos de la guía).\nSelección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}
