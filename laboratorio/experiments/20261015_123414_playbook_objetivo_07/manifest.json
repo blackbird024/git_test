@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T12:34:15",
+  "version_codigo": "0d533f2+cambios_sin_commit",
+  "experimento": "playbook con objetivo 0,7 × stop",
+  "reglas": "Petición: \"buscaré beneficio 1:0,7\" en el playbook. Mismas reglas (vela 5 min 8:25 y 9:25 ET, OCO stop 1 tick fuera,\nstop S = máx(rango, 30 pts) desde el nivel roto, plazo 3,5 h) con objetivo = 0,7 × S, comparado con los objetivos actuales\n(DATO 0,75 × rango; APERTURA 1 × S). Selección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}
