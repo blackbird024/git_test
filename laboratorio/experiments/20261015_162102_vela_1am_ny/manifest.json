@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T16:21:08",
+  "version_codigo": "9d85304+cambios_sin_commit",
+  "experimento": "vela 15 min 1:00 NY (7:00 Italia)",
+  "reglas": "Petición: probar la vela de 1:00 a 1:15 NY (7:00-7:15 Italia), 15 min, MNQ 2018-2026. Reglas fijadas antes:\n  Carrera: tras la primera ruptura, ¿llega antes a +1 rango más allá (continúa) o al otro lado (gira)? (plazo 3,5 h)\n  A FAVOR: OCO stop 1 tick fuera; stop = otro lado (o mínimo 15 pts / 30 pts desde el nivel roto); objetivo 0,5 / 0,75 /\n    1 × rango desde el nivel roto, o 1:1 respecto al stop.\n  EN CONTRA: en la ruptura, a mercado en contra; objetivo el otro lado; stop a 1 rango más allá.\n  Plazo 3,5 h (hasta 4:45 NY = 10:45 Italia). Días con doble ruptura en el mismo minuto: CASO PEOR (se simulan los dos\n  lados y se cuenta el peor), para no inflar el resultado como pasó con el playbook.\nSelección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}
