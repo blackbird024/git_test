@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T12:49:03",
+  "version_codigo": "3689b36+cambios_sin_commit",
+  "experimento": "vela 15:30 Italia a la contra, entrada al cierre de 1 min",
+  "reglas": "Petición: vela de 5 min de 15:30 Italia (9:30-9:35 ET) A LA CONTRA, apostando a que gira, con entrada al cierre de una\nvela de 1 min. Reglas fijadas antes de ver resultados (MNQ 2018-2026), dos lecturas:\n  A) CONTRA DIRECTA: la primera vela de 1 min que CIERRA fuera del rango → entrada EN CONTRA a mercado en la apertura\n     siguiente.\n  B) RUPTURA FALLIDA: el precio rompe; la primera vela de 1 min que vuelve a CERRAR DENTRO del rango → entrada en contra\n     de la ruptura (si rompió arriba, corto).\n  Stop: extremo alcanzado por la ruptura ± 1 tick (variante: como mínimo a 30 pts de la entrada).\n  Objetivo: el otro lado del rango, la mitad del rango, 1R o 2R.\n  Plazo: 3,5 h desde las 9:35 ET (hasta 19:05 Italia). Una operación al día.\nSelección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}
