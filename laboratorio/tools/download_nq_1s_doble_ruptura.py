@@ -36,22 +36,28 @@ def main():
     c = db.Historical(os.environ["DATABENTO_API_KEY"])
     W = ventanas()
     print(len(W), "ventanas;", len(data), "ya descargadas", flush=True)
-    for i, (d, a, k) in enumerate(W):
-        if (d, a) in data:
-            continue
+    from concurrent.futures import ThreadPoolExecutor
+
+    def bajar(w):
+        d, a, k = w
         t0 = pd.Timestamp(f"{d.date()} 00:00", tz="America/New_York") + pd.Timedelta(minutes=k)
         for intento in range(4):
             try:
                 df = c.timeseries.get_range(dataset="GLBX.MDP3", symbols=["NQ.c.0"], stype_in="continuous",
                                             schema="ohlcv-1s", start=t0.tz_convert("UTC"),
                                             end=(t0 + pd.Timedelta(minutes=3)).tz_convert("UTC")).to_df()
-                break
+                return (d, a), (k, df[["open", "high", "low", "close"]])
             except Exception as e:  # red: reintento
                 print("reintento", d.date(), a, e, flush=True)
-        data[(d, a)] = (k, df[["open", "high", "low", "close"]])
-        if i % 50 == 0:
-            pickle.dump(data, open(OUT, "wb"))
-            print(i, flush=True)
+        return (d, a), (k, None)
+
+    pend = [w for w in W if (w[0], w[1]) not in data]
+    with ThreadPoolExecutor(6) as ex:
+        for i, (key, val) in enumerate(ex.map(bajar, pend)):
+            data[key] = val
+            if i % 50 == 0:
+                pickle.dump(data, open(OUT, "wb"))
+                print(len(data), flush=True)
     pickle.dump(data, open(OUT, "wb"))
     print("listo", len(data), "→", OUT)
 
