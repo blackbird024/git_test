@@ -1,0 +1,159 @@
+<title>Calculadora ORB Dato y Apertura</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de trabajo — datos de la vela arriba, dos tickets de orden (compra / venta) lado a lado, resumen de contratos encima */
+:root{
+  --bg:#f3f5f4; --panel:#ffffff; --ink:#18201d; --muted:#5d6a65; --line:#d8dfdc;
+  --accent:#1f6f5c; --buy:#13795b; --sell:#b23a3a; --buy-bg:#e5f3ed; --sell-bg:#f8e7e6; --warn:#9a6a00; --warn-bg:#fbf1d9;
+  --display:"Archivo",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --panel:#1a211e; --ink:#e6ece9; --muted:#9aa8a2; --line:#2c3632;
+  --accent:#5fc3a6; --buy:#4fcf9f; --sell:#f07c7c; --buy-bg:#16302a; --sell-bg:#361e1e; --warn:#e8b64a; --warn-bg:#33291a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --panel:#1a211e; --ink:#e6ece9; --muted:#9aa8a2; --line:#2c3632;
+  --accent:#5fc3a6; --buy:#4fcf9f; --sell:#f07c7c; --buy-bg:#16302a; --sell-bg:#361e1e; --warn:#e8b64a; --warn-bg:#33291a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(24px,5vw,32px);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0;max-width:62ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+label{display:grid;gap:5px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+input,select{font:500 17px var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:9px 10px;width:100%;min-width:0}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.seg button{font:600 14px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{display:grid;gap:2px}
+.stat .k{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font:700 26px var(--display);font-variant-numeric:tabular-nums}
+.stat .v.big{font-size:40px;color:var(--accent);line-height:1.1}
+.note{font-size:13px;color:var(--muted)}
+.alert{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:10px 12px;font-weight:500}
+.tickets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.ticket{border-radius:10px;padding:16px;border:1px solid var(--line);display:grid;gap:10px;min-width:0}
+.ticket.buy{background:var(--buy-bg)} .ticket.sell{background:var(--sell-bg)}
+.ticket h2{margin:0;font:800 18px var(--display);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.buy h2 span:first-child{color:var(--buy)} .sell h2 span:first-child{color:var(--sell)}
+.ticket h2 .tag{font:500 12px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:8px}
+.row .k{color:var(--muted);font-size:14px}
+.row .v{font:600 18px var(--mono);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:8px}
+.copy{font:500 12px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:6px;padding:2px 7px;cursor:pointer}
+.rules{margin:0;padding-left:18px;display:grid;gap:4px;color:var(--muted);font-size:14px}
+.rules b{color:var(--ink);font-weight:600}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Calculadora ORB · Dato y Apertura</h1>
+    <p class="sub">Escribe el máximo y el mínimo de la vela de 5 min (14:25-14:30 o 15:25-15:30, hora de Italia). Te da las dos órdenes stop, el stop, el objetivo y cuántos contratos usar antes de que el precio rompa.</p>
+  </header>
+
+  <section class="panel">
+    <div class="inputs">
+      <label for="hi">Máximo de la vela<input id="hi" type="number" step="0.25" inputmode="decimal" value="30812"></label>
+      <label for="lo">Mínimo de la vela<input id="lo" type="number" step="0.25" inputmode="decimal" value="30800"></label>
+      <label for="risk">Riesgo máximo ($)<input id="risk" type="number" step="5" inputmode="decimal" value="125"></label>
+      <label for="ct">Contrato<select id="ct"><option value="2">MNQ (2 $/pt)</option><option value="20">NQ (20 $/pt)</option></select></label>
+    </div>
+    <div class="seg" role="group" aria-label="Ventana y objetivo">
+      <button type="button" data-w="dato" aria-pressed="true">DATO 14:25 · obj 0,75 × vela</button>
+      <button type="button" data-w="ap1" aria-pressed="false">APERTURA 15:25 · 1:1</button>
+      <button type="button" data-w="ap07" aria-pressed="false">APERTURA 15:25 · 1:0,7</button>
+    </div>
+  </section>
+
+  <section class="panel" aria-live="polite">
+    <div class="summary">
+      <div class="stat"><span class="k">Contratos</span><span class="v big" id="n">—</span></div>
+      <div class="stat"><span class="k">Tamaño vela</span><span class="v" id="r">—</span></div>
+      <div class="stat"><span class="k">Stop (pts)</span><span class="v" id="s">—</span></div>
+      <div class="stat"><span class="k">Si pierdes</span><span class="v" id="loss">—</span></div>
+      <div class="stat"><span class="k">Si ganas</span><span class="v" id="win">—</span></div>
+    </div>
+    <p class="note" id="why"></p>
+    <p class="alert" id="alert" hidden></p>
+  </section>
+
+  <section class="tickets">
+    <div class="ticket buy">
+      <h2><span>Compra stop</span><span class="tag">si rompe arriba</span></h2>
+      <div class="row"><span class="k">Entrada</span><span class="v"><span id="be">—</span><button class="copy" data-c="be">copiar</button></span></div>
+      <div class="row"><span class="k">Stop</span><span class="v"><span id="bs">—</span><button class="copy" data-c="bs">copiar</button></span></div>
+      <div class="row"><span class="k">Objetivo</span><span class="v"><span id="bt">—</span><button class="copy" data-c="bt">copiar</button></span></div>
+    </div>
+    <div class="ticket sell">
+      <h2><span>Venta stop</span><span class="tag">si rompe abajo</span></h2>
+      <div class="row"><span class="k">Entrada</span><span class="v"><span id="se">—</span><button class="copy" data-c="se">copiar</button></span></div>
+      <div class="row"><span class="k">Stop</span><span class="v"><span id="ss">—</span><button class="copy" data-c="ss">copiar</button></span></div>
+      <div class="row"><span class="k">Objetivo</span><span class="v"><span id="st">—</span><button class="copy" data-c="st">copiar</button></span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <ul class="rules">
+      <li><b>Las dos órdenes a la vez, OCO:</b> cuando entra una, cancela la otra.</li>
+      <li><b>Stop</b> = el mayor entre el tamaño de la vela y 30 pts, medido desde el nivel roto.</li>
+      <li><b>Cierre por tiempo:</b> <span id="exit">18:00</span> si no toca ni stop ni objetivo.</li>
+      <li><b>Si llegas tarde</b> y el precio ya rompió, no persigas: ese día no se opera esa vela.</li>
+      <li>Si los dos lados rompen en el mismo minuto, no se opera.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+const TICK = 0.25, MIN_STOP = 30;
+const W = {dato:{base:"R",frac:0.75,exit:"18:00"}, ap1:{base:"S",frac:1,exit:"19:00"}, ap07:{base:"S",frac:0.7,exit:"19:00"}};
+let win = "dato";
+const $ = id => document.getElementById(id);
+const rnd = x => Math.round(x / TICK) * TICK;
+const fmt = x => x.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2});
+const usd = x => Math.round(x).toLocaleString("es-ES") + " $";
+try { const s = JSON.parse(localStorage.getItem("orbcalc") || "{}"); if (s.risk) $("risk").value = s.risk; if (s.ct) $("ct").value = s.ct; if (s.win && W[s.win]) win = s.win; } catch (e) {}
+
+function calc(){
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.w === win)));
+  const hi = parseFloat($("hi").value), lo = parseFloat($("lo").value), risk = parseFloat($("risk").value), pv = parseFloat($("ct").value);
+  try { localStorage.setItem("orbcalc", JSON.stringify({risk: $("risk").value, ct: $("ct").value, win})); } catch (e) {}
+  const al = $("alert"); al.hidden = true;
+  $("exit").textContent = W[win].exit;
+  if (!(hi > lo) || !(risk > 0)) {
+    ["n","r","s","loss","win","be","bs","bt","se","ss","st"].forEach(k => $(k).textContent = "—");
+    $("why").textContent = "";
+    al.textContent = "El máximo tiene que ser mayor que el mínimo y el riesgo mayor que 0."; al.hidden = false; return;
+  }
+  const R = hi - lo, S = Math.max(R, MIN_STOP), w = W[win];
+  const dist = w.frac * (w.base === "R" ? R : S);
+  const be = rnd(hi + TICK), bs = rnd(hi - S - TICK), bt = rnd(hi + dist);
+  const se = rnd(lo - TICK), ss = rnd(lo + S + TICK), st = rnd(lo - dist);
+  const riskPts = be - bs, gainPts = bt - be;
+  const n = Math.floor(risk / (riskPts * pv));
+  $("r").textContent = fmt(R) + " pts"; $("s").textContent = fmt(S);
+  $("be").textContent = fmt(be); $("bs").textContent = fmt(bs); $("bt").textContent = fmt(bt);
+  $("se").textContent = fmt(se); $("ss").textContent = fmt(ss); $("st").textContent = fmt(st);
+  $("why").textContent = R < MIN_STOP
+    ? "La vela mide menos de 30 pts, así que el stop es de 30 pts."
+    : "La vela mide más de 30 pts, así que el stop es el tamaño de la vela.";
+  if (n < 1) {
+    $("n").textContent = "0"; $("loss").textContent = usd(riskPts * pv); $("win").textContent = usd(gainPts * pv);
+    al.textContent = "Con este riesgo no llega ni a 1 contrato: 1 contrato arriesga " + usd(riskPts * pv) + ". Sube el riesgo o no operes esta vela.";
+    al.hidden = false; return;
+  }
+  $("n").textContent = n;
+  $("loss").textContent = "−" + usd(n * riskPts * pv);
+  $("win").textContent = "+" + usd(n * gainPts * pv);
+}
+document.querySelectorAll("input,select").forEach(el => el.addEventListener("input", calc));
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => { win = b.dataset.w; calc(); }));
+document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+  const t = $(b.dataset.c).textContent.replace(/\./g, "").replace(",", ".");
+  const done = () => { b.textContent = "copiado"; setTimeout(() => b.textContent = "copiar", 1200); };
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(() => { const r = document.createRange(); r.selectNodeContents($(b.dataset.c)); getSelection().removeAllRanges(); getSelection().addRange(r); });
+}));
+calc();
+</script>
