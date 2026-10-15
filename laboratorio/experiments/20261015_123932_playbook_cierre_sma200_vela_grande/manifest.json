@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T12:39:41",
+  "version_codigo": "03e2214+cambios_sin_commit",
+  "experimento": "playbook: cierre fuera + SMA 200 + sin vela grande",
+  "reglas": "Continuación de run_playbook_cierre_sma.py. Petición añadida: \"si la vela es grande no ejecutas\".\nMisma entrada al CIERRE fuera del rango con filtro SMA 200 (\"primera\" o \"solo lado\", 1 o 5 min), y además se descarta la\nseñal si la vela que cierra fuera es GRANDE (fijado antes de ver resultados):\n   grande_R   su tamaño (máximo − mínimo) es mayor que el rango de la vela de 5 min\n   grande_S2  su tamaño es mayor que la mitad del stop (0,5 × S, ≈ 15 pts)\nSi la vela es grande, no se opera ese día (con \"solo lado\" se sigue esperando otra vela que cierre fuera y no sea grande).\nMismos stops, objetivos y plazo. Selección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}

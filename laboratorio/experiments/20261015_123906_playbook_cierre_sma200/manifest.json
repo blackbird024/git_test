@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T12:39:10",
+  "version_codigo": "03e2214+cambios_sin_commit",
+  "experimento": "playbook: entrada al cierre fuera del rango + filtro SMA 200",
+  "reglas": "Petición: en el playbook, ESPERAR A QUE LA VELA CIERRE fuera del rango y operar SOLO a favor de la SMA 200.\nVelas del rango: 5 min 8:25 ET (DATO, 14:25 Italia) y 9:25 ET (APERTURA, 15:25 Italia). Reglas fijadas antes de ver\nresultados (MNQ 2018-2026):\n  Cierre: primera vela (de 1 min o de 5 min, variantes) que CIERRA fuera del rango → entrada a mercado en la apertura\n          siguiente. Plazo para la señal y la operación: 3,5 h.\n  SMA 200 (1 min o 5 min, la misma temporalidad que la vela de cierre), leída en la vela de la señal:\n     sin filtro · \"primera\" (si el primer cierre fuera va contra la SMA, no se opera) · \"solo lado\" (se espera al primer\n     cierre fuera EN el lado de la SMA).\n  Stop: S = máx(rango, 30 pts) desde el nivel roto. Objetivo desde el nivel roto: DATO 0,75 × rango; APERTURA 1 × S o 0,7 × S.\n  Referencia: el playbook actual (orden stop en la ruptura, sin filtro).\nSelección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}
