@@ -1,0 +1,7 @@
+{
+  "fecha": "2026-10-15T12:09:20",
+  "version_codigo": "231935d+cambios_sin_commit",
+  "experimento": "rango 15:00-15:29 Italia, ruptura a favor",
+  "reglas": "Petición: marcar el rango de 15:00 a 15:29 Italia (9:00-9:29 ET, 30 velas de 1 min, antes de la apertura) y, cuando\nrompa, entrar A FAVOR con el stop al otro lado del rango. Reglas fijadas antes de ver resultados (MNQ 2018-2026):\n  Entrada (variantes): RUPTURA = orden stop OCO 1 tick fuera (doble ruptura en el mismo minuto = no se opera);\n                       CIERRE  = primera vela de 1 min que CIERRA fuera del rango → a mercado en la apertura siguiente.\n  Stop: otro lado del rango ∓ 1 tick (variante: como mínimo a 30 pts del nivel roto).\n  Objetivo: 0,5 R, 0,75 R o 1 R medido desde el nivel roto (R = tamaño del rango), o 1:1 respecto al stop.\n  Plazo: hasta las 13:00 ET (19:00 Italia). Una operación al día.\nGana / pierde = resultado bruto en puntos. Selección: neto > 0 en dev Y val (coste base), n_val >= 30.",
+  "seleccionadas": []
+}
