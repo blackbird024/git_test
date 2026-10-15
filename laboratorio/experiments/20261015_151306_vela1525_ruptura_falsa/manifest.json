@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-15T15:13:09",
+  "version_codigo": "c09bc8d+cambios_sin_commit",
+  "experimento": "vela 15:25: primera ruptura falsa, entrada en contra al volver",
+  "reglas": "Petición: vela de 5 min de 15:25 Italia (9:25-9:30 ET). Suponer que la PRIMERA ruptura es falsa: cuando el precio\nvuelve al rango, entrar EN CONTRA de esa ruptura con objetivo 1:0,5 y stop en el último máximo/mínimo de 1 min.\nReglas fijadas antes de ver resultados (MNQ 2018-2026):\n  Primera ruptura: primera vela de 1 min (desde 9:30 ET) cuyo máximo supera el máximo de la vela + 1 tick (o el mínimo).\n    Si en ese minuto rompe los dos lados, el primer lado se decide con los datos de 1 SEGUNDO\n    (tools/download_nq_1s_doble_ruptura.py); si es el mismo segundo, el día no se opera.\n  Vuelta al rango: primera vela de 1 min que CIERRA de nuevo al otro lado del nivel roto (por debajo del máximo si rompió\n    arriba). Entrada a mercado en la apertura siguiente, EN CONTRA de la primera ruptura.\n  Stop: el extremo alcanzado por la ruptura falsa (máximo de las velas de 1 min desde la ruptura) ± 1 tick.\n  Objetivo: 0,5 R (pedido) y, para comparar, 1 R. R = distancia entrada-stop.\n  Ventana de señal (variantes): hasta 30 min tras la ruptura, o todo el plazo (3,5 h desde 9:30 ET).\nSelección: neto > 0 en dev Y val (coste base), n_val >= 30."
+}
