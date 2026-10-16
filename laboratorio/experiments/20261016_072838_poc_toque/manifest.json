@@ -1,0 +1,6 @@
+{
+  "fecha": "2026-10-16T07:28:38",
+  "version_codigo": "327e366+cambios_sin_commit",
+  "experimento": "primer toque del POC en la sesión regular: ¿rebota o atraviesa?",
+  "reglas": "Pregunta: \"si el precio llega al POC, ¿debo estar atento a un cambio de tendencia?\". MNQ (NQ 1 min) 2018-2026.\nPOC = precio con más volumen del perfil (volumen de cada vela de 1 min asignado a su precio típico (H+L+C)/3,\nredondeado a 1 punto). Perfiles (fijados antes de ver resultados):\n  POC_AYER   sesión regular del día anterior (9:30-16:00 NY)\n  POC_NOCHE  sesión nocturna del mismo día (18:00 del día anterior → 9:29 NY)\nEvento: durante la sesión regular (9:30-15:00 NY), el PRIMER toque del POC; el precio viene del lado en que abrió la\nsesión (si abrió encima, viene de arriba). Se excluye si la sesión abre a menos de X del POC.\nCarrera tras el toque, desde la vela SIGUIENTE al toque (hasta 16:00): ¿vuelve X puntos hacia el lado del que vino (REBOTA) o atraviesa X puntos al otro\nlado (ATRAVIESA)? X ∈ {10, 20, 40} pts. Además: operación de rebote (a mercado en el toque, stop X, objetivo X, 1:1)\nen bruto (puntos)."
+}
