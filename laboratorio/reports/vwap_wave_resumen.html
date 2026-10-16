@@ -1,0 +1,217 @@
+<title>VWAP Wave en español</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: una columna de lectura; cabecera corta, principios en lista, y las 4 configuraciones como fichas con un mini-gráfico (VWAP naranja, bandas azules) y sus reglas al lado. */
+:root{
+  --paper:#EEF2F7; --sheet:#FFFFFF; --ink:#13213A; --muted:#55627A; --rule:#D3DBE6;
+  --vwap:#D9821E; --band:#3B7DD8; --value:#DCE8F8; --long:#14855F; --short:#C2413A;
+  --display:"Saira Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0C1424; --sheet:#121C30; --ink:#E6ECF5; --muted:#9AA8BF; --rule:#25334D;
+  --vwap:#F0A040; --band:#6FA4F0; --value:#1B2B47; --long:#3FC596; --short:#F0756D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0C1424; --sheet:#121C30; --ink:#E6ECF5; --muted:#9AA8BF; --rule:#25334D;
+  --vwap:#F0A040; --band:#6FA4F0; --value:#1B2B47; --long:#3FC596; --short:#F0756D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:920px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,8vw,68px);font-weight:800;letter-spacing:-.01em}
+h1 .w{color:var(--band)}
+h2{font-size:30px;font-weight:700}
+h3{font-size:26px;font-weight:700}
+.eyebrow{font:600 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lead{max-width:62ch;color:var(--muted);margin:10px 0 0;font-size:18px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:22px;height:4px;border-radius:2px;display:inline-block}
+.sw.v{background:var(--vwap)} .sw.b{background:var(--band)} .sw.a{background:var(--value);height:12px;border:1px solid var(--band)}
+.principios{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.principios li{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.principios b{display:block;margin-bottom:2px}
+.setup{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.setup .fig{background:var(--paper);border-right:1px solid var(--rule);padding:16px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.setup svg{width:100%;height:auto;display:block}
+.setup .txt{padding:20px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.num{font:500 13px var(--mono);color:var(--band)}
+.en{color:var(--muted);font-size:14px}
+.tag{display:inline-block;font:600 12px var(--body);letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid currentColor}
+.tag.t{color:var(--long)} .tag.r{color:var(--short)}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
+dt{font-weight:700}
+dd{margin:0;color:var(--ink)}
+.ojo{border-left:3px solid var(--vwap);padding:4px 0 4px 12px;color:var(--muted);font-size:15px}
+.cuando{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cuando div{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.cuando b{font-family:var(--display);font-size:20px;display:block}
+.aviso{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:20px 22px;display:grid;gap:10px}
+.aviso ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.fuente{font-size:13px;color:var(--muted)}
+@media (max-width:640px){.setup{grid-template-columns:1fr}.setup .fig{border-right:0;border-bottom:1px solid var(--rule)}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Resumen en español · guía de Chris Drysdale</div>
+  <h1>VWAP <span class="w">Wave</span></h1>
+  <p class="lead">Cuatro formas de operar con el VWAP del día y sus bandas de desviación. La idea central: el precio pasa el tiempo dentro o fuera de la "zona de valor" que marcan las bandas, y cada situación pide una operación distinta.</p>
+  <div class="legend" aria-label="Leyenda de los gráficos">
+    <span><i class="sw v"></i>VWAP</span>
+    <span><i class="sw b"></i>Bandas de desviación</span>
+    <span><i class="sw a"></i>Zona de valor (entre bandas)</span>
+  </div>
+</header>
+
+<section aria-labelledby="h-pr">
+  <div class="eyebrow">Antes de operar</div>
+  <h2 id="h-pr">Los principios</h2>
+  <ul class="principios">
+    <li><b>Sin perfección</b>Se busca decidir con buenas razones, no acertar el tick exacto.</li>
+    <li><b>El mercado sigue como va</b>Suele mantener su comportamiento. Opera lo que ves, no lo que esperas.</li>
+    <li><b>Dentro de la zona, el VWAP es un imán</b>Si el precio está dentro o vuelve a entrar, tiende a ir al VWAP. Si lo pasa, el siguiente objetivo es la banda contraria.</li>
+    <li><b>Dentro de la zona hay ruido</b>Muchos movimientos falsos. Adapta la operativa para no perder en ellos.</li>
+    <li><b>Fuera de la zona, explora</b>Si el precio sale de la zona, suele buscar niveles nuevos en esa dirección, a menudo una zona de valor anterior.</li>
+    <li><b>Lo mejor, tras un cambio reciente</b>Las mejores operaciones aparecen justo después de un cambio de contexto.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-cuando">
+  <div class="eyebrow">Cómo elegir</div>
+  <h2 id="h-cuando">¿Dónde está el precio?</h2>
+  <div class="cuando">
+    <div><b>Fuera de la zona y se queda</b>Configuración 1 · continuar la ruptura</div>
+    <div><b>Dentro de la zona, de lado</b>Configuración 2 · vender arriba, comprar abajo</div>
+    <div><b>Fuera y vuelve a entrar</b>Configuración 3 · regreso al valor</div>
+    <div><b>Llega al VWAP</b>Configuración 4 · rebote en el VWAP</div>
+  </div>
+</section>
+
+<section aria-labelledby="h-setups" style="display:flex;flex-direction:column;gap:20px">
+  <div>
+    <div class="eyebrow">Las 4 configuraciones</div>
+    <h2 id="h-setups">Paso a paso</h2>
+  </div>
+
+  <article class="setup">
+    <div class="fig">
+      <svg viewBox="0 0 260 140" role="img" aria-label="El precio rompe por encima de la banda superior, vuelve a tocarla y sigue subiendo">
+        <rect x="0" y="45" width="260" height="50" fill="var(--value)"/>
+        <line x1="0" y1="45" x2="260" y2="45" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="95" x2="260" y2="95" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="70" x2="260" y2="70" stroke="var(--vwap)" stroke-width="2.5"/>
+        <polyline points="10,75 40,68 70,52 95,30 115,22 140,36 155,44 175,30 205,18 245,8" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="155" cy="44" r="6" fill="var(--long)"/>
+        <text x="163" y="62" font-size="12" fill="var(--long)" font-family="Source Sans 3, sans-serif" font-weight="700">entrada</text>
+      </svg>
+    </div>
+    <div class="txt">
+      <div class="num">Configuración 1</div>
+      <h3>Continuar la ruptura</h3>
+      <div class="en">Price Discovery Continuation · <span class="tag t">a favor</span></div>
+      <dl>
+        <dt>Cuándo</dt><dd>El precio sale de la zona de valor y se <b>acepta</b> fuera: pasa tiempo o recorre distancia fuera de las bandas.</dd>
+        <dt>Entrada</dt><dd>En el retroceso que vuelve a tocar la banda, al <b>primer signo de fuerza</b> a favor.</dd>
+        <dt>Stop</dt><dd>Unos puntos más allá de la vela que hace el retroceso.</dd>
+        <dt>Alternativa</dt><dd>Entrar en la propia ruptura, sabiendo que puede ser rechazada.</dd>
+      </dl>
+      <p class="ojo">Deja respirar la operación: a veces respeta la banda al tick, pero muchas veces vuelve a tocarla una segunda vez.</p>
+    </div>
+  </article>
+
+  <article class="setup">
+    <div class="fig">
+      <svg viewBox="0 0 260 140" role="img" aria-label="El precio oscila dentro de la zona de valor y gira al tocar las bandas">
+        <rect x="0" y="35" width="260" height="70" fill="var(--value)"/>
+        <line x1="0" y1="35" x2="260" y2="35" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="105" x2="260" y2="105" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="70" x2="260" y2="70" stroke="var(--vwap)" stroke-width="2.5"/>
+        <polyline points="10,80 40,55 65,38 90,62 115,80 135,102 160,78 190,52 210,37 235,58 255,72" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="65" cy="38" r="6" fill="var(--short)"/>
+        <circle cx="210" cy="37" r="6" fill="var(--short)"/>
+        <circle cx="135" cy="102" r="6" fill="var(--long)"/>
+      </svg>
+    </div>
+    <div class="txt">
+      <div class="num">Configuración 2</div>
+      <h3>Vender arriba, comprar abajo</h3>
+      <div class="en">Fade Value Area Extremes · <span class="tag r">a la contra</span></div>
+      <dl>
+        <dt>Cuándo</dt><dd>El precio pasa tiempo <b>dentro</b> de la zona de valor y se acepta ahí.</dd>
+        <dt>Entrada</dt><dd>Al primer signo de debilidad o rechazo cuando toca la zona de una banda: venta en la de arriba, compra en la de abajo. También vale entrar al tocarla o en varias partes al acercarse.</dd>
+        <dt>Stop</dt><dd>Unos puntos más allá de la mecha de la vela que toca la banda.</dd>
+      </dl>
+      <p class="ojo">Admite stops más cortos. Si el precio rompe la banda con fuerza, o la atraviesa poco a poco, sal.</p>
+    </div>
+  </article>
+
+  <article class="setup">
+    <div class="fig">
+      <svg viewBox="0 0 260 140" role="img" aria-label="El precio está por debajo de la banda inferior, vuelve a entrar en la zona, retrocede a la banda y sube hacia el VWAP">
+        <rect x="0" y="30" width="260" height="65" fill="var(--value)"/>
+        <line x1="0" y1="30" x2="260" y2="30" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="95" x2="260" y2="95" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="62" x2="260" y2="62" stroke="var(--vwap)" stroke-width="2.5"/>
+        <polyline points="10,75 40,100 65,120 90,112 115,88 135,82 150,93 175,80 205,66 245,58" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="150" cy="93" r="6" fill="var(--long)"/>
+        <text x="160" y="112" font-size="12" fill="var(--long)" font-family="Source Sans 3, sans-serif" font-weight="700">entrada</text>
+      </svg>
+    </div>
+    <div class="txt">
+      <div class="num">Configuración 3</div>
+      <h3>Regreso al valor</h3>
+      <div class="en">Return to Value · <span class="tag r">giro hacia el VWAP</span></div>
+      <dl>
+        <dt>Cuándo</dt><dd>El precio estuvo un rato <b>fuera</b> de la zona y vuelve a entrar.</dd>
+        <dt>Entrada</dt><dd>En el retroceso a la banda una vez que el precio se ha aceptado dentro de la zona.</dd>
+        <dt>Stop</dt><dd>Unos puntos más allá de la mecha de la vela que toca la banda.</dd>
+        <dt>Alternativa</dt><dd>Entrar al volver a la zona, sabiendo que puede ser rechazada.</dd>
+      </dl>
+      <p class="ojo">Muchas veces no hay retroceso: la única entrada habría sido al volver a la zona.</p>
+    </div>
+  </article>
+
+  <article class="setup">
+    <div class="fig">
+      <svg viewBox="0 0 260 140" role="img" aria-label="El precio sube hasta el VWAP desde abajo, lo toca varias veces y cae">
+        <rect x="0" y="20" width="260" height="85" fill="var(--value)"/>
+        <line x1="0" y1="20" x2="260" y2="20" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="105" x2="260" y2="105" stroke="var(--band)" stroke-width="2"/>
+        <line x1="0" y1="50" x2="260" y2="58" stroke="var(--vwap)" stroke-width="2.5"/>
+        <polyline points="10,45 35,60 60,72 85,52 105,66 130,60 150,54 170,72 195,95 220,112 250,126" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="85" cy="52" r="6" fill="var(--short)"/>
+        <circle cx="150" cy="54" r="6" fill="var(--short)"/>
+      </svg>
+    </div>
+    <div class="txt">
+      <div class="num">Configuración 4</div>
+      <h3>Rebote en el VWAP</h3>
+      <div class="en">VWAP Bounce · <span class="tag t">desde el VWAP</span></div>
+      <dl>
+        <dt>Cuándo</dt><dd>Mejor en días de <b>mucha volatilidad</b>, con el precio entrando y saliendo de la zona.</dd>
+        <dt>Entrada</dt><dd>Cuando el precio, ya dentro de la zona, toca el VWAP: entras al mostrar fuerza alejándose del VWAP.</dd>
+        <dt>Stop</dt><dd>Unos puntos más allá de la mecha de la vela que toca el VWAP.</dd>
+      </dl>
+      <p class="ojo">En el VWAP los grandes entran y salen: espera trampas, como romper el VWAP y recuperarlo.</p>
+    </div>
+  </article>
+</section>
+
+<section class="aviso" aria-labelledby="h-aviso">
+  <div class="eyebrow">Para leer con cuidado</div>
+  <h2 id="h-aviso">Lo que la guía no dice</h2>
+  <ul>
+    <li><b>No hay estadísticas.</b> Cada configuración se enseña con un solo gráfico del S&amp;P 500 en velas de 5 minutos, elegido para que salga bien.</li>
+    <li><b>Faltan los objetivos.</b> Solo da la idea general (VWAP o banda contraria). Las reglas exactas, el perfil de volumen y el Initial Balance están en el libro de pago.</li>
+    <li><b>"Aceptación", "signo de fuerza" y "rechazo" se deciden a ojo.</b> Dos personas pueden ver cosas distintas en el mismo gráfico.</li>
+    <li><b>Las configuraciones 1 y 2 se contradicen</b> cuando el precio toca una banda: una dice continuar y la otra girar. La diferencia depende de esa "aceptación".</li>
+    <li>En nuestras pruebas de MNQ, los niveles "mágicos" (POC, señal de stop run, SMA 200) no dieron ventaja. Estas cuatro configuraciones todavía no están probadas.</li>
+  </ul>
+  <p class="fuente">Fuente: "VWAP Wave · Core Setup Guide", Chris Drysdale / Drysdale Trading Group (7 páginas, la última es publicidad del libro).</p>
+</section>
+
+</div>
