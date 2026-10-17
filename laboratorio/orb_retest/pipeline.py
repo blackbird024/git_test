@@ -55,9 +55,10 @@ def freeze(cfg: Config):
 
 
 def context(S):
-    """Variables conocidas ANTES de cada sesión: rango medio de las 20 sesiones previas (volatilidad)."""
+    """Variables conocidas ANTES de cada sesión: rango medio de las 20 sesiones previas en % del precio (volatilidad
+    relativa; en puntos no es comparable entre 2018 y 2026 porque el índice se ha multiplicado por ~4)."""
     d = daily_from_sessions(S)
-    rng = (d.high - d.low).rolling(20).mean().shift(1)
+    rng = ((d.high - d.low) / d.close * 100).rolling(20).mean().shift(1)
     return pd.DataFrame(dict(vol20_prev=rng))
 
 
@@ -81,11 +82,12 @@ def run_all(cfg: Config = BASELINE, include_test=False, scenarios=None, S=None):
 def add_context(t: pd.DataFrame, S, thresholds=None):
     ctx = context(S)
     t = t.join(ctx, on="date")
+    t["or_width_pct"] = t.or_width / t.orh * 100              # anchura del rango en % del precio (conocida a las 9:45)
     if thresholds is None:
         dev = t[t.particion == "desarrollo"]
-        thresholds = dict(or_width=list(np.nanquantile(dev.or_width, [1 / 3, 2 / 3])),
+        thresholds = dict(or_width_pct=list(np.nanquantile(dev.or_width_pct, [1 / 3, 2 / 3])),
                           vol20_prev=list(np.nanquantile(dev.vol20_prev.dropna(), [1 / 3, 2 / 3])))
-    for k in ("or_width", "vol20_prev"):
+    for k in ("or_width_pct", "vol20_prev"):
         a, b = thresholds[k]
         t[k + "_tercil"] = np.where(t[k] <= a, "bajo", np.where(t[k] <= b, "medio", "alto"))
         t.loc[t[k].isna(), k + "_tercil"] = "sin_dato"
@@ -111,7 +113,7 @@ def breakdowns(t: pd.DataFrame):
     t["año"] = t.date.dt.year
     t["lado"] = np.where(t.side == 1, "largo", "corto")
     return {k: by_group(t, ["particion", k]).reset_index() for k in
-            ("año", "lado", "or_width_tercil", "vol20_prev_tercil", "roll_week", "reason")}
+            ("año", "lado", "or_width_pct_tercil", "vol20_prev_tercil", "roll_week", "reason")}
 
 
 def sized_runs(t: pd.DataFrame, budgets=(25, 50, 100), base=BASELINE):

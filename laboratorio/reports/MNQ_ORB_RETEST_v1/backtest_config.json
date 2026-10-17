@@ -1,0 +1,151 @@
+{
+  "version": "MNQ_ORB_RETEST_v1.0",
+  "git": "1152218",
+  "strategy_hash": "51bd2fc16336f433",
+  "prueba_abierta": true,
+  "congelacion": {
+    "version": "MNQ_ORB_RETEST_v1.0",
+    "strategy_hash": "51bd2fc16336f433",
+    "git": "70fc2a4",
+    "fecha": "2026-10-17T06:31:28",
+    "reglas": {
+      "version": "MNQ_ORB_RETEST_v1.0",
+      "or_minutes": 15,
+      "bar_minutes": 5,
+      "tol_ticks": 2,
+      "retest_bars": 3,
+      "tp_r": 2.0,
+      "last_entry_k": 120,
+      "flat_k": 385,
+      "stop_offset_ticks": 1,
+      "min_or_minutes_with_data": 14,
+      "max_trades_per_session": 1
+    },
+    "particion": {
+      "desarrollo": [
+        "2018-01-01",
+        "2021-12-31"
+      ],
+      "validacion": [
+        "2022-01-01",
+        "2024-12-31"
+      ],
+      "prueba": [
+        "2025-01-01",
+        "2026-10-02"
+      ]
+    },
+    "nota": "Reglas congeladas tras ver SOLO desarrollo y validación. La prueba se abre una vez con estas reglas."
+  },
+  "config": {
+    "strategy": {
+      "version": "MNQ_ORB_RETEST_v1.0",
+      "or_minutes": 15,
+      "bar_minutes": 5,
+      "tol_ticks": 2,
+      "retest_bars": 3,
+      "tp_r": 2.0,
+      "last_entry_k": 120,
+      "flat_k": 385,
+      "stop_offset_ticks": 1,
+      "min_or_minutes_with_data": 14,
+      "max_trades_per_session": 1
+    },
+    "costs": {
+      "name": "base",
+      "point_value": 2.0,
+      "tick": 0.25,
+      "commission_per_side": 1.0,
+      "slip_ticks_entry": 1.0,
+      "slip_ticks_stop": 1.0,
+      "slip_ticks_time": 1.0,
+      "tp_cross_ticks": 1
+    },
+    "risk": {
+      "initial_capital": 50000.0,
+      "risk_usd": 50.0,
+      "risk_pct": 0.0,
+      "max_contracts": 50,
+      "daily_loss_limit": 0.0,
+      "max_drawdown": 0.0,
+      "drawdown_type": "estatico"
+    },
+    "partition": {
+      "desarrollo": [
+        "2018-01-01",
+        "2021-12-31"
+      ],
+      "validacion": [
+        "2022-01-01",
+        "2024-12-31"
+      ],
+      "prueba": [
+        "2025-01-01",
+        "2026-10-02"
+      ]
+    }
+  },
+  "escenarios_coste": {
+    "sin_costes": {
+      "name": "sin_costes",
+      "point_value": 2.0,
+      "tick": 0.25,
+      "commission_per_side": 0.0,
+      "slip_ticks_entry": 0,
+      "slip_ticks_stop": 0,
+      "slip_ticks_time": 0,
+      "tp_cross_ticks": 0
+    },
+    "base": {
+      "name": "base",
+      "point_value": 2.0,
+      "tick": 0.25,
+      "commission_per_side": 1.0,
+      "slip_ticks_entry": 1.0,
+      "slip_ticks_stop": 1.0,
+      "slip_ticks_time": 1.0,
+      "tp_cross_ticks": 1
+    },
+    "base_2t": {
+      "name": "base_2t",
+      "point_value": 2.0,
+      "tick": 0.25,
+      "commission_per_side": 1.0,
+      "slip_ticks_entry": 2,
+      "slip_ticks_stop": 2,
+      "slip_ticks_time": 2,
+      "tp_cross_ticks": 1
+    },
+    "proyecto_previo": {
+      "name": "proyecto_previo",
+      "point_value": 2.0,
+      "tick": 0.25,
+      "commission_per_side": 0.75,
+      "slip_ticks_entry": 2,
+      "slip_ticks_stop": 2,
+      "slip_ticks_time": 2,
+      "tp_cross_ticks": 1
+    },
+    "estres": {
+      "name": "estres",
+      "point_value": 2.0,
+      "tick": 0.25,
+      "commission_per_side": 1.5,
+      "slip_ticks_entry": 3,
+      "slip_ticks_stop": 4,
+      "slip_ticks_time": 3,
+      "tp_cross_ticks": 1
+    }
+  },
+  "umbrales_terciles_desde_desarrollo": {
+    "or_width_pct": [
+      0.3313654863420865,
+      0.48625610643802986
+    ],
+    "vol20_prev": [
+      1.073954823723103,
+      1.327665966135458
+    ]
+  },
+  "ejecutado": "2026-10-17T06:34:39"
+}
