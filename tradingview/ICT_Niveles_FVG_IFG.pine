@@ -1,0 +1,208 @@
+//@version=6
+// ICT · niveles + FVG de temporalidad alta + señales IFG (guía "Estrategia ICT de Tis Trades · paso a paso").
+// Ayuda visual para el modelo AMD; NO es una estrategia probada (ver laboratorio/reports/DIARIO_EXPERIMENTOS.md).
+//   1. Niveles (objetivos / DOL): máximo y mínimo del día anterior, de la semana anterior, de Asia y de Londres.
+//   2. FVG de 15 min, 1 h y 4 h: cajas que se extienden a la derecha hasta que una vela CIERRA al otro lado.
+//   3. IFG en la temporalidad del gráfico (1-5 min), dentro de la ventana NY:
+//        IFG+ = cierre por encima del techo del FVG bajista más reciente del gráfico, con
+//               cierre >= 50 % de la pierna (máximo-mínimo de las últimas N velas) y por debajo de su máximo, y
+//               (opcional) la pierna tocó un FVG alcista de temporalidad alta. IFG- = espejo.
+//      La señal aparece al CIERRE de la vela (no repinta). True manipulation (ES) y el contexto se miran a mano.
+indicator("ICT Niveles + FVG HTF + IFG", "ICT Niveles", overlay = true, max_boxes_count = 300,
+          max_lines_count = 100, max_labels_count = 300)
+
+TZ = "America/New_York"
+
+g1 = "Niveles (objetivos)"
+showPD   = input.bool(true, "Máx/mín del día anterior (PDH/PDL)", group = g1)
+showPW   = input.bool(true, "Máx/mín de la semana anterior (PWH/PWL)", group = g1)
+showAsia = input.bool(true, "Asia", group = g1)
+asiaSess = input.session("2000-2359", "Sesión Asia (hora NY)", group = g1)
+showLon  = input.bool(true, "Londres", group = g1)
+lonSess  = input.session("0200-0500", "Sesión Londres (hora NY)", group = g1)
+lvlCol   = input.color(color.new(color.gray, 0), "Color de los niveles", group = g1)
+
+g2 = "FVG de temporalidad alta"
+use15   = input.bool(true, "FVG de 15 min", group = g2)
+use60   = input.bool(true, "FVG de 1 h", group = g2)
+use240  = input.bool(true, "FVG de 4 h", group = g2)
+maxKeep = input.int(4, "FVG vivos por temporalidad y lado", minval = 1, maxval = 10, group = g2)
+colUp   = input.color(color.new(color.teal, 82), "Alcista", group = g2)
+colDn   = input.color(color.new(color.red, 82), "Bajista", group = g2)
+
+g3 = "Señales IFG (temporalidad del gráfico)"
+showIfg = input.bool(true, "Mostrar IFG", group = g3)
+ifgSess = input.session("0930-1100", "Ventana (hora NY)", group = g3)
+legLen  = input.int(20, "Velas de la pierna de manipulación", minval = 5, group = g3)
+gapLife = input.int(30, "Velas que vale un FVG del gráfico", minval = 3, group = g3)
+needHtf = input.bool(true, "Exigir que la pierna toque un FVG de temporalidad alta", group = g3)
+needEq  = input.bool(true, "Exigir cierre más allá del 50 % de la pierna", group = g3)
+
+// ── 1. niveles ───────────────────────────────────────────────────────────────────────────────────
+newLine() =>
+    line.new(int(na), float(na), int(na), float(na), xloc.bar_time, extend.right, lvlCol, line.style_dashed, 1)
+
+newLabel(string txt) =>
+    label.new(int(na), float(na), txt, xloc.bar_time, yloc.price, color(na), label.style_label_lower_left, lvlCol, size.small)
+
+setLevel(line ln, label lb, float v) =>
+    line.set_xy1(ln, time, v)
+    line.set_xy2(ln, time + 60000, v)
+    label.set_xy(lb, time, v)
+
+[pdh, pdl] = request.security(syminfo.tickerid, "D", [high[1], low[1]], lookahead = barmerge.lookahead_on)
+[pwh, pwl] = request.security(syminfo.tickerid, "W", [high[1], low[1]], lookahead = barmerge.lookahead_on)
+
+var line  pdhL = newLine()
+var label pdhB = newLabel("PDH")
+var line  pdlL = newLine()
+var label pdlB = newLabel("PDL")
+var line  pwhL = newLine()
+var label pwhB = newLabel("PWH")
+var line  pwlL = newLine()
+var label pwlB = newLabel("PWL")
+var line  asHL = newLine()
+var label asHB = newLabel("Asia H")
+var line  asLL = newLine()
+var label asLB = newLabel("Asia L")
+var line  lnHL = newLine()
+var label lnHB = newLabel("Londres H")
+var line  lnLL = newLine()
+var label lnLB = newLabel("Londres L")
+
+if showPD and (pdh != pdh[1] or pdl != pdl[1])
+    setLevel(pdhL, pdhB, pdh)
+    setLevel(pdlL, pdlB, pdl)
+if showPW and (pwh != pwh[1] or pwl != pwl[1])
+    setLevel(pwhL, pwhB, pwh)
+    setLevel(pwlL, pwlB, pwl)
+
+inAsia = not na(time(timeframe.period, asiaSess, TZ))
+inLon  = not na(time(timeframe.period, lonSess, TZ))
+var float aH = na
+var float aL = na
+var float lH = na
+var float lL = na
+if inAsia and not inAsia[1]
+    aH := high
+    aL := low
+else if inAsia
+    aH := math.max(aH, high)
+    aL := math.min(aL, low)
+if inLon and not inLon[1]
+    lH := high
+    lL := low
+else if inLon
+    lH := math.max(lH, high)
+    lL := math.min(lL, low)
+if showAsia and not inAsia and inAsia[1]
+    setLevel(asHL, asHB, aH)
+    setLevel(asLL, asLB, aL)
+if showLon and not inLon and inLon[1]
+    setLevel(lnHL, lnHB, lH)
+    setLevel(lnLL, lnLB, lL)
+
+// ── 2. FVG de temporalidad alta ──────────────────────────────────────────────────────────────────
+type Gap
+    box   b
+    float top
+    float bot
+    int   dir
+
+dropOldest(array<Gap> gaps, int dir) =>
+    int n = 0
+    for g in gaps
+        if g.dir == dir
+            n += 1
+    if n > maxKeep
+        for i = 0 to gaps.size() - 1
+            if gaps.get(i).dir == dir
+                box.delete(gaps.get(i).b)
+                gaps.remove(i)
+                break
+
+// Devuelve [toca FVG alcista, toca FVG bajista] en esta vela.
+htfGaps(string tf, array<Gap> gaps, string tag, bool on) =>
+    [h3, l3, h1, l1, t3, t1] = request.security(syminfo.tickerid, tf, [high[3], low[3], high[1], low[1], time[3], time[1]],
+                                                 lookahead = barmerge.lookahead_on)
+    newHtf = t1 != t1[1]
+    valid  = on and timeframe.in_seconds() < timeframe.in_seconds(tf)
+    if valid and newHtf and not na(h3)
+        if l1 > h3
+            b = box.new(left = t3, top = l1, right = time, bottom = h3, border_width = 0, extend = extend.right,
+                 xloc = xloc.bar_time, bgcolor = colUp, text = tag, text_size = size.tiny,
+                 text_color = color.new(color.teal, 20), text_halign = text.align_right)
+            gaps.push(Gap.new(b, l1, h3, 1))
+            dropOldest(gaps, 1)
+        if h1 < l3
+            b = box.new(left = t3, top = l3, right = time, bottom = h1, border_width = 0, extend = extend.right,
+                 xloc = xloc.bar_time, bgcolor = colDn, text = tag, text_size = size.tiny,
+                 text_color = color.new(color.red, 20), text_halign = text.align_right)
+            gaps.push(Gap.new(b, l3, h1, -1))
+            dropOldest(gaps, -1)
+    bool tUp = false
+    bool tDn = false
+    if gaps.size() > 0
+        for i = gaps.size() - 1 to 0
+            g = gaps.get(i)
+            if (g.dir == 1 and close < g.bot) or (g.dir == -1 and close > g.top)
+                box.delete(g.b)
+                gaps.remove(i)
+            else if low <= g.top and high >= g.bot
+                if g.dir == 1
+                    tUp := true
+                else
+                    tDn := true
+    [tUp, tDn]
+
+var array<Gap> g15  = array.new<Gap>()
+var array<Gap> g60  = array.new<Gap>()
+var array<Gap> g240 = array.new<Gap>()
+[u15, d15]   = htfGaps("15", g15, "15m", use15)
+[u60, d60]   = htfGaps("60", g60, "1h", use60)
+[u240, d240] = htfGaps("240", g240, "4h", use240)
+
+var int lastUp = na
+var int lastDn = na
+if u15 or u60 or u240
+    lastUp := bar_index
+if d15 or d60 or d240
+    lastDn := bar_index
+
+// ── 3. IFG en la temporalidad del gráfico ────────────────────────────────────────────────────────
+var float dnTop = na      // techo del FVG bajista más reciente del gráfico
+var int   dnBar = na
+var float upBot = na      // suelo del FVG alcista más reciente del gráfico
+var int   upBar = na
+if high < low[2]
+    dnTop := low[2]
+    dnBar := bar_index
+if low > high[2]
+    upBot := high[2]
+    upBar := bar_index
+
+legHi = ta.highest(high, legLen)
+legLo = ta.lowest(low, legLen)
+eq    = (legHi + legLo) / 2
+inWin = not na(time(timeframe.period, ifgSess, TZ))
+
+ifgUp = showIfg and inWin and not na(dnTop) and bar_index > dnBar and bar_index - dnBar <= gapLife and
+         close > dnTop and close[1] <= dnTop and close < legHi and (not needEq or close >= eq) and
+         (not needHtf or (not na(lastUp) and bar_index - lastUp <= legLen))
+ifgDn = showIfg and inWin and not na(upBot) and bar_index > upBar and bar_index - upBar <= gapLife and
+         close < upBot and close[1] >= upBot and close > legLo and (not needEq or close <= eq) and
+         (not needHtf or (not na(lastDn) and bar_index - lastDn <= legLen))
+if ifgUp
+    dnTop := na
+if ifgDn
+    upBot := na
+
+plotshape(ifgUp, "IFG+", shape.triangleup, location.belowbar, color.teal, text = "IFG+", textcolor = color.teal,
+          size = size.small)
+plotshape(ifgDn, "IFG-", shape.triangledown, location.abovebar, color.red, text = "IFG-", textcolor = color.red,
+          size = size.small)
+plot(ifgUp ? legLo : na, "Stop sugerido (compra)", color.red, 2, plot.style_linebr)
+plot(ifgDn ? legHi : na, "Stop sugerido (venta)", color.red, 2, plot.style_linebr)
+
+alertcondition(ifgUp, "IFG+ (compra)", "IFG alcista en {{ticker}} a {{close}}")
+alertcondition(ifgDn, "IFG- (venta)", "IFG bajista en {{ticker}} a {{close}}")
