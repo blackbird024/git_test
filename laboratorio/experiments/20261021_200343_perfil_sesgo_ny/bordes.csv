@@ -1,0 +1,13 @@
+fuera,borde,resultado,dias,cruza_al_otro_borde,cierre_fuera_lado
+False,VAH,acepta,19,0.21052631578947367,0.42105263157894735
+False,VAH,indeciso,8,,0.0
+False,VAH,rechaza,43,,0.7674418604651163
+False,VAL,acepta,22,0.6818181818181818,0.22727272727272727
+False,VAL,indeciso,3,,0.0
+False,VAL,rechaza,32,,0.6875
+True,VAH,acepta,108,0.5462962962962963,0.28703703703703703
+True,VAH,indeciso,32,,0.0
+True,VAH,rechaza,670,,0.8134328358208955
+True,VAL,acepta,98,0.4489795918367347,0.37755102040816324
+True,VAL,indeciso,25,,0.0
+True,VAL,rechaza,439,,0.7835990888382688

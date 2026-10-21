@@ -1,0 +1,7 @@
+resultado,particion,dias,p_a_favor,medio_pct
+acepta,desarrollo,113,0.531,-0.01
+acepta,prueba,52,0.442,-0.097
+acepta,validacion,82,0.512,0.005
+rechaza,desarrollo,557,0.539,0.035
+rechaza,prueba,240,0.462,-0.143
+rechaza,validacion,387,0.517,0.03
