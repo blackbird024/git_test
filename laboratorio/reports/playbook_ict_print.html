@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Playbook ICT NQ</title>
+<style>
+@page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+:root {
+  --ink: #17202b; --muted: #5b6676; --rule: #d6dbe3; --accent: #1d5f86; --accent-soft: #e6eff5;
+  --bull: #11806a; --bull-soft: #e3f2ed; --bear: #b8324a; --bear-soft: #f7e5e9; --warn: #a8660c; --warn-soft: #f8efe0;
+  --display: "Inter Display", "Inter", "Liberation Sans", sans-serif;
+  --body: "Inter", "Liberation Sans", sans-serif;
+  --mono: "JetBrains Mono", "DejaVu Sans Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; color: var(--ink); font-family: var(--body); font-size: 10pt; line-height: 1.45; background: #fff; }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.15; }
+h1 { font-size: 30pt; font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 15pt; font-weight: 600; }
+h3 { font-size: 11pt; font-weight: 600; margin-top: 4pt; }
+p { margin: 0; }
+.mono { font-family: var(--mono); font-size: .92em; }
+.eyebrow { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.lead { font-size: 11.5pt; color: var(--muted); max-width: 150mm; }
+header { display: grid; gap: 8pt; padding-bottom: 10pt; border-bottom: 1.5pt solid var(--ink); margin-bottom: 12pt; }
+.formula { display: flex; flex-wrap: wrap; gap: 6pt; align-items: center; font-family: var(--mono); font-size: 8.5pt; }
+.formula span { padding: 3pt 7pt; border: .75pt solid var(--rule); border-radius: 3pt; }
+.formula b { color: var(--muted); font-weight: 400; }
+section { display: grid; gap: 7pt; padding: 10pt 0 12pt; border-bottom: .75pt solid var(--rule); break-inside: avoid; }
+.step { display: grid; grid-template-columns: 14mm 1fr; gap: 6mm; }
+.step .num { font-family: var(--display); font-weight: 700; font-size: 30pt; line-height: .9; color: var(--accent); }
+.step > div { display: grid; gap: 6pt; }
+ul, ol { margin: 0; padding-left: 13pt; display: grid; gap: 3pt; }
+.chips { display: flex; flex-wrap: wrap; gap: 4pt; }
+.chip { font-family: var(--mono); font-size: 7.8pt; padding: 2pt 7pt; border-radius: 99pt; background: var(--accent-soft); }
+.chip.bull { background: var(--bull-soft); }
+.note { padding: 6pt 9pt; border-left: 2.5pt solid var(--warn); background: var(--warn-soft); font-size: 9.3pt; }
+.note.bear { border-color: var(--bear); background: var(--bear-soft); }
+.note.bull { border-color: var(--bull); background: var(--bull-soft); }
+table { border-collapse: collapse; width: 100%; font-size: 9pt; }
+th, td { text-align: left; padding: 4.5pt 6pt; border-bottom: .6pt solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td.pro { color: var(--bull); } td.con { color: var(--bear); }
+.num-t td, .num-t th { text-align: center; font-family: var(--mono); }
+.num-t td:first-child, .num-t th:first-child { text-align: left; }
+.timeline { display: grid; grid-template-columns: repeat(6, 1fr); }
+.tl { padding: 6pt 6pt 2pt; border-top: 2.5pt solid var(--rule); display: grid; gap: 2pt; }
+.tl.key { border-color: var(--accent); }
+.tl .t { font-family: var(--mono); font-weight: 600; font-size: 10.5pt; }
+.tl .d { font-size: 8pt; color: var(--muted); }
+.checks { list-style: none; padding: 0; display: grid; gap: 4pt; }
+.checks li { display: grid; grid-template-columns: 11pt 1fr; gap: 7pt; align-items: start; }
+.box { width: 10pt; height: 10pt; border: 1pt solid var(--ink); border-radius: 2pt; margin-top: 2pt; }
+.must { font-family: var(--mono); font-size: 7pt; color: var(--bear); margin-left: 4pt; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+.page-break { break-before: page; }
+.log td { height: 15pt; }
+footer { font-size: 8pt; color: var(--muted); padding-top: 8pt; display: grid; gap: 2pt; }
+svg text { font-family: var(--body); }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">MNQ · Nueva York AM · modelo AMD · basado en «Advanced ICT» de Tis Trades</span>
+  <h1>Playbook ICT · paso a paso</h1>
+  <p class="lead">El precio barre un máximo o mínimo contra tu objetivo, entra en un FVG de temporalidad alta y se da la vuelta. Tú entras en esa vuelta con un IFVG, nunca antes.</p>
+  <div class="formula"><span>Objetivo claro</span><b>+</b><span>manipulación a un FVG HTF</span><b>+</b><span>IFVG más allá del 50 %</span><b>+</b><span>riesgo fijo</span></div>
+</header>
+
+<section>
+  <span class="eyebrow">Horario · hora de Italia</span>
+  <div class="timeline">
+    <div class="tl"><span class="t">15:00</span><span class="d">Marcar niveles y elegir objetivo</span></div>
+    <div class="tl key"><span class="t">15:30</span><span class="d">Abre NY · vela nueva de 30 min</span></div>
+    <div class="tl"><span class="t">15:45</span><span class="d">Vela nueva de 15 min</span></div>
+    <div class="tl key"><span class="t">16:00</span><span class="d">Vela nueva de 4 h (PO3)</span></div>
+    <div class="tl"><span class="t">16:30</span><span class="d">Vela nueva de 30 min</span></div>
+    <div class="tl"><span class="t">17:00</span><span class="d">Fin de la ventana · no abrir más</span></div>
+  </div>
+  <p class="note">Cuando Europa y EE. UU. cambian de hora en semanas distintas (finales de marzo y de octubre), todo ocurre una hora antes: la apertura es a las 14:30.</p>
+</section>
+
+<section class="step">
+  <span class="num">1</span>
+  <div>
+    <h2>Marcar los niveles</h2>
+    <p>Antes de la apertura, en 4 h y 1 h. Primero los objetivos, luego las zonas donde esperas la trampa.</p>
+    <h3>Objetivos (liquidez)</h3>
+    <div class="chips"><span class="chip">PDH / PDL</span><span class="chip">PWH / PWL</span><span class="chip">Asia H / L</span><span class="chip">Londres H / L</span><span class="chip">Máximos/mínimos iguales</span><span class="chip">Premarket H / L</span></div>
+    <h3>Zonas de manipulación (FVG de temporalidad alta)</h3>
+    <div class="chips"><span class="chip bull">FVG 4 h</span><span class="chip bull">FVG 1 h</span><span class="chip bull">FVG 30 min</span><span class="chip bull">FVG 15 min</span></div>
+    <p><strong>Decide el objetivo (DOL)</strong>: el nivel fuerte, con camino limpio, hacia donde crees que va el día. Eso fija la dirección. Cuanto más fuerte el objetivo (liquidez externa de 4 h o diario), menos confirmación necesitas; con uno débil (Londres, un FVG de 15 min), solo la entrada perfecta.</p>
+  </div>
+</section>
+
+<section class="step">
+  <span class="num">2</span>
+  <div>
+    <h2>Esperar la manipulación</h2>
+    <p>De 15:30 a 17:00. El precio va <em>en contra</em> de tu objetivo, barre un máximo o mínimo y entra en un FVG de temporalidad alta.</p>
+    <svg viewBox="0 0 760 330" style="width:100%;height:auto" role="img" aria-label="Modelo AMD en una compra">
+      <line x1="24" x2="736" y1="54" y2="54" stroke="#11806a" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="24" y="44" font-size="13" fill="#17202b">Objetivo (DOL): PDH, máximos iguales, FVG 4 h</text>
+      <rect x="300" y="252" width="250" height="30" rx="4" fill="#e6eff5" stroke="#1d5f86" stroke-width="1.5"/>
+      <text x="356" y="272" font-size="13" fill="#17202b">Nivel clave: FVG 15 min-4 h</text>
+      <g stroke="#5b6676" stroke-dasharray="3 3"><line x1="90" x2="112" y1="95" y2="95"/><line x1="150" x2="172" y1="108" y2="108"/><line x1="210" x2="232" y1="125" y2="125"/><line x1="270" x2="292" y1="140" y2="140"/></g>
+      <text x="96" y="86" font-size="12.5" fill="#5b6676">stops (low resistance)</text>
+      <line x1="262" x2="404" y1="204" y2="204" stroke="#5b6676" stroke-dasharray="4 3"/>
+      <text x="256" y="208" font-size="12.5" text-anchor="end" fill="#5b6676">50 % de la pierna</text>
+      <path d="M40 100 L60 110 L90 95 L120 125 L150 108 L180 140 L210 125 L240 155 L270 140 L300 190 L330 268 L360 220 L380 195 L400 208 L460 130 L520 90 L600 60 L690 50" fill="none" stroke="#17202b" stroke-width="2.2" stroke-linejoin="round"/>
+      <circle cx="380" cy="195" r="6.5" fill="#1d5f86"/>
+      <text x="414" y="228" font-size="13" font-weight="700" fill="#17202b">IFVG = entrada</text>
+      <text x="414" y="244" font-size="12.5" fill="#5b6676">cierra sobre el 50 %</text>
+      <line x1="318" x2="344" y1="292" y2="292" stroke="#b8324a" stroke-width="2"/>
+      <text x="350" y="296" font-size="12.5" fill="#5b6676">stop bajo el mínimo</text>
+      <text x="150" y="320" text-anchor="middle" font-size="14" font-weight="700" fill="#17202b">1 · Acumulación</text>
+      <text x="300" y="320" text-anchor="middle" font-size="14" font-weight="700" fill="#17202b">2 · Manipulación</text>
+      <text x="580" y="320" text-anchor="middle" font-size="14" font-weight="700" fill="#17202b">3 · Distribución</text>
+    </svg>
+    <ul>
+      <li><strong>Manipulación real</strong>: velas de cuerpo grande, cierre por debajo de la acumulación, y toca un FVG de 15 min a 4 h. Si no toca ningún nivel, no es manipulación.</li>
+      <li><strong>ES también toca su nivel</strong> (true manipulation), aunque sea un FVG distinto.</li>
+      <li><strong>Mejor con SMT</strong>: NQ barre el mínimo y ES no (o al revés).</li>
+      <li><strong>PO3</strong>: si ocurre justo después de las 16:00, es la mecha de la vela nueva de 4 h.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="step">
+  <span class="num">3</span>
+  <div>
+    <h2>Entrar en el IFVG de 1-5 min</h2>
+    <p>En la temporalidad más alta en la que la caída deja un FVG en contra propio. La entrada es al cierre de la vela que lo atraviesa.</p>
+    <ol>
+      <li>Mide la pierna de manipulación: desde el inicio del último empuje hasta su extremo.</li>
+      <li>El cierre del IFVG debe quedar <strong>más allá del 50 %</strong> de esa pierna, y sin superar su otro extremo.</li>
+      <li>Si cierra antes del 50 %, es un <em>cuchillo cayendo</em>: espera el barrido del mínimo y el IFVG siguiente, que suele ser mejor.</li>
+      <li>La vela del IFVG debe sacar al precio del rango (mejor con CISD), no ser más pequeña que las del rango.</li>
+      <li>El nivel no está roto: ninguna vela de 15-30 min cerró al otro lado del FVG de temporalidad alta.</li>
+    </ol>
+    <p class="note">Un FVG ya tocado antes es más débil. Vale si el segundo toque barre un mínimo nuevo y ES está en un nivel sin usar.</p>
+  </div>
+</section>
+
+<section class="step">
+  <span class="num">4</span>
+  <div>
+    <h2>Stop y objetivo</h2>
+    <table>
+      <thead><tr><th>Situación</th><th>Stop</th></tr></thead>
+      <tbody>
+        <tr><td>Principiante, contra tendencia o IFVG de 15-30 s</td><td>En el extremo de la manipulación</td></tr>
+        <tr><td>A favor de la tendencia de 1 h y 4 h</td><td>En el cuerpo de las velas del extremo</td></tr>
+        <tr><td>IFVG de 3-5 min con un FVG de 3 min detrás</td><td>Justo detrás de ese FVG</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Objetivo 1</strong>: primer máximo/mínimo o FVG de 5-15 min hacia tu DOL (el <em>agreed upon DOL</em>). Cobra una parte o pon break even.</li>
+      <li><strong>Objetivo 2</strong>: tu DOL (FVG de 4 h, PDH/PDL). No aguantes más allá.</li>
+      <li><strong>Mínimo 1:1,5</strong> hasta el objetivo 2. Si no lo hay, no entres.</li>
+      <li><strong>Break even</strong>: casi nunca a favor de tendencia; sí en contra tendencia, al llegar al objetivo 1.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="step">
+  <span class="num">5</span>
+  <div>
+    <h2>Riesgo y órdenes</h2>
+    <p>Primero el riesgo en dinero, luego los contratos. Nunca al revés. MNQ vale 2 $ por punto (más ~2 $ de comisión ida y vuelta).</p>
+    <p class="mono">contratos = riesgo $ ÷ (puntos de stop × 2 + 2), redondeado hacia abajo</p>
+    <table class="num-t">
+      <thead><tr><th>Riesgo por operación</th><th>Stop 20 pts</th><th>Stop 30 pts</th><th>Stop 45 pts</th><th>Stop 60 pts</th></tr></thead>
+      <tbody>
+        <tr><td>100 $</td><td>2 MNQ · 84 $</td><td>1 MNQ · 62 $</td><td>1 MNQ · 92 $</td><td>no cabe</td></tr>
+        <tr><td>150 $</td><td>3 MNQ · 126 $</td><td>2 MNQ · 124 $</td><td>1 MNQ · 92 $</td><td>1 MNQ · 122 $</td></tr>
+        <tr><td>200 $</td><td>4 MNQ · 168 $</td><td>3 MNQ · 186 $</td><td>2 MNQ · 184 $</td><td>1 MNQ · 122 $</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Al entrar a mercado, activa TP y SL en el panel de órdenes.</strong> Quedan enlazados (si salta uno se cancela el otro) y ves el dinero en el gráfico.</li>
+      <li>Para cobrar una parte: orden contraria de menos contratos (vender 2 de 5 deja 3). Después revisa que TP y SL queden en 3.</li>
+      <li>Máximo 1-2 operaciones al día. Tras una ganancia buena, para.</li>
+    </ul>
+    <p class="note bear"><strong>No repetir</strong>: 7 contratos con stop de 100 puntos (≈ 1.440 $) y TP/SL como órdenes sueltas. Más de la mitad del drawdown en una operación, fuera de horario.</p>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Cuenta pros y contras antes de entrar</span>
+  <h2>Filtros de probabilidad</h2>
+  <table>
+    <thead><tr><th>Filtro</th><th>A favor</th><th>En contra</th></tr></thead>
+    <tbody>
+      <tr><td>Low resistance</td><td class="pro">Máximos pequeños casi horizontales hacia el objetivo</td><td class="con">Zona vacía entre la entrada y el objetivo</td></tr>
+      <tr><td>Agreed upon DOL</td><td class="pro">FVG de 5-15 min sin tocar, con acumulación alejándose de él</td><td class="con">Solo un máximo suelto</td></tr>
+      <tr><td>True manipulation</td><td class="pro">NQ y ES en un FVG de temporalidad alta a la vez</td><td class="con">Solo uno de los dos</td></tr>
+      <tr><td>Sponsorship</td><td class="pro">Primer retroceso tras rebotar en un FVG de 30 min-4 h</td><td class="con">Segundo retroceso o posteriores</td></tr>
+      <tr><td>PO3</td><td class="pro">La vela de 4 h hace su mecha en tu nivel</td><td class="con">Contra una vela de 4 h que ya corre fuerte</td></tr>
+      <tr><td>Stop hunt</td><td class="pro">Entrada tras barrer el primer mínimo</td><td class="con">Primer IFVG antes del 50 %</td></tr>
+      <tr><td>Temporalidad alta</td><td class="pro">A favor de 1 h y 4 h</td><td class="con">Contra un FVG de 4 h sin tocar</td></tr>
+    </tbody>
+  </table>
+  <p>Dos contras importantes juntos = no entrar.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Antes de pulsar el botón</span>
+  <h2>Checklist</h2>
+  <div class="two">
+    <ul class="checks">
+      <li><span class="box"></span><span>Tengo un objetivo (DOL) y sé si es fuerte o débil<span class="must">OBLIGATORIO</span></span></li>
+      <li><span class="box"></span><span>Hubo acumulación con máximos/mínimos pequeños hacia el objetivo<span class="must">OBLIGATORIO</span></span></li>
+      <li><span class="box"></span><span>La manipulación tocó un FVG de 15 min a 4 h sin romperlo con cierre<span class="must">OBLIGATORIO</span></span></li>
+      <li><span class="box"></span><span>El IFVG cierra más allá del 50 % de la pierna<span class="must">OBLIGATORIO</span></span></li>
+      <li><span class="box"></span><span>Riesgo calculado (100-200 $), TP y SL activados<span class="must">OBLIGATORIO</span></span></li>
+    </ul>
+    <ul class="checks">
+      <li><span class="box"></span><span>ES también tocó su nivel, sin SMT en contra</span></li>
+      <li><span class="box"></span><span>No hay un FVG de temporalidad mayor sin tocar detrás del stop</span></li>
+      <li><span class="box"></span><span>Primer retroceso tras el nivel grande (sponsorship)</span></li>
+      <li><span class="box"></span><span>Estoy entre 15:30 y 17:00</span></li>
+      <li><span class="box"></span><span>Recorrido de al menos 1:1,5 hasta el objetivo</span></li>
+    </ul>
+  </div>
+  <p><strong>Falta un obligatorio</strong> → no entres. <strong>Obligatorios + 3 extras o más</strong> → operación A. <strong>Menos de 3 extras</strong> → medio tamaño o espera.</p>
+</section>
+
+<section>
+  <span class="eyebrow">NQ 2018-2026 · laboratorio</span>
+  <h2>Lo que dicen los datos</h2>
+  <p>Las piezas medidas por separado no dan ventaja clara. El modelo completo, con ES y discreción, no está probado: mide el tuyo.</p>
+  <table>
+    <thead><tr><th>Prueba</th><th>Gana</th><th>Pierde</th><th>Lectura</th></tr></thead>
+    <tbody>
+      <tr><td>Primer barrido del rango 15:30-16:00 tras las 16:00: ¿sigue o gira?</td><td class="mono">55-66 %</td><td class="mono">34-45 %</td><td>Suele seguir. No compres por reflejo un mínimo barrido.</td></tr>
+      <tr><td>Giro PO3 de la vela de 4 h (12 versiones)</td><td class="mono">47-54 %</td><td class="mono">46-53 %</td><td>Sin ventaja.</td></tr>
+      <tr><td>Perfil de NY de ayer como sesgo de hoy</td><td class="mono">49 %</td><td class="mono">51 %</td><td>Igual que al azar.</td></tr>
+      <tr><td>FVG 5 min en nivel del perfil del día anterior, 1:2</td><td class="mono">43 %</td><td class="mono">57 %</td><td>Candidata débil, positiva en los 3 periodos.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="page-break">
+  <span class="eyebrow">Registro</span>
+  <h2>Diario de operaciones</h2>
+  <p>Con 30-50 operaciones apuntadas sabrás tu porcentaje real de acierto y qué filtros lo suben.</p>
+  <table class="log">
+    <thead><tr><th>Fecha · hora</th><th>Lado</th><th>Nivel barrido</th><th>FVG HTF (¿tocado antes?)</th><th>ES nivel</th><th>&gt;50 %</th><th>Entrada · stop · objetivo</th><th>R</th></tr></thead>
+    <tbody>
+      <tr><td>19/10 · 16:05</td><td>Compra</td><td>Mín. premarket</td><td>FVG 30 min (sí)</td><td>Sí (FVG 1 h)</td><td>Sí</td><td>29.796 · 29.760 · 29.947</td><td>+</td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <footer>
+    <p>Basado en la serie «Advanced ICT» de Tis Trades (episodios 1-11) y en los backtests del laboratorio (DIARIO_EXPERIMENTOS.md).</p>
+    <p>Material de estudio, no recomendación de inversión.</p>
+  </footer>
+</section>
+
+</body>
+</html>
