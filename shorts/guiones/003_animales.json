@@ -1,0 +1,89 @@
+{
+  "slug": "003_animales",
+  "voice": "es_MX-ald-medium",
+  "youtube": {
+    "title": "Animales con SUPERPODERES que no conocías 🐾 #shorts",
+    "description": "¿Cuál de estos datos te sorprendió más? 👇\n\n1. Rosas por lo que comen\n2. Huellas como las tuyas\n3. Siete vértebras, como tú\n4. Duermen con medio cerebro\n5. Caca en forma de cubo\n\nSuscríbete para una curiosidad nueva cada día.\n\n#curiosidades #datoscuriosos #sabiasque #shorts",
+    "tags": [
+      "curiosidades",
+      "datos curiosos",
+      "sabías que",
+      "shorts",
+      "animales",
+      "naturaleza",
+      "fauna"
+    ]
+  },
+  "scenes": [
+    {
+      "badge": "",
+      "emoji": "🐾",
+      "headline": "ANIMALES INCREÍBLES",
+      "narration": "Cinco animales que parecen sacados de una película. Presta atención al último.",
+      "colors": [
+        "#1a1446",
+        "#6a1b9a"
+      ]
+    },
+    {
+      "badge": "DATO 1",
+      "emoji": "🦩",
+      "headline": "ROSAS POR LO QUE COMEN",
+      "narration": "Los flamencos nacen grises. Se vuelven rosas por los pigmentos de las algas y los pequeños crustáceos que comen.",
+      "colors": [
+        "#0b2545",
+        "#13315c"
+      ]
+    },
+    {
+      "badge": "DATO 2",
+      "emoji": "🐨",
+      "headline": "HUELLAS COMO LAS TUYAS",
+      "narration": "Los koalas tienen huellas dactilares tan parecidas a las humanas que podrían confundirse en la escena de un crimen.",
+      "colors": [
+        "#3d1308",
+        "#9c3d10"
+      ]
+    },
+    {
+      "badge": "DATO 3",
+      "emoji": "🦒",
+      "headline": "SIETE VÉRTEBRAS, COMO TÚ",
+      "narration": "El cuello de una jirafa tiene siete vértebras, exactamente las mismas que el tuyo. Solo que cada una es enorme.",
+      "colors": [
+        "#0b3d20",
+        "#1e7a46"
+      ]
+    },
+    {
+      "badge": "DATO 4",
+      "emoji": "🐬",
+      "headline": "DUERMEN CON MEDIO CEREBRO",
+      "narration": "Los delfines duermen con la mitad del cerebro despierta, para seguir respirando y vigilar a los depredadores.",
+      "colors": [
+        "#3b3000",
+        "#8a6d00"
+      ]
+    },
+    {
+      "badge": "DATO 5",
+      "emoji": "🎲",
+      "headline": "CACA EN FORMA DE CUBO",
+      "narration": "El wómbat, un marsupial australiano, hace caca en forma de cubo. Así no rueda y le sirve para marcar su territorio.",
+      "colors": [
+        "#2b1b3d",
+        "#7a3e6e"
+      ]
+    },
+    {
+      "badge": "",
+      "emoji": "👇",
+      "headline": "¿CUÁL TE SORPRENDIÓ MÁS?",
+      "narration": "¿Cuál te sorprendió más? Escríbelo en los comentarios, y síguenos para una curiosidad nueva cada día.",
+      "colors": [
+        "#1a1446",
+        "#6a1b9a"
+      ]
+    }
+  ]
+}

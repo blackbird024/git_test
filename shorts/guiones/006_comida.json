@@ -1,0 +1,89 @@
+{
+  "slug": "006_comida",
+  "voice": "es_MX-ald-medium",
+  "youtube": {
+    "title": "Lo que NO sabías de tu comida 🍽️ #shorts",
+    "description": "¿Cuál de estos datos te sorprendió más? 👇\n\n1. El cacahuete no es nuez\n2. La fresa no es baya\n3. Ketchup de farmacia\n4. Zanahorias moradas\n5. Las manzanas flotan\n\nSuscríbete para una curiosidad nueva cada día.\n\n#curiosidades #datoscuriosos #sabiasque #shorts",
+    "tags": [
+      "curiosidades",
+      "datos curiosos",
+      "sabías que",
+      "shorts",
+      "comida",
+      "gastronomía",
+      "alimentos"
+    ]
+  },
+  "scenes": [
+    {
+      "badge": "",
+      "emoji": "🍽️",
+      "headline": "TU COMIDA TE ENGAÑA",
+      "narration": "Cinco cosas sobre la comida que te van a hacer mirar tu plato diferente.",
+      "colors": [
+        "#1a1446",
+        "#6a1b9a"
+      ]
+    },
+    {
+      "badge": "DATO 1",
+      "emoji": "🥜",
+      "headline": "EL CACAHUETE NO ES NUEZ",
+      "narration": "El cacahuete no es un fruto seco. Es una legumbre, como las lentejas o los guisantes.",
+      "colors": [
+        "#0b2545",
+        "#13315c"
+      ]
+    },
+    {
+      "badge": "DATO 2",
+      "emoji": "🍓",
+      "headline": "LA FRESA NO ES BAYA",
+      "narration": "Para la botánica, la fresa no es una baya. Pero el plátano, el tomate y la sandía sí lo son.",
+      "colors": [
+        "#3d1308",
+        "#9c3d10"
+      ]
+    },
+    {
+      "badge": "DATO 3",
+      "emoji": "🍅",
+      "headline": "KETCHUP DE FARMACIA",
+      "narration": "En el siglo diecinueve, el ketchup se vendía en Estados Unidos como medicina, en forma de pastillas de tomate.",
+      "colors": [
+        "#0b3d20",
+        "#1e7a46"
+      ]
+    },
+    {
+      "badge": "DATO 4",
+      "emoji": "🥕",
+      "headline": "ZANAHORIAS MORADAS",
+      "narration": "Las primeras zanahorias cultivadas eran moradas o amarillas. Las naranjas se popularizaron siglos después en Europa.",
+      "colors": [
+        "#3b3000",
+        "#8a6d00"
+      ]
+    },
+    {
+      "badge": "DATO 5",
+      "emoji": "🍎",
+      "headline": "LAS MANZANAS FLOTAN",
+      "narration": "Las manzanas flotan en el agua porque alrededor de una cuarta parte de su volumen es aire.",
+      "colors": [
+        "#2b1b3d",
+        "#7a3e6e"
+      ]
+    },
+    {
+      "badge": "",
+      "emoji": "👇",
+      "headline": "¿CUÁL TE SORPRENDIÓ MÁS?",
+      "narration": "¿Cuál te sorprendió más? Escríbelo en los comentarios, y síguenos para una curiosidad nueva cada día.",
+      "colors": [
+        "#1a1446",
+        "#6a1b9a"
+      ]
+    }
+  ]
+}

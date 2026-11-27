@@ -144,6 +144,7 @@ def make_whoosh(sec=0.45):
 def render_emoji(ch, size):
     f = ImageFont.truetype(EMOJI_FONT, 109)
     img = Image.new("RGBA", (220, 220), (0, 0, 0, 0))
+    ch = ch.replace("\ufe0f", "")
     ImageDraw.Draw(img).text((110, 110), ch, font=f, embedded_color=True, anchor="mm")
     img = img.crop(img.getbbox())
     r = size / max(img.size)

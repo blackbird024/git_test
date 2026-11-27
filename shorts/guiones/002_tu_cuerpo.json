@@ -1,0 +1,89 @@
+{
+  "slug": "002_tu_cuerpo",
+  "voice": "es_MX-ald-medium",
+  "youtube": {
+    "title": "5 secretos de TU CUERPO que nadie te contó 🧠 #shorts",
+    "description": "¿Cuál de estos datos te sorprendió más? 👇\n\n1. Naciste con 300 huesos\n2. Eres más alto por la mañana\n3. 100.000 latidos al día\n4. Tus ojos respiran aire\n5. Tu estómago se renueva\n\nSuscríbete para una curiosidad nueva cada día.\n\n#curiosidades #datoscuriosos #sabiasque #shorts",
+    "tags": [
+      "curiosidades",
+      "datos curiosos",
+      "sabías que",
+      "shorts",
+      "cuerpo humano",
+      "salud",
+      "biología"
+    ]
+  },
+  "scenes": [
+    {
+      "badge": "",
+      "emoji": "🧠",
+      "headline": "5 SECRETOS DE TU CUERPO",
+      "narration": "Cinco cosas que tu cuerpo hace sin que te des cuenta. La tercera es increíble.",
+      "colors": [
+        "#1a1446",
+        "#6a1b9a"
+      ]
+    },
+    {
+      "badge": "DATO 1",
+      "emoji": "👶",
+      "headline": "NACISTE CON 300 HUESOS",
+      "narration": "Naciste con unos trescientos huesos. De adulto tienes doscientos seis, porque muchos se fusionan al crecer.",
+      "colors": [
+        "#0b2545",
+        "#13315c"
+      ]
+    },
+    {
+      "badge": "DATO 2",
+      "emoji": "📏",
+      "headline": "ERES MÁS ALTO POR LA MAÑANA",
+      "narration": "Eres más alto por la mañana. Durante el día, los discos de tu columna se comprimen y pierdes alrededor de un centímetro.",
+      "colors": [
+        "#3d1308",
+        "#9c3d10"
+      ]
+    },
+    {
+      "badge": "DATO 3",
+      "emoji": "🫀",
+      "headline": "100.000 LATIDOS AL DÍA",
+      "narration": "Tu corazón late unas cien mil veces al día. Eso son más de dos mil millones de latidos a lo largo de una vida.",
+      "colors": [
+        "#0b3d20",
+        "#1e7a46"
+      ]
+    },
+    {
+      "badge": "DATO 4",
+      "emoji": "👁️",
+      "headline": "TUS OJOS RESPIRAN AIRE",
+      "narration": "La córnea de tu ojo no tiene vasos sanguíneos. Toma el oxígeno directamente del aire.",
+      "colors": [
+        "#3b3000",
+        "#8a6d00"
+      ]
+    },
+    {
+      "badge": "DATO 5",
+      "emoji": "🔥",
+      "headline": "TU ESTÓMAGO SE RENUEVA",
+      "narration": "Las células que recubren tu estómago se renuevan cada pocos días, para que su propio ácido no lo destruya.",
+      "colors": [
+        "#2b1b3d",
+        "#7a3e6e"
+      ]
+    },
+    {
+      "badge": "",
+      "emoji": "👇",
+      "headline": "¿CUÁL TE SORPRENDIÓ MÁS?",
+      "narration": "¿Cuál te sorprendió más? Escríbelo en los comentarios, y síguenos para una curiosidad nueva cada día.",
+      "colors": [
+        "#1a1446",
+        "#6a1b9a"
+      ]
+    }
+  ]
+}
